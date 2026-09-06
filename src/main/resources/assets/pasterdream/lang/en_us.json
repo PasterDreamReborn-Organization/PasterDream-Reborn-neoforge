@@ -1,0 +1,13 @@
+{
+  "itemGroup.pasterdream": "Example Mod Tab",
+  "block.pasterdream.example_block": "Example Block",
+  "item.pasterdream.example_item": "Example Item",
+
+  "pasterdream.configuration.title": "PasterDream: Reborn Configs",
+  "pasterdream.configuration.section.pasterdream.common.toml": "PasterDream: Reborn Configs",
+  "pasterdream.configuration.section.pasterdream.common.toml.title": "PasterDream: Reborn Configs",
+  "pasterdream.configuration.items": "Item List",
+  "pasterdream.configuration.logDirtBlock": "Log Dirt Block",
+  "pasterdream.configuration.magicNumberIntroduction": "Magic Number Text",
+  "pasterdream.configuration.magicNumber": "Magic Number"
+}
