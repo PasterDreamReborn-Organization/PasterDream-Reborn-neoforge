@@ -1,117 +1,108 @@
 package com.pasterdream.pasterdreammod;
 
-import org.slf4j.Logger;
-
 import com.mojang.logging.LogUtils;
-
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
-import net.neoforged.api.distmarker.Dist;
+import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
+import com.pasterdream.pasterdreammod.init.ModAttachments;
+import com.pasterdream.pasterdreammod.init.ModAttributes;
+import com.pasterdream.pasterdreammod.init.ModBlockEntities;
+import com.pasterdream.pasterdreammod.init.ModBlocks;
+import com.pasterdream.pasterdreammod.init.ModBluePrintsContentRelation;
+import com.pasterdream.pasterdreammod.init.ModCreativeModeTabs;
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
+import com.pasterdream.pasterdreammod.init.ModCropRelation;
+import com.pasterdream.pasterdreammod.init.ModDataComponents;
+import com.pasterdream.pasterdreammod.init.ModDreamNotesBookContentRelation;
+import com.pasterdream.pasterdreammod.init.ModDreamNotesContentRelation;
+import com.pasterdream.pasterdreammod.init.ModEffects;
+import com.pasterdream.pasterdreammod.init.ModEnhanceStoneAttributeRelation;
+import com.pasterdream.pasterdreammod.init.ModEntities;
+import com.pasterdream.pasterdreammod.init.ModFeatures;
+import com.pasterdream.pasterdreammod.init.ModFluidContainerRelation;
+import com.pasterdream.pasterdreammod.init.ModFluidPropertiesRelation;
+import com.pasterdream.pasterdreammod.init.ModFluids;
+import com.pasterdream.pasterdreammod.init.ModFoliagePlacerTypes;
+import com.pasterdream.pasterdreammod.init.ModGameRules;
+import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.init.ModMenus;
+import com.pasterdream.pasterdreammod.init.ModParticleTypes;
+import com.pasterdream.pasterdreammod.init.ModPotions;
+import com.pasterdream.pasterdreammod.init.ModRecipes;
+import com.pasterdream.pasterdreammod.init.ModShadowDungeonStructureSet;
+import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.init.ModTreeDecoratorTypes;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(PasterDreamMod.MODID)
+/**
+ * PasterDream: Reborn — NeoForge 1.21.1 主类。
+ *
+ * <p>构造参数 {@link IEventBus} 与 {@link ModContainer} 由 FML 注入，是唯一的注册入口。
+ * 注册顺序与 Forge 1.20.1 源仓库保持一致，API 差异见 {@code document/reference/移植总纲.md}。
+ */
+@Mod(PasterDreamMod.MOD_ID)
 public class PasterDreamMod {
-    // Define mod id in a common place for everything to reference
-    public static final String MODID = "pasterdream";
-    // Directly reference a slf4j logger
+    public static final String MOD_ID = "pasterdream";
     public static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "pasterdream" namespace
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
-    // Create a Deferred Register to hold Items which will all be registered under the "pasterdream" namespace
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "pasterdream" namespace
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    // Creates a new Block with the id "pasterdream:example_block", combining the namespace and path
-    public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", BlockBehaviour.Properties.of().mapColor(MapColor.STONE));
-    // Creates a new BlockItem with the id "pasterdream:example_block", combining the namespace and path
-    public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
-
-    // Creates a new food item with the id "pasterdream:example_id", nutrition 1 and saturation 2
-    public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", new Item.Properties().food(new FoodProperties.Builder()
-            .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
-
-    // Creates a creative tab with the id "pasterdream:example_tab" for the example item, that is placed after the combat tab
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.pasterdream")) //The language key for the title of your CreativeModeTab
-            .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
-            .displayItems((parameters, output) -> {
-                output.accept(EXAMPLE_ITEM.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
-            }).build());
-
-    // The constructor for the mod class is the first code that is run when your mod is loaded.
-    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public PasterDreamMod(IEventBus modEventBus, ModContainer modContainer) {
-        // Register the commonSetup method for modloading
+        // ---- 注册中心 ----
+        ModBlocks.register(modEventBus);           // 方块
+        ModItems.register(modEventBus);            // 物品
+        ModCreativeModeTabs.register(modEventBus); // 创造模式物品栏
+        ModBlockEntities.register(modEventBus);    // 方块实体
+        ModEntities.register(modEventBus);         // 实体
+        ModFluids.register(modEventBus);           // 流体 + 流体类型
+        ModMenus.register(modEventBus);            // 菜单
+        ModRecipes.register(modEventBus);          // 配方类型 / 序列化器
+        ModSounds.register(modEventBus);           // 音效
+        ModEffects.register(modEventBus);          // 药水效果
+        ModPotions.register(modEventBus);          // 药水
+        ModAttributes.register(modEventBus);       // 自定义属性
+        ModParticleTypes.register(modEventBus);    // 粒子类型
+        ModFeatures.register(modEventBus);         // 自定义 Feature
+        ModFoliagePlacerTypes.register(modEventBus); // 树叶放置器类型
+        ModTreeDecoratorTypes.register(modEventBus); // 树木装饰器类型
+        ModDataComponents.register(modEventBus);   // DataComponents
+        ModAttachments.register(modEventBus);      // AttachmentType（取代 Forge Capability）
+
+        // ---- 启动阶段监听 ----
         modEventBus.addListener(this::commonSetup);
 
-        // Register the Deferred Register to the mod event bus so blocks get registered
-        BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
-        ITEMS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
-        CREATIVE_MODE_TABS.register(modEventBus);
-
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (PasterDreamMod) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
+        // ---- 游戏总线监听（本类自己订阅的事件）----
         NeoForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
+        // ---- 静态初始化（不走 DeferredRegister）----
+        ModGameRules.init();        // gamerule
+        ModCriteriaTriggers.init(); // 自定义进度触发器
+        // 网络框架由 ModNetwork 的 @EventBusSubscriber 自行注册（RegisterPayloadHandlersEvent）
 
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
+        // ---- 配置文件 ----
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, PasterDreamClientConfig.SPEC, "PasterDream-Client.toml");
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
-
-        if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
-            LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-        }
-
-        LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
-
-        Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
+        event.enqueueWork(() -> {
+            ModFluidContainerRelation.registerFluidContainerRelation();
+            ModFluidPropertiesRelation.register();
+            ModDreamNotesContentRelation.registerDreamNotesContentRelation();
+            ModDreamNotesBookContentRelation.registerDreamNotesBookContentRelation();
+            ModBluePrintsContentRelation.registerBluePrintsContentRelation();
+            ModCropRelation.registerCropRelation();
+            ModEnhanceStoneAttributeRelation.registerModEnhanceStoneAttributeRelation();
+            ModShadowDungeonStructureSet.register();
+        });
     }
 
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(EXAMPLE_BLOCK_ITEM);
-        }
-    }
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("PasterDream: Reborn (NeoForge) server starting");
     }
 }
