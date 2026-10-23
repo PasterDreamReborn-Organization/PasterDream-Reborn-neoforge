@@ -2,20 +2,37 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-/**
- * 创造模式物品栏注册中心。
- *
- * <p>对应 Forge 1.20.1 源仓库的 {@code init/ModCreativeModeTabs.java}。
- */
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, PasterDreamMod.MOD_ID);
 
-    // TODO: 在此注册物品栏（装备 / 方块 / 材料 / 食物 / 调试等）
+    // 原图标所需内容尚未迁入，暂用本批次材料；保留来源物品栏 ID 和条目顺序。
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_ITEMS_TAB =
+            CREATIVE_MODE_TABS.register("pasterdream_items_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_items_tab"))
+                    .icon(() -> ModItems.TITANIUM_INGOT.toStack())
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.RAW_TITANIUM.get());
+                        output.accept(ModItems.TITANIUM_INGOT.get());
+                        output.accept(ModItems.TITANIUM_NUGGET.get());
+                    }).build());
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_BLOCKS_TAB =
+            CREATIVE_MODE_TABS.register("pasterdream_blocks_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_blocks_tab"))
+                    .icon(() -> ModItems.TITANIUM_ORE.toStack())
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.TITANIUM_ORE.get());
+                        output.accept(ModItems.DEEPSLATE_TITANIUM_ORE.get());
+                        output.accept(ModItems.RAW_TITANIUM_BLOCK.get());
+                        output.accept(ModItems.TITANIUM_BLOCK.get());
+                    }).build());
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TABS.register(eventBus);
