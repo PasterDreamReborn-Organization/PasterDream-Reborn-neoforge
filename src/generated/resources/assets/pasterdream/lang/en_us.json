@@ -1,0 +1,16 @@
+{
+  "block.pasterdream.deepslate_titanium_ore": "Deepslate Titanium Ore",
+  "block.pasterdream.raw_titanium_block": "Raw Titanium Block",
+  "block.pasterdream.titanium_block": "Titanium Block",
+  "block.pasterdream.titanium_ore": "Titanium Ore",
+  "item.pasterdream.raw_titanium": "Raw Titanium",
+  "item.pasterdream.titanium_ingot": "Titanium Ingot",
+  "item.pasterdream.titanium_nugget": "Titanium Nugget",
+  "itemGroup.pasterdream.pasterdream_blocks_tab": "Dyedream World",
+  "itemGroup.pasterdream.pasterdream_items_tab": "Paster Dream | Items",
+  "pasterdream.configuration.debugLogging": "Debug Logging",
+  "pasterdream.configuration.debugLogging.tooltip": "Enable debug logging",
+  "pasterdream.configuration.section.pasterdream.common.toml": "PasterDream: Reborn Configs",
+  "pasterdream.configuration.section.pasterdream.common.toml.title": "PasterDream: Reborn Configs",
+  "pasterdream.configuration.title": "PasterDream: Reborn Configs"
+}

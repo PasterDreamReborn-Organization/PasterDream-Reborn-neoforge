@@ -9,7 +9,7 @@ description: 数据生成器（runData）。覆盖所有 Provider（方块状态
 
 ---
 
-## Provider 清单
+## Provider 清单（目标职责；实际实现见迁移批次记录）
 
 | Provider | 职责 |
 |----------|------|
@@ -71,3 +71,11 @@ description: 数据生成器（runData）。覆盖所有 Provider（方块状态
 
 - `document/rule/program/目录结构组织.md` — 数据生成器输出目录、Provider 全列表
 - `document/rule/program/容器配方平衡系统.md` — 配方容器平衡 datagen 写法
+
+## 当前实现补充
+
+- 批次进度见 `document/reference/迁移批次记录.md`。当前仅启用已迁入内容所需 Provider。
+- 先建立 `ModWorldGenProvider`，其 `getRegistryProvider()` 传递给标签、配方与战利品 Provider。
+- 语言只由 `LanguageProvider` 生成；不要在 main/resources 留下同路径语言文件造成重复资源。
+- 运行目录为 `build/run-data`；生成资源仍写入 `src/generated/resources`。缓存不得入包。
+- `runData` 后运行 `build` 与适用的 `runGameTestServer`；源码与 JSON 可编译不能替代实际数据包加载检查。

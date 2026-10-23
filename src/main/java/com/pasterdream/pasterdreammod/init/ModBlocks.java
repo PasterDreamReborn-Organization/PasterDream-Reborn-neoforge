@@ -1,19 +1,33 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-/**
- * 方块注册中心。
- *
- * <p>对应 Forge 1.20.1 源仓库的 {@code init/ModBlocks.java}。搬运方块时在此添加
- * {@code DeferredBlock<T>} 常量，无特殊机制直接用原版类，特殊逻辑放 {@code world/block/}。
- */
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(PasterDreamMod.MOD_ID);
 
-    // TODO: 在此注册方块
+    public static final DeferredBlock<Block> TITANIUM_ORE = BLOCKS.register("titanium_ore",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(9f, 5f).lightLevel(state -> 15).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> DEEPSLATE_TITANIUM_ORE = BLOCKS.register("deepslate_titanium_ore",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.DEEPSLATE)
+                    .strength(9f, 5f).lightLevel(state -> 15).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> RAW_TITANIUM_BLOCK = BLOCKS.register("raw_titanium_block",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.POLISHED_DEEPSLATE)
+                    .strength(10f, 6f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> TITANIUM_BLOCK = BLOCKS.register("titanium_block",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .sound(SoundType.METAL).strength(11f, 7f).requiresCorrectToolForDrops()));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

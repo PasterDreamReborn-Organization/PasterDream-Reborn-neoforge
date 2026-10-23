@@ -1,0 +1,16 @@
+{
+  "block.pasterdream.deepslate_titanium_ore": "深层钛矿石",
+  "block.pasterdream.raw_titanium_block": "粗钛金块",
+  "block.pasterdream.titanium_block": "钛金块",
+  "block.pasterdream.titanium_ore": "钛矿石",
+  "item.pasterdream.raw_titanium": "粗钛",
+  "item.pasterdream.titanium_ingot": "钛金锭",
+  "item.pasterdream.titanium_nugget": "钛金粒",
+  "itemGroup.pasterdream.pasterdream_blocks_tab": "染梦世界",
+  "itemGroup.pasterdream.pasterdream_items_tab": "帕斯特之梦 | 物品",
+  "pasterdream.configuration.debugLogging": "调试日志",
+  "pasterdream.configuration.debugLogging.tooltip": "是否输出调试日志",
+  "pasterdream.configuration.section.pasterdream.common.toml": "帕斯特之梦：重生 配置",
+  "pasterdream.configuration.section.pasterdream.common.toml.title": "帕斯特之梦：重生 配置",
+  "pasterdream.configuration.title": "帕斯特之梦：重生 配置"
+}

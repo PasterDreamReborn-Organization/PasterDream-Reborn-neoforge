@@ -10,14 +10,21 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 >
 > **目标平台为 NeoForge 1.21.1**（本仓库）。与 Forge 1.20.1 源项目的 API 差异见 `document/reference/移植总纲.md` 第四节。搬运时务必按该清单替换：`ForgeRegistries`→`Registries`/`NeoForgeRegistries`、`RegistryObject`→`DeferredHolder`、`SimpleChannel`→`CustomPacketPayload`+`RegisterPayloadHandlersEvent`、NBT→DataComponents、Forge Capability→`AttachmentType`、附魔/画→数据驱动注册表。
 
-严格按以下步骤执行，不要跳过。
+## 本次平台迁移的来源与优先规则
+
+- 直接来源为外部 Forge 重生版仓库的已合并 `master` 快照；先读 `AGENTS.md` 与 `document/reference/迁移批次记录.md`。本仓库不设置 `NOT_MODIFY`。
+- 优先读取来源 `src/main/java`、静态资源与 Provider；旧档案仅用于原作考证，不能覆盖重生版行为。下文原作重命名/重新登记流程只适用于尚未登记的内容；平台迁移保留现有 ID，不重复登记。
+- 下文工具、护甲等旧 API 示例属于历史速查，不可直接照抄；使用锁定依赖源码及当前领域规范核对。
+- 每批开始/结束核查上游 PR 与 master，记录来源、实现和验证状态。
+
+下列按内容类型选择适用步骤。
 
 ---
 
 ## 步骤 1：明确搬运目标
 
 - 确认用户要搬运的具体方块/物品/实体清单
-- 在 `NOT_MODIFY/reference/` 和 `NOT_MODIFY/reference-resources/` 中定位旧版源码与资源（**只读，严禁修改**）
+- 在 `../PasterDream-Reborn-forge1.20.1/NOT_MODIFY/reference/` 和 `../PasterDream-Reborn-forge1.20.1/NOT_MODIFY/reference-resources/` 中定位旧版源码与资源（**只读，严禁修改**）
 
 ---
 
@@ -35,7 +42,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 | 有覆写方法（交互/GUI/食物效果/tick 等） | 创建客制化类 |
 
 - **方块类型判断**：对照旧类确定应使用的原版类（`AmethystClusterBlock`/`FlowerBlock`/`StairBlock` 等）
-- **材质/配方**：在 `NOT_MODIFY/old-recipes/` 中按产物名查找旧配方
+- **材质/配方**：在 `../PasterDream-Reborn-forge1.20.1/NOT_MODIFY/old-recipes/` 中按产物名查找旧配方
 - 旧 ID 中的 `armor` 字段应删除（`copper_armor_helmet` → `copper_helmet`）
 - 工具/护甲的材料 ID 保持一致性（如 `molten_gold_sword` / `molten_gold_helmet`）
 - 旧 MCreator ID 中的 word glueing（如 `moltengold`）应加下划线（→ `molten_gold`）
@@ -99,7 +106,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 | 事件驱动（外部 handler） | 饰品效果依赖特定游戏事件触发（闪避、受击、攻击等） | 在 `PlayerEvents` 或 `CurioPassiveHandler` 中订阅对应 NeoForge 事件，用 `CuriosApi.getCuriosInventory()` 检测饰品，见下方说明 |
 
 **饰品标签（Curio 槽位）：**
-- **手动维护** `src/main/resources/data/curios/tags/items/<slot>.json`，**不走 datagen**
+- **手动维护** `src/main/resources/data/curios/tags/item/<slot>.json`，**不走 datagen**
 - 槽位类型：`charm`（护符）、`necklace`（项链）、`ring`（戒指）、`belt`（腰带）、`head`（头部）、`back`（背部）、`body`（身体）
 - 每个 slot JSON 中加上 `"minecraft:air"` 条目允许空槽
 
@@ -228,7 +235,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 
 ### 工作台配方
 
-- 在 `NOT_MODIFY/old-recipes/` 中按旧 ID 搜索
+- 在 `../PasterDream-Reborn-forge1.20.1/NOT_MODIFY/old-recipes/` 中按旧 ID 搜索
 - 写入 `datagen/common/ModRecipesProvider.java`
 - 可复用 `datagen/util/RecipeHelpers.java`：
   - `plankFamilyRecipes` — 原木→木板+全套建材
@@ -269,7 +276,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 - 实体类放 `world/entity/`，模型和渲染器放 `client/model/` + `client/renderer/`
 - 渲染层统一在 `ClientSetRenderLayer` 中管理
 - 标签（挖掘工具、材质、功能）必须补全
-- 配方检查 old-recipes 目录
+- 平台迁移配方优先检查 Forge 重生版 Provider；外部 old-recipes 仅用于原作考证
 - ID、材质语义化命名，禁止中文拼音
 - 不确定的重命名先问用户
 - 翻译值不用格式化代码，用 Rarity 控制颜色
@@ -281,9 +288,9 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 
 | 用途 | 路径 |
 |------|------|
-| 源模组源码 | `NOT_MODIFY/reference/net/pasterdream/`（只读） |
-| 源模组资源 | `NOT_MODIFY/reference-resources/assets/pasterdream/`（只读） |
-| 旧配方 | `NOT_MODIFY/old-recipes/` |
+| 源模组源码 | `../PasterDream-Reborn-forge1.20.1/NOT_MODIFY/reference/net/pasterdream/`（只读） |
+| 源模组资源 | `../PasterDream-Reborn-forge1.20.1/NOT_MODIFY/reference-resources/assets/pasterdream/`（只读） |
+| 旧配方 | `../PasterDream-Reborn-forge1.20.1/NOT_MODIFY/old-recipes/` |
 | ID 映射 | `document/design/ID映射表.md` |
 | 方块注册 | `init/ModBlocks.java` |
 | 物品注册 | `init/ModItems.java` |
@@ -299,7 +306,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 | 效果实现 | `world/effect/` |
 | 效果纹理 | `src/main/resources/assets/pasterdream/textures/mob_effect/` |
 | 玩家事件 | `event/PlayerEvents.java` |
-| 饰品槽位标签 | `src/main/resources/data/curios/tags/items/`（手动维护） |
+| 饰品槽位标签 | `src/main/resources/data/curios/tags/item/`（手动维护） |
 | 品质系统 | `world/item/ModRarities.java` |
 | 实体实现 | `world/entity/` |
 | 实体模型 | `client/model/`（GeckoLib `GeoModel`） |
@@ -339,8 +346,8 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 
 ### 15.1 定位源进度
 
-- 在 `NOT_MODIFY/reference-resources/data/pasterdream/advancements/` 中查找进度 JSON
-- 在 `NOT_MODIFY/reference-resources/assets/pasterdream/lang/` 中查找标题/描述翻译 key
+- 在 `../PasterDream-Reborn-forge1.20.1/NOT_MODIFY/reference-resources/data/pasterdream/advancements/` 中查找进度 JSON
+- 在 `../PasterDream-Reborn-forge1.20.1/NOT_MODIFY/reference-resources/assets/pasterdream/lang/` 中查找标题/描述翻译 key
 - 原作进度分为两类：**隐藏进度**（`achievement_hide_X`，发笔记用，无 display）和**可见进度**（`achievement_a/b/c/d_X`，有 display、frame、parent 树）
 
 ### 15.2 进度定义
