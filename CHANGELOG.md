@@ -14,6 +14,14 @@
 - 新增 AGENTS 入口、迁移批次记录，明确无本地 NOT_MODIFY、上游 PR/master 同步和 NeoForge 可直接推送的规则。
 - 钛金工具/护甲与染梦维度仍待迁移，客户端视觉待验证。详细验证结果见迁移批次记录。
 
+### 批次 002：上游文档与许可同步（2026-10-23）
+
+- 按上游 `9f121ee`（PR #1217）同步 `document/`：新增 14 个设计、需求、参考与规范文档，更新 9 个内容文档。
+- 架构规范、目录结构组织、程序规范文档、重写项目结构说明、容器配方平衡系统采用三方合并，保留 NeoForge 适配并吸收上游新增规范。
+- 同步 `src/main/resources/ASSETS_MANIFEST.md`，按上游清单补全重绘/新增纹理；根目录许可切换为 PDR 协议，并同步 README、README_EN、PERMISSION_GRANTED。
+- 更新 `neoforge.mods.toml` 致谢与可选 Iris 依赖，`gradle.properties` 的 `mod_license` 改为 PDR/ARR 描述。
+- 本批仅文档与许可变更，不含 Java、实际资源文件、注册或世界生成调整；迁移进度不变。
+
 ### 基础骨架已完成
 
 - **环境与元数据**：依赖 jar 放入 `libs/`、`gradle.properties`、`neoforge.mods.toml` 依赖声明

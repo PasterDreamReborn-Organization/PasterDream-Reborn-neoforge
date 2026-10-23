@@ -20,7 +20,7 @@
 
 ## 协议
 
-- **代码**: [MIT](LICENSE.md) — 可自由使用、修改、分发
+- **代码**: [PDR 协议](LICENSE.md) — 可游玩、整合包收录、个人学习；制作附属模组、移植、再分发修改版或商业利用需事先获得书面许可
 - **美术资源**: [ARR](src/main/resources/LICENSE_ASSETS.md) — 保留所有权利。原模组资产版权归原作者，重写团队资产版权归重写团队。详见 [资产清单](src/main/resources/ASSETS_MANIFEST.md)
 
 ## 安装信息
@@ -55,6 +55,7 @@
 | Patchouli | 1.21.1-93+ |
 | JEI (可选) | 19.51.0.418+ |
 | KubeJS (可选) | 2101.7.2+ |
+| Iris (可选) | 1.8.0+ |
 
 ## 文档
 
@@ -64,7 +65,7 @@
 - [`document/reference/迁移现状盘点.md`](document/reference/迁移现状盘点.md) — 当前实现、来源基线、无 NOT_MODIFY 的参考约定与迁移待办
 - [`document/reference/移植总纲.md`](document/reference/移植总纲.md) — Forge 1.20.1 → NeoForge 1.21.1 搬运总纲与骨架方案
 - [`document/design/`](document/design/) — 策划文档、ID 映射表、命名规范、新内容列表
-- [`document/rule/program/`](document/rule/program/) — 代码架构规范、程序规范、目录结构组织、容器配方平衡系统、暗影难度系统
+- [`document/rule/program/`](document/rule/program/) — 代码架构规范、程序规范、目录结构组织、容器配方平衡系统、暗影难度系统、料理状态效果
 - [`document/reference/`](document/reference/) — 源模组结构分析与参考文件
 - [`document/patchouli_books/`](document/patchouli_books/) — 帕斯特之梦旧梦归引指南书设计
 
@@ -75,7 +76,7 @@
 - **程序**: 2884omgpy, ShiLiuYinYu, Garam
 - **美术**: 煮饭婆 (GQ2529), Garam, 小吴 (Vulmoon_XwX)
 - **文案**: 绘星tsuki (Yumihoshi), -北旭- (bei_xu), 爱摸鱼的绫苒 (Akizuki Ayane), 月琴语
-- **特别感谢**: 福米花_flow
+- **特别感谢**: 福米花_flow, pig
 
 <a href="https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-neoforge/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=PasterDreamReborn-Organization/PasterDream-Reborn-neoforge" />

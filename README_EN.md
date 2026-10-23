@@ -20,7 +20,7 @@ This project is released with permission from the original author "Aerolite_Dust
 
 ## License
 
-- **Code**: [MIT](LICENSE.md) — Free to use, modify, and distribute
+- **Code**: [PDR License](LICENSE.md) — Play, include in modpacks, and study personally; addon mods, ports, modified redistribution, or commercial use require prior written permission
 - **Art Assets**: [ARR](src/main/resources/LICENSE_ASSETS.md) — All Rights Reserved. Original mod assets copyright by the original author; rewrite team assets copyright by the rewrite team. See [Asset Manifest](src/main/resources/ASSETS_MANIFEST.md)
 
 ## Installation
@@ -55,6 +55,7 @@ If libraries are missing or you encounter issues, run:
 | Patchouli | 1.21.1-93+ |
 | JEI (Optional) | 19.51.0.418+ |
 | KubeJS (Optional) | 2101.7.2+ |
+| Iris (Optional) | 1.8.0+ |
 
 ## Documentation
 
@@ -62,7 +63,7 @@ Project documentation is available in the [`document/`](document/) directory:
 
 - [`document/reference/移植总纲.md`](document/reference/移植总纲.md) — Forge 1.20.1 → NeoForge 1.21.1 porting master plan
 - [`document/design/`](document/design/) — Design documents, ID mapping, naming conventions, new content list
-- [`document/rule/program/`](document/rule/program/) — Code architecture guidelines, programming standards, directory structure, recipe balance system, shadow difficulty system
+- [`document/rule/program/`](document/rule/program/) — Code architecture guidelines, programming standards, directory structure, recipe balance system, shadow difficulty system, cook effect rules
 - [`document/reference/`](document/reference/) — Original mod structural analysis and reference files
 - [`document/patchouli_books/`](document/patchouli_books/) — PasterDream guidebook design
 
@@ -73,7 +74,7 @@ Project documentation is available in the [`document/`](document/) directory:
 - **Programming**: 2884omgpy, ShiLiuYinYu, Garam
 - **Art**: GQ2529, Garam, Vulmoon_XwX
 - **Writing**: Yumihoshi, bei_xu, Akizuki Ayane, 月琴语
-- **Special Thanks**: 福米花_flow
+- **Special Thanks**: 福米花_flow, pig
 
 <a href="https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-neoforge/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=PasterDreamReborn-Organization/PasterDream-Reborn-neoforge" />

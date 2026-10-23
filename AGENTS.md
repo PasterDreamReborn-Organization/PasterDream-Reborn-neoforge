@@ -22,7 +22,7 @@
 - `init/` 集中注册，datagen 入口为 `datagen/ModDataGenerator.java`。新增方块要设置地图颜色并核对挖掘等级、材质、功能标签。
 - `src/generated/resources/` 只能通过 Provider + `runData` 更新；不要手改生成 JSON。缓存不入库、不入发布 Jar。
 - Java 与手写文档使用 UTF-8 无 BOM、CRLF；生成文件遵循 `.gitattributes` 的 LF。
-- 直接复制的纹理保留来源与授权记录，不作为新绘制资产登记。
+- 直接复制的纹理保留来源与授权记录，不作为新绘制资产登记；新增或重绘纹理时同步 `src/main/resources/ASSETS_MANIFEST.md`。
 - 最小检查：`./gradlew runData`、`./gradlew build`；涉及运行时行为的批次运行适用的 GameTest。客户端视觉、真实世界生成和多人行为分别记录验证状态，不能用编译通过代替。
 - GameTest 位于 `src/gameTest/`，通过 `./gradlew runGameTestServer` 运行，不打入发布 Jar。测试/数据生成使用 `build/` 下独立运行目录，不触碰用户存档。
 
@@ -31,4 +31,4 @@
 - 用户已授权 NeoForge 移植期间直接提交、推送，无须 PR。提交前检查变更与验证结果，推送前核对远程及当前分支；不强推、不覆盖无关改动。
 - 保留当前合适的开发分支；新建分支时默认使用 `codex/` 前缀。
 - 提交信息遵循 `feat(scope): message` 等项目格式。来源 Forge 的 PR 规则不套用到本仓库。
-- 每批更新迁移批次记录和 CHANGELOG；新增架构链路更新架构/目录规范，受影响 skill 保持索引准确。没有触发条件的文档不为更新而更新。
+- 每批更新迁移批次记录和 CHANGELOG；新增架构链路更新架构/目录规范，料理（cook）溢出机制变更更新 `document/rule/program/料理状态效果.md`，受影响 skill 保持索引准确。没有触发条件的文档不为更新而更新。

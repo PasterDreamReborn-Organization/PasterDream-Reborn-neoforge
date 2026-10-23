@@ -47,9 +47,9 @@
 | `dyedream_planks_pressure_plate`    | `dyedream_pressure_plate`           | 重命名，删除 `_planks` 字段                           | 无需客制化类，直接用 `PressurePlateBlock`                                                                                         |
 | `dyedream_planks_button`            | `dyedream_button`                   | 重命名，删除 `_planks` 字段                           | 无需客制化类，直接用 `ButtonBlock`                                                                                                |
 | `pinkslime_block`                   | `pink_slime_block`                  | 重命名，补下划线；受重力影响                                | 无需客制化类，直接用 `FallingBlock`                                                                                               |
-| `pinkagaric_0`                      | `pink_mushroom_block`               | 重命名，按原版风格：菌盖                                  | 无需客制化类，直接用 `Block`                                                                                                      |
+| `pinkagaric_0`                      | `pink_mushroom_block`               | 重命名，按原版风格：菌盖/菌孔合并方块（6 面布尔属性控制材质）              | 无需客制化类，直接用 `HugeMushroomBlock`                                                                                          |
 | `pinkagaric_1`                      | `pink_mushroom_stem`                | 重命名，按原版风格：菌柄（有朝向）                             | 无需客制化类，直接用 `RotatedPillarBlock`                                                                                         |
-| `pinkagaric_2`                      | `pink_mushroom_pores`               | 重命名，按原版风格：6 面菌孔                               | 无需客制化类，直接用 `Block`                                                                                                      |
+| `pinkagaric_2`                      | `pink_mushroom_block`               | 合并至粉顶菌方块：菌孔并入菌盖方块（旧 ID 已移除，兼容层重映射）          | 无需客制化类，直接用 `HugeMushroomBlock`                                                                                          |
 | `pinkagaric_3`                      | `pink_shroomlight`                  | 重命名，按原版风格：菌光体                                 | 无需客制化类，直接用 `Block`，发光等级 15，cutout 渲染                                                                                    |
 | `flower_8`                          | `pink_mushroom`                     | 重命名，按原版风格：粉顶菇（小型花，缓速效果）                       | 无需客制化类，直接用 `FlowerBlock`                                                                                                |
 | `flower_10`                         | `tall_pink_mushroom`                | 重命名，按原版风格：高粉顶菇（2 格高）                          | 无需客制化类，直接用 `DoublePlantBlock`                                                                                           |
@@ -163,8 +163,8 @@
 | `windmoor_wood`                     | `wind_moor_wood`                    | 重命名，补下划线                                      | 无需客制化类，用 `StrippableRotatedPillarBlock`（斧子去皮）                                                                     |
 | `stripped_windmoor_log`             | `stripped_wind_moor_log`            | 重命名，补下划线                                      | 无需客制化类，用 `RotatedPillarBlock`                                                                                        |
 | `stripped_windmoor_wood`            | `stripped_wind_moor_wood`           | 重命名，补下划线                                      | 无需客制化类，用 `RotatedPillarBlock`                                                                                        |
-| `windmoor_leaves_0`                 | `wind_moor_leaves_0`                | 重命名，补下划线                                      | 无需客制化类，用 `LeavesBlock`（不走随机刻）                                                                                    |
-| `windmoor_leaves_1`                 | `wind_moor_leaves_1`                | 重命名，补下划线                                      | 无需客制化类，用 `LeavesBlock`（不走随机刻）                                                                                    |
+| `windmoor_leaves_0`                 | `wind_moor_leaves_0`                | 重命名，补下划线                                      | 无需客制化类，用 `LeavesBlock`（普通树叶会腐烂；结构内由 mapping.json `block_properties` 设 persistent=true）                        |
+| `windmoor_leaves_1`                 | `wind_moor_leaves_1`                | 重命名，补下划线                                      | 无需客制化类，用 `LeavesBlock`（普通树叶会腐烂；结构内由 mapping.json `block_properties` 设 persistent=true）                        |
 | `windmoor_leaves_2`                 | `fig_vine`                          | 合并到无花果藤，用方块状态 `HEAD` 区分（body 形态，风泊树叶材质） | 无需客制化类，合并进 `FigVineBlock`                                                                                            |
 | `fig_vine`                          | `fig_vine`                          | 不改                                            | 客制化类 `FigVineBlock`，参考原版发光浆果，向下生长藤蔓，`HEAD` 状态区分底部/上方，掉落无花果，不注册方块物品                          |
 | `windmoor_planks`                   | `wind_moor_planks`                  | 重命名，补下划线                                      | 无需客制化类，用 `Block`                                                                                                       |
@@ -186,8 +186,8 @@
 | `crop_2b`                           | `light_ball_crop`                   | 重命名，流明堇植株（生长阶段，合并至同一方块）                       | 客制化类 `PasterDreamCropBlock`                                                                                             |
 | `crop_3a`                           | `cloud_crop`                        | 重命名，玲云花成熟植株（世界生成用）                            | 客制化类 `PasterDreamCropBlock`                                                                                             |
 | `crop_3b`                           | `cloud_crop`                        | 重命名，玲云花植株（生长阶段，合并至同一方块）                       | 客制化类 `PasterDreamCropBlock`                                                                                             |
-| `crop_4a`                           | `cotton_crop_age`                   | 重命名，棉花植株 （成熟植株）                               | 客制化类 `PasterdreamCropBlock`                                                                                             |
-| `crop_4b`                           | `cotton_crop_age`                   | 重命名，棉花植株（生长阶段，合并至同一方块）                        | 客制化类 `PasterdreamCropBlock`                                                                                             |
+| `crop_4a`                           | `cotton_crop`                       | 重命名，棉花植株（成熟植株）（补正：原登记为 `cotton_crop_age`）        | 客制化类 `PasterDreamCropBlock`                                                                                             |
+| `crop_4b`                           | `cotton_crop`                       | 重命名，棉花植株（生长阶段，合并至同一方块）                        | 客制化类 `PasterDreamCropBlock`                                                                                             |
 | `dyedream_crack`                    | `dyedream_crack`                    | 不改                                            | 客制化类 `DyedreamCrackBlock`                                                                                               |
 | `the_endless_book_of_dream_seekers` | `the_endless_book_of_dream_seekers` | 不改                                            | 客制化类 `TheEndlessBookOfDreamSeekersBlock`                                                                                |
 | `research_table`                    | `research_table`                    | 不改                                            | 客制化类 `ResearchTableBlock`                                                                                               |
@@ -345,6 +345,10 @@
 | `firefly_nest`                      | `firefly_nest`                      | 不改                                             | 客制化类 `FireflyNestBlock`（`world/block/fireflynest/`），含水 + 随机刻，白天蓄能夜间生成萤火虫 + 喷粒子 |
 | `birds_nest`                        | `birds_nest`                        | 不改                                             | 客制化类 `BirdsNestBlock`（`world/block/birdsnest/`），GeckoLib 动画方块实体 + 含水 + 随机刻，10% 概率在无鹦鹉时生成鹦鹉 |
 | `shadow_bed`                        | `shadow_bed`                                    | 不改                                                                 | 客制化类 `ShadowBedBlock`                                                                                                   |
+| `aaroncos_hand_chest`               | `aaroncos_hand_chest`                           | 不改（补登记，原漏填）                                                        | 客制化类 `AaroncosHandChestBlock` + 显示物品                                                      |
+| `aaroncos_arena_portals`            | `aaroncos_arena_portals`                        | 不改（补登记，原漏填）                                                        | 客制化类 `AaroncosArenaPortalsBlock`                                                          |
+| `small_stone_spirit_block`          | `small_stone_spirit_block`                      | 不改（补登记，原漏填）                                                        | 客制化类 `SmallStoneSpiritBlock`                                                              |
+| `dream_train_structure`             | `dream_train_structure`                         | 不改（补登记，原漏填）                                                        | 客制化类 `DreamTrainBroadcastBlock`                                                           |
 
 ---
 
@@ -369,7 +373,7 @@
 | `moltengold_ingot`             | `molten_gold_ingot`                         | 重命名，补下划线                                                         | 无需客制化类，直接用 `Item`                                                                                        |
 | `moltengold_nugget`            | `molten_gold_nugget`                        | 重命名，补下划线                                                         | 无需客制化类，直接用 `Item`                                                                                        |
 | `raw_moltengold`               | `raw_molten_gold`                           | 重命名，补下划线                                                         | 无需客制化类，直接用 `Item`                                                                                        |
-| `meltdream_liquid_bucket`      | `meltdream_liquid_bucket`                   | 不改                                                               | 无需客制化类，直接用 `BucketItem`                                                                                  |
+| `meltdream_liquid_bucket`      | `melt_dream_liquid_bucket`                   | 不改                                                               | 无需客制化类，直接用 `BucketItem`                                                                                  |
 | `shadow_liquid_bucket`         | `shadow_liquid_bucket`                      | 不改                                                               | 无需客制化类，直接用 `BucketItem`                                                                                  |
 | `glassjar`                     | `glass_jar`                                 | 重命名，补下划线                                                         | 无需客制化类，直接用 `Item`                                                                                        |
 | `water_glassjar`               | `glass_jar_of_water`                        | 重命名，更改命名格式为 `glass_jar_of_xxx`                                   | 无需客制化类，直接用 `Item`                                                                                        |
@@ -498,7 +502,7 @@
 | `dyedream_axe`                 | `dyedream_axe`                              | 不改                                                               | 无需客制化类，直接用 `AxeItem`                                                                                     |
 | `dyedream_shovel`              | `dyedream_shovel`                           | 不改                                                               | 无需客制化类，直接用 `ShovelItem`                                                                                  |
 | `dyedream_hoe`                 | `dyedream_hoe`                              | 不改                                                               | 无需客制化类，直接用 `HoeItem`                                                                                     |
-| `dyedream_sword_0`             | `sharp_dyedream_sword`                      | 去后缀，加 `sharp`                                                    | 客制化类 `DyedreamSharpSwordItem`                                                                            |
+| `dyedream_sword_0`             | `sharp_melt_dream_sword`                    | 去后缀，加 `sharp`（补正：原登记为 `sharp_dyedream_sword`，实际 ID 为 `sharp_melt_dream_sword`） | 客制化类 `SharpMeltDreamSwordItem`                                                                            |
 | `moltengold_sword`             | `molten_gold_sword`                         | 重命名，加下划线                                                         | 客制化类 `MoltenGoldSwordItem`                                                                               |
 | `moltengold_pickaxe`           | `molten_gold_pickaxe`                       | 重命名，加下划线                                                         | 客制化类 `MoltenGoldPickaxeItem`                                                                             |
 | `moltengold_axe`               | `molten_gold_axe`                           | 重命名，加下划线                                                         | 客制化类 `MoltenGoldAxeItem`                                                                                 |
@@ -544,14 +548,14 @@
 | `elder_guardian_scale`         | `elder_guardian_scale`                      | 不改                                                               | 无需客制化类，直接用 `Item`                                                                                        |
 | `blue_dew`                     | `blue_dew`                                  | 不改                                                               | 客制化类 `BlueDewItem`，DRINK 动画 + 水下呼吸效果                                                                     |
 | `tide_sword`                   | `tide_sword`                                | 不改                                                               | 客制化类 `TideSwordItem`，手持时获得水下呼吸效果                                                                         |
-| `true_tide_sword`              | `beihairuo_tide_sword`                      | 重命名，`true_tide_sword` → `beihairuo_tide_sword`（『北海若』引潮）          | 客制化类 `BeihaiRuoTideSwordItem`，水中冲刺 + 战技伤害                                                                |
+| `true_tide_sword`              | `beihairuo_tide_sword`                      | 重命名，`true_tide_sword` → `beihairuo_tide_sword`（『北海若』引潮）          | 客制化类 `BeihaiRuoTideSwordItem`，潜行+右键=原版三叉戟投掷/激流突进，直接右键=北海潮涌                                                                   |
 | `grass_sword`                  | `kusanagi`                                  | 重命名，`grass_sword` → `kusanagi`（草薙）                               | 客制化类 `KusanagiItem`，中毒 + 击杀200进化机制                                                                       |
-| `true_grass_sword`             | `murakumo_kusanagi`                         | 重命名，`true_grass_sword` → `murakumo_kusanagi`（『天丛云』草薙）            | 客制化类 `MurakumoKusanagiItem`，战技：极致锋利（首次命中额外伤害）                                                            |
+| `true_grass_sword`             | `murakumo_kusanagi`                         | 重命名，`true_grass_sword` → `murakumo_kusanagi`（『天丛云』草薙）            | 客制化类 `MurakumoKusanagiItem`，每次挥砍发射毒刺射弹（`kusanagi_venom_stinger`），命中施加剧毒 5s                                                            |
 | `sword_embryo_0`               | `sword_embryo`                              | 重命名，`sword_embryo_0` → `sword_embryo`（失落之剑），去 `_0` 后缀            | 直接用 `SwordItem`(Tiers.IRON)，铁质可用的剑                                                                       |
 | `desert_sword`                 | `desert_sword`                              | 不改                                                               | 客制化类 `DesertSwordItem`，手持时获得缓慢+抗性提升效果                                                                    |
 | `true_desert_sword`            | `chenjingmen_desert_sword`                  | 重命名，`true_desert_sword` → `chenjingmen_desert_sword`（『沉荆门』朔漠）    | 客制化类 `ChenjingmenDesertSwordItem`，战技：绝地反击（基于已损生命造成额外伤害）                                                  |
 | `broken_hero_sword`            | `broken_hero_sword`                         | 不改                                                               | 无需客制化类，直接用 `SwordItem`，fireResistant                                                                     |
-| `terra_sword`                  | `terra_blade`                               | 重命名，`terra_sword` → `terra_blade`（大地之刃）                          | 客制化类 `TerraBladeItem`，右键激活泰拉剑技（消耗融梦能量），剑气实体系统待后续实现                                                       |
+| `terra_sword`                  | `terra_blade`                               | 重命名，`terra_sword` → `terra_blade`（大地之刃）                          | 客制化类 `TerraBladeItem`，shift+右键开关剑气状态，开启后每次挥剑释放剑气（每道消耗 0.5 融梦能量、5tick 冷却），剑气实体 `TerraswordWaveEntity` 已实现                                                       |
 | `create_sword`                 | `debug_sword`                               | 重命名                                                              | 客制化类 `DebugSwordItem`                                                                                    |
 | `lootstable_create_0`          | `loot_generator`                            | 重命名                                                              | 客制化类 `DebugSwordItem`                                                                                    |
 | `lootstable_create_1`          | 删除                                          | -                                                                | 客制化类 `LootGeneratorItem`                                                                                 |
@@ -570,7 +574,7 @@
 | `carapax_charm`                | `carapax_charm`                             | 不改                                                               | 客制化类 `CarapaxCharmItem`，实现 `ICurioItem`，-8% 移动速度、+2 护甲、+1 盔甲韧性，禁止重复装备                                    |
 | `ceciliacare_charm`            | `blessing_of_cecilia`                       | 重命名，`ceciliacare_charm` → `blessing_of_cecilia`（塞西莉亚的加护）         | 客制化类 `BlessingOfCeciliaItem`，实现 `ICurioItem`，生命值≤15%时触发不死图腾效果，消耗自身变成 `faded_blessing_of_cecilia`         |
 | `turn_pale_cecilia`            | `faded_blessing_of_cecilia`                 | 重命名，`turn_pale_cecilia` → `faded_blessing_of_cecilia`（失色塞西莉亚的加护） | 客制化类 `FadedBlessingOfCeciliaItem`，右键对融梦涌泉使用变成 `blessing_of_cecilia`                                      |
-| `terra_charm`                  | `terra_floating_island`                     | 重命名，`terra_charm` → `terra_floating_island`（泰拉浮岛模型）              | 客制化类 `TerraFloatingIslandItem`，实现 `ICurioItem`，装备于 charm 插槽，增强大地之刃战技（冷却-60%、剑气伤害+30%、能量消耗-0.2）           |
+| `terra_charm`                  | `terra_floating_island`                     | 重命名，`terra_charm` → `terra_floating_island`（泰拉浮岛模型）              | 客制化类 `TerraFloatingIslandItem`，实现 `ICurioItem`，装备于 charm 插槽，增强大地之刃战技（近战与剑气伤害+30%、近战与剑气无视无敌帧、能量消耗 0.5→0.4；代码未实现冷却缩减）           |
 | `worldtree_seedpod`            | `worldtree_seedpod`                         | 不改                                                               | 客制化类 `WorldtreeSeedpodItem`，实现 `ICurioItem`，染梦世界树环境持续消耗饱食度 + 融梦能量                                        |
 | `garland`                      | `garland`                                   | 不改                                                               | 客制化类 `GarlandItem`，实现 `ICurioItem`，SAN 变异 +0.48，每 tick 0.4% 概率损耗 1 耐久，耐久耗尽消失                             |
 | `fourleaf_clover_curio`        | `fourleaf_clover_curio`                     | 不改                                                               | 客制化类 `FourleafCloverCurioItem`，实现 `ICurioItem`，+1 最大生命值、+6 幸运，禁止重复装备                                     |
@@ -602,22 +606,23 @@
 | `ghost_face_head`              | `ghost_face`                                | 重命名，去 `_head` 后缀                                                 | 待搬运                                                                                                                      |
 | `shadow_breath`                | `shadow_breath`                             | 不改                                                               | 客制化类 `ShadowBreathItem`，实现 `ICurioItem`：理智≥50%时每+10%理智攻击力+4%、魔法伤害+4%（最高+20%）；理智<50%时每-10%理智护甲值+2（最高+10），理智≤40%获得生命恢复I、每-10%理智生命恢复+1级（最高III）；理智系统关闭时无效；按住Shift查看当前实时加成，品质 SUPERIOR |
 | `white_crystal`                | `white_crystal`                             | 不改                                                               | 客制化类 `WhiteCrystalItem`，制作白厄剑的核心材料                                                                       |
-| `white_sword`                  | `white_sword`                               | 不改                                                               | 客制化类 `WhiteSwordItem`，右键战技「白厄剑雨」：选取准星10格内实体/方块为落点，消耗 0.1 融梦能量释放多波剑雨，命中造成近战伤害+束缚+暗影沉寐                     |
+| `white_sword`                  | `white_sword`                               | 不改                                                               | 客制化类 `WhiteSwordItem`，右键战技「白厄剑雨」：向视线方向释放 6 波共 55 发剑雨（准星 20 格内有实体则追踪），消耗 1.5 融梦能量、冷却 2 秒，命中造成魔法伤害+束缚 6 秒，对暗影生物沉默 10 秒                     |
 | `shadow_sword`                 | `shadow_sword`                              | 不改                                                               | 客制化类 `ShadowSwordItem`，SAN越低攻速/伤害越高（最高+50%/+75%），挥剑触发技能冷却，SAN耗尽时反噬生命，品质 LEGENDARY                        |
-| `iceshadow_hammer`             | `ice_shadow_hammer`                         | 重命名，`iceshadow` → `ice_shadow`，加下划线                              | 客制化类 `IceShadowHammerItem`，右键地面「伊诺的撼地」：消耗 0.1 融梦能量，召唤撼地水晶，混乱+冻结+3 波 AOE（ATK×1.0/1.0/1.5），品质 EPIC         |
+| `iceshadow_hammer`             | `ice_shadow_hammer`                         | 重命名，`iceshadow` → `ice_shadow`，加下划线                              | 客制化类 `IceShadowHammerItem`，右键地面「伊诺的撼地」：消耗 0.5 融梦能量，召唤撼地水晶，混乱+冻结+3 波 AOE（ATK×1.0/1.0/1.5），品质 EPIC         |
 | `iceshadow_curio`              | `ice_shadow_curio`                          | 重命名，`iceshadow` → `ice_shadow`，加下划线                              | 客制化类 `IceShadowCurioItem`，装备后冰影战锤技能额外释放 2 个撼地水晶，品质 MASTER                                                |
 | `white_sword_rain`             | `white_sword_rain`                          | 不改                                                               | 客制化类 `WhiteSwordRainItem`，弹射物视觉载体                                                                        |
 | `boboji_curio`                 | `boboji_curio`                              | 不改                                                               | 客制化类 `BobojiCurioItem`，实现 `ICurioItem`，+5%速度、+0.1瞬身术距离、-0.2冷却、-0.4消耗，禁止重复装备                              |
-| `counter_ring`                 | `counter_ring`                              | 不改                                                               | 客制化类 `CounterRingItem`，实现 `ICurioItem`，成功闪避时获得反击 buff（力量 I + 战技伤害 +50%，2s）                               |
-| `meltdream_energy_0_ring`      | `melt_dream_energy_ring`                    | 重命名，补下划线 + 去 `_0` 后缀                                             | 客制化类 `MeltDreamEnergyRingItem`，实现 `ICurioItem`，curioTick 每秒增加融梦能量（梦境内+0.3/min，梦境外+0.15/min）              |
+| `counter_ring`                 | `counter_ring`                              | 不改                                                               | 客制化类 `CounterRingItem`，实现 `ICurioItem`，成功闪避时获得反击 buff（力量 I + 下一次攻击最终伤害 +50%，10s）                               |
+| `meltdream_energy_0_ring`      | `melt_dream_energy_ring`                    | 重命名，补下划线 + 去 `_0` 后缀                                             | 客制化类 `MeltDreamEnergyRingItem`，实现 `ICurioItem`，提供 `MELT_DREAM_VARIABILITY` +1/min（融梦光环）              |
 | `duke_coin_curio`              | `duke_coin_curio`                           | 不改                                                               | 客制化类 `DukeCoinCurioItem`，实现 `ICurioItem`，+7 幸运值、+7 瞬身术冷却，禁止重复装备                                          |
 | `qym_head`                     | `qym_butterfly_star_hairpin`                | 重命名，`qym_head` → `qym_butterfly_star_hairpin`                    | 客制化类 `QymButterflyStarHairpinItem`，实现 `ICurioItem`，所有生物不主动攻击（可反击），品质 MIRACLE，防火                          |
 | `hiyori_head`                  | `hiyori_butterfly_hairpin`                  | 重命名，`hiyori_head` → `hiyori_butterfly_hairpin`                   | 客制化类 `HiyoriButterflyHairpinItem`，实现 `ICurioItem`，+2 最大生命值、+15 幸运、+0.96 理智光环，品质 EPIC，禁止重复装备              |
 | `allkinds_ring`                | `allkinds_ring`                             | 不改                                                               | 客制化类 `AllkindsRingItem`，实现 `ICurioItem`，+4 生命、+2 攻击、+0.1 攻速、+0.2 触及、+0.5 方块触及、+5% 移速，品质 LEGENDARY，跳过战技属性 |
 | `cradle_in_ones_arms`          | `kaichu_omamori`                            | 重命名，`cradle_in_ones_arms` → `kaichu_omamori`                     | 客制化类 `KaichuOmamoriItem`，实现 `ICurioItem`，现在可佩戴，佩戴后启动激活专属热键，+5幸运，品质 LEGENDARY                             |
 | `turnback_cloak`               | `turnback_cloak`                            | 不改                                                               | 客制化类 `TurnbackCloakItem`，实现 `ICurioItem`，back 槽位，Z 键激活消耗 10 融梦能量，90s 内 6 次回避 + 反击，冷却 300s，品质 LEGENDARY（数值以 tooltip 为准） |
-| `white_flower_body`            | `brooch_of_white_orchid`                    | 重命名，`white_flower_body` → `brooch_of_white_orchid`               | 客制化类 `BroochOfWhiteOrchidItem`，实现 `ICurioItem`，免疫环境降SAN效果，品质 EPIC                                        |
-| `degenerate_bodys`             | `seal_of_the_corrupted`                     | 重命名，`degenerate_bodys` → `seal_of_the_corrupted`                 | 客制化类 `SealOfTheCorruptedItem`，实现 `ICurioItem`，生命-4 / 触及+0.2 / 方块触及+1.0 / 攻击+2.0，品质 EPIC，body 槽位          |
+| `evasion_cloak`                | `evasion_cloak`                             | 不改                                                               | 客制化类 `EvasionCloakItem`，实现 `ICurioItem`，back 槽位，Z 键激活消耗 10 融梦能量，90s 内瞬身术回避时间延长至 0.6s，成功回避触发反击，冷却 300s，品质 LEGENDARY（数值以 tooltip 为准） |
+| `white_flower_body`            | `brooch_of_white_orchid`                    | 重命名，`white_flower_body` → `brooch_of_white_orchid`               | 客制化类 `BroochOfWhiteOrchidItem`，实现 `ICurioItem` + `ISanModifier`，免疫环境降SAN、+1 body 槽；白厄剑近战与剑雨对所有生物 +50%（对暗影再叠加共 ×2）、剑雨命中无视无敌帧；需完成 `story/talent_light`，品质 EPIC                                        |
+| `degenerate_bodys`             | `seal_of_the_corrupted`                     | 重命名，`degenerate_bodys` → `seal_of_the_corrupted`                 | 客制化类 `SealOfTheCorruptedItem`，实现 `ICurioItem` + `ISanModifier`，+1 body 槽 / 实体触及+1.0 / 方块触及+1.0 / 攻击+2.0 / 免疫低SAN负面 / 暗影生物中立且低SAN暗影替佩戴者作战；需完成 `story/talent_shadow`，品质 EPIC（无生命-4）          |
 | `sweetdream_disc`              | `sweet_dream_music_disc`                    | 重命名，修复 word glueing + `_disc` → `_music_disc`                    | 无需客制化类，直接用 `RecordItem`（旧类无有效覆写）                                                                         |
 | `snowfalldream_disc`           | `snowfall_dream_music_disc`                 | 重命名，修复 word glueing + `_disc` → `_music_disc`                    | 无需客制化类，直接用 `RecordItem`（旧类无有效覆写）                                                                         |
 | `aaroncos_disc`                | `aaroncos_music_disc`                      | 重命名，`_disc` → `_music_disc`                                        | 无需客制化类，直接用 `RecordItem`（旧类无有效覆写），播放 `aaroncos_music`，2980 tick                          |
@@ -636,13 +641,64 @@
 | `black_beetle_carapace`        | `black_beetle_carapace`                     | 不改                                                               | 无需客制化类，直接用 `Item`，厚翅甲虫掉落                                                                                 |
 | `black_beetle_vocalcord`       | `black_beetle_vocalcord`                    | 不改                                                               | 客制化类（`appendHoverText` 添加 tooltip），厚翅甲虫之母掉落                                                              |
 | `nightmare_fuel`               | `nightmare_fuel`                            | 不改                                                               | 客制化类 `NightmareFuelItem`，tooltip "傻子和疯子使用的邪恶残渣"                                                          |
-| `brokennotes_0`                | `broken_note`                               | 重命名，语义化 ID                                                        | 无需客制化类，直接用 `Item`                                                                                        |
+| `brokennotes_0`                | `lamp_shadow_broken_note`                   | 重命名并归入灯影之下解析线，语义化 ID（旧 `broken_note` 已移除，兼容层重映射）            | 无需客制化类，直接用 `Item`                                                                                        |
 | `shadow_dungeon_key`           | `shadow_dungeon_key`                        | 不改                                                               | 客制化类 `ShadowDungeonKeyItem`，stacksTo(1)，tooltip "用于打开暗影地牢下层的大门"                                          |
 | `machine_wing_chestplate`      | `machine_light_wing`                        | 重命名，去 `_chestplate` + 加 `light`（光）                               | 客制化类 `MachineLightWingItem`（GeckoLib 动画盔甲），每20tick消耗0.02融梦能量启用飞行                                         |
 | `angel_wing_chestplate`        | `angel_wing`                                | 去 `_chestplate`                                                  | 客制化类 `AngelWingItem`（GeckoLib 动画盔甲），无条件飞行 + 免疫摔落伤害                                                       |
 | `forsakens_wing_chestplate`    | `forsakens_wing`                            | 去 `_chestplate`                                                  | 客制化类 `ForsakensWingItem`（GeckoLib 动画盔甲），无条件飞行 + 免疫摔落/缓慢/凋零                                               |
 | `pulse_windrunner_crystal`     | `pulse_wind_runner_crystal`                 | 重命名，补下划线                                                       | 无需客制化类，直接用 `Item`（破风骑士掉落）                                                                                   |
 | `lightning_spell`              | `potion_bottle`                             | 重做，合并进药剂瓶 NBT 系统（type=`lightning`）                            | 已有 `PotionBottleItem` 的 TYPE_LIGHTNING                                                                             |
+| `shadow_hilt`                  | `shadow_hilt`                               | 不改（补登记，原漏填）                                                      | 无需客制化类，直接用 `Item`                                                                                        |
+| `talent_light`                 | `talent_light`                              | 不改（补登记，原漏填）                                                      | 无需客制化类，直接用 `Item`                                                                                        |
+| `talent_shadow`                | `talent_shadow`                             | 不改（补登记，原漏填）                                                      | 无需客制化类，直接用 `Item`                                                                                        |
+| `pale_boneneedle`              | `pale_boneneedle`                           | 不改（补登记，原漏填）                                                      | 无需客制化类，直接用 `Item`                                                                                        |
+| `roots_pale_boneneedle`        | `roots_pale_boneneedle`                     | 不改（补登记，原漏填）                                                      | 无需客制化类，直接用 `Item`                                                                                        |
+| `dyedream_hammer`              | `dyedream_hammer`                           | 不改（补登记，原漏填）                                                      | 客制化类 `DyedreamHammerItem`（3×3×3 范围挖掘）                                                                         |
+| `shadow_erosion_pickaxe`       | `shadow_erosion_pickaxe`                    | 不改（补登记，原漏填）                                                      | 阴影侵蚀工具系列                                                                                              |
+| `shadow_erosion_axe`           | `shadow_erosion_axe`                        | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `shadow_erosion_shovel`        | `shadow_erosion_shovel`                     | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `shadow_erosion_hoe`           | `shadow_erosion_hoe`                        | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `aaroncos_arena_create`        | `aaroncos_arena_create`                     | 不改（补登记，原漏填）                                                      | 客制化类 `AaroncosArenaCreateItem`                                                                             |
+| `pure_horror`                  | `pure_horror`                               | 不改（补登记，原漏填）                                                      | 无需客制化类，直接用 `Item`                                                                                        |
+| `sorbent`                      | `sorbent`                                   | 不改（补登记，原漏填）                                                      | 无需客制化类，直接用 `Item`                                                                                        |
+| `strawberry_heart`             | `strawberry_heart`                          | 不改（补登记，原漏填）                                                      | 客制化类 `StrawberryHeartItem`                                                                                |
+| `silver_bell`                  | `silver_bell`                               | 不改（补登记，原漏填）                                                      | 无需客制化类，直接用 `Item`                                                                                        |
+| `meltdream_pickaxe`            | `melt_dream_pickaxe`                        | 重命名，补下划线（补登记，原漏填）                                                 | 融梦水晶工具系列                                                                                              |
+| `meltdream_axe`                | `melt_dream_axe`                            | 重命名，补下划线（补登记，原漏填）                                                 | 同上                                                                                                        |
+| `meltdream_shovel`             | `melt_dream_shovel`                         | 重命名，补下划线（补登记，原漏填）                                                 | 同上                                                                                                        |
+| `meltdream_hoe`                | `melt_dream_hoe`                            | 重命名，补下划线（补登记，原漏填）                                                 | 同上                                                                                                        |
+| `shadow_erosion_sword`         | `shadow_erosion_dagger`                     | 重命名，`sword` → `dagger`（语义化：影蚀匕首）（补登记，原漏填）                            | 阴影侵蚀工具系列                                                                                              |
+| `blueprint_0`                  | `blue_print`                                | 重命名，语义化 ID（补登记，原漏填）                                               | 客制化类 `BluePrintItem`                                                                                     |
+| `blueprint_1`                  | `blue_print`                                | 与 `blueprint_0` 合并（补登记，原漏填）                                          | 同上                                                                                                        |
+| `unknownnotes_0`               | `lamp_shadow_unknown_note`                  | 重命名并归入灯影之下解析线，语义化 ID（补登记，原漏填；旧 `unknown_note` 已移除，兼容层重映射）              | 梦笔记体系                                                                                                    |
+| `pen_and_ink`                  | `glass_jar_of_ink`                          | 重做：笔与墨 → 墨水罐（主后继；羽毛笔 `feather_pen` 视为新内容，不映射）（补登记，原漏填）        | 无需客制化类，直接用 `Item`                                                                                        |
+| `pink_chicken_spawn_egg`       | `pink_chicken_spawn_egg`                    | 不改（补登记，原漏填）                                                      | `ForgeSpawnEggItem`，放调试物品栏                                                                                |
+| `pink_slime_spawn_egg`         | `pink_slime_spawn_egg`                      | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `golden_fox_spawn_egg`         | `golden_fox_spawn_egg`                      | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `firefly_spawn_egg`            | `firefly_spawn_egg`                         | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `wind_knight_spawn_egg`        | `wind_knight_spawn_egg`                     | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `thundercloud_spawn_egg`       | `thundercloud_spawn_egg`                    | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `highvoltage_thundercloud_spawn_egg` | `highvoltage_thundercloud_spawn_egg`  | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `shadow_golem_spawn_egg`       | `shadow_golem_spawn_egg`                    | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `terrorbeak_spawn_egg`         | `terrorbeak_spawn_egg`                      | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `crazy_terrorbeak_spawn_egg`   | `crazy_terrorbeak_spawn_egg`                | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `weakeness_terrorbeak_spawn_egg` | `weakeness_terrorbeak_spawn_egg`          | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `shadow_hand_spawn_egg`        | `shadow_hand_spawn_egg`                     | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `shadow_ghost_spawn_egg`       | `shadow_ghost_spawn_egg`                    | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `shadow_squeal_ghost_spawn_egg` | `shadow_squeal_ghost_spawn_egg`            | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `black_beetle_spawn_egg`       | `black_beetle_spawn_egg`                    | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `black_beetle_mother_spawn_egg` | `black_beetle_mother_spawn_egg`            | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `shadow_magicball_spawn_egg`   | `shadow_magicball_spawn_egg`                | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `shadow_tune_totem_spawn_egg`  | `shadow_tune_totem_spawn_egg`               | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `bone_wing_spawn_egg`          | `bone_wing_spawn_egg`                       | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `ash_bone_wing_spawn_egg`      | `ash_bone_wing_spawn_egg`                   | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `jellyfish_spawn_egg`          | `jellyfish_spawn_egg`                       | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `small_stone_spirit_spawn_egg` | `small_stone_spirit_spawn_egg`              | 不改（补登记，原漏填）                                                      | 同上                                                                                                        |
+| `shadow_npc_0_spawn_egg`       | `nameless_spawn_egg`                        | 重命名，随实体 `shadow_npc_0` → `nameless`（补登记，原漏填）                           | 同上                                                                                                        |
+| `shadow_squeal_ghost_0_spawn_egg` | `wailing_shadow_ghost_spawn_egg`         | 重命名，随实体 ID 变更（补登记，原漏填）                                            | 同上                                                                                                        |
+| `friendly_ghost_spawn_egg`     | `friendly_shadow_ghost_spawn_egg`           | 重命名，随实体 ID 变更（补登记，原漏填）                                            | 同上                                                                                                        |
+| `aaroncos_lefthand_0_spawn_egg` | `aaroncos_left_hand_spawn_egg`             | 重命名，随实体 ID 变更（补登记，原漏填）                                            | 同上                                                                                                        |
+| `aaroncos_righthand_0_spawn_egg` | `aaroncos_right_hand_spawn_egg`            | 重命名，随实体 ID 变更（补登记，原漏填）                                            | 同上                                                                                                        |
 
 ---
 
@@ -665,15 +721,27 @@
 | `fondillusion_buff`           | `misty_dream`            | 重命名      | `MistyDreamEffect`，迷梦标记，主世界高空显示进入进度                        |
 | `rest`                   | `rest`                   | 不改        | `RestEffect`，+0.9 理智光环                                     |
 | `dream_harp_of_wanderer` | `dream_harp_of_wanderer` | 不改        | `DreamharpOfWandererBuffEffect`，+4最大生命、+2.4SAN光环、+1%速度、治疗  |
-| -                             | `counter_attack`         | 新增        | `CounterAttackEffect`，战技伤害倍率 +50%，配合反击戒指触发                 |
-| `bind`                   | `bind`                   | 不改        | `BindEffect`，移速降至 0，由白厄剑雨命中施加，持续 2s                        |
+| -                             | `counter_attack`         | 新增        | `CounterAttackEffect`，下一次攻击在减伤结算后最终伤害 +50%，配合反击戒指/转身衣装触发                 |
+| `bind`                   | `bind`                   | 不改        | `BindEffect`，移速降至 0，由白厄剑雨命中施加，持续 6s                        |
 | `shadow_silence`         | `shadow_silence`         | 不改        | `ShadowSilenceEffect`，标记效果，由白厄剑雨命中 shadow_mob 实体时施加，持续 10s |
 | `cloudmist_buff`              | `cloud_mist`             | 重命名      | `CloudMistEffect`，云雾标记，风之旅途显示退出进度                          |
 | `tailwind`               | `tailwind`               | 不改        | `TailwindEffect`，顺风，移速/闪烁距离提升，与逆风互斥                        |
 | `deadwind`               | `deadwind`               | 不改        | `DeadwindEffect`，逆风，移速/闪烁距离降低，与顺风互斥                        |
 | `windproof`              | `windproof`              | 不改        | `WindproofEffect`，防风标记，免疫顺风/逆风                             |
 | `turnback_cloak_buff`    | `turnback_cloak`         | 重命名，去 `_buff` 后缀 | `TurnbackCloakBuffEffect`，每 tick 金色+灰尘粒子环绕，转身衣装激活后持续 90s    |
+| `evasion_cloak_buff`     | `evasion_cloak`          | 重命名，去 `_buff` 后缀 | `EvasionCloakBuffEffect`，每 tick 银色+灰尘粒子环绕，回避衣装激活后持续 90s，期间瞬身术回避时间延长至 0.6s |
 | `evasion_buff`           | `evasion`                | 合并进现有回避效果 | 复用 `ModEffects.EVASION`（放大器=次数-1），原闪避BUFF 不再单独注册                 |
+| `rapid_reaction`         | `rapid_reaction`         | 不改（补登记，原漏填） | 高速反射，`RapidReactionEffect`                                 |
+| `restrainmove_block_buff` | `restrainmove_block`    | 重命名，去 `_buff`（补登记，原漏填） | 行动抑制                                                    |
+| `cook_buff`              | `cook`                   | 重命名，去 `_buff`（补登记，原漏填） | `CookEffect`，料理                                             |
+| `memento_buff`           | `memento`                | 重命名，去 `_buff`（补登记，原漏填） | `MementoEffect`，寻梦者的祈愿                                    |
+| `grail_buff`             | `holy_grail`             | 重命名（补登记，原漏填） | `HolyGrailEffect`，圣杯                                         |
+| `confusion_buff`         | `confusion`              | 重命名，去 `_buff`（补登记，原漏填） | `ConfusionEffect`，混乱                                        |
+| `flareup_buff`           | `flare_up`               | 重命名，加下划线（补登记，原漏填） | `FlareupEffect`，怒气爆发                                       |
+| `shadow_spyon_buff`      | `shadow_spyon`           | 重命名，去 `_buff`（补登记，原漏填） | `ShadowSpyonEffect`，暗影窥视                                   |
+| `oppression_buff`        | `oppression`             | 重命名，去 `_buff`（补登记，原漏填） | `OppressionEffect`，压抑                                       |
+| `vulnerability_buff`     | `vulnerability`          | 重命名，去 `_buff`（补登记，原漏填） | `VulnerabilityEffect`，易伤                                    |
+| `ice_spell_buff`         | `frozen`                 | 重命名，语义化（补登记，原漏填） | `FrozenEffect`，急冻                                            |
 
 ---
 
@@ -699,7 +767,7 @@
 | `projectile_squeal_wave_projectile` | `squeal_wave_projectile`      | 重命名，去 `projectile_` 前缀                           | 弹射物 `SquealWaveProjectileEntity`（`world/entity/ghost/`）                              |
 | `black_beetle`                      | `black_beetle`                | 不改                                               | 客制化类 `BlackBeetleEntity`（`world/entity/beetle/`），可驯服 TamableAnimal，食物为白厄花            |
 | `black_beetle_mother`               | `black_beetle_mother`         | 不改                                               | 客制化类 `BlackBeetleMotherEntity`（`world/entity/beetle/`），Boss，受击触发技能：召唤小甲虫 + buff 周围甲虫 |
-| `white_sword_rain_projectile`       | `white_sword_rain_projectile` | 不改                                               | 弹射物 `WhiteSwordRainProjectileEntity`，穿透方块，25tick 寿命，命中造成近战伤害+束缚+暗影沉寐                 |
+| `white_sword_rain_projectile`       | `white_sword_rain_projectile` | 不改                                               | 弹射物 `WhiteSwordRainProjectileEntity`，穿透方块，30tick 寿命，命中造成魔法伤害+束缚 6 秒，对暗影生物沉默 10 秒并额外 +50% 伤害                 |
 | `shaking_crystal`                   | `shaking_crystal`             | 不改                                               | GeckoLib 实体 `ShakingCrystalEntity`，特效载体，1s 自毁，生成粒子 + 施加混乱效果                          |
 | `wind_knight`                       | `wind_knight`                 | 不改                                               | 客制化类 `WindKnightEntity`（Boss，GeckoLib，祭坛召唤）                                                  |
 | `thundercloud`                      | `thundercloud`                | 不改                                               | 客制化类 `ThundercloudEntity`（飞行雷云，祭坛召唤的随从）                                                   |
@@ -710,6 +778,12 @@
 | `shadow_tune_totem`                 | `shadow_tune_totem`           | 不改                                               | 客制化类 `ShadowTuneTotemEntity`，右手调谐图腾技能召唤物                                                            |
 | `aaroncos_lefthand_0`               | `aaroncos_left_hand`          | 重命名，`lefthand` 拆分补下划线 + 去 `_0` 后缀        | 客制化类 `AaroncosLeftHandEntity`，亚伦柯斯之触 - 左手（Boss，GeckoLib）                                            |
 | `aaroncos_righthand_0`              | `aaroncos_right_hand`         | 重命名，`righthand` 拆分补下划线 + 去 `_0` 后缀       | 客制化类 `AaroncosRightHandEntity`，亚伦柯斯之触 - 右手（Boss，GeckoLib）                                           |
+| `bone_wing`                         | `bone_wing`                   | 不改（补登记，原漏填）                                      | 客制化类 `BoneWingEntity`，亡灵                                                             |
+| `ash_bone_wing`                     | `ash_bone_wing`               | 不改（补登记，原漏填）                                      | 客制化类 `AshBoneWingEntity`，亡灵                                                            |
+| `projectile_bone_wing_fire_ball_projectile` | `projectile_bone_wing_fire_ball_projectile` | 不改（补登记，原漏填）                           | 弹射物 `BoneWingFireBallProjectileEntity`                                                   |
+| `jellyfish`                         | `jellyfish`                   | 不改（补登记，原漏填）                                      | 客制化类 `JellyfishEntity`                                                                 |
+| `small_stone_spirit`                | `small_stone_spirit`          | 不改（补登记，原漏填）                                      | 客制化类 `SmallStoneSpiritEntity`                                                           |
+| `shadow_npc_0`                      | `nameless`                    | 重命名，语义化（无名者）（补登记，原漏填）                            | 客制化类 `NamelessEntity`（BOSS）+ `NamelessDialogueHandler`                                   |
 
 ---
 
@@ -717,7 +791,7 @@
 
 | 旧 ID                    | 新 ID           | 变更说明                   | 备注                 |
 |-------------------------|----------------|------------------------|--------------------|
-| `enchantment_atkspd`    | `swift_strike` | 重命名                    | 重做附魔，现在每级提供10%攻击速度 |
+| `enchantment_atkspd`    | `swift_strike` | 重命名                    | 重做附魔，剑每级 +6% 攻击速度、斧每级 +4%（MULTIPLY_BASE，最高 4 级） |
 | `enchantment_shelterer` | `shelter`      | 重命名，去除`enchantment_`前缀 | 现在每级可以正确减免2%伤害     |
 
 
@@ -790,8 +864,8 @@
 | `calle_particle`                  | 未搬运                     | -                                          | -                                                        |
 | `poison_soul_particle`            | 未搬运                     | -                                          | -                                                        |
 | `healing_spell_particle`          | 未搬运                     | -                                          | -                                                        |
-| `golden_particle`                 | 未搬运                     | -                                          | -                                                        |
-| `silver_particle`                 | 未搬运                     | -                                          | -                                                        |
+| `golden_particle`                 | `golden`                     | 重命名                                          | 转身衣装激活/环绕粒子（补登记，原漏填）                                                        |
+| `silver_particle`                 | `silver`                     | 重命名                                          | 回避衣装激活/环绕粒子                                                        |
 | `white_star_particle`             | 未搬运                     | -                                          | -                                                        |
 
 > 重置模组新增、源模组无对应旧 ID 的粒子（`新 ID` 一列为空）：
@@ -823,6 +897,7 @@
 | `ghost0`                 | `ghost_wail`             | 重命名，语义化                    | 哀嚎影鬼召唤技能                                             |
 | `shadow0`                | `shadow_ominous`         | 重命名，语义化                    | 暮影灯事件开幕、暗影火盆仪式                                       |
 | `shadow_music_0`         | `shadow_music`           | 重命名，去 `_0` 后缀              | 暗影事件背景音乐                                             |
+| `shadow_biome_0`         | `shadow_biome`           | 重命名，去 `_0` 后缀              | 灯影之下群系背景音乐 + 群系环境音（additions_sound）              |
 | `stone_break`            | `stone_shatter`          | 重命名，语义化                    | 亚伦柯斯左右手音调图腾石崩                                        |
 | `stone_break_0`          | `stone_crack`            | 重命名，语义化                    | 亚伦柯斯左右手魔法球蓄力石裂                                       |
 | `shadow_trap_0`          | `shadow_trap`            | 重命名，去 `_0` 后缀              | 暗影手陷阱触发                                              |
@@ -861,5 +936,17 @@
 | `breeze_wind`            | `breeze_wind`            | 不改                           | 风之旅途群系环境音（微风）                                        |
 | `wind_journey`           | `wind_journey`           | 不改                           | 风之旅途维度音乐                                            |
 | `bone_wing_fire_ball`    | `bone_wing_fire_ball`    | 不改                           | 骨翼火球弹射物                                             |
+
+---
+
+## 属性映射
+
+> 属性不进入 `tools/generate_id_mapping.py` / `mapping.json`（该工具仅生成方块/物品映射），在此登记重命名与语义变化。
+
+| 旧 ID | 新 ID | 变更说明 | 备注 |
+|---|---|---|---|
+| `teleportationcd` | `blink_cooldown_reduction` | 重命名 + 语义改为“冷却缩减” | `ModAttributes.BLINK_COOLDOWN_REDUCTION`，默认 `0.0`，正值减 CD |
+| `blink_cd` | `blink_cooldown_reduction` | 内部过渡 ID 重命名 | 同上，旧存档数据不迁移 |
+| `skill_cooldown_rate` | `skill_cooldown_reduction` | 内部重命名 + 语义改为“冷却缩减” | `ModAttributes.SKILL_COOLDOWN_REDUCTION`，默认 `0.0`，正值减 CD |
 
 
