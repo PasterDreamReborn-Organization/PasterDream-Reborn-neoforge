@@ -13,6 +13,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.BLACK_STICK.get(), "Black Stick");
+        add(ModItems.TITANIUM_UPGRADE.get(), "Titanium Upgrade");
+        add(ModItems.TITANIUM_SWORD.get(), "Titanium Sword");
+        add(ModItems.TITANIUM_PICKAXE.get(), "Titanium Pickaxe");
+        add(ModItems.TITANIUM_AXE.get(), "Titanium Axe");
+        add(ModItems.TITANIUM_SHOVEL.get(), "Titanium Shovel");
+        add(ModItems.TITANIUM_HOE.get(), "Titanium Hoe");
+        add("itemGroup.pasterdream.pasterdream_gear_tab", "Paster Dream | Gear");
         add(ModBlocks.TITANIUM_ORE.get(), "Titanium Ore");
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "Deepslate Titanium Ore");
         add(ModBlocks.RAW_TITANIUM_BLOCK.get(), "Raw Titanium Block");

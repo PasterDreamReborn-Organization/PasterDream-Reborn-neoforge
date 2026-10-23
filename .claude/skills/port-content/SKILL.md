@@ -19,6 +19,12 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 
 下列按内容类型选择适用步骤。
 
+### 当前工具迁移实现（批次 004）
+
+- `world/item/ModToolTiers` 已迁入钛金，1.21 使用 `getIncorrectBlocksForDrops()`，不能复制旧 `getLevel()`；工具攻击属性通过 `Item.Properties.attributes(SwordItem/DiggerItem.createAttributes(...))` 设置。
+- 钛金工作台升级使用 `recipe/NbtPreservingShapelessRecipe`，只复制组件 patch 并清零损伤；锻造升级保留损伤。不要复制完整默认组件或擅自统一两种升级行为。
+- 组件配方的数据生成与网络编解码已落地；有序版本、钛金护甲及流体容器配平仍待迁移。新增内容按依赖选择实现，不能将下文旧 API 示例当作现成代码。
+
 ---
 
 ## 步骤 1：明确搬运目标

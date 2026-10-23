@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
@@ -23,6 +24,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider lookup) {
+        tag(ItemTags.SWORDS).add(ModItems.TITANIUM_SWORD.get());
+        tag(ItemTags.PICKAXES).add(ModItems.TITANIUM_PICKAXE.get());
+        tag(ItemTags.AXES).add(ModItems.TITANIUM_AXE.get());
+        tag(ItemTags.SHOVELS).add(ModItems.TITANIUM_SHOVEL.get());
+        tag(ItemTags.HOES).add(ModItems.TITANIUM_HOE.get());
         copy(ModBlockTags.ORES_TITANIUM, ModItemTags.ORES_TITANIUM);
         copy(ModBlockTags.STORAGE_BLOCKS_TITANIUM, ModItemTags.STORAGE_BLOCKS_TITANIUM);
         copy(ModBlockTags.STORAGE_BLOCKS_RAW_TITANIUM, ModItemTags.STORAGE_BLOCKS_RAW_TITANIUM);

@@ -13,6 +13,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.BLACK_STICK.get(), "黑石棍");
+        add(ModItems.TITANIUM_UPGRADE.get(), "钛金升级套件");
+        add(ModItems.TITANIUM_SWORD.get(), "钛金剑");
+        add(ModItems.TITANIUM_PICKAXE.get(), "钛金镐");
+        add(ModItems.TITANIUM_AXE.get(), "钛金斧");
+        add(ModItems.TITANIUM_SHOVEL.get(), "钛金锹");
+        add(ModItems.TITANIUM_HOE.get(), "钛金锄");
+        add("itemGroup.pasterdream.pasterdream_gear_tab", "帕斯特之梦 | 装备");
         add(ModBlocks.TITANIUM_ORE.get(), "钛矿石");
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "深层钛矿石");
         add(ModBlocks.RAW_TITANIUM_BLOCK.get(), "粗钛金块");

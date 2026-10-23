@@ -1,9 +1,8 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
+import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
+import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -31,6 +30,24 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<BlockItem> MOLTEN_GOLD_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.MOLTEN_GOLD_ORE);
     public static final DeferredItem<BlockItem> MOLTEN_GOLD_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.MOLTEN_GOLD_BLOCK);
+
+    public static final DeferredItem<Item> BLACK_STICK = ITEMS.registerSimpleItem("black_stick");
+    public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<SwordItem> TITANIUM_SWORD = ITEMS.register("titanium_sword",
+            () -> new SwordItem(ModToolTiers.TITANIUM, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.TITANIUM, 3, -2.4f))));
+    public static final DeferredItem<PickaxeItem> TITANIUM_PICKAXE = ITEMS.register("titanium_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.TITANIUM, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.TITANIUM, 1, -2.8f))));
+    public static final DeferredItem<AxeItem> TITANIUM_AXE = ITEMS.register("titanium_axe",
+            () -> new AxeItem(ModToolTiers.TITANIUM, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.TITANIUM, 5.5f, -3.0f))));
+    public static final DeferredItem<ShovelItem> TITANIUM_SHOVEL = ITEMS.register("titanium_shovel",
+            () -> new ShovelItem(ModToolTiers.TITANIUM, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.TITANIUM, 2.0f, -3.0f))));
+    public static final DeferredItem<HoeItem> TITANIUM_HOE = ITEMS.register("titanium_hoe",
+            () -> new HoeItem(ModToolTiers.TITANIUM, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.TITANIUM, -3, 0.0f))));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
