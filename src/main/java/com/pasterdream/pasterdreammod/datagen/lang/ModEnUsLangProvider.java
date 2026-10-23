@@ -20,6 +20,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.RAW_TITANIUM.get(), "Raw Titanium");
         add(ModItems.TITANIUM_INGOT.get(), "Titanium Ingot");
         add(ModItems.TITANIUM_NUGGET.get(), "Titanium Nugget");
+        add(ModBlocks.MOLTEN_GOLD_ORE.get(), "Molten Gold Ore");
+        add(ModBlocks.MOLTEN_GOLD_BLOCK.get(), "Molten Gold Block");
+        add(ModItems.MOLTEN_GOLD_INGOT.get(), "Molten Gold Ingot");
+        add(ModItems.MOLTEN_GOLD_NUGGET.get(), "Molten Gold Nugget");
+        add(ModItems.RAW_MOLTEN_GOLD.get(), "Raw Molten Gold");
         add("itemGroup.pasterdream.pasterdream_items_tab", "Paster Dream | Items");
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "Dyedream World");
         add("pasterdream.configuration.title", "PasterDream: Reborn Configs");

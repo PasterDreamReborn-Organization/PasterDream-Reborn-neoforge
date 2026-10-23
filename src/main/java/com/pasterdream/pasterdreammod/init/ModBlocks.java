@@ -29,6 +29,14 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
                     .sound(SoundType.METAL).strength(11f, 7f).requiresCorrectToolForDrops()));
 
+    public static final DeferredBlock<Block> MOLTEN_GOLD_ORE = BLOCKS.register("molten_gold_ore",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.NETHER)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.NETHER_GOLD_ORE)
+                    .strength(6f, 3f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> MOLTEN_GOLD_BLOCK = BLOCKS.register("molten_gold_block",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD)
+                    .sound(SoundType.METAL).strength(7f, 4f).requiresCorrectToolForDrops()));
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }

@@ -28,6 +28,24 @@ public class ModRecipesProvider extends RecipeProvider {
         RecipeHelpers.storageDecompress(output, ModItems.RAW_TITANIUM_BLOCK.get(), ModItems.RAW_TITANIUM.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageCompress(output, ModItems.TITANIUM_INGOT.get(), ModItems.TITANIUM_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(output, ModItems.TITANIUM_BLOCK.get(), ModItems.TITANIUM_INGOT.get(), PasterDreamMod.MOD_ID);
+        moltenGoldCooking(output, ModItems.MOLTEN_GOLD_ORE.get(), "molten_gold_ingot_from_molten_gold_ore_");
+        // 来源粗炙焰金的配方 ID 使用历史拼写 moltengold，迁移时不更名。
+        moltenGoldCooking(output, ModItems.RAW_MOLTEN_GOLD.get(), "moltengold_ingot_from_");
+        RecipeHelpers.storageCompress(output, ModItems.MOLTEN_GOLD_NUGGET.get(), ModItems.MOLTEN_GOLD_INGOT.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(output, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_NUGGET.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageCompress(output, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(output, ModItems.MOLTEN_GOLD_BLOCK.get(), ModItems.MOLTEN_GOLD_INGOT.get(), PasterDreamMod.MOD_ID);
+    }
+
+    private void moltenGoldCooking(RecipeOutput output, ItemLike ingredient, String recipePrefix) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.MISC,
+                        ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(output, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, recipePrefix + "smelting"));
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), RecipeCategory.MISC,
+                        ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(output, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, recipePrefix + "blasting"));
     }
 
     private void titaniumCooking(RecipeOutput output, ItemLike ingredient, String sourceName) {

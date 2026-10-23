@@ -19,8 +19,11 @@ public class ModCreativeModeTabs {
                     .icon(() -> ModItems.TITANIUM_INGOT.toStack())
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.RAW_TITANIUM.get());
+                        output.accept(ModItems.RAW_MOLTEN_GOLD.get());
                         output.accept(ModItems.TITANIUM_INGOT.get());
+                        output.accept(ModItems.MOLTEN_GOLD_INGOT.get());
                         output.accept(ModItems.TITANIUM_NUGGET.get());
+                        output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_BLOCKS_TAB =
@@ -30,8 +33,10 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.TITANIUM_ORE.get());
                         output.accept(ModItems.DEEPSLATE_TITANIUM_ORE.get());
+                        output.accept(ModItems.MOLTEN_GOLD_ORE.get());
                         output.accept(ModItems.RAW_TITANIUM_BLOCK.get());
                         output.accept(ModItems.TITANIUM_BLOCK.get());
+                        output.accept(ModItems.MOLTEN_GOLD_BLOCK.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

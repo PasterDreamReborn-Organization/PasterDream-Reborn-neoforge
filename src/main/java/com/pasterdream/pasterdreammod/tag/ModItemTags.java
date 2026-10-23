@@ -13,6 +13,11 @@ public final class ModItemTags {
     public static final TagKey<Item> INGOTS_TITANIUM = common("ingots/titanium");
     public static final TagKey<Item> NUGGETS_TITANIUM = common("nuggets/titanium");
     public static final TagKey<Item> RAW_MATERIALS_TITANIUM = common("raw_materials/titanium");
+    public static final TagKey<Item> ORES_MOLTEN_GOLD = common("ores/molten_gold");
+    public static final TagKey<Item> STORAGE_BLOCKS_MOLTEN_GOLD = common("storage_blocks/molten_gold");
+    public static final TagKey<Item> INGOTS_MOLTEN_GOLD = common("ingots/molten_gold");
+    public static final TagKey<Item> NUGGETS_MOLTEN_GOLD = common("nuggets/molten_gold");
+    public static final TagKey<Item> RAW_MATERIALS_MOLTEN_GOLD = common("raw_materials/molten_gold");
 
     private static TagKey<Item> common(String path) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));

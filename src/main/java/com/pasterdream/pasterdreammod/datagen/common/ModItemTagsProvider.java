@@ -34,5 +34,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(Tags.Items.INGOTS).addTag(ModItemTags.INGOTS_TITANIUM);
         tag(Tags.Items.NUGGETS).addTag(ModItemTags.NUGGETS_TITANIUM);
         tag(Tags.Items.RAW_MATERIALS).addTag(ModItemTags.RAW_MATERIALS_TITANIUM);
+        copy(ModBlockTags.ORES_MOLTEN_GOLD, ModItemTags.ORES_MOLTEN_GOLD);
+        copy(ModBlockTags.STORAGE_BLOCKS_MOLTEN_GOLD, ModItemTags.STORAGE_BLOCKS_MOLTEN_GOLD);
+        tag(ModItemTags.INGOTS_MOLTEN_GOLD).add(ModItems.MOLTEN_GOLD_INGOT.get());
+        tag(ModItemTags.NUGGETS_MOLTEN_GOLD).add(ModItems.MOLTEN_GOLD_NUGGET.get());
+        tag(ModItemTags.RAW_MATERIALS_MOLTEN_GOLD).add(ModItems.RAW_MOLTEN_GOLD.get());
+        tag(Tags.Items.INGOTS).addTag(ModItemTags.INGOTS_MOLTEN_GOLD);
+        tag(Tags.Items.NUGGETS).addTag(ModItemTags.NUGGETS_MOLTEN_GOLD);
+        tag(Tags.Items.RAW_MATERIALS).addTag(ModItemTags.RAW_MATERIALS_MOLTEN_GOLD);
     }
 }

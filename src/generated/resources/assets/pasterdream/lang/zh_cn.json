@@ -1,8 +1,13 @@
 {
   "block.pasterdream.deepslate_titanium_ore": "深层钛矿石",
+  "block.pasterdream.molten_gold_block": "炙焰金块",
+  "block.pasterdream.molten_gold_ore": "炙焰金矿石",
   "block.pasterdream.raw_titanium_block": "粗钛金块",
   "block.pasterdream.titanium_block": "钛金块",
   "block.pasterdream.titanium_ore": "钛矿石",
+  "item.pasterdream.molten_gold_ingot": "炙焰金锭",
+  "item.pasterdream.molten_gold_nugget": "炙焰金粒",
+  "item.pasterdream.raw_molten_gold": "粗炙焰金",
   "item.pasterdream.raw_titanium": "粗钛",
   "item.pasterdream.titanium_ingot": "钛金锭",
   "item.pasterdream.titanium_nugget": "钛金粒",

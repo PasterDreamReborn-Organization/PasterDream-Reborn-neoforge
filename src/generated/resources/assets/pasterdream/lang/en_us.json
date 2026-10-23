@@ -1,8 +1,13 @@
 {
   "block.pasterdream.deepslate_titanium_ore": "Deepslate Titanium Ore",
+  "block.pasterdream.molten_gold_block": "Molten Gold Block",
+  "block.pasterdream.molten_gold_ore": "Molten Gold Ore",
   "block.pasterdream.raw_titanium_block": "Raw Titanium Block",
   "block.pasterdream.titanium_block": "Titanium Block",
   "block.pasterdream.titanium_ore": "Titanium Ore",
+  "item.pasterdream.molten_gold_ingot": "Molten Gold Ingot",
+  "item.pasterdream.molten_gold_nugget": "Molten Gold Nugget",
+  "item.pasterdream.raw_molten_gold": "Raw Molten Gold",
   "item.pasterdream.raw_titanium": "Raw Titanium",
   "item.pasterdream.titanium_ingot": "Titanium Ingot",
   "item.pasterdream.titanium_nugget": "Titanium Nugget",

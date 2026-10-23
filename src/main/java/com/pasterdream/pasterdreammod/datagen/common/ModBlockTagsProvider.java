@@ -33,6 +33,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModBlockTags.STORAGE_BLOCKS_RAW_TITANIUM).add(ModBlocks.RAW_TITANIUM_BLOCK.get());
         tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModBlockTags.STORAGE_BLOCKS_TITANIUM)
                 .addTag(ModBlockTags.STORAGE_BLOCKS_RAW_TITANIUM);
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.MOLTEN_GOLD_ORE.get(), ModBlocks.MOLTEN_GOLD_BLOCK.get());
+        tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.MOLTEN_GOLD_ORE.get(), ModBlocks.MOLTEN_GOLD_BLOCK.get());
+        tag(BlockTags.BEACON_BASE_BLOCKS).add(ModBlocks.MOLTEN_GOLD_BLOCK.get());
+        tag(ModBlockTags.ORES_MOLTEN_GOLD).add(ModBlocks.MOLTEN_GOLD_ORE.get());
+        tag(ModBlockTags.STORAGE_BLOCKS_MOLTEN_GOLD).add(ModBlocks.MOLTEN_GOLD_BLOCK.get());
+        tag(Tags.Blocks.ORES).addTag(ModBlockTags.ORES_MOLTEN_GOLD);
+        tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModBlockTags.STORAGE_BLOCKS_MOLTEN_GOLD);
         // 矿石/金属块不属于动物自然生成地表，不加入 ANIMALS_SPAWNABLE_ON。
     }
 }

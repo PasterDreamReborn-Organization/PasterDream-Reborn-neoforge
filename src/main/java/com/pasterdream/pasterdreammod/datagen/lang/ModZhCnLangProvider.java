@@ -20,6 +20,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.RAW_TITANIUM.get(), "粗钛");
         add(ModItems.TITANIUM_INGOT.get(), "钛金锭");
         add(ModItems.TITANIUM_NUGGET.get(), "钛金粒");
+        add(ModBlocks.MOLTEN_GOLD_ORE.get(), "炙焰金矿石");
+        add(ModBlocks.MOLTEN_GOLD_BLOCK.get(), "炙焰金块");
+        add(ModItems.MOLTEN_GOLD_INGOT.get(), "炙焰金锭");
+        add(ModItems.MOLTEN_GOLD_NUGGET.get(), "炙焰金粒");
+        add(ModItems.RAW_MOLTEN_GOLD.get(), "粗炙焰金");
         add("itemGroup.pasterdream.pasterdream_items_tab", "帕斯特之梦 | 物品");
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "染梦世界");
         add("pasterdream.configuration.title", "帕斯特之梦：重生 配置");
