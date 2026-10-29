@@ -18,9 +18,18 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_items_tab"))
                     .icon(() -> ModItems.TITANIUM_INGOT.toStack())
                     .displayItems((parameters, output) -> {
+                        output.accept(ModItems.DYEDREAM_DUST.get());
+                        output.accept(ModItems.DYEDREAM_DUST_PIECE.get());
+                        output.accept(ModItems.DYEDREAM_DYE.get());
+                        output.accept(ModItems.DYEDREAM_QUARTZ.get());
                         output.accept(ModItems.RAW_TITANIUM.get());
+                        output.accept(ModItems.RAW_MOLTEN_GOLD.get());
                         output.accept(ModItems.TITANIUM_INGOT.get());
+                        output.accept(ModItems.MOLTEN_GOLD_INGOT.get());
                         output.accept(ModItems.TITANIUM_NUGGET.get());
+                        output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
+                        output.accept(ModItems.BLACK_STICK.get());
+                        output.accept(ModItems.PINK_SLIMEBALL.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_BLOCKS_TAB =
@@ -30,8 +39,24 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.TITANIUM_ORE.get());
                         output.accept(ModItems.DEEPSLATE_TITANIUM_ORE.get());
+                        output.accept(ModItems.MOLTEN_GOLD_ORE.get());
                         output.accept(ModItems.RAW_TITANIUM_BLOCK.get());
                         output.accept(ModItems.TITANIUM_BLOCK.get());
+                        output.accept(ModItems.MOLTEN_GOLD_BLOCK.get());
+                    }).build());
+
+    // 来源装备栏图标所需武器尚未迁入，暂用钛金剑。
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_GEAR_TAB =
+            CREATIVE_MODE_TABS.register("pasterdream_gear_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_gear_tab"))
+                    .icon(() -> ModItems.TITANIUM_SWORD.toStack())
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.TITANIUM_UPGRADE.get());
+                        output.accept(ModItems.TITANIUM_SWORD.get());
+                        output.accept(ModItems.TITANIUM_PICKAXE.get());
+                        output.accept(ModItems.TITANIUM_AXE.get());
+                        output.accept(ModItems.TITANIUM_SHOVEL.get());
+                        output.accept(ModItems.TITANIUM_HOE.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

@@ -18,6 +18,10 @@ public final class ModBiomeModifiers {
             ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "deepslate_titanium_ore_patch"));
 
+    public static final ResourceKey<BiomeModifier> MOLTEN_GOLD_ORE_PATCH =
+            ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "molten_gold_ore_patch"));
+
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var biomes = context.lookup(Registries.BIOME);
         var features = context.lookup(Registries.PLACED_FEATURE);
@@ -25,6 +29,10 @@ public final class ModBiomeModifiers {
         context.register(DEEPSLATE_TITANIUM_ORE_PATCH, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(features.getOrThrow(ModPlacedFeatures.DEEPSLATE_TITANIUM_ORE_PATCH)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(MOLTEN_GOLD_ORE_PATCH, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_NETHER),
+                HolderSet.direct(features.getOrThrow(ModPlacedFeatures.MOLTEN_GOLD_ORE_PATCH)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
     }
 
