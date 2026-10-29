@@ -18,6 +18,10 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_items_tab"))
                     .icon(() -> ModItems.TITANIUM_INGOT.toStack())
                     .displayItems((parameters, output) -> {
+                        output.accept(ModItems.DYEDREAM_DUST.get());
+                        output.accept(ModItems.DYEDREAM_DUST_PIECE.get());
+                        output.accept(ModItems.DYEDREAM_DYE.get());
+                        output.accept(ModItems.DYEDREAM_QUARTZ.get());
                         output.accept(ModItems.RAW_TITANIUM.get());
                         output.accept(ModItems.RAW_MOLTEN_GOLD.get());
                         output.accept(ModItems.TITANIUM_INGOT.get());
@@ -25,6 +29,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_NUGGET.get());
                         output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
                         output.accept(ModItems.BLACK_STICK.get());
+                        output.accept(ModItems.PINK_SLIMEBALL.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_BLOCKS_TAB =

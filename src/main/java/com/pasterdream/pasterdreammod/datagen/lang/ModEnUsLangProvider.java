@@ -33,6 +33,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MOLTEN_GOLD_INGOT.get(), "Molten Gold Ingot");
         add(ModItems.MOLTEN_GOLD_NUGGET.get(), "Molten Gold Nugget");
         add(ModItems.RAW_MOLTEN_GOLD.get(), "Raw Molten Gold");
+        add(ModItems.DYEDREAM_QUARTZ.get(), "Dyedream Quartz");
+        add(ModItems.DYEDREAM_DUST.get(), "Dyedream Dust");
+        add(ModItems.DYEDREAM_DUST_PIECE.get(), "Dyedream Dust Piece");
+        add(ModItems.PINK_SLIMEBALL.get(), "Pink Slimeball");
+        add(ModItems.DYEDREAM_DYE.get(), "Dyedream Dye");
         add("itemGroup.pasterdream.pasterdream_items_tab", "Paster Dream | Items");
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "Dyedream World");
         add("pasterdream.configuration.title", "PasterDream: Reborn Configs");
