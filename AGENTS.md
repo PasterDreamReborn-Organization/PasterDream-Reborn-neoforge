@@ -3,6 +3,7 @@
 ## 入口
 
 - 当前迁移进度与上游同步记录：[迁移批次记录](document/reference/迁移批次记录.md)。
+- 后续依赖顺序、任务卡与解锁关系：[迁移任务线](document/reference/迁移任务线.md)。按任务前置推进，不以物品/方块注册完成代替功能与获取闭环。
 - 初始盘点：[迁移现状盘点](document/reference/迁移现状盘点.md)；技术路线：[移植总纲](document/reference/移植总纲.md)。
 - 权威程序规范：`document/rule/program/`。架构约定与“已迁入内容”必须区分。
 - 领域工作流：`.claude/skills/`，数据生成用 `datagen`，世界生成用 `worldgen`；API 以锁定的 NeoForge 21.1.249 源码与实际编译为准。
@@ -18,6 +19,7 @@
 
 ## 实现与验证
 
+- 低 API 差异模块先直接复制已合并 Forge 原类，保持字段、方法和方法内每行代码的顺序、注释及排版；仅改必要的平台 API，不顺手重构、重命名或统一格式。高差异边界逐块登记适配理由，未受影响代码仍保留原样；详见任务线第 2 节与程序规范。
 - 保留已确定的重生版注册 ID、配方 ID、数值和行为；不要在平台迁移中擅自重做平衡。新增/变更 ID 才更新 ID 映射，已登记 ID 不重复登记。
 - `init/` 集中注册，datagen 入口为 `datagen/ModDataGenerator.java`。新增方块要设置地图颜色并核对挖掘等级、材质、功能标签。
 - `src/generated/resources/` 只能通过 Provider + `runData` 更新；不要手改生成 JSON。缓存不入库、不入发布 Jar。
