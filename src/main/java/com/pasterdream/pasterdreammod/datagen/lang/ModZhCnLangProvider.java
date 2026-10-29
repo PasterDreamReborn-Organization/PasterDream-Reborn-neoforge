@@ -35,8 +35,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.RAW_MOLTEN_GOLD.get(), "粗炙焰金");
         add(ModItems.DYEDREAM_QUARTZ.get(), "染梦石英");
         add(ModItems.DYEDREAM_DUST.get(), "染梦粉尘");
-        add(ModItems.DYEDREAM_DUST_PIECE.get(), "染梦粉尘碎片");
-        add(ModItems.PINK_SLIMEBALL.get(), "粉色史莱姆球");
+        add(ModItems.DYEDREAM_DUST_PIECE.get(), "小撮染梦粉尘");
+        add(ModItems.PINK_SLIMEBALL.get(), "粉红粘液球");
         add(ModItems.DYEDREAM_DYE.get(), "染梦染料");
         add("itemGroup.pasterdream.pasterdream_items_tab", "帕斯特之梦 | 物品");
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "染梦世界");
