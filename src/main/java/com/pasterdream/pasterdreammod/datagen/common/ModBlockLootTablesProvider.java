@@ -31,6 +31,14 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_DUST_PIECE.get())
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                         .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
+        dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get());
+        dropSelf(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get());
+        dropSelf(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get());
+        dropSelf(ModBlocks.PILLAR_DYEDREAM_QUARTZ_BLOCK.get());
+        dropSelf(ModBlocks.CHISELED_DYEDREAM_QUARTZ_BLOCK.get());
+        dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());
+        add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get()));
+        dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
         add(ModBlocks.TITANIUM_ORE.get(), block -> createOreDrop(block, ModItems.RAW_TITANIUM.get()));
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), block -> createOreDrop(block, ModItems.RAW_TITANIUM.get()));
         dropSelf(ModBlocks.RAW_TITANIUM_BLOCK.get());

@@ -14,6 +14,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.gametest.GameTestHolder;
@@ -81,6 +83,38 @@ public class DyedreamOreGameTests {
                     && recipe.value().getExperience() == 1.0F && recipe.value().getCookingTime() == 200,
                     "熔炼产物、经验与耗时应与来源一致");
         }
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void quartzBuildingRecipesAndDrops(GameTestHelper helper) {
+        var manager = helper.getLevel().getRecipeManager();
+        var quartz = new ItemStack(ModItems.DYEDREAM_QUARTZ.get());
+        var baseInput = CraftingInput.of(2, 2, Collections.nCopies(4, quartz));
+        var base = manager.getRecipeFor(RecipeType.CRAFTING, baseInput, helper.getLevel()).orElseThrow()
+                .value().assemble(baseInput, helper.getLevel().registryAccess());
+        helper.assertTrue(base.is(ModItems.DYEDREAM_QUARTZ_BLOCK.get()) && base.getCount() == 1,
+                "四份染梦石英应合成一块建材");
+
+        var block = new ItemStack(ModItems.DYEDREAM_QUARTZ_BLOCK.get());
+        var stoneInput = new SingleRecipeInput(block);
+        var stonecutting = manager.getAllRecipesFor(RecipeType.STONECUTTING).stream()
+                .filter(recipe -> recipe.id().equals(ResourceLocation.fromNamespaceAndPath(
+                        PasterDreamMod.MOD_ID, "dyedream_quartz_block_slab_from_stonecutting")))
+                .findFirst().orElseThrow();
+        helper.assertTrue(stonecutting.value().matches(stoneInput, helper.getLevel())
+                && stonecutting.value().assemble(stoneInput, helper.getLevel().registryAccess())
+                .is(ModItems.DYEDREAM_QUARTZ_BLOCK_SLAB.get())
+                && stonecutting.value().assemble(stoneInput, helper.getLevel().registryAccess()).getCount() == 2,
+                "切石机应保留一块石英块产出两台阶的来源配方");
+
+        var slab = ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get();
+        var doubleSlab = slab.defaultBlockState().setValue(SlabBlock.TYPE, SlabType.DOUBLE);
+        var pos = helper.absolutePos(new BlockPos(1, 1, 1));
+        helper.getLevel().setBlock(pos, doubleSlab, 3);
+        var drops = Block.getDrops(doubleSlab, helper.getLevel(), pos, null, null, new ItemStack(Items.IRON_PICKAXE));
+        helper.assertTrue(drops.size() == 1 && drops.getFirst().is(ModItems.DYEDREAM_QUARTZ_BLOCK_SLAB.get())
+                && drops.getFirst().getCount() == 2, "双层台阶应掉落两个台阶");
         helper.succeed();
     }
 }

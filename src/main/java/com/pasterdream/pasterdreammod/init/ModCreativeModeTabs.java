@@ -45,6 +45,14 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_TITANIUM_BLOCK.get());
                         output.accept(ModItems.TITANIUM_BLOCK.get());
                         output.accept(ModItems.MOLTEN_GOLD_BLOCK.get());
+                        output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK.get());
+                        output.accept(ModItems.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get());
+                        output.accept(ModItems.BRICKS_DYEDREAM_QUARTZ_BLOCK.get());
+                        output.accept(ModItems.PILLAR_DYEDREAM_QUARTZ_BLOCK.get());
+                        output.accept(ModItems.CHISELED_DYEDREAM_QUARTZ_BLOCK.get());
+                        output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());
+                        output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_SLAB.get());
+                        output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.get());
                     }).build());
 
     // 来源装备栏图标所需武器尚未迁入，暂用钛金剑。

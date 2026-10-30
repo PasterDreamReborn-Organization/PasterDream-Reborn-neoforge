@@ -31,5 +31,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DYEDREAM_DUST_PIECE.get());
         basicItem(ModItems.PINK_SLIMEBALL.get());
         basicItem(ModItems.DYEDREAM_DYE.get());
+        wallItem(ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.getId().getPath(), ModItems.DYEDREAM_QUARTZ_BLOCK.getId().getPath());
+    }
+
+    private void wallItem(String wall, String base) {
+        withExistingParent(wall, mcLoc("block/wall_inventory"))
+                .texture("wall", modLoc("block/" + base));
     }
 }
