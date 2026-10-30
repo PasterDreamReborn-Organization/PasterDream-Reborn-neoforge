@@ -44,6 +44,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_gear_tab", "帕斯特之梦 | 装备");
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "染梦石英矿石");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "染梦粉尘矿石");
+        add(ModBlocks.PINK_SLIME_BLOCK.get(), "粉色粘液块");
         add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get(), "染梦石英块");
         add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get(), "平滑染梦石英块");
         add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get(), "染梦石英砖");
