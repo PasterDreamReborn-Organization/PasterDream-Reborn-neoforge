@@ -13,9 +13,9 @@ description: 新增/修改进度与梦笔记分发。覆盖进度定义、四种
 
 | 模式 | 触发 | 适用 |
 |------|------|------|
-| A：获得物品→进度→发笔记 | `AdvancementEvent` 驱动，`ADVANCEMENT_NOTE_CONTENT` 映射 | 原作 `inventory_changed` + loot reward 发笔记 |
-| B：获得物品→进度（仅 XP） | 只在 Provider 定义进度 + 语言 | 原作可见进度无 loot |
-| C：交互→发笔记→读笔记→进度 | `ReadDreamNoteTrigger.forContent()` 驱动 | 原作 `impossible` 触发，实际读笔记获得 |
+| A：获得物品→进度→发笔记 | `AdvancementEvent` 驱动，`ADVANCEMENT_NOTE_CONTENT` 映射 | 来源 `inventory_changed` + loot reward 发笔记 |
+| B：获得物品→进度（仅 XP） | 只在 Provider 定义进度 + 语言 | 来源可见进度无 loot |
+| C：交互→发笔记→读笔记→进度 | `ReadDreamNoteTrigger.forContent()` 驱动 | 来源 `impossible` 触发，实际读笔记获得 |
 | D：饮用/食用→进度 | `consume_item` 触发 | 自定义 `finishUsingItem` 需手动 `CriteriaTriggers.CONSUME_ITEM.trigger` + `awardStat` |
 
 ---

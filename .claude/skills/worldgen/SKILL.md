@@ -64,7 +64,6 @@ description: 新增/修改世界生成（群系、维度类型、噪声设置、
 ## 引用文档
 
 - `document/rule/program/架构规范.md` — 世界生成数据流、子包划分
-- `document/design/风之旅途维度搬运分析.md` / `风之旅途风向机制搬运分析.md` — 维度搬运案例
 
 ## 当前已实现
 
