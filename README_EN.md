@@ -62,9 +62,9 @@ If libraries are missing or you encounter issues, run:
 Project documentation is available in the [`document/`](document/) directory:
 
 - [`document/reference/移植总纲.md`](document/reference/移植总纲.md) — Forge 1.20.1 → NeoForge 1.21.1 porting master plan
-- [`document/design/`](document/design/) — Design documents, ID mapping, naming conventions, new content list
+- [`document/design/`](document/design/) — Design documents, naming conventions, and system designs
 - [`document/rule/program/`](document/rule/program/) — Code architecture guidelines, programming standards, directory structure, recipe balance system, shadow difficulty system, cook effect rules
-- [`document/reference/`](document/reference/) — Original mod structural analysis and reference files
+- [`document/reference/`](document/reference/) — Porting reference documents
 - [`document/patchouli_books/`](document/patchouli_books/) — PasterDream guidebook design
 
 ## Credits
