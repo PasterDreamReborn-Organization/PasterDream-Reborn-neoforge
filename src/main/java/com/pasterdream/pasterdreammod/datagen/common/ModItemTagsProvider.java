@@ -23,6 +23,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        tag(ModItemTags.SKILL_COOLDOWN).add(ModItems.SHARP_MELT_DREAM_SWORD.get());
         // copy(BlockTag, ItemTag) 将 BlockTagsProvider 中注册的方块标签自动同步到对应物品标签
         copy(ModBlockTags.ORES_DYEDREAM_QUARTZ, ModItemTags.ORES_DYEDREAM_QUARTZ);
         copy(ModBlockTags.ORES_DYEDREAM_DUST, ModItemTags.ORES_DYEDREAM_DUST);
@@ -42,23 +43,28 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.SWORDS)
                 .add(ModItems.TITANIUM_SWORD.get())
                 .add(ModItems.MOLTEN_GOLD_SWORD.get())
-                .add(ModItems.DYEDREAM_SWORD.get());
+                .add(ModItems.DYEDREAM_SWORD.get())
+                .add(ModItems.SHARP_MELT_DREAM_SWORD.get());
         tag(ItemTags.PICKAXES)
                 .add(ModItems.TITANIUM_PICKAXE.get())
                 .add(ModItems.MOLTEN_GOLD_PICKAXE.get())
-                .add(ModItems.DYEDREAM_PICKAXE.get());
+                .add(ModItems.DYEDREAM_PICKAXE.get())
+                .add(ModItems.MELT_DREAM_PICKAXE.get());
         tag(ItemTags.AXES)
                 .add(ModItems.TITANIUM_AXE.get())
                 .add(ModItems.MOLTEN_GOLD_AXE.get())
-                .add(ModItems.DYEDREAM_AXE.get());
+                .add(ModItems.DYEDREAM_AXE.get())
+                .add(ModItems.MELT_DREAM_AXE.get());
         tag(ItemTags.SHOVELS)
                 .add(ModItems.TITANIUM_SHOVEL.get())
                 .add(ModItems.MOLTEN_GOLD_SHOVEL.get())
-                .add(ModItems.DYEDREAM_SHOVEL.get());
+                .add(ModItems.DYEDREAM_SHOVEL.get())
+                .add(ModItems.MELT_DREAM_SHOVEL.get());
         tag(ItemTags.HOES)
                 .add(ModItems.TITANIUM_HOE.get())
                 .add(ModItems.MOLTEN_GOLD_HOE.get())
-                .add(ModItems.DYEDREAM_HOE.get());
+                .add(ModItems.DYEDREAM_HOE.get())
+                .add(ModItems.MELT_DREAM_HOE.get());
         tag(ItemTags.HEAD_ARMOR).add(ModItems.TITANIUM_HELMET.get()).add(ModItems.DYEDREAM_HELMET.get());
         tag(ItemTags.CHEST_ARMOR).add(ModItems.TITANIUM_CHESTPLATE.get()).add(ModItems.DYEDREAM_CHESTPLATE.get());
         tag(ItemTags.LEG_ARMOR).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get());

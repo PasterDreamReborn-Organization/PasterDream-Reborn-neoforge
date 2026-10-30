@@ -105,5 +105,21 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.configuration.section.pasterdream.common.toml.title", "帕斯特之梦：重生 配置");
         add("pasterdream.configuration.debugLogging", "调试日志");
         add("pasterdream.configuration.debugLogging.tooltip", "是否输出调试日志");
+        add(ModItems.MELT_DREAM_PICKAXE.get(), "融梦水晶镐");
+        add(ModItems.MELT_DREAM_AXE.get(), "融梦水晶斧");
+        add(ModItems.MELT_DREAM_SHOVEL.get(), "融梦水晶锹");
+        add(ModItems.MELT_DREAM_HOE.get(), "融梦水晶锄");
+        add(ModItems.SHARP_MELT_DREAM_SWORD.get(), "极锋染梦合金剑");
+        add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
+        add("tooltip.pasterdreammod.melt_dream_tool.1", "在背包中时");
+        add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §b融梦修补：0.01E/1耐久");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.1", "镶嵌：§d融梦水晶碎片");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.2", "战技：§b凌空斩击");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.3", "§7▪ §9下次攻击造成额外伤害，并将目标击飞");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.4", "§7▪ §9冷却：5秒（拥有染梦守护时为3秒）");
+        add("attribute.pasterdream.skill_cooldown_reduction", "战技冷却缩减");
+        add("attribute.pasterdream.skill_damage_rate", "战技伤害倍率");
+        add("attribute.pasterdream.max_melt_dream_energy_extra", "融梦能量上限加成");
+        add("attribute.pasterdream.melt_dream_variability", "融梦光环");
     }
 }

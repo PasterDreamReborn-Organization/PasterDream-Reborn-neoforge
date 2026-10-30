@@ -22,6 +22,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_DUST_PIECE.get());
                         output.accept(ModItems.DYEDREAM_DYE.get());
                         output.accept(ModItems.DYEDREAM_BUD_NUGGET.get());
+                        output.accept(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
                         output.accept(ModItems.DYEDREAM_QUARTZ.get());
                         output.accept(ModItems.RAW_TITANIUM.get());
                         output.accept(ModItems.RAW_MOLTEN_GOLD.get());
@@ -95,6 +96,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_SHOVEL.get());
                         output.accept(ModItems.DYEDREAM_HOE.get());
                         output.accept(ModItems.DYEDREAM_HAMMER.get());
+                        output.accept(ModItems.MELT_DREAM_PICKAXE.get());
+                        output.accept(ModItems.MELT_DREAM_AXE.get());
+                        output.accept(ModItems.MELT_DREAM_SHOVEL.get());
+                        output.accept(ModItems.MELT_DREAM_HOE.get());
+                        output.accept(ModItems.SHARP_MELT_DREAM_SWORD.get());
                         // 染梦合金装备
                         output.accept(ModItems.DYEDREAM_HELMET.get());
                         output.accept(ModItems.DYEDREAM_CHESTPLATE.get());

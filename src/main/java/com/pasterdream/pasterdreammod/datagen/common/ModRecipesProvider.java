@@ -38,6 +38,7 @@ public class ModRecipesProvider extends RecipeProvider {
         titaniumArmorRecipes(output);
         dyedreamUpgradeRecipe(output);
         dyedreamToolRecipes(output);
+        meltDreamToolRecipes(output);
         dyedreamArmorRecipes(output);
         budBuildingRecipes(output);
         alloyRecipes(output);
@@ -342,6 +343,14 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_hoe_smithing"));
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_DUST.get()),
+                        Ingredient.of(ModItems.DYEDREAM_SWORD.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        RecipeCategory.COMBAT, ModItems.SHARP_MELT_DREAM_SWORD.get())
+                .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_sharp_sword_smithing"));
+
         // 染梦合金锤（工作台合成）
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.DYEDREAM_HAMMER.get())
                 .pattern("aaa")
@@ -351,6 +360,23 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('b', ModItems.BLACK_STICK.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
                 .save(pWriter);
+    }
+
+    private void meltDreamToolRecipes(RecipeOutput pWriter) {
+        meltDreamToolRecipe(pWriter, ModItems.DYEDREAM_PICKAXE.get(), ModItems.MELT_DREAM_PICKAXE.get(), "melt_dream_pickaxe_smithing");
+        meltDreamToolRecipe(pWriter, ModItems.DYEDREAM_AXE.get(), ModItems.MELT_DREAM_AXE.get(), "melt_dream_axe_smithing");
+        meltDreamToolRecipe(pWriter, ModItems.DYEDREAM_SHOVEL.get(), ModItems.MELT_DREAM_SHOVEL.get(), "melt_dream_shovel_smithing");
+        meltDreamToolRecipe(pWriter, ModItems.DYEDREAM_HOE.get(), ModItems.MELT_DREAM_HOE.get(), "melt_dream_hoe_smithing");
+    }
+
+    private void meltDreamToolRecipe(RecipeOutput pWriter, ItemLike base, ItemLike result, String id) {
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        Ingredient.of(base),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        RecipeCategory.TOOLS, result.asItem())
+                .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, id));
     }
 
     // ===== 染梦合金装备配方 =====

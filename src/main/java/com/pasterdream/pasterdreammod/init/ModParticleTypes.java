@@ -2,9 +2,11 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 /**
  * 粒子类型注册中心。
@@ -16,7 +18,10 @@ public class ModParticleTypes {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES =
             DeferredRegister.create(Registries.PARTICLE_TYPE, PasterDreamMod.MOD_ID);
 
-    // TODO: 在此注册粒子类型（SimpleParticleType）
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SHARP_SWORD_SLASH =
+            PARTICLE_TYPES.register("sharp_sword_slash", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BUFF_0_PARTICLE =
+            PARTICLE_TYPES.register("buff", () -> new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

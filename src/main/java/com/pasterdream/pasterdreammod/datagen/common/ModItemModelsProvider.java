@@ -59,6 +59,12 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DYEDREAM_DUST_PIECE.get());
         basicItem(ModItems.PINK_SLIMEBALL.get());
         basicItem(ModItems.DYEDREAM_DYE.get());
+        basicItem(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
+        handheldItem(ModItems.MELT_DREAM_PICKAXE.get());
+        handheldItem(ModItems.MELT_DREAM_AXE.get());
+        handheldItem(ModItems.MELT_DREAM_SHOVEL.get());
+        handheldItem(ModItems.MELT_DREAM_HOE.get());
+        handheldItem(ModItems.SHARP_MELT_DREAM_SWORD.get());
         wallItem(ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.getId().getPath(), ModItems.DYEDREAM_QUARTZ_BLOCK.getId().getPath());
         withExistingParent(ModItems.SMALL_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/small_dyedream_bud"));

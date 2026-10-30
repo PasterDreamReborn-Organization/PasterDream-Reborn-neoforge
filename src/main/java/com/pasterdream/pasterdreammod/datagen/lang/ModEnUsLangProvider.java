@@ -105,5 +105,21 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("pasterdream.configuration.section.pasterdream.common.toml.title", "PasterDream: Reborn Configs");
         add("pasterdream.configuration.debugLogging", "Debug Logging");
         add("pasterdream.configuration.debugLogging.tooltip", "Enable debug logging");
+        add(ModItems.MELT_DREAM_PICKAXE.get(), "Melt Dream Pickaxe");
+        add(ModItems.MELT_DREAM_AXE.get(), "Melt Dream Axe");
+        add(ModItems.MELT_DREAM_SHOVEL.get(), "Melt Dream Shovel");
+        add(ModItems.MELT_DREAM_HOE.get(), "Melt Dream Hoe");
+        add(ModItems.SHARP_MELT_DREAM_SWORD.get(), "Dyedream Sharp Sword");
+        add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
+        add("tooltip.pasterdreammod.melt_dream_tool.1", "While in inventory");
+        add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §bMelt-Repair: 0.01E/1 Durability");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.1", "Inlaid: §dMelt Dream Crystal Fragment");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.2", "Combat Art: §bSkyward Slash");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.3", "§7▪ §9The next attack deals bonus damage and launches the target upward");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.4", "§7▪ §9Cooldown: 5s (3s with Dyedream Protection)");
+        add("attribute.pasterdream.skill_cooldown_reduction", "Skill Cooldown Reduction");
+        add("attribute.pasterdream.skill_damage_rate", "Skill Damage Rate");
+        add("attribute.pasterdream.max_melt_dream_energy_extra", "Max Melt Dream Energy Bonus");
+        add("attribute.pasterdream.melt_dream_variability", "Melt Dream Aura");
     }
 }
