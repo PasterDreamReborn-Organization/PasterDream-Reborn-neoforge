@@ -95,6 +95,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_SHOVEL.get());
                         output.accept(ModItems.DYEDREAM_HOE.get());
                         output.accept(ModItems.DYEDREAM_HAMMER.get());
+                        // 染梦合金装备
+                        output.accept(ModItems.DYEDREAM_HELMET.get());
+                        output.accept(ModItems.DYEDREAM_CHESTPLATE.get());
+                        output.accept(ModItems.DYEDREAM_LEGGINGS.get());
+                        output.accept(ModItems.DYEDREAM_BOOTS.get());
                         // 炙焰金工具
                         output.accept(ModItems.MOLTEN_GOLD_SWORD.get());
                         output.accept(ModItems.MOLTEN_GOLD_PICKAXE.get());

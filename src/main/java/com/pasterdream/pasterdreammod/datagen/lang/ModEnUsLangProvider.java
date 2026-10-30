@@ -39,6 +39,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.titanium_armor", "Titanium Protection");
         add("tooltip.pasterdreammod.titanium_armor.1", "§7Set Bonus: §eTitanium Protection");
         add("tooltip.pasterdreammod.titanium_armor.2", "§7▪ §9Gain 2 Absorption hearts every 30s");
+        add(ModItems.DYEDREAM_HELMET.get(), "Dyedream Helmet");
+        add(ModItems.DYEDREAM_CHESTPLATE.get(), "Dyedream Chestplate");
+        add(ModItems.DYEDREAM_LEGGINGS.get(), "Dyedream Leggings");
+        add(ModItems.DYEDREAM_BOOTS.get(), "Dyedream Boots");
+        add("effect.pasterdream.dyedream_armor", "Dyedream Protection");
+        add("effect.pasterdream.dyedream_up", "Dyedream Tool Boost");
+        add("tooltip.pasterdreammod.dyedream_armor.1", "§7Set Bonus: §dDyedream Protection");
+        add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9Max Health +4");
+        add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9Gain 4 Absorption hearts every 30s");
+        add("tooltip.pasterdreammod.dyedream_armor.4", "§7▪ §9Enhances wielded Dyedream tools");
         add(ModItems.MOLTEN_GOLD_SWORD.get(), "Molten Gold Sword");
         add(ModItems.MOLTEN_GOLD_PICKAXE.get(), "Molten Gold Pickaxe");
         add(ModItems.MOLTEN_GOLD_AXE.get(), "Molten Gold Axe");
