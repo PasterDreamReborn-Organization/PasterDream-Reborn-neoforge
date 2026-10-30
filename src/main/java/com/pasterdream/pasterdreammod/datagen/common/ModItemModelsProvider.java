@@ -16,6 +16,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TITANIUM_INGOT.get());
         basicItem(ModItems.TITANIUM_NUGGET.get());
         basicItem(ModItems.RAW_TITANIUM.get());
+        basicItem(ModItems.COTTON.get());
+        basicItem(ModItems.SPOOL.get());
+        basicItem(ModItems.FABRIC.get());
+        basicItem(ModItems.PROTECT_DECK.get());
         basicItem(ModItems.BLACK_STICK.get());
         basicItem(ModItems.TITANIUM_UPGRADE.get());
         handheldItem(ModItems.TITANIUM_SWORD.get());

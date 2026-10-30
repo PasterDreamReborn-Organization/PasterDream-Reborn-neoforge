@@ -13,6 +13,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.COTTON.get(), "Cotton");
+        add(ModItems.SPOOL.get(), "Spool");
+        add(ModItems.FABRIC.get(), "Fabric");
+        add(ModItems.PROTECT_DECK.get(), "Protect Deck");
         add(ModItems.BLACK_STICK.get(), "Black Stick");
         add(ModItems.TITANIUM_UPGRADE.get(), "Titanium Upgrade");
         add(ModItems.TITANIUM_SWORD.get(), "Titanium Sword");

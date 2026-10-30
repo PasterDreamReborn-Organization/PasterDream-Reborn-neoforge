@@ -13,6 +13,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.COTTON.get(), "棉花");
+        add(ModItems.SPOOL.get(), "线轴");
+        add(ModItems.FABRIC.get(), "纺织布料");
+        add(ModItems.PROTECT_DECK.get(), "护甲板");
         add(ModItems.BLACK_STICK.get(), "黑石棍");
         add(ModItems.TITANIUM_UPGRADE.get(), "钛金升级套件");
         add(ModItems.TITANIUM_SWORD.get(), "钛金剑");

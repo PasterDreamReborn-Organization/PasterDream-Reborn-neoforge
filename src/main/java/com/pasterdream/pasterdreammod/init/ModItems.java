@@ -51,6 +51,14 @@ public class ModItems {
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB);
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL);
 
+    public static final DeferredItem<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SPOOL = ITEMS.register("spool",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> FABRIC = ITEMS.register("fabric",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> PROTECT_DECK = ITEMS.register("protect_deck",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> BLACK_STICK = ITEMS.registerSimpleItem("black_stick");
     public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));
     public static final DeferredItem<SwordItem> TITANIUM_SWORD = ITEMS.register("titanium_sword",

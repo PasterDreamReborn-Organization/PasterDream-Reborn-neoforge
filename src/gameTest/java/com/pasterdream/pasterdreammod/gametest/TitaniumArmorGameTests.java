@@ -12,6 +12,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -22,6 +23,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SmithingRecipeInput;
 import net.minecraft.world.level.GameType;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.gametest.GameTestHolder;
@@ -115,5 +117,69 @@ public class TitaniumArmorGameTests {
                     && result.getHoverName().getString().equals("记忆护甲"), "升级应保留名称并修复损伤");
         }
         helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void armorMaterialRecipes(GameTestHelper helper) {
+        var string = new ItemStack(Items.STRING);
+        var spool = ModItems.SPOOL.toStack();
+        var fabric = ModItems.FABRIC.toStack();
+        var deck = ModItems.PROTECT_DECK.toStack();
+        checkCraft(helper, CraftingInput.of(3, 3, List.of(ItemStack.EMPTY, string, ItemStack.EMPTY,
+                string, new ItemStack(Items.STICK), string, ItemStack.EMPTY, string, ItemStack.EMPTY)),
+                "spool", ModItems.SPOOL.get());
+        checkCraft(helper, CraftingInput.of(3, 1, List.of(new ItemStack(Items.WHITE_WOOL),
+                ModItems.COTTON.toStack(), spool)), "fabric", ModItems.FABRIC.get());
+        checkCraft(helper, CraftingInput.of(2, 2, List.of(new ItemStack(Items.IRON_INGOT),
+                new ItemStack(Items.IRON_INGOT), new ItemStack(Items.LEATHER), fabric)),
+                "protect_deck", ModItems.PROTECT_DECK.get());
+        var withoutCotton = CraftingInput.of(2, 1, List.of(new ItemStack(Items.WHITE_WOOL), spool));
+        helper.assertTrue(helper.getLevel().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, withoutCotton,
+                helper.getLevel()).isEmpty(), "无棉花时不可合成布料");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void armorDeckAndSmithingRecipes(GameTestHelper helper) {
+        var ingot = ModItems.TITANIUM_INGOT.toStack();
+        var deck = ModItems.PROTECT_DECK.toStack();
+        var empty = ItemStack.EMPTY;
+        checkCraft(helper, CraftingInput.of(3, 2, List.of(ingot, deck, ingot, ingot, empty, ingot)),
+                "titanium_helmet_from_protect_deck", ModItems.TITANIUM_HELMET.get());
+        checkCraft(helper, CraftingInput.of(3, 3, List.of(deck, empty, deck,
+                ingot, ingot, ingot, deck, ingot, deck)),
+                "titanium_chestplate_from_protect_deck", ModItems.TITANIUM_CHESTPLATE.get());
+        checkCraft(helper, CraftingInput.of(3, 3, List.of(ingot, deck, ingot,
+                ingot, empty, ingot, deck, empty, deck)),
+                "titanium_leggings_from_protect_deck", ModItems.TITANIUM_LEGGINGS.get());
+        // 来源 ID 含 protect_deck，但配方只有 4 个钛金锭。
+        checkCraft(helper, CraftingInput.of(3, 2, List.of(ingot, empty, ingot, ingot, empty, ingot)),
+                "titanium_boots_from_protect_deck", ModItems.TITANIUM_BOOTS.get());
+
+        var bases = List.of(Items.DIAMOND_HELMET, Items.DIAMOND_CHESTPLATE, Items.DIAMOND_LEGGINGS, Items.DIAMOND_BOOTS);
+        for (int i = 0; i < armor().size(); i++) {
+            var base = new ItemStack(bases.get(i));
+            base.set(DataComponents.CUSTOM_NAME, net.minecraft.network.chat.Component.literal("旧护甲"));
+            base.setDamageValue(73);
+            var input = new SmithingRecipeInput(deck, base, ModItems.TITANIUM_UPGRADE.toStack());
+            var recipe = helper.getLevel().getRecipeManager().getRecipeFor(RecipeType.SMITHING, input,
+                    helper.getLevel()).orElseThrow();
+            var id = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                    BuiltInRegistries.ITEM.getKey(armor().get(i)).getPath() + "_smithing");
+            helper.assertTrue(recipe.id().equals(id), "锻造配方 ID 不符");
+            var result = recipe.value().assemble(input, helper.getLevel().registryAccess());
+            helper.assertTrue(result.is(armor().get(i)) && result.getDamageValue() == 73
+                    && result.getHoverName().getString().equals("旧护甲"), "锻造升级应保留组件和损伤");
+        }
+        helper.succeed();
+    }
+
+    private static void checkCraft(GameTestHelper helper, CraftingInput input, String path, Item expected) {
+        var recipe = helper.getLevel().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, input,
+                helper.getLevel()).orElseThrow();
+        helper.assertTrue(recipe.id().equals(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, path)),
+                "工作台配方 ID 不符: " + path);
+        var result = recipe.value().assemble(input, helper.getLevel().registryAccess());
+        helper.assertTrue(result.is(expected) && result.getCount() == 1, "工作台配方产物不符: " + path);
     }
 }
