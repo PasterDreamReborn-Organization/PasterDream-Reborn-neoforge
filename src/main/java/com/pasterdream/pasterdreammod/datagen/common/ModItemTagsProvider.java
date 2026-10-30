@@ -24,6 +24,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider lookup) {
+        copy(ModBlockTags.ORES_DYEDREAM_QUARTZ, ModItemTags.ORES_DYEDREAM_QUARTZ);
+        copy(ModBlockTags.ORES_DYEDREAM_DUST, ModItemTags.ORES_DYEDREAM_DUST);
+        copy(ModBlockTags.ORES_IN_GROUND_CALCITE, ModItemTags.ORES_IN_GROUND_CALCITE);
+        copy(ModBlockTags.ORE_RATES_DENSE, ModItemTags.ORE_RATES_DENSE);
         tag(ItemTags.SWORDS).add(ModItems.TITANIUM_SWORD.get());
         tag(ItemTags.PICKAXES).add(ModItems.TITANIUM_PICKAXE.get());
         tag(ItemTags.AXES).add(ModItems.TITANIUM_AXE.get());

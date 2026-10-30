@@ -21,6 +21,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_SHOVEL.get(), "钛金锹");
         add(ModItems.TITANIUM_HOE.get(), "钛金锄");
         add("itemGroup.pasterdream.pasterdream_gear_tab", "帕斯特之梦 | 装备");
+        add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "染梦石英矿石");
+        add(ModBlocks.DYEDREAM_DUST_ORE.get(), "染梦粉尘矿石");
         add(ModBlocks.TITANIUM_ORE.get(), "钛矿石");
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "深层钛矿石");
         add(ModBlocks.RAW_TITANIUM_BLOCK.get(), "粗钛金块");

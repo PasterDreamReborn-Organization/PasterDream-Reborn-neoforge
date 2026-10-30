@@ -7,6 +7,10 @@ import net.minecraft.world.level.block.Block;
 
 /** 跨模组材料分类使用 NeoForge 的 c 命名空间。 */
 public final class ModBlockTags {
+    public static final TagKey<Block> ORES_DYEDREAM_QUARTZ = common("ores/dyedream_quartz");
+    public static final TagKey<Block> ORES_DYEDREAM_DUST = common("ores/dyedream_dust");
+    public static final TagKey<Block> ORES_IN_GROUND_CALCITE = common("ores_in_ground/calcite");
+    public static final TagKey<Block> ORE_RATES_DENSE = common("ore_rates/dense");
     public static final TagKey<Block> ORES_TITANIUM = common("ores/titanium");
     public static final TagKey<Block> STORAGE_BLOCKS_TITANIUM = common("storage_blocks/titanium");
     public static final TagKey<Block> STORAGE_BLOCKS_RAW_TITANIUM = common("storage_blocks/raw_titanium");
