@@ -31,6 +31,7 @@ public class ModRecipesProvider extends RecipeProvider {
         quartzRecipes(output);
         blackStickRecipes(output);
         materialRecipes(output);
+        pinkSlimeRecipes(output);
         titaniumUpgradeRecipe(output);
         titaniumToolRecipes(output);
         titaniumArmorRecipes(output);
@@ -51,6 +52,12 @@ public class ModRecipesProvider extends RecipeProvider {
         RecipeHelpers.storageDecompress(output, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_NUGGET.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageCompress(output, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(output, ModItems.MOLTEN_GOLD_BLOCK.get(), ModItems.MOLTEN_GOLD_INGOT.get(), PasterDreamMod.MOD_ID);
+    }
+
+    // ===== 粉色粘液配方 =====
+    private void pinkSlimeRecipes(RecipeOutput pWriter) {
+        RecipeHelpers.storageCompress(pWriter, ModItems.PINK_SLIMEBALL.get(), ModItems.PINK_SLIME_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.PINK_SLIME_BLOCK.get(), ModItems.PINK_SLIMEBALL.get(), PasterDreamMod.MOD_ID);
     }
 
     private void dustRecipes(RecipeOutput pWriter) {

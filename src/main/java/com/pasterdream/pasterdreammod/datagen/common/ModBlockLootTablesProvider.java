@@ -39,6 +39,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());
         add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get()));
         dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
+        dropSelf(ModBlocks.PINK_SLIME_BLOCK.get());
         add(ModBlocks.TITANIUM_ORE.get(), block -> createOreDrop(block, ModItems.RAW_TITANIUM.get()));
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), block -> createOreDrop(block, ModItems.RAW_TITANIUM.get()));
         dropSelf(ModBlocks.RAW_TITANIUM_BLOCK.get());

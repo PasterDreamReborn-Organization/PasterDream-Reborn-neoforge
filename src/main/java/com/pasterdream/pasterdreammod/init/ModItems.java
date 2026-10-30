@@ -41,6 +41,7 @@ public class ModItems {
     public static final DeferredItem<Item> DYEDREAM_DYE = ITEMS.registerSimpleItem("dyedream_dye");
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_ORE);
     public static final DeferredItem<BlockItem> DYEDREAM_DUST_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DUST_ORE);
+    public static final DeferredItem<BlockItem> PINK_SLIME_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_SLIME_BLOCK);
 
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK);
     public static final DeferredItem<BlockItem> SMOOTH_DYEDREAM_QUARTZ_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK);

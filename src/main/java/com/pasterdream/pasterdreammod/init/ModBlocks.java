@@ -2,6 +2,8 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.util.ColorRGBA;
+import net.minecraft.world.level.block.ColoredFallingBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -48,6 +50,7 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
                     .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
                     .strength(6f, 3f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> PINK_SLIME_BLOCK = BLOCKS.register("pink_slime_block", () -> new ColoredFallingBlock(new ColorRGBA(0xFF000000 | MapColor.COLOR_PINK.col), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.SLIME_BLOCK).strength(0.2f, 0.1f).friction(0.7f).speedFactor(0.9f).jumpFactor(0.7f).noOcclusion()));
 
     // ===== 染梦石英建材系列 =====
     public static final DeferredBlock<Block> DYEDREAM_QUARTZ_BLOCK = BLOCKS.register("dyedream_quartz_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(0.8f)));

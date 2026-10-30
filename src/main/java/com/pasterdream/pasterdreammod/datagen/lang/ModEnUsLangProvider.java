@@ -44,6 +44,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_gear_tab", "Paster Dream | Gear");
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "Dyedream Quartz Ore");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "Dyedream Dust Ore");
+        add(ModBlocks.PINK_SLIME_BLOCK.get(), "Pink Slime Block");
         add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get(), "Dyedream Quartz Block");
         add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get(), "Smooth Dyedream Quartz Block");
         add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get(), "Dyedream Quartz Bricks");
