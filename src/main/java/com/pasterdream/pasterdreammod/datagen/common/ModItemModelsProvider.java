@@ -56,6 +56,12 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.PINK_SLIMEBALL.get());
         basicItem(ModItems.DYEDREAM_DYE.get());
         wallItem(ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.getId().getPath(), ModItems.DYEDREAM_QUARTZ_BLOCK.getId().getPath());
+        withExistingParent(ModItems.SMALL_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/small_dyedream_bud"));
+        withExistingParent(ModItems.MEDIUM_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/medium_dyedream_bud"));
+        withExistingParent(ModItems.LARGE_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/large_dyedream_bud"));
     }
 
     private void wallItem(String wall, String base) {

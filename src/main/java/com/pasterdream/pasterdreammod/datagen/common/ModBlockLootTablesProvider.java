@@ -40,6 +40,21 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get()));
         dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
         dropSelf(ModBlocks.PINK_SLIME_BLOCK.get());
+        add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), block -> createSilkTouchOnlyTable(block));
+        add(ModBlocks.SMALL_DYEDREAM_BUD.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_BUD_NUGGET.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
+        add(ModBlocks.MEDIUM_DYEDREAM_BUD.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_BUD_NUGGET.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))));
+        add(ModBlocks.LARGE_DYEDREAM_BUD.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_BUD_NUGGET.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))))));
+        dropSelf(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
+        dropSelf(ModBlocks.DYEDREAM_BUD_BLOCK.get());
         add(ModBlocks.TITANIUM_ORE.get(), block -> createOreDrop(block, ModItems.RAW_TITANIUM.get()));
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), block -> createOreDrop(block, ModItems.RAW_TITANIUM.get()));
         dropSelf(ModBlocks.RAW_TITANIUM_BLOCK.get());

@@ -33,6 +33,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModBlockTags.STORAGE_BLOCKS_RAW_TITANIUM, ModItemTags.STORAGE_BLOCKS_RAW_TITANIUM);
         copy(ModBlockTags.ORES_MOLTEN_GOLD, ModItemTags.ORES_MOLTEN_GOLD);
         copy(ModBlockTags.STORAGE_BLOCKS_MOLTEN_GOLD, ModItemTags.STORAGE_BLOCKS_MOLTEN_GOLD);
+        copy(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_ALLOY, ModItemTags.STORAGE_BLOCKS_DYEDREAM_ALLOY);
+        copy(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_BUD, ModItemTags.STORAGE_BLOCKS_DYEDREAM_BUD);
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
 

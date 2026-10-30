@@ -31,6 +31,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get())
+                .add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
+                .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
+                .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
+                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
                 .add(ModBlocks.TITANIUM_ORE.get())
                 .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
                 .add(ModBlocks.RAW_TITANIUM_BLOCK.get())
@@ -41,25 +47,34 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         // 需要铁工具挖掘
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
+                .add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
+                .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
+                .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
                 .add(ModBlocks.TITANIUM_ORE.get())
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get())
                 .add(ModBlocks.MOLTEN_GOLD_BLOCK.get());
 
         // 需要钻石工具挖掘
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
                 .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
                 .add(ModBlocks.RAW_TITANIUM_BLOCK.get())
                 .add(ModBlocks.TITANIUM_BLOCK.get());
 
         // 可作为信标基座
         tag(BlockTags.BEACON_BASE_BLOCKS)
+                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
                 .add(ModBlocks.TITANIUM_BLOCK.get())
                 .add(ModBlocks.MOLTEN_GOLD_BLOCK.get());
 
         tag(Tags.Blocks.STORAGE_BLOCKS)
                 .addTag(ModBlockTags.STORAGE_BLOCKS_TITANIUM)
                 .addTag(ModBlockTags.STORAGE_BLOCKS_RAW_TITANIUM)
-                .addTag(ModBlockTags.STORAGE_BLOCKS_MOLTEN_GOLD);
+                .addTag(ModBlockTags.STORAGE_BLOCKS_MOLTEN_GOLD)
+                .addTag(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_ALLOY)
+                .addTag(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_BUD);
 
         tag(ModBlockTags.STORAGE_BLOCKS_TITANIUM)
                 .add(ModBlocks.TITANIUM_BLOCK.get());
@@ -69,6 +84,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(ModBlockTags.STORAGE_BLOCKS_MOLTEN_GOLD)
                 .add(ModBlocks.MOLTEN_GOLD_BLOCK.get());
+
+        tag(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_ALLOY)
+                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
+
+        tag(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_BUD)
+                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get());
 
         tag(Tags.Blocks.ORES)
                 .addTag(ModBlockTags.ORES_DYEDREAM_QUARTZ)

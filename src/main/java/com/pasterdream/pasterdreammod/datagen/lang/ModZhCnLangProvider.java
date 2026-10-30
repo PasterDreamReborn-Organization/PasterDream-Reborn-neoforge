@@ -53,6 +53,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "染梦石英矿石");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "染梦粉尘矿石");
         add(ModBlocks.PINK_SLIME_BLOCK.get(), "粉色粘液块");
+        add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), "染梦母岩");
+        add(ModBlocks.SMALL_DYEDREAM_BUD.get(), "小型染梦晶芽");
+        add(ModBlocks.MEDIUM_DYEDREAM_BUD.get(), "中型染梦晶芽");
+        add(ModBlocks.LARGE_DYEDREAM_BUD.get(), "大型染梦晶芽");
+        add(ModBlocks.DYEDREAM_BUD_BLOCK.get(), "染梦水晶块");
+        add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), "染梦合金块");
         add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get(), "染梦石英块");
         add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get(), "平滑染梦石英块");
         add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get(), "染梦石英砖");

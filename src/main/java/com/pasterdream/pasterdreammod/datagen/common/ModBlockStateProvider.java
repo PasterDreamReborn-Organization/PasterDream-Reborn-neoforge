@@ -45,6 +45,23 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         wallBlock((WallBlock) ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get(), quartzTex);
         // wall inventory model handled in ModItemModelsProvider
+        // ===== 染梦晶芽与合金块 =====
+        var buddingModel = models().cubeAll(ModBlocks.DYEDREAM_BUDDING_BLOCK.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_BUDDING_BLOCK.get()));
+        simpleBlockWithItem(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), buddingModel);
+
+        var budBlockModel = models().cubeAll(ModBlocks.DYEDREAM_BUD_BLOCK.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_BUD_BLOCK.get()));
+        simpleBlockWithItem(ModBlocks.DYEDREAM_BUD_BLOCK.get(), budBlockModel);
+
+        var smallBud = models().cross(ModBlocks.SMALL_DYEDREAM_BUD.getId().getPath(), blockTexture(ModBlocks.SMALL_DYEDREAM_BUD.get())).renderType("cutout");
+        directionalBlock(ModBlocks.SMALL_DYEDREAM_BUD.get(), smallBud);
+
+        var mediumBud = models().cross(ModBlocks.MEDIUM_DYEDREAM_BUD.getId().getPath(), blockTexture(ModBlocks.MEDIUM_DYEDREAM_BUD.get())).renderType("cutout");
+        directionalBlock(ModBlocks.MEDIUM_DYEDREAM_BUD.get(), mediumBud);
+
+        var largeBud = models().cross(ModBlocks.LARGE_DYEDREAM_BUD.getId().getPath(), blockTexture(ModBlocks.LARGE_DYEDREAM_BUD.get())).renderType("cutout");
+        directionalBlock(ModBlocks.LARGE_DYEDREAM_BUD.get(), largeBud);
+
+        simpleBlockWithItem(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), cubeAll(ModBlocks.DYEDREAM_ALLOY_BLOCK.get()));
         simpleBlockWithItem(ModBlocks.TITANIUM_ORE.get(), cubeAll(ModBlocks.TITANIUM_ORE.get()));
         simpleBlockWithItem(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), cubeAll(ModBlocks.DEEPSLATE_TITANIUM_ORE.get()));
         simpleBlockWithItem(ModBlocks.RAW_TITANIUM_BLOCK.get(), cubeAll(ModBlocks.RAW_TITANIUM_BLOCK.get()));

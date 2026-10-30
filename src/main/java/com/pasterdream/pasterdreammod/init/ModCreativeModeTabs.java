@@ -61,7 +61,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());
                         output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_SLAB.get());
                         output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.get());
+                        output.accept(ModItems.DYEDREAM_ALLOY_BLOCK.get());
                         output.accept(ModItems.PINK_SLIME_BLOCK.get());
+                        output.accept(ModItems.LARGE_DYEDREAM_BUD.get());
+                        output.accept(ModItems.MEDIUM_DYEDREAM_BUD.get());
+                        output.accept(ModItems.SMALL_DYEDREAM_BUD.get());
+                        output.accept(ModItems.DYEDREAM_BUDDING_BLOCK.get());
+                        output.accept(ModItems.DYEDREAM_BUD_BLOCK.get());
                     }).build());
 
     // 来源装备栏图标所需武器尚未迁入，暂用钛金剑。
