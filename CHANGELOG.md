@@ -73,6 +73,11 @@
 
 - `ModBlockTagsProvider` 与 `ModItemTagsProvider` 改用 Forge 1.20.1 来源类的链式标签写法、分组和注释风格；保留 NeoForge `c:` 标签适配与现有标签内容。`runData` 写入 0 个资源文件，`build` 通过。
 
+### 批次 010：钛金护甲与效果保护（2026-10-30）
+
+- 迁入四件钛金护甲、套装效果和效果移除保护，适配 1.21 的护甲材质注册、玩家护甲槽与 NeoForge 效果施加事件；补齐四条保留组件的钻石护甲升级配方。
+- 补齐模型、标签、中英文名称和提示、创造栏及 7 张原样来源纹理。`runData`、`build` 和 23/23 GameTest 通过；护甲板直合/锻造分支仍待布料链，客户端穿戴视觉与多人行为待验证。
+
 ### 基础骨架已完成
 
 - **环境与元数据**：依赖 jar 放入 `libs/`、`gradle.properties`、`neoforge.mods.toml` 依赖声明

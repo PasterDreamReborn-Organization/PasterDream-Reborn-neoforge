@@ -67,6 +67,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_AXE.get());
                         output.accept(ModItems.TITANIUM_SHOVEL.get());
                         output.accept(ModItems.TITANIUM_HOE.get());
+                        // 钛金装备
+                        output.accept(ModItems.TITANIUM_HELMET.get());
+                        output.accept(ModItems.TITANIUM_CHESTPLATE.get());
+                        output.accept(ModItems.TITANIUM_LEGGINGS.get());
+                        output.accept(ModItems.TITANIUM_BOOTS.get());
                         // 炙焰金工具
                         output.accept(ModItems.MOLTEN_GOLD_SWORD.get());
                         output.accept(ModItems.MOLTEN_GOLD_PICKAXE.get());

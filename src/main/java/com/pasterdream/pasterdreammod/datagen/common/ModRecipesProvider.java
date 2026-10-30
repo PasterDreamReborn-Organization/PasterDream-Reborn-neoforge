@@ -31,6 +31,7 @@ public class ModRecipesProvider extends RecipeProvider {
         blackStickRecipes(output);
         titaniumUpgradeRecipe(output);
         titaniumToolRecipes(output);
+        titaniumArmorRecipes(output);
         moltenGoldToolRecipes(output);
         titaniumCooking(output, ModItems.TITANIUM_ORE.get(), "titanium_ore_");
         titaniumCooking(output, ModItems.DEEPSLATE_TITANIUM_ORE.get(), "deepslate_titanium_ore_");
@@ -272,6 +273,35 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('d', ModItems.BLACK_STICK.get())
                 .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
                 .save(pWriter);
+    }
+
+    // ===== 钛金装备配方 =====
+    private void titaniumArmorRecipes(RecipeOutput pWriter) {
+        // 工作台升级：钻石装备 + 2钛金锭 + 黑石棍 → 钛金装备（保留附魔）
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_HELMET.get())
+                .requires(Items.DIAMOND_HELMET)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_helmet_crafting");
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_CHESTPLATE.get())
+                .requires(Items.DIAMOND_CHESTPLATE)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_chestplate_crafting");
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_LEGGINGS.get())
+                .requires(Items.DIAMOND_LEGGINGS)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_leggings_crafting");
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_BOOTS.get())
+                .requires(Items.DIAMOND_BOOTS)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_boots_crafting");
     }
 
     private void saveNbtPreserving(ShapelessRecipeBuilder builder, RecipeOutput output, String name) {
