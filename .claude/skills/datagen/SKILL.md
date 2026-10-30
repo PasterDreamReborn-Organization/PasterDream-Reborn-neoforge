@@ -5,7 +5,7 @@ description: 数据生成器（runData）。覆盖所有 Provider（方块状态
 
 # 数据生成器（Datagen）
 
-所有 Provider 位于 `datagen/`，入口 `datagen/ModDataGenerator.java`。数据输出到 `src/generated/resources/`（**不可手动编辑**）。完整目录见 `document/rule/program/目录结构组织.md`。
+所有 Provider 位于 `datagen/`，入口 `datagen/ModDataGenerator.java`。数据输出到 `src/generated/resources/`（不纳入版本控制，**不可手动编辑**）。完整目录见 `document/rule/program/目录结构组织.md`。
 
 ---
 

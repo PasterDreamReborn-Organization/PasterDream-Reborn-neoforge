@@ -29,11 +29,11 @@ jobs:
       - name: Generate data
         run: ./gradlew runData
 
-      - name: Check generated resources are current
+      - name: Check generated resources exist
         shell: bash
         run: |
-          git diff --exit-code -- src/generated/resources
-          test -z "$(git ls-files --others --exclude-standard -- src/generated/resources)"
+          test -s src/generated/resources/assets/pasterdream/lang/zh_cn.json
+          test -s src/generated/resources/data/pasterdream/recipe/titanium_upgrade.json
 
       - name: Build and run server GameTests
         run: ./gradlew build runGameTestServer
