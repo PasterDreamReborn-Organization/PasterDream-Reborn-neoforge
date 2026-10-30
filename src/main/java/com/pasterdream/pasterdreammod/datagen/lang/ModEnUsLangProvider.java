@@ -21,6 +21,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_SHOVEL.get(), "Titanium Shovel");
         add(ModItems.TITANIUM_HOE.get(), "Titanium Hoe");
         add("itemGroup.pasterdream.pasterdream_gear_tab", "Paster Dream | Gear");
+        add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "Dyedream Quartz Ore");
+        add(ModBlocks.DYEDREAM_DUST_ORE.get(), "Dyedream Dust Ore");
         add(ModBlocks.TITANIUM_ORE.get(), "Titanium Ore");
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "Deepslate Titanium Ore");
         add(ModBlocks.RAW_TITANIUM_BLOCK.get(), "Raw Titanium Block");

@@ -37,6 +37,8 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_blocks_tab"))
                     .icon(() -> ModItems.TITANIUM_ORE.toStack())
                     .displayItems((parameters, output) -> {
+                        output.accept(ModItems.DYEDREAM_QUARTZ_ORE.get());
+                        output.accept(ModItems.DYEDREAM_DUST_ORE.get());
                         output.accept(ModItems.TITANIUM_ORE.get());
                         output.accept(ModItems.DEEPSLATE_TITANIUM_ORE.get());
                         output.accept(ModItems.MOLTEN_GOLD_ORE.get());

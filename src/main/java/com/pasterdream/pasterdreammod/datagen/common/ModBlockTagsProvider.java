@@ -20,6 +20,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider lookup) {
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), ModBlocks.DYEDREAM_DUST_ORE.get());
+        tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.DYEDREAM_DUST_ORE.get());
+        tag(ModBlockTags.ORES_DYEDREAM_QUARTZ).add(ModBlocks.DYEDREAM_QUARTZ_ORE.get());
+        tag(ModBlockTags.ORES_DYEDREAM_DUST).add(ModBlocks.DYEDREAM_DUST_ORE.get());
+        tag(ModBlockTags.ORES_IN_GROUND_CALCITE).add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), ModBlocks.DYEDREAM_DUST_ORE.get());
+        tag(ModBlockTags.ORE_RATES_DENSE).add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), ModBlocks.DYEDREAM_DUST_ORE.get());
+        tag(Tags.Blocks.ORES).addTag(ModBlockTags.ORES_DYEDREAM_QUARTZ).addTag(ModBlockTags.ORES_DYEDREAM_DUST);
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.TITANIUM_ORE.get(),
                 ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), ModBlocks.RAW_TITANIUM_BLOCK.get(), ModBlocks.TITANIUM_BLOCK.get());
         // 来源普通钛矿要求铁镐；深层矿与储存块要求钻石镐，保留该差异。

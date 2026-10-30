@@ -37,6 +37,14 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD)
                     .sound(SoundType.METAL).strength(7f, 4f).requiresCorrectToolForDrops()));
 
+    public static final DeferredBlock<Block> DYEDREAM_QUARTZ_ORE = BLOCKS.register("dyedream_quartz_ore",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(3f)));
+    public static final DeferredBlock<Block> DYEDREAM_DUST_ORE = BLOCKS.register("dyedream_dust_ore",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(6f, 3f).requiresCorrectToolForDrops()));
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }
