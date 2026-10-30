@@ -13,6 +13,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.COTTON.get(), "棉花");
+        add(ModItems.SPOOL.get(), "线轴");
+        add(ModItems.FABRIC.get(), "纺织布料");
+        add(ModItems.PROTECT_DECK.get(), "护甲板");
         add(ModItems.BLACK_STICK.get(), "黑石棍");
         add(ModItems.TITANIUM_UPGRADE.get(), "钛金升级套件");
         add(ModItems.TITANIUM_SWORD.get(), "钛金剑");
@@ -20,6 +24,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_AXE.get(), "钛金斧");
         add(ModItems.TITANIUM_SHOVEL.get(), "钛金锹");
         add(ModItems.TITANIUM_HOE.get(), "钛金锄");
+        add(ModItems.TITANIUM_HELMET.get(), "钛金头盔");
+        add(ModItems.TITANIUM_CHESTPLATE.get(), "钛金胸甲");
+        add(ModItems.TITANIUM_LEGGINGS.get(), "钛金护腿");
+        add(ModItems.TITANIUM_BOOTS.get(), "钛金靴子");
+        add("effect.pasterdream.titanium_armor", "钛金守护");
+        add("tooltip.pasterdreammod.titanium_armor.1", "§7套装效果：§e钛金守护");
+        add("tooltip.pasterdreammod.titanium_armor.2", "§7▪ §9每 30 秒获得 2 颗吸收之♡");
         add(ModItems.MOLTEN_GOLD_SWORD.get(), "炙焰金剑");
         add(ModItems.MOLTEN_GOLD_PICKAXE.get(), "炙焰金镐");
         add(ModItems.MOLTEN_GOLD_AXE.get(), "炙焰金斧");

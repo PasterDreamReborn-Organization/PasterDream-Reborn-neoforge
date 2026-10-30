@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod;
 
 import com.mojang.logging.LogUtils;
 import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
+import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
 import com.pasterdream.pasterdreammod.init.ModAttachments;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
@@ -30,6 +31,7 @@ import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.init.ModShadowDungeonStructureSet;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.init.ModTreeDecoratorTypes;
+import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -55,6 +57,7 @@ public class PasterDreamMod {
         // ---- 注册中心 ----
         ModBlocks.register(modEventBus);           // 方块
         ModItems.register(modEventBus);            // 物品
+        ModArmorMaterials.register(modEventBus);    // 护甲材质
         ModCreativeModeTabs.register(modEventBus); // 创造模式物品栏
         ModBlockEntities.register(modEventBus);    // 方块实体
         ModEntities.register(modEventBus);         // 实体
@@ -77,6 +80,7 @@ public class PasterDreamMod {
 
         // ---- 游戏总线监听（本类自己订阅的事件）----
         NeoForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.addListener(AddToolTip::addTooltip);
 
         // ---- 静态初始化（不走 DeferredRegister）----
         ModGameRules.init();        // gamerule

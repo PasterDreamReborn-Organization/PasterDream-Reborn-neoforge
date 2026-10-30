@@ -30,6 +30,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
                         output.accept(ModItems.BLACK_STICK.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
+                        output.accept(ModItems.PROTECT_DECK.get());
+                        output.accept(ModItems.COTTON.get());
+                        output.accept(ModItems.SPOOL.get());
+                        output.accept(ModItems.FABRIC.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_BLOCKS_TAB =
@@ -67,6 +71,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_AXE.get());
                         output.accept(ModItems.TITANIUM_SHOVEL.get());
                         output.accept(ModItems.TITANIUM_HOE.get());
+                        // 钛金装备
+                        output.accept(ModItems.TITANIUM_HELMET.get());
+                        output.accept(ModItems.TITANIUM_CHESTPLATE.get());
+                        output.accept(ModItems.TITANIUM_LEGGINGS.get());
+                        output.accept(ModItems.TITANIUM_BOOTS.get());
                         // 炙焰金工具
                         output.accept(ModItems.MOLTEN_GOLD_SWORD.get());
                         output.accept(ModItems.MOLTEN_GOLD_PICKAXE.get());

@@ -80,4 +80,4 @@ description: 数据生成器（runData）。覆盖所有 Provider（方块状态
 - 运行目录为 `build/run-data`；生成资源仍写入 `src/generated/resources`。缓存不得入包。
 - `runData` 后运行 `build` 与适用的 `runGameTestServer`；源码与 JSON 可编译不能替代实际数据包加载检查。
 - 批次 004 的 `ModRecipesProvider.saveNbtPreserving` 使用 `RecipeOutput` 包装原版无序 Builder 的配方对象，替换为 `NbtPreservingShapelessRecipe` 并转发 advancement / conditions；不能沿用 1.20 `FinishedRecipe` 或后处理生成 JSON。
-- 当前 `nbt_preserving_shapeless` 仅用于无容器钛金工具升级；新增容器配方前先迁移配平链路。有序保留配方尚未实现。
+- 当前 `nbt_preserving_shapeless` 用于无容器钛金工具和护甲的钻石装备工作台升级；新增容器配方前先迁移配平链路。有序保留配方尚未实现。

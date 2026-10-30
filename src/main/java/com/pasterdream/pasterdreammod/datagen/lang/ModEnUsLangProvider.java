@@ -13,6 +13,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.COTTON.get(), "Cotton");
+        add(ModItems.SPOOL.get(), "Spool");
+        add(ModItems.FABRIC.get(), "Fabric");
+        add(ModItems.PROTECT_DECK.get(), "Protect Deck");
         add(ModItems.BLACK_STICK.get(), "Black Stick");
         add(ModItems.TITANIUM_UPGRADE.get(), "Titanium Upgrade");
         add(ModItems.TITANIUM_SWORD.get(), "Titanium Sword");
@@ -20,6 +24,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_AXE.get(), "Titanium Axe");
         add(ModItems.TITANIUM_SHOVEL.get(), "Titanium Shovel");
         add(ModItems.TITANIUM_HOE.get(), "Titanium Hoe");
+        add(ModItems.TITANIUM_HELMET.get(), "Titanium Helmet");
+        add(ModItems.TITANIUM_CHESTPLATE.get(), "Titanium Chestplate");
+        add(ModItems.TITANIUM_LEGGINGS.get(), "Titanium Leggings");
+        add(ModItems.TITANIUM_BOOTS.get(), "Titanium Boots");
+        add("effect.pasterdream.titanium_armor", "Titanium Protection");
+        add("tooltip.pasterdreammod.titanium_armor.1", "§7Set Bonus: §eTitanium Protection");
+        add("tooltip.pasterdreammod.titanium_armor.2", "§7▪ §9Gain 2 Absorption hearts every 30s");
         add(ModItems.MOLTEN_GOLD_SWORD.get(), "Molten Gold Sword");
         add(ModItems.MOLTEN_GOLD_PICKAXE.get(), "Molten Gold Pickaxe");
         add(ModItems.MOLTEN_GOLD_AXE.get(), "Molten Gold Axe");
