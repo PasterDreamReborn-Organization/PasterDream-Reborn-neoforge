@@ -39,19 +39,24 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         // 工具标签
         tag(ItemTags.SWORDS)
                 .add(ModItems.TITANIUM_SWORD.get())
-                .add(ModItems.MOLTEN_GOLD_SWORD.get());
+                .add(ModItems.MOLTEN_GOLD_SWORD.get())
+                .add(ModItems.DYEDREAM_SWORD.get());
         tag(ItemTags.PICKAXES)
                 .add(ModItems.TITANIUM_PICKAXE.get())
-                .add(ModItems.MOLTEN_GOLD_PICKAXE.get());
+                .add(ModItems.MOLTEN_GOLD_PICKAXE.get())
+                .add(ModItems.DYEDREAM_PICKAXE.get());
         tag(ItemTags.AXES)
                 .add(ModItems.TITANIUM_AXE.get())
-                .add(ModItems.MOLTEN_GOLD_AXE.get());
+                .add(ModItems.MOLTEN_GOLD_AXE.get())
+                .add(ModItems.DYEDREAM_AXE.get());
         tag(ItemTags.SHOVELS)
                 .add(ModItems.TITANIUM_SHOVEL.get())
-                .add(ModItems.MOLTEN_GOLD_SHOVEL.get());
+                .add(ModItems.MOLTEN_GOLD_SHOVEL.get())
+                .add(ModItems.DYEDREAM_SHOVEL.get());
         tag(ItemTags.HOES)
                 .add(ModItems.TITANIUM_HOE.get())
-                .add(ModItems.MOLTEN_GOLD_HOE.get());
+                .add(ModItems.MOLTEN_GOLD_HOE.get())
+                .add(ModItems.DYEDREAM_HOE.get());
         tag(ItemTags.HEAD_ARMOR).add(ModItems.TITANIUM_HELMET.get());
         tag(ItemTags.CHEST_ARMOR).add(ModItems.TITANIUM_CHESTPLATE.get());
         tag(ItemTags.LEG_ARMOR).add(ModItems.TITANIUM_LEGGINGS.get());
@@ -60,18 +65,30 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         // 金属锭标签
         tag(ModItemTags.INGOTS_TITANIUM)
                 .add(ModItems.TITANIUM_INGOT.get());
+        tag(ModItemTags.INGOTS_RAW_DYEDREAM_ALLOY)
+                .add(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get());
+        tag(ModItemTags.INGOTS_DYEDREAM_ALLOY)
+                .add(ModItems.DYEDREAM_ALLOY_INGOT.get());
         tag(Tags.Items.INGOTS)
                 .addTag(ModItemTags.INGOTS_TITANIUM)
-                .addTag(ModItemTags.INGOTS_MOLTEN_GOLD);
+                .addTag(ModItemTags.INGOTS_MOLTEN_GOLD)
+                .addTag(ModItemTags.INGOTS_RAW_DYEDREAM_ALLOY)
+                .addTag(ModItemTags.INGOTS_DYEDREAM_ALLOY);
         tag(ModItemTags.INGOTS_MOLTEN_GOLD)
                 .add(ModItems.MOLTEN_GOLD_INGOT.get());
 
         // 金属粒标签
         tag(ModItemTags.NUGGETS_TITANIUM)
                 .add(ModItems.TITANIUM_NUGGET.get());
+        tag(ModItemTags.NUGGETS_DYEDREAM_ALLOY)
+                .add(ModItems.DYEDREAM_ALLOY_NUGGET.get());
+        tag(ModItemTags.NUGGETS_DYEDREAM_BUD)
+                .add(ModItems.DYEDREAM_BUD_NUGGET.get());
         tag(Tags.Items.NUGGETS)
                 .addTag(ModItemTags.NUGGETS_TITANIUM)
-                .addTag(ModItemTags.NUGGETS_MOLTEN_GOLD);
+                .addTag(ModItemTags.NUGGETS_MOLTEN_GOLD)
+                .addTag(ModItemTags.NUGGETS_DYEDREAM_ALLOY)
+                .addTag(ModItemTags.NUGGETS_DYEDREAM_BUD);
         tag(ModItemTags.NUGGETS_MOLTEN_GOLD)
                 .add(ModItems.MOLTEN_GOLD_NUGGET.get());
 

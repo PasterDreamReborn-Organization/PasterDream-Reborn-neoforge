@@ -35,6 +35,9 @@ public class ModRecipesProvider extends RecipeProvider {
         titaniumUpgradeRecipe(output);
         titaniumToolRecipes(output);
         titaniumArmorRecipes(output);
+        dyedreamUpgradeRecipe(output);
+        dyedreamToolRecipes(output);
+        alloyRecipes(output);
         moltenGoldToolRecipes(output);
         titaniumCooking(output, ModItems.TITANIUM_ORE.get(), "titanium_ore_");
         titaniumCooking(output, ModItems.DEEPSLATE_TITANIUM_ORE.get(), "deepslate_titanium_ore_");
@@ -282,6 +285,95 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('d', ModItems.BLACK_STICK.get())
                 .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
                 .save(pWriter);
+    }
+
+    private void dyedreamUpgradeRecipe(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DYEDREAM_UPGRADE.get(), 1)
+                .pattern(" a ")
+                .pattern("bcb")
+                .pattern("dbd")
+                .define('a', Items.IRON_INGOT)
+                .define('b', ModItems.DYEDREAM_ALLOY_INGOT.get())
+                .define('c', ModItems.DYEDREAM_BUD_NUGGET.get())
+                .define('d', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
+                .save(pWriter);
+    }
+
+    // ===== 染梦合金工具配方 =====
+
+    private void dyedreamToolRecipes(RecipeOutput pWriter) {
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_BUD_NUGGET.get()),
+                        Ingredient.of(ModItems.TITANIUM_SWORD.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.DYEDREAM_SWORD.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_sword_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_BUD_NUGGET.get()),
+                        Ingredient.of(ModItems.TITANIUM_PICKAXE.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.DYEDREAM_PICKAXE.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_pickaxe_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_BUD_NUGGET.get()),
+                        Ingredient.of(ModItems.TITANIUM_AXE.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.DYEDREAM_AXE.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_axe_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_BUD_NUGGET.get()),
+                        Ingredient.of(ModItems.TITANIUM_SHOVEL.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.DYEDREAM_SHOVEL.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_shovel_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_BUD_NUGGET.get()),
+                        Ingredient.of(ModItems.TITANIUM_HOE.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.DYEDREAM_HOE.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_hoe_smithing"));
+
+        // 染梦合金锤（工作台合成）
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.DYEDREAM_HAMMER.get())
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern(" b ")
+                .define('a', ModItems.DYEDREAM_ALLOY_INGOT.get())
+                .define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
+                .save(pWriter);
+    }
+
+    // ===== 染梦合金配方 =====
+
+    private void alloyRecipes(RecipeOutput pWriter) {
+        // 染梦合金锭粗胚：钛金锭 + 染梦粉尘 + 4×染梦晶芽粒
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RAW_DYEDREAM_ALLOY_INGOT.get(), 1)
+                .requires(ModItems.TITANIUM_INGOT.get())
+                .requires(ModItems.DYEDREAM_DUST.get())
+                .requires(ModItems.DYEDREAM_BUD_NUGGET.get(), 4)
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter);
+
+        // 染梦合金锭粗胚 → 染梦合金锭（熔炉 + 高炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()),
+                        RecipeCategory.MISC, ModItems.DYEDREAM_ALLOY_INGOT.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()), has(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_alloy_ingot_from_smelting"));
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()),
+                        RecipeCategory.MISC, ModItems.DYEDREAM_ALLOY_INGOT.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()), has(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_alloy_ingot_from_blasting"));
+
+        // 染梦合金锭 ↔ 粒
+        RecipeHelpers.storageCompress(pWriter, ModItems.DYEDREAM_ALLOY_NUGGET.get(), ModItems.DYEDREAM_ALLOY_INGOT.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.DYEDREAM_ALLOY_INGOT.get(), ModItems.DYEDREAM_ALLOY_NUGGET.get(), PasterDreamMod.MOD_ID);
     }
 
     // ===== 材料配方 =====

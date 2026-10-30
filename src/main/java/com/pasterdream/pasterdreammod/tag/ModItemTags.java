@@ -17,6 +17,10 @@ public final class ModItemTags {
     public static final TagKey<Item> INGOTS_TITANIUM = common("ingots/titanium");
     public static final TagKey<Item> NUGGETS_TITANIUM = common("nuggets/titanium");
     public static final TagKey<Item> RAW_MATERIALS_TITANIUM = common("raw_materials/titanium");
+    public static final TagKey<Item> INGOTS_RAW_DYEDREAM_ALLOY = common("ingots/raw_dyedream_alloy");
+    public static final TagKey<Item> INGOTS_DYEDREAM_ALLOY = common("ingots/dyedream_alloy");
+    public static final TagKey<Item> NUGGETS_DYEDREAM_ALLOY = common("nuggets/dyedream_alloy");
+    public static final TagKey<Item> NUGGETS_DYEDREAM_BUD = common("nuggets/dyedream_bud");
     public static final TagKey<Item> ORES_MOLTEN_GOLD = common("ores/molten_gold");
     public static final TagKey<Item> STORAGE_BLOCKS_MOLTEN_GOLD = common("storage_blocks/molten_gold");
     public static final TagKey<Item> INGOTS_MOLTEN_GOLD = common("ingots/molten_gold");
