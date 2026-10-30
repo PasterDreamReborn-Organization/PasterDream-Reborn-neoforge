@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.client.particle.Buff0Particle;
+import com.pasterdream.pasterdreammod.client.particle.SharpSwordSlashParticle;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -19,6 +21,7 @@ public final class ModParticles {
 
     @SubscribeEvent
     public static void register(RegisterParticleProvidersEvent event) {
-        // TODO: event.registerSpriteSet(ModParticleTypes.LEAVES.get(), LeavesParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.SHARP_SWORD_SLASH.get(), SharpSwordSlashParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.BUFF_0_PARTICLE.get(), Buff0Particle.Provider::new);
     }
 }

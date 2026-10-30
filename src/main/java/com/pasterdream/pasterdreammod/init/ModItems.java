@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.world.item.DyedreamHammerItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
 import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
+import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -46,6 +47,7 @@ public class ModItems {
     public static final DeferredItem<Item> DYEDREAM_DUST_PIECE = ITEMS.registerSimpleItem("dyedream_dust_piece");
     public static final DeferredItem<Item> PINK_SLIMEBALL = ITEMS.registerSimpleItem("pink_slimeball");
     public static final DeferredItem<Item> DYEDREAM_DYE = ITEMS.registerSimpleItem("dyedream_dye");
+    public static final DeferredItem<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.registerSimpleItem("melt_dream_crystal_fragment", new Item.Properties().rarity(Rarity.RARE));
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_ORE);
     public static final DeferredItem<BlockItem> DYEDREAM_DUST_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DUST_ORE);
     public static final DeferredItem<BlockItem> PINK_SLIME_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_SLIME_BLOCK);
@@ -111,6 +113,18 @@ public class ModItems {
                     .attributes(DiggerItem.createAttributes(ModToolTiers.DYEDREAM, -3, 0.0f))));
     public static final DeferredItem<Item> DYEDREAM_HAMMER = ITEMS.register("dyedream_hammer",
             () -> new DyedreamHammerItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)));
+
+    // ===== 融梦水晶工具 =====
+    public static final DeferredItem<Item> MELT_DREAM_PICKAXE = ITEMS.register("melt_dream_pickaxe",
+            () -> new MeltDreamPickaxeItem(ModToolTiers.MELT_DREAM, 1, -2.8f, new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final DeferredItem<Item> MELT_DREAM_AXE = ITEMS.register("melt_dream_axe",
+            () -> new MeltDreamAxeItem(ModToolTiers.MELT_DREAM, 5.5f, -3.0f, new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final DeferredItem<Item> MELT_DREAM_SHOVEL = ITEMS.register("melt_dream_shovel",
+            () -> new MeltDreamShovelItem(ModToolTiers.MELT_DREAM, 1.5f, -3.0f, new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final DeferredItem<Item> MELT_DREAM_HOE = ITEMS.register("melt_dream_hoe",
+            () -> new MeltDreamHoeItem(ModToolTiers.MELT_DREAM, -3, 0.5f, new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final DeferredItem<Item> SHARP_MELT_DREAM_SWORD = ITEMS.register("sharp_melt_dream_sword",
+            () -> new SharpMeltDreamSwordItem(ModToolTiers.MELT_DREAM, new Item.Properties().rarity(Rarity.RARE)));
 
     // ===== 炙焰金工具 =====
     public static final DeferredItem<Item> MOLTEN_GOLD_SWORD = ITEMS.register("molten_gold_sword",

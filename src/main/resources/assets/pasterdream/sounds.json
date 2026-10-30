@@ -1,0 +1,18 @@
+{
+  "sword_slash": {
+    "sounds": [
+      {
+        "name": "pasterdream:sword_slash",
+        "stream": false
+      }
+    ]
+  },
+  "skill_hit": {
+    "sounds": [
+      {
+        "name": "pasterdream:skill_hit",
+        "stream": false
+      }
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.client;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -36,7 +37,7 @@ public final class ClientModEvents {
     /** HUD 层（融梦能量 / SAN / 失智 / BOSS 血条 等）。 */
     @SubscribeEvent
     public static void registerGuiLayers(RegisterGuiLayersEvent event) {
-        // TODO: event.registerAboveAll(id("melt_dream_energy"), MeltDreamEnergyTank.LAYER);
+        event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_energy"), MeltDreamEnergyTank::render);
         // TODO: event.registerAboveAll(id("san"), SanTank.LAYER);
     }
 }

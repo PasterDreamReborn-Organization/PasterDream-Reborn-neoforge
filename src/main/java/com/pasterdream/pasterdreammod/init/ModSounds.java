@@ -3,8 +3,10 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 /**
  * 音效事件注册中心。
@@ -16,7 +18,12 @@ public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(Registries.SOUND_EVENT, PasterDreamMod.MOD_ID);
 
-    // TODO: 在此注册音效（SoundEvent.createVariableRangeEvent(...)）
+    public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_SLASH =
+            SOUND_EVENTS.register("sword_slash", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sword_slash")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> SKILL_HIT =
+            SOUND_EVENTS.register("skill_hit", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "skill_hit")));
 
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);

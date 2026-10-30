@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModBluePrintsContentRelation;
 import com.pasterdream.pasterdreammod.init.ModCreativeModeTabs;
+import com.pasterdream.pasterdreammod.init.ModCommands;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModCropRelation;
 import com.pasterdream.pasterdreammod.init.ModDataComponents;
@@ -33,6 +34,7 @@ import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.init.ModTreeDecoratorTypes;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
+import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamAuraHandler;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TieredItem;
@@ -45,6 +47,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import org.slf4j.Logger;
 
 /**
@@ -87,6 +90,8 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.register(this);
         NeoForge.EVENT_BUS.addListener(AddToolTip::addTooltip);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
+        NeoForge.EVENT_BUS.addListener(MeltDreamAuraHandler::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener((RegisterCommandsEvent event) -> ModCommands.register(event.getDispatcher()));
 
         // ---- 静态初始化（不走 DeferredRegister）----
         ModGameRules.init();        // gamerule
@@ -117,10 +122,10 @@ public class PasterDreamMod {
                 && player.hasEffect(ModEffects.DYEDREAM_UP)) {
             ItemStack weapon = player.getMainHandItem();
             if (weapon.getItem() instanceof TieredItem tiered
-                    && tiered.getTier() == ModToolTiers.DYEDREAM) {
+                    && (tiered.getTier() == ModToolTiers.DYEDREAM
+                    || tiered.getTier() == ModToolTiers.MELT_DREAM)) {
                 event.setAmount(event.getAmount() * 1.5f);
             }
-            // TODO: 融梦水晶工具迁入后，将 ModToolTiers.MELT_DREAM 加入上述等级判断，享受同等 +50% 增伤。
         }
     }
 
