@@ -1,0 +1,28 @@
+package com.pasterdream.pasterdreammod.world.item.moltengoldtool;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
+
+import java.util.List;
+
+public class MoltenGoldHoeItem extends HoeItem {
+
+    public MoltenGoldHoeItem(Tier tier, int damage, float speed, Properties properties) {
+        super(tier, properties.fireResistant().attributes(DiggerItem.createAttributes(tier, damage, speed)));
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        return MoltenGoldToolHelper.use(this, level, player, hand);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, context, tooltip, flag);
+        MoltenGoldToolHelper.appendHoverText(stack, context, tooltip, flag);
+    }
+}

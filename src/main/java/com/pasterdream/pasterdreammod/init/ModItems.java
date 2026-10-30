@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
+import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -65,6 +66,18 @@ public class ModItems {
     public static final DeferredItem<HoeItem> TITANIUM_HOE = ITEMS.register("titanium_hoe",
             () -> new HoeItem(ModToolTiers.TITANIUM, new Item.Properties()
                     .attributes(DiggerItem.createAttributes(ModToolTiers.TITANIUM, -3, 0.0f))));
+
+    // ===== 炙焰金工具 =====
+    public static final DeferredItem<Item> MOLTEN_GOLD_SWORD = ITEMS.register("molten_gold_sword",
+            () -> new MoltenGoldSwordItem(ModToolTiers.MOLTEN_GOLD, 3, -2.3f, new Item.Properties()));
+    public static final DeferredItem<Item> MOLTEN_GOLD_PICKAXE = ITEMS.register("molten_gold_pickaxe",
+            () -> new MoltenGoldPickaxeItem(ModToolTiers.MOLTEN_GOLD, 1, -2.7f, new Item.Properties()));
+    public static final DeferredItem<Item> MOLTEN_GOLD_AXE = ITEMS.register("molten_gold_axe",
+            () -> new MoltenGoldAxeItem(ModToolTiers.MOLTEN_GOLD, 6.0f, -3.0f, new Item.Properties()));
+    public static final DeferredItem<Item> MOLTEN_GOLD_SHOVEL = ITEMS.register("molten_gold_shovel",
+            () -> new MoltenGoldShovelItem(ModToolTiers.MOLTEN_GOLD, 1.5f, -2.9f, new Item.Properties()));
+    public static final DeferredItem<Item> MOLTEN_GOLD_HOE = ITEMS.register("molten_gold_hoe",
+            () -> new MoltenGoldHoeItem(ModToolTiers.MOLTEN_GOLD, -2, -0.5f, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

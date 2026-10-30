@@ -20,6 +20,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_AXE.get(), "Titanium Axe");
         add(ModItems.TITANIUM_SHOVEL.get(), "Titanium Shovel");
         add(ModItems.TITANIUM_HOE.get(), "Titanium Hoe");
+        add(ModItems.MOLTEN_GOLD_SWORD.get(), "Molten Gold Sword");
+        add(ModItems.MOLTEN_GOLD_PICKAXE.get(), "Molten Gold Pickaxe");
+        add(ModItems.MOLTEN_GOLD_AXE.get(), "Molten Gold Axe");
+        add(ModItems.MOLTEN_GOLD_SHOVEL.get(), "Molten Gold Shovel");
+        add(ModItems.MOLTEN_GOLD_HOE.get(), "Molten Gold Hoe");
+        add("tooltip.pasterdreammod.molten_gold_sword.1", "Inlaid: §7None");
+        add("tooltip.pasterdreammod.molten_gold_sword.2", "§7▪ §9Sets target on fire for 3 seconds");
+        add("tooltip.pasterdreammod.molten_gold_tool.1", "Inlaid: §7None");
+        add("tooltip.pasterdreammod.molten_gold_tool.2", "§7▪ §9Right-click to consume hunger for Haste");
+        add("tooltip.pasterdreammod.molten_gold_tool.3", "§7▪ §9Cooldown: 10s");
         add("itemGroup.pasterdream.pasterdream_gear_tab", "Paster Dream | Gear");
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "Dyedream Quartz Ore");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "Dyedream Dust Ore");
