@@ -69,6 +69,10 @@
 - 补齐五条来源工作台配方、模型、工具标签、中英文名称与提示、创造栏条目，原样复制五张来源纹理。
 - `runData`、`build` 与 19/19 GameTest 通过；客户端实际视觉及多人交互仍待验证。详细来源与验证边界见迁移批次记录。
 
+### 仓库维护：标签 Provider 与来源风格对齐（2026-10-30）
+
+- `ModBlockTagsProvider` 与 `ModItemTagsProvider` 改用 Forge 1.20.1 来源类的链式标签写法、分组和注释风格；保留 NeoForge `c:` 标签适配与现有标签内容。`runData` 写入 0 个资源文件，`build` 通过。
+
 ### 基础骨架已完成
 
 - **环境与元数据**：依赖 jar 放入 `libs/`、`gradle.properties`、`neoforge.mods.toml` 依赖声明
