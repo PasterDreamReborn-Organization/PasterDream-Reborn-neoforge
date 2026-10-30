@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "pasterdream:block/dyedream_quartz_block",
-    "side": "pasterdream:block/dyedream_quartz_block",
-    "top": "pasterdream:block/dyedream_quartz_block"
-  }
-}
