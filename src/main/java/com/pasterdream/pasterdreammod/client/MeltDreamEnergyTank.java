@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.client;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.init.ModAttachments;
@@ -46,23 +47,29 @@ public class MeltDreamEnergyTank {
 
         int barX = PasterDreamClientConfig.MELT_DREAM_ENERGY_BAR_X.get();
         int barY = guiGraphics.guiHeight() - PasterDreamClientConfig.MELT_DREAM_ENERGY_BAR_Y_FROM_BOTTOM.get();
-        guiGraphics.blit(BAR, barX, barY, 0, 0, BAR_WIDTH, BAR_HEIGHT, BAR_WIDTH, BAR_HEIGHT);
-        int filled = (int) (66 * Math.clamp(value / max, 0, 1));
-        if (filled > 0) guiGraphics.blit(AMOUNT, barX + 3, barY + 4, 0, 0, filled, 4, 66, 4);
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+        try {
+            guiGraphics.blit(BAR, barX, barY, 0, 0, BAR_WIDTH, BAR_HEIGHT, BAR_WIDTH, BAR_HEIGHT);
+            int filled = (int) (66 * Math.clamp(value / max, 0, 1));
+            if (filled > 0) guiGraphics.blit(AMOUNT, barX + 3, barY + 4, 0, 0, filled, 4, 66, 4);
 
-        String format = "%1$." + PasterDreamClientConfig.MELT_DREAM_ENERGY_BAR_DECIMAL_PLACES.get() + "f/%2$.0f";
-        String text = String.format(Locale.ROOT, format, value, max);
-        int textY = PasterDreamClientConfig.MELT_DREAM_ENERGY_BAR_TEXT_CENTERED.get()
-                ? barY + (BAR_HEIGHT - client.font.lineHeight) / 2 : barY - 8;
-        if (client.font.width(text) <= 90) {
-            guiGraphics.drawCenteredString(client.font, text, barX + BAR_WIDTH / 2, textY, 0xFFFFFFFF);
-        } else {
-            guiGraphics.pose().pushPose();
-            guiGraphics.pose().scale(0.5f, 0.5f, 1f);
-            int scaledTextY = PasterDreamClientConfig.MELT_DREAM_ENERGY_BAR_TEXT_CENTERED.get()
-                    ? (barY + 2) * 2 : (barY - 4) * 2;
-            guiGraphics.drawCenteredString(client.font, text, (barX + BAR_WIDTH / 2) * 2, scaledTextY, 0xFFFFFFFF);
-            guiGraphics.pose().popPose();
+            String format = "%1$." + PasterDreamClientConfig.MELT_DREAM_ENERGY_BAR_DECIMAL_PLACES.get() + "f/%2$.0f";
+            String text = String.format(Locale.ROOT, format, value, max);
+            int textY = PasterDreamClientConfig.MELT_DREAM_ENERGY_BAR_TEXT_CENTERED.get()
+                    ? barY + (BAR_HEIGHT - client.font.lineHeight) / 2 : barY - 8;
+            if (client.font.width(text) <= 90) {
+                guiGraphics.drawCenteredString(client.font, text, barX + BAR_WIDTH / 2, textY, 0xFFFFFFFF);
+            } else {
+                guiGraphics.pose().pushPose();
+                guiGraphics.pose().scale(0.5f, 0.5f, 1f);
+                int scaledTextY = PasterDreamClientConfig.MELT_DREAM_ENERGY_BAR_TEXT_CENTERED.get()
+                        ? (barY + 2) * 2 : (barY - 4) * 2;
+                guiGraphics.drawCenteredString(client.font, text, (barX + BAR_WIDTH / 2) * 2, scaledTextY, 0xFFFFFFFF);
+                guiGraphics.pose().popPose();
+            }
+        } finally {
+            RenderSystem.disableBlend();
         }
     }
 }
