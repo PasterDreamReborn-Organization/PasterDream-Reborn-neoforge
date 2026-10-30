@@ -59,10 +59,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.TITANIUM_HOE.get())
                 .add(ModItems.MOLTEN_GOLD_HOE.get())
                 .add(ModItems.DYEDREAM_HOE.get());
-        tag(ItemTags.HEAD_ARMOR).add(ModItems.TITANIUM_HELMET.get());
-        tag(ItemTags.CHEST_ARMOR).add(ModItems.TITANIUM_CHESTPLATE.get());
-        tag(ItemTags.LEG_ARMOR).add(ModItems.TITANIUM_LEGGINGS.get());
-        tag(ItemTags.FOOT_ARMOR).add(ModItems.TITANIUM_BOOTS.get());
+        tag(ItemTags.HEAD_ARMOR).add(ModItems.TITANIUM_HELMET.get()).add(ModItems.DYEDREAM_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR).add(ModItems.TITANIUM_CHESTPLATE.get()).add(ModItems.DYEDREAM_CHESTPLATE.get());
+        tag(ItemTags.LEG_ARMOR).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR).add(ModItems.TITANIUM_BOOTS.get()).add(ModItems.DYEDREAM_BOOTS.get());
 
         // 金属锭标签
         tag(ModItemTags.INGOTS_TITANIUM)

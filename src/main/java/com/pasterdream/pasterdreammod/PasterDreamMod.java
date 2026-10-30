@@ -32,6 +32,10 @@ import com.pasterdream.pasterdreammod.init.ModShadowDungeonStructureSet;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.init.ModTreeDecoratorTypes;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
+import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TieredItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -39,6 +43,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 
@@ -81,6 +86,7 @@ public class PasterDreamMod {
         // ---- 游戏总线监听（本类自己订阅的事件）----
         NeoForge.EVENT_BUS.register(this);
         NeoForge.EVENT_BUS.addListener(AddToolTip::addTooltip);
+        NeoForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
 
         // ---- 静态初始化（不走 DeferredRegister）----
         ModGameRules.init();        // gamerule
@@ -103,6 +109,19 @@ public class PasterDreamMod {
             ModEnhanceStoneAttributeRelation.registerModEnhanceStoneAttributeRelation();
             ModShadowDungeonStructureSet.register();
         });
+    }
+
+    // 染梦工具增强：穿戴染梦(染梦合金或融梦水晶)套装时伤害 +50%
+    public static void onLivingHurt(LivingIncomingDamageEvent event) {
+        if (event.getSource().getEntity() instanceof Player player
+                && player.hasEffect(ModEffects.DYEDREAM_UP)) {
+            ItemStack weapon = player.getMainHandItem();
+            if (weapon.getItem() instanceof TieredItem tiered
+                    && tiered.getTier() == ModToolTiers.DYEDREAM) {
+                event.setAmount(event.getAmount() * 1.5f);
+            }
+            // TODO: 融梦水晶工具迁入后，将 ModToolTiers.MELT_DREAM 加入上述等级判断，享受同等 +50% 增伤。
+        }
     }
 
     @SubscribeEvent

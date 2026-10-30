@@ -39,6 +39,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.titanium_armor", "钛金守护");
         add("tooltip.pasterdreammod.titanium_armor.1", "§7套装效果：§e钛金守护");
         add("tooltip.pasterdreammod.titanium_armor.2", "§7▪ §9每 30 秒获得 2 颗吸收之♡");
+        add(ModItems.DYEDREAM_HELMET.get(), "染梦头盔");
+        add(ModItems.DYEDREAM_CHESTPLATE.get(), "染梦胸甲");
+        add(ModItems.DYEDREAM_LEGGINGS.get(), "染梦护腿");
+        add(ModItems.DYEDREAM_BOOTS.get(), "染梦靴子");
+        add("effect.pasterdream.dyedream_armor", "染梦守护");
+        add("effect.pasterdream.dyedream_up", "染梦工具增强");
+        add("tooltip.pasterdreammod.dyedream_armor.1", "§7套装效果：§d染梦守护");
+        add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9最大生命值+4");
+        add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9每 30 秒获得 4 颗吸收之♡");
+        add("tooltip.pasterdreammod.dyedream_armor.4", "§7▪ §9增强手持的染梦工具");
         add(ModItems.MOLTEN_GOLD_SWORD.get(), "炙焰金剑");
         add(ModItems.MOLTEN_GOLD_PICKAXE.get(), "炙焰金镐");
         add(ModItems.MOLTEN_GOLD_AXE.get(), "炙焰金斧");

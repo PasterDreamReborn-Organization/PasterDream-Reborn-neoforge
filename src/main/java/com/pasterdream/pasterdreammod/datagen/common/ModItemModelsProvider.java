@@ -42,6 +42,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TITANIUM_CHESTPLATE.get());
         basicItem(ModItems.TITANIUM_LEGGINGS.get());
         basicItem(ModItems.TITANIUM_BOOTS.get());
+        basicItem(ModItems.DYEDREAM_HELMET.get());
+        basicItem(ModItems.DYEDREAM_CHESTPLATE.get());
+        basicItem(ModItems.DYEDREAM_LEGGINGS.get());
+        basicItem(ModItems.DYEDREAM_BOOTS.get());
         basicItem(ModItems.MOLTEN_GOLD_INGOT.get());
         basicItem(ModItems.MOLTEN_GOLD_NUGGET.get());
         basicItem(ModItems.RAW_MOLTEN_GOLD.get());

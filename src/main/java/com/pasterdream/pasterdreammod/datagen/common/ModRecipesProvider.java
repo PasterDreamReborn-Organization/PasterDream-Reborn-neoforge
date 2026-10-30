@@ -38,6 +38,7 @@ public class ModRecipesProvider extends RecipeProvider {
         titaniumArmorRecipes(output);
         dyedreamUpgradeRecipe(output);
         dyedreamToolRecipes(output);
+        dyedreamArmorRecipes(output);
         budBuildingRecipes(output);
         alloyRecipes(output);
         moltenGoldToolRecipes(output);
@@ -350,6 +351,68 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('b', ModItems.BLACK_STICK.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
                 .save(pWriter);
+    }
+
+    // ===== 染梦合金装备配方 =====
+
+    private void dyedreamArmorRecipes(RecipeOutput pWriter) {
+        // 工作台合成：染梦合金锭 + 护甲板 → 染梦合金装备
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.DYEDREAM_HELMET.get())
+                .pattern("aba")
+                .pattern("a a")
+                .define('a', ModItems.DYEDREAM_ALLOY_INGOT.get()).define('b', ModItems.PROTECT_DECK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_helmet_from_protect_deck"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.DYEDREAM_CHESTPLATE.get())
+                .pattern("a a")
+                .pattern("bbb")
+                .pattern("aba")
+                .define('a', ModItems.PROTECT_DECK.get()).define('b', ModItems.DYEDREAM_ALLOY_INGOT.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_chestplate_from_protect_deck"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.DYEDREAM_LEGGINGS.get())
+                .pattern("aba")
+                .pattern("a a")
+                .pattern("b b")
+                .define('a', ModItems.DYEDREAM_ALLOY_INGOT.get()).define('b', ModItems.PROTECT_DECK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_leggings_from_protect_deck"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.DYEDREAM_BOOTS.get())
+                .pattern("a a")
+                .pattern("a a")
+                .define('a', ModItems.DYEDREAM_ALLOY_INGOT.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_boots_from_protect_deck"));
+
+        // 锻造台配方：护甲板 + 钛金装备 + 染梦升级套件 → 染梦合金装备
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.PROTECT_DECK.get()),
+                        Ingredient.of(ModItems.TITANIUM_HELMET.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.DYEDREAM_HELMET.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_helmet_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.PROTECT_DECK.get()),
+                        Ingredient.of(ModItems.TITANIUM_CHESTPLATE.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.DYEDREAM_CHESTPLATE.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_chestplate_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.PROTECT_DECK.get()),
+                        Ingredient.of(ModItems.TITANIUM_LEGGINGS.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.DYEDREAM_LEGGINGS.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_leggings_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.PROTECT_DECK.get()),
+                        Ingredient.of(ModItems.TITANIUM_BOOTS.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.DYEDREAM_BOOTS.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_boots_smithing"));
     }
 
     // ===== 染梦合金配方 =====

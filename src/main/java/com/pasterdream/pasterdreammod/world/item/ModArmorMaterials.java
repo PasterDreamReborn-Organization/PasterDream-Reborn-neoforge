@@ -31,6 +31,18 @@ public class ModArmorMaterials {
                     List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "titanium"))),
                     3.0F, 0.1F));
 
+    // 染梦合金：保留来源的防御、耐久倍率、附魔值、韧性、击退抗性与合金锭修复。
+    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> DYEDREAM = ARMOR_MATERIALS.register("dyedream",
+            () -> new ArmorMaterial(Map.of(
+                    ArmorItem.Type.HELMET, 3,
+                    ArmorItem.Type.CHESTPLATE, 8,
+                    ArmorItem.Type.LEGGINGS, 6,
+                    ArmorItem.Type.BOOTS, 3),
+                    22, SoundEvents.ARMOR_EQUIP_DIAMOND,
+                    () -> Ingredient.of(ModItems.DYEDREAM_ALLOY_INGOT.get()),
+                    List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream"))),
+                    3.0F, 0.1F));
+
     public static void register(IEventBus eventBus) {
         ARMOR_MATERIALS.register(eventBus);
     }

@@ -19,5 +19,13 @@ public class AddToolTip
             tooltip.add(Component.translatable("tooltip.pasterdreammod.titanium_armor.1"));
             tooltip.add(Component.translatable("tooltip.pasterdreammod.titanium_armor.2"));
         }
+
+        if(stack.is(ModItems.DYEDREAM_HELMET.get()) || stack.is(ModItems.DYEDREAM_CHESTPLATE.get())
+                || stack.is(ModItems.DYEDREAM_LEGGINGS.get()) || stack.is(ModItems.DYEDREAM_BOOTS.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.1"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.2"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.3"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.4"));
+        }
     }
 }

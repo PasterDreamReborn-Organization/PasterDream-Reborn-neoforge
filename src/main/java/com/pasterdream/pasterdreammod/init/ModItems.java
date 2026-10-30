@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.DyedreamHammerItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
 import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import net.minecraft.world.item.*;
@@ -136,6 +137,24 @@ public class ModItems {
     public static final DeferredItem<Item> TITANIUM_BOOTS = ITEMS.register("titanium_boots",
             () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(25))));
+
+    // ===== 染梦合金装备 =====
+    public static final DeferredItem<Item> DYEDREAM_HELMET = ITEMS.register("dyedream_helmet",
+            () -> new DyedreamArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.HELMET,
+                    new Item.Properties().rarity(Rarity.UNCOMMON)
+                            .durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredItem<Item> DYEDREAM_CHESTPLATE = ITEMS.register("dyedream_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()
+                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredItem<Item> DYEDREAM_LEGGINGS = ITEMS.register("dyedream_leggings",
+            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()
+                            .durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredItem<Item> DYEDREAM_BOOTS = ITEMS.register("dyedream_boots",
+            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.BOOTS,
+                    new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()
+                            .durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
