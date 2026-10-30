@@ -11,6 +11,8 @@ import java.util.function.Supplier;
 
 /** 来源数值保持不变；1.21 用不可采集方块标签替代整数挖掘等级。 */
 public enum ModToolTiers implements Tier {
+    MOLTEN_GOLD(251, 14.0F, 2.0F, BlockTags.INCORRECT_FOR_IRON_TOOL, 23,
+            () -> Ingredient.of(ModItems.MOLTEN_GOLD_INGOT.get())),
     TITANIUM(1721, 9.0F, 3.5F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 17,
             () -> Ingredient.of(ModItems.TITANIUM_INGOT.get()));
 

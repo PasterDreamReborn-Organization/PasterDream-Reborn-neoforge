@@ -29,10 +29,15 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModBlockTags.ORES_IN_GROUND_CALCITE, ModItemTags.ORES_IN_GROUND_CALCITE);
         copy(ModBlockTags.ORE_RATES_DENSE, ModItemTags.ORE_RATES_DENSE);
         tag(ItemTags.SWORDS).add(ModItems.TITANIUM_SWORD.get());
+        tag(ItemTags.SWORDS).add(ModItems.MOLTEN_GOLD_SWORD.get());
         tag(ItemTags.PICKAXES).add(ModItems.TITANIUM_PICKAXE.get());
+        tag(ItemTags.PICKAXES).add(ModItems.MOLTEN_GOLD_PICKAXE.get());
         tag(ItemTags.AXES).add(ModItems.TITANIUM_AXE.get());
+        tag(ItemTags.AXES).add(ModItems.MOLTEN_GOLD_AXE.get());
         tag(ItemTags.SHOVELS).add(ModItems.TITANIUM_SHOVEL.get());
+        tag(ItemTags.SHOVELS).add(ModItems.MOLTEN_GOLD_SHOVEL.get());
         tag(ItemTags.HOES).add(ModItems.TITANIUM_HOE.get());
+        tag(ItemTags.HOES).add(ModItems.MOLTEN_GOLD_HOE.get());
         copy(ModBlockTags.ORES_TITANIUM, ModItemTags.ORES_TITANIUM);
         copy(ModBlockTags.STORAGE_BLOCKS_TITANIUM, ModItemTags.STORAGE_BLOCKS_TITANIUM);
         copy(ModBlockTags.STORAGE_BLOCKS_RAW_TITANIUM, ModItemTags.STORAGE_BLOCKS_RAW_TITANIUM);

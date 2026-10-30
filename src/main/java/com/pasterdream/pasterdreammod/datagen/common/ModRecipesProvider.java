@@ -31,6 +31,7 @@ public class ModRecipesProvider extends RecipeProvider {
         blackStickRecipes(output);
         titaniumUpgradeRecipe(output);
         titaniumToolRecipes(output);
+        moltenGoldToolRecipes(output);
         titaniumCooking(output, ModItems.TITANIUM_ORE.get(), "titanium_ore_");
         titaniumCooking(output, ModItems.DEEPSLATE_TITANIUM_ORE.get(), "deepslate_titanium_ore_");
         titaniumCooking(output, ModItems.RAW_TITANIUM.get(), "");
@@ -285,6 +286,35 @@ public class ModRecipesProvider extends RecipeProvider {
                 output.accept(id, new NbtPreservingShapelessRecipe((ShapelessRecipe) recipe), advancement, conditions);
             }
         }, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name));
+    }
+
+    // ===== 炙焰金工具配方 =====
+    private void moltenGoldToolRecipes(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.MOLTEN_GOLD_SWORD.get())
+                .pattern("a").pattern("a").pattern("b")
+                .define('a', ModItems.MOLTEN_GOLD_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_INGOT.get()), has(ModItems.MOLTEN_GOLD_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.MOLTEN_GOLD_PICKAXE.get())
+                .pattern("aaa").pattern(" b ").pattern(" b ")
+                .define('a', ModItems.MOLTEN_GOLD_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_INGOT.get()), has(ModItems.MOLTEN_GOLD_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.MOLTEN_GOLD_AXE.get())
+                .pattern("aa").pattern("ab").pattern(" b")
+                .define('a', ModItems.MOLTEN_GOLD_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_INGOT.get()), has(ModItems.MOLTEN_GOLD_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.MOLTEN_GOLD_SHOVEL.get())
+                .pattern("a").pattern("b").pattern("b")
+                .define('a', ModItems.MOLTEN_GOLD_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_INGOT.get()), has(ModItems.MOLTEN_GOLD_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.MOLTEN_GOLD_HOE.get())
+                .pattern("aa").pattern(" b").pattern(" b")
+                .define('a', ModItems.MOLTEN_GOLD_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_INGOT.get()), has(ModItems.MOLTEN_GOLD_INGOT.get()))
+                .save(pWriter);
     }
 
     private void moltenGoldCooking(RecipeOutput output, ItemLike ingredient, String recipePrefix) {

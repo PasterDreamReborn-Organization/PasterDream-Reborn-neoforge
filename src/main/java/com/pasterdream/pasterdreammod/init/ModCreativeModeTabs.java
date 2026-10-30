@@ -67,6 +67,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_AXE.get());
                         output.accept(ModItems.TITANIUM_SHOVEL.get());
                         output.accept(ModItems.TITANIUM_HOE.get());
+                        // 炙焰金工具
+                        output.accept(ModItems.MOLTEN_GOLD_SWORD.get());
+                        output.accept(ModItems.MOLTEN_GOLD_PICKAXE.get());
+                        output.accept(ModItems.MOLTEN_GOLD_AXE.get());
+                        output.accept(ModItems.MOLTEN_GOLD_SHOVEL.get());
+                        output.accept(ModItems.MOLTEN_GOLD_HOE.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

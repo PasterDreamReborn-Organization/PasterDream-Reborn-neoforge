@@ -20,6 +20,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_AXE.get(), "钛金斧");
         add(ModItems.TITANIUM_SHOVEL.get(), "钛金锹");
         add(ModItems.TITANIUM_HOE.get(), "钛金锄");
+        add(ModItems.MOLTEN_GOLD_SWORD.get(), "炙焰金剑");
+        add(ModItems.MOLTEN_GOLD_PICKAXE.get(), "炙焰金镐");
+        add(ModItems.MOLTEN_GOLD_AXE.get(), "炙焰金斧");
+        add(ModItems.MOLTEN_GOLD_SHOVEL.get(), "炙焰金锹");
+        add(ModItems.MOLTEN_GOLD_HOE.get(), "炙焰金锄");
+        add("tooltip.pasterdreammod.molten_gold_sword.1", "镶嵌：§7无");
+        add("tooltip.pasterdreammod.molten_gold_sword.2", "§7▪ §9攻击将使目标引燃3秒");
+        add("tooltip.pasterdreammod.molten_gold_tool.1", "镶嵌：§7无");
+        add("tooltip.pasterdreammod.molten_gold_tool.2", "§7▪ §9右键使用将消耗饱食度来获得短暂急迫效果");
+        add("tooltip.pasterdreammod.molten_gold_tool.3", "§7▪ §9冷却时间：10秒");
         add("itemGroup.pasterdream.pasterdream_gear_tab", "帕斯特之梦 | 装备");
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "染梦石英矿石");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "染梦粉尘矿石");

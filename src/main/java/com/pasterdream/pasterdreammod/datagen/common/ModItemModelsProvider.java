@@ -26,6 +26,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.MOLTEN_GOLD_INGOT.get());
         basicItem(ModItems.MOLTEN_GOLD_NUGGET.get());
         basicItem(ModItems.RAW_MOLTEN_GOLD.get());
+        handheldItem(ModItems.MOLTEN_GOLD_SWORD.get());
+        handheldItem(ModItems.MOLTEN_GOLD_PICKAXE.get());
+        handheldItem(ModItems.MOLTEN_GOLD_AXE.get());
+        handheldItem(ModItems.MOLTEN_GOLD_SHOVEL.get());
+        handheldItem(ModItems.MOLTEN_GOLD_HOE.get());
         basicItem(ModItems.DYEDREAM_QUARTZ.get());
         basicItem(ModItems.DYEDREAM_DUST.get());
         basicItem(ModItems.DYEDREAM_DUST_PIECE.get());
