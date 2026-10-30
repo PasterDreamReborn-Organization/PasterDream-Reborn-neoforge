@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
+import com.pasterdream.pasterdreammod.world.item.DyedreamHammerItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
 import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import net.minecraft.world.item.*;
@@ -19,6 +20,11 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RAW_TITANIUM = ITEMS.register("raw_titanium",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DYEDREAM_BUD_NUGGET = ITEMS.registerSimpleItem("dyedream_bud_nugget");
+    public static final DeferredItem<Item> RAW_DYEDREAM_ALLOY_INGOT = ITEMS.registerSimpleItem("raw_dyedream_alloy_ingot");
+    public static final DeferredItem<Item> DYEDREAM_ALLOY_INGOT = ITEMS.register("dyedream_alloy_ingot",
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> DYEDREAM_ALLOY_NUGGET = ITEMS.registerSimpleItem("dyedream_alloy_nugget");
 
     public static final DeferredItem<BlockItem> TITANIUM_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.TITANIUM_ORE);
     public static final DeferredItem<BlockItem> DEEPSLATE_TITANIUM_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DEEPSLATE_TITANIUM_ORE);
@@ -62,6 +68,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> BLACK_STICK = ITEMS.registerSimpleItem("black_stick");
     public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> DYEDREAM_UPGRADE = ITEMS.registerSimpleItem("dyedream_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
     public static final DeferredItem<SwordItem> TITANIUM_SWORD = ITEMS.register("titanium_sword",
             () -> new SwordItem(ModToolTiers.TITANIUM, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.TITANIUM, 3, -2.4f))));
@@ -77,6 +84,25 @@ public class ModItems {
     public static final DeferredItem<HoeItem> TITANIUM_HOE = ITEMS.register("titanium_hoe",
             () -> new HoeItem(ModToolTiers.TITANIUM, new Item.Properties()
                     .attributes(DiggerItem.createAttributes(ModToolTiers.TITANIUM, -3, 0.0f))));
+
+    // ===== 染梦合金工具 =====
+    public static final DeferredItem<SwordItem> DYEDREAM_SWORD = ITEMS.register("dyedream_sword",
+            () -> new SwordItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)
+                    .attributes(SwordItem.createAttributes(ModToolTiers.DYEDREAM, 3, -2.4f))));
+    public static final DeferredItem<PickaxeItem> DYEDREAM_PICKAXE = ITEMS.register("dyedream_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.DYEDREAM, 1, -2.8f))));
+    public static final DeferredItem<AxeItem> DYEDREAM_AXE = ITEMS.register("dyedream_axe",
+            () -> new AxeItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.DYEDREAM, 5.5f, -3.0f))));
+    public static final DeferredItem<ShovelItem> DYEDREAM_SHOVEL = ITEMS.register("dyedream_shovel",
+            () -> new ShovelItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.DYEDREAM, 1.5f, -3.0f))));
+    public static final DeferredItem<HoeItem> DYEDREAM_HOE = ITEMS.register("dyedream_hoe",
+            () -> new HoeItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.DYEDREAM, -3, 0.0f))));
+    public static final DeferredItem<Item> DYEDREAM_HAMMER = ITEMS.register("dyedream_hammer",
+            () -> new DyedreamHammerItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // ===== 炙焰金工具 =====
     public static final DeferredItem<Item> MOLTEN_GOLD_SWORD = ITEMS.register("molten_gold_sword",

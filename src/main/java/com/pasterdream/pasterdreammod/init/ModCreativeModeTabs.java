@@ -21,13 +21,17 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_DUST.get());
                         output.accept(ModItems.DYEDREAM_DUST_PIECE.get());
                         output.accept(ModItems.DYEDREAM_DYE.get());
+                        output.accept(ModItems.DYEDREAM_BUD_NUGGET.get());
                         output.accept(ModItems.DYEDREAM_QUARTZ.get());
                         output.accept(ModItems.RAW_TITANIUM.get());
                         output.accept(ModItems.RAW_MOLTEN_GOLD.get());
                         output.accept(ModItems.TITANIUM_INGOT.get());
                         output.accept(ModItems.MOLTEN_GOLD_INGOT.get());
+                        output.accept(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get());
+                        output.accept(ModItems.DYEDREAM_ALLOY_INGOT.get());
                         output.accept(ModItems.TITANIUM_NUGGET.get());
                         output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
+                        output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
                         output.accept(ModItems.BLACK_STICK.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
                         output.accept(ModItems.PROTECT_DECK.get());
@@ -67,6 +71,7 @@ public class ModCreativeModeTabs {
                     .icon(() -> ModItems.TITANIUM_SWORD.toStack())
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.TITANIUM_UPGRADE.get());
+                        output.accept(ModItems.DYEDREAM_UPGRADE.get());
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());
                         output.accept(ModItems.TITANIUM_AXE.get());
@@ -77,6 +82,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_CHESTPLATE.get());
                         output.accept(ModItems.TITANIUM_LEGGINGS.get());
                         output.accept(ModItems.TITANIUM_BOOTS.get());
+                        // 染梦合金工具
+                        output.accept(ModItems.DYEDREAM_SWORD.get());
+                        output.accept(ModItems.DYEDREAM_PICKAXE.get());
+                        output.accept(ModItems.DYEDREAM_AXE.get());
+                        output.accept(ModItems.DYEDREAM_SHOVEL.get());
+                        output.accept(ModItems.DYEDREAM_HOE.get());
+                        output.accept(ModItems.DYEDREAM_HAMMER.get());
                         // 炙焰金工具
                         output.accept(ModItems.MOLTEN_GOLD_SWORD.get());
                         output.accept(ModItems.MOLTEN_GOLD_PICKAXE.get());

@@ -14,7 +14,9 @@ public enum ModToolTiers implements Tier {
     MOLTEN_GOLD(251, 14.0F, 2.0F, BlockTags.INCORRECT_FOR_IRON_TOOL, 23,
             () -> Ingredient.of(ModItems.MOLTEN_GOLD_INGOT.get())),
     TITANIUM(1721, 9.0F, 3.5F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 17,
-            () -> Ingredient.of(ModItems.TITANIUM_INGOT.get()));
+            () -> Ingredient.of(ModItems.TITANIUM_INGOT.get())),
+    DYEDREAM(1314, 11.0F, 4.0F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 22,
+            () -> Ingredient.of(ModItems.DYEDREAM_ALLOY_INGOT.get()));
 
     private final int uses;
     private final float speed;
