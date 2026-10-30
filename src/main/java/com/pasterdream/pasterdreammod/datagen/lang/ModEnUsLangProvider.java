@@ -23,6 +23,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_gear_tab", "Paster Dream | Gear");
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "Dyedream Quartz Ore");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "Dyedream Dust Ore");
+        add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get(), "Dyedream Quartz Block");
+        add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get(), "Smooth Dyedream Quartz Block");
+        add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get(), "Dyedream Quartz Bricks");
+        add(ModBlocks.PILLAR_DYEDREAM_QUARTZ_BLOCK.get(), "Dyedream Quartz Pillar");
+        add(ModBlocks.CHISELED_DYEDREAM_QUARTZ_BLOCK.get(), "Chiseled Dyedream Quartz Block");
+        add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get(), "Dyedream Quartz Stairs");
+        add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get(), "Dyedream Quartz Slab");
+        add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get(), "Dyedream Quartz Wall");
         add(ModBlocks.TITANIUM_ORE.get(), "Titanium Ore");
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "Deepslate Titanium Ore");
         add(ModBlocks.RAW_TITANIUM_BLOCK.get(), "Raw Titanium Block");

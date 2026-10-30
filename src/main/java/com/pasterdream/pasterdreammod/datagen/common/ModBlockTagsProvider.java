@@ -21,6 +21,18 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider lookup) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), ModBlocks.DYEDREAM_DUST_ORE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.PILLAR_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.CHISELED_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get())
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
+        tag(BlockTags.STAIRS).add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());
+        tag(BlockTags.SLABS).add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get());
+        tag(BlockTags.WALLS).add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
         tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.DYEDREAM_DUST_ORE.get());
         tag(ModBlockTags.ORES_DYEDREAM_QUARTZ).add(ModBlocks.DYEDREAM_QUARTZ_ORE.get());
         tag(ModBlockTags.ORES_DYEDREAM_DUST).add(ModBlocks.DYEDREAM_DUST_ORE.get());
