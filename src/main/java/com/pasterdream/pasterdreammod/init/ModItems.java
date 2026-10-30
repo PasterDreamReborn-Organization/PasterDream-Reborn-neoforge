@@ -49,6 +49,13 @@ public class ModItems {
     public static final DeferredItem<BlockItem> DYEDREAM_DUST_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DUST_ORE);
     public static final DeferredItem<BlockItem> PINK_SLIME_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_SLIME_BLOCK);
 
+    public static final DeferredItem<BlockItem> DYEDREAM_BUDDING_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_BUDDING_BLOCK);
+    public static final DeferredItem<BlockItem> SMALL_DYEDREAM_BUD = ITEMS.registerSimpleBlockItem(ModBlocks.SMALL_DYEDREAM_BUD);
+    public static final DeferredItem<BlockItem> MEDIUM_DYEDREAM_BUD = ITEMS.registerSimpleBlockItem(ModBlocks.MEDIUM_DYEDREAM_BUD);
+    public static final DeferredItem<BlockItem> LARGE_DYEDREAM_BUD = ITEMS.registerSimpleBlockItem(ModBlocks.LARGE_DYEDREAM_BUD);
+    public static final DeferredItem<BlockItem> DYEDREAM_BUD_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_BUD_BLOCK);
+    public static final DeferredItem<BlockItem> DYEDREAM_ALLOY_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_ALLOY_BLOCK);
+
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK);
     public static final DeferredItem<BlockItem> SMOOTH_DYEDREAM_QUARTZ_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK);
     public static final DeferredItem<BlockItem> BRICKS_DYEDREAM_QUARTZ_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK);

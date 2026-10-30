@@ -16,6 +16,8 @@ public final class ModBlockTags {
     public static final TagKey<Block> STORAGE_BLOCKS_RAW_TITANIUM = common("storage_blocks/raw_titanium");
     public static final TagKey<Block> ORES_MOLTEN_GOLD = common("ores/molten_gold");
     public static final TagKey<Block> STORAGE_BLOCKS_MOLTEN_GOLD = common("storage_blocks/molten_gold");
+    public static final TagKey<Block> STORAGE_BLOCKS_DYEDREAM_ALLOY = common("storage_blocks/dyedream_alloy");
+    public static final TagKey<Block> STORAGE_BLOCKS_DYEDREAM_BUD = common("storage_blocks/dyedream_bud");
 
     private static TagKey<Block> common(String path) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", path));

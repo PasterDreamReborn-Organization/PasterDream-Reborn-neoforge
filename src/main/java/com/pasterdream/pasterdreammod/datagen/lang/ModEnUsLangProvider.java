@@ -53,6 +53,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "Dyedream Quartz Ore");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "Dyedream Dust Ore");
         add(ModBlocks.PINK_SLIME_BLOCK.get(), "Pink Slime Block");
+        add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), "Budding Dyedream");
+        add(ModBlocks.SMALL_DYEDREAM_BUD.get(), "Small Dyedream Bud");
+        add(ModBlocks.MEDIUM_DYEDREAM_BUD.get(), "Medium Dyedream Bud");
+        add(ModBlocks.LARGE_DYEDREAM_BUD.get(), "Large Dyedream Bud");
+        add(ModBlocks.DYEDREAM_BUD_BLOCK.get(), "Dyedream Bud Block");
+        add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), "Dyedream Alloy Block");
         add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get(), "Dyedream Quartz Block");
         add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get(), "Smooth Dyedream Quartz Block");
         add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get(), "Dyedream Quartz Bricks");

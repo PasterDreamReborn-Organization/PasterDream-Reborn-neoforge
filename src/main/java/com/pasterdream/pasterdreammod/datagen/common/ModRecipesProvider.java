@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.datagen.util.RecipeHelpers;
+import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapelessRecipe;
 import net.minecraft.advancements.Advancement;
@@ -37,6 +38,7 @@ public class ModRecipesProvider extends RecipeProvider {
         titaniumArmorRecipes(output);
         dyedreamUpgradeRecipe(output);
         dyedreamToolRecipes(output);
+        budBuildingRecipes(output);
         alloyRecipes(output);
         moltenGoldToolRecipes(output);
         titaniumCooking(output, ModItems.TITANIUM_ORE.get(), "titanium_ore_");
@@ -374,6 +376,28 @@ public class ModRecipesProvider extends RecipeProvider {
         // 染梦合金锭 ↔ 粒
         RecipeHelpers.storageCompress(pWriter, ModItems.DYEDREAM_ALLOY_NUGGET.get(), ModItems.DYEDREAM_ALLOY_INGOT.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(pWriter, ModItems.DYEDREAM_ALLOY_INGOT.get(), ModItems.DYEDREAM_ALLOY_NUGGET.get(), PasterDreamMod.MOD_ID);
+
+        // 染梦合金锭 ↔ 块
+        RecipeHelpers.storageCompress(pWriter, ModItems.DYEDREAM_ALLOY_INGOT.get(), ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), ModItems.DYEDREAM_ALLOY_INGOT.get(), PasterDreamMod.MOD_ID);
+    }
+
+    // ===== 染梦水晶建材配方 =====
+
+    private void budBuildingRecipes(RecipeOutput pWriter) {
+        // 4× 染梦晶芽粒 → 染梦水晶块
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_BLOCK.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.DYEDREAM_BUD_NUGGET.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_BUD_NUGGET.get()), has(ModItems.DYEDREAM_BUD_NUGGET.get()))
+                .save(pWriter);
+
+        // 染梦水晶块 → 4× 染梦晶芽粒（分解）
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_BUD_NUGGET.get(), 4)
+                .requires(ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_BUD_BLOCK.get()), has(ModBlocks.DYEDREAM_BUD_BLOCK.get()))
+                .save(pWriter);
     }
 
     // ===== 材料配方 =====
