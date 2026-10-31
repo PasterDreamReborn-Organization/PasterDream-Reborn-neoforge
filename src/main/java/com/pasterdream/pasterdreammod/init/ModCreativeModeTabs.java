@@ -12,18 +12,20 @@ public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, PasterDreamMod.MOD_ID);
 
-    // 原图标所需内容尚未迁入，暂用本批次材料；保留来源物品栏 ID 和条目顺序。
+    // 物品/装备图标已按来源恢复；方块图标所需 DYEDREAM_GRASS_BLOCK 尚未迁入，暂用钛矿。保留来源物品栏 ID 和条目顺序。
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_ITEMS_TAB =
             CREATIVE_MODE_TABS.register("pasterdream_items_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_items_tab"))
-                    .icon(() -> ModItems.TITANIUM_INGOT.toStack())
+                    .icon(() -> ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.toStack())
                     .displayItems((parameters, output) -> {
+                        output.accept(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
                         output.accept(ModItems.DYEDREAM_DUST.get());
                         output.accept(ModItems.DYEDREAM_DUST_PIECE.get());
                         output.accept(ModItems.DYEDREAM_DYE.get());
                         output.accept(ModItems.DYEDREAM_BUD_NUGGET.get());
-                        output.accept(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
                         output.accept(ModItems.DYEDREAM_QUARTZ.get());
+                        output.accept(ModItems.MELT_DREAM_COIN.get());
+                        output.accept(ModItems.MELT_DREAM_COIN_PILE.get());
                         output.accept(ModItems.RAW_TITANIUM.get());
                         output.accept(ModItems.RAW_MOLTEN_GOLD.get());
                         output.accept(ModItems.TITANIUM_INGOT.get());
@@ -37,6 +39,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PINK_SLIMEBALL.get());
                         output.accept(ModItems.PROTECT_DECK.get());
                         output.accept(ModItems.COTTON.get());
+                        output.accept(ModItems.SCULK_HEART.get());
                         output.accept(ModItems.SPOOL.get());
                         output.accept(ModItems.FABRIC.get());
                     }).build());
@@ -71,13 +74,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_BUD_BLOCK.get());
                     }).build());
 
-    // 来源装备栏图标所需武器尚未迁入，暂用钛金剑。
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_GEAR_TAB =
             CREATIVE_MODE_TABS.register("pasterdream_gear_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_gear_tab"))
-                    .icon(() -> ModItems.TITANIUM_SWORD.toStack())
+                    .icon(() -> ModItems.SHARP_MELT_DREAM_SWORD.toStack())
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.TITANIUM_UPGRADE.get());
+                        output.accept(ModItems.SCULK_UPGRADE.get());
                         output.accept(ModItems.DYEDREAM_UPGRADE.get());
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());
@@ -106,6 +109,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_CHESTPLATE.get());
                         output.accept(ModItems.DYEDREAM_LEGGINGS.get());
                         output.accept(ModItems.DYEDREAM_BOOTS.get());
+                        // 回响装备
+                        output.accept(ModItems.SCULK_HELMET.get());
+                        output.accept(ModItems.SCULK_CHESTPLATE.get());
+                        output.accept(ModItems.SCULK_LEGGINGS.get());
+                        output.accept(ModItems.SCULK_BOOTS.get());
                         // 炙焰金工具
                         output.accept(ModItems.MOLTEN_GOLD_SWORD.get());
                         output.accept(ModItems.MOLTEN_GOLD_PICKAXE.get());

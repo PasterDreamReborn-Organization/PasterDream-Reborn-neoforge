@@ -14,5 +14,21 @@
         "stream": false
       }
     ]
+  },
+  "coin_drop": {
+    "sounds": [
+      {
+        "name": "pasterdream:coin_drop",
+        "stream": false
+      }
+    ]
+  },
+  "coin_exchange": {
+    "sounds": [
+      {
+        "name": "pasterdream:coin_exchange",
+        "stream": false
+      }
+    ]
   }
 }
