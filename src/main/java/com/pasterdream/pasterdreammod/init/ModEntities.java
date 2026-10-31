@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.entity.KusanagiVenomStingerEntity;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
 import com.pasterdream.pasterdreammod.world.entity.TideSwordProjectileEntity;
 import net.minecraft.core.registries.Registries;
@@ -35,6 +36,14 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<TideSwordProjectileEntity>> TIDE_SWORD_PROJECTILE =
             register("tide_sword_projectile",
                     EntityType.Builder.<TideSwordProjectileEntity>of(TideSwordProjectileEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<KusanagiVenomStingerEntity>> KUSANAGI_VENOM_STINGER =
+            register("kusanagi_venom_stinger",
+                    EntityType.Builder.<KusanagiVenomStingerEntity>of(KusanagiVenomStingerEntity::new, MobCategory.MISC)
                             .setShouldReceiveVelocityUpdates(true)
                             .setTrackingRange(64)
                             .setUpdateInterval(1)

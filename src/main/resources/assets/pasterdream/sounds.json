@@ -30,5 +30,21 @@
         "stream": false
       }
     ]
+  },
+  "skill_hit_heavy": {
+    "sounds": [
+      {
+        "name": "pasterdream:skill_hit_heavy",
+        "stream": false
+      }
+    ]
+  },
+  "sword_awaken": {
+    "sounds": [
+      {
+        "name": "pasterdream:sword_awaken",
+        "stream": false
+      }
+    ]
   }
 }

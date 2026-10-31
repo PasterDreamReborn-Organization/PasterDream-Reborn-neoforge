@@ -20,6 +20,12 @@ public class ModParticleTypes {
 
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SHARP_SWORD_SLASH =
             PARTICLE_TYPES.register("sharp_sword_slash", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DUST_0_PARTICLE =
+            PARTICLE_TYPES.register("dust", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SPORE_PARTICLE =
+            PARTICLE_TYPES.register("spore", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> POISON_GAS_PARTICLE =
+            PARTICLE_TYPES.register("poison_gas", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BUFF_0_PARTICLE =
             PARTICLE_TYPES.register("buff", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> MELTDREAM_CRYSTAL_PARTICLE =

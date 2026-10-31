@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.client;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.client.model.KusanagiVenomStingerModel;
 import com.pasterdream.pasterdreammod.init.ModEntityRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
@@ -32,7 +33,7 @@ public final class ClientModEvents {
     /** 实体模型层定义。 */
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        // TODO: ModEntityRenderer.registerLayerDefinitions(event);
+        event.registerLayerDefinition(KusanagiVenomStingerModel.LAYER_LOCATION, KusanagiVenomStingerModel::createBodyLayer);
     }
 
     /** HUD 层（融梦能量 / SAN / 失智 / BOSS 血条 等）。 */

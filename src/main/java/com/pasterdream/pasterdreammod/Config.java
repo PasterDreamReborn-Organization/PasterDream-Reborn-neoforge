@@ -15,6 +15,10 @@ public class Config {
             .comment("是否输出调试日志 / Enable debug logging")
             .define("debugLogging", false);
 
+    public static final ModConfigSpec.IntValue NEED_KILL_ENEMY = BUILDER
+            .comment("『天丛云』草薙进化需要击杀的生物数，默认 200")
+            .defineInRange("the_number_of_kill_enemy_to_evolve", 200, 1, Integer.MAX_VALUE);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     private Config() {

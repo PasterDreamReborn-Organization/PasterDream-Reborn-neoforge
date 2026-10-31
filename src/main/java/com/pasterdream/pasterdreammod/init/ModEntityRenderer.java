@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.client.renderer.KusanagiVenomStingerRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.MeltDreamCrystalEntityRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.TideSwordProjectileRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -16,5 +17,6 @@ public final class ModEntityRenderer {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), MeltDreamCrystalEntityRenderer::new);
         event.registerEntityRenderer(ModEntities.TIDE_SWORD_PROJECTILE.get(), TideSwordProjectileRenderer::new);
+        event.registerEntityRenderer(ModEntities.KUSANAGI_VENOM_STINGER.get(), KusanagiVenomStingerRenderer::new);
     }
 }
