@@ -54,6 +54,7 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.BLUE_DEW.get());
                         output.accept(ModItems.JUNGLE_SPORE.get());
+                        output.accept(ModItems.RICE_CAKE.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_BLOCKS_TAB =
@@ -85,6 +86,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_BUDDING_BLOCK.get());
                         output.accept(ModItems.DYEDREAM_BUD_BLOCK.get());
                         output.accept(ModItems.LOST_SWORD_TOMB.get());
+                        output.accept(ModItems.DESERT_HERO_TOMB.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_GEAR_TAB =
@@ -143,6 +145,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.KUSANAGI.get());
                         output.accept(ModItems.MURAKUMO_KUSANAGI.get());
                         output.accept(ModItems.SWORD_EMBRYO.get());
+                        output.accept(ModItems.DESERT_SWORD.get());
+                        output.accept(ModItems.CHENJINGMEN_DESERT_SWORD.get());
+                        output.accept(ModItems.BROKEN_HERO_SWORD.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

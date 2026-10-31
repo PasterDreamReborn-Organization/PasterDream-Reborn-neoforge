@@ -10,9 +10,12 @@ import com.pasterdream.pasterdreammod.world.item.MeltDreamCrystalFragmentItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
+import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
+import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.MurakumoKusanagiItem;
 import com.pasterdream.pasterdreammod.world.item.hellfiretool.*;
+import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombItem;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombItem;
 import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
@@ -103,6 +106,9 @@ public class ModItems {
     public static final DeferredItem<Item> JUNGLE_SPORE = ITEMS.register("jungle_spore",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
                     .nutrition(1).saturationModifier(0f).build())));
+    public static final DeferredItem<Item> RICE_CAKE = ITEMS.register("rice_cake",
+            () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
+                    .nutrition(6).saturationModifier(0.415f).build())));
 
     public static final DeferredItem<Item> BLACK_STICK = ITEMS.registerSimpleItem("black_stick");
     public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));
@@ -187,6 +193,13 @@ public class ModItems {
     public static final DeferredItem<Item> SWORD_EMBRYO = ITEMS.register("sword_embryo",
             () -> new SwordItem(Tiers.IRON, new Item.Properties()
                     .attributes(SwordItem.createAttributes(Tiers.IRON, 1, -2.4f))));
+    public static final DeferredItem<Item> DESERT_SWORD = ITEMS.register("desert_sword",
+            () -> new DesertSwordItem(ModToolTiers.DESERT_SWORD, 3, -3.1f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> CHENJINGMEN_DESERT_SWORD = ITEMS.register("chenjingmen_desert_sword",
+            () -> new ChenjingmenDesertSwordItem(ModToolTiers.CHENJINGMEN_DESERT_SWORD, 3, -3.1f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> BROKEN_HERO_SWORD = ITEMS.register("broken_hero_sword",
+            () -> new SwordItem(ModToolTiers.BROKEN_HERO_SWORD, new Item.Properties().fireResistant()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.BROKEN_HERO_SWORD, 3, -2.4f))));
 
     // ===== 钛金装备 =====
     public static final DeferredItem<Item> TITANIUM_HELMET = ITEMS.register("titanium_helmet",
@@ -240,6 +253,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> LOST_SWORD_TOMB = ITEMS.register("lost_sword_tomb",
             () -> new LostSwordTombItem(ModBlocks.LOST_SWORD_TOMB.get(), new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> DESERT_HERO_TOMB = ITEMS.register("desert_hero_tomb",
+            () -> new DesertHeroTombItem(ModBlocks.DESERT_HERO_TOMB.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

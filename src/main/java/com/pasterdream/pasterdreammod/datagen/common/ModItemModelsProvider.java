@@ -93,6 +93,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.LARGE_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/large_dyedream_bud"));
         withExistingParent(ModItems.LOST_SWORD_TOMB.getId().getPath(), modLoc("block/lost_sword_tomb"));
+        handheldItem(ModItems.DESERT_SWORD.get());
+        handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD.get());
+        handheldItem(ModItems.BROKEN_HERO_SWORD.get());
+        basicItem(ModItems.RICE_CAKE.get());
+        getBuilder(ModItems.DESERT_HERO_TOMB.getId().getPath())
+                .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
+                        modLoc("displaysettings/desert_hero_tomb.item")));
     }
 
     private void wallItem(String wall, String base) {

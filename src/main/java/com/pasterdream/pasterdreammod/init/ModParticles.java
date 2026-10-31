@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.client.particle.Dust0Particle;
 import com.pasterdream.pasterdreammod.client.particle.MeltdreamCrystalParticle;
 import com.pasterdream.pasterdreammod.client.particle.PoisonGasParticle;
 import com.pasterdream.pasterdreammod.client.particle.SharpSwordSlashParticle;
+import com.pasterdream.pasterdreammod.client.particle.SoulParticle;
 import com.pasterdream.pasterdreammod.client.particle.SporeParticle;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -30,6 +31,7 @@ public final class ModParticles {
         event.registerSpriteSet(ModParticleTypes.SPORE_PARTICLE.get(), SporeParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.POISON_GAS_PARTICLE.get(), PoisonGasParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.BUFF_0_PARTICLE.get(), Buff0Particle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.SOUL_PARTICLE.get(), SoulParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.MELTDREAM_CRYSTAL_PARTICLE.get(), MeltdreamCrystalParticle.Provider::new);
     }
 }

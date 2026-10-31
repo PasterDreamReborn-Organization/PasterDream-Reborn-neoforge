@@ -146,6 +146,14 @@
 - 失落剑冢结构与模板按来源放入静态数据目录；草薙击杀数改用 `CUSTOM_DATA`，剧毒保持不占用无敌帧的伤害结算。
 - `compileJava`、`runData`、`build` 通过；`runGameTestServer` 54/54 通过（新增 2 项）。客户端视觉、结构自然生成、多人同步与丛林孢子首份生存来源待验证；详见迁移批次记录。
 
+### 批次 021：朔漠剑、荒漠英雄之墓与断裂英雄剑（2026-10-31）
+
+- 迁入 `desert_sword`、`chenjingmen_desert_sword`、`broken_hero_sword`、荒漠英雄之墓方块/方块物品、`rice_cake` 与灵魂粒子；保留来源 ID、耐久、攻击参数、品质、防火与提示。
+- 荒漠英雄之墓按来源实现分玩家进度、延迟对话、清理掠夺者/尸壳、10 块年糕、附近马匹、村庄英雄和朔漠剑交换；GeckoLib 方块实体/物品渲染、动画、灵魂粒子和 custom 模型接线完成。
+- 1.21 适配：`CUSTOM_DATA` 代替技能 NBT、组件复制代替整段标签复制、`Holder` 附魔查询、方块 `codec`/`useItemOn`/`useWithoutItem`、GeckoLib 4.9.2 包名及 `HolderLookup.Provider` 存取。
+- 按用户范围仅注册年糕物品与提示，不迁其获取方式；断裂英雄剑的来源获取（融梦水晶箱战利品）仍依赖 T17，故本批不宣告生存获取闭环。
+- `runData`、`build` 通过；`runGameTestServer` 56/56 通过（新增 2 项）。客户端 GeckoLib 视觉/动画、灵魂粒子、真实交互与多人同步待验证；上游开始 `c97b536`、结束 `1e10ec1`，开放 PR 查询因 403 未实时确认。
+
 ### 基础骨架已完成
 
 - **环境与元数据**：依赖 jar 放入 `libs/`、`gradle.properties`、`neoforge.mods.toml` 依赖声明

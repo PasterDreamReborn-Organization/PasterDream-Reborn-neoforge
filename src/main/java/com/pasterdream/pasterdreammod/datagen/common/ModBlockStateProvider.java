@@ -79,6 +79,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .renderType("cutout");
         horizontalBlock(ModBlocks.LOST_SWORD_TOMB.get(), lostSwordTomb);
         blockItem(ModBlocks.LOST_SWORD_TOMB);
+
+        // ===== 荒漠英雄之墓 =====
+        horizontalBlock(ModBlocks.DESERT_HERO_TOMB.get(),
+                new ModelFile.UncheckedModelFile(modLoc("custom/desert_hero_tomb_particle")));
     }
 
     private void blockItem(net.neoforged.neoforge.registries.DeferredBlock<?> block) {
