@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.datagen.util.RecipeHelpers;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapedRecipe;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapelessRecipe;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
@@ -15,6 +16,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.ICondition;
@@ -45,6 +47,8 @@ public class ModRecipesProvider extends RecipeProvider {
         budBuildingRecipes(output);
         alloyRecipes(output);
         moltenGoldToolRecipes(output);
+        hellfireToolRecipes(output);
+        tideSwordRecipes(output);
         titaniumCooking(output, ModItems.TITANIUM_ORE.get(), "titanium_ore_");
         titaniumCooking(output, ModItems.DEEPSLATE_TITANIUM_ORE.get(), "deepslate_titanium_ore_");
         titaniumCooking(output, ModItems.RAW_TITANIUM.get(), "");
@@ -506,6 +510,17 @@ public class ModRecipesProvider extends RecipeProvider {
 
     // ===== 材料配方 =====
     private void materialRecipes(RecipeOutput pWriter) {
+        // 蔚蓝海洋之心
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLUE_HEART_OF_THE_SEA.get(), 1)
+                .pattern("aba")
+                .pattern("bcb")
+                .pattern("aba")
+                .define('a', Items.GLOW_INK_SAC)
+                .define('b', ModItems.BLUE_DEW.get())
+                .define('c', Items.HEART_OF_THE_SEA)
+                .unlockedBy(getHasName(Items.HEART_OF_THE_SEA), has(Items.HEART_OF_THE_SEA))
+                .save(pWriter);
+
         // 线轴
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SPOOL.get(), 1)
                 .pattern(" a ")
@@ -669,6 +684,20 @@ public class ModRecipesProvider extends RecipeProvider {
         }, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name));
     }
 
+    private void saveNbtPreservingShaped(ShapedRecipeBuilder builder, RecipeOutput output, String name) {
+        builder.save(new RecipeOutput() {
+            @Override
+            public Advancement.Builder advancement() {
+                return output.advancement();
+            }
+
+            @Override
+            public void accept(ResourceLocation id, Recipe<?> recipe, AdvancementHolder advancement, ICondition... conditions) {
+                output.accept(id, new NbtPreservingShapedRecipe((ShapedRecipe) recipe), advancement, conditions);
+            }
+        }, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name));
+    }
+
     // ===== 炙焰金工具配方 =====
     private void moltenGoldToolRecipes(RecipeOutput pWriter) {
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.MOLTEN_GOLD_SWORD.get())
@@ -696,6 +725,52 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('a', ModItems.MOLTEN_GOLD_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
                 .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_INGOT.get()), has(ModItems.MOLTEN_GOLD_INGOT.get()))
                 .save(pWriter);
+    }
+
+    // ===== 狱炎工具配方 =====
+
+    private void hellfireToolRecipes(RecipeOutput pWriter) {
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.HELLFIRE_SWORD.get())
+                .pattern(" a ").pattern("bcb").pattern(" d ")
+                .define('a', Items.BLAZE_POWDER)
+                .define('b', Items.NETHERITE_SCRAP)
+                .define('c', ModItems.MOLTEN_GOLD_SWORD.get())
+                .define('d', ModBlocks.MOLTEN_GOLD_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_SWORD.get()), has(ModItems.MOLTEN_GOLD_SWORD.get())),
+                pWriter, "hellfire_sword");
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.HELLFIRE_PICKAXE.get())
+                .pattern(" a ").pattern("bcb").pattern(" d ")
+                .define('a', Items.BLAZE_POWDER)
+                .define('b', Items.NETHERITE_SCRAP)
+                .define('c', ModItems.MOLTEN_GOLD_PICKAXE.get())
+                .define('d', ModBlocks.MOLTEN_GOLD_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_PICKAXE.get()), has(ModItems.MOLTEN_GOLD_PICKAXE.get())),
+                pWriter, "hellfire_pickaxe");
+    }
+
+    // ===== 引潮剑配方 =====
+
+    private void tideSwordRecipes(RecipeOutput pWriter) {
+        // 引潮剑
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TIDE_SWORD.get())
+                .pattern(" ab")
+                .pattern("aca")
+                .pattern("da ")
+                .define('a', Items.PRISMARINE_SHARD)
+                .define('b', Items.PRISMARINE_CRYSTALS)
+                .define('c', Items.TRIDENT)
+                .define('d', ModItems.ELDER_GUARDIAN_SCALE.get())
+                .unlockedBy(getHasName(ModItems.ELDER_GUARDIAN_SCALE.get()), has(ModItems.ELDER_GUARDIAN_SCALE.get()))
+                .save(pWriter);
+
+        // 『北海若』引潮 (锻造台)
+        SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(Items.PRISMARINE_CRYSTALS),
+                Ingredient.of(ModItems.TIDE_SWORD.get()),
+                Ingredient.of(ModItems.BLUE_HEART_OF_THE_SEA.get()),
+                RecipeCategory.COMBAT, ModItems.BEIHAI_RUO_TIDE_SWORD.get())
+                .unlocks("has_tide_sword", has(ModItems.TIDE_SWORD.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "beihairuo_tide_sword_smithing"));
     }
 
     private void moltenGoldCooking(RecipeOutput output, ItemLike ingredient, String recipePrefix) {

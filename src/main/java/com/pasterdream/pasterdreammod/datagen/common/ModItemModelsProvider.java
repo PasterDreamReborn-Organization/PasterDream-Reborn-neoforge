@@ -60,6 +60,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.MOLTEN_GOLD_AXE.get());
         handheldItem(ModItems.MOLTEN_GOLD_SHOVEL.get());
         handheldItem(ModItems.MOLTEN_GOLD_HOE.get());
+        handheldItem(ModItems.HELLFIRE_SWORD.get());
+        handheldItem(ModItems.HELLFIRE_PICKAXE.get());
+        handheldItem(ModItems.TIDE_SWORD.get());
+        handheldItem(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
+        basicItem(ModItems.BLUE_HEART_OF_THE_SEA.get());
+        basicItem(ModItems.ELDER_GUARDIAN_SCALE.get());
+        basicItem(ModItems.BLUE_DEW.get());
         basicItem(ModItems.DYEDREAM_QUARTZ.get());
         basicItem(ModItems.DYEDREAM_DUST.get());
         basicItem(ModItems.DYEDREAM_DUST_PIECE.get());

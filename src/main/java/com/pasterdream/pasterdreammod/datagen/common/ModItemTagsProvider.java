@@ -23,7 +23,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(ModItemTags.SKILL_COOLDOWN).add(ModItems.SHARP_MELT_DREAM_SWORD.get());
+        tag(ModItemTags.SKILL_COOLDOWN)
+                .add(ModItems.SHARP_MELT_DREAM_SWORD.get())
+                .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
         // copy(BlockTag, ItemTag) 将 BlockTagsProvider 中注册的方块标签自动同步到对应物品标签
         copy(ModBlockTags.ORES_DYEDREAM_QUARTZ, ModItemTags.ORES_DYEDREAM_QUARTZ);
         copy(ModBlockTags.ORES_DYEDREAM_DUST, ModItemTags.ORES_DYEDREAM_DUST);
@@ -44,12 +46,16 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.TITANIUM_SWORD.get())
                 .add(ModItems.MOLTEN_GOLD_SWORD.get())
                 .add(ModItems.DYEDREAM_SWORD.get())
-                .add(ModItems.SHARP_MELT_DREAM_SWORD.get());
+                .add(ModItems.SHARP_MELT_DREAM_SWORD.get())
+                .add(ModItems.HELLFIRE_SWORD.get())
+                .add(ModItems.TIDE_SWORD.get())
+                .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
         tag(ItemTags.PICKAXES)
                 .add(ModItems.TITANIUM_PICKAXE.get())
                 .add(ModItems.MOLTEN_GOLD_PICKAXE.get())
                 .add(ModItems.DYEDREAM_PICKAXE.get())
-                .add(ModItems.MELT_DREAM_PICKAXE.get());
+                .add(ModItems.MELT_DREAM_PICKAXE.get())
+                .add(ModItems.HELLFIRE_PICKAXE.get());
         tag(ItemTags.AXES)
                 .add(ModItems.TITANIUM_AXE.get())
                 .add(ModItems.MOLTEN_GOLD_AXE.get())
@@ -65,6 +71,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.MOLTEN_GOLD_HOE.get())
                 .add(ModItems.DYEDREAM_HOE.get())
                 .add(ModItems.MELT_DREAM_HOE.get());
+        // 『北海若』引潮沿用来源可在附魔台获得三叉戟专属附魔；1.21 由物品标签驱动。
+        tag(ItemTags.TRIDENT_ENCHANTABLE)
+                .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
         tag(ItemTags.HEAD_ARMOR).add(ModItems.TITANIUM_HELMET.get()).add(ModItems.SCULK_HELMET.get()).add(ModItems.DYEDREAM_HELMET.get());
         tag(ItemTags.CHEST_ARMOR).add(ModItems.TITANIUM_CHESTPLATE.get()).add(ModItems.SCULK_CHESTPLATE.get()).add(ModItems.DYEDREAM_CHESTPLATE.get());
         tag(ItemTags.LEG_ARMOR).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.SCULK_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get());
