@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
+import com.pasterdream.pasterdreammod.world.entity.TideSwordProjectileEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -30,6 +31,14 @@ public class ModEntities {
                             .setUpdateInterval(3)
                             .fireImmune()
                             .sized(0.6f, 1f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<TideSwordProjectileEntity>> TIDE_SWORD_PROJECTILE =
+            register("tide_sword_projectile",
+                    EntityType.Builder.<TideSwordProjectileEntity>of(TideSwordProjectileEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
 
     private static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> register(String name, EntityType.Builder<T> builder) {
         return ENTITY_TYPES.register(name, () -> builder.build(

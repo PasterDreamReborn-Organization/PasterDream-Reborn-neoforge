@@ -42,6 +42,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCULK_HEART.get());
                         output.accept(ModItems.SPOOL.get());
                         output.accept(ModItems.FABRIC.get());
+                        output.accept(ModItems.BLUE_HEART_OF_THE_SEA.get());
+                        output.accept(ModItems.ELDER_GUARDIAN_SCALE.get());
+                        // 蔚蓝露滴在来源属于食物栏；食物栏尚未迁入，暂置于物品栏。
+                        output.accept(ModItems.BLUE_DEW.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_BLOCKS_TAB =
@@ -120,6 +124,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MOLTEN_GOLD_AXE.get());
                         output.accept(ModItems.MOLTEN_GOLD_SHOVEL.get());
                         output.accept(ModItems.MOLTEN_GOLD_HOE.get());
+                        // 狱炎工具
+                        output.accept(ModItems.HELLFIRE_SWORD.get());
+                        output.accept(ModItems.HELLFIRE_PICKAXE.get());
+                        // 独立武器
+                        output.accept(ModItems.TIDE_SWORD.get());
+                        output.accept(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

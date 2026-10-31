@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.item;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
@@ -18,7 +19,13 @@ public enum ModToolTiers implements Tier {
     DYEDREAM(1314, 11.0F, 4.0F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 22,
             () -> Ingredient.of(ModItems.DYEDREAM_ALLOY_INGOT.get())),
     MELT_DREAM(1728, 14.0F, 4.5F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 22,
-            () -> Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()));
+            () -> Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())),
+    HELLFIRE(1255, 16.0F, 3.0F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 23,
+            () -> Ingredient.of(ModItems.MOLTEN_GOLD_INGOT.get())),
+    TIDE_SWORD(1561, 4.0F, 4.5F, BlockTags.INCORRECT_FOR_STONE_TOOL, 11,
+            () -> Ingredient.of(Items.PRISMARINE_CRYSTALS)),
+    BEIHAI_RUO_TIDE_SWORD(1561, 4.0F, 5.0F, BlockTags.INCORRECT_FOR_STONE_TOOL, 11,
+            () -> Ingredient.of(Items.PRISMARINE_CRYSTALS));
 
     private final int uses;
     private final float speed;
