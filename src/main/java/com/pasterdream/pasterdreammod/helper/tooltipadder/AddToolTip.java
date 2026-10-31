@@ -42,5 +42,9 @@ public class AddToolTip
             tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.3"));
             tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.4"));
         }
+
+        if(stack.is(ModItems.RICE_CAKE.get())){
+            tooltip.add(Component.translatable("item.pasterdream.rice_cake.describe"));
+        }
     }
 }

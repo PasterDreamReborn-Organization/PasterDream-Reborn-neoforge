@@ -29,7 +29,13 @@ public enum ModToolTiers implements Tier {
     TIDE_SWORD(1561, 4.0F, 4.5F, BlockTags.INCORRECT_FOR_STONE_TOOL, 11,
             () -> Ingredient.of(Items.PRISMARINE_CRYSTALS)),
     BEIHAI_RUO_TIDE_SWORD(1561, 4.0F, 5.0F, BlockTags.INCORRECT_FOR_STONE_TOOL, 11,
-            () -> Ingredient.of(Items.PRISMARINE_CRYSTALS));
+            () -> Ingredient.of(Items.PRISMARINE_CRYSTALS)),
+    DESERT_SWORD(1561, 1.0F, 7.0F, BlockTags.INCORRECT_FOR_STONE_TOOL, 8,
+            Ingredient::of),
+    CHENJINGMEN_DESERT_SWORD(1561, 1.0F, 8.0F, BlockTags.INCORRECT_FOR_STONE_TOOL, 8,
+            Ingredient::of),
+    BROKEN_HERO_SWORD(100, 1.0F, 3.0F, BlockTags.INCORRECT_FOR_STONE_TOOL, 0,
+            Ingredient::of);
 
     private final int uses;
     private final float speed;

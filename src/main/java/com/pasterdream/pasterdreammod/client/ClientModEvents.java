@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.client;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.client.model.KusanagiVenomStingerModel;
+import com.pasterdream.pasterdreammod.init.ModBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.init.ModEntityRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
@@ -27,7 +28,7 @@ public final class ClientModEvents {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         ModEntityRenderer.registerRenderers(event);
-        // TODO: ModBlockEntityRenderer.registerRenderers(event);
+        ModBlockEntityRenderer.registerRenderers(event);
     }
 
     /** 实体模型层定义。 */

@@ -27,7 +27,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.SHARP_MELT_DREAM_SWORD.get())
                 .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get())
                 .add(ModItems.MURAKUMO_KUSANAGI.get())
-                .add(ModItems.INFERNO_SWORD.get());
+                .add(ModItems.INFERNO_SWORD.get())
+                .add(ModItems.CHENJINGMEN_DESERT_SWORD.get());
         // copy(BlockTag, ItemTag) 将 BlockTagsProvider 中注册的方块标签自动同步到对应物品标签
         copy(ModBlockTags.ORES_DYEDREAM_QUARTZ, ModItemTags.ORES_DYEDREAM_QUARTZ);
         copy(ModBlockTags.ORES_DYEDREAM_DUST, ModItemTags.ORES_DYEDREAM_DUST);
@@ -55,7 +56,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get())
                 .add(ModItems.KUSANAGI.get())
                 .add(ModItems.MURAKUMO_KUSANAGI.get())
-                .add(ModItems.SWORD_EMBRYO.get());
+                .add(ModItems.SWORD_EMBRYO.get())
+                .add(ModItems.DESERT_SWORD.get())
+                .add(ModItems.CHENJINGMEN_DESERT_SWORD.get())
+                .add(ModItems.BROKEN_HERO_SWORD.get());
         tag(ItemTags.PICKAXES)
                 .add(ModItems.TITANIUM_PICKAXE.get())
                 .add(ModItems.MOLTEN_GOLD_PICKAXE.get())

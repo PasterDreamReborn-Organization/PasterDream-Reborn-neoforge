@@ -28,6 +28,8 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("poison_gas", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BUFF_0_PARTICLE =
             PARTICLE_TYPES.register("buff", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SOUL_PARTICLE =
+            PARTICLE_TYPES.register("soul", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> MELTDREAM_CRYSTAL_PARTICLE =
             PARTICLE_TYPES.register("melt_dream_crystal", () -> new SimpleParticleType(true));
 
