@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod;
 
 import com.mojang.logging.LogUtils;
 import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
+import com.pasterdream.pasterdreammod.event.ModMobDrops;
 import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
 import com.pasterdream.pasterdreammod.init.ModAttachments;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
@@ -85,10 +86,12 @@ public class PasterDreamMod {
 
         // ---- 启动阶段监听 ----
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(ModEntities::registerAttributes);
 
         // ---- 游戏总线监听（本类自己订阅的事件）----
         NeoForge.EVENT_BUS.register(this);
         NeoForge.EVENT_BUS.addListener(AddToolTip::addTooltip);
+        NeoForge.EVENT_BUS.addListener(ModMobDrops::onLivingDrops);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
         NeoForge.EVENT_BUS.addListener(MeltDreamAuraHandler::onPlayerTick);
         NeoForge.EVENT_BUS.addListener((RegisterCommandsEvent event) -> ModCommands.register(event.getDispatcher()));

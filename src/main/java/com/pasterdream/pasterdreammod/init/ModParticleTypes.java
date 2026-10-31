@@ -22,6 +22,8 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("sharp_sword_slash", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BUFF_0_PARTICLE =
             PARTICLE_TYPES.register("buff", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> MELTDREAM_CRYSTAL_PARTICLE =
+            PARTICLE_TYPES.register("melt_dream_crystal", () -> new SimpleParticleType(true));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

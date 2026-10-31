@@ -4,7 +4,10 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.DyedreamHammerItem;
+import com.pasterdream.pasterdreammod.world.item.MeltDreamCoinItem;
+import com.pasterdream.pasterdreammod.world.item.MeltDreamCrystalFragmentItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
 import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
@@ -47,7 +50,12 @@ public class ModItems {
     public static final DeferredItem<Item> DYEDREAM_DUST_PIECE = ITEMS.registerSimpleItem("dyedream_dust_piece");
     public static final DeferredItem<Item> PINK_SLIMEBALL = ITEMS.registerSimpleItem("pink_slimeball");
     public static final DeferredItem<Item> DYEDREAM_DYE = ITEMS.registerSimpleItem("dyedream_dye");
-    public static final DeferredItem<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.registerSimpleItem("melt_dream_crystal_fragment", new Item.Properties().rarity(Rarity.RARE));
+    public static final DeferredItem<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
+            MeltDreamCrystalFragmentItem::new);
+    public static final DeferredItem<Item> MELT_DREAM_COIN = ITEMS.register("melt_dream_coin",
+            () -> new MeltDreamCoinItem(new Item.Properties(), false));
+    public static final DeferredItem<Item> MELT_DREAM_COIN_PILE = ITEMS.register("melt_dream_coin_pile",
+            () -> new MeltDreamCoinItem(new Item.Properties(), true));
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_ORE);
     public static final DeferredItem<BlockItem> DYEDREAM_DUST_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DUST_ORE);
     public static final DeferredItem<BlockItem> PINK_SLIME_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_SLIME_BLOCK);
@@ -69,6 +77,8 @@ public class ModItems {
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL);
 
     public static final DeferredItem<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SCULK_HEART = ITEMS.register("sculk_heart",
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> SPOOL = ITEMS.register("spool",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> FABRIC = ITEMS.register("fabric",
@@ -78,6 +88,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> BLACK_STICK = ITEMS.registerSimpleItem("black_stick");
     public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> SCULK_UPGRADE = ITEMS.registerSimpleItem("sculk_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
     public static final DeferredItem<Item> DYEDREAM_UPGRADE = ITEMS.registerSimpleItem("dyedream_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
     public static final DeferredItem<SwordItem> TITANIUM_SWORD = ITEMS.register("titanium_sword",
             () -> new SwordItem(ModToolTiers.TITANIUM, new Item.Properties()
@@ -151,6 +162,24 @@ public class ModItems {
     public static final DeferredItem<Item> TITANIUM_BOOTS = ITEMS.register("titanium_boots",
             () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(25))));
+
+    // ===== 回响装备 =====
+    public static final DeferredItem<Item> SCULK_HELMET = ITEMS.register("sculk_helmet",
+            () -> new SculkArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.HELMET,
+                    new Item.Properties().rarity(Rarity.UNCOMMON)
+                            .durability(ArmorItem.Type.HELMET.getDurability(42))));
+    public static final DeferredItem<Item> SCULK_CHESTPLATE = ITEMS.register("sculk_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)
+                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(42))));
+    public static final DeferredItem<Item> SCULK_LEGGINGS = ITEMS.register("sculk_leggings",
+            () -> new ArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)
+                            .durability(ArmorItem.Type.LEGGINGS.getDurability(42))));
+    public static final DeferredItem<Item> SCULK_BOOTS = ITEMS.register("sculk_boots",
+            () -> new ArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.BOOTS,
+                    new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)
+                            .durability(ArmorItem.Type.BOOTS.getDurability(42))));
 
     // ===== 染梦合金装备 =====
     public static final DeferredItem<Item> DYEDREAM_HELMET = ITEMS.register("dyedream_helmet",

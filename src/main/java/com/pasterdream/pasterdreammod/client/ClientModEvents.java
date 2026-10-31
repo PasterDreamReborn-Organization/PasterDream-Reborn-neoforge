@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.client;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.init.ModEntityRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -24,7 +25,7 @@ public final class ClientModEvents {
     /** 实体渲染器 + 方块实体渲染器。 */
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        // TODO: ModEntityRenderer.registerRenderers(event);
+        ModEntityRenderer.registerRenderers(event);
         // TODO: ModBlockEntityRenderer.registerRenderers(event);
     }
 

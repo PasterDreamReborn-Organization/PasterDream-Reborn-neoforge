@@ -34,8 +34,10 @@ public class ModRecipesProvider extends RecipeProvider {
         materialRecipes(output);
         pinkSlimeRecipes(output);
         titaniumUpgradeRecipe(output);
+        sculkUpgradeRecipe(output);
         titaniumToolRecipes(output);
         titaniumArmorRecipes(output);
+        sculkArmorRecipes(output);
         dyedreamUpgradeRecipe(output);
         dyedreamToolRecipes(output);
         meltDreamToolRecipes(output);
@@ -288,6 +290,19 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('c', Items.STONE_BUTTON)
                 .define('d', ModItems.BLACK_STICK.get())
                 .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter);
+    }
+
+    private void sculkUpgradeRecipe(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SCULK_UPGRADE.get(), 1)
+                .pattern(" a ")
+                .pattern("bcb")
+                .pattern("dbd")
+                .define('a', Items.IRON_INGOT)
+                .define('b', Items.ECHO_SHARD)
+                .define('c', ModItems.SCULK_HEART.get())
+                .define('d', Items.SCULK_VEIN)
+                .unlockedBy(getHasName(ModItems.SCULK_HEART.get()), has(ModItems.SCULK_HEART.get()))
                 .save(pWriter);
     }
 
@@ -605,6 +620,39 @@ public class ModRecipesProvider extends RecipeProvider {
                         RecipeCategory.COMBAT, ModItems.TITANIUM_BOOTS.get())
                 .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "titanium_boots_smithing"));
+    }
+
+    // ===== 回响装备配方 =====
+
+    private void sculkArmorRecipes(RecipeOutput pWriter) {
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.SCULK_VEIN),
+                        Ingredient.of(Items.NETHERITE_HELMET),
+                        Ingredient.of(ModItems.SCULK_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.SCULK_HELMET.get())
+                .unlocks("has_sculk_upgrade", has(ModItems.SCULK_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sculk_helmet_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.SCULK_VEIN),
+                        Ingredient.of(Items.NETHERITE_CHESTPLATE),
+                        Ingredient.of(ModItems.SCULK_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.SCULK_CHESTPLATE.get())
+                .unlocks("has_sculk_upgrade", has(ModItems.SCULK_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sculk_chestplate_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.SCULK_VEIN),
+                        Ingredient.of(Items.NETHERITE_LEGGINGS),
+                        Ingredient.of(ModItems.SCULK_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.SCULK_LEGGINGS.get())
+                .unlocks("has_sculk_upgrade", has(ModItems.SCULK_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sculk_leggings_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.SCULK_VEIN),
+                        Ingredient.of(Items.NETHERITE_BOOTS),
+                        Ingredient.of(ModItems.SCULK_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.SCULK_BOOTS.get())
+                .unlocks("has_sculk_upgrade", has(ModItems.SCULK_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sculk_boots_smithing"));
     }
 
     private void saveNbtPreserving(ShapelessRecipeBuilder builder, RecipeOutput output, String name) {

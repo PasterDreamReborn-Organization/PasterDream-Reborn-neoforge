@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.effect.DyedreamArmorEffect;
 import com.pasterdream.pasterdreammod.world.effect.DyedreamUpEffect;
+import com.pasterdream.pasterdreammod.world.effect.SculkArmorEffect;
 import com.pasterdream.pasterdreammod.world.effect.TitaniumArmorEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
@@ -25,6 +26,8 @@ public class ModEffects {
             MOB_EFFECTS.register("dyedream_armor", DyedreamArmorEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> DYEDREAM_UP =
             MOB_EFFECTS.register("dyedream_up", DyedreamUpEffect::new);
+    public static final DeferredHolder<MobEffect, MobEffect> SCULK_ARMOR =
+            MOB_EFFECTS.register("sculk_armor", SculkArmorEffect::new);
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

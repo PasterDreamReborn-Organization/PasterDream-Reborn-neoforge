@@ -21,11 +21,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get());
         basicItem(ModItems.DYEDREAM_ALLOY_NUGGET.get());
         basicItem(ModItems.COTTON.get());
+        basicItem(ModItems.SCULK_HEART.get());
         basicItem(ModItems.SPOOL.get());
         basicItem(ModItems.FABRIC.get());
         basicItem(ModItems.PROTECT_DECK.get());
         basicItem(ModItems.BLACK_STICK.get());
         basicItem(ModItems.TITANIUM_UPGRADE.get());
+        basicItem(ModItems.SCULK_UPGRADE.get());
         basicItem(ModItems.DYEDREAM_UPGRADE.get());
         handheldItem(ModItems.TITANIUM_SWORD.get());
         handheldItem(ModItems.TITANIUM_PICKAXE.get());
@@ -42,6 +44,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TITANIUM_CHESTPLATE.get());
         basicItem(ModItems.TITANIUM_LEGGINGS.get());
         basicItem(ModItems.TITANIUM_BOOTS.get());
+        basicItem(ModItems.SCULK_HELMET.get());
+        basicItem(ModItems.SCULK_CHESTPLATE.get());
+        basicItem(ModItems.SCULK_LEGGINGS.get());
+        basicItem(ModItems.SCULK_BOOTS.get());
         basicItem(ModItems.DYEDREAM_HELMET.get());
         basicItem(ModItems.DYEDREAM_CHESTPLATE.get());
         basicItem(ModItems.DYEDREAM_LEGGINGS.get());
@@ -60,6 +66,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.PINK_SLIMEBALL.get());
         basicItem(ModItems.DYEDREAM_DYE.get());
         basicItem(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
+        basicItem(ModItems.MELT_DREAM_COIN.get());
+        basicItem(ModItems.MELT_DREAM_COIN_PILE.get());
         handheldItem(ModItems.MELT_DREAM_PICKAXE.get());
         handheldItem(ModItems.MELT_DREAM_AXE.get());
         handheldItem(ModItems.MELT_DREAM_SHOVEL.get());
