@@ -48,7 +48,11 @@ public class ModRecipesProvider extends RecipeProvider {
         alloyRecipes(output);
         moltenGoldToolRecipes(output);
         hellfireToolRecipes(output);
+        infernoSwordRecipe(output);
         tideSwordRecipes(output);
+        grassSwordRecipe(output);
+        jungleSporeRecipe(output);
+        lostSwordTombRecipe(output);
         titaniumCooking(output, ModItems.TITANIUM_ORE.get(), "titanium_ore_");
         titaniumCooking(output, ModItems.DEEPSLATE_TITANIUM_ORE.get(), "deepslate_titanium_ore_");
         titaniumCooking(output, ModItems.RAW_TITANIUM.get(), "");
@@ -749,6 +753,53 @@ public class ModRecipesProvider extends RecipeProvider {
     }
 
     // ===== 引潮剑配方 =====
+
+    // ===== 『融骸』狱炎剑配方 =====
+
+    private void infernoSwordRecipe(RecipeOutput pWriter) {
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.NETHER_BRICK),
+                        Ingredient.of(ModItems.HELLFIRE_SWORD.get()),
+                        Ingredient.of(Items.NETHER_STAR),
+                        RecipeCategory.COMBAT, ModItems.INFERNO_SWORD.get())
+                .unlocks("has_nether_star", has(Items.NETHER_STAR))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "inferno_sword_smithing"));
+    }
+
+    // ===== 草薙配方 =====
+
+    private void grassSwordRecipe(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.KUSANAGI.get())
+                .pattern(" ab")
+                .pattern("aca")
+                .pattern("da ")
+                .define('a', ModItems.JUNGLE_SPORE.get())
+                .define('b', Items.SPORE_BLOSSOM)
+                .define('c', ModItems.SWORD_EMBRYO.get())
+                .define('d', Items.EMERALD_BLOCK)
+                .unlockedBy(getHasName(ModItems.JUNGLE_SPORE.get()), has(ModItems.JUNGLE_SPORE.get()))
+                .save(pWriter);
+    }
+
+    // ===== 丛林孢子配方 =====
+
+    private void jungleSporeRecipe(RecipeOutput pWriter) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.JUNGLE_SPORE.get(), 2)
+                .requires(ModItems.JUNGLE_SPORE.get())
+                .requires(Items.BONE_MEAL)
+                .unlockedBy(getHasName(ModItems.JUNGLE_SPORE.get()), has(ModItems.JUNGLE_SPORE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "jungle_spore_from_bone_meal"));
+    }
+
+    // ===== 失落剑冢配方 =====
+
+    private void lostSwordTombRecipe(RecipeOutput pWriter) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LOST_SWORD_TOMB.get(), 1)
+                .requires(ModItems.SWORD_EMBRYO.get())
+                .requires(Items.MOSSY_COBBLESTONE)
+                .unlockedBy(getHasName(ModItems.SWORD_EMBRYO.get()), has(ModItems.SWORD_EMBRYO.get()))
+                .save(pWriter);
+    }
 
     private void tideSwordRecipes(RecipeOutput pWriter) {
         // 引潮剑

@@ -42,7 +42,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.RAW_TITANIUM_BLOCK.get())
                 .add(ModBlocks.TITANIUM_BLOCK.get())
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get())
-                .add(ModBlocks.MOLTEN_GOLD_BLOCK.get());
+                .add(ModBlocks.MOLTEN_GOLD_BLOCK.get())
+                .add(ModBlocks.LOST_SWORD_TOMB.get());
 
         // 需要铁工具挖掘
         tag(BlockTags.NEEDS_IRON_TOOL)

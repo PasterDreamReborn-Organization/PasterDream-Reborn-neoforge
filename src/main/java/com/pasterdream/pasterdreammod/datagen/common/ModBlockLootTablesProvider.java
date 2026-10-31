@@ -61,6 +61,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.TITANIUM_BLOCK.get());
         add(ModBlocks.MOLTEN_GOLD_ORE.get(), block -> createOreDrop(block, ModItems.RAW_MOLTEN_GOLD.get()));
         dropSelf(ModBlocks.MOLTEN_GOLD_BLOCK.get());
+        dropSelf(ModBlocks.LOST_SWORD_TOMB.get());
     }
 
     @Override

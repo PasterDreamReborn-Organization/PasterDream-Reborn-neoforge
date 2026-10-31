@@ -62,8 +62,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.MOLTEN_GOLD_HOE.get());
         handheldItem(ModItems.HELLFIRE_SWORD.get());
         handheldItem(ModItems.HELLFIRE_PICKAXE.get());
+        handheldItem(ModItems.INFERNO_SWORD.get());
         handheldItem(ModItems.TIDE_SWORD.get());
         handheldItem(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
+        handheldItem(ModItems.KUSANAGI.get());
+        handheldItem(ModItems.MURAKUMO_KUSANAGI.get());
+        handheldItem(ModItems.SWORD_EMBRYO.get());
+        basicItem(ModItems.JUNGLE_SPORE.get());
         basicItem(ModItems.BLUE_HEART_OF_THE_SEA.get());
         basicItem(ModItems.ELDER_GUARDIAN_SCALE.get());
         basicItem(ModItems.BLUE_DEW.get());
@@ -87,6 +92,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/medium_dyedream_bud"));
         withExistingParent(ModItems.LARGE_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/large_dyedream_bud"));
+        withExistingParent(ModItems.LOST_SWORD_TOMB.getId().getPath(), modLoc("block/lost_sword_tomb"));
     }
 
     private void wallItem(String wall, String base) {

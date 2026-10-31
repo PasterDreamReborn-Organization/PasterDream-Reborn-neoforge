@@ -10,10 +10,14 @@ import com.pasterdream.pasterdreammod.world.item.MeltDreamCrystalFragmentItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
+import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
+import com.pasterdream.pasterdreammod.world.item.grasstool.MurakumoKusanagiItem;
 import com.pasterdream.pasterdreammod.world.item.hellfiretool.*;
+import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombItem;
 import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
 import com.pasterdream.pasterdreammod.world.item.tidetool.*;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -96,6 +100,10 @@ public class ModItems {
     public static final DeferredItem<Item> PROTECT_DECK = ITEMS.register("protect_deck",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> JUNGLE_SPORE = ITEMS.register("jungle_spore",
+            () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
+                    .nutrition(1).saturationModifier(0f).build())));
+
     public static final DeferredItem<Item> BLACK_STICK = ITEMS.registerSimpleItem("black_stick");
     public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> SCULK_UPGRADE = ITEMS.registerSimpleItem("sculk_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
@@ -164,12 +172,21 @@ public class ModItems {
             () -> new HellfireSwordItem(ModToolTiers.HELLFIRE, 3, -2.2f, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> HELLFIRE_PICKAXE = ITEMS.register("hellfire_pickaxe",
             () -> new HellfirePickaxeItem(ModToolTiers.HELLFIRE, 1, -2.6f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> INFERNO_SWORD = ITEMS.register("inferno_sword",
+            () -> new InfernoSwordItem(ModToolTiers.HELLFIRE, 4, -3.1f, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // ===== 独立武器 =====
     public static final DeferredItem<Item> TIDE_SWORD = ITEMS.register("tide_sword",
             () -> new TideSwordItem(ModToolTiers.TIDE_SWORD, 3, -2.8f, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> BEIHAI_RUO_TIDE_SWORD = ITEMS.register("beihairuo_tide_sword",
             () -> new BeihaiRuoTideSwordItem(ModToolTiers.BEIHAI_RUO_TIDE_SWORD, 3, -2.8f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> KUSANAGI = ITEMS.register("kusanagi",
+            () -> new KusanagiItem(ModToolTiers.KUSANAGI, 3, -2.5f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> MURAKUMO_KUSANAGI = ITEMS.register("murakumo_kusanagi",
+            () -> new MurakumoKusanagiItem(ModToolTiers.MURAKUMO_KUSANAGI, 3, -2.5f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> SWORD_EMBRYO = ITEMS.register("sword_embryo",
+            () -> new SwordItem(Tiers.IRON, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(Tiers.IRON, 1, -2.4f))));
 
     // ===== 钛金装备 =====
     public static final DeferredItem<Item> TITANIUM_HELMET = ITEMS.register("titanium_helmet",
@@ -220,6 +237,9 @@ public class ModItems {
             () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.BOOTS,
                     new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()
                             .durability(ArmorItem.Type.BOOTS.getDurability(40))));
+
+    public static final DeferredItem<Item> LOST_SWORD_TOMB = ITEMS.register("lost_sword_tomb",
+            () -> new LostSwordTombItem(ModBlocks.LOST_SWORD_TOMB.get(), new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

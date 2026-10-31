@@ -68,6 +68,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.TITANIUM_BLOCK.get(), cubeAll(ModBlocks.TITANIUM_BLOCK.get()));
         simpleBlockWithItem(ModBlocks.MOLTEN_GOLD_ORE.get(), cubeAll(ModBlocks.MOLTEN_GOLD_ORE.get()));
         simpleBlockWithItem(ModBlocks.MOLTEN_GOLD_BLOCK.get(), cubeAll(ModBlocks.MOLTEN_GOLD_BLOCK.get()));
+
+        // ===== 失落剑冢 =====
+        var lostSwordTomb = models().getBuilder(ModBlocks.LOST_SWORD_TOMB.getId().getPath())
+                .parent(new ModelFile.UncheckedModelFile(modLoc("custom/lost_sword_tomb")))
+                .texture("all", modLoc("block/lost_sword"))
+                .texture("particle", mcLoc("block/mossy_cobblestone"))
+                .texture("1", modLoc("block/lost_sword"))
+                .texture("2", modLoc("block/lost_sword"))
+                .renderType("cutout");
+        horizontalBlock(ModBlocks.LOST_SWORD_TOMB.get(), lostSwordTomb);
+        blockItem(ModBlocks.LOST_SWORD_TOMB);
     }
 
     private void blockItem(net.neoforged.neoforge.registries.DeferredBlock<?> block) {

@@ -44,8 +44,16 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FABRIC.get());
                         output.accept(ModItems.BLUE_HEART_OF_THE_SEA.get());
                         output.accept(ModItems.ELDER_GUARDIAN_SCALE.get());
-                        // 蔚蓝露滴在来源属于食物栏；食物栏尚未迁入，暂置于物品栏。
+                    }).build());
+
+    // 食物栏图标暂用蔚蓝露滴；来源图标 DYEDREAM_FRUIT 尚未迁入。
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_FOOD_TAB =
+            CREATIVE_MODE_TABS.register("pasterdream_food_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_food_tab"))
+                    .icon(() -> ModItems.BLUE_DEW.toStack())
+                    .displayItems((parameters, output) -> {
                         output.accept(ModItems.BLUE_DEW.get());
+                        output.accept(ModItems.JUNGLE_SPORE.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_BLOCKS_TAB =
@@ -76,6 +84,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SMALL_DYEDREAM_BUD.get());
                         output.accept(ModItems.DYEDREAM_BUDDING_BLOCK.get());
                         output.accept(ModItems.DYEDREAM_BUD_BLOCK.get());
+                        output.accept(ModItems.LOST_SWORD_TOMB.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_GEAR_TAB =
@@ -127,9 +136,13 @@ public class ModCreativeModeTabs {
                         // 狱炎工具
                         output.accept(ModItems.HELLFIRE_SWORD.get());
                         output.accept(ModItems.HELLFIRE_PICKAXE.get());
+                        output.accept(ModItems.INFERNO_SWORD.get());
                         // 独立武器
                         output.accept(ModItems.TIDE_SWORD.get());
                         output.accept(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
+                        output.accept(ModItems.KUSANAGI.get());
+                        output.accept(ModItems.MURAKUMO_KUSANAGI.get());
+                        output.accept(ModItems.SWORD_EMBRYO.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

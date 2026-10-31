@@ -30,6 +30,12 @@ public class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> COIN_EXCHANGE =
             SOUND_EVENTS.register("coin_exchange", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coin_exchange")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> SKILL_HIT_HEAVY =
+            SOUND_EVENTS.register("skill_hit_heavy", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "skill_hit_heavy")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_AWAKEN =
+            SOUND_EVENTS.register("sword_awaken", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sword_awaken")));
 
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);

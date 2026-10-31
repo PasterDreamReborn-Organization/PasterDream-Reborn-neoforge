@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.network.skill.KusanagiVenomStingerPacket;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -28,6 +29,8 @@ public final class ModNetwork {
     @SubscribeEvent
     public static void register(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar registrar = event.registrar(PROTOCOL_VERSION);
+        registrar.playToServer(KusanagiVenomStingerPacket.TYPE, KusanagiVenomStingerPacket.STREAM_CODEC,
+                KusanagiVenomStingerPacket::handle);
         // TODO:
         // registrar.playToServer(BlinkPacket.TYPE, BlinkPacket.STREAM_CODEC, BlinkPacket::handle);
         // registrar.playToClient(SanSyncPacket.TYPE, SanSyncPacket.STREAM_CODEC, SanSyncPacket::handle);
