@@ -5,6 +5,10 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 工作流调整（2026-11-03）
+
+- NeoForge 移植的提交与推送改由用户亲自执行；代理交付未提交的改动、验证结果和建议提交信息。
+
 ### 批次 001：数据层与钛金基础材料
 
 - 迁入粗钛、钛金锭/粒、两种钛矿及两个储存块，保留来源 ID、物理参数、挖掘等级和掉落行为。
