@@ -20,7 +20,7 @@ This project is released with permission from the original author "Aerolite_Dust
 
 ## License
 
-- **Code**: [PDR License](LICENSE.md) — Play, include in modpacks, and study personally; addon mods, ports, modified redistribution, or commercial use require prior written permission
+- **Code**: [PDR License](LICENSE.md) — Play, include in modpacks, and study personally; addons require prior written permission and inclusion in the [Authorized Addons list](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1/blob/master/AUTHORIZED_ADDONS.md), with the approved scope specifying the applicable version and loader. See the license for other requirements and restrictions
 - **Art Assets**: [ARR](src/main/resources/LICENSE_ASSETS.md) — All Rights Reserved. Original mod assets copyright by the original author; rewrite team assets copyright by the rewrite team. See [Asset Manifest](src/main/resources/ASSETS_MANIFEST.md)
 
 ## Installation
