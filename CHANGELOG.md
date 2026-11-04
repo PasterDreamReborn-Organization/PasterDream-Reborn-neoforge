@@ -5,6 +5,11 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 协议同步（2026-11-03）
+
+- 按上游已合并的 `3a2db069` 同步 PDR 协议第 3.1 条：附属模组需书面许可并登记于上游唯一的授权名单；NeoForge 仓库保留完整协议文本及本仓库申请入口。
+- README 中英文版指向同一名单，并提示授权范围需写明适用版本与加载器；本次仅调整协议与文档，不改变内容迁移状态。
+
 ### 工作流调整（2026-11-03）
 
 - NeoForge 移植的提交与推送改由用户亲自执行；代理交付未提交的改动、验证结果和建议提交信息。
