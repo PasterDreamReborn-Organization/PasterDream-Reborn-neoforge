@@ -5,6 +5,11 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### CI 修复（2026-11-05）
+
+- 在 `.gitattributes` 和 `.editorconfig` 中为 Unix Gradle 启动脚本 `gradlew` 单独设置 LF 换行，避免 Linux CI 检出或编辑器保存时被仓库默认 CRLF 规则转换；其余文本文件继续遵循现有规则。
+- 此修复针对 GitHub Actions 运行 #42056439200 的退出码 126；具体失败步骤仍需运行日志或后续远程 CI 复核。
+
 ### 协议与仓库规范同步（2026-11-05）
 
 - 按上游已合并 PR #1271 同步 PDR 协议第 0 条：定义公开 API、附属模组与独立程序，明确第 3 条优先于第 1 条，并将协议适用范围扩展至使用、分发、附属创作与相关内容发布。
