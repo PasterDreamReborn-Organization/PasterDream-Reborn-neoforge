@@ -39,10 +39,14 @@ public class ModRecipesProvider extends RecipeProvider {
         sculkUpgradeRecipe(output);
         copperToolRecipes(output);
         copperArmorRecipes(output);
+        congealWindIronToolRecipes(output);
+        fluffyWindAlloyToolRecipes(output);
         titaniumToolRecipes(output);
         titaniumArmorRecipes(output);
         sculkArmorRecipes(output);
         dyedreamUpgradeRecipe(output);
+        fluffyWindAlloyUpgradeRecipe(output);
+        windJourneyMaterialRecipes(output);
         dyedreamToolRecipes(output);
         meltDreamToolRecipes(output);
         dyedreamArmorRecipes(output);
@@ -327,6 +331,90 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('b', Items.BLACKSTONE)
                 .unlockedBy(getHasName(Items.BLACKSTONE), has(Items.BLACKSTONE))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_stick_straight"));
+    }
+
+    // ===== 凝风铁工具配方 =====
+
+    private void congealWindIronToolRecipes(RecipeOutput pWriter) {
+        RecipeHelpers.toolSetRecipes(pWriter,
+                ModItems.CONGEAL_WIND_IRON_INGOT.get(), ModItems.BLACK_STICK.get(), PasterDreamMod.MOD_ID,
+                ModItems.CONGEAL_WIND_IRON_SWORD.get(), ModItems.CONGEAL_WIND_IRON_PICKAXE.get(),
+                ModItems.CONGEAL_WIND_IRON_AXE.get(), ModItems.CONGEAL_WIND_IRON_SHOVEL.get(),
+                ModItems.CONGEAL_WIND_IRON_HOE.get());
+    }
+
+    // ===== 萦风合金工具配方（锻造台：凝结之风 + 凝风铁工具 + 萦风合金升级套件） =====
+
+    private void fluffyWindAlloyToolRecipes(RecipeOutput pWriter) {
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.CONGEAL_WIND.get()),
+                        Ingredient.of(ModItems.CONGEAL_WIND_IRON_SWORD.get()),
+                        Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.FLUFFY_WIND_ALLOY_SWORD.get())
+                .unlocks("has_fluffy_wind_alloy_upgrade", has(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fluffy_wind_alloy_sword_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.CONGEAL_WIND.get()),
+                        Ingredient.of(ModItems.CONGEAL_WIND_IRON_PICKAXE.get()),
+                        Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get())
+                .unlocks("has_fluffy_wind_alloy_upgrade", has(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fluffy_wind_alloy_pickaxe_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.CONGEAL_WIND.get()),
+                        Ingredient.of(ModItems.CONGEAL_WIND_IRON_AXE.get()),
+                        Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.FLUFFY_WIND_ALLOY_AXE.get())
+                .unlocks("has_fluffy_wind_alloy_upgrade", has(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fluffy_wind_alloy_axe_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.CONGEAL_WIND.get()),
+                        Ingredient.of(ModItems.CONGEAL_WIND_IRON_SHOVEL.get()),
+                        Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get())
+                .unlocks("has_fluffy_wind_alloy_upgrade", has(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fluffy_wind_alloy_shovel_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.CONGEAL_WIND.get()),
+                        Ingredient.of(ModItems.CONGEAL_WIND_IRON_HOE.get()),
+                        Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.FLUFFY_WIND_ALLOY_HOE.get())
+                .unlocks("has_fluffy_wind_alloy_upgrade", has(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fluffy_wind_alloy_hoe_smithing"));
+    }
+
+    // ===== 萦风合金升级套件与材料配方 =====
+
+    private void fluffyWindAlloyUpgradeRecipe(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get(), 1)
+                .pattern(" a ")
+                .pattern("bcb")
+                .pattern("dbd")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .define('b', ModItems.FLUFFY_WIND_ALLOY_INGOT.get())
+                .define('c', ModItems.TITANIUM_UPGRADE.get())
+                .define('d', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.FLUFFY_WIND_ALLOY_INGOT.get()), has(ModItems.FLUFFY_WIND_ALLOY_INGOT.get()))
+                .save(pWriter);
+    }
+
+    private void windJourneyMaterialRecipes(RecipeOutput pWriter) {
+        // 凝风铁锭 ↔ 凝风铁粒
+        RecipeHelpers.storageCompress(pWriter, ModItems.CONGEAL_WIND_IRON_NUGGET.get(),
+                ModItems.CONGEAL_WIND_IRON_INGOT.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.CONGEAL_WIND_IRON_INGOT.get(),
+                ModItems.CONGEAL_WIND_IRON_NUGGET.get(), PasterDreamMod.MOD_ID);
+        // 萦风合金锭：凝风铁锭 + 脉冲风行者水晶 + 钛金锭 + 凝结之风
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), 2)
+                .pattern("dcd")
+                .pattern("aba")
+                .pattern("dcd")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .define('b', ModItems.PULSE_WIND_RUNNER_CRYSTAL.get())
+                .define('c', ModItems.TITANIUM_INGOT.get())
+                .define('d', ModItems.CONGEAL_WIND.get())
+                .unlockedBy(getHasName(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()), has(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()))
+                .save(pWriter);
     }
 
     private void titaniumToolRecipes(RecipeOutput pWriter) {

@@ -18,6 +18,10 @@ public enum ModToolTiers implements Tier {
             () -> Ingredient.of(ModItems.MOLTEN_GOLD_INGOT.get())),
     TITANIUM(1721, 9.0F, 3.5F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 17,
             () -> Ingredient.of(ModItems.TITANIUM_INGOT.get())),
+    CONGEAL_WIND_IRON(750, 7.0F, 2.5F, BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 12,
+            () -> Ingredient.of(ModItems.CONGEAL_WIND_IRON_INGOT.get())),
+    FLUFFY_WIND_ALLOY(1500, 13.0F, 4.0F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 22,
+            () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get())),
     DYEDREAM(1314, 11.0F, 4.0F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 22,
             () -> Ingredient.of(ModItems.DYEDREAM_ALLOY_INGOT.get())),
     MELT_DREAM(1728, 14.0F, 4.5F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 22,
@@ -37,7 +41,9 @@ public enum ModToolTiers implements Tier {
     CHENJINGMEN_DESERT_SWORD(1561, 1.0F, 8.0F, BlockTags.INCORRECT_FOR_STONE_TOOL, 8,
             Ingredient::of),
     BROKEN_HERO_SWORD(100, 1.0F, 3.0F, BlockTags.INCORRECT_FOR_STONE_TOOL, 0,
-            Ingredient::of);
+            Ingredient::of),
+    WINDWREATHED_THUNDER_SPEAR(2011, 13.0F, 9.0F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 22,
+            () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get()));
 
     private final int uses;
     private final float speed;

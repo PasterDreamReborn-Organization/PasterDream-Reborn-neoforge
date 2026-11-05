@@ -313,5 +313,81 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.desert_hero_tomb.receive_sword", "好汉收了罢，这口剑的真本事如今已尽数为你解开了：§e『沉荆门』朔漠。\n§r俺已再没甚别物送与好汉了。");
         add("message.pasterdream.desert_hero_tomb.bring_sword", "俺的心愿已了，好汉但须携俺那口朔漠大剑来见俺。");
         add("message.pasterdream.desert_hero_tomb.already_completed", "俺已再没甚别物送与好汉了");
+
+        // ===== 品质 =====
+        add("rarity.pasterdream.common", "普通");
+        add("rarity.pasterdream.excellent", "优秀");
+        add("rarity.pasterdream.superior", "精良");
+        add("rarity.pasterdream.master", "大师");
+        add("rarity.pasterdream.ancient", "上古");
+        add("rarity.pasterdream.epic", "史诗");
+        add("rarity.pasterdream.legendary", "传说");
+        add("rarity.pasterdream.miracle", "神迹");
+        add("tooltip.pasterdream.quality", "品质: %s %s");
+
+        // ===== 风之旅途材料与装备 =====
+        add(ModItems.CONGEAL_WIND.get(), "凝结之风");
+        add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "凝风铁锭");
+        add(ModItems.CONGEAL_WIND_IRON_NUGGET.get(), "凝风铁粒");
+        add(ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), "萦风合金锭");
+        add(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get(), "萦风合金升级套件");
+        add(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), "脉冲风行者水晶");
+        add(ModItems.CONGEAL_WIND_IRON_SWORD.get(), "凝风铁剑");
+        add(ModItems.CONGEAL_WIND_IRON_PICKAXE.get(), "凝风铁镐");
+        add(ModItems.CONGEAL_WIND_IRON_AXE.get(), "凝风铁斧");
+        add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get(), "凝风铁锹");
+        add(ModItems.CONGEAL_WIND_IRON_HOE.get(), "凝风铁锄");
+        add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get(), "萦风合金剑");
+        add(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get(), "萦风合金镐");
+        add(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), "萦风合金斧");
+        add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get(), "萦风合金锹");
+        add(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), "萦风合金锄");
+        add(ModItems.WINDWREATHED_THUNDER_SPEAR.get(), "萦风雷矛");
+
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive_name", "被动：§b疾风过境");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1", "§7▪ §9移动速度越快，挖掘速度越快");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2", "§7▪ §9破坏方块时，掉落物会被风卷至身边");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.skill_name", "战技：§b落叶秋风");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc1", "§7▪ §9潜行挖掘原木时，连锁破坏周围原木与树叶");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.passive1", "§7▪ §9移动速度越快，挖掘速度越快，攻击伤害越高");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.passive2", "§7▪ §9破坏方块或击杀生物时，掉落物会被风卷至身边");
+        add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.skill_name", "战技：§b风蚀共振");
+        add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.desc1", "§7▪ §9潜行挖掘时，连锁破坏周围3×3×3的同类方块");
+        add("tooltip.pasterdream.fluffy_wind_alloy_shovel.skill_name", "战技：§b沙尘漩涡");
+        add("tooltip.pasterdream.fluffy_wind_alloy_shovel.desc1", "§7▪ §9潜行挖掘时，连锁破坏周围3×3×3的同类方块");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.skill_name", "战技：§b春风化雨");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc1", "§7▪ §9右键时，催熟3×3范围的作物");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc2", "§7▪ §9冷却：3秒");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc3", "§7▪ §9耐久消耗：每格作物1耐久");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc4", "§7▪ §9潜行挖掘时，连锁破坏周围3×3×3的同类方块或周围5×5的作物");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.skill_name", "战技：§b萦风引雷");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc1", "§7▪ §9shift+右键切换风/雷模式");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc_wind_header", "§b风·疾风突进：");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc2", "§7▪ §9朝指定方向突进并造成伤害，且移动速度越快伤害越高");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc3", "§7▪ §9风之冷却：2秒");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc_thunder_header", "§e雷·落雷天罚：");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4", "§7▪ §9朝指定位置落下5道落雷并造成范围雷电伤害");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc5", "§7▪ §9雷之消耗：§c1.0§9融梦能量");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc6", "§7▪ §9雷之冷却：5秒");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name", "被动：§b雷随疾风");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1", "§7▪ §9移动速度越高伤害越高，并附带雷电伤害");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive2", "§7▪ §9破坏方块或击杀生物时，掉落物会被风卷至身边");
+        add("message.pasterdream.fluffy_wind_alloy_sword.mode_thunder", "§e当前模式：落雷天罚");
+        add("message.pasterdream.fluffy_wind_alloy_sword.mode_wind", "§f当前模式：疾风突进");
+        add("message.pasterdream.fluffy_wind_alloy_sword.no_energy", "§c融梦能量不足");
+
+        add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "战技：§b风雷齐行");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_header", "§b突进·蓄雷破风：");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9普通右键蓄力突进，激流附魔可增强冲量，每级增加1.0融梦能量消耗");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_energy", "§7▪ §9融梦能量消耗：§c1.0");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_cooldown", "§7▪ §9冷却：3秒");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header", "§e投掷·萦风投雷：");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9shift+右键蓄力投掷虚影，命中后触发连锁闪电并自动飞回；返回前无法再次投掷");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_energy", "§7▪ §9融梦能量消耗：§c1.0");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.passive_name", "被动：§b雷随疾风");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.passive1", "§7▪ §9移动速度越高伤害越高，并附带雷电伤害");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.passive2", "§7▪ §9破坏方块或击杀生物时，掉落物会被风卷至身边");
+        add("message.pasterdream.windwreathed_thunder_spear.no_energy", "§c融梦能量不足");
+        add("jei.pasterdream.pulse_wind_runner_crystal.info", "由破风骑士掉落。");
     }
 }

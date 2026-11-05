@@ -28,7 +28,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get())
                 .add(ModItems.MURAKUMO_KUSANAGI.get())
                 .add(ModItems.INFERNO_SWORD.get())
-                .add(ModItems.CHENJINGMEN_DESERT_SWORD.get());
+                .add(ModItems.CHENJINGMEN_DESERT_SWORD.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get())
+                .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
         // copy(BlockTag, ItemTag) 将 BlockTagsProvider 中注册的方块标签自动同步到对应物品标签
         copy(ModBlockTags.ORES_DYEDREAM_QUARTZ, ModItemTags.ORES_DYEDREAM_QUARTZ);
         copy(ModBlockTags.ORES_DYEDREAM_DUST, ModItemTags.ORES_DYEDREAM_DUST);
@@ -60,35 +63,47 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.SWORD_EMBRYO.get())
                 .add(ModItems.DESERT_SWORD.get())
                 .add(ModItems.CHENJINGMEN_DESERT_SWORD.get())
-                .add(ModItems.BROKEN_HERO_SWORD.get());
+                .add(ModItems.BROKEN_HERO_SWORD.get())
+                .add(ModItems.CONGEAL_WIND_IRON_SWORD.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get())
+                .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
         tag(ItemTags.PICKAXES)
                 .add(ModItems.COPPER_PICKAXE.get())
                 .add(ModItems.TITANIUM_PICKAXE.get())
                 .add(ModItems.MOLTEN_GOLD_PICKAXE.get())
                 .add(ModItems.DYEDREAM_PICKAXE.get())
                 .add(ModItems.MELT_DREAM_PICKAXE.get())
-                .add(ModItems.HELLFIRE_PICKAXE.get());
+                .add(ModItems.HELLFIRE_PICKAXE.get())
+                .add(ModItems.CONGEAL_WIND_IRON_PICKAXE.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get());
         tag(ItemTags.AXES)
                 .add(ModItems.COPPER_AXE.get())
                 .add(ModItems.TITANIUM_AXE.get())
                 .add(ModItems.MOLTEN_GOLD_AXE.get())
                 .add(ModItems.DYEDREAM_AXE.get())
-                .add(ModItems.MELT_DREAM_AXE.get());
+                .add(ModItems.MELT_DREAM_AXE.get())
+                .add(ModItems.CONGEAL_WIND_IRON_AXE.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_AXE.get());
         tag(ItemTags.SHOVELS)
                 .add(ModItems.COPPER_SHOVEL.get())
                 .add(ModItems.TITANIUM_SHOVEL.get())
                 .add(ModItems.MOLTEN_GOLD_SHOVEL.get())
                 .add(ModItems.DYEDREAM_SHOVEL.get())
-                .add(ModItems.MELT_DREAM_SHOVEL.get());
+                .add(ModItems.MELT_DREAM_SHOVEL.get())
+                .add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get());
         tag(ItemTags.HOES)
                 .add(ModItems.COPPER_HOE.get())
                 .add(ModItems.TITANIUM_HOE.get())
                 .add(ModItems.MOLTEN_GOLD_HOE.get())
                 .add(ModItems.DYEDREAM_HOE.get())
-                .add(ModItems.MELT_DREAM_HOE.get());
+                .add(ModItems.MELT_DREAM_HOE.get())
+                .add(ModItems.CONGEAL_WIND_IRON_HOE.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get());
         // 『北海若』引潮沿用来源可在附魔台获得三叉戟专属附魔；1.21 由物品标签驱动。
         tag(ItemTags.TRIDENT_ENCHANTABLE)
-                .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
+                .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get())
+                .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
         tag(ItemTags.HEAD_ARMOR).add(ModItems.COPPER_HELMET.get()).add(ModItems.MELT_DREAM_HELMET.get()).add(ModItems.TITANIUM_HELMET.get()).add(ModItems.SCULK_HELMET.get()).add(ModItems.DYEDREAM_HELMET.get());
         tag(ItemTags.CHEST_ARMOR).add(ModItems.COPPER_CHESTPLATE.get()).add(ModItems.MELT_DREAM_CHESTPLATE.get()).add(ModItems.TITANIUM_CHESTPLATE.get()).add(ModItems.SCULK_CHESTPLATE.get()).add(ModItems.DYEDREAM_CHESTPLATE.get());
         tag(ItemTags.LEG_ARMOR).add(ModItems.COPPER_LEGGINGS.get()).add(ModItems.MELT_DREAM_LEGGINGS.get()).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.SCULK_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get());
@@ -105,9 +120,15 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .addTag(ModItemTags.INGOTS_TITANIUM)
                 .addTag(ModItemTags.INGOTS_MOLTEN_GOLD)
                 .addTag(ModItemTags.INGOTS_RAW_DYEDREAM_ALLOY)
-                .addTag(ModItemTags.INGOTS_DYEDREAM_ALLOY);
+                .addTag(ModItemTags.INGOTS_DYEDREAM_ALLOY)
+                .addTag(ModItemTags.INGOTS_CONGEAL_WIND_IRON)
+                .addTag(ModItemTags.INGOTS_FLUFFY_WIND_ALLOY);
         tag(ModItemTags.INGOTS_MOLTEN_GOLD)
                 .add(ModItems.MOLTEN_GOLD_INGOT.get());
+        tag(ModItemTags.INGOTS_CONGEAL_WIND_IRON)
+                .add(ModItems.CONGEAL_WIND_IRON_INGOT.get());
+        tag(ModItemTags.INGOTS_FLUFFY_WIND_ALLOY)
+                .add(ModItems.FLUFFY_WIND_ALLOY_INGOT.get());
 
         // 金属粒标签
         tag(ModItemTags.NUGGETS_TITANIUM)
@@ -120,9 +141,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .addTag(ModItemTags.NUGGETS_TITANIUM)
                 .addTag(ModItemTags.NUGGETS_MOLTEN_GOLD)
                 .addTag(ModItemTags.NUGGETS_DYEDREAM_ALLOY)
-                .addTag(ModItemTags.NUGGETS_DYEDREAM_BUD);
+                .addTag(ModItemTags.NUGGETS_DYEDREAM_BUD)
+                .addTag(ModItemTags.NUGGETS_CONGEAL_WIND_IRON);
         tag(ModItemTags.NUGGETS_MOLTEN_GOLD)
                 .add(ModItems.MOLTEN_GOLD_NUGGET.get());
+        tag(ModItemTags.NUGGETS_CONGEAL_WIND_IRON)
+                .add(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
 
         tag(ModItemTags.RAW_MATERIALS_TITANIUM)
                 .add(ModItems.RAW_TITANIUM.get());

@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindAlloyMiningSpeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.skill.KusanagiVenomStingerPacket;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -35,6 +36,8 @@ public final class ModNetwork {
         // TODO:
         // registrar.playToServer(BlinkPacket.TYPE, BlinkPacket.STREAM_CODEC, BlinkPacket::handle);
         registrar.playToClient(LowSanConfigSyncPacket.TYPE, LowSanConfigSyncPacket.STREAM_CODEC, LowSanConfigSyncPacket::handle);
+        registrar.playToClient(WindAlloyMiningSpeedSyncPacket.TYPE, WindAlloyMiningSpeedSyncPacket.STREAM_CODEC,
+                WindAlloyMiningSpeedSyncPacket::handle);
     }
 
     /** 客户端 → 服务端。 */

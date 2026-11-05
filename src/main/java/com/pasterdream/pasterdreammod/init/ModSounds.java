@@ -33,6 +33,9 @@ public class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> SKILL_HIT_HEAVY =
             SOUND_EVENTS.register("skill_hit_heavy", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "skill_hit_heavy")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> LIGHTNING_CHARGE =
+            SOUND_EVENTS.register("lightning_charge", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lightning_charge")));
     public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_AWAKEN =
             SOUND_EVENTS.register("sword_awaken", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sword_awaken")));

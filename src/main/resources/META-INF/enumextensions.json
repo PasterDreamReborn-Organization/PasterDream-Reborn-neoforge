@@ -1,0 +1,76 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PASTERDREAM_COMMON",
+      "constructor": "(ILjava/lang/String;Lnet/minecraft/ChatFormatting;)V",
+      "parameters": {
+        "class": "com/pasterdream/pasterdreammod/world/item/ModRarities",
+        "field": "COMMON_PROXY"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PASTERDREAM_EXCELLENT",
+      "constructor": "(ILjava/lang/String;Lnet/minecraft/ChatFormatting;)V",
+      "parameters": {
+        "class": "com/pasterdream/pasterdreammod/world/item/ModRarities",
+        "field": "EXCELLENT_PROXY"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PASTERDREAM_SUPERIOR",
+      "constructor": "(ILjava/lang/String;Lnet/minecraft/ChatFormatting;)V",
+      "parameters": {
+        "class": "com/pasterdream/pasterdreammod/world/item/ModRarities",
+        "field": "SUPERIOR_PROXY"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PASTERDREAM_MASTER",
+      "constructor": "(ILjava/lang/String;Lnet/minecraft/ChatFormatting;)V",
+      "parameters": {
+        "class": "com/pasterdream/pasterdreammod/world/item/ModRarities",
+        "field": "MASTER_PROXY"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PASTERDREAM_ANCIENT",
+      "constructor": "(ILjava/lang/String;Lnet/minecraft/ChatFormatting;)V",
+      "parameters": {
+        "class": "com/pasterdream/pasterdreammod/world/item/ModRarities",
+        "field": "ANCIENT_PROXY"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PASTERDREAM_EPIC",
+      "constructor": "(ILjava/lang/String;Lnet/minecraft/ChatFormatting;)V",
+      "parameters": {
+        "class": "com/pasterdream/pasterdreammod/world/item/ModRarities",
+        "field": "EPIC_PROXY"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PASTERDREAM_LEGENDARY",
+      "constructor": "(ILjava/lang/String;Lnet/minecraft/ChatFormatting;)V",
+      "parameters": {
+        "class": "com/pasterdream/pasterdreammod/world/item/ModRarities",
+        "field": "LEGENDARY_PROXY"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PASTERDREAM_MIRACLE",
+      "constructor": "(ILjava/lang/String;Lnet/minecraft/ChatFormatting;)V",
+      "parameters": {
+        "class": "com/pasterdream/pasterdreammod/world/item/ModRarities",
+        "field": "MIRACLE_PROXY"
+      }
+    }
+  ]
+}

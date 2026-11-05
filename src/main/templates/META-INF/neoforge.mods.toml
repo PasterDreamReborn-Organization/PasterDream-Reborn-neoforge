@@ -20,6 +20,7 @@ Community remake of PasterDream, authorized by the original author.
 '''
 logoFile="logo.png"
 displayURL="https://www.mcmod.cn/class/28280.html"
+enumExtensions="META-INF/enumextensions.json"
 
 [[mixins]]
 config="${mod_id}.mixins.json"

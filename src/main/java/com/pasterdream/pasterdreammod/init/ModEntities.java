@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
+import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
+import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.KusanagiVenomStingerEntity;
@@ -46,6 +48,22 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<KusanagiVenomStingerEntity>> KUSANAGI_VENOM_STINGER =
             register("kusanagi_venom_stinger",
                     EntityType.Builder.<KusanagiVenomStingerEntity>of(KusanagiVenomStingerEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<WindAlloyLightningEntity>> WIND_ALLOY_LIGHTNING =
+            register("wind_alloy_lightning",
+                    EntityType.Builder.<WindAlloyLightningEntity>of(WindAlloyLightningEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(false)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<WindThunderSpearEntity>> WIND_THUNDER_SPEAR =
+            register("wind_thunder_spear",
+                    EntityType.Builder.<WindThunderSpearEntity>of(WindThunderSpearEntity::new, MobCategory.MISC)
                             .setShouldReceiveVelocityUpdates(true)
                             .setTrackingRange(64)
                             .setUpdateInterval(1)

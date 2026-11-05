@@ -313,5 +313,81 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.desert_hero_tomb.receive_sword", "Take it, friend. Its true power is now fully yours: §e'Chenjingmen' Desert Blade.\n§rI have nothing left to give you.");
         add("message.pasterdream.desert_hero_tomb.bring_sword", "My wishes are fulfilled. Bring me my Desert Sword.");
         add("message.pasterdream.desert_hero_tomb.already_completed", "I have nothing left to give you.");
+
+        // ===== Rarity =====
+        add("rarity.pasterdream.common", "Common");
+        add("rarity.pasterdream.excellent", "Excellent");
+        add("rarity.pasterdream.superior", "Superior");
+        add("rarity.pasterdream.master", "Master");
+        add("rarity.pasterdream.ancient", "Ancient");
+        add("rarity.pasterdream.epic", "Epic");
+        add("rarity.pasterdream.legendary", "Legendary");
+        add("rarity.pasterdream.miracle", "Miracle");
+        add("tooltip.pasterdream.quality", "Quality: %s %s");
+
+        // ===== Wind Journey materials and gear =====
+        add(ModItems.CONGEAL_WIND.get(), "Congeal Wind");
+        add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "Congeal Wind Iron Ingot");
+        add(ModItems.CONGEAL_WIND_IRON_NUGGET.get(), "Congeal Wind Iron Nugget");
+        add(ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), "Fluffy Wind Alloy Ingot");
+        add(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get(), "Fluffy Wind Alloy Upgrade");
+        add(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), "Pulse Windrunner Crystal");
+        add(ModItems.CONGEAL_WIND_IRON_SWORD.get(), "Congeal Wind Iron Sword");
+        add(ModItems.CONGEAL_WIND_IRON_PICKAXE.get(), "Congeal Wind Iron Pickaxe");
+        add(ModItems.CONGEAL_WIND_IRON_AXE.get(), "Congeal Wind Iron Axe");
+        add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get(), "Congeal Wind Iron Shovel");
+        add(ModItems.CONGEAL_WIND_IRON_HOE.get(), "Congeal Wind Iron Hoe");
+        add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get(), "Fluffy Wind Alloy Sword");
+        add(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get(), "Fluffy Wind Alloy Pickaxe");
+        add(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), "Fluffy Wind Alloy Axe");
+        add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get(), "Fluffy Wind Alloy Shovel");
+        add(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), "Fluffy Wind Alloy Hoe");
+        add(ModItems.WINDWREATHED_THUNDER_SPEAR.get(), "Windwreathed Thunder Spear");
+
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive_name", "Passive: §bGale Passage");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1", "§7▪ §9The faster you move, the faster you mine");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2", "§7▪ §9Drops are swept to you by the wind when breaking blocks");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.skill_name", "Tool Art: §bAutumn Wind");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc1", "§7▪ §9When sneaking, mining logs chains surrounding logs and leaves");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.passive1", "§7▪ §9The faster you move, the faster you mine and the more damage you deal");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.passive2", "§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");
+        add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.skill_name", "Tool Art: §bWind Erosion Resonance");
+        add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.desc1", "§7▪ §9When sneaking, mining chains §c3×3×3 §9blocks of the same type around");
+        add("tooltip.pasterdream.fluffy_wind_alloy_shovel.skill_name", "Tool Art: §bSand Whirlwind");
+        add("tooltip.pasterdream.fluffy_wind_alloy_shovel.desc1", "§7▪ §9When sneaking, mining chains §c3×3×3 §9blocks of the same type around");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.skill_name", "Tool Art: §bSpring Rain");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc1", "§7▪ §9Right-click to ripen crops in a §c3×3 §9area");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc2", "§7▪ §9Cooldown: 3s");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc3", "§7▪ §9Durability cost: 1 per crop");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc4", "§7▪ §9When sneaking, mining chains §c3×3×3 §9blocks of the same type around, or harvests crops in a §c5×5 §9area");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.skill_name", "Combat Art: §bWind-and-Thunder");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc1", "§7▪ §9Shift+Right-click to switch Wind/Thunder mode");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc_wind_header", "§bWind·Swift Wind Dash:");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc2", "§7▪ §9Dash in the aimed direction and deal damage, more damage the faster you move");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc3", "§7▪ §9Wind cooldown: 2s");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc_thunder_header", "§eThunder·Thunder Punishment:");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4", "§7▪ §9Call 5 lightning bolts at the aimed location, dealing AOE lightning damage");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc5", "§7▪ §9Thunder cost: §c1.0 §9Melt Dream Energy");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc6", "§7▪ §9Thunder cooldown: 5s");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name", "Passive: §bThunder Follows the Wind");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1", "§7▪ §9The faster you move, the more damage you deal, plus lightning damage");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive2", "§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");
+        add("message.pasterdream.fluffy_wind_alloy_sword.mode_thunder", "§eMode: Thunder Punishment");
+        add("message.pasterdream.fluffy_wind_alloy_sword.mode_wind", "§fMode: Swift Wind Dash");
+        add("message.pasterdream.fluffy_wind_alloy_sword.no_energy", "§cNot enough Melt Dream Energy");
+
+        add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "Combat Art: §bWind and Thunder as One");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_header", "§bDash·Charged Thunder Break:");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9Right-click to charge a dash; Riptide boosts the impulse and adds 1.0 Melt Dream Energy cost per level");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_energy", "§7▪ §9Melt Dream Energy cost: §c1.0");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_cooldown", "§7▪ §9Cooldown: 3s");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header", "§eThrow·Windwreathed Thunder Throw:");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9Shift+Right-click to charge a phantom throw; on hit it chains lightning and returns automatically (cannot throw again until it returns)");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_energy", "§7▪ §9Melt Dream Energy cost: §c1.0");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.passive_name", "Passive: §bThunder Follows the Wind");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.passive1", "§7▪ §9The faster you move, the more damage you deal, plus lightning damage");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.passive2", "§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");
+        add("message.pasterdream.windwreathed_thunder_spear.no_energy", "§cNot enough Melt Dream Energy");
+        add("jei.pasterdream.pulse_wind_runner_crystal.info", "Dropped by the Wind Knight.");
     }
 }

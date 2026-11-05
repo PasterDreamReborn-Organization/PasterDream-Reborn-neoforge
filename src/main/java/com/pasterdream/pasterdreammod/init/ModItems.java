@@ -11,6 +11,9 @@ import com.pasterdream.pasterdreammod.world.item.BlueDewItem;
 import com.pasterdream.pasterdreammod.world.item.DyedreamHammerItem;
 import com.pasterdream.pasterdreammod.world.item.MeltDreamCoinItem;
 import com.pasterdream.pasterdreammod.world.item.MeltDreamCrystalFragmentItem;
+import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import com.pasterdream.pasterdreammod.world.item.PulseWindRunnerCrystalItem;
+import com.pasterdream.pasterdreammod.world.item.WindwreathedThunderSpearItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
@@ -23,6 +26,7 @@ import com.pasterdream.pasterdreammod.world.item.hellfiretool.*;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombItem;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombItem;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalItem;
+import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.*;
 import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
 import com.pasterdream.pasterdreammod.world.item.tidetool.*;
@@ -46,6 +50,18 @@ public class ModItems {
     public static final DeferredItem<Item> DYEDREAM_ALLOY_INGOT = ITEMS.register("dyedream_alloy_ingot",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> DYEDREAM_ALLOY_NUGGET = ITEMS.registerSimpleItem("dyedream_alloy_nugget");
+
+    // ===== 风之旅途材料 =====
+    public static final DeferredItem<Item> CONGEAL_WIND = ITEMS.register("congeal_wind",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CONGEAL_WIND_IRON_INGOT = ITEMS.register("congeal_wind_iron_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CONGEAL_WIND_IRON_NUGGET = ITEMS.register("congeal_wind_iron_nugget",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_INGOT = ITEMS.register("fluffy_wind_alloy_ingot",
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> PULSE_WIND_RUNNER_CRYSTAL = ITEMS.register("pulse_wind_runner_crystal",
+            () -> new PulseWindRunnerCrystalItem());
 
     // ===== 露滴 =====
     public static final DeferredItem<Item> BLUE_HEART_OF_THE_SEA = ITEMS.register("blue_heart_of_the_sea",
@@ -120,6 +136,7 @@ public class ModItems {
     public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> SCULK_UPGRADE = ITEMS.registerSimpleItem("sculk_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
     public static final DeferredItem<Item> DYEDREAM_UPGRADE = ITEMS.registerSimpleItem("dyedream_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_UPGRADE = ITEMS.registerSimpleItem("fluffy_wind_alloy_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
     public static final DeferredItem<SwordItem> TITANIUM_SWORD = ITEMS.register("titanium_sword",
             () -> new SwordItem(ModToolTiers.TITANIUM, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.TITANIUM, 3, -2.4f))));
@@ -209,6 +226,38 @@ public class ModItems {
             () -> new MoltenGoldShovelItem(ModToolTiers.MOLTEN_GOLD, 1.5f, -2.9f, new Item.Properties()));
     public static final DeferredItem<Item> MOLTEN_GOLD_HOE = ITEMS.register("molten_gold_hoe",
             () -> new MoltenGoldHoeItem(ModToolTiers.MOLTEN_GOLD, -2, -0.5f, new Item.Properties()));
+
+    // ===== 凝风铁工具 =====
+    public static final DeferredItem<Item> CONGEAL_WIND_IRON_SWORD = ITEMS.register("congeal_wind_iron_sword",
+            () -> new SwordItem(ModToolTiers.CONGEAL_WIND_IRON, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.CONGEAL_WIND_IRON, 3, -1.4f))));
+    public static final DeferredItem<Item> CONGEAL_WIND_IRON_PICKAXE = ITEMS.register("congeal_wind_iron_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.CONGEAL_WIND_IRON, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.CONGEAL_WIND_IRON, 1, -1.8f))));
+    public static final DeferredItem<Item> CONGEAL_WIND_IRON_AXE = ITEMS.register("congeal_wind_iron_axe",
+            () -> new AxeItem(ModToolTiers.CONGEAL_WIND_IRON, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.CONGEAL_WIND_IRON, 5.5f, -2.0f))));
+    public static final DeferredItem<Item> CONGEAL_WIND_IRON_SHOVEL = ITEMS.register("congeal_wind_iron_shovel",
+            () -> new ShovelItem(ModToolTiers.CONGEAL_WIND_IRON, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.CONGEAL_WIND_IRON, 1.5f, -2.0f))));
+    public static final DeferredItem<Item> CONGEAL_WIND_IRON_HOE = ITEMS.register("congeal_wind_iron_hoe",
+            () -> new HoeItem(ModToolTiers.CONGEAL_WIND_IRON, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.CONGEAL_WIND_IRON, -2, -1.0f))));
+
+    // ===== 萦风合金工具 =====
+    public static final DeferredItem<Item> WINDWREATHED_THUNDER_SPEAR = ITEMS.register("windwreathed_thunder_spear",
+            () -> new WindwreathedThunderSpearItem(ModToolTiers.WINDWREATHED_THUNDER_SPEAR, 2, -1.6f,
+                    new Item.Properties().fireResistant().rarity(ModRarities.legendary())));
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_SWORD = ITEMS.register("fluffy_wind_alloy_sword",
+            () -> new FluffyWindAlloySwordItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_PICKAXE = ITEMS.register("fluffy_wind_alloy_pickaxe",
+            () -> new FluffyWindAlloyPickaxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_AXE = ITEMS.register("fluffy_wind_alloy_axe",
+            () -> new FluffyWindAlloyAxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_SHOVEL = ITEMS.register("fluffy_wind_alloy_shovel",
+            () -> new FluffyWindAlloyShovelItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_HOE = ITEMS.register("fluffy_wind_alloy_hoe",
+            () -> new FluffyWindAlloyHoeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // ===== 狱炎工具 =====
     public static final DeferredItem<Item> HELLFIRE_SWORD = ITEMS.register("hellfire_sword",
