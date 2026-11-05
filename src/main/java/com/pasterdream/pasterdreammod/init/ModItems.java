@@ -12,6 +12,7 @@ import com.pasterdream.pasterdreammod.world.item.DyedreamHammerItem;
 import com.pasterdream.pasterdreammod.world.item.MeltDreamCoinItem;
 import com.pasterdream.pasterdreammod.world.item.MeltDreamCrystalFragmentItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
@@ -21,6 +22,7 @@ import com.pasterdream.pasterdreammod.world.item.grasstool.MurakumoKusanagiItem;
 import com.pasterdream.pasterdreammod.world.item.hellfiretool.*;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombItem;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombItem;
+import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalItem;
 import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
 import com.pasterdream.pasterdreammod.world.item.tidetool.*;
@@ -133,6 +135,37 @@ public class ModItems {
     public static final DeferredItem<HoeItem> TITANIUM_HOE = ITEMS.register("titanium_hoe",
             () -> new HoeItem(ModToolTiers.TITANIUM, new Item.Properties()
                     .attributes(DiggerItem.createAttributes(ModToolTiers.TITANIUM, -3, 0.0f))));
+
+    // ===== 铜工具 =====
+    public static final DeferredItem<Item> COPPER_SWORD = ITEMS.register("copper_sword",
+            () -> new SwordItem(ModToolTiers.COPPER, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.COPPER, 3, -2.4f))));
+    public static final DeferredItem<Item> COPPER_PICKAXE = ITEMS.register("copper_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.COPPER, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.COPPER, 1, -2.8f))));
+    public static final DeferredItem<Item> COPPER_AXE = ITEMS.register("copper_axe",
+            () -> new AxeItem(ModToolTiers.COPPER, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.COPPER, 6.5f, -3.15f))));
+    public static final DeferredItem<Item> COPPER_SHOVEL = ITEMS.register("copper_shovel",
+            () -> new ShovelItem(ModToolTiers.COPPER, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.COPPER, 1.5f, -3.0f))));
+    public static final DeferredItem<Item> COPPER_HOE = ITEMS.register("copper_hoe",
+            () -> new HoeItem(ModToolTiers.COPPER, new Item.Properties()
+                    .attributes(DiggerItem.createAttributes(ModToolTiers.COPPER, 0, -1.5f))));
+
+    // ===== 铜装备 =====
+    public static final DeferredItem<Item> COPPER_HELMET = ITEMS.register("copper_helmet",
+            () -> new ArmorItem(ModArmorMaterials.COPPER, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(14))));
+    public static final DeferredItem<Item> COPPER_CHESTPLATE = ITEMS.register("copper_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.COPPER, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(14))));
+    public static final DeferredItem<Item> COPPER_LEGGINGS = ITEMS.register("copper_leggings",
+            () -> new ArmorItem(ModArmorMaterials.COPPER, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(14))));
+    public static final DeferredItem<Item> COPPER_BOOTS = ITEMS.register("copper_boots",
+            () -> new ArmorItem(ModArmorMaterials.COPPER, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(14))));
 
     // ===== 染梦合金工具 =====
     public static final DeferredItem<SwordItem> DYEDREAM_SWORD = ITEMS.register("dyedream_sword",
@@ -255,8 +288,24 @@ public class ModItems {
                     new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()
                             .durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
+    // ===== 融梦水晶装备 =====
+    public static final DeferredItem<Item> MELT_DREAM_HELMET = ITEMS.register("melt_dream_helmet",
+            () -> new MeltDreamCrystalArmorItem(ModArmorMaterials.MELT_DREAM, ArmorItem.Type.HELMET,
+                    new Item.Properties().rarity(Rarity.RARE).durability(ArmorItem.Type.HELMET.getDurability(45))));
+    public static final DeferredItem<Item> MELT_DREAM_CHESTPLATE = ITEMS.register("melt_dream_chestplate",
+            () -> new MeltDreamCrystalArmorItem(ModArmorMaterials.MELT_DREAM, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().rarity(Rarity.RARE).durability(ArmorItem.Type.CHESTPLATE.getDurability(45))));
+    public static final DeferredItem<Item> MELT_DREAM_LEGGINGS = ITEMS.register("melt_dream_leggings",
+            () -> new MeltDreamCrystalArmorItem(ModArmorMaterials.MELT_DREAM, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().rarity(Rarity.RARE).durability(ArmorItem.Type.LEGGINGS.getDurability(45))));
+    public static final DeferredItem<Item> MELT_DREAM_BOOTS = ITEMS.register("melt_dream_boots",
+            () -> new MeltDreamCrystalArmorItem(ModArmorMaterials.MELT_DREAM, ArmorItem.Type.BOOTS,
+                    new Item.Properties().rarity(Rarity.RARE).durability(ArmorItem.Type.BOOTS.getDurability(45))));
+
     public static final DeferredItem<Item> LOST_SWORD_TOMB = ITEMS.register("lost_sword_tomb",
             () -> new LostSwordTombItem(ModBlocks.LOST_SWORD_TOMB.get(), new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> LIFE_CRYSTAL = ITEMS.register("life_crystal",
+            () -> new LifeCrystalItem(ModBlocks.LIFE_CRYSTAL.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> DESERT_HERO_TOMB = ITEMS.register("desert_hero_tomb",
             () -> new DesertHeroTombItem(ModBlocks.DESERT_HERO_TOMB.get(), new Item.Properties()));
 

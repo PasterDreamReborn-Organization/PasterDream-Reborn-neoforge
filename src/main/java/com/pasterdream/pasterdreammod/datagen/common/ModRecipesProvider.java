@@ -37,6 +37,8 @@ public class ModRecipesProvider extends RecipeProvider {
         pinkSlimeRecipes(output);
         titaniumUpgradeRecipe(output);
         sculkUpgradeRecipe(output);
+        copperToolRecipes(output);
+        copperArmorRecipes(output);
         titaniumToolRecipes(output);
         titaniumArmorRecipes(output);
         sculkArmorRecipes(output);
@@ -44,6 +46,7 @@ public class ModRecipesProvider extends RecipeProvider {
         dyedreamToolRecipes(output);
         meltDreamToolRecipes(output);
         dyedreamArmorRecipes(output);
+        meltDreamCrystalArmorRecipes(output);
         budBuildingRecipes(output);
         alloyRecipes(output);
         moltenGoldToolRecipes(output);
@@ -69,6 +72,115 @@ public class ModRecipesProvider extends RecipeProvider {
         RecipeHelpers.storageDecompress(output, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_NUGGET.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageCompress(output, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(output, ModItems.MOLTEN_GOLD_BLOCK.get(), ModItems.MOLTEN_GOLD_INGOT.get(), PasterDreamMod.MOD_ID);
+    }
+
+    // ===== 铜工具配方 =====
+
+    private void copperToolRecipes(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COPPER_SWORD.get())
+                .pattern("a")
+                .pattern("a")
+                .pattern("b")
+                .define('a', Items.COPPER_INGOT)
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.COPPER_PICKAXE.get())
+                .pattern("aaa")
+                .pattern(" b ")
+                .pattern(" b ")
+                .define('a', Items.COPPER_INGOT)
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.COPPER_AXE.get())
+                .pattern("aa")
+                .pattern("ab")
+                .pattern(" b")
+                .define('a', Items.COPPER_INGOT)
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.COPPER_SHOVEL.get())
+                .pattern("a")
+                .pattern("b")
+                .pattern("b")
+                .define('a', Items.COPPER_INGOT)
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.COPPER_HOE.get())
+                .pattern("aa")
+                .pattern(" b")
+                .pattern(" b")
+                .define('a', Items.COPPER_INGOT)
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+    }
+
+    // ===== 铜装备配方 =====
+
+    private void copperArmorRecipes(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COPPER_HELMET.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .define('a', Items.COPPER_INGOT)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COPPER_CHESTPLATE.get())
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', Items.COPPER_INGOT)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COPPER_LEGGINGS.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("a a")
+                .define('a', Items.COPPER_INGOT)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COPPER_BOOTS.get())
+                .pattern("a a")
+                .pattern("a a")
+                .define('a', Items.COPPER_INGOT)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+    }
+
+    // ===== 融梦水晶装备配方（锻造台：生命水晶 + 对应染梦装备 + 融梦水晶碎片） =====
+
+    private void meltDreamCrystalArmorRecipes(RecipeOutput pWriter) {
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.LIFE_CRYSTAL.get()),
+                        Ingredient.of(ModItems.DYEDREAM_HELMET.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        RecipeCategory.COMBAT, ModItems.MELT_DREAM_HELMET.get())
+                .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_helmet_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.LIFE_CRYSTAL.get()),
+                        Ingredient.of(ModItems.DYEDREAM_CHESTPLATE.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        RecipeCategory.COMBAT, ModItems.MELT_DREAM_CHESTPLATE.get())
+                .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_chestplate_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.LIFE_CRYSTAL.get()),
+                        Ingredient.of(ModItems.DYEDREAM_LEGGINGS.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        RecipeCategory.COMBAT, ModItems.MELT_DREAM_LEGGINGS.get())
+                .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_leggings_smithing"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.LIFE_CRYSTAL.get()),
+                        Ingredient.of(ModItems.DYEDREAM_BOOTS.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        RecipeCategory.COMBAT, ModItems.MELT_DREAM_BOOTS.get())
+                .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_boots_smithing"));
     }
 
     // ===== 粉色粘液配方 =====

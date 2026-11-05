@@ -46,6 +46,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         // 工具标签
         tag(ItemTags.SWORDS)
+                .add(ModItems.COPPER_SWORD.get())
                 .add(ModItems.TITANIUM_SWORD.get())
                 .add(ModItems.MOLTEN_GOLD_SWORD.get())
                 .add(ModItems.DYEDREAM_SWORD.get())
@@ -61,22 +62,26 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.CHENJINGMEN_DESERT_SWORD.get())
                 .add(ModItems.BROKEN_HERO_SWORD.get());
         tag(ItemTags.PICKAXES)
+                .add(ModItems.COPPER_PICKAXE.get())
                 .add(ModItems.TITANIUM_PICKAXE.get())
                 .add(ModItems.MOLTEN_GOLD_PICKAXE.get())
                 .add(ModItems.DYEDREAM_PICKAXE.get())
                 .add(ModItems.MELT_DREAM_PICKAXE.get())
                 .add(ModItems.HELLFIRE_PICKAXE.get());
         tag(ItemTags.AXES)
+                .add(ModItems.COPPER_AXE.get())
                 .add(ModItems.TITANIUM_AXE.get())
                 .add(ModItems.MOLTEN_GOLD_AXE.get())
                 .add(ModItems.DYEDREAM_AXE.get())
                 .add(ModItems.MELT_DREAM_AXE.get());
         tag(ItemTags.SHOVELS)
+                .add(ModItems.COPPER_SHOVEL.get())
                 .add(ModItems.TITANIUM_SHOVEL.get())
                 .add(ModItems.MOLTEN_GOLD_SHOVEL.get())
                 .add(ModItems.DYEDREAM_SHOVEL.get())
                 .add(ModItems.MELT_DREAM_SHOVEL.get());
         tag(ItemTags.HOES)
+                .add(ModItems.COPPER_HOE.get())
                 .add(ModItems.TITANIUM_HOE.get())
                 .add(ModItems.MOLTEN_GOLD_HOE.get())
                 .add(ModItems.DYEDREAM_HOE.get())
@@ -84,10 +89,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         // 『北海若』引潮沿用来源可在附魔台获得三叉戟专属附魔；1.21 由物品标签驱动。
         tag(ItemTags.TRIDENT_ENCHANTABLE)
                 .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
-        tag(ItemTags.HEAD_ARMOR).add(ModItems.TITANIUM_HELMET.get()).add(ModItems.SCULK_HELMET.get()).add(ModItems.DYEDREAM_HELMET.get());
-        tag(ItemTags.CHEST_ARMOR).add(ModItems.TITANIUM_CHESTPLATE.get()).add(ModItems.SCULK_CHESTPLATE.get()).add(ModItems.DYEDREAM_CHESTPLATE.get());
-        tag(ItemTags.LEG_ARMOR).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.SCULK_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get());
-        tag(ItemTags.FOOT_ARMOR).add(ModItems.TITANIUM_BOOTS.get()).add(ModItems.SCULK_BOOTS.get()).add(ModItems.DYEDREAM_BOOTS.get());
+        tag(ItemTags.HEAD_ARMOR).add(ModItems.COPPER_HELMET.get()).add(ModItems.MELT_DREAM_HELMET.get()).add(ModItems.TITANIUM_HELMET.get()).add(ModItems.SCULK_HELMET.get()).add(ModItems.DYEDREAM_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR).add(ModItems.COPPER_CHESTPLATE.get()).add(ModItems.MELT_DREAM_CHESTPLATE.get()).add(ModItems.TITANIUM_CHESTPLATE.get()).add(ModItems.SCULK_CHESTPLATE.get()).add(ModItems.DYEDREAM_CHESTPLATE.get());
+        tag(ItemTags.LEG_ARMOR).add(ModItems.COPPER_LEGGINGS.get()).add(ModItems.MELT_DREAM_LEGGINGS.get()).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.SCULK_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR).add(ModItems.COPPER_BOOTS.get()).add(ModItems.MELT_DREAM_BOOTS.get()).add(ModItems.TITANIUM_BOOTS.get()).add(ModItems.SCULK_BOOTS.get()).add(ModItems.DYEDREAM_BOOTS.get());
 
         // 金属锭标签
         tag(ModItemTags.INGOTS_TITANIUM)

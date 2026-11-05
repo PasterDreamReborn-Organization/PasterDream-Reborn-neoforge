@@ -1,0 +1,43 @@
+package com.pasterdream.pasterdreammod.world.effect;
+
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+
+public class MeltDreamCrystalArmorEffect extends MobEffect implements ProtectedRemovalEffect {
+    public MeltDreamCrystalArmorEffect() {
+        super(MobEffectCategory.BENEFICIAL, 0xD98EFF);
+    }
+
+    @Override
+    public boolean hasRemovalAllowance(LivingEntity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean consumeRemovalAllowance(LivingEntity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean forceApplicableWhenAffected() {
+        return true;
+    }
+
+    @Override
+    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
+        // 每 10 秒（200 tick）给予一次生命恢复 II
+        if (entity.tickCount % 200 == 0) {
+            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 240, 1,
+                    true, false, false));
+        }
+        return true;
+    }
+
+    @Override
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
+        return true;
+    }
+}
