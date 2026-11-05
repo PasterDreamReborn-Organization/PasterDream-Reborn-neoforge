@@ -1,5 +1,12 @@
 package com.pasterdream.pasterdreammod;
 
+import com.pasterdream.pasterdreammod.event.PlayerEvents;
+import com.pasterdream.pasterdreammod.init.ModLootTables;
+import com.pasterdream.pasterdreammod.event.ModMobSpawnEvents;
+import com.pasterdream.pasterdreammod.event.CookOverflowHandler;
+import com.pasterdream.pasterdreammod.event.VanillaFoodSanHandler;
+import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import com.mojang.logging.LogUtils;
 import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.event.ModMobDrops;
@@ -64,6 +71,7 @@ public class PasterDreamMod {
 
     public PasterDreamMod(IEventBus modEventBus, ModContainer modContainer) {
         // ---- 注册中心 ----
+        ModLootTables.LOOT_FUNCTION_TYPES.register(modEventBus);
         ModBlocks.register(modEventBus);           // 方块
         ModItems.register(modEventBus);            // 物品
         ModArmorMaterials.register(modEventBus);    // 护甲材质
@@ -90,8 +98,18 @@ public class PasterDreamMod {
 
         // ---- 游戏总线监听（本类自己订阅的事件）----
         NeoForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent event) -> event.addListener(SanBiomeRateManager.INSTANCE));
+        NeoForge.EVENT_BUS.addListener(CookOverflowHandler::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(CookOverflowHandler::onPlayerLogout);
+        NeoForge.EVENT_BUS.addListener(CookOverflowHandler::onItemUseStart);
+        NeoForge.EVENT_BUS.addListener(CookOverflowHandler::onItemUseStop);
+        NeoForge.EVENT_BUS.addListener(CookOverflowHandler::onItemUseFinish);
+        NeoForge.EVENT_BUS.addListener(VanillaFoodSanHandler::onFoodEaten);
+        NeoForge.EVENT_BUS.addListener(VanillaFoodSanHandler::onItemTooltip);
         NeoForge.EVENT_BUS.addListener(AddToolTip::addTooltip);
         NeoForge.EVENT_BUS.addListener(ModMobDrops::onLivingDrops);
+        NeoForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
+        NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
         NeoForge.EVENT_BUS.addListener(MeltDreamAuraHandler::onPlayerTick);
         NeoForge.EVENT_BUS.addListener((RegisterCommandsEvent event) -> ModCommands.register(event.getDispatcher()));

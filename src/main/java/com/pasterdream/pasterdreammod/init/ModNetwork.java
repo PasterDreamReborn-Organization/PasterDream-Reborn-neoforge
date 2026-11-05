@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.skill.KusanagiVenomStingerPacket;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -33,7 +34,7 @@ public final class ModNetwork {
                 KusanagiVenomStingerPacket::handle);
         // TODO:
         // registrar.playToServer(BlinkPacket.TYPE, BlinkPacket.STREAM_CODEC, BlinkPacket::handle);
-        // registrar.playToClient(SanSyncPacket.TYPE, SanSyncPacket.STREAM_CODEC, SanSyncPacket::handle);
+        registrar.playToClient(LowSanConfigSyncPacket.TYPE, LowSanConfigSyncPacket.STREAM_CODEC, LowSanConfigSyncPacket::handle);
     }
 
     /** 客户端 → 服务端。 */

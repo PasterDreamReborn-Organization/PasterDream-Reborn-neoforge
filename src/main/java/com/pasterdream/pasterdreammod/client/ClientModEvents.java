@@ -41,6 +41,7 @@ public final class ClientModEvents {
     @SubscribeEvent
     public static void registerGuiLayers(RegisterGuiLayersEvent event) {
         event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_energy"), MeltDreamEnergyTank::render);
-        // TODO: event.registerAboveAll(id("san"), SanTank.LAYER);
+        event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "san"), SanTank::render);
+        event.registerBelowAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lose_mind"), LoseMind::render);
     }
 }

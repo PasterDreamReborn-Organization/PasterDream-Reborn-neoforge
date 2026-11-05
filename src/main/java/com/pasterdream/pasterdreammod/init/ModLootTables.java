@@ -1,5 +1,12 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.functions.ApplyEntityLootingFunction;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
+
 /**
  * 战利品表 {@code ResourceKey} 常量。
  *
@@ -7,7 +14,12 @@ package com.pasterdream.pasterdreammod.init;
  * 搬运战利品表时在此定义常量，供世界生成 / 方块掉落引用。
  */
 public final class ModLootTables {
-    // TODO: 在此定义战利品表 ResourceKey 常量
+    public static final DeferredRegister<LootItemFunctionType<?>> LOOT_FUNCTION_TYPES =
+            DeferredRegister.create(Registries.LOOT_FUNCTION_TYPE, PasterDreamMod.MOD_ID);
+
+    public static final DeferredHolder<LootItemFunctionType<?>, LootItemFunctionType<ApplyEntityLootingFunction>> APPLY_ENTITY_LOOTING_FUNCTION =
+            LOOT_FUNCTION_TYPES.register("apply_entity_looting",
+                    () -> new LootItemFunctionType<>(ApplyEntityLootingFunction.CODEC));
 
     private ModLootTables() {
     }

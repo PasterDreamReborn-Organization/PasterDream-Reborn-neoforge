@@ -1,0 +1,64 @@
+package com.pasterdream.pasterdreammod.world.effect;
+
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.Vec3;
+
+import net.minecraft.world.effect.MobEffectInstance;
+import net.neoforged.neoforge.common.EffectCure;
+import java.util.Set;
+
+
+public class ConfusionEffect extends MobEffect {
+    public ConfusionEffect() {
+        super(MobEffectCategory.HARMFUL, -12108960);
+    }
+
+    @Override
+    public String getDescriptionId() {
+        return "effect.pasterdream.confusion";
+    }
+
+    @Override
+    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
+        if (entity instanceof Player) {
+            float range = amplifier == 0 ? 1f : 2f;
+            entity.setYRot((float) (entity.getYRot() + Mth.nextDouble(RandomSource.create(), -range, range)));
+            entity.setXRot((float) (entity.getXRot() + Mth.nextDouble(RandomSource.create(), -range, range)));
+            entity.setYBodyRot(entity.getYRot());
+            entity.setYHeadRot(entity.getYRot());
+            entity.yRotO = entity.getYRot();
+            entity.xRotO = entity.getXRot();
+            entity.yBodyRotO = entity.getYRot();
+            entity.yHeadRotO = entity.getYRot();
+        } else {
+            entity.setYRot((float) Mth.nextDouble(RandomSource.create(), -180, 180));
+            entity.setXRot((float) Mth.nextDouble(RandomSource.create(), -90, 90));
+            entity.setYBodyRot(entity.getYRot());
+            entity.setYHeadRot(entity.getYRot());
+            entity.yRotO = entity.getYRot();
+            entity.xRotO = entity.getXRot();
+            entity.yBodyRotO = entity.getYRot();
+            entity.yHeadRotO = entity.getYRot();
+            // 穿透方块的生物（noPhysics）被下压会穿地坠入虚空，故跳过下压，仅保留朝向混乱
+            if (!entity.noPhysics) {
+                entity.setDeltaMovement(new Vec3(0, -1, 0));
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
+        return true;
+    }
+
+    @Override
+    public void fillEffectCures(Set<EffectCure> cures, MobEffectInstance instance) {
+        cures.clear();
+    }
+}

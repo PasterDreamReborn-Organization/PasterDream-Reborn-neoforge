@@ -46,5 +46,29 @@
         "stream": false
       }
     ]
+  },
+  "doll": {
+    "sounds": [
+      {
+        "name": "pasterdream:doll",
+        "stream": false
+      }
+    ]
+  },
+  "lose_mind": {
+    "sounds": [
+      {
+        "name": "pasterdream:lose_mind",
+        "stream": false
+      }
+    ]
+  },
+  "terrorbeak_roar": {
+    "sounds": [
+      {
+        "name": "pasterdream:terrorbeak_roar",
+        "stream": false
+      }
+    ]
   }
 }

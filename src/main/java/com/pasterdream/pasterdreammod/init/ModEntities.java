@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
+import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.KusanagiVenomStingerEntity;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
@@ -49,6 +51,37 @@ public class ModEntities {
                             .setUpdateInterval(1)
                             .sized(0.5f, 0.5f));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<TerrorbeakEntity>> TERRORBEAK = register("terrorbeak",
+            EntityType.Builder.<TerrorbeakEntity>of(TerrorbeakEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .sized(1.8f, 3.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<TerrorbeakEntity>> CRAZY_TERRORBEAK = register("crazy_terrorbeak",
+            EntityType.Builder.<TerrorbeakEntity>of(TerrorbeakEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .fireImmune()
+                    .sized(1.8f, 4f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<TerrorbeakEntity>> WEAKENESS_TERRORBEAK = register("weakeness_terrorbeak",
+            EntityType.Builder.<TerrorbeakEntity>of(TerrorbeakEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .fireImmune()
+                    .sized(1.5f, 3f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ShadowHandEntity>> SHADOW_HAND = register("shadow_hand",
+            EntityType.Builder.<ShadowHandEntity>of(ShadowHandEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .fireImmune()
+                    .sized(0.6f, 0.8f));
+
     private static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> register(String name, EntityType.Builder<T> builder) {
         return ENTITY_TYPES.register(name, () -> builder.build(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name).toString()));
@@ -56,9 +89,15 @@ public class ModEntities {
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
+        eventBus.addListener(TerrorbeakEntity::init);
+        eventBus.addListener(ShadowHandEntity::init);
     }
 
     public static void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(TERRORBEAK.get(), TerrorbeakEntity.createTerrorbeakAttributes().build());
+        event.put(CRAZY_TERRORBEAK.get(), TerrorbeakEntity.createCrazyTerrorbeakAttributes().build());
+        event.put(WEAKENESS_TERRORBEAK.get(), TerrorbeakEntity.createWeakenessTerrorbeakAttributes().build());
+        event.put(SHADOW_HAND.get(), ShadowHandEntity.createAttributes().build());
         event.put(MELT_DREAM_CRYSTAL_ENTITY.get(), MeltDreamCrystalEntityEntity.createAttributes().build());
     }
 

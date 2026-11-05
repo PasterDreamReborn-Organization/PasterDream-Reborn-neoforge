@@ -33,12 +33,27 @@ public class ModAttributes {
             ATTRIBUTES.register("melt_dream_variability", () -> new RangedAttribute(
                     "attribute.pasterdream.melt_dream_variability", 0.0, -120000.0, 120000.0).setSyncable(true));
 
+    public static final DeferredHolder<Attribute, Attribute> BLINK_COOLDOWN_REDUCTION =
+            ATTRIBUTES.register("blink_cooldown_reduction", () -> new RangedAttribute(
+                    "attribute.pasterdream.blink_cooldown_reduction", 0.0, -10.0, 1.0).setSyncable(true));
+
+    public static final DeferredHolder<Attribute, Attribute> SAN_VARIABILITY =
+            ATTRIBUTES.register("san_variability", () -> new RangedAttribute(
+                    "attribute.pasterdream.san_variability", 0.0, -120000.0, 120000.0).setSyncable(true));
+
+    public static final DeferredHolder<Attribute, Attribute> MAX_SAN_EXTRA =
+            ATTRIBUTES.register("max_san_extra", () -> new RangedAttribute(
+                    "attribute.pasterdream.max_san_extra", 0.0, -100000.0, 100000.0).setSyncable(true));
+
     public static void register(IEventBus eventBus) {
         ATTRIBUTES.register(eventBus);
         eventBus.addListener(ModAttributes::addAttributes);
     }
 
     private static void addAttributes(EntityAttributeModificationEvent event) {
+        event.add(EntityType.PLAYER, BLINK_COOLDOWN_REDUCTION);
+        event.add(EntityType.PLAYER, SAN_VARIABILITY);
+        event.add(EntityType.PLAYER, MAX_SAN_EXTRA);
         event.add(EntityType.PLAYER, SKILL_COOLDOWN_REDUCTION);
         event.add(EntityType.PLAYER, SKILL_DAMAGE_RATE);
         event.add(EntityType.PLAYER, MAX_MELT_DREAM_ENERGY_EXTRA);

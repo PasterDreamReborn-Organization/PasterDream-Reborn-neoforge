@@ -1,5 +1,9 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.world.block.shadow.ShadowBlock;
+import com.pasterdream.pasterdreammod.world.block.shadow.ThickShadowBlock;
+import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlock;
+import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollBlock;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.DyedreamBuddingBlock;
 import com.pasterdream.pasterdreammod.world.block.DyedreamClusterBlock;
@@ -76,6 +80,12 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> LOST_SWORD_TOMB = BLOCKS.register("lost_sword_tomb", () -> new LostSwordTombBlock());
     public static final DeferredBlock<Block> DESERT_HERO_TOMB = BLOCKS.register("desert_hero_tomb", () -> new DesertHeroTombBlock());
+
+    public static final DeferredBlock<Block> QYM_DOLL = BLOCKS.register("qym_doll", () -> new QYMDollBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.WOOD).strength(0F, 2147483647F).noOcclusion()));
+    public static final DeferredBlock<Block> UUZ_DOLL = BLOCKS.register("uuz_doll", () -> new UUZDollBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.WOOD).strength(0F, 2147483647F).noOcclusion()));
+
+    public static final DeferredBlock<Block> SHADOW = BLOCKS.register("shadow", () -> new ShadowBlock());
+    public static final DeferredBlock<Block> THICK_SHADOW = BLOCKS.register("thick_shadow", () -> new ThickShadowBlock());
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

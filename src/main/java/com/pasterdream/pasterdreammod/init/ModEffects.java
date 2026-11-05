@@ -1,5 +1,13 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.world.effect.ShadowSilenceEffect;
+import com.pasterdream.pasterdreammod.world.effect.ConfusionEffect;
+import com.pasterdream.pasterdreammod.world.effect.CookEffect;
+import com.pasterdream.pasterdreammod.world.effect.InsaneEffect;
+import com.pasterdream.pasterdreammod.world.effect.TranceEffect;
+import com.pasterdream.pasterdreammod.world.effect.LethargyEffect;
+import com.pasterdream.pasterdreammod.world.effect.CheerUpEffect;
+import com.pasterdream.pasterdreammod.world.effect.RestEffect;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.effect.DyedreamArmorEffect;
 import com.pasterdream.pasterdreammod.world.effect.DyedreamUpEffect;
@@ -31,6 +39,30 @@ public class ModEffects {
             MOB_EFFECTS.register("sculk_armor", SculkArmorEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> HIGHLY_TOXIC =
             MOB_EFFECTS.register("highly_toxic", HighlyToxicEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> REST =
+            MOB_EFFECTS.register("rest", RestEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> CHEER_UP =
+            MOB_EFFECTS.register("cheer_up", CheerUpEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> LETHARGY =
+            MOB_EFFECTS.register("lethargy", LethargyEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> TRANCE =
+            MOB_EFFECTS.register("trance", TranceEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> INSANE =
+            MOB_EFFECTS.register("insane", InsaneEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> COOK =
+            MOB_EFFECTS.register("cook", CookEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> CONFUSION =
+            MOB_EFFECTS.register("confusion", ConfusionEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> SHADOW_SILENCE =
+            MOB_EFFECTS.register("shadow_silence", ShadowSilenceEffect::new);
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

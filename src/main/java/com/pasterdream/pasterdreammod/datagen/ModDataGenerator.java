@@ -27,6 +27,7 @@ public final class ModDataGenerator {
                 new ModWorldGenProvider(output, event.getLookupProvider()));
         var lookup = worldgen.getRegistryProvider();
 
+        generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(output, lookup, existing));
         var blockTags = generator.addProvider(event.includeServer(),
                 new ModBlockTagsProvider(output, lookup, existing));
         generator.addProvider(event.includeServer(),
@@ -34,7 +35,8 @@ public final class ModDataGenerator {
         generator.addProvider(event.includeServer(), new ModRecipesProvider(output, lookup));
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Set.of(),
                 List.of(new LootTableProvider.SubProviderEntry(
-                        ModBlockLootTablesProvider::new, LootContextParamSets.BLOCK)), lookup));
+                        ModBlockLootTablesProvider::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(
+                        ModEntityLootTablesProvider::new, LootContextParamSets.ENTITY)), lookup));
 
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existing));
         generator.addProvider(event.includeClient(), new ModItemModelsProvider(output, existing));
