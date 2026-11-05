@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.capability.san.San;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergy;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -40,6 +41,29 @@ public class ModAttachments {
                             buffer.writeBoolean(energy.getIsOrNotNeedConsumeDreamEnergy());
                             buffer.writeBoolean(energy.isConsumeDoubled());
                             buffer.writeDouble(energy.getMaxMeltDreamEnergy());
+                        }
+                    }).build());
+
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<San>> SAN =
+            ATTACHMENTS.register("san", () -> AttachmentType.serializable(San::new)
+                    .copyOnDeath()
+                    .sync((holder, to) -> holder == to, new StreamCodec<RegistryFriendlyByteBuf, San>() {
+                        @Override
+                        public San decode(RegistryFriendlyByteBuf buffer) {
+                            San san = new San();
+                            san.setSanValue(buffer.readDouble());
+                            san.setIsSanEnable(buffer.readBoolean());
+                            san.setSanRate(buffer.readDouble());
+                            san.setMaxSanValue(buffer.readDouble());
+                            return san;
+                        }
+
+                        @Override
+                        public void encode(RegistryFriendlyByteBuf buffer, San san) {
+                            buffer.writeDouble(san.getSanValue());
+                            buffer.writeBoolean(san.getIsSanEnabled());
+                            buffer.writeDouble(san.getSanRate());
+                            buffer.writeDouble(san.getMaxSanValue());
                         }
                     }).build());
 

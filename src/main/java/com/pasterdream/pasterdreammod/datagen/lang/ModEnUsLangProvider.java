@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.datagen.lang;
 
+import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -13,6 +14,55 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("effect.pasterdream.confusion", "Confusion");
+        add("effect.pasterdream.cook.description", "While active, you can eat any food even with a full hunger bar. Overflowed hunger or saturation is converted into health, and if health is full, into yellow absorption hearts. Each level raises the yellow-heart cap by 10 (I=20 / II=30 / III=40).");
+        add("effect.pasterdream.shadow_silence", "Shadow Silence");
+        add(ModEntities.TERRORBEAK.get(), "Terrorbeak");
+        add(ModEntities.CRAZY_TERRORBEAK.get(), "Crazy Terrorbeak");
+        add(ModEntities.WEAKENESS_TERRORBEAK.get(), "Weakness Terrorbeak");
+        add(ModEntities.SHADOW_HAND.get(), "Shadow Hand");
+        add(ModItems.NIGHTMARE_FUEL.get(), "Nightmare Fuel");
+        add("tooltip.pasterdreammod.nightmare_fuel", "§7This is the stuff of nightmares!");
+        add(ModBlocks.SHADOW.get(), "Shadow");
+        add(ModBlocks.THICK_SHADOW.get(), "Thick Shadow");
+        add(ModBlocks.QYM_DOLL.get(), "琴雨梦Doll");
+        add(ModBlocks.UUZ_DOLL.get(), "幼幼紫Doll");
+        add("itemGroup.pasterdream.pasterdream_equipment_tab", "Paster Dream | Equipment");
+        add("tooltip.pasterdreammod.san_value", "SAN: ");
+        add("effect.pasterdream.cheer_up", "Cheer Up");
+        add("effect.pasterdream.lethargy", "Lethargy");
+        add("effect.pasterdream.trance", "Trance");
+        add("effect.pasterdream.insane", "Insanity");
+        add("effect.pasterdream.cook", "Cook");
+        add("effect.pasterdream.rest", "Rest");
+        add("attribute.pasterdream.blink_cooldown_reduction", "Blink Cooldown Reduction");
+        add("attribute.pasterdream.san_variability", "Sanity Variability");
+        add("attribute.pasterdream.max_san_extra", "Max Sanity Bonus");
+        add("command.pasterdream.lowsan.overlay", "Low San screen overlay");
+        add("command.pasterdream.lowsan.overlay.set", "Low San screen overlay set to %s");
+        add("command.pasterdream.lowsan.overlay.get", "%s: %s");
+        add("command.pasterdream.lowsan.jitter", "Low San screen jitter");
+        add("command.pasterdream.lowsan.jitter.set", "Low San screen jitter set to %s");
+        add("command.pasterdream.lowsan.jitter.get", "%s: %s");
+        add("command.pasterdream.lowsan.sound", "Low San insanity sound");
+        add("command.pasterdream.lowsan.sound.set", "Low San insanity sound set to %s");
+        add("command.pasterdream.lowsan.sound.get", "%s: %s");
+        add("command.pasterdream.lowsan.enabled", "enabled");
+        add("command.pasterdream.lowsan.disabled", "disabled");
+        add("gamerule.shadowDifficulty", "World Shadow Difficulty");
+        add("gamerule.playerShadowDifficulty", "Default Player Shadow Difficulty");
+        add("command.pasterdream.shadowDifficulty.tier.0", "Very Easy");
+        add("command.pasterdream.shadowDifficulty.tier.1", "Easy");
+        add("command.pasterdream.shadowDifficulty.tier.2", "Normal");
+        add("command.pasterdream.shadowDifficulty.tier.3", "Hard");
+        add("command.pasterdream.shadowDifficulty.set.playerDefault", "Player shadow difficulty set to %s");
+        add("command.pasterdream.shadowDifficulty.set.world", "World shadow difficulty set to %s");
+        add("command.pasterdream.shadowDifficulty.set.forPlayer", "Set %s's shadow difficulty to %s");
+        add("command.pasterdream.shadowDifficulty.source.personal", "personal override");
+        add("command.pasterdream.shadowDifficulty.source.playerDefault", "player default");
+        add("command.pasterdream.shadowDifficulty.get.playerEffective", "Player %s: %s [%s]");
+        add("command.pasterdream.shadowDifficulty.get.gameruleSummary", "shadowDifficulty (world): %s | playerShadowDifficulty (player default): %s");
+
         add(ModItems.COTTON.get(), "Cotton");
         add(ModItems.SPOOL.get(), "Spool");
         add(ModItems.FABRIC.get(), "Fabric");

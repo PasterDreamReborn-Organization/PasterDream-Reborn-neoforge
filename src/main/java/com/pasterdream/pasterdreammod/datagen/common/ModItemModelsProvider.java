@@ -96,7 +96,14 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.DESERT_SWORD.get());
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD.get());
         handheldItem(ModItems.BROKEN_HERO_SWORD.get());
+        basicItem(ModItems.NIGHTMARE_FUEL.get());
         basicItem(ModItems.RICE_CAKE.get());
+        getBuilder(ModItems.QYM_DOLL.getId().getPath())
+                .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
+                        modLoc("displaysettings/qym_doll.item")));
+        getBuilder(ModItems.UUZ_DOLL.getId().getPath())
+                .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
+                        modLoc("displaysettings/uuz_doll.item")));
         getBuilder(ModItems.DESERT_HERO_TOMB.getId().getPath())
                 .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
                         modLoc("displaysettings/desert_hero_tomb.item")));

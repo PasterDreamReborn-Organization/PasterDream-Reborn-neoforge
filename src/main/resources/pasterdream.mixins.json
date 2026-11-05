@@ -2,7 +2,7 @@
   "required": true,
   "package": "com.pasterdream.pasterdreammod.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": ["LivingEntityAccessor", "ProtectedEffectApplicableMixin", "ProtectedEffectRemovalMixin", "SculkArmorWardenImmunityMixin", "WardenTargetMixin"],
+  "mixins": ["CampfireBlockEntityMixin", "PlayerCanEatMixin", "LivingEntityAccessor", "ProtectedEffectApplicableMixin", "ProtectedEffectRemovalMixin", "SculkArmorWardenImmunityMixin", "WardenTargetMixin"],
   "injectors": {
     "defaultRequire": 1
   },

@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollBlockEntity;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlockEntity;
@@ -27,6 +29,9 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("desert_hero_tomb",
                     () -> BlockEntityType.Builder.of(DesertHeroTombBlockEntity::new, ModBlocks.DESERT_HERO_TOMB.get())
                             .build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<QYMDollBlockEntity>> QYM_DOLL = BLOCK_ENTITIES.register("qym_doll", () -> BlockEntityType.Builder.of(QYMDollBlockEntity::new, ModBlocks.QYM_DOLL.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<UUZDollBlockEntity>> UUZ_DOLL = BLOCK_ENTITIES.register("uuz_doll", () -> BlockEntityType.Builder.of(UUZDollBlockEntity::new, ModBlocks.UUZ_DOLL.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

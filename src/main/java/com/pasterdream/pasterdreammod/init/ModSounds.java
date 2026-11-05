@@ -37,6 +37,18 @@ public class ModSounds {
             SOUND_EVENTS.register("sword_awaken", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sword_awaken")));
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> DOLL =
+            SOUND_EVENTS.register("doll", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "doll")));
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> LOSE_MIND =
+            SOUND_EVENTS.register("lose_mind", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lose_mind")));
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> TERRORBEAK_ROAR =
+            SOUND_EVENTS.register("terrorbeak_roar", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "terrorbeak_roar")));
+
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }

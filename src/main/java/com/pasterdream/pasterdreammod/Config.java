@@ -1,12 +1,12 @@
 package com.pasterdream.pasterdreammod;
 
+import java.util.List;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 /**
  * 通用配置（COMMON）。
  *
- * <p>骨架阶段仅保留调试开关；搬运内容时按 Forge 1.20.1 源仓库的
- * {@code Config.java} 分批补齐配置项（暗影难度、低 SAN 视觉、容器平衡等）。
+ * 包含 SAN 阈值、暗影生物倍率与低理智生成设置。
  */
 public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
@@ -18,6 +18,132 @@ public class Config {
     public static final ModConfigSpec.IntValue NEED_KILL_ENEMY = BUILDER
             .comment("『天丛云』草薙进化需要击杀的生物数，默认 200")
             .defineInRange("the_number_of_kill_enemy_to_evolve", 200, 1, Integer.MAX_VALUE);
+
+    // === SAN 阈值（ratio = 当前SAN / 最大SAN） ===
+    public static final ModConfigSpec.DoubleValue SAN_CHEER_UP_THRESHOLD = BUILDER
+            .comment("振奋效果触发阈值（ratio >= 该值），默认 0.9（90%）")
+            .defineInRange("sanCheerUpThreshold", 0.9, 0.0, 1.0);
+
+    public static final ModConfigSpec.DoubleValue SAN_LETHARGY_UPPER_THRESHOLD = BUILDER
+            .comment("不振效果上界（ratio < 该值且 >= 下界时触发），默认 0.6（60%）")
+            .defineInRange("sanLethargyUpperThreshold", 0.6, 0.0, 1.0);
+
+    public static final ModConfigSpec.DoubleValue SAN_LETHARGY_LOWER_THRESHOLD = BUILDER
+            .comment("不振效果下界 / 恍惚效果上界，默认 0.4（40%）")
+            .defineInRange("sanLethargyLowerThreshold", 0.4, 0.0, 1.0);
+
+    public static final ModConfigSpec.DoubleValue SAN_TRANCE_LOWER_THRESHOLD = BUILDER
+            .comment("恍惚效果下界 / 疯狂效果上界，默认 0.2（20%）")
+            .defineInRange("sanTranceLowerThreshold", 0.2, 0.0, 1.0);
+
+    public static final ModConfigSpec.DoubleValue SAN_INSANE_LV2_THRESHOLD = BUILDER
+            .comment("疯狂 II 触发阈值（ratio < 该值时升级为 Lv2），默认 0.1（10%）")
+            .defineInRange("sanInsaneLv2Threshold", 0.1, 0.0, 1.0);
+
+    public static final ModConfigSpec.DoubleValue SAN_INSANE_LV3_THRESHOLD = BUILDER
+            .comment("疯狂 III 触发阈值（ratio < 该值时升级为 Lv3），默认 0.01（1%）")
+            .defineInRange("sanInsaneLv3Threshold", 0.01, 0.0, 1.0);
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> SHADOW_SPECIAL_SKILLS_ENABLED = BUILDER
+            .comment("各难度是否启用暗影生物特殊技能（阴影傀儡AoE、悲泣尖啸怨魂召唤等），按难度等级排列，默认 [false, true, true, true]")
+            .defineListAllowEmpty("shadowSpecialSkillsEnabled", List.of("false", "true", "true", "true"),
+                    obj -> obj instanceof String);
+    // 区间边界沿用上方 SAN 阈值，此处仅配置各区间的刷怪概率与实体权重
+    // 概率为 4 个值，按暗影难度排列 [极简单, 简单, 普通, 困难]
+    // 实体格式: "modid:entity_id:weight"，weight 为 0~1 的相对权重
+
+    // 安全理智区间（上界由 lowSanSpawnHighThresholds 按难度控制）
+    public static final ModConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_HIGH_PROBS = BUILDER
+            .comment("安全理智区间每 tick 刷怪概率 [极简单, 简单, 普通, 困难]，默认 [0, 0, 0, 0]")
+            .defineListAllowEmpty("lowSanSpawnHighProbs", List.of(0.0, 0.0, 0.0, 0.0),
+                    value -> value instanceof Double number && Double.isFinite(number));
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_HIGH_ENTITIES = BUILDER
+            .comment("振奋区间可生成的实体及权重，默认空")
+            .defineListAllowEmpty("lowSanSpawnHighEntities", List.of(), obj -> obj instanceof String);
+
+    // 中理智区间 (sanLethargyLowerThreshold <= ratio < sanLethargyUpperThreshold)
+    public static final ModConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_MEDIUM_PROBS = BUILDER
+            .comment("不振区间每 tick 刷怪概率 [极简单, 简单, 普通, 困难]，简单难度不刷，默认 [0, 0, 0.001, 0.002]")
+            .defineListAllowEmpty("lowSanSpawnMediumProbs", List.of(0.0, 0.0, 0.001, 0.002),
+                    value -> value instanceof Double number && Double.isFinite(number));
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_MEDIUM_ENTITIES = BUILDER
+            .comment("不振区间可生成的实体及权重，默认虚弱恐怖尖喙:0.15, 暗影之手:0.3")
+            .defineListAllowEmpty("lowSanSpawnMediumEntities",
+                    List.of("pasterdream:weakeness_terrorbeak:0.15", "pasterdream:shadow_hand:0.3"),
+                    obj -> obj instanceof String);
+
+    // 低理智区间 (sanTranceLowerThreshold <= ratio < sanLethargyLowerThreshold)
+    public static final ModConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_LOW_PROBS = BUILDER
+            .comment("恍惚区间每 tick 刷怪概率 [极简单, 简单, 普通, 困难]，简单难度不刷，默认 [0, 0, 0.002, 0.004]")
+            .defineListAllowEmpty("lowSanSpawnLowProbs", List.of(0.0, 0.0, 0.002, 0.004),
+                    value -> value instanceof Double number && Double.isFinite(number));
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_LOW_ENTITIES = BUILDER
+            .comment("恍惚区间可生成的实体及权重，默认虚弱恐怖尖喙:0.4, 暗影之手:0.2")
+            .defineListAllowEmpty("lowSanSpawnLowEntities",
+                    List.of("pasterdream:weakeness_terrorbeak:0.4", "pasterdream:shadow_hand:0.2",
+                            "pasterdream:terrorbeak:0.1"),
+                    obj -> obj instanceof String);
+
+    // 极低理智区间 (ratio < sanTranceLowerThreshold)
+    public static final ModConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_CRITICAL_PROBS = BUILDER
+            .comment("极低理智区间每 tick 刷怪概率 [极简单, 简单, 普通, 困难]，默认 [0, 0.005, 0.005, 0.006]")
+            .defineListAllowEmpty("lowSanSpawnCriticalProbs", List.of(0.0, 0.005, 0.005, 0.006),
+                    value -> value instanceof Double number && Double.isFinite(number));
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_CRITICAL_ENTITIES = BUILDER
+            .comment("极低理智区间可生成的实体及权重，默认疯狂恐怖尖喙:0.25, 恐怖尖喙:0.2, 虚弱恐怖尖喙:0.15, 暗影之手:0.15")
+            .defineListAllowEmpty("lowSanSpawnCriticalEntities",
+                    List.of("pasterdream:crazy_terrorbeak:0.25", "pasterdream:terrorbeak:0.2",
+                            "pasterdream:weakeness_terrorbeak:0.15", "pasterdream:shadow_hand:0.15"),
+                    obj -> obj instanceof String);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_HIGH_THRESHOLDS = BUILDER
+            .comment("各暗影难度下安全理智区间的下界（低于此值开始刷怪）[极简单, 简单, 普通, 困难]，默认 [0.0, 0.2, 0.6, 0.825]")
+            .defineListAllowEmpty("lowSanSpawnHighThresholds", List.of(0.0, 0.2, 0.6, 0.825),
+                    value -> value instanceof Double number && Double.isFinite(number));
+
+    public static final ModConfigSpec.IntValue LOW_SAN_SPAWN_MAX_LIGHT = BUILDER
+            .comment("低理智刷怪允许的最大亮度（方块光照），默认 5。设为 15 则无光照限制")
+            .defineInRange("lowSanSpawnMaxLight", 5, 0, 15);
+
+    public static final ModConfigSpec.DoubleValue LOW_SAN_SPAWN_RADIUS_MIN = BUILDER
+            .comment("低理智刷怪距玩家的最小距离（格），默认 7")
+            .defineInRange("lowSanSpawnRadiusMin", 7.0, 0.0, 64.0);
+
+    public static final ModConfigSpec.DoubleValue LOW_SAN_SPAWN_RADIUS_MAX = BUILDER
+            .comment("低理智刷怪距玩家的最大距离（格），默认 12")
+            .defineInRange("lowSanSpawnRadiusMax", 12.0, 1.0, 64.0);
+
+    public static final ModConfigSpec.IntValue LOW_SAN_SPAWN_MAX_NEARBY = BUILDER
+            .comment("低理智刷怪时玩家周围允许存在的最大暗影生物数量，默认 2（饥荒上限）")
+            .defineInRange("lowSanSpawnMaxNearby", 2, 0, 20);
+
+    public static final ModConfigSpec.BooleanValue LOW_SAN_SPAWN_REQUIRES_SPECIAL_SKILL = BUILDER
+            .comment("低理智刷怪是否受暗影难度特殊技能开关控制，默认 true")
+            .define("lowSanSpawnRequiresSpecialSkill", true);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends Double>> SHADOW_HEALTH_MULTIPLIERS = BUILDER
+            .comment("暗影生物血量倍率，按难度等级排列 [极简单, 简单, 普通, 困难]，默认 [0.5, 1.0, 1.5, 2.0]")
+            .defineListAllowEmpty("shadowHealthMultipliers", List.of(0.5, 1.0, 1.5, 2.0),
+                    value -> value instanceof Double number && Double.isFinite(number));
+
+    public static final ModConfigSpec.ConfigValue<List<? extends Double>> SHADOW_ATTACK_MULTIPLIERS = BUILDER
+            .comment("暗影生物攻击倍率，按难度等级排列 [极简单, 简单, 普通, 困难]，默认 [0.5, 1.0, 1.3, 1.8]")
+            .defineListAllowEmpty("shadowAttackMultipliers", List.of(0.5, 1.0, 1.3, 1.8),
+                    value -> value instanceof Double number && Double.isFinite(number));
+
+    public static final ModConfigSpec.ConfigValue<List<? extends Double>> SHADOW_SPEED_MULTIPLIERS = BUILDER
+            .comment("暗影生物移速倍率，按难度等级排列 [极简单, 简单, 普通, 困难]，默认 [0.7, 1.0, 1.1, 1.25]")
+            .defineListAllowEmpty("shadowSpeedMultipliers", List.of(0.7, 1.0, 1.1, 1.25),
+                    value -> value instanceof Double number && Double.isFinite(number));
+
+    public static final ModConfigSpec.DoubleValue SHADOW_HAND_SAN_DRAIN = BUILDER
+            .comment("暗影之手每次命中扣除的 SAN 基础值，默认 0.02")
+            .defineInRange("shadowHandSanDrain", 0.02, 0.0, 100.0);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends Double>> SHADOW_LOOT_MULTIPLIERS = BUILDER
+            .comment("暗影生物战利品掉落倍率，按难度等级排列 [极简单, 简单, 普通, 困难]，默认 [1.0, 1.0, 1.5, 2.0]"
+                    + "\n每个掉落物以 (倍率-1) 的概率额外复制一份")
+            .defineListAllowEmpty("shadowLootMultipliers", List.of(1.0, 1.0, 1.5, 2.0),
+                    value -> value instanceof Double number && Double.isFinite(number));
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 

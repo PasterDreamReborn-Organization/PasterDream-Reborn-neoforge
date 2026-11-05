@@ -11,7 +11,7 @@ description: 新增/修改能力系统（融梦能量 MeltDreamEnergy、SAN 值�
 
 ## 关键约束
 
-- Attachment 类型声明在 `capability/ModAttachments.java`，用 `DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, MOD_ID)` 注册，attach 到 Mod 总线
+- Attachment 类型声明在 `init/ModAttachments.java`，用 `DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, MOD_ID)` 注册，attach 到 Mod 总线
 - 每个能力子包含：数据类（含 `Codec`/`StreamCodec`）、Helper（如 `SanHelper`）
 - 网络同步优先用 `AttachmentType.Builder.sync(...)`；若不满足再走 `network/meltdreamenergy/` 与 `network/san/`（新 payload 框架，每包一功能）
 - HUD 渲染在 `client/`（`MeltDreamEnergyTank.java`、`SanTank.java`、`LoseMind.java`）
@@ -35,11 +35,11 @@ description: 新增/修改能力系统（融梦能量 MeltDreamEnergy、SAN 值�
 
 | 用途 | 路径 |
 |------|------|
-| Attachment 类型声明 | `capability/ModAttachments.java` |
+| Attachment 类型声明 | `init/ModAttachments.java` |
 | 融梦能量 | `capability/meltdreamenergy/` |
 | SAN 值 | `capability/san/` |
 | 融梦能量网络 | `network/meltdreamenergy/` |
-| SAN 网络 | `network/san/` |
+| SAN 视听覆盖网络（数值与速率由 Attachment 仅同步本人） | `network/san/` |
 | 融梦能量 HUD | `client/MeltDreamEnergyTank.java` |
 | SAN HUD | `client/SanTank.java` |
 | 低 SAN 失智视觉 | `client/LoseMind.java` |

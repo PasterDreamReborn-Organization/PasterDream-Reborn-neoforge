@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.datagen.lang;
 
+import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -13,6 +14,55 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("effect.pasterdream.confusion", "混乱");
+        add("effect.pasterdream.cook.description", "拥有该效果时，满饱食度也能进食任意食物；进食时溢出的饱食度或饱和度会转化为生命值，生命值已满时转化为黄心（吸收）。每级提高黄心上限 10 点（I=20 / II=30 / III=40）。");
+        add("effect.pasterdream.shadow_silence", "暗影沉默");
+        add(ModEntities.TERRORBEAK.get(), "恐怖尖喙");
+        add(ModEntities.CRAZY_TERRORBEAK.get(), "疯狂恐怖尖喙");
+        add(ModEntities.WEAKENESS_TERRORBEAK.get(), "虚弱恐怖尖喙");
+        add(ModEntities.SHADOW_HAND.get(), "暗影之手");
+        add(ModItems.NIGHTMARE_FUEL.get(), "噩梦燃料");
+        add("tooltip.pasterdreammod.nightmare_fuel", "§7傻子和疯子使用的邪恶残渣");
+        add(ModBlocks.SHADOW.get(), "阴影");
+        add(ModBlocks.THICK_SHADOW.get(), "厚重阴影");
+        add(ModBlocks.QYM_DOLL.get(), "娇小琴雨梦玩偶");
+        add(ModBlocks.UUZ_DOLL.get(), "娇小幼幼紫玩偶");
+        add("itemGroup.pasterdream.pasterdream_equipment_tab", "帕斯特之梦 | 设备");
+        add("tooltip.pasterdreammod.san_value", "SAN值: ");
+        add("effect.pasterdream.cheer_up", "振奋");
+        add("effect.pasterdream.lethargy", "不振");
+        add("effect.pasterdream.trance", "恍惚");
+        add("effect.pasterdream.insane", "疯狂");
+        add("effect.pasterdream.cook", "料理");
+        add("effect.pasterdream.rest", "休憩");
+        add("attribute.pasterdream.blink_cooldown_reduction", "瞬身术冷却缩减");
+        add("attribute.pasterdream.san_variability", "理智光环");
+        add("attribute.pasterdream.max_san_extra", "理智上限加成");
+        add("command.pasterdream.lowsan.overlay", "低San屏幕覆盖层");
+        add("command.pasterdream.lowsan.overlay.set", "低San屏幕覆盖层已%s");
+        add("command.pasterdream.lowsan.overlay.get", "%s: %s");
+        add("command.pasterdream.lowsan.jitter", "低San画面抖动");
+        add("command.pasterdream.lowsan.jitter.set", "低San画面抖动已%s");
+        add("command.pasterdream.lowsan.jitter.get", "%s: %s");
+        add("command.pasterdream.lowsan.sound", "低San疯狂音效");
+        add("command.pasterdream.lowsan.sound.set", "低San疯狂音效已%s");
+        add("command.pasterdream.lowsan.sound.get", "%s: %s");
+        add("command.pasterdream.lowsan.enabled", "启用");
+        add("command.pasterdream.lowsan.disabled", "禁用");
+        add("gamerule.shadowDifficulty", "世界暗影难度");
+        add("gamerule.playerShadowDifficulty", "默认玩家暗影难度");
+        add("command.pasterdream.shadowDifficulty.tier.0", "Very Easy (极简单)");
+        add("command.pasterdream.shadowDifficulty.tier.1", "Easy (简单)");
+        add("command.pasterdream.shadowDifficulty.tier.2", "Normal (普通)");
+        add("command.pasterdream.shadowDifficulty.tier.3", "Hard (困难)");
+        add("command.pasterdream.shadowDifficulty.set.playerDefault", "默认玩家暗影难度已设置为 %s");
+        add("command.pasterdream.shadowDifficulty.set.world", "世界暗影难度已设置为 %s");
+        add("command.pasterdream.shadowDifficulty.set.forPlayer", "已将 %s 的暗影难度设置为 %s");
+        add("command.pasterdream.shadowDifficulty.source.personal", "个人覆盖");
+        add("command.pasterdream.shadowDifficulty.source.playerDefault", "玩家默认");
+        add("command.pasterdream.shadowDifficulty.get.playerEffective", "玩家 %s: %s [%s]");
+        add("command.pasterdream.shadowDifficulty.get.gameruleSummary", "shadowDifficulty (世界): %s | playerShadowDifficulty (玩家默认): %s");
+
         add(ModItems.COTTON.get(), "棉花");
         add(ModItems.SPOOL.get(), "线轴");
         add(ModItems.FABRIC.get(), "纺织布料");

@@ -36,6 +36,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
                         output.accept(ModItems.BLACK_STICK.get());
+                        output.accept(ModItems.NIGHTMARE_FUEL.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
                         output.accept(ModItems.PROTECT_DECK.get());
                         output.accept(ModItems.COTTON.get());
@@ -70,6 +71,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_TITANIUM_BLOCK.get());
                         output.accept(ModItems.TITANIUM_BLOCK.get());
                         output.accept(ModItems.MOLTEN_GOLD_BLOCK.get());
+                        output.accept(ModItems.SHADOW.get());
+                        output.accept(ModItems.THICK_SHADOW.get());
                         output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK.get());
                         output.accept(ModItems.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get());
                         output.accept(ModItems.BRICKS_DYEDREAM_QUARTZ_BLOCK.get());
@@ -85,8 +88,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SMALL_DYEDREAM_BUD.get());
                         output.accept(ModItems.DYEDREAM_BUDDING_BLOCK.get());
                         output.accept(ModItems.DYEDREAM_BUD_BLOCK.get());
-                        output.accept(ModItems.LOST_SWORD_TOMB.get());
-                        output.accept(ModItems.DESERT_HERO_TOMB.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_GEAR_TAB =
@@ -148,6 +149,20 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DESERT_SWORD.get());
                         output.accept(ModItems.CHENJINGMEN_DESERT_SWORD.get());
                         output.accept(ModItems.BROKEN_HERO_SWORD.get());
+                    }).build());
+
+    // ===== 设备 =====
+    // 来源: 旧 paster_tab_5 (功能方块), 按原顺序
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_EQUIPMENT_TAB = CREATIVE_MODE_TABS.register("pasterdream_equipment_tab",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_equipment_tab"))
+                    .icon(() -> ModItems.QYM_DOLL.toStack())
+                    .displayItems((parameters, output) ->
+                    {
+                        output.accept(ModItems.QYM_DOLL.get());
+                        output.accept(ModItems.UUZ_DOLL.get());
+                        output.accept(ModItems.LOST_SWORD_TOMB.get());
+                        output.accept(ModItems.DESERT_HERO_TOMB.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

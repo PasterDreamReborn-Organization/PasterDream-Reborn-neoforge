@@ -1,5 +1,9 @@
 package com.pasterdream.pasterdreammod.init;
 
+import net.minecraft.world.item.BlockItem;
+import com.pasterdream.pasterdreammod.world.item.NightmareFuelItem;
+import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
+import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
@@ -255,6 +259,13 @@ public class ModItems {
             () -> new LostSwordTombItem(ModBlocks.LOST_SWORD_TOMB.get(), new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> DESERT_HERO_TOMB = ITEMS.register("desert_hero_tomb",
             () -> new DesertHeroTombItem(ModBlocks.DESERT_HERO_TOMB.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> QYM_DOLL = ITEMS.register("qym_doll", () -> new QYMDollItem(ModBlocks.QYM_DOLL.get(), new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredItem<Item> UUZ_DOLL = ITEMS.register("uuz_doll", () -> new UUZDollItem(ModBlocks.UUZ_DOLL.get(), new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+
+    public static final DeferredItem<Item> NIGHTMARE_FUEL = ITEMS.register("nightmare_fuel", NightmareFuelItem::new);
+    public static final DeferredItem<BlockItem> SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW);
+    public static final DeferredItem<BlockItem> THICK_SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.THICK_SHADOW);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

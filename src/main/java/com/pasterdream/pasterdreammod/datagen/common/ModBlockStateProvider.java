@@ -80,7 +80,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ModBlocks.LOST_SWORD_TOMB.get(), lostSwordTomb);
         blockItem(ModBlocks.LOST_SWORD_TOMB);
 
+        var shadowModel = models().cubeAll(ModBlocks.SHADOW.getId().getPath(), blockTexture(ModBlocks.SHADOW.get())).renderType("translucent");
+        simpleBlockWithItem(ModBlocks.SHADOW.get(), shadowModel);
+        var thickShadowModel = models().cubeAll(ModBlocks.THICK_SHADOW.getId().getPath(), blockTexture(ModBlocks.THICK_SHADOW.get())).renderType("translucent");
+        simpleBlockWithItem(ModBlocks.THICK_SHADOW.get(), thickShadowModel);
+
         // ===== 荒漠英雄之墓 =====
+        horizontalBlock(ModBlocks.QYM_DOLL.get(),
+                new ModelFile.UncheckedModelFile(modLoc("custom/qym_doll_particle")));
+        horizontalBlock(ModBlocks.UUZ_DOLL.get(),
+                new ModelFile.UncheckedModelFile(modLoc("custom/uuz_doll_particle")));
         horizontalBlock(ModBlocks.DESERT_HERO_TOMB.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/desert_hero_tomb_particle")));
     }

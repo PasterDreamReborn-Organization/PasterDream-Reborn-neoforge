@@ -19,6 +19,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        tag(ModBlockTags.SHADOW_EROSION_TOOL_CAN_BOOST).add(ModBlocks.SHADOW.get(), ModBlocks.THICK_SHADOW.get());
         // 可以用镐来挖掘
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
