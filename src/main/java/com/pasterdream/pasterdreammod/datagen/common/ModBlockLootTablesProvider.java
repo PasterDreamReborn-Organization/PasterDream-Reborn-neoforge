@@ -68,6 +68,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.QYM_DOLL.get());
         dropSelf(ModBlocks.UUZ_DOLL.get());
         dropSelf(ModBlocks.DESERT_HERO_TOMB.get());
+        dropSelf(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
     }
 
     @Override

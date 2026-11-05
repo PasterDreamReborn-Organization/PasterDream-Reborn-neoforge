@@ -1,0 +1,41 @@
+package com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable;
+
+import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.network.WeaponWorkshopCraftingTableCraftPacket;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+
+public class WeaponWorkshopCraftingTableScreen extends AbstractContainerScreen<WeaponWorkshopCraftingTableMenu>
+{
+    public WeaponWorkshopCraftingTableScreen(WeaponWorkshopCraftingTableMenu menu, Inventory inventory, Component title)
+    {
+        super(menu, inventory, title);
+        this.imageWidth = 174;
+        this.imageHeight = 173;
+    }
+
+    @Override
+    protected void init()
+    {
+        super.init();
+        Button weaponWorkshopCraftingTableButton = Button.builder(Component.translatable("button.pasterdream.锻造"), button -> ModNetwork.sendToServer(new WeaponWorkshopCraftingTableCraftPacket(menu.getBlockEntity().getBlockPos()))).pos(leftPos + 25, topPos + 47).size(32, 16).build();
+        addRenderableWidget(weaponWorkshopCraftingTableButton);
+    }
+
+    @Override
+    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY)
+    {
+        GUIBackGroundRender.rendWeaponWorkshopCraftingTableGUI(guiGraphics, leftPos, topPos);
+        GUIBackGroundRender.rendPasterDreamInventoryGUI(guiGraphics, leftPos + 2, topPos + 89);
+    }
+
+    @Override
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY)
+    {
+
+    }
+}

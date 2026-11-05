@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.network.WeaponWorkshopCraftingTableCraftPacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindAlloyMiningSpeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.skill.KusanagiVenomStingerPacket;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -33,6 +34,8 @@ public final class ModNetwork {
         PayloadRegistrar registrar = event.registrar(PROTOCOL_VERSION);
         registrar.playToServer(KusanagiVenomStingerPacket.TYPE, KusanagiVenomStingerPacket.STREAM_CODEC,
                 KusanagiVenomStingerPacket::handle);
+        registrar.playToServer(WeaponWorkshopCraftingTableCraftPacket.TYPE, WeaponWorkshopCraftingTableCraftPacket.STREAM_CODEC,
+                WeaponWorkshopCraftingTableCraftPacket::handle);
         // TODO:
         // registrar.playToServer(BlinkPacket.TYPE, BlinkPacket.STREAM_CODEC, BlinkPacket::handle);
         registrar.playToClient(LowSanConfigSyncPacket.TYPE, LowSanConfigSyncPacket.STREAM_CODEC, LowSanConfigSyncPacket::handle);

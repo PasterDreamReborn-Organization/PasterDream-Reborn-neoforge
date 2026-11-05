@@ -93,6 +93,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
         basicItem(ModItems.MELT_DREAM_COIN.get());
         basicItem(ModItems.MELT_DREAM_COIN_PILE.get());
+        basicItem(ModItems.ATTACK_ENHANCE_STONE.get());
+        basicItem(ModItems.LUCK_ENHANCE_STONE.get());
         handheldItem(ModItems.MELT_DREAM_PICKAXE.get());
         handheldItem(ModItems.MELT_DREAM_AXE.get());
         handheldItem(ModItems.MELT_DREAM_SHOVEL.get());

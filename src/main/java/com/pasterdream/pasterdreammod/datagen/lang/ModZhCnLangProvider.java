@@ -265,6 +265,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
         add(ModItems.MELT_DREAM_COIN.get(), "融梦星币");
         add(ModItems.MELT_DREAM_COIN_PILE.get(), "融梦星币堆");
+        add(ModItems.ATTACK_ENHANCE_STONE.get(), "攻击强化石");
+        add(ModItems.LUCK_ENHANCE_STONE.get(), "幸运强化石");
+        add("tooltip.pasterdream.enhance_stone.usage", "§7用于在精铸工坊工作台中强化武器/工具/装备");
+        add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9攻击力+1~+3");
+        add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9幸运+1~+3");
+        add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "精铸工坊工作台");
+        add("button.pasterdream.锻造", "锻造");
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7此世间一切拥有灵魂的生物皆有梦\n那些醒来时无法想起的细缕回忆\n破碎并融化被埋藏在世界各处凝结成晶\n等待着被新的灵魂发现");
         add("tooltip.pasterdream.melt_dream_coin", "§7右键使用10个以上可合成为融梦星币堆");
         add("tooltip.pasterdream.melt_dream_coin_pile", "§7右键使用可分解为10个融梦星币");
