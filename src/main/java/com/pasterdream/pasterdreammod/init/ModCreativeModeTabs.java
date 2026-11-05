@@ -98,6 +98,16 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_UPGRADE.get());
                         output.accept(ModItems.SCULK_UPGRADE.get());
                         output.accept(ModItems.DYEDREAM_UPGRADE.get());
+                        // 铜工具与装备
+                        output.accept(ModItems.COPPER_SWORD.get());
+                        output.accept(ModItems.COPPER_PICKAXE.get());
+                        output.accept(ModItems.COPPER_AXE.get());
+                        output.accept(ModItems.COPPER_SHOVEL.get());
+                        output.accept(ModItems.COPPER_HOE.get());
+                        output.accept(ModItems.COPPER_HELMET.get());
+                        output.accept(ModItems.COPPER_CHESTPLATE.get());
+                        output.accept(ModItems.COPPER_LEGGINGS.get());
+                        output.accept(ModItems.COPPER_BOOTS.get());
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());
                         output.accept(ModItems.TITANIUM_AXE.get());
@@ -125,6 +135,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_CHESTPLATE.get());
                         output.accept(ModItems.DYEDREAM_LEGGINGS.get());
                         output.accept(ModItems.DYEDREAM_BOOTS.get());
+                        // 融梦水晶装备
+                        output.accept(ModItems.MELT_DREAM_HELMET.get());
+                        output.accept(ModItems.MELT_DREAM_CHESTPLATE.get());
+                        output.accept(ModItems.MELT_DREAM_LEGGINGS.get());
+                        output.accept(ModItems.MELT_DREAM_BOOTS.get());
                         // 回响装备
                         output.accept(ModItems.SCULK_HELMET.get());
                         output.accept(ModItems.SCULK_CHESTPLATE.get());
@@ -161,6 +176,7 @@ public class ModCreativeModeTabs {
                     {
                         output.accept(ModItems.QYM_DOLL.get());
                         output.accept(ModItems.UUZ_DOLL.get());
+                        output.accept(ModItems.LIFE_CRYSTAL.get());
                         output.accept(ModItems.LOST_SWORD_TOMB.get());
                         output.accept(ModItems.DESERT_HERO_TOMB.get());
                     }).build());

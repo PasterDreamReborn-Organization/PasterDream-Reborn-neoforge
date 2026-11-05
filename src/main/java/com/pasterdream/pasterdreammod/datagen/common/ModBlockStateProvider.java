@@ -78,6 +78,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("2", modLoc("block/lost_sword"))
                 .renderType("cutout");
         horizontalBlock(ModBlocks.LOST_SWORD_TOMB.get(), lostSwordTomb);
+        horizontalBlock(ModBlocks.LIFE_CRYSTAL.get(),
+                new ModelFile.UncheckedModelFile(modLoc("custom/life_crystal_particle")));
         blockItem(ModBlocks.LOST_SWORD_TOMB);
 
         var shadowModel = models().cubeAll(ModBlocks.SHADOW.getId().getPath(), blockTexture(ModBlocks.SHADOW.get())).renderType("translucent");

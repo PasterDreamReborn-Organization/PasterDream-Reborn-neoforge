@@ -45,6 +45,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get())
                 .add(ModBlocks.MOLTEN_GOLD_BLOCK.get())
                 .add(ModBlocks.LOST_SWORD_TOMB.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.LIFE_CRYSTAL.get());
 
         // 需要铁工具挖掘
         tag(BlockTags.NEEDS_IRON_TOOL)

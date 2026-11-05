@@ -42,6 +42,7 @@ import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.init.ModTreeDecoratorTypes;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
+import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorHandler;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamAuraHandler;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -112,6 +113,7 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
         NeoForge.EVENT_BUS.addListener(MeltDreamAuraHandler::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(MeltDreamCrystalArmorHandler::onPlayerTick);
         NeoForge.EVENT_BUS.addListener((RegisterCommandsEvent event) -> ModCommands.register(event.getDispatcher()));
 
         // ---- 静态初始化（不走 DeferredRegister）----

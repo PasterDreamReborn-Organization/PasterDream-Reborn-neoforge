@@ -55,6 +55,14 @@
       }
     ]
   },
+  "life_crystal": {
+    "sounds": [
+      {
+        "name": "pasterdream:life_crystal",
+        "stream": false
+      }
+    ]
+  },
   "lose_mind": {
     "sounds": [
       {

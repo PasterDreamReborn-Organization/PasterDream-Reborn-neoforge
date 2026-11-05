@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.world.block.DyedreamBuddingBlock;
 import com.pasterdream.pasterdreammod.world.block.DyedreamClusterBlock;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlock;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
+import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.level.block.ColoredFallingBlock;
@@ -79,6 +80,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> DYEDREAM_ALLOY_BLOCK = BLOCKS.register("dyedream_alloy_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.METAL).strength(11f, 7f).requiresCorrectToolForDrops()));
 
     public static final DeferredBlock<Block> LOST_SWORD_TOMB = BLOCKS.register("lost_sword_tomb", () -> new LostSwordTombBlock());
+    public static final DeferredBlock<Block> LIFE_CRYSTAL = BLOCKS.register("life_crystal", () -> new LifeCrystalBlock());
     public static final DeferredBlock<Block> DESERT_HERO_TOMB = BLOCKS.register("desert_hero_tomb", () -> new DesertHeroTombBlock());
 
     public static final DeferredBlock<Block> QYM_DOLL = BLOCKS.register("qym_doll", () -> new QYMDollBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.WOOD).strength(0F, 2147483647F).noOcclusion()));

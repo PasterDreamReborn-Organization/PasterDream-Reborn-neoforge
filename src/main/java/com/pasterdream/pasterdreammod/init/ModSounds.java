@@ -41,6 +41,10 @@ public class ModSounds {
             SOUND_EVENTS.register("doll", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "doll")));
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> LIFE_CRYSTAL =
+            SOUND_EVENTS.register("life_crystal", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "life_crystal")));
+
     public static final DeferredHolder<SoundEvent, SoundEvent> LOSE_MIND =
             SOUND_EVENTS.register("lose_mind", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lose_mind")));

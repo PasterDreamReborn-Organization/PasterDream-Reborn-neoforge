@@ -20,6 +20,30 @@ public class ModArmorMaterials {
     public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS =
             DeferredRegister.create(Registries.ARMOR_MATERIAL, PasterDreamMod.MOD_ID);
 
+    // 铜：来源防御 2/5/3/1、耐久系数 14、附魔值 8、铜锭修复。
+    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> COPPER = ARMOR_MATERIALS.register("copper",
+            () -> new ArmorMaterial(Map.of(
+                    ArmorItem.Type.HELMET, 2,
+                    ArmorItem.Type.CHESTPLATE, 5,
+                    ArmorItem.Type.LEGGINGS, 3,
+                    ArmorItem.Type.BOOTS, 1),
+                    8, SoundEvents.ARMOR_EQUIP_IRON,
+                    () -> Ingredient.of(net.minecraft.world.item.Items.COPPER_INGOT),
+                    List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "copper"))),
+                    0.0F, 0.0F));
+
+    // 融梦水晶：来源防御 4/9/7/4、耐久系数 45、附魔值 18、碎片修复。
+    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> MELT_DREAM = ARMOR_MATERIALS.register("melt_dream",
+            () -> new ArmorMaterial(Map.of(
+                    ArmorItem.Type.HELMET, 4,
+                    ArmorItem.Type.CHESTPLATE, 9,
+                    ArmorItem.Type.LEGGINGS, 7,
+                    ArmorItem.Type.BOOTS, 4),
+                    18, SoundEvents.ARMOR_EQUIP_DIAMOND,
+                    () -> Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                    List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream"))),
+                    4.0F, 0.15F));
+
     // 钛金：保留来源的防护、附魔、修复、韧性和击退抗性；1.21 耐久由物品属性设置。
     public static final DeferredHolder<ArmorMaterial, ArmorMaterial> TITANIUM = ARMOR_MATERIALS.register("titanium",
             () -> new ArmorMaterial(Map.of(

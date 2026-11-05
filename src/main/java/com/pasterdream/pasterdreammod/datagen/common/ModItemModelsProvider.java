@@ -29,6 +29,19 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TITANIUM_UPGRADE.get());
         basicItem(ModItems.SCULK_UPGRADE.get());
         basicItem(ModItems.DYEDREAM_UPGRADE.get());
+        handheldItem(ModItems.COPPER_SWORD.get());
+        handheldItem(ModItems.COPPER_PICKAXE.get());
+        handheldItem(ModItems.COPPER_AXE.get());
+        handheldItem(ModItems.COPPER_SHOVEL.get());
+        handheldItem(ModItems.COPPER_HOE.get());
+        basicItem(ModItems.COPPER_HELMET.get());
+        basicItem(ModItems.COPPER_CHESTPLATE.get());
+        basicItem(ModItems.COPPER_LEGGINGS.get());
+        basicItem(ModItems.COPPER_BOOTS.get());
+        basicItem(ModItems.MELT_DREAM_HELMET.get());
+        basicItem(ModItems.MELT_DREAM_CHESTPLATE.get());
+        basicItem(ModItems.MELT_DREAM_LEGGINGS.get());
+        basicItem(ModItems.MELT_DREAM_BOOTS.get());
         handheldItem(ModItems.TITANIUM_SWORD.get());
         handheldItem(ModItems.TITANIUM_PICKAXE.get());
         handheldItem(ModItems.TITANIUM_AXE.get());
@@ -93,6 +106,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.LARGE_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/large_dyedream_bud"));
         withExistingParent(ModItems.LOST_SWORD_TOMB.getId().getPath(), modLoc("block/lost_sword_tomb"));
+        getBuilder(ModItems.LIFE_CRYSTAL.getId().getPath())
+                .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
+                        modLoc("displaysettings/life_crystal.item")));
         handheldItem(ModItems.DESERT_SWORD.get());
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD.get());
         handheldItem(ModItems.BROKEN_HERO_SWORD.get());
