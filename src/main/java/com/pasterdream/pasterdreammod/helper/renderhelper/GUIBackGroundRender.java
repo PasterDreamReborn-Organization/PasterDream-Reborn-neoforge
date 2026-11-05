@@ -1,11 +1,14 @@
 package com.pasterdream.pasterdreammod.helper.renderhelper;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 
 public class GUIBackGroundRender
 {
+    public static ResourceLocation PASTERDREAM_INVENTORY_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/pasterdream_inventory.png");
+    public static ResourceLocation WEAPON_WORKSHOP_CRAFTING_TABLE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_crafting_table.png");
     public static ResourceLocation SAN_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/san/san_bar.png");
     public static ResourceLocation SAN_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/san/san_amount_bar.png");
     public static ResourceLocation SAN_CHANGE_UP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/san/san_change_up.png");
@@ -27,6 +30,21 @@ public class GUIBackGroundRender
         int w = small ? 7 : 14;
         int h = small ? 8 : 16;
         guiGraphics.blit(up ? SAN_CHANGE_UP : SAN_CHANGE_DOWN, x, y, w, h, 0, 0, 14, 16, 14, 16);
+    }
+
+    public static void rendPasterDreamInventoryGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        // 背包 / 阴影工作台等界面可能启用了默认混合状态，先显式开启再画半透明物品栏贴图
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+
+        guiGraphics.blit(PASTERDREAM_INVENTORY_GUI, x, y, 0, 0, 170, 84, 170, 84);
+        RenderSystem.disableBlend();
+    }
+
+    public static void rendWeaponWorkshopCraftingTableGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(WEAPON_WORKSHOP_CRAFTING_TABLE_GUI, x, y, 0, 0, 174, 86, 174, 86);
     }
 
 }

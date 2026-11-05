@@ -2,10 +2,13 @@ package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.datagen.util.RecipeHelpers;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapedRecipe;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapelessRecipe;
+import com.pasterdream.pasterdreammod.tag.ModItemTags;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.core.HolderLookup;
@@ -21,6 +24,7 @@ import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.ICondition;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipesProvider extends RecipeProvider {
@@ -60,6 +64,8 @@ public class ModRecipesProvider extends RecipeProvider {
         grassSwordRecipe(output);
         jungleSporeRecipe(output);
         lostSwordTombRecipe(output);
+        weaponWorkshopRecipe(output);
+        windwreathedThunderSpearRecipe(output);
         titaniumCooking(output, ModItems.TITANIUM_ORE.get(), "titanium_ore_");
         titaniumCooking(output, ModItems.DEEPSLATE_TITANIUM_ORE.get(), "deepslate_titanium_ore_");
         titaniumCooking(output, ModItems.RAW_TITANIUM.get(), "");
@@ -1022,6 +1028,35 @@ public class ModRecipesProvider extends RecipeProvider {
                 RecipeCategory.COMBAT, ModItems.BEIHAI_RUO_TIDE_SWORD.get())
                 .unlocks("has_tide_sword", has(ModItems.TIDE_SWORD.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "beihairuo_tide_sword_smithing"));
+    }
+
+    private void weaponWorkshopRecipe(RecipeOutput output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), 1)
+                .pattern("abc")
+                .pattern("d d")
+                .define('a', Items.ANVIL)
+                .define('b', Items.SMITHING_TABLE)
+                .define('c', Items.MAGMA_BLOCK)
+                .define('d', Items.CUT_COPPER)
+                .unlockedBy(getHasName(Items.ANVIL), has(Items.ANVIL))
+                .unlockedBy(getHasName(Items.SMITHING_TABLE), has(Items.SMITHING_TABLE))
+                .unlockedBy(getHasName(Items.MAGMA_BLOCK), has(Items.MAGMA_BLOCK))
+                .unlockedBy(getHasName(Items.CUT_COPPER), has(Items.CUT_COPPER))
+                .save(output, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "weapon_workshop_crafting_table"));
+    }
+
+    private void windwreathedThunderSpearRecipe(RecipeOutput output) {
+        List<ItemIngredient> itemInputs = List.of(
+                ItemIngredient.of(ModItems.FLUFFY_WIND_ALLOY_SWORD.get(), 1),
+                ItemIngredient.of(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get(), 1),
+                ItemIngredient.of(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), 1),
+                ItemIngredient.of(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get(), 1),
+                ItemIngredient.of(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), 1));
+        ItemIngredient enhanceStone = ItemIngredient.of(ModItemTags.ENHANCE_STONE, 1);
+        ItemIngredient itemOutput = ItemIngredient.of(ModItems.WINDWREATHED_THUNDER_SPEAR.get(), 1);
+        WeaponWorkshopCraftingTableRecipe recipe = new WeaponWorkshopCraftingTableRecipe(itemInputs, enhanceStone, itemOutput);
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                "weapon_workshop_crafting_table/windwreathed_thunder_spear"), recipe, null);
     }
 
     private void moltenGoldCooking(RecipeOutput output, ItemLike ingredient, String recipePrefix) {

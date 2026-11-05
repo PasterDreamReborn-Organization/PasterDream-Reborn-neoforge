@@ -9,6 +9,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -32,6 +33,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get())
                 .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get())
                 .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
+        tag(ModItemTags.ENHANCE_STONE)
+                .add(Items.AIR)
+                .add(ModItems.ATTACK_ENHANCE_STONE.get())
+                .add(ModItems.LUCK_ENHANCE_STONE.get());
         // copy(BlockTag, ItemTag) 将 BlockTagsProvider 中注册的方块标签自动同步到对应物品标签
         copy(ModBlockTags.ORES_DYEDREAM_QUARTZ, ModItemTags.ORES_DYEDREAM_QUARTZ);
         copy(ModBlockTags.ORES_DYEDREAM_DUST, ModItemTags.ORES_DYEDREAM_DUST);

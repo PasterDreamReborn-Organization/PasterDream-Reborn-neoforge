@@ -265,6 +265,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
         add(ModItems.MELT_DREAM_COIN.get(), "Melt Dream Coin");
         add(ModItems.MELT_DREAM_COIN_PILE.get(), "Melt Dream Coin Pile");
+        add(ModItems.ATTACK_ENHANCE_STONE.get(), "Attack Enhance Stone");
+        add(ModItems.LUCK_ENHANCE_STONE.get(), "Luck Enhance Stone");
+        add("tooltip.pasterdream.enhance_stone.usage", "§7Used to enhance Weapons/Tools/Armor at the Weapon Workshop Crafting Table");
+        add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9Attack Damage +1~+3");
+        add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9Luck +1~+3");
+        add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "Weapon Workshop Crafting Table");
+        add("button.pasterdream.锻造", "Forge");
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7All creatures with souls in this world have dreams\nThose fleeting memories that cannot be recalled upon waking\nShatter and melt, buried across the world, condensing into crystals\nWaiting to be discovered by new souls");
         add("tooltip.pasterdream.melt_dream_coin", "§7Right-click with 10+ to combine into a coin pile");
         add("tooltip.pasterdream.melt_dream_coin_pile", "§7Right-click to split into 10 Melt Dream Coins");

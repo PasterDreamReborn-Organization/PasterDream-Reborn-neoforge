@@ -104,6 +104,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCULK_UPGRADE.get());
                         output.accept(ModItems.DYEDREAM_UPGRADE.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get());
+                        output.accept(ModItems.ATTACK_ENHANCE_STONE.get());
+                        output.accept(ModItems.LUCK_ENHANCE_STONE.get());
                         // 铜工具与装备
                         output.accept(ModItems.COPPER_SWORD.get());
                         output.accept(ModItems.COPPER_PICKAXE.get());
@@ -198,6 +200,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.LIFE_CRYSTAL.get());
                         output.accept(ModItems.LOST_SWORD_TOMB.get());
                         output.accept(ModItems.DESERT_HERO_TOMB.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

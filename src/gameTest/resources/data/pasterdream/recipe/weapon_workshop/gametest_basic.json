@@ -1,0 +1,21 @@
+{
+  "type": "pasterdream:weapon_workshop_crafting_table",
+  "itemInputs": [
+    {
+      "item": "minecraft:diamond_sword",
+      "count": 1
+    }
+  ],
+  "enhanceStone": [
+    {
+      "item": "pasterdream:attack_enhance_stone",
+      "count": 1
+    }
+  ],
+  "itemOutputs": [
+    {
+      "item": "minecraft:diamond_sword",
+      "count": 1
+    }
+  ]
+}

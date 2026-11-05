@@ -30,9 +30,12 @@ import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.*;
 import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
 import com.pasterdream.pasterdreammod.world.item.tidetool.*;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
+
+import java.util.List;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -50,6 +53,26 @@ public class ModItems {
     public static final DeferredItem<Item> DYEDREAM_ALLOY_INGOT = ITEMS.register("dyedream_alloy_ingot",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> DYEDREAM_ALLOY_NUGGET = ITEMS.registerSimpleItem("dyedream_alloy_nugget");
+
+    // ===== 强化石 =====
+    public static final DeferredItem<Item> ATTACK_ENHANCE_STONE = ITEMS.register("attack_enhance_stone",
+            () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)) {
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, context, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdream.enhance_stone.usage"));
+                    tooltip.add(Component.translatable("tooltip.pasterdream.attack_enhance_stone.effect"));
+                }
+            });
+    public static final DeferredItem<Item> LUCK_ENHANCE_STONE = ITEMS.register("luck_enhance_stone",
+            () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)) {
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, context, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdream.enhance_stone.usage"));
+                    tooltip.add(Component.translatable("tooltip.pasterdream.luck_enhance_stone.effect"));
+                }
+            });
 
     // ===== 风之旅途材料 =====
     public static final DeferredItem<Item> CONGEAL_WIND = ITEMS.register("congeal_wind",
@@ -364,6 +387,7 @@ public class ModItems {
     public static final DeferredItem<Item> NIGHTMARE_FUEL = ITEMS.register("nightmare_fuel", NightmareFuelItem::new);
     public static final DeferredItem<BlockItem> SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW);
     public static final DeferredItem<BlockItem> THICK_SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.THICK_SHADOW);
+    public static final DeferredItem<BlockItem> WEAPON_WORKSHOP_CRAFTING_TABLE = ITEMS.registerSimpleBlockItem(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

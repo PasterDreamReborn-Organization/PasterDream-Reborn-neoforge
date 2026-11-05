@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -38,6 +39,11 @@ public class ModBlockEntities {
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<QYMDollBlockEntity>> QYM_DOLL = BLOCK_ENTITIES.register("qym_doll", () -> BlockEntityType.Builder.of(QYMDollBlockEntity::new, ModBlocks.QYM_DOLL.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<UUZDollBlockEntity>> UUZ_DOLL = BLOCK_ENTITIES.register("uuz_doll", () -> BlockEntityType.Builder.of(UUZDollBlockEntity::new, ModBlocks.UUZ_DOLL.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WeaponWorkshopCraftingTableBlockEntity>> WEAPON_WORKSHOP_CRAFTING_TABLE =
+            BLOCK_ENTITIES.register("weapon_workshop_crafting_table",
+                    () -> BlockEntityType.Builder.of(WeaponWorkshopCraftingTableBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get())
+                            .build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

@@ -10,6 +10,7 @@ import com.pasterdream.pasterdreammod.world.block.DyedreamClusterBlock;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlock;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.level.block.ColoredFallingBlock;
@@ -88,6 +89,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> SHADOW = BLOCKS.register("shadow", () -> new ShadowBlock());
     public static final DeferredBlock<Block> THICK_SHADOW = BLOCKS.register("thick_shadow", () -> new ThickShadowBlock());
+
+    public static final DeferredBlock<Block> WEAPON_WORKSHOP_CRAFTING_TABLE = BLOCKS.register("weapon_workshop_crafting_table", () -> new WeaponWorkshopCraftingTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.ANVIL).strength(2f, 10f).requiresCorrectToolForDrops().noOcclusion()));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

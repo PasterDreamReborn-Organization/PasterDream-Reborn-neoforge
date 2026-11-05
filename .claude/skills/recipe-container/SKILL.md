@@ -45,6 +45,7 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 | 研究台 | `world/block/researchtable/` | Copy + Research 双模式 |
 | 研钵（物品容器） | `world/item/mortar/` | 物品型容器，含 NBT 同步 |
 | 金狐交易 | `recipe/GoldenFoxTradeRecipe.java` | 交易配方 |
+| 精铸工坊工作台 | `world/block/weaponworkshop/craftingtable/` | 数据驱动配方，强化石追加主手属性与附魔 |
 
 ---
 
@@ -53,7 +54,7 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 1. 定义配方类（无特殊逻辑复用 `genericrecipe` 基类，有特殊逻辑新建）
 2. 序列化器在 `init/ModRecipes.java` 注册
 3. datagen 在 `datagen/common/ModRecipesProvider.java` 生成
-4. 容器配方若需保留数据，用 `saveNbtPreserving()` / `saveNbtPreservingShaped()` 包装（**1.21 注意**：`NbtPreserving*` 的实现要改为复制/迁移 DataComponents，而非旧 `CompoundTag`）
+4. 容器配方若需保留数据，用 `saveNbtPreserving()` / `saveNbtPreservingShaped()` 包装（**1.21 注意**：`NbtPreserving*` 的实现要改为复制/迁移 DataComponents，而非旧 `CompoundTag`）。精铸工坊在消耗前复制输入快照，因为 1.21 数量归零后 `getComponents()` 返回空；强化石加成写入 `ATTRIBUTE_MODIFIERS`，附魔写入 `ENCHANTMENTS`
 5. JEI 兼容：新建 `compat/jei/<recipe>/`，在 `ModJEIPlugin.java` 注册
 6. `runData` 生成 JSON，检查 `src/generated/`
 
@@ -64,6 +65,8 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 | 用途 | 路径 |
 |------|------|
 | 通用配方框架 | `recipe/genericrecipe/` |
+| 精铸工坊配方/匹配/处理 | `recipe/weaponworkshopcraftingtable/` |
+| 强化石属性关系 | `helper/enhancestoneattributerelation/` |
 | 配方序列化器注册 | `init/ModRecipes.java` |
 | 容器平衡核心 | `helper/ContainerBalanceHelper.java` |
 | NBT 保留配方 | `recipe/NbtPreservingShapelessRecipe.java` / `NbtPreservingShapedRecipe.java` |

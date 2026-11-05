@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -19,6 +20,7 @@ public final class ModScreens {
 
     @SubscribeEvent
     public static void register(RegisterMenuScreensEvent event) {
+        event.register(ModMenus.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), WeaponWorkshopCraftingTableScreen::new);
         // TODO: event.register(ModMenus.CLAYPAN.get(), ClaypanScreen::new);
         // TODO: event.register(ModMenus.DREAM_CAULDRON.get(), DreamCauldronScreen::new);
     }
