@@ -28,6 +28,9 @@ public final class ModItemTags {
     public static final TagKey<Item> INGOTS_MOLTEN_GOLD = common("ingots/molten_gold");
     public static final TagKey<Item> NUGGETS_MOLTEN_GOLD = common("nuggets/molten_gold");
     public static final TagKey<Item> RAW_MATERIALS_MOLTEN_GOLD = common("raw_materials/molten_gold");
+    public static final TagKey<Item> INGOTS_CONGEAL_WIND_IRON = common("ingots/congeal_wind_iron");
+    public static final TagKey<Item> NUGGETS_CONGEAL_WIND_IRON = common("nuggets/congeal_wind_iron");
+    public static final TagKey<Item> INGOTS_FLUFFY_WIND_ALLOY = common("ingots/fluffy_wind_alloy");
     public static final TagKey<Item> STORAGE_BLOCKS_DYEDREAM_ALLOY = common("storage_blocks/dyedream_alloy");
     public static final TagKey<Item> STORAGE_BLOCKS_DYEDREAM_BUD = common("storage_blocks/dyedream_bud");
 

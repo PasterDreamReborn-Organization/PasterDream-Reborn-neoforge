@@ -47,6 +47,14 @@
       }
     ]
   },
+  "lightning_charge": {
+    "sounds": [
+      {
+        "name": "pasterdream:lightning_charge",
+        "stream": false
+      }
+    ]
+  },
   "doll": {
     "sounds": [
       {

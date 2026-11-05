@@ -32,9 +32,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MOLTEN_GOLD_INGOT.get());
                         output.accept(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_INGOT.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_INGOT.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_INGOT.get());
                         output.accept(ModItems.TITANIUM_NUGGET.get());
                         output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
                         output.accept(ModItems.BLACK_STICK.get());
                         output.accept(ModItems.NIGHTMARE_FUEL.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
@@ -43,6 +46,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCULK_HEART.get());
                         output.accept(ModItems.SPOOL.get());
                         output.accept(ModItems.FABRIC.get());
+                        output.accept(ModItems.CONGEAL_WIND.get());
+                        output.accept(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
                         output.accept(ModItems.BLUE_HEART_OF_THE_SEA.get());
                         output.accept(ModItems.ELDER_GUARDIAN_SCALE.get());
                     }).build());
@@ -98,6 +103,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_UPGRADE.get());
                         output.accept(ModItems.SCULK_UPGRADE.get());
                         output.accept(ModItems.DYEDREAM_UPGRADE.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get());
                         // 铜工具与装备
                         output.accept(ModItems.COPPER_SWORD.get());
                         output.accept(ModItems.COPPER_PICKAXE.get());
@@ -108,6 +114,19 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.COPPER_CHESTPLATE.get());
                         output.accept(ModItems.COPPER_LEGGINGS.get());
                         output.accept(ModItems.COPPER_BOOTS.get());
+                        // 凝风铁工具
+                        output.accept(ModItems.CONGEAL_WIND_IRON_SWORD.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_PICKAXE.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_AXE.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_SHOVEL.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_HOE.get());
+                        // 萦风雷矛与萦风合金工具
+                        output.accept(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_SWORD.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_AXE.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_HOE.get());
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());
                         output.accept(ModItems.TITANIUM_AXE.get());

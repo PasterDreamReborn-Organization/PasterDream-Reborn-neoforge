@@ -123,6 +123,26 @@ public class ModItemModelsProvider extends ItemModelProvider {
         getBuilder(ModItems.DESERT_HERO_TOMB.getId().getPath())
                 .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
                         modLoc("displaysettings/desert_hero_tomb.item")));
+        basicItem(ModItems.CONGEAL_WIND.get());
+        basicItem(ModItems.CONGEAL_WIND_IRON_INGOT.get());
+        basicItem(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_INGOT.get());
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get());
+        basicItem(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
+        handheldItem(ModItems.CONGEAL_WIND_IRON_SWORD.get());
+        handheldItem(ModItems.CONGEAL_WIND_IRON_PICKAXE.get());
+        handheldItem(ModItems.CONGEAL_WIND_IRON_AXE.get());
+        handheldItem(ModItems.CONGEAL_WIND_IRON_SHOVEL.get());
+        handheldItem(ModItems.CONGEAL_WIND_IRON_HOE.get());
+        handheldItem(ModItems.FLUFFY_WIND_ALLOY_SWORD.get());
+        handheldItem(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get());
+        handheldItem(ModItems.FLUFFY_WIND_ALLOY_AXE.get());
+        handheldItem(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get());
+        handheldItem(ModItems.FLUFFY_WIND_ALLOY_HOE.get());
+        getBuilder(ModItems.WINDWREATHED_THUNDER_SPEAR.getId().getPath())
+                .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
+                        modLoc("displaysettings/windwreathed_thunder_spear.item")))
+                .texture("layer0", modLoc("item/windwreathed_thunder_spear"));
     }
 
     private void wallItem(String wall, String base) {
