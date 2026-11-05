@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 协议与仓库规范同步（2026-11-05）
+
+- 按上游已合并 PR #1271 同步 PDR 协议第 0 条：定义公开 API、附属模组与独立程序，明确第 3 条优先于第 1 条，并将协议适用范围扩展至使用、分发、附属创作与相关内容发布。
+- 强化附属模组条款：即使仅通过公开 API 实现、未复制代码或资源，仍须事先书面许可并登记于上游唯一授权名单；同步 PERMISSION_GRANTED 的协议表述与中英文 README。
+- 删除程序规范文档中过时的“代码: MTI / 美术资产: ARR”协议段；新增根目录 `.editorconfig`，统一 UTF-8 无 BOM、CRLF、缩进及行尾空白。
+- 本次仅调整协议与仓库规范，不改变内容迁移状态；runData、build 通过，未运行 GameTest。
+
 ### 批次 025：精铸工坊工作台、配方系统与强化石（2026-11-05）
 
 - 迁入精铸工坊工作台方块及方块物品、攻击强化石与幸运强化石，保留来源注册 ID、方块参数、掉落和提示文案。
