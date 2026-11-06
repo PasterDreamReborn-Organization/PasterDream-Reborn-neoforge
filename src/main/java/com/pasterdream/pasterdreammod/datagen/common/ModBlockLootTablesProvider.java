@@ -61,6 +61,10 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.TITANIUM_BLOCK.get());
         add(ModBlocks.MOLTEN_GOLD_ORE.get(), block -> createOreDrop(block, ModItems.RAW_MOLTEN_GOLD.get()));
         dropSelf(ModBlocks.MOLTEN_GOLD_BLOCK.get());
+        add(ModBlocks.SOUL_ORE.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModItems.SOUL_DUST.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
         dropSelf(ModBlocks.LOST_SWORD_TOMB.get());
         dropSelf(ModBlocks.LIFE_CRYSTAL.get());
         dropSelf(ModBlocks.SHADOW.get());

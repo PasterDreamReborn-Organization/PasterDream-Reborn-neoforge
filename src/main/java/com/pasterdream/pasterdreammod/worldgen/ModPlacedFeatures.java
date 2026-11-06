@@ -14,6 +14,7 @@ public final class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DEEPSLATE_TITANIUM_ORE_PATCH = key("deepslate_titanium_ore_patch");
     public static final ResourceKey<PlacedFeature> TITANIUM_ORE = key("titanium_ore");
     public static final ResourceKey<PlacedFeature> MOLTEN_GOLD_ORE_PATCH = key("molten_gold_ore_patch");
+    public static final ResourceKey<PlacedFeature> SOUL_ORE_PATCH = key("soul_ore_patch");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var features = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -21,6 +22,10 @@ public final class ModPlacedFeatures {
                 features.getOrThrow(ModConfiguredFeatures.MOLTEN_GOLD_ORE_PATCH),
                 List.of(CountPlacement.of(4), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(64)))));
+        context.register(SOUL_ORE_PATCH, new PlacedFeature(
+                features.getOrThrow(ModConfiguredFeatures.SOUL_ORE_PATCH),
+                List.of(CountPlacement.of(8), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(128)))));
         context.register(DEEPSLATE_TITANIUM_ORE_PATCH, new PlacedFeature(
                 features.getOrThrow(ModConfiguredFeatures.DEEPSLATE_TITANIUM_ORE_PATCH),
                 List.of(CountPlacement.of(8), InSquarePlacement.spread(),

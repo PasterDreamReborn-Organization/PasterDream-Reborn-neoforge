@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 031：灵魂矿土与饰品原胚（2026-11-06）
+
+- 迁入灵魂矿土及灵魂粉尘、灵魂精华和四种饰品原胚，保留来源 ID、贴图、提示与 Curios 槽位。
+- 灵魂矿土仅在灵魂沙峡谷替换灵魂土，矿脉大小 16、每区块 8 次、Y=0～128；挖掘掉落 1～2 灵魂粉尘并受时运加成，精准采集保留方块；熔炉/高炉可将矿土炼为粉尘，粉尘可合成精华及四种原胚。
+- runData、build 和 runGameTestServer 86/86 通过；真实世界生成、客户端纹理与 Curios 佩戴视觉待游戏内验收。
+
 ### 修复：精铸工坊工作台物品提示（2026-11-06）
 
 - 恢复工作台界面在绘制槽位后调用 `renderTooltip`，鼠标悬停输入、强化石、输出和玩家背包物品时可显示提示。

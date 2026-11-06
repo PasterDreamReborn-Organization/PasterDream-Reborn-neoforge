@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlock;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollBlock;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.DyedreamBuddingBlock;
+import com.pasterdream.pasterdreammod.world.block.SoulOreBlock;
 import com.pasterdream.pasterdreammod.world.block.DyedreamClusterBlock;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlock;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
@@ -44,6 +45,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> TITANIUM_BLOCK = BLOCKS.register("titanium_block",
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
                     .sound(SoundType.METAL).strength(11f, 7f).requiresCorrectToolForDrops()));
+
+    public static final DeferredBlock<Block> SOUL_ORE = BLOCKS.register("soul_ore", SoulOreBlock::new);
 
     public static final DeferredBlock<Block> MOLTEN_GOLD_ORE = BLOCKS.register("molten_gold_ore",
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.NETHER)

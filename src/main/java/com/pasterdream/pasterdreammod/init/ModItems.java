@@ -21,6 +21,10 @@ import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.WindRunnerCloakItem;
 import com.pasterdream.pasterdreammod.world.item.curio.FracturedAngelStatueItem;
+import com.pasterdream.pasterdreammod.world.item.curio.EmbryoBeltItem;
+import com.pasterdream.pasterdreammod.world.item.curio.EmbryoCharmItem;
+import com.pasterdream.pasterdreammod.world.item.curio.EmbryoNecklaceItem;
+import com.pasterdream.pasterdreammod.world.item.curio.EmbryoRingItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
@@ -97,6 +101,10 @@ public class ModItems {
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> PULSE_WIND_RUNNER_CRYSTAL = ITEMS.register("pulse_wind_runner_crystal",
             () -> new PulseWindRunnerCrystalItem());
+    public static final DeferredItem<Item> EMBRYO_CHARM = ITEMS.register("embryo_charm", EmbryoCharmItem::new);
+    public static final DeferredItem<Item> EMBRYO_NECKLACE = ITEMS.register("embryo_necklace", EmbryoNecklaceItem::new);
+    public static final DeferredItem<Item> EMBRYO_RING = ITEMS.register("embryo_ring", EmbryoRingItem::new);
+    public static final DeferredItem<Item> EMBRYO_BELT = ITEMS.register("embryo_belt", EmbryoBeltItem::new);
     public static final DeferredItem<Item> FRACTURED_ANGEL_STATUE = ITEMS.register("fractured_angel_statue",
             FracturedAngelStatueItem::new);
 
@@ -111,6 +119,10 @@ public class ModItems {
     public static final DeferredItem<BlockItem> DEEPSLATE_TITANIUM_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DEEPSLATE_TITANIUM_ORE);
     public static final DeferredItem<BlockItem> RAW_TITANIUM_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.RAW_TITANIUM_BLOCK);
     public static final DeferredItem<BlockItem> TITANIUM_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.TITANIUM_BLOCK);
+
+    public static final DeferredItem<BlockItem> SOUL_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.SOUL_ORE);
+    public static final DeferredItem<Item> SOUL_DUST = ITEMS.register("soul_dust", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SOUL_ESSENCE = ITEMS.register("soul_essence", () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> MOLTEN_GOLD_INGOT = ITEMS.register("molten_gold_ingot",
             () -> new Item(new Item.Properties()));

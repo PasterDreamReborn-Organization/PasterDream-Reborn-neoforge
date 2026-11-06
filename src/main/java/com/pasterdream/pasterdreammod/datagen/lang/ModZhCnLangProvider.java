@@ -267,6 +267,18 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_ALLOY_INGOT.get(), "染梦合金锭");
         add(ModItems.DYEDREAM_ALLOY_NUGGET.get(), "染梦合金粒");
         add(ModBlocks.MOLTEN_GOLD_ORE.get(), "炙焰金矿石");
+        add(ModBlocks.SOUL_ORE.get(), "灵魂矿土");
+        add(ModItems.SOUL_DUST.get(), "灵魂粉尘");
+        add(ModItems.SOUL_ESSENCE.get(), "灵魂精华");
+        add(ModItems.EMBRYO_CHARM.get(), "护身符原胚");
+        add(ModItems.EMBRYO_NECKLACE.get(), "项链原胚");
+        add(ModItems.EMBRYO_RING.get(), "戒指原胚");
+        add(ModItems.EMBRYO_BELT.get(), "腰带原胚");
+        add("tooltip.pasterdream.introduction.tooltip", "§f▪ §7简介");
+        add("tooltip.pasterdream.embryo.tooltip1", "§7钛金属和灵魂精华而制作的饰品原胚");
+        add("tooltip.pasterdream.embryo.tooltip2", "§7利用钛的生命亲和性和灵魂精华的精神连携作用");
+        add("tooltip.pasterdream.embryo.tooltip3", "§7使得可以通过用物质实体制作成的饰品来强化自身");
+        add("tooltip.pasterdream.hold_shift", "§7按住[§rShift§7]键查看简介");
         add(ModBlocks.MOLTEN_GOLD_BLOCK.get(), "炙焰金块");
         add(ModItems.MOLTEN_GOLD_INGOT.get(), "炙焰金锭");
         add(ModItems.MOLTEN_GOLD_NUGGET.get(), "炙焰金粒");
