@@ -36,6 +36,12 @@ public class ModAttributes {
     public static final DeferredHolder<Attribute, Attribute> BLINK_COOLDOWN_REDUCTION =
             ATTRIBUTES.register("blink_cooldown_reduction", () -> new RangedAttribute(
                     "attribute.pasterdream.blink_cooldown_reduction", 0.0, -10.0, 1.0).setSyncable(true));
+    public static final DeferredHolder<Attribute, Attribute> BLINK_CONSUME =
+            ATTRIBUTES.register("blink_consume", () -> new RangedAttribute(
+                    "attribute.pasterdream.blink_consume", 1.0, 0.0, 10.0).setSyncable(true));
+    public static final DeferredHolder<Attribute, Attribute> BLINK_RANGE =
+            ATTRIBUTES.register("blink_range", () -> new RangedAttribute(
+                    "attribute.pasterdream.blink_range", 1.0, 0.0, 10.0).setSyncable(true));
 
     public static final DeferredHolder<Attribute, Attribute> SAN_VARIABILITY =
             ATTRIBUTES.register("san_variability", () -> new RangedAttribute(
@@ -52,6 +58,8 @@ public class ModAttributes {
 
     private static void addAttributes(EntityAttributeModificationEvent event) {
         event.add(EntityType.PLAYER, BLINK_COOLDOWN_REDUCTION);
+        event.add(EntityType.PLAYER, BLINK_CONSUME);
+        event.add(EntityType.PLAYER, BLINK_RANGE);
         event.add(EntityType.PLAYER, SAN_VARIABILITY);
         event.add(EntityType.PLAYER, MAX_SAN_EXTRA);
         event.add(EntityType.PLAYER, SKILL_COOLDOWN_REDUCTION);

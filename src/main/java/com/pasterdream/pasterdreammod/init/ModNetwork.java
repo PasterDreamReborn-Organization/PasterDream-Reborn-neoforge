@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.WeaponWorkshopCraftingTableCraftPacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindAlloyMiningSpeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.skill.KusanagiVenomStingerPacket;
+import com.pasterdream.pasterdreammod.network.skill.BlinkPacket;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -36,8 +37,7 @@ public final class ModNetwork {
                 KusanagiVenomStingerPacket::handle);
         registrar.playToServer(WeaponWorkshopCraftingTableCraftPacket.TYPE, WeaponWorkshopCraftingTableCraftPacket.STREAM_CODEC,
                 WeaponWorkshopCraftingTableCraftPacket::handle);
-        // TODO:
-        // registrar.playToServer(BlinkPacket.TYPE, BlinkPacket.STREAM_CODEC, BlinkPacket::handle);
+        registrar.playToServer(BlinkPacket.TYPE, BlinkPacket.STREAM_CODEC, BlinkPacket::handle);
         registrar.playToClient(LowSanConfigSyncPacket.TYPE, LowSanConfigSyncPacket.STREAM_CODEC, LowSanConfigSyncPacket::handle);
         registrar.playToClient(WindAlloyMiningSpeedSyncPacket.TYPE, WindAlloyMiningSpeedSyncPacket.STREAM_CODEC,
                 WindAlloyMiningSpeedSyncPacket::handle);

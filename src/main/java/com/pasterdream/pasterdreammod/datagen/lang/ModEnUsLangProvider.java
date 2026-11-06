@@ -14,6 +14,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("key.pasterdream.blink", "Blink");
+        add("key.categories.pasterdream", "PasterDream");
+        add("effect.pasterdream.evasion", "Evasion");
+        add("effect.pasterdream.blink_cooldown", "Blink Cooldown");
+        add("attribute.pasterdream.blink_consume", "Blink Hunger Cost");
+        add("attribute.pasterdream.blink_range", "Blink Distance");
+        add("subtitles.pasterdream.evasion", "Evasion");
         add("effect.pasterdream.confusion", "Confusion");
         add("effect.pasterdream.cook.description", "While active, you can eat any food even with a full hunger bar. Overflowed hunger or saturation is converted into health, and if health is full, into yellow absorption hearts. Each level raises the yellow-heart cap by 10 (I=20 / II=30 / III=40).");
         add("effect.pasterdream.shadow_silence", "Shadow Silence");

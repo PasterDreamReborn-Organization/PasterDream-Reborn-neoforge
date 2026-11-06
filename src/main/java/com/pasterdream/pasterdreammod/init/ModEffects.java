@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.world.effect.ShadowSilenceEffect;
+import com.pasterdream.pasterdreammod.world.effect.BlinkCooldownEffect;
+import com.pasterdream.pasterdreammod.world.effect.EvasionEffect;
 import com.pasterdream.pasterdreammod.world.effect.ConfusionEffect;
 import com.pasterdream.pasterdreammod.world.effect.CookEffect;
 import com.pasterdream.pasterdreammod.world.effect.InsaneEffect;
@@ -32,6 +34,10 @@ public class ModEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> TITANIUM_ARMOR =
             MOB_EFFECTS.register("titanium_armor", TitaniumArmorEffect::new);
+    public static final DeferredHolder<MobEffect, MobEffect> EVASION =
+            MOB_EFFECTS.register("evasion", EvasionEffect::new);
+    public static final DeferredHolder<MobEffect, MobEffect> BLINK_COOLDOWN =
+            MOB_EFFECTS.register("blink_cooldown", BlinkCooldownEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> DYEDREAM_ARMOR =
             MOB_EFFECTS.register("dyedream_armor", DyedreamArmorEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> DYEDREAM_UP =
