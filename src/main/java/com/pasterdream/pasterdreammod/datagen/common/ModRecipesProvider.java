@@ -45,6 +45,9 @@ public class ModRecipesProvider extends RecipeProvider {
         copperArmorRecipes(output);
         congealWindIronToolRecipes(output);
         fluffyWindAlloyToolRecipes(output);
+        fluffyWindBowRecipe(output);
+        windRunnerCloakRecipe(output);
+        fluffyWindAlloyArmorRecipes(output);
         titaniumToolRecipes(output);
         titaniumArmorRecipes(output);
         sculkArmorRecipes(output);
@@ -404,7 +407,62 @@ public class ModRecipesProvider extends RecipeProvider {
                 .save(pWriter);
     }
 
+    private void fluffyWindBowRecipe(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.FLUFFY_WIND_BOW.get())
+                .pattern("abb")
+                .pattern("bcd")
+                .pattern("bd ")
+                .define('a', ModItems.BLACK_STICK.get())
+                .define('b', ModItems.FLUFFY_WIND_ALLOY_INGOT.get())
+                .define('c', ModItems.PULSE_WIND_RUNNER_CRYSTAL.get())
+                .define('d', Items.STRING)
+                .unlockedBy(getHasName(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()), has(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()))
+                .save(pWriter);
+    }
+
+    private void windRunnerCloakRecipe(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.WIND_RUNNER_CLOAK.get(), 1)
+                .pattern("aba")
+                .pattern("aca")
+                .pattern("c c")
+                .define('a', ModItems.FLUFFY_WIND_ALLOY_INGOT.get())
+                .define('b', ModItems.FRACTURED_ANGEL_STATUE.get())
+                .define('c', ModItems.CONGEAL_WIND.get())
+                .unlockedBy(getHasName(ModItems.FRACTURED_ANGEL_STATUE.get()), has(ModItems.FRACTURED_ANGEL_STATUE.get()))
+                .save(pWriter);
+    }
+
+    private void fluffyWindAlloyArmorRecipes(RecipeOutput output) {
+        fluffyWindAlloyArmorRecipe(output, ModItems.TITANIUM_HELMET.get(), ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
+        fluffyWindAlloyArmorRecipe(output, ModItems.TITANIUM_CHESTPLATE.get(), ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get());
+        fluffyWindAlloyArmorRecipe(output, ModItems.TITANIUM_LEGGINGS.get(), ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
+        fluffyWindAlloyArmorRecipe(output, ModItems.TITANIUM_BOOTS.get(), ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
+    }
+
+    private void fluffyWindAlloyArmorRecipe(RecipeOutput output, ItemLike base, ItemLike result) {
+        List<ItemIngredient> itemInputs = List.of(
+                ItemIngredient.of(base.asItem(), 1),
+                ItemIngredient.of(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get(), 1),
+                ItemIngredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), 1),
+                ItemIngredient.of(ModItems.CONGEAL_WIND.get(), 2),
+                ItemIngredient.of(ModItems.CONGEAL_WIND_IRON_INGOT.get(), 4));
+        WeaponWorkshopCraftingTableRecipe recipe = new WeaponWorkshopCraftingTableRecipe(itemInputs,
+                ItemIngredient.of(ModItemTags.ENHANCE_STONE, 1), ItemIngredient.of(result.asItem(), 1));
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                "weapon_workshop_crafting_table/" + net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(result.asItem()).getPath()),
+                recipe, null);
+    }
+
     private void windJourneyMaterialRecipes(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), 2)
+                .pattern("aba")
+                .pattern("aca")
+                .pattern("aaa")
+                .define('a', ModItems.CONGEAL_WIND.get())
+                .define('b', ModItems.PULSE_WIND_RUNNER_CRYSTAL.get())
+                .define('c', ModItems.FRACTURED_ANGEL_STATUE.get())
+                .unlockedBy(getHasName(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()), has(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()))
+                .save(pWriter);
         // 凝风铁锭 ↔ 凝风铁粒
         RecipeHelpers.storageCompress(pWriter, ModItems.CONGEAL_WIND_IRON_NUGGET.get(),
                 ModItems.CONGEAL_WIND_IRON_INGOT.get(), PasterDreamMod.MOD_ID);

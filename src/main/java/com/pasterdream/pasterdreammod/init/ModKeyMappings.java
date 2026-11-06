@@ -2,6 +2,10 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.skill.BlinkPacket;
+import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindHoverInputPacket;
+import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorHandler;
+import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.WindRunnerCloakHandler;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
@@ -39,6 +43,18 @@ public final class ModKeyMappings {
                 while (ModKeyMappings.BLINK.consumeClick()) {
                     ModNetwork.sendToServer(new BlinkPacket());
                 }
+            }
+            var player = Minecraft.getInstance().player;
+            if (player == null) return;
+            boolean relevant = FluffyWindAlloyArmorItem.hasFullSet(player) || WindRunnerCloakHandler.isWearing(player);
+            boolean jumping = relevant && Minecraft.getInstance().options.keyJump.isDown();
+            boolean previous = player.getPersistentData().getBoolean(FluffyWindAlloyArmorHandler.NBT_HOVER_JUMP);
+            if (jumping != previous || (jumping && player.tickCount % 5 == 0)) {
+                player.getPersistentData().putBoolean(FluffyWindAlloyArmorHandler.NBT_HOVER_JUMP, jumping);
+                ModNetwork.sendToServer(new WindHoverInputPacket(jumping));
+            }
+            if (FluffyWindAlloyArmorItem.hasFullSet(player)) {
+                FluffyWindAlloyArmorHandler.applySlowFall(player, false);
             }
         }
     }

@@ -4,6 +4,8 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class ModItemModelsProvider extends ItemModelProvider {
@@ -131,6 +133,28 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.FLUFFY_WIND_ALLOY_INGOT.get());
         basicItem(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get());
         basicItem(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
+        ItemModelBuilder fluffyWindBow = withExistingParent(ModItems.FLUFFY_WIND_BOW.getId().getPath(), mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/fluffy_wind_bow"));
+        ItemModelBuilder fluffyWindBowPulling0 = withExistingParent("fluffy_wind_bow_pulling_0", mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/fluffy_wind_bow_pulling_0"));
+        ItemModelBuilder fluffyWindBowPulling1 = withExistingParent("fluffy_wind_bow_pulling_1", mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/fluffy_wind_bow_pulling_1"));
+        ItemModelBuilder fluffyWindBowPulling2 = withExistingParent("fluffy_wind_bow_pulling_2", mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/fluffy_wind_bow_pulling_2"));
+        fluffyWindBow.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
+                .model(fluffyWindBowPulling0).end()
+                .override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), 0.65F)
+                .model(fluffyWindBowPulling1).end()
+                .override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), 0.9F)
+                .model(fluffyWindBowPulling2).end();
+        basicItem(ModItems.FRACTURED_ANGEL_STATUE.get());
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get());
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
+        basicItem(ModItems.WIND_RUNNER_CLOAK.get());
         handheldItem(ModItems.CONGEAL_WIND_IRON_SWORD.get());
         handheldItem(ModItems.CONGEAL_WIND_IRON_PICKAXE.get());
         handheldItem(ModItems.CONGEAL_WIND_IRON_AXE.get());

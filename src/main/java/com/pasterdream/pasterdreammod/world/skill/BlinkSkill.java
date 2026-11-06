@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.skill;
 import com.pasterdream.pasterdreammod.helper.cooldown.CooldownReductionHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
+import com.pasterdream.pasterdreammod.world.item.curio.FracturedAngelStatueHandler;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -36,6 +37,7 @@ public class BlinkSkill {
         }
 
         applyEvasionBuff(player);
+        FracturedAngelStatueHandler.onBlink(player);
     }
 
     private static void doDisplacement(Player player) {

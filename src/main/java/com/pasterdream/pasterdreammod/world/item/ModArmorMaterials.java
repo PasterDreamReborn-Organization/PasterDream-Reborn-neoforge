@@ -80,6 +80,28 @@ public class ModArmorMaterials {
                     List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sculk"))),
                     3.5F, 0.15F));
 
+    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> FLUFFY_WIND_ALLOY = ARMOR_MATERIALS.register("fluffy_wind_alloy",
+            () -> new ArmorMaterial(Map.of(
+                    ArmorItem.Type.HELMET, 4,
+                    ArmorItem.Type.CHESTPLATE, 10,
+                    ArmorItem.Type.LEGGINGS, 8,
+                    ArmorItem.Type.BOOTS, 4),
+                    22, SoundEvents.ARMOR_EQUIP_DIAMOND,
+                    () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get()),
+                    List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fluffy_wind_alloy"))),
+                    4.0F, 0.15F));
+
+    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> WIND_RUNNER_CLOAK = ARMOR_MATERIALS.register("wind_runner_cloak",
+            () -> new ArmorMaterial(Map.of(
+                    ArmorItem.Type.HELMET, 2,
+                    ArmorItem.Type.CHESTPLATE, 5,
+                    ArmorItem.Type.LEGGINGS, 4,
+                    ArmorItem.Type.BOOTS, 2),
+                    15, SoundEvents.ARMOR_EQUIP_LEATHER,
+                    () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get()),
+                    List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_runner_cloak"))),
+                    0.0F, 0.0F));
+
     public static void register(IEventBus eventBus) {
         ARMOR_MATERIALS.register(eventBus);
     }

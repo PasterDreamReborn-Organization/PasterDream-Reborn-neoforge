@@ -11,6 +11,8 @@ public final class ModItemTags {
             ResourceLocation.fromNamespaceAndPath("pasterdream", "skill_cooldown"));
     public static final TagKey<Item> ENHANCE_STONE = TagKey.create(Registries.ITEM,
             ResourceLocation.fromNamespaceAndPath("pasterdream", "enhance_stone"));
+    public static final TagKey<Item> CHANNELING_ENCHANTABLE = TagKey.create(Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "channeling_enchantable"));
     public static final TagKey<Item> ORES_DYEDREAM_QUARTZ = common("ores/dyedream_quartz");
     public static final TagKey<Item> ORES_DYEDREAM_DUST = common("ores/dyedream_dust");
     public static final TagKey<Item> ORES_IN_GROUND_CALCITE = common("ores_in_ground/calcite");
