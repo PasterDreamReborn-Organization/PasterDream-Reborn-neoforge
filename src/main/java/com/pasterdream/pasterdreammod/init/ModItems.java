@@ -212,6 +212,14 @@ public class ModItems {
             () -> new MeltDreamCoinItem(new Item.Properties(), true));
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_ORE);
     public static final DeferredItem<BlockItem> DYEDREAM_DUST_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DUST_ORE);
+    public static final DeferredItem<BlockItem> CALCITE_COAL_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_COAL_ORE);
+    public static final DeferredItem<BlockItem> CALCITE_IRON_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_IRON_ORE);
+    public static final DeferredItem<BlockItem> CALCITE_COPPER_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_COPPER_ORE);
+    public static final DeferredItem<BlockItem> CALCITE_GOLD_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_GOLD_ORE);
+    public static final DeferredItem<BlockItem> CALCITE_REDSTONE_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_REDSTONE_ORE);
+    public static final DeferredItem<BlockItem> CALCITE_LAPIS_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_LAPIS_ORE);
+    public static final DeferredItem<BlockItem> CALCITE_DIAMOND_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_DIAMOND_ORE);
+    public static final DeferredItem<BlockItem> CALCITE_EMERALD_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_EMERALD_ORE);
     public static final DeferredItem<BlockItem> PINK_SLIME_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_SLIME_BLOCK);
 
     public static final DeferredItem<BlockItem> DYEDREAM_DIRT = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DIRT);
@@ -238,6 +246,26 @@ public class ModItems {
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS);
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB);
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL);
+
+    public static final DeferredItem<BlockItem> DYEDREAM_PLANKS = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_PLANKS);
+    public static final DeferredItem<BlockItem> DYEDREAM_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_STAIRS);
+    public static final DeferredItem<BlockItem> DYEDREAM_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_SLAB);
+    public static final DeferredItem<BlockItem> DYEDREAM_FENCE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_FENCE);
+    public static final DeferredItem<BlockItem> DYEDREAM_FENCE_GATE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_FENCE_GATE);
+    public static final DeferredItem<BlockItem> DYEDREAM_PANE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_PANE);
+    public static final DeferredItem<BlockItem> DYEDREAM_DOOR = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DOOR);
+    public static final DeferredItem<BlockItem> DYEDREAM_TRAPDOOR = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_TRAPDOOR);
+    public static final DeferredItem<BlockItem> DYEDREAM_PRESSURE_PLATE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_PRESSURE_PLATE);
+    public static final DeferredItem<BlockItem> DYEDREAM_BUTTON = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_BUTTON);
+
+    public static final DeferredItem<BlockItem> POLISHED_CALCITE = ITEMS.registerSimpleBlockItem(ModBlocks.POLISHED_CALCITE);
+    public static final DeferredItem<BlockItem> POLISHED_CALCITE_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.POLISHED_CALCITE_STAIRS);
+    public static final DeferredItem<BlockItem> POLISHED_CALCITE_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.POLISHED_CALCITE_SLAB);
+    public static final DeferredItem<BlockItem> POLISHED_CALCITE_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.POLISHED_CALCITE_WALL);
+    public static final DeferredItem<BlockItem> CALCITE_TILES = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_TILES);
+    public static final DeferredItem<BlockItem> CALCITE_TILES_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_TILES_STAIRS);
+    public static final DeferredItem<BlockItem> CALCITE_TILES_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_TILES_SLAB);
+    public static final DeferredItem<BlockItem> CALCITE_TILES_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_TILES_WALL);
 
     public static final DeferredItem<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SCULK_HEART = ITEMS.register("sculk_heart",

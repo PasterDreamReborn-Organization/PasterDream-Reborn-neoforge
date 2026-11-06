@@ -42,6 +42,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModBlockTags.ORES_DYEDREAM_QUARTZ, ModItemTags.ORES_DYEDREAM_QUARTZ);
         copy(ModBlockTags.ORES_DYEDREAM_DUST, ModItemTags.ORES_DYEDREAM_DUST);
         copy(ModBlockTags.ORES_IN_GROUND_CALCITE, ModItemTags.ORES_IN_GROUND_CALCITE);
+        copy(ModBlockTags.ORE_RATES_SINGULAR, ModItemTags.ORE_RATES_SINGULAR);
         copy(ModBlockTags.ORE_RATES_DENSE, ModItemTags.ORE_RATES_DENSE);
         copy(ModBlockTags.ORES_TITANIUM, ModItemTags.ORES_TITANIUM);
         copy(ModBlockTags.STORAGE_BLOCKS_TITANIUM, ModItemTags.STORAGE_BLOCKS_TITANIUM);
@@ -53,11 +54,28 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_ALLOY, ModItemTags.STORAGE_BLOCKS_DYEDREAM_ALLOY);
         copy(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_BUD, ModItemTags.STORAGE_BLOCKS_DYEDREAM_BUD);
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
+        copy(Tags.Blocks.ORES_COAL, Tags.Items.ORES_COAL);
+        copy(Tags.Blocks.ORES_IRON, Tags.Items.ORES_IRON);
+        copy(Tags.Blocks.ORES_COPPER, Tags.Items.ORES_COPPER);
+        copy(Tags.Blocks.ORES_GOLD, Tags.Items.ORES_GOLD);
+        copy(Tags.Blocks.ORES_REDSTONE, Tags.Items.ORES_REDSTONE);
+        copy(Tags.Blocks.ORES_LAPIS, Tags.Items.ORES_LAPIS);
+        copy(Tags.Blocks.ORES_DIAMOND, Tags.Items.ORES_DIAMOND);
+        copy(Tags.Blocks.ORES_EMERALD, Tags.Items.ORES_EMERALD);
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
         copy(ModBlockTags.DYEDREAM_DIRT, ModItemTags.DYEDREAM_DIRT);
         copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
         copy(BlockTags.LOGS, ItemTags.LOGS);
         copy(BlockTags.LEAVES, ItemTags.LEAVES);
+        copy(BlockTags.PLANKS, ItemTags.PLANKS);
+        copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
+        copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
+        copy(BlockTags.WOODEN_FENCES, ItemTags.WOODEN_FENCES);
+        copy(BlockTags.FENCE_GATES, ItemTags.FENCE_GATES);
+        copy(BlockTags.WOODEN_DOORS, ItemTags.WOODEN_DOORS);
+        copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
+        copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
+        copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
 
         tag(ItemTags.FOX_FOOD)
                 .add(ModItems.DYEDREAM_FRUIT.get());

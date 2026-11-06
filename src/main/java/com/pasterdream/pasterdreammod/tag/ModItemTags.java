@@ -16,6 +16,7 @@ public final class ModItemTags {
     public static final TagKey<Item> ORES_DYEDREAM_QUARTZ = common("ores/dyedream_quartz");
     public static final TagKey<Item> ORES_DYEDREAM_DUST = common("ores/dyedream_dust");
     public static final TagKey<Item> ORES_IN_GROUND_CALCITE = common("ores_in_ground/calcite");
+    public static final TagKey<Item> ORE_RATES_SINGULAR = common("ore_rates/singular");
     public static final TagKey<Item> ORE_RATES_DENSE = common("ore_rates/dense");
     public static final TagKey<Item> ORES_TITANIUM = common("ores/titanium");
     public static final TagKey<Item> STORAGE_BLOCKS_TITANIUM = common("storage_blocks/titanium");

@@ -51,6 +51,15 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_DUST_PIECE.get())
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                         .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
+        // ===== 染梦世界·方解石原版矿物（掉落与原版一致） =====
+        add(ModBlocks.CALCITE_COAL_ORE.get(), block -> createOreDrop(block, Items.COAL));
+        add(ModBlocks.CALCITE_IRON_ORE.get(), block -> createOreDrop(block, Items.RAW_IRON));
+        add(ModBlocks.CALCITE_GOLD_ORE.get(), block -> createOreDrop(block, Items.RAW_GOLD));
+        add(ModBlocks.CALCITE_DIAMOND_ORE.get(), block -> createOreDrop(block, Items.DIAMOND));
+        add(ModBlocks.CALCITE_EMERALD_ORE.get(), block -> createOreDrop(block, Items.EMERALD));
+        add(ModBlocks.CALCITE_COPPER_ORE.get(), block -> createCopperOreDrops(block));
+        add(ModBlocks.CALCITE_REDSTONE_ORE.get(), block -> createRedstoneOreDrops(block));
+        add(ModBlocks.CALCITE_LAPIS_ORE.get(), block -> createLapisOreDrops(block));
         dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get());
         dropSelf(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get());
         dropSelf(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get());
@@ -59,6 +68,26 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());
         add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get()));
         dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
+
+        dropSelf(ModBlocks.DYEDREAM_PLANKS.get());
+        dropSelf(ModBlocks.DYEDREAM_STAIRS.get());
+        add(ModBlocks.DYEDREAM_SLAB.get(), block -> createSlabItemTable(ModBlocks.DYEDREAM_SLAB.get()));
+        dropSelf(ModBlocks.DYEDREAM_FENCE.get());
+        dropSelf(ModBlocks.DYEDREAM_FENCE_GATE.get());
+        dropSelf(ModBlocks.DYEDREAM_PANE.get());
+        add(ModBlocks.DYEDREAM_DOOR.get(), createDoorTable(ModBlocks.DYEDREAM_DOOR.get()));
+        dropSelf(ModBlocks.DYEDREAM_TRAPDOOR.get());
+        dropSelf(ModBlocks.DYEDREAM_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.DYEDREAM_BUTTON.get());
+
+        dropSelf(ModBlocks.POLISHED_CALCITE.get());
+        dropSelf(ModBlocks.POLISHED_CALCITE_STAIRS.get());
+        add(ModBlocks.POLISHED_CALCITE_SLAB.get(), block -> createSlabItemTable(ModBlocks.POLISHED_CALCITE_SLAB.get()));
+        dropSelf(ModBlocks.POLISHED_CALCITE_WALL.get());
+        dropSelf(ModBlocks.CALCITE_TILES.get());
+        dropSelf(ModBlocks.CALCITE_TILES_STAIRS.get());
+        add(ModBlocks.CALCITE_TILES_SLAB.get(), block -> createSlabItemTable(ModBlocks.CALCITE_TILES_SLAB.get()));
+        dropSelf(ModBlocks.CALCITE_TILES_WALL.get());
         dropSelf(ModBlocks.PINK_SLIME_BLOCK.get());
         add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), block -> createSilkTouchOnlyTable(block));
         add(ModBlocks.SMALL_DYEDREAM_BUD.get(),

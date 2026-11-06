@@ -110,6 +110,15 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.MELT_DREAM_HOE.get());
         handheldItem(ModItems.SHARP_MELT_DREAM_SWORD.get());
         wallItem(ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.getId().getPath(), ModItems.DYEDREAM_QUARTZ_BLOCK.getId().getPath());
+        withExistingParent(ModItems.DYEDREAM_FENCE.getId().getPath(), mcLoc("block/fence_inventory"))
+                .texture("texture", modLoc("block/dyedream_planks"));
+        withExistingParent(ModItems.DYEDREAM_BUTTON.getId().getPath(), mcLoc("block/button_inventory"))
+                .texture("texture", modLoc("block/dyedream_planks"));
+        basicItem(ModItems.DYEDREAM_DOOR.get());
+        withExistingParent(ModItems.DYEDREAM_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_trapdoor"));
+        wallItem(ModItems.POLISHED_CALCITE_WALL.getId().getPath(), ModItems.POLISHED_CALCITE.getId().getPath());
+        wallItem(ModItems.CALCITE_TILES_WALL.getId().getPath(), ModItems.CALCITE_TILES.getId().getPath());
         withExistingParent(ModItems.SMALL_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/small_dyedream_bud"));
         withExistingParent(ModItems.MEDIUM_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
