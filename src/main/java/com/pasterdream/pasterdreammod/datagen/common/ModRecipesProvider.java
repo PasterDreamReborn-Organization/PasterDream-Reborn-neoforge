@@ -46,6 +46,8 @@ public class ModRecipesProvider extends RecipeProvider {
         soulRecipes(output);
         curioRecipes(output);
         quartzRecipes(output);
+        calciteRecipes(output);
+        calciteOreCookingRecipes(output);
         dyedreamBlockRecipes(output);
         blackStickRecipes(output);
         materialRecipes(output);
@@ -498,6 +500,125 @@ public class ModRecipesProvider extends RecipeProvider {
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_quartz_block_wall_from_stonecutting"));
     }
 
+    // ===== 方解石系列配方 =====
+
+    private void calciteRecipes(RecipeOutput pWriter) {
+        // 4× 方解石 → 4× 磨制方解石
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.POLISHED_CALCITE.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', Items.CALCITE)
+                .unlockedBy(getHasName(Items.CALCITE), has(Items.CALCITE))
+                .save(pWriter);
+
+        // 磨制方解石 → 楼梯/台阶/墙 + 切石机
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.POLISHED_CALCITE.get(), ModItems.POLISHED_CALCITE_STAIRS.get(),
+                ModItems.POLISHED_CALCITE_SLAB.get(), ModItems.POLISHED_CALCITE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 2×2 磨制方解石 → 4× 方解石瓦
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CALCITE_TILES.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.POLISHED_CALCITE.get())
+                .unlockedBy(getHasName(ModItems.POLISHED_CALCITE.get()), has(ModItems.POLISHED_CALCITE.get()))
+                .save(pWriter);
+
+        // 方解石瓦 → 楼梯/台阶/墙 + 切石机
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.CALCITE_TILES.get(), ModItems.CALCITE_TILES_STAIRS.get(),
+                ModItems.CALCITE_TILES_SLAB.get(), ModItems.CALCITE_TILES_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 跨系列切石机配方
+        var calciteIngredient = Ingredient.of(Items.CALCITE);
+        var polishedCalciteIngredient = Ingredient.of(ModItems.POLISHED_CALCITE.get());
+
+        SingleItemRecipeBuilder.stonecutting(calciteIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.POLISHED_CALCITE.get())
+                .unlockedBy(getHasName(Items.CALCITE), has(Items.CALCITE))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":polished_calcite_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(polishedCalciteIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.CALCITE_TILES.get())
+                .unlockedBy(getHasName(ModItems.POLISHED_CALCITE.get()), has(ModItems.POLISHED_CALCITE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":calcite_tiles_from_stonecutting");
+    }
+
+    private void calciteOreCookingRecipes(RecipeOutput pWriter) {
+        // ===== 染梦世界·方解石原版矿物（熔炉/高炉直接熔炼为原版产物） =====
+        // 方解石铁矿 → 铁锭
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_IRON_ORE.get()),
+                        RecipeCategory.MISC, Items.IRON_INGOT, 0.7F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_IRON_ORE.get()), has(ModItems.CALCITE_IRON_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":iron_ingot_from_calcite_iron_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_IRON_ORE.get()),
+                        RecipeCategory.MISC, Items.IRON_INGOT, 0.7F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_IRON_ORE.get()), has(ModItems.CALCITE_IRON_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":iron_ingot_from_calcite_iron_ore_blasting");
+        // 方解石铜矿 → 铜锭
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_COPPER_ORE.get()),
+                        RecipeCategory.MISC, Items.COPPER_INGOT, 0.7F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_COPPER_ORE.get()), has(ModItems.CALCITE_COPPER_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":copper_ingot_from_calcite_copper_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_COPPER_ORE.get()),
+                        RecipeCategory.MISC, Items.COPPER_INGOT, 0.7F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_COPPER_ORE.get()), has(ModItems.CALCITE_COPPER_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":copper_ingot_from_calcite_copper_ore_blasting");
+        // 方解石金矿 → 金锭
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_GOLD_ORE.get()),
+                        RecipeCategory.MISC, Items.GOLD_INGOT, 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_GOLD_ORE.get()), has(ModItems.CALCITE_GOLD_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":gold_ingot_from_calcite_gold_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_GOLD_ORE.get()),
+                        RecipeCategory.MISC, Items.GOLD_INGOT, 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_GOLD_ORE.get()), has(ModItems.CALCITE_GOLD_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":gold_ingot_from_calcite_gold_ore_blasting");
+        // 方解石煤矿 → 煤炭
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_COAL_ORE.get()),
+                        RecipeCategory.MISC, Items.COAL, 0.1F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_COAL_ORE.get()), has(ModItems.CALCITE_COAL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":coal_from_calcite_coal_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_COAL_ORE.get()),
+                        RecipeCategory.MISC, Items.COAL, 0.1F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_COAL_ORE.get()), has(ModItems.CALCITE_COAL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":coal_from_calcite_coal_ore_blasting");
+        // 方解石红石矿石 → 红石粉
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_REDSTONE_ORE.get()),
+                        RecipeCategory.REDSTONE, Items.REDSTONE, 0.7F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_REDSTONE_ORE.get()), has(ModItems.CALCITE_REDSTONE_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":redstone_from_calcite_redstone_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_REDSTONE_ORE.get()),
+                        RecipeCategory.REDSTONE, Items.REDSTONE, 0.7F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_REDSTONE_ORE.get()), has(ModItems.CALCITE_REDSTONE_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":redstone_from_calcite_redstone_ore_blasting");
+        // 方解石青金石矿石 → 青金石
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_LAPIS_ORE.get()),
+                        RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_LAPIS_ORE.get()), has(ModItems.CALCITE_LAPIS_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":lapis_lazuli_from_calcite_lapis_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_LAPIS_ORE.get()),
+                        RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_LAPIS_ORE.get()), has(ModItems.CALCITE_LAPIS_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":lapis_lazuli_from_calcite_lapis_ore_blasting");
+        // 方解石钻石矿石 → 钻石
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_DIAMOND_ORE.get()),
+                        RecipeCategory.MISC, Items.DIAMOND, 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_DIAMOND_ORE.get()), has(ModItems.CALCITE_DIAMOND_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":diamond_from_calcite_diamond_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_DIAMOND_ORE.get()),
+                        RecipeCategory.MISC, Items.DIAMOND, 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_DIAMOND_ORE.get()), has(ModItems.CALCITE_DIAMOND_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":diamond_from_calcite_diamond_ore_blasting");
+        // 方解石绿宝石矿石 → 绿宝石
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_EMERALD_ORE.get()),
+                        RecipeCategory.MISC, Items.EMERALD, 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_EMERALD_ORE.get()), has(ModItems.CALCITE_EMERALD_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":emerald_from_calcite_emerald_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_EMERALD_ORE.get()),
+                        RecipeCategory.MISC, Items.EMERALD, 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_EMERALD_ORE.get()), has(ModItems.CALCITE_EMERALD_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":emerald_from_calcite_emerald_ore_blasting");
+    }
+
     private void dyedreamBlockRecipes(RecipeOutput pWriter) {
         // 染梦原木 → 染梦木头
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_WOOD.get(), 3)
@@ -507,10 +628,35 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.DYEDREAM_LOG.get()), has(ModItems.DYEDREAM_LOG.get()))
                 .save(pWriter);
 
+        RecipeHelpers.plankFamilyRecipes(pWriter,
+                ModItems.DYEDREAM_LOG.get(),
+                ModItems.DYEDREAM_PLANKS.get(),
+                ModItems.DYEDREAM_STAIRS.get(),
+                ModItems.DYEDREAM_SLAB.get(),
+                ModItems.DYEDREAM_FENCE.get(),
+                ModItems.DYEDREAM_FENCE_GATE.get(),
+                ModItems.DYEDREAM_DOOR.get(),
+                ModItems.DYEDREAM_TRAPDOOR.get(),
+                ModItems.DYEDREAM_PRESSURE_PLATE.get(),
+                ModItems.DYEDREAM_BUTTON.get(),
+                PasterDreamMod.MOD_ID);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS.get(), 4)
+                .requires(ModItems.DYEDREAM_WOOD.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_WOOD.get()), has(ModItems.DYEDREAM_WOOD.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_planks_from_wood");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PANE.get(), 1)
+                .requires(Items.GLASS_PANE)
+                .requires(ModItems.DYEDREAM_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
+                .save(pWriter);
+
         dyeConversion(pWriter, Items.DIRT, ModBlocks.DYEDREAM_DIRT.get().asItem());
         dyeConversion(pWriter, Items.GRASS_BLOCK, ModBlocks.DYEDREAM_GRASS_BLOCK.get().asItem());
         dyeConversionTag(pWriter, ItemTags.LEAVES, ModBlocks.DYEDREAM_LEAVES.get().asItem());
         dyeConversionTag(pWriter, ItemTags.LOGS, ModBlocks.DYEDREAM_LOG.get().asItem());
+        dyeConversionTag(pWriter, ItemTags.PLANKS, ModBlocks.DYEDREAM_PLANKS.get().asItem());
     }
 
     private void dyeConversion(RecipeOutput writer, ItemLike material, ItemLike result) {

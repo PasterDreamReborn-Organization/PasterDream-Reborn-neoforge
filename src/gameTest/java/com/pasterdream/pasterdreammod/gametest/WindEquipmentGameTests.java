@@ -81,13 +81,13 @@ public class WindEquipmentGameTests {
         helper.assertTrue(Math.abs(energy.getMeltDreamEnergy() - 0.8) < 0.0001,
                 "萦风强化箭应消耗 0.2 融梦能量");
         var arrows = helper.getLevel().getEntitiesOfClass(FluffyWindArrowEntity.class,
-                new AABB(player.blockPosition()).inflate(8));
+                new AABB(player.blockPosition()).inflate(8), arrow -> arrow.getOwner() == player);
         helper.assertTrue(arrows.size() == 1 && arrows.getFirst().getType() == ModEntities.FLUFFY_WIND_ARROW.get()
                 && arrows.getFirst().isNoGravity(), "萦风弓应射出无重力强化箭");
         energy.setMeltDreamEnergy(0.0);
         bow.getItem().releaseUsing(bow, helper.getLevel(), player, bow.getUseDuration(player) - 20);
         var allArrows = helper.getLevel().getEntitiesOfClass(Arrow.class,
-                new AABB(player.blockPosition()).inflate(8));
+                new AABB(player.blockPosition()).inflate(8), arrow -> arrow.getOwner() == player);
         helper.assertTrue(allArrows.size() == 2 && allArrows.stream().anyMatch(a -> a.getType() == net.minecraft.world.entity.EntityType.ARROW)
                 && energy.getMeltDreamEnergy() == 0.0, "能量不足应射出普通箭且不扣能量");
         helper.succeed();
@@ -105,7 +105,7 @@ public class WindEquipmentGameTests {
         helper.assertTrue(Math.abs(energy.getMeltDreamEnergy() - 0.8) < 0.0001,
                 "强化光灵箭应消耗 0.2 融梦能量");
         var arrows = helper.getLevel().getEntitiesOfClass(FluffyWindArrowEntity.class,
-                new AABB(player.blockPosition()).inflate(8));
+                new AABB(player.blockPosition()).inflate(8), arrow -> arrow.getOwner() == player);
         helper.assertTrue(arrows.size() == 1, "能量充足时强化光灵箭应使用萦风箭实体");
         FluffyWindArrowEntity arrow = arrows.getFirst();
         helper.assertTrue(arrow.getAmmoItem().is(Items.SPECTRAL_ARROW), "强化箭应保留光灵箭弹药");

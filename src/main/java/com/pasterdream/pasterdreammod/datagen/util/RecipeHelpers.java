@@ -6,7 +6,10 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
 /** 保留 Forge 来源的配方 ID、分类及 9:1 数量关系。 */
@@ -57,6 +60,110 @@ public final class RecipeHelpers {
                 .define('a', material).define('b', handle)
                 .unlockedBy(path(material), InventoryChangeTrigger.TriggerInstance.hasItems(material))
                 .save(output, ResourceLocation.fromNamespaceAndPath(modId, path(hoe) + "_direct"));
+    }
+
+    public static void plankFamilyRecipes(RecipeOutput output,
+                                          ItemLike log, ItemLike planks,
+                                          ItemLike stairs, ItemLike slab,
+                                          ItemLike fence, ItemLike fenceGate,
+                                          ItemLike door, ItemLike trapdoor,
+                                          ItemLike pressurePlate, ItemLike button,
+                                          String modId) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 4)
+                .requires(log)
+                .unlockedBy(path(log), InventoryChangeTrigger.TriggerInstance.hasItems(log))
+                .save(output, ResourceLocation.fromNamespaceAndPath(modId, path(planks) + "_from_log"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, stairs, 4)
+                .pattern("a  ")
+                .pattern("aa ")
+                .pattern("aaa")
+                .define('a', planks)
+                .unlockedBy(path(planks), InventoryChangeTrigger.TriggerInstance.hasItems(planks))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, slab, 6)
+                .pattern("aaa")
+                .define('a', planks)
+                .unlockedBy(path(planks), InventoryChangeTrigger.TriggerInstance.hasItems(planks))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, fence, 3)
+                .pattern("aba")
+                .pattern("aba")
+                .define('a', planks)
+                .define('b', Items.STICK)
+                .unlockedBy(path(planks), InventoryChangeTrigger.TriggerInstance.hasItems(planks))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, fenceGate, 1)
+                .pattern("aba")
+                .pattern("aba")
+                .define('a', Items.STICK)
+                .define('b', planks)
+                .unlockedBy(path(planks), InventoryChangeTrigger.TriggerInstance.hasItems(planks))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, door, 3)
+                .pattern("aa")
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', planks)
+                .unlockedBy(path(planks), InventoryChangeTrigger.TriggerInstance.hasItems(planks))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, trapdoor, 2)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', planks)
+                .unlockedBy(path(planks), InventoryChangeTrigger.TriggerInstance.hasItems(planks))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, pressurePlate, 1)
+                .pattern("aa")
+                .define('a', planks)
+                .unlockedBy(path(planks), InventoryChangeTrigger.TriggerInstance.hasItems(planks))
+                .save(output);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, button, 1)
+                .requires(planks)
+                .unlockedBy(path(planks), InventoryChangeTrigger.TriggerInstance.hasItems(planks))
+                .save(output);
+    }
+
+    public static void buildingBlockFamilyRecipes(RecipeOutput output,
+                                                  ItemLike base, ItemLike stairs,
+                                                  ItemLike slab, ItemLike wall,
+                                                  String modId) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, stairs, 4)
+                .pattern("a  ")
+                .pattern("aa ")
+                .pattern("aaa")
+                .define('a', base)
+                .unlockedBy(path(base), InventoryChangeTrigger.TriggerInstance.hasItems(base))
+                .save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, slab, 6)
+                .pattern("aaa")
+                .define('a', base)
+                .unlockedBy(path(base), InventoryChangeTrigger.TriggerInstance.hasItems(base))
+                .save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, wall, 6)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', base)
+                .unlockedBy(path(base), InventoryChangeTrigger.TriggerInstance.hasItems(base))
+                .save(output);
+
+        var ingredient = Ingredient.of(base);
+        SingleItemRecipeBuilder.stonecutting(ingredient, RecipeCategory.BUILDING_BLOCKS, stairs)
+                .unlockedBy(path(base), InventoryChangeTrigger.TriggerInstance.hasItems(base))
+                .save(output, ResourceLocation.fromNamespaceAndPath(modId, path(stairs) + "_from_stonecutting"));
+        SingleItemRecipeBuilder.stonecutting(ingredient, RecipeCategory.BUILDING_BLOCKS, slab, 2)
+                .unlockedBy(path(base), InventoryChangeTrigger.TriggerInstance.hasItems(base))
+                .save(output, ResourceLocation.fromNamespaceAndPath(modId, path(slab) + "_from_stonecutting"));
+        SingleItemRecipeBuilder.stonecutting(ingredient, RecipeCategory.BUILDING_BLOCKS, wall)
+                .unlockedBy(path(base), InventoryChangeTrigger.TriggerInstance.hasItems(base))
+                .save(output, ResourceLocation.fromNamespaceAndPath(modId, path(wall) + "_from_stonecutting"));
     }
 
     private static String path(ItemLike item) {
