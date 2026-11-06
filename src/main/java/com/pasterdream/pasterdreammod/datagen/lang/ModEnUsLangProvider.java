@@ -444,6 +444,22 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fire_necklace.effect3", "§7▪ §9Grants Fire Resistance");
         add(ModItems.CROSS_NECKLACE.get(), "Cross Necklace");
         add("tooltip.pasterdream.cross_necklace.effect", "§7▪ §9Extends Blink evasion duration to 0.5s");
+        add(ModItems.NATURE_BELT.get(), "Nature Belt");
+        add(ModItems.TRAVELER_BELT.get(), "Traveler Belt");
+        add("tooltip.pasterdream.traveler_belt.effect", "§7▪ §9-0.5 Blink Consumption");
+        add(ModItems.DREAM_TRAVELER_BELT.get(), "Dream Traveler Belt");
+        add("tooltip.pasterdream.dream_traveler_belt.effect1", "§7▪ §9+3% Movement Speed");
+        add("tooltip.pasterdream.dream_traveler_belt.effect2", "§7▪ §9+10% Blink Cooldown Reduction");
+        add(ModItems.STRIKE_RING.get(), "Strike Ring");
+        add("tooltip.pasterdream.strike_ring.effect", "§7▪ §9+%s Attack Damage");
+        add(ModItems.COUNTER_RING.get(), "Counter Ring");
+        add(ModItems.MELT_DREAM_ENERGY_RING.get(), "Melt Dream Energy Ring");
+        add("tooltip.pasterdream.counter_ring.effect1", "§7▪ §9On successful dodge: gain Counterattack I (0:10)");
+        add("tooltip.pasterdream.counter_ring.effect2", "§7▪ §9Next attack: Attack +3, DMG +50%, then buff ends");
+        add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9Melt Dream Energy +1/min");
+        add("effect.pasterdream.counter_attack", "Counterattack");
+        add("tooltip.pasterdream.lv", "§7Level: §bLv.%s");
+        add("tooltip.pasterdream.only_one.tooltip", "§7Only one of this curios can be equipped in the curios slot.");
 
         // ===== Wind Journey materials and gear =====
         add(ModItems.CONGEAL_WIND.get(), "Congeal Wind");

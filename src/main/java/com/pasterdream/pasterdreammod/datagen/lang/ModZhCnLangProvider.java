@@ -444,6 +444,22 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fire_necklace.effect3", "§7▪ §9获得防火效果");
         add(ModItems.CROSS_NECKLACE.get(), "十字章项链");
         add("tooltip.pasterdream.cross_necklace.effect", "§7▪ §9瞬身术的回避时间延长至0.5秒");
+        add(ModItems.NATURE_BELT.get(), "自然腰带");
+        add(ModItems.TRAVELER_BELT.get(), "旅者腰带");
+        add("tooltip.pasterdream.traveler_belt.effect", "§7▪ §9-0.5 瞬身术消耗");
+        add(ModItems.DREAM_TRAVELER_BELT.get(), "迷梦旅者腰带");
+        add("tooltip.pasterdream.dream_traveler_belt.effect1", "§7▪ §9+3% 移动速度");
+        add("tooltip.pasterdream.dream_traveler_belt.effect2", "§7▪ §9+10% 瞬身术冷却缩减");
+        add(ModItems.STRIKE_RING.get(), "强击戒指");
+        add("tooltip.pasterdream.strike_ring.effect", "§7▪ §9+%s攻击伤害");
+        add(ModItems.COUNTER_RING.get(), "反击戒指");
+        add(ModItems.MELT_DREAM_ENERGY_RING.get(), "融梦光环戒指");
+        add("tooltip.pasterdream.counter_ring.effect1", "§7▪ §9成功回避伤害时获得反击I (0:10)");
+        add("tooltip.pasterdream.counter_ring.effect2", "§7▪ §9下一次攻击：攻击力+3 伤害+50%，命中后效果解除");
+        add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9融梦能量+1/min");
+        add("effect.pasterdream.counter_attack", "反击");
+        add("tooltip.pasterdream.lv", "§7§b等级：Lv.%s");
+        add("tooltip.pasterdream.only_one.tooltip", "§7该饰品在饰品栏只能装备一个");
 
         // ===== 风之旅途材料与装备 =====
         add(ModItems.CONGEAL_WIND.get(), "凝结之风");

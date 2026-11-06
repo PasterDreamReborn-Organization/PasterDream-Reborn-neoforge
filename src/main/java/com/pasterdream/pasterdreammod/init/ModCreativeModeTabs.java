@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -158,21 +159,22 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_BOOTS.get());
                         // 染梦合金工具
                         output.accept(ModItems.DYEDREAM_SWORD.get());
+                        output.accept(ModItems.SHARP_MELT_DREAM_SWORD.get());
                         output.accept(ModItems.DYEDREAM_PICKAXE.get());
                         output.accept(ModItems.DYEDREAM_AXE.get());
                         output.accept(ModItems.DYEDREAM_SHOVEL.get());
                         output.accept(ModItems.DYEDREAM_HOE.get());
                         output.accept(ModItems.DYEDREAM_HAMMER.get());
-                        output.accept(ModItems.MELT_DREAM_PICKAXE.get());
-                        output.accept(ModItems.MELT_DREAM_AXE.get());
-                        output.accept(ModItems.MELT_DREAM_SHOVEL.get());
-                        output.accept(ModItems.MELT_DREAM_HOE.get());
-                        output.accept(ModItems.SHARP_MELT_DREAM_SWORD.get());
                         // 染梦合金装备
                         output.accept(ModItems.DYEDREAM_HELMET.get());
                         output.accept(ModItems.DYEDREAM_CHESTPLATE.get());
                         output.accept(ModItems.DYEDREAM_LEGGINGS.get());
                         output.accept(ModItems.DYEDREAM_BOOTS.get());
+                        // 融梦水晶工具
+                        output.accept(ModItems.MELT_DREAM_PICKAXE.get());
+                        output.accept(ModItems.MELT_DREAM_AXE.get());
+                        output.accept(ModItems.MELT_DREAM_SHOVEL.get());
+                        output.accept(ModItems.MELT_DREAM_HOE.get());
                         // 融梦水晶装备
                         output.accept(ModItems.MELT_DREAM_HELMET.get());
                         output.accept(ModItems.MELT_DREAM_CHESTPLATE.get());
@@ -227,6 +229,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.HEALTH_NECKLACE.get());
                         output.accept(ModItems.FIRE_NECKLACE.get());
                         output.accept(ModItems.CROSS_NECKLACE.get());
+                        output.accept(ModItems.NATURE_BELT.get());
+                        output.accept(ModItems.TRAVELER_BELT.get());
+                        output.accept(ModItems.DREAM_TRAVELER_BELT.get());
+                        output.accept(StrikeRingItem.createWithLv(ModItems.STRIKE_RING.get(), 1));
+                        output.accept(StrikeRingItem.createWithLv(ModItems.STRIKE_RING.get(), 2));
+                        output.accept(ModItems.COUNTER_RING.get());
+                        output.accept(ModItems.MELT_DREAM_ENERGY_RING.get());
                         output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
                     }).build());
 

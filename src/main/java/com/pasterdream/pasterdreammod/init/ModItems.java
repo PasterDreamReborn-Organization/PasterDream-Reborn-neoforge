@@ -40,6 +40,12 @@ import com.pasterdream.pasterdreammod.world.item.curio.FeatherNecklaceItem;
 import com.pasterdream.pasterdreammod.world.item.curio.HealthNecklaceItem;
 import com.pasterdream.pasterdreammod.world.item.curio.FireNecklaceItem;
 import com.pasterdream.pasterdreammod.world.item.curio.CrossNecklaceItem;
+import com.pasterdream.pasterdreammod.world.item.curio.NatureBeltItem;
+import com.pasterdream.pasterdreammod.world.item.curio.TravelerBeltItem;
+import com.pasterdream.pasterdreammod.world.item.curio.DreamTravelerBeltItem;
+import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.CounterRingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.MeltDreamEnergyRingItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
@@ -137,6 +143,18 @@ public class ModItems {
     public static final DeferredItem<Item> HEALTH_NECKLACE = ITEMS.register("health_necklace", HealthNecklaceItem::new);
     public static final DeferredItem<Item> FIRE_NECKLACE = ITEMS.register("fire_necklace", FireNecklaceItem::new);
     public static final DeferredItem<Item> CROSS_NECKLACE = ITEMS.register("cross_necklace", CrossNecklaceItem::new);
+
+    // ===== 饰品（戒指） =====
+    public static final DeferredItem<Item> STRIKE_RING = ITEMS.register("strike_ring", StrikeRingItem::new);
+    public static final DeferredItem<Item> COUNTER_RING = ITEMS.register("counter_ring", CounterRingItem::new);
+    public static final DeferredItem<Item> MELT_DREAM_ENERGY_RING = ITEMS.register("melt_dream_energy_ring",
+            MeltDreamEnergyRingItem::new);
+
+    // ===== 饰品（腰带） =====
+    public static final DeferredItem<Item> NATURE_BELT = ITEMS.register("nature_belt", NatureBeltItem::new);
+    public static final DeferredItem<Item> TRAVELER_BELT = ITEMS.register("traveler_belt", TravelerBeltItem::new);
+    public static final DeferredItem<Item> DREAM_TRAVELER_BELT = ITEMS.register("dream_traveler_belt",
+            DreamTravelerBeltItem::new);
 
     // ===== 露滴 =====
     public static final DeferredItem<Item> BLUE_HEART_OF_THE_SEA = ITEMS.register("blue_heart_of_the_sea",

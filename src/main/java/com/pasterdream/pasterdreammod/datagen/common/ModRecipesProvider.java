@@ -9,10 +9,13 @@ import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapedRecipe;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapelessRecipe;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
+import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.PackOutput;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -23,6 +26,9 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.ICondition;
+import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -195,6 +201,64 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('a', ItemTags.SMALL_FLOWERS)
                 .unlockedBy("has_poppy", has(ItemTags.SMALL_FLOWERS))
                 .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.NATURE_BELT.get(), 1)
+                .pattern("aba")
+                .pattern("b b")
+                .pattern("aba")
+                .define('a', Items.GLOW_BERRIES)
+                .define('b', Items.VINE)
+                .unlockedBy(getHasName(Items.GLOW_BERRIES), has(Items.GLOW_BERRIES))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.TRAVELER_BELT.get(), 1)
+                .pattern(" a ")
+                .pattern("bcb")
+                .pattern(" d ")
+                .define('a', ModItems.FABRIC.get())
+                .define('b', Items.LEATHER)
+                .define('c', ModItems.EMBRYO_BELT.get())
+                .define('d', Items.DIAMOND)
+                .unlockedBy(getHasName(ModItems.EMBRYO_BELT.get()), has(ModItems.EMBRYO_BELT.get()))
+                .save(pWriter);
+
+        ItemStack strikeRingLv1 = StrikeRingItem.createWithLv(ModItems.STRIKE_RING.get(), 1);
+        ItemStack strikeRingLv2 = StrikeRingItem.createWithLv(ModItems.STRIKE_RING.get(), 2);
+        CompoundTag strikeRingLv1Tag = new CompoundTag();
+        strikeRingLv1Tag.putInt(StrikeRingItem.TAG_LV, 1);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, strikeRingLv1)
+                .pattern(" c ")
+                .pattern("bab")
+                .pattern(" b ")
+                .define('a', ModItems.EMBRYO_RING.get())
+                .define('b', Items.COPPER_INGOT)
+                .define('c', Items.BLAZE_POWDER)
+                .unlockedBy(getHasName(ModItems.EMBRYO_RING.get()), has(ModItems.EMBRYO_RING.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "strike_ring_lv1"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, strikeRingLv2)
+                .pattern("cbc")
+                .pattern("bab")
+                .pattern("cbc")
+                .define('a', DataComponentIngredient.of(false, DataComponents.CUSTOM_DATA,
+                        CustomData.of(strikeRingLv1Tag), ModItems.STRIKE_RING.get()))
+                .define('b', ModItems.MOLTEN_GOLD_INGOT.get())
+                .define('c', Items.BLAZE_ROD)
+                .unlockedBy(getHasName(ModItems.STRIKE_RING.get()), has(ModItems.STRIKE_RING.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "strike_ring_lv2"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MELT_DREAM_ENERGY_RING.get(), 1)
+                .pattern(" a ")
+                .pattern("bcb")
+                .pattern(" b ")
+                .define('a', ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())
+                .define('b', ModItems.DYEDREAM_ALLOY_NUGGET.get())
+                .define('c', ModItems.EMBRYO_RING.get())
+                .unlockedBy(getHasName(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "melt_dream_energy_ring_from_embryo"));
     }
 
     // ===== 铜工具配方 =====

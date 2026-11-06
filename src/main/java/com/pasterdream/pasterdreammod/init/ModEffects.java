@@ -10,6 +10,7 @@ import com.pasterdream.pasterdreammod.world.effect.InsaneEffect;
 import com.pasterdream.pasterdreammod.world.effect.TranceEffect;
 import com.pasterdream.pasterdreammod.world.effect.LethargyEffect;
 import com.pasterdream.pasterdreammod.world.effect.CheerUpEffect;
+import com.pasterdream.pasterdreammod.world.effect.CounterAttackEffect;
 import com.pasterdream.pasterdreammod.world.effect.RestEffect;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.effect.DyedreamArmorEffect;
@@ -78,6 +79,9 @@ public class ModEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> SHADOW_SILENCE =
             MOB_EFFECTS.register("shadow_silence", ShadowSilenceEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> COUNTER_ATTACK =
+            MOB_EFFECTS.register("counter_attack", CounterAttackEffect::new);
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

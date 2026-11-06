@@ -183,6 +183,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.HEALTH_NECKLACE.get());
         basicItem(ModItems.FIRE_NECKLACE.get());
         basicItem(ModItems.CROSS_NECKLACE.get());
+        basicItem(ModItems.NATURE_BELT.get());
+        basicItem(ModItems.TRAVELER_BELT.get());
+        basicItem(ModItems.DREAM_TRAVELER_BELT.get());
+        basicItem(ModItems.COUNTER_RING.get());
+        basicItem(ModItems.MELT_DREAM_ENERGY_RING.get());
         basicItem(ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
         basicItem(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get());
         basicItem(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
