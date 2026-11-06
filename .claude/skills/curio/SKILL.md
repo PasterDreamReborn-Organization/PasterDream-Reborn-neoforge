@@ -35,8 +35,8 @@ description: 新增/修改饰品（Curios）。覆盖 ICurioItem 实现、ModRar
 
 ## 被动效果
 
-- 全局 tick 处理放 `world/item/curio/CurioPassiveHandler.java`（`@EventBusSubscriber` + `LivingTickEvent`）
-- 事件驱动型在 `event/PlayerEvents.java` 注册 handler，用 `CuriosApi.getCuriosInventory()` 检测是否装备
+- 跨物品的被动分支放 `world/item/curio/CurioPassiveHandler.java`，按来源事件类型订阅 NeoForge 事件；目前只迁入蝴蝶星发卡的 `LivingChangeTargetEvent`
+- 事件驱动型也可在 `event/PlayerEvents.java` 注册 handler，用 `CuriosApi.getCuriosInventory()` 检测是否装备
 - 需临时属性修改时，创建自定义 `MobEffect`（`world/effect/`），构造中 `addAttributeModifier()`，注册到 `init/ModEffects.java`
 
 ---

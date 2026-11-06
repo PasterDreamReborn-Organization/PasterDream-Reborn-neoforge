@@ -175,6 +175,14 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.WORLDTREE_SEEDPOD.get());
         basicItem(ModItems.GARLAND.get());
         basicItem(ModItems.SNOW_VOW_HEAD.get());
+        basicItem(ModItems.LIGHT_BUTTERFLY_CURIO.get());
+        basicItem(ModItems.BRIGHT_BUTTERFLY_CURIO.get());
+        basicItem(ModItems.QYM_BUTTERFLY_STAR_HAIRPIN.get());
+        basicItem(ModItems.RABBIT_FOOT_NECKLACE.get());
+        basicItem(ModItems.FEATHER_NECKLACE.get());
+        basicItem(ModItems.HEALTH_NECKLACE.get());
+        basicItem(ModItems.FIRE_NECKLACE.get());
+        basicItem(ModItems.CROSS_NECKLACE.get());
         basicItem(ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
         basicItem(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get());
         basicItem(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());

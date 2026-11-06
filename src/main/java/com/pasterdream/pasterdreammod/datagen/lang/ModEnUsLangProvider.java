@@ -420,6 +420,31 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.worldtree_seedpod.flavor", "§7§o--Leaves fall to root, pods burst to crown");
         add("jei.pasterdream.snow_vow_head.info", "Has a chance to be obtained by opening Melt Dream Crystal Chests.\nCan also be obtained from chests on the Christmas Tree Island.");
 
+        add(ModItems.QYM_BUTTERFLY_STAR_HAIRPIN.get(), "QYM's Butterfly Star Hairpin");
+        add("tooltip.pasterdream.qym_butterfly_star_hairpin.effect", "§7▪ §9All mobs will not actively attack you");
+        add("tooltip.pasterdream.qym_butterfly_star_hairpin.lore", "§7§oIf you aim for the stars in the night sky, even if you get lost, you are still among them.");
+        add(ModItems.LIGHT_BUTTERFLY_CURIO.get(), "Light Butterfly Curio");
+        add("tooltip.pasterdream.light_butterfly_curio.effect", "§7▪ §9Grants Night Vision in low light");
+        add("tooltip.pasterdream.light_butterfly_curio.energy", "§7▪ §4Melt Dream Energy cost: 0.24/min");
+        add(ModItems.BRIGHT_BUTTERFLY_CURIO.get(), "Bright Butterfly Curio");
+        add("tooltip.pasterdream.bright_butterfly_curio.effect.gamma", "§7▪ §9Grants Night Vision effect");
+        add("tooltip.pasterdream.bright_butterfly_curio.effect.brightness", "§7▪ §9Greatly boosts screen brightness");
+        add("tooltip.pasterdream.bright_butterfly_curio.effect.darkness_immune", "§7▪ §9Immune to Darkness and Blindness");
+        add(ModItems.RABBIT_FOOT_NECKLACE.get(), "Rabbit Foot Necklace");
+        add("tooltip.pasterdream.rabbit_foot_necklace.effect", "§7▪ §9Grants Jump Boost II & +1 Luck");
+        add(ModItems.FEATHER_NECKLACE.get(), "Feather Necklace");
+        add("tooltip.pasterdream.feather_necklace.effect1", "§7▪ §9-0.05 Blink Consumption");
+        add("tooltip.pasterdream.feather_necklace.effect2", "§7▪ §9+0.2 Blink Range");
+        add(ModItems.HEALTH_NECKLACE.get(), "Health Necklace");
+        add("tooltip.pasterdream.health_necklace.effect1", "§7▪ §9+2 Max Health");
+        add("tooltip.pasterdream.health_necklace.effect2", "§7▪ §9Grants Regeneration I");
+        add(ModItems.FIRE_NECKLACE.get(), "Fire Necklace");
+        add("tooltip.pasterdream.fire_necklace.effect1", "§7▪ §9Leaves a trail of fire while walking");
+        add("tooltip.pasterdream.fire_necklace.effect2", "§7▪ §9Grants Haste II while on fire");
+        add("tooltip.pasterdream.fire_necklace.effect3", "§7▪ §9Grants Fire Resistance");
+        add(ModItems.CROSS_NECKLACE.get(), "Cross Necklace");
+        add("tooltip.pasterdream.cross_necklace.effect", "§7▪ §9Extends Blink evasion duration to 0.5s");
+
         // ===== Wind Journey materials and gear =====
         add(ModItems.CONGEAL_WIND.get(), "Congeal Wind");
         add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "Congeal Wind Iron Ingot");

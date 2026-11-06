@@ -155,6 +155,16 @@ public class ModRecipesProvider extends RecipeProvider {
     }
 
     private void curioRecipes(RecipeOutput pWriter) {
+        // 雪兔脚项链 = 项链原胚 + 兔子脚 + 细雪桶 + 钻石 + 下界疣
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RABBIT_FOOT_NECKLACE.get(), 1)
+                .requires(ModItems.EMBRYO_NECKLACE.get())
+                .requires(Items.RABBIT_FOOT)
+                .requires(Items.POWDER_SNOW_BUCKET)
+                .requires(Items.DIAMOND)
+                .requires(Items.NETHER_WART)
+                .unlockedBy(getHasName(ModItems.EMBRYO_NECKLACE.get()), has(ModItems.EMBRYO_NECKLACE.get()))
+                .save(pWriter);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GOLD_CHARM.get(), 1)
                 .requires(ModItems.EMBRYO_CHARM.get())
                 .requires(Items.GOLD_INGOT)

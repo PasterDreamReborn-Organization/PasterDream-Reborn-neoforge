@@ -420,6 +420,31 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.worldtree_seedpod.flavor", "§7§o--落叶归根 裂荚归冠");
         add("jei.pasterdream.snow_vow_head.info", "开启融梦水晶箱有概率获得。\n也可在圣诞树岛开箱获取。");
 
+        add(ModItems.QYM_BUTTERFLY_STAR_HAIRPIN.get(), "琴雨梦的蝴蝶星发卡");
+        add("tooltip.pasterdream.qym_butterfly_star_hairpin.effect", "§7▪ §9所有生物不会主动攻击你");
+        add("tooltip.pasterdream.qym_butterfly_star_hairpin.lore", "§7§o如果你瞄准夜空的星星，即使迷失，也是在星辰之间。");
+        add(ModItems.LIGHT_BUTTERFLY_CURIO.get(), "夜明蝶");
+        add("tooltip.pasterdream.light_butterfly_curio.effect", "§7▪ §9自身处于低亮度环境下获得夜视");
+        add("tooltip.pasterdream.light_butterfly_curio.energy", "§7▪ §4融梦能量消耗：0.24/min");
+        add(ModItems.BRIGHT_BUTTERFLY_CURIO.get(), "光明飞蝶");
+        add("tooltip.pasterdream.bright_butterfly_curio.effect.gamma", "§7▪ §9获得夜视效果");
+        add("tooltip.pasterdream.bright_butterfly_curio.effect.brightness", "§7▪ §9大幅提升画面亮度");
+        add("tooltip.pasterdream.bright_butterfly_curio.effect.darkness_immune", "§7▪ §9免疫黑暗和失明效果");
+        add(ModItems.RABBIT_FOOT_NECKLACE.get(), "雪兔脚项链");
+        add("tooltip.pasterdream.rabbit_foot_necklace.effect", "§7▪ §9获得跳跃提升II与+1幸运值");
+        add(ModItems.FEATHER_NECKLACE.get(), "轻羽护符");
+        add("tooltip.pasterdream.feather_necklace.effect1", "§7▪ §9-0.05 瞬身术消耗");
+        add("tooltip.pasterdream.feather_necklace.effect2", "§7▪ §9+0.2 瞬身术距离");
+        add(ModItems.HEALTH_NECKLACE.get(), "生命项链");
+        add("tooltip.pasterdream.health_necklace.effect1", "§7▪ §9+2最大生命值");
+        add("tooltip.pasterdream.health_necklace.effect2", "§7▪ §9获得生命恢复I");
+        add(ModItems.FIRE_NECKLACE.get(), "业火项链");
+        add("tooltip.pasterdream.fire_necklace.effect1", "§7▪ §9行走会留下火焰");
+        add("tooltip.pasterdream.fire_necklace.effect2", "§7▪ §9处于燃烧状态下获得急迫II效果");
+        add("tooltip.pasterdream.fire_necklace.effect3", "§7▪ §9获得防火效果");
+        add(ModItems.CROSS_NECKLACE.get(), "十字章项链");
+        add("tooltip.pasterdream.cross_necklace.effect", "§7▪ §9瞬身术的回避时间延长至0.5秒");
+
         // ===== 风之旅途材料与装备 =====
         add(ModItems.CONGEAL_WIND.get(), "凝结之风");
         add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "凝风铁锭");

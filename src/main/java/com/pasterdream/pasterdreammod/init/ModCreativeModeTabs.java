@@ -219,6 +219,14 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WORLDTREE_SEEDPOD.get());
                         output.accept(ModItems.GARLAND.get());
                         output.accept(ModItems.SNOW_VOW_HEAD.get());
+                        output.accept(ModItems.QYM_BUTTERFLY_STAR_HAIRPIN.get());
+                        output.accept(ModItems.LIGHT_BUTTERFLY_CURIO.get());
+                        output.accept(ModItems.BRIGHT_BUTTERFLY_CURIO.get());
+                        output.accept(ModItems.RABBIT_FOOT_NECKLACE.get());
+                        output.accept(ModItems.FEATHER_NECKLACE.get());
+                        output.accept(ModItems.HEALTH_NECKLACE.get());
+                        output.accept(ModItems.FIRE_NECKLACE.get());
+                        output.accept(ModItems.CROSS_NECKLACE.get());
                         output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
                     }).build());
 

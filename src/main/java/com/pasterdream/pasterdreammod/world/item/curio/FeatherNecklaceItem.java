@@ -1,0 +1,73 @@
+package com.pasterdream.pasterdreammod.world.item.curio;
+
+import com.pasterdream.pasterdreammod.init.ModAttributes;
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
+
+import java.util.List;
+
+public class FeatherNecklaceItem extends Item implements ICurioItem {
+    private static final ResourceLocation CONSUME_MODIFIER_UUID = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "feather_necklace_consume");
+    private static final ResourceLocation RANGE_MODIFIER_UUID = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "feather_necklace_range");
+
+    public FeatherNecklaceItem() {
+        super(new Item.Properties().stacksTo(1).rarity(ModRarities.excellent()));
+    }
+
+    @Override
+    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
+        if (slotContext.entity() != null) {
+            AttributeInstance consumeAttr = slotContext.entity().getAttribute(ModAttributes.BLINK_CONSUME);
+            if (consumeAttr != null && consumeAttr.getModifier(CONSUME_MODIFIER_UUID) == null) {
+                consumeAttr.addPermanentModifier(new AttributeModifier(CONSUME_MODIFIER_UUID,
+                        -0.05, AttributeModifier.Operation.ADD_VALUE));
+            }
+            AttributeInstance rangeAttr = slotContext.entity().getAttribute(ModAttributes.BLINK_RANGE);
+            if (rangeAttr != null && rangeAttr.getModifier(RANGE_MODIFIER_UUID) == null) {
+                rangeAttr.addPermanentModifier(new AttributeModifier(RANGE_MODIFIER_UUID,
+                        0.2, AttributeModifier.Operation.ADD_VALUE));
+            }
+        }
+    }
+
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        if (slotContext.entity() != null) {
+            AttributeInstance consumeAttr = slotContext.entity().getAttribute(ModAttributes.BLINK_CONSUME);
+            if (consumeAttr != null) {
+                consumeAttr.removeModifier(CONSUME_MODIFIER_UUID);
+            }
+            AttributeInstance rangeAttr = slotContext.entity().getAttribute(ModAttributes.BLINK_RANGE);
+            if (rangeAttr != null) {
+                rangeAttr.removeModifier(RANGE_MODIFIER_UUID);
+            }
+        }
+    }
+
+    @Override
+    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+        if (slotContext.entity() != null) {
+            return CuriosApi.getCuriosInventory(slotContext.entity()).map(handler ->
+                            handler.findFirstCurio(stack.getItem()).isEmpty())
+                    .orElse(true);
+        }
+        return true;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+        list.add(Component.translatable("tooltip.pasterdream.feather_necklace.effect1"));
+        list.add(Component.translatable("tooltip.pasterdream.feather_necklace.effect2"));
+    }
+}
