@@ -5,6 +5,11 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 037：同步上游 #1276 自定义弓蓄力视角修复（2026-11-06）
+
+- 按上游 `3239cccc` 增加客户端 FOV 事件处理；已迁入的萦风弓按原版蓄力曲线缩放视角，并遵从“视角效果”强度设置。
+- 融梦弓尚未迁入，待其迁移时接入同一处理器；同步补充程序规范说明。
+
 ### 批次 036：染梦地形方块与染梦果（2026-11-06）
 
 - 搬运染梦泥土、染梦草方块、染梦耕地、染梦原木、染梦木头、染梦树叶、染梦世界树树叶、染梦沙与染梦果；保留来源注册 ID、贴图、模型、语言与创造栏顺序。
