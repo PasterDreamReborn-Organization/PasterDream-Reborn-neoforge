@@ -1,6 +1,9 @@
 package com.pasterdream.pasterdreammod;
 
 import java.util.List;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 /**
@@ -152,7 +155,38 @@ public class Config {
             .defineListAllowEmpty("shadowLootMultipliers", List.of(1.0, 1.0, 1.5, 2.0),
                     value -> value instanceof Double number && Double.isFinite(number));
 
+    // === 大型便携储物袋捕获生物 ===
+    public static final ModConfigSpec.BooleanValue CREATURE_CAPTURE_ENABLED = BUILDER
+            .comment("是否启用大型便携储物袋（LargeStorageBag）捕获生物的功能，默认 true")
+            .define("creatureCaptureEnabled", true);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> CREATURE_CAPTURE_ENTITIES = BUILDER
+            .comment("大型便携储物袋可捕获的实体 ID 列表，格式：modid:entity_id。"
+                    + "\n例如 minecraft:chicken 为鸡，pasterdream:pink_chicken 为粉红鸡。"
+                    + "\n按 Shift+右键时尝试捕获，无法捕获 Boss 生物（凋灵、末影龙）。")
+            .defineListAllowEmpty("creatureCaptureEntities",
+                    List.of("pasterdream:pink_chicken", "pasterdream:pink_slime",
+                            "pasterdream:jellyfish", "pasterdream:friendly_shadow_ghost",
+                            "minecraft:chicken", "minecraft:slime", "minecraft:silverfish",
+                            "minecraft:vex", "minecraft:endermite", "minecraft:frog",
+                            "minecraft:tadpole", "minecraft:tropical_fish", "minecraft:pufferfish",
+                            "minecraft:salmon", "minecraft:cod", "minecraft:wolf", "minecraft:parrot"),
+                    obj -> obj instanceof String);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
+
+    public static boolean isCapturableEntity(EntityType<?> type) {
+        for (String idStr : CREATURE_CAPTURE_ENTITIES.get()) {
+            ResourceLocation id = ResourceLocation.tryParse(idStr);
+            if (id == null) {
+                continue;
+            }
+            if (BuiltInRegistries.ENTITY_TYPE.getOptional(id).map(entityType -> entityType == type).orElse(false)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private Config() {
     }

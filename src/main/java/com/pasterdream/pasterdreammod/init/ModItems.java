@@ -46,6 +46,12 @@ import com.pasterdream.pasterdreammod.world.item.curio.DreamTravelerBeltItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.CounterRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.MeltDreamEnergyRingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.BobojiCurioItem;
+import com.pasterdream.pasterdreammod.world.item.curio.ShadowBreathItem;
+import com.pasterdream.pasterdreammod.world.item.curio.WarFlagItem;
+import com.pasterdream.pasterdreammod.world.item.curio.WindSpiritItem;
+import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
+import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
@@ -143,6 +149,14 @@ public class ModItems {
     public static final DeferredItem<Item> HEALTH_NECKLACE = ITEMS.register("health_necklace", HealthNecklaceItem::new);
     public static final DeferredItem<Item> FIRE_NECKLACE = ITEMS.register("fire_necklace", FireNecklaceItem::new);
     public static final DeferredItem<Item> CROSS_NECKLACE = ITEMS.register("cross_necklace", CrossNecklaceItem::new);
+    public static final DeferredItem<Item> BOBOJI_CURIO = ITEMS.register("boboji_curio", BobojiCurioItem::new);
+    public static final DeferredItem<Item> SHADOW_BREATH = ITEMS.register("shadow_breath", ShadowBreathItem::new);
+    public static final DeferredItem<Item> WAR_FLAG = ITEMS.register("war_flag", WarFlagItem::new);
+    public static final DeferredItem<Item> WIND_SPIRIT = ITEMS.register("wind_spirit", WindSpiritItem::new);
+
+    // ===== 便携储物袋 =====
+    public static final DeferredItem<Item> STORAGE_BAG = ITEMS.register("storage_bag", StorageBagItem::new);
+    public static final DeferredItem<Item> LARGE_STORAGE_BAG = ITEMS.register("large_storage_bag", LargeStorageBagItem::new);
 
     // ===== 饰品（戒指） =====
     public static final DeferredItem<Item> STRIKE_RING = ITEMS.register("strike_ring", StrikeRingItem::new);

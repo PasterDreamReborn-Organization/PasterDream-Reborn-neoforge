@@ -236,6 +236,12 @@ public class ModCreativeModeTabs {
                         output.accept(StrikeRingItem.createWithLv(ModItems.STRIKE_RING.get(), 2));
                         output.accept(ModItems.COUNTER_RING.get());
                         output.accept(ModItems.MELT_DREAM_ENERGY_RING.get());
+                        output.accept(ModItems.STORAGE_BAG.get());
+                        output.accept(ModItems.LARGE_STORAGE_BAG.get());
+                        output.accept(ModItems.SHADOW_BREATH.get());
+                        output.accept(ModItems.WAR_FLAG.get());
+                        output.accept(ModItems.BOBOJI_CURIO.get());
+                        output.accept(ModItems.WIND_SPIRIT.get());
                         output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
                     }).build());
 
