@@ -92,4 +92,25 @@ public class WindEquipmentGameTests {
                 && energy.getMeltDreamEnergy() == 0.0, "能量不足应射出普通箭且不扣能量");
         helper.succeed();
     }
+
+    @GameTest(template = "empty")
+    public static void windBowEmpoweredSpectralArrow(GameTestHelper helper) {
+        var player = helper.makeMockPlayer(GameType.SURVIVAL);
+        var energy = player.getData(ModAttachments.MELT_DREAM_ENERGY);
+        var bow = ModItems.FLUFFY_WIND_BOW.toStack();
+        player.setItemInHand(InteractionHand.MAIN_HAND, bow);
+        player.getInventory().add(new ItemStack(Items.SPECTRAL_ARROW, 1));
+        energy.setMeltDreamEnergy(1.0);
+        bow.getItem().releaseUsing(bow, helper.getLevel(), player, bow.getUseDuration(player) - 20);
+        helper.assertTrue(Math.abs(energy.getMeltDreamEnergy() - 0.8) < 0.0001,
+                "强化光灵箭应消耗 0.2 融梦能量");
+        var arrows = helper.getLevel().getEntitiesOfClass(FluffyWindArrowEntity.class,
+                new AABB(player.blockPosition()).inflate(8));
+        helper.assertTrue(arrows.size() == 1, "能量充足时强化光灵箭应使用萦风箭实体");
+        FluffyWindArrowEntity arrow = arrows.getFirst();
+        helper.assertTrue(arrow.getAmmoItem().is(Items.SPECTRAL_ARROW), "强化箭应保留光灵箭弹药");
+        helper.assertTrue(arrow.getPickupItemStackOrigin().is(Items.SPECTRAL_ARROW),
+                "强化光灵箭应保留光灵箭拾取物");
+        helper.succeed();
+    }
 }

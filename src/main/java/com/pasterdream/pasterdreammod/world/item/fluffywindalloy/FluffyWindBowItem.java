@@ -12,7 +12,6 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -36,8 +35,8 @@ public class FluffyWindBowItem extends BowItem {
         int channeling = EnchantmentHelper.getItemEnchantmentLevel(
                 level.registryAccess().holderOrThrow(Enchantments.CHANNELING), weapon);
         if (!tryConsumeEnergy(player, channeling > 0)) return normal;
-        if (ammo.is(Items.SPECTRAL_ARROW)) return normal;
 
+        // 强化射击统一使用萦风箭；光灵箭的命中发光由 FluffyWindArrowEntity 保留
         FluffyWindArrowEntity arrow = new FluffyWindArrowEntity(level, shooter, ammo);
         if (normal instanceof AbstractArrow base) {
             arrow.setBaseDamage(base.getBaseDamage());

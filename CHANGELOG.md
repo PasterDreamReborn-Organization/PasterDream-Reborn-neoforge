@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 029：同步上游 #1274 强化光灵箭修复（2026-11-06）
+
+- 同步上游 PR #1274（合并提交 `2ee22c23`）：强化武器在能量充足时不再因弹药是光灵箭而回退原版实体，避免「能量已扣但强化失效」。
+- 本仓库当前仅萦风弓已迁入，按 `FluffyWindArrowEntity` 架构适配：新增同步弹药栈，命中光灵箭施加 200 tick 发光，渲染器按弹药使用原版光灵箭贴图，并保留光灵箭拾取物；融梦弓、暗影合金弩随其迁移实现，暗影合金弩设计文档已先行同步。
+- 新增强化光灵箭 GameTest；`runData`、`build` 通过，GameTest 81/81 通过。客户端贴图与发光表现待实测。
+
 ### 批次 028：修复自定义品质星级提示（2026-11-06）
 
 - 恢复来源 `AddToolTip` 中遗漏的自动品质行：物品使用 `ModRarities` 自定义稀有度时，在物品名下显示对应品质名称与星数；原版稀有度不添加该行。
