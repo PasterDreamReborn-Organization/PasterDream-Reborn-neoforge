@@ -55,6 +55,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
                         output.accept(ModItems.BLUE_HEART_OF_THE_SEA.get());
                         output.accept(ModItems.ELDER_GUARDIAN_SCALE.get());
+                        // 饰品原胚
+                        output.accept(ModItems.EMBRYO_CHARM.get());
+                        output.accept(ModItems.EMBRYO_NECKLACE.get());
+                        output.accept(ModItems.EMBRYO_RING.get());
+                        output.accept(ModItems.EMBRYO_BELT.get());
                     }).build());
 
     // 食物栏图标暂用蔚蓝露滴；来源图标 DYEDREAM_FRUIT 尚未迁入。
@@ -141,11 +146,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
                         output.accept(ModItems.WIND_RUNNER_CLOAK.get());
-                        output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
-                        output.accept(ModItems.EMBRYO_CHARM.get());
-                        output.accept(ModItems.EMBRYO_NECKLACE.get());
-                        output.accept(ModItems.EMBRYO_RING.get());
-                        output.accept(ModItems.EMBRYO_BELT.get());
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());
                         output.accept(ModItems.TITANIUM_AXE.get());
@@ -211,6 +211,15 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DESERT_SWORD.get());
                         output.accept(ModItems.CHENJINGMEN_DESERT_SWORD.get());
                         output.accept(ModItems.BROKEN_HERO_SWORD.get());
+                        // 饰品
+                        output.accept(ModItems.GOLD_CHARM.get());
+                        output.accept(ModItems.ENDEYE_CHARM.get());
+                        output.accept(ModItems.SEA_CHARM.get());
+                        output.accept(ModItems.CARAPAX_CHARM.get());
+                        output.accept(ModItems.WORLDTREE_SEEDPOD.get());
+                        output.accept(ModItems.GARLAND.get());
+                        output.accept(ModItems.SNOW_VOW_HEAD.get());
+                        output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
                     }).build());
 
     // ===== 设备 =====

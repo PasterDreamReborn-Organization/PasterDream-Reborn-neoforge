@@ -98,7 +98,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 
 - 客制化类放在 `world/item/curio/` 包下，实现 `ICurioItem`
 - 品质使用 `ModRarities`（COMMON/EXCELLENT/SUPERIOR 等），**不要**使用原版 `Rarity`
-- 品质 tooltip 用 `ModRarities.qualityTooltip(ModRarities.XXX)`，放在 `appendHoverText` 首位
+- 当前已迁入内容的品质 tooltip 由批次 028 统一处理器自动添加；饰品类不重复添加
 - 增加幸运值请使用MC原版LUCK
 
 **饰品效果实现方式：**
@@ -114,6 +114,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 
 **饰品标签（Curio 槽位）：**
 - **手动维护** `src/main/resources/data/curios/tags/item/<slot>.json`，**不走 datagen**
+- Curios 9.5.1 内置槽位类型不会自动分配给玩家；在 `src/main/resources/data/pasterdream/curios/entities/player.json` 列出来源槽位，戒指槽数量由 `curios/slots/ring.json` 设为 2。只验证物品标签不足以证明可佩戴或显示属性提示
 - 槽位类型：`charm`（护符）、`necklace`（项链）、`ring`（戒指）、`belt`（腰带）、`head`（头部）、`back`（背部）、`body`（身体）
 - 每个 slot JSON 中加上 `"minecraft:air"` 条目允许空槽
 

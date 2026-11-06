@@ -401,6 +401,25 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("rarity.pasterdream.miracle", "神迹");
         add("tooltip.pasterdream.quality", "品质: %s %s");
 
+        // ===== 饰品 =====
+        add(ModItems.GOLD_CHARM.get(), "纯金护身符");
+        add(ModItems.ENDEYE_CHARM.get(), "邪眼护身符");
+        add(ModItems.SEA_CHARM.get(), "海波护身符");
+        add(ModItems.CARAPAX_CHARM.get(), "龟壳护身符");
+        add(ModItems.WORLDTREE_SEEDPOD.get(), "世界树种荚");
+        add(ModItems.GARLAND.get(), "花环");
+        add(ModItems.SNOW_VOW_HEAD.get(), "雪下的誓言");
+        add("effect.pasterdream.snow_vow", "雪下的誓言");
+        add("tooltip.pasterdream.gold_charm.piglin", "§7▪ §9使猪灵保持中立");
+        add("tooltip.pasterdream.endeye_charm.enderman", "§7▪ §9使末影人保持中立");
+        add("tooltip.pasterdream.snow_vow_head.effect.area", "§7▪ §9使附近直径7格内的玩家获得效果");
+        add("tooltip.pasterdream.snow_vow_head.effect.bonus", "§7▪ §9+3 幸运值 免疫燃烧与冻结");
+        add("tooltip.pasterdream.worldtree_seedpod.condition", "§7▪ §9在染梦世界 露天环境 身处高度y>160 白天 脚下为染梦世界树树叶");
+        add("tooltip.pasterdream.worldtree_seedpod.hunger", "§7▪ §4持续降低饱和度");
+        add("tooltip.pasterdream.worldtree_seedpod.energy", "§7▪ §9融梦能量+360/h");
+        add("tooltip.pasterdream.worldtree_seedpod.flavor", "§7§o--落叶归根 裂荚归冠");
+        add("jei.pasterdream.snow_vow_head.info", "开启融梦水晶箱有概率获得。\n也可在圣诞树岛开箱获取。");
+
         // ===== 风之旅途材料与装备 =====
         add(ModItems.CONGEAL_WIND.get(), "凝结之风");
         add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "凝风铁锭");

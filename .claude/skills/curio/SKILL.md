@@ -13,10 +13,10 @@ description: 新增/修改饰品（Curios）。覆盖 ICurioItem 实现、ModRar
 
 - 饰品类放 `world/item/curio/`，实现 `ICurioItem`
 - 品质用 `ModRarities`（COMMON/EXCELLENT/SUPERIOR 等），**不用**原版 `Rarity`
-- 品质 tooltip 用 `ModRarities.qualityTooltip(ModRarities.XXX)`，放 `appendHoverText` 首位
+- 已迁入内容的品质 tooltip 由批次 028 的统一处理器自动添加，饰品类不重复添加
 - 增加幸运值用 MC 原版 `LUCK` 属性
-- 插槽标签 JSON **手动维护** `data/curios/tags/items/<slot>.json`，不走 datagen，每个 slot 加 `"minecraft:air"` 允许空槽
-- 插槽注册在 `init/ModCuriosSlots.java`（`InterModEnqueueEvent` + `InterModComms.sendTo`）
+- 插槽标签 JSON **手动维护** `data/curios/tags/item/<slot>.json`，不走 datagen，每个 slot 加 `"minecraft:air"` 允许空槽
+- `charm` / `head` 等类型由 Curios 9.5.1 内置，但必须在 `data/pasterdream/curios/entities/player.json` 分配给玩家；只加物品标签不会显示属性 tooltip，也不能佩戴。来源戒指槽数量 2 由 `data/pasterdream/curios/slots/ring.json` 覆盖
 
 ---
 
@@ -24,7 +24,7 @@ description: 新增/修改饰品（Curios）。覆盖 ICurioItem 实现、ModRar
 
 | 方式 | 适用场景 | 注意 |
 |------|---------|------|
-| `getAttributeModifiers()` | 静态属性加成 | 自动生成 tooltip，**不要**再手动加描述 |
+| `getAttributeModifiers()` | 静态属性加成 | 槽位已分配给玩家时自动生成 tooltip；用 `CuriosApi.getItemStackSlots` 和 `getAttributeModifiers` 验证，不重复手写描述 |
 | `curioTick()` | 每 tick 持续效果 | 检查 `!level.isClientSide()` |
 | `onEquip()` / `onUnequip()` | 装备/卸下一次属性变更 | `AttributeInstance.addPermanentModifier/removeModifier` |
 | `makesPiglinsNeutral()` | 猪灵中立 | 仅覆写，无额外 tooltip |
@@ -55,8 +55,9 @@ description: 新增/修改饰品（Curios）。覆盖 ICurioItem 实现、ModRar
 | 饰品实现 | `world/item/curio/` |
 | 被动处理器 | `world/item/curio/CurioPassiveHandler.java` |
 | 品质系统 | `world/item/ModRarities.java` |
-| 插槽注册 | `init/ModCuriosSlots.java` |
-| 插槽标签 | `src/main/resources/data/curios/tags/items/`（手动维护） |
+| 玩家槽位分配 | `src/main/resources/data/pasterdream/curios/entities/player.json`（手动维护） |
+| 戒指槽数量 | `src/main/resources/data/pasterdream/curios/slots/ring.json`（手动维护） |
+| 插槽标签 | `src/main/resources/data/curios/tags/item/`（手动维护） |
 | 玩家事件 | `event/PlayerEvents.java` |
 | 饰品网络包 | `network/curio/` |
 
