@@ -2,8 +2,12 @@ package com.pasterdream.pasterdreammod.gametest;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.event.PlayerEvents;
+import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.BlockPos;
@@ -12,6 +16,7 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -22,11 +27,15 @@ import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.damagesource.DamageContainer;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.gametest.GameTestHolder;
 import net.neoforged.neoforge.gametest.PrefixGameTestTemplate;
 import net.neoforged.neoforge.common.util.FakePlayer;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
 import java.util.UUID;
@@ -221,6 +230,123 @@ public class CurioGameTests {
                     "夜明蝶应消耗 0.004 融梦能量并提供夜视");
             helper.succeed();
         });
+    }
+
+    @GameTest(template = "empty")
+    public static void beltsAndRingsSlotsAndRecipes(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        for (Item item : List.of(ModItems.NATURE_BELT.get(), ModItems.TRAVELER_BELT.get(),
+                ModItems.DREAM_TRAVELER_BELT.get())) {
+            helper.assertTrue(new ItemStack(item).is(curiosTag("belt"))
+                            && CuriosApi.getItemStackSlots(new ItemStack(item), player).containsKey("belt"),
+                    "腰带应能佩戴于 belt 槽: " + item);
+        }
+        for (Item item : List.of(ModItems.STRIKE_RING.get(), ModItems.COUNTER_RING.get(),
+                ModItems.MELT_DREAM_ENERGY_RING.get())) {
+            helper.assertTrue(new ItemStack(item).is(curiosTag("ring"))
+                            && CuriosApi.getItemStackSlots(new ItemStack(item), player).containsKey("ring"),
+                    "戒指应能佩戴于 ring 槽: " + item);
+        }
+
+        checkCraft(helper, CraftingInput.of(3, 3, List.of(
+                new ItemStack(Items.GLOW_BERRIES), new ItemStack(Items.VINE), new ItemStack(Items.GLOW_BERRIES),
+                new ItemStack(Items.VINE), ItemStack.EMPTY, new ItemStack(Items.VINE),
+                new ItemStack(Items.GLOW_BERRIES), new ItemStack(Items.VINE), new ItemStack(Items.GLOW_BERRIES))),
+                ModItems.NATURE_BELT.get());
+        checkCraft(helper, CraftingInput.of(3, 3, List.of(
+                ItemStack.EMPTY, ModItems.FABRIC.toStack(), ItemStack.EMPTY,
+                new ItemStack(Items.LEATHER), ModItems.EMBRYO_BELT.toStack(), new ItemStack(Items.LEATHER),
+                ItemStack.EMPTY, new ItemStack(Items.DIAMOND), ItemStack.EMPTY)), ModItems.TRAVELER_BELT.get());
+        checkCraft(helper, CraftingInput.of(3, 3, List.of(
+                ItemStack.EMPTY, ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.toStack(), ItemStack.EMPTY,
+                ModItems.DYEDREAM_ALLOY_NUGGET.toStack(), ModItems.EMBRYO_RING.toStack(), ModItems.DYEDREAM_ALLOY_NUGGET.toStack(),
+                ItemStack.EMPTY, ModItems.DYEDREAM_ALLOY_NUGGET.toStack(), ItemStack.EMPTY)),
+                ModItems.MELT_DREAM_ENERGY_RING.get());
+
+        ItemStack lv1 = craft(helper, CraftingInput.of(3, 3, List.of(
+                ItemStack.EMPTY, new ItemStack(Items.BLAZE_POWDER), ItemStack.EMPTY,
+                new ItemStack(Items.COPPER_INGOT), ModItems.EMBRYO_RING.toStack(), new ItemStack(Items.COPPER_INGOT),
+                ItemStack.EMPTY, new ItemStack(Items.COPPER_INGOT), ItemStack.EMPTY)));
+        helper.assertTrue(lv1.is(ModItems.STRIKE_RING.get()) && StrikeRingItem.getLv(lv1) == 1,
+                "强击戒指一级配方应产出 lv=1");
+
+        ItemStack lv2 = craft(helper, CraftingInput.of(3, 3, List.of(
+                new ItemStack(Items.BLAZE_ROD), ModItems.MOLTEN_GOLD_INGOT.toStack(), new ItemStack(Items.BLAZE_ROD),
+                ModItems.MOLTEN_GOLD_INGOT.toStack(), lv1, ModItems.MOLTEN_GOLD_INGOT.toStack(),
+                new ItemStack(Items.BLAZE_ROD), ModItems.MOLTEN_GOLD_INGOT.toStack(), new ItemStack(Items.BLAZE_ROD))));
+        helper.assertTrue(lv2.is(ModItems.STRIKE_RING.get()) && StrikeRingItem.getLv(lv2) == 2
+                        && lv2.getRarity() == ModRarities.excellent(),
+                "强击戒指二级配方应用 lv=1 升级为 lv=2 并提升品质");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void beltAndRingAttributesAndCounter(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        SlotContext beltSlot = new SlotContext("belt", player, 0, false, true);
+        SlotContext ringSlot = new SlotContext("ring", player, 0, false, true);
+
+        ICurioItem nature = (ICurioItem) ModItems.NATURE_BELT.get();
+        helper.assertTrue(CuriosApi.getAttributeModifiers(beltSlot, CuriosApi.getSlotId(beltSlot),
+                        ModItems.NATURE_BELT.toStack()).containsKey(ModAttributes.SAN_VARIABILITY),
+                "自然腰带应提供理智光环属性");
+
+        ICurioItem meltRing = (ICurioItem) ModItems.MELT_DREAM_ENERGY_RING.get();
+        helper.assertTrue(CuriosApi.getAttributeModifiers(ringSlot, CuriosApi.getSlotId(ringSlot),
+                        ModItems.MELT_DREAM_ENERGY_RING.toStack()).containsKey(ModAttributes.MELT_DREAM_VARIABILITY),
+                "融梦光环戒指应提供融梦能量属性");
+
+        ICurioItem traveler = (ICurioItem) ModItems.TRAVELER_BELT.get();
+        traveler.onEquip(beltSlot, ItemStack.EMPTY, ModItems.TRAVELER_BELT.toStack());
+        helper.assertTrue(Math.abs(player.getAttributeValue(ModAttributes.BLINK_CONSUME) - 0.5) < 0.0001,
+                "旅者腰带应减少 0.5 瞬身术消耗");
+        traveler.onUnequip(beltSlot, ItemStack.EMPTY, ModItems.TRAVELER_BELT.toStack());
+        helper.assertTrue(Math.abs(player.getAttributeValue(ModAttributes.BLINK_CONSUME) - 1.0) < 0.0001,
+                "卸下旅者腰带应移除消耗修饰符");
+
+        ICurioItem dreamTraveler = (ICurioItem) ModItems.DREAM_TRAVELER_BELT.get();
+        double speedBefore = player.getAttributeValue(Attributes.MOVEMENT_SPEED);
+        dreamTraveler.onEquip(beltSlot, ItemStack.EMPTY, ModItems.DREAM_TRAVELER_BELT.toStack());
+        helper.assertTrue(Math.abs(player.getAttributeValue(Attributes.MOVEMENT_SPEED) - speedBefore * 1.03) < 0.0001
+                        && Math.abs(player.getAttributeValue(ModAttributes.BLINK_COOLDOWN_REDUCTION) - 0.1) < 0.0001,
+                "迷梦旅者腰带应提供移动速度与瞬身术冷却缩减");
+        dreamTraveler.onUnequip(beltSlot, ItemStack.EMPTY, ModItems.DREAM_TRAVELER_BELT.toStack());
+        helper.assertTrue(Math.abs(player.getAttributeValue(Attributes.MOVEMENT_SPEED) - speedBefore) < 0.0001,
+                "卸下迷梦旅者腰带应移除移动速度修饰符");
+
+        ICurioItem strike = (ICurioItem) ModItems.STRIKE_RING.get();
+        double attackBefore = player.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        strike.onEquip(ringSlot, ItemStack.EMPTY, StrikeRingItem.createWithLv(ModItems.STRIKE_RING.get(), 2));
+        helper.assertTrue(Math.abs(player.getAttributeValue(Attributes.ATTACK_DAMAGE) - (attackBefore + 3.0)) < 0.0001,
+                "二级强击戒指应提供 +3 攻击伤害");
+        strike.onUnequip(ringSlot, ItemStack.EMPTY, StrikeRingItem.createWithLv(ModItems.STRIKE_RING.get(), 2));
+        helper.assertTrue(Math.abs(player.getAttributeValue(Attributes.ATTACK_DAMAGE) - attackBefore) < 0.0001,
+                "卸下强击戒指应移除攻击伤害修饰符");
+
+        var inventory = CuriosApi.getCuriosInventory(player).orElseThrow();
+        inventory.setEquippedCurio("ring", 0, ModItems.COUNTER_RING.toStack());
+        player.addEffect(new MobEffectInstance(ModEffects.EVASION, 6));
+        var source = helper.getLevel().damageSources().magic();
+        LivingIncomingDamageEvent incoming = new LivingIncomingDamageEvent(player, new DamageContainer(source, 4.0f));
+        PlayerEvents.onLivingHurt(incoming);
+        helper.assertTrue(incoming.isCanceled() && player.hasEffect(ModEffects.COUNTER_ATTACK)
+                        && player.hasEffect(MobEffects.DAMAGE_BOOST),
+                "反击戒指应在成功闪避后提供反击与力量");
+
+        var attackSource = helper.getLevel().damageSources().playerAttack(player);
+        LivingDamageEvent.Pre outgoing = new LivingDamageEvent.Pre(player, new DamageContainer(attackSource, 4.0f));
+        PlayerEvents.onLivingDamage(outgoing);
+        helper.assertTrue(Math.abs(outgoing.getNewDamage() - 6.0f) < 0.0001
+                        && !player.hasEffect(ModEffects.COUNTER_ATTACK)
+                        && !player.hasEffect(MobEffects.DAMAGE_BOOST),
+                "反击应使下一次伤害提高 50% 并在命中后移除");
+        helper.succeed();
+    }
+
+    private static ItemStack craft(GameTestHelper helper, CraftingInput input) {
+        var recipe = helper.getLevel().getRecipeManager()
+                .getRecipeFor(RecipeType.CRAFTING, input, helper.getLevel()).orElseThrow();
+        return recipe.value().assemble(input, helper.getLevel().registryAccess());
     }
 
     private static TagKey<Item> curiosTag(String slot) {

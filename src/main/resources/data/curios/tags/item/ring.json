@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "minecraft:air",
-    "pasterdream:embryo_ring"
+    "pasterdream:embryo_ring",
+    "pasterdream:strike_ring",
+    "pasterdream:counter_ring",
+    "pasterdream:melt_dream_energy_ring"
   ]
 }
