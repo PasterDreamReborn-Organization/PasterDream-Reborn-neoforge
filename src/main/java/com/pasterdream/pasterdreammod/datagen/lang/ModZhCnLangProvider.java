@@ -14,6 +14,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("key.pasterdream.blink", "瞬身术");
+        add("key.categories.pasterdream", "帕斯特之梦");
+        add("effect.pasterdream.evasion", "回避");
+        add("effect.pasterdream.blink_cooldown", "瞬身术冷却");
+        add("attribute.pasterdream.blink_consume", "瞬身术消耗");
+        add("attribute.pasterdream.blink_range", "瞬身术距离");
+        add("subtitles.pasterdream.evasion", "瞬身术: 回避");
         add("effect.pasterdream.confusion", "混乱");
         add("effect.pasterdream.cook.description", "拥有该效果时，满饱食度也能进食任意食物；进食时溢出的饱食度或饱和度会转化为生命值，生命值已满时转化为黄心（吸收）。每级提高黄心上限 10 点（I=20 / II=30 / III=40）。");
         add("effect.pasterdream.shadow_silence", "暗影沉默");

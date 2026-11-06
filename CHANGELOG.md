@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 026：瞬身术基础系统（2026-11-06）
+
+- 迁入 C 键瞬身术的客户端按键、服务端请求、位移、属性消耗与冷却，以及回避效果的免伤、成功回避音效和粒子尾迹；保留来源的注册 ID 与数值。
+- 迁入回避音效及回避效果图标原文件，补中英文按键、效果、属性与字幕翻译；修正 NeoForge 提前触发伤害事件导致贴身史莱姆连续碰撞时回避特效出现但仍掉血的问题，恢复原版受击无敌时间与上次受击量判定；数据生成、构建和 GameTest 77/77 通过。
+- 回避衣装、折翼天使雕像、转身衣装与反击饰品的联动随各自内容后续迁入；客户端按键与视觉、多人与实际操作手感待实测。
+
 ### CI 修复（2026-11-05）
 
 - 在 `.gitattributes` 和 `.editorconfig` 中为 Unix Gradle 启动脚本 `gradlew` 单独设置 LF 换行，避免 Linux CI 检出或编辑器保存时被仓库默认 CRLF 规则转换；其余文本文件继续遵循现有规则。

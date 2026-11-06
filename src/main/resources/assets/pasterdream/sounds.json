@@ -7,6 +7,15 @@
       }
     ]
   },
+  "evasion": {
+    "subtitle": "subtitles.pasterdream.evasion",
+    "sounds": [
+      {
+        "name": "pasterdream:evasion",
+        "stream": false
+      }
+    ]
+  },
   "skill_hit": {
     "sounds": [
       {

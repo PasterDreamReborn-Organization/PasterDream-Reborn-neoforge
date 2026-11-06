@@ -8,9 +8,11 @@ description: 新增/修改玩家技能（以瞬身术 Blink 为参考架构）�
 瞬身术（Blink）是首个实现的技能，作为所有新技能的参考架构。链路：
 
 ```
-ModKeyMappings (按键) → BlinkPacket (网络) → BlinkSkill (逻辑) → EvasionEffectHandler (特效)
-                                                                    ↓
-                                            EvasionEffect + BlinkCooldownEffect (效果标记)
+ModKeyMappings (按键) → BlinkPacket (网络) → BlinkSkill (位移、冷却、回避效果)
+                                               ↓
+                              EvasionEffect + BlinkCooldownEffect
+                                               ↓
+                       PlayerEvents (回避伤害) → EvasionEffectHandler (特效)
 ```
 
 ---

@@ -111,6 +111,8 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(ModMobDrops::onLivingDrops);
         NeoForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
+        NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(PlayerEvents::onLivingHurt);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
         NeoForge.EVENT_BUS.addListener(MeltDreamAuraHandler::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(MeltDreamCrystalArmorHandler::onPlayerTick);
