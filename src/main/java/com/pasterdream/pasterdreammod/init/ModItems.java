@@ -73,7 +73,9 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -189,6 +191,27 @@ public class ModItems {
     public static final DeferredItem<BlockItem> SOUL_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.SOUL_ORE);
     public static final DeferredItem<Item> SOUL_DUST = ITEMS.register("soul_dust", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SOUL_ESSENCE = ITEMS.register("soul_essence", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MAGIC_STONE = ITEMS.register("magic_stone",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CHARGED_AMETHYST = ITEMS.register("charged_amethyst",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> REED_ROD = ITEMS.register("reed_rod",
+            () -> new Item(new Item.Properties()) {
+                @Override
+                public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
+                    return 100;
+                }
+            });
+    public static final DeferredItem<Item> PERGAMYN = ITEMS.register("pergamyn",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RYE_SEED = ITEMS.register("rye_seed",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> FLOUR = ITEMS.register("flour",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> COARSE_SALT = ITEMS.register("coarse_salt",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SALT = ITEMS.register("salt",
+            () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> MOLTEN_GOLD_INGOT = ITEMS.register("molten_gold_ingot",
             () -> new Item(new Item.Properties()));

@@ -56,6 +56,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_BUD, ModItemTags.STORAGE_BLOCKS_DYEDREAM_BUD);
         copy(ModBlockTags.STORAGE_BLOCKS_CHARGED_AMETHYST, ModItemTags.STORAGE_BLOCKS_CHARGED_AMETHYST);
         copy(ModBlockTags.STORAGE_BLOCKS_SALT, ModItemTags.STORAGE_BLOCKS_SALT);
+        tag(ModItemTags.SALT).add(ModItems.SALT.get());
+        tag(ModItemTags.FLOUR).add(ModItems.FLOUR.get());
+        tag(ModItemTags.FLOUR_WHEAT).add(ModItems.FLOUR.get());
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
         copy(Tags.Blocks.ORES_COAL, Tags.Items.ORES_COAL);
         copy(Tags.Blocks.ORES_IRON, Tags.Items.ORES_IRON);

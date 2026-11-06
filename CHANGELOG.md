@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 041：盈能紫水晶与料理基础材料（2026-11-06）
+
+- 搬运 `charged_amethyst`、`pergamyn`、`reed_rod`、`rye_seed`、`flour`、`magic_stone`、`salt`、`coarse_salt` 共 8 种物品；保留来源注册 ID、纹理、物品模型与创造模式物品栏顺序。
+- `reed_rod` 保留来源 100 tick 燃烧时间；`magic_stone` 补回来源的提示文本。8 张物品纹理从来源逐字节复制，SHA-256 一致。
+- 补齐不依赖未迁移机器的配方：盈能紫水晶、盈能紫水晶块 4:1 互转、魔法石（钻石/冰凌晶芽 + 灵魂粉尘）、羊皮纸、盐与盐块互转、芦苇杆合成纸；盐/面粉的 `c:salt`、`c:flour`、`c:flour/wheat` 标签同步补齐。研磨机（mortar）相关面粉与粗盐提纯配方、依赖未迁移结构/物品的获取途径暂缓。
+- `runData`、`build` 通过；客户端视觉与生存获取链待游戏内验收；`git diff --check` 通过。
+
 ### 批次 040：染梦世界剩余方块（2026-11-06）
 
 - 搬运染梦世界物品栏剩余 39 种方块：琥珀糖矿石、粉顶菌方块/菌柄/菌光体、染梦冰/浮冰、巨型泡泡、染梦砂岩与切制/雕纹/平滑全套建材、染梦水晶灯/灯笼、染梦玻璃与雕花/镶金全套玻璃板、染梦水晶砖全套建材、冰晶岩/冰凌晶芽、云朵/乌云、方解石锥、盐块与盈能紫水晶块；保留来源注册 ID。

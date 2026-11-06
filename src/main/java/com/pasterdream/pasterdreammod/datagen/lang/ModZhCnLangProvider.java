@@ -297,6 +297,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SOUL_ORE.get(), "灵魂矿土");
         add(ModItems.SOUL_DUST.get(), "灵魂粉尘");
         add(ModItems.SOUL_ESSENCE.get(), "灵魂精华");
+        add(ModItems.MAGIC_STONE.get(), "魔法石");
+        add(ModItems.CHARGED_AMETHYST.get(), "盈能紫水晶");
+        add(ModItems.REED_ROD.get(), "芦苇杆");
+        add(ModItems.PERGAMYN.get(), "羊皮纸");
+        add(ModItems.RYE_SEED.get(), "野麦粒");
+        add(ModItems.FLOUR.get(), "面粉");
+        add(ModItems.COARSE_SALT.get(), "粗盐");
+        add(ModItems.SALT.get(), "盐");
         add(ModItems.EMBRYO_CHARM.get(), "护身符原胚");
         add(ModItems.EMBRYO_NECKLACE.get(), "项链原胚");
         add(ModItems.EMBRYO_RING.get(), "戒指原胚");
@@ -368,6 +376,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9幸运+1~+3");
         add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "精铸工坊工作台");
         add("button.pasterdream.锻造", "锻造");
+        add("tooltip.pasterdreammod.magic_stone", "§7§o哪个魔法使的兜里不会揣几块魔法石呢？");
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7此世间一切拥有灵魂的生物皆有梦\n那些醒来时无法想起的细缕回忆\n破碎并融化被埋藏在世界各处凝结成晶\n等待着被新的灵魂发现");
         add("tooltip.pasterdream.melt_dream_coin", "§7右键使用10个以上可合成为融梦星币堆");
         add("tooltip.pasterdream.melt_dream_coin_pile", "§7右键使用可分解为10个融梦星币");
