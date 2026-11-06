@@ -267,6 +267,18 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_ALLOY_INGOT.get(), "Dyedream Alloy Ingot");
         add(ModItems.DYEDREAM_ALLOY_NUGGET.get(), "Dyedream Alloy Nugget");
         add(ModBlocks.MOLTEN_GOLD_ORE.get(), "Molten Gold Ore");
+        add(ModBlocks.SOUL_ORE.get(), "Soul Ore");
+        add(ModItems.SOUL_DUST.get(), "Soul Dust");
+        add(ModItems.SOUL_ESSENCE.get(), "Soul Essence");
+        add(ModItems.EMBRYO_CHARM.get(), "Embryo Charm");
+        add(ModItems.EMBRYO_NECKLACE.get(), "Embryo Necklace");
+        add(ModItems.EMBRYO_RING.get(), "Embryo Ring");
+        add(ModItems.EMBRYO_BELT.get(), "Embryo Belt");
+        add("tooltip.pasterdream.introduction.tooltip", "§f▪ §7Introduction");
+        add("tooltip.pasterdream.embryo.tooltip1", "§7A curios embryo made from titanium and soul essence");
+        add("tooltip.pasterdream.embryo.tooltip2", "§7Using titanium's life affinity and the spiritual connection of soul essence");
+        add("tooltip.pasterdream.embryo.tooltip3", "§7Allow you to strengthen yourself through accessories made from physical materials");
+        add("tooltip.pasterdream.hold_shift", "§7Hold [§rShift§7] to view the description");
         add(ModBlocks.MOLTEN_GOLD_BLOCK.get(), "Molten Gold Block");
         add(ModItems.MOLTEN_GOLD_INGOT.get(), "Molten Gold Ingot");
         add(ModItems.MOLTEN_GOLD_NUGGET.get(), "Molten Gold Nugget");

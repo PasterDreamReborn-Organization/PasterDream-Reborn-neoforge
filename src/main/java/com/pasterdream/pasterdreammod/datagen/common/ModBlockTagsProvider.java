@@ -78,6 +78,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.LIFE_CRYSTAL.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
 
+        tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.SOUL_ORE.get());
+
         // 需要铁工具挖掘
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
@@ -129,13 +131,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(ModBlockTags.ORES_DYEDREAM_QUARTZ)
                 .addTag(ModBlockTags.ORES_DYEDREAM_DUST)
                 .addTag(ModBlockTags.ORES_TITANIUM)
-                .addTag(ModBlockTags.ORES_MOLTEN_GOLD);
+                .addTag(ModBlockTags.ORES_MOLTEN_GOLD)
+                .addTag(ModBlockTags.ORES_SOUL_DUST);
 
         tag(ModBlockTags.ORES_IN_GROUND_CALCITE)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get());
 
+        tag(ModBlockTags.ORES_IN_GROUND_SOUL_SOIL).add(ModBlocks.SOUL_ORE.get());
+
         tag(ModBlockTags.ORE_RATES_DENSE)
+                .add(ModBlocks.SOUL_ORE.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get());
 
@@ -145,6 +151,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(ModBlockTags.ORES_MOLTEN_GOLD)
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get());
+
+        tag(ModBlockTags.ORES_SOUL_DUST).add(ModBlocks.SOUL_ORE.get());
 
         tag(ModBlockTags.ORES_DYEDREAM_QUARTZ)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get());

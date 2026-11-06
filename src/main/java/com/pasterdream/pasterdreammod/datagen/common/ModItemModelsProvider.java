@@ -70,6 +70,12 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.MOLTEN_GOLD_INGOT.get());
         basicItem(ModItems.MOLTEN_GOLD_NUGGET.get());
         basicItem(ModItems.RAW_MOLTEN_GOLD.get());
+        basicItem(ModItems.SOUL_DUST.get());
+        basicItem(ModItems.SOUL_ESSENCE.get());
+        basicItem(ModItems.EMBRYO_CHARM.get());
+        basicItem(ModItems.EMBRYO_NECKLACE.get());
+        basicItem(ModItems.EMBRYO_RING.get());
+        basicItem(ModItems.EMBRYO_BELT.get());
         handheldItem(ModItems.MOLTEN_GOLD_SWORD.get());
         handheldItem(ModItems.MOLTEN_GOLD_PICKAXE.get());
         handheldItem(ModItems.MOLTEN_GOLD_AXE.get());

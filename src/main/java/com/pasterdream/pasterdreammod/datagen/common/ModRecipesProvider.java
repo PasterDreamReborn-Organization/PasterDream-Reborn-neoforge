@@ -35,6 +35,7 @@ public class ModRecipesProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput output) {
         dustRecipes(output);
+        soulRecipes(output);
         quartzRecipes(output);
         blackStickRecipes(output);
         materialRecipes(output);
@@ -88,6 +89,68 @@ public class ModRecipesProvider extends RecipeProvider {
         RecipeHelpers.storageDecompress(output, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_NUGGET.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageCompress(output, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(output, ModItems.MOLTEN_GOLD_BLOCK.get(), ModItems.MOLTEN_GOLD_INGOT.get(), PasterDreamMod.MOD_ID);
+    }
+
+    private void soulRecipes(RecipeOutput pWriter) {
+        // 灵魂矿土 → 灵魂粉尘（熔炉 + 高炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.SOUL_ORE.get()),
+                        RecipeCategory.MISC, ModItems.SOUL_DUST.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.SOUL_ORE.get()), has(ModItems.SOUL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":soul_dust_from_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.SOUL_ORE.get()),
+                        RecipeCategory.MISC, ModItems.SOUL_DUST.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.SOUL_ORE.get()), has(ModItems.SOUL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":soul_dust_from_blasting");
+
+        // 灵魂精华：1×恶魂之泪 + 8×灵魂粉尘
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SOUL_ESSENCE.get(), 1)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', ModItems.SOUL_DUST.get())
+                .define('b', Items.GHAST_TEAR)
+                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
+                .save(pWriter);
+
+        // 护身符原胚 = 线 + 灵魂精华 + 钛金粒
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EMBRYO_CHARM.get(), 1)
+                .pattern("a")
+                .pattern("b")
+                .pattern("c")
+                .define('a', Items.STRING)
+                .define('b', ModItems.SOUL_ESSENCE.get())
+                .define('c', ModItems.TITANIUM_NUGGET.get())
+                .unlockedBy(getHasName(ModItems.SOUL_ESSENCE.get()), has(ModItems.SOUL_ESSENCE.get()))
+                .save(pWriter);
+
+        // 项链原胚 = 钛金粒 ×5 + 灵魂精华
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EMBRYO_NECKLACE.get(), 1)
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern(" b ")
+                .define('a', ModItems.TITANIUM_NUGGET.get())
+                .define('b', ModItems.SOUL_ESSENCE.get())
+                .unlockedBy(getHasName(ModItems.SOUL_ESSENCE.get()), has(ModItems.SOUL_ESSENCE.get()))
+                .save(pWriter);
+
+        // 戒指原胚 = 钛金粒 ×3 + 灵魂精华
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EMBRYO_RING.get(), 1)
+                .pattern(" a ")
+                .pattern("b b")
+                .pattern(" b ")
+                .define('a', ModItems.SOUL_ESSENCE.get())
+                .define('b', ModItems.TITANIUM_NUGGET.get())
+                .unlockedBy(getHasName(ModItems.SOUL_ESSENCE.get()), has(ModItems.SOUL_ESSENCE.get()))
+                .save(pWriter);
+
+        // 腰带原胚 = 钛金粒 ×5 + 灵魂精华
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EMBRYO_BELT.get(), 1)
+                .pattern("aaa")
+                .pattern("aba")
+                .define('a', ModItems.TITANIUM_NUGGET.get())
+                .define('b', ModItems.SOUL_ESSENCE.get())
+                .unlockedBy(getHasName(ModItems.SOUL_ESSENCE.get()), has(ModItems.SOUL_ESSENCE.get()))
+                .save(pWriter);
     }
 
     // ===== 铜工具配方 =====

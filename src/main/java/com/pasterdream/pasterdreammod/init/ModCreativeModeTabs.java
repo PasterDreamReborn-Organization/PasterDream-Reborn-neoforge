@@ -36,6 +36,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_INGOT.get());
                         output.accept(ModItems.TITANIUM_NUGGET.get());
                         output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
+                        output.accept(ModItems.SOUL_DUST.get());
+                        output.accept(ModItems.SOUL_ESSENCE.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
                         output.accept(ModItems.BLACK_STICK.get());
@@ -76,6 +78,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_ORE.get());
                         output.accept(ModItems.DEEPSLATE_TITANIUM_ORE.get());
                         output.accept(ModItems.MOLTEN_GOLD_ORE.get());
+                        output.accept(ModItems.SOUL_ORE.get());
                         output.accept(ModItems.RAW_TITANIUM_BLOCK.get());
                         output.accept(ModItems.TITANIUM_BLOCK.get());
                         output.accept(ModItems.MOLTEN_GOLD_BLOCK.get());
@@ -139,6 +142,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
                         output.accept(ModItems.WIND_RUNNER_CLOAK.get());
                         output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
+                        output.accept(ModItems.EMBRYO_CHARM.get());
+                        output.accept(ModItems.EMBRYO_NECKLACE.get());
+                        output.accept(ModItems.EMBRYO_RING.get());
+                        output.accept(ModItems.EMBRYO_BELT.get());
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());
                         output.accept(ModItems.TITANIUM_AXE.get());

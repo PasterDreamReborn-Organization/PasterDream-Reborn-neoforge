@@ -32,6 +32,8 @@ public final class ModItemTags {
     public static final TagKey<Item> INGOTS_DYEDREAM_ALLOY = common("ingots/dyedream_alloy");
     public static final TagKey<Item> NUGGETS_DYEDREAM_ALLOY = common("nuggets/dyedream_alloy");
     public static final TagKey<Item> NUGGETS_DYEDREAM_BUD = common("nuggets/dyedream_bud");
+    public static final TagKey<Item> ORES_SOUL_DUST = common("ores/soul_dust");
+    public static final TagKey<Item> ORES_IN_GROUND_SOUL_SOIL = common("ores_in_ground/soul_soil");
     public static final TagKey<Item> ORES_MOLTEN_GOLD = common("ores/molten_gold");
     public static final TagKey<Item> STORAGE_BLOCKS_MOLTEN_GOLD = common("storage_blocks/molten_gold");
     public static final TagKey<Item> INGOTS_MOLTEN_GOLD = common("ingots/molten_gold");

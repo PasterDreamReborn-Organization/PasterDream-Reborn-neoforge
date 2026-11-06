@@ -18,6 +18,7 @@ public final class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DEEPSLATE_TITANIUM_ORE_PATCH = key("deepslate_titanium_ore_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TITANIUM_ORE = key("titanium_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MOLTEN_GOLD_ORE_PATCH = key("molten_gold_ore_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SOUL_ORE_PATCH = key("soul_ore_patch");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         var targets = List.of(Blocks.DEEPSLATE, Blocks.GRANITE, Blocks.DIORITE, Blocks.ANDESITE).stream()
@@ -28,6 +29,9 @@ public final class ModConfiguredFeatures {
         context.register(MOLTEN_GOLD_ORE_PATCH, new ConfiguredFeature<>(Feature.ORE,
                 new OreConfiguration(new BlockMatchTest(Blocks.NETHERRACK),
                         ModBlocks.MOLTEN_GOLD_ORE.get().defaultBlockState(), 16, 0f)));
+        context.register(SOUL_ORE_PATCH, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(new BlockMatchTest(Blocks.SOUL_SOIL),
+                        ModBlocks.SOUL_ORE.get().defaultBlockState(), 16, 0f)));
         // 染梦维度尚未迁入，先保留该地物定义，不挂入主世界。
         context.register(TITANIUM_ORE, new ConfiguredFeature<>(Feature.ORE,
                 new OreConfiguration(new BlockMatchTest(Blocks.CALCITE),
