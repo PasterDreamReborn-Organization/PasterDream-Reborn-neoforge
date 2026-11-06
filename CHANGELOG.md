@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 036：染梦地形方块与染梦果（2026-11-06）
+
+- 搬运染梦泥土、染梦草方块、染梦耕地、染梦原木、染梦木头、染梦树叶、染梦世界树树叶、染梦沙与染梦果；保留来源注册 ID、贴图、模型、语言与创造栏顺序。
+- 草方块与耕地沿用来源行为：草方块蔓延与骨粉植被、耕地保湿与踩踏回泥；锄头右键染梦泥土/草方块可转为染梦耕地。
+- 染梦果接入 `PasterDreamFoodItem` 的食用、SAN/融梦能量提示与生命恢复效果；新增染梦泥土/草方块、树叶与染料转换配方，以及原木合成染梦木头。
+- 树叶战利品暂时只保留果实与木棍掉落，来源中的染梦树苗掉落待 T16 树苗与树木数据迁入后补回；染梦沙使用 1.21 `ColoredFallingBlock`，`canSustainPlant` 与耕地破坏事件按 NeoForge 1.21 API 适配。
+- `runData`、`build` 通过；`runGameTestServer` 101/101 通过，新增地形标签、草方块/耕地/树叶掉落与锄头耕地转换测试；客户端视觉与真实世界生成待游戏内验收。
+
 ### 批次 035：便携储物袋与四件饰品（2026-11-06）
 
 - 搬运便携储物袋、大型便携储物袋、暗影之息、战争旗帜、啵啵鸡的华丽飞羽与风精灵；保留来源注册 ID、贴图、模型、语言与创造栏顺序。

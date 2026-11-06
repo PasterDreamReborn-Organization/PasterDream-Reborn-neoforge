@@ -8,6 +8,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -53,6 +54,16 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_BUD, ModItemTags.STORAGE_BLOCKS_DYEDREAM_BUD);
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
+        copy(ModBlockTags.DYEDREAM_DIRT, ModItemTags.DYEDREAM_DIRT);
+        copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
+        copy(BlockTags.LOGS, ItemTags.LOGS);
+        copy(BlockTags.LEAVES, ItemTags.LEAVES);
+
+        tag(ItemTags.FOX_FOOD)
+                .add(ModItems.DYEDREAM_FRUIT.get());
+
+        tag(Tags.Items.FOODS_FRUIT)
+                .add(ModItems.DYEDREAM_FRUIT.get());
 
         // 工具标签
         tag(ItemTags.SWORDS)

@@ -47,6 +47,7 @@ import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamAuraHa
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TieredItem;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -54,7 +55,9 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import org.slf4j.Logger;
@@ -115,6 +118,7 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onLivingHurt);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onLivingDamage);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
+        NeoForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
         NeoForge.EVENT_BUS.addListener(MeltDreamAuraHandler::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(MeltDreamCrystalArmorHandler::onPlayerTick);
         NeoForge.EVENT_BUS.addListener((RegisterCommandsEvent event) -> ModCommands.register(event.getDispatcher()));
@@ -152,6 +156,15 @@ public class PasterDreamMod {
                     || tiered.getTier() == ModToolTiers.MELT_DREAM)) {
                 event.setAmount(event.getAmount() * 1.5f);
             }
+        }
+    }
+
+    // 染梦耕地相关
+    public static void onHoeTill(BlockEvent.BlockToolModificationEvent event) {
+        if (event.getItemAbility() != ItemAbilities.HOE_TILL) return;
+        Block block = event.getState().getBlock();
+        if (block == ModBlocks.DYEDREAM_GRASS_BLOCK.get() || block == ModBlocks.DYEDREAM_DIRT.get()) {
+            event.setFinalState(ModBlocks.DYEDREAM_FARMLAND.get().defaultBlockState());
         }
     }
 

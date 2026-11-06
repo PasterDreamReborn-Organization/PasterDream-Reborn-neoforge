@@ -89,6 +89,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.KUSANAGI.get());
         handheldItem(ModItems.MURAKUMO_KUSANAGI.get());
         handheldItem(ModItems.SWORD_EMBRYO.get());
+        basicItem(ModItems.DYEDREAM_FRUIT.get());
         basicItem(ModItems.JUNGLE_SPORE.get());
         basicItem(ModItems.BLUE_HEART_OF_THE_SEA.get());
         basicItem(ModItems.ELDER_GUARDIAN_SCALE.get());

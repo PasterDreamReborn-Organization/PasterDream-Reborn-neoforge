@@ -1,0 +1,147 @@
+package com.pasterdream.pasterdreammod.world.item.drinkandfooditem;
+
+import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.capability.san.SanHelper;
+import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.FoodValueTooltips;
+import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.Level;
+
+import java.util.List;
+
+public class PasterDreamFoodItem extends Item
+{
+    public final int useDuration;
+    public final double sanAdd;
+    public final double meltDreamEnergyAdd;
+
+    public PasterDreamFoodItem(PasterDreamDrinkAndFoodProperties properties)
+    {
+        super(properties);
+        this.useDuration = properties.getUseDuration();
+        this.sanAdd = properties.getSanAdd();
+        this.meltDreamEnergyAdd = properties.getMeltDreamEnergyAdd();
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag)
+    {
+        super.appendHoverText(itemStack, context, tooltip, flag);
+
+        FoodValueTooltips.appendSanTooltip(tooltip, sanAdd);
+        FoodValueTooltips.appendMeltDreamEnergyTooltip(tooltip, meltDreamEnergyAdd);
+
+        FoodProperties food = itemStack.getFoodProperties(null);
+        if (food != null)
+        {
+            for (var effectPair : food.effects())
+            {
+                MobEffectInstance instance = effectPair.effect();
+                float probability = effectPair.probability();
+                Component text = Component.translatable(instance.getDescriptionId());
+                int amp = instance.getAmplifier();
+                if (amp > 0)
+                {
+                    text = Component.translatable("potion.withAmplifier", text,
+                            Component.translatable("potion.potency." + amp));
+                }
+                if (!instance.endsWithin(20))
+                {
+                    text = Component.translatable("potion.withDuration", text,
+                            Component.literal(formatTickDuration(instance.getDuration())));
+                }
+                if (probability < 1.0f)
+                {
+                    text = Component.literal((int)(probability * 100) + "% ").append(text);
+                }
+                tooltip.add(text.copy().withStyle(instance.getEffect().value().getCategory().getTooltipFormatting()));
+            }
+        }
+    }
+
+    private static String formatTickDuration(int ticks)
+    {
+        int seconds = ticks / 20;
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+        return minutes > 0 ? String.format("%d:%02d", minutes, seconds) : String.format("0:%02d", seconds);
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack, LivingEntity entity)
+    {
+        return useDuration;
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack)
+    {
+        return UseAnim.EAT;
+    }
+
+    @Override
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity)
+    {
+        FoodProperties food = stack.getFoodProperties(entity);
+        if (food != null && entity instanceof Player player)
+        {
+            player.getFoodData().eat(food);
+            for (var effectPair : food.effects())
+            {
+                if (level.random.nextFloat() < effectPair.probability())
+                {
+                    entity.addEffect(effectPair.effect());
+                }
+            }
+        }
+
+        if (!level.isClientSide && entity instanceof ServerPlayer player)
+        {
+            if (sanAdd != 0)
+            {
+                SanHelper.addPlayerSanAndSync(player, sanAdd);
+            }
+
+            if (meltDreamEnergyAdd != 0)
+            {
+                MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(player, meltDreamEnergyAdd);
+            }
+
+            player.awardStat(Stats.ITEM_USED.get(this));
+            CriteriaTriggers.CONSUME_ITEM.trigger(player, stack);
+        }
+
+        if (!level.isClientSide)
+        {
+            onFoodSpecial(entity, level);
+        }
+
+        if (entity instanceof Player player && player.isCreative())
+        {
+            return stack;
+        }
+
+        stack.shrink(1);
+        if (stack.isEmpty())
+        {
+            return ItemStack.EMPTY;
+        }
+        return stack;
+    }
+
+    protected void onFoodSpecial(LivingEntity entity, Level level)
+    {
+        //默认无操作
+    }
+}

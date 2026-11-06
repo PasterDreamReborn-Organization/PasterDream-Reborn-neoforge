@@ -19,6 +19,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
@@ -27,6 +28,7 @@ import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 
@@ -44,6 +46,7 @@ public class ModRecipesProvider extends RecipeProvider {
         soulRecipes(output);
         curioRecipes(output);
         quartzRecipes(output);
+        dyedreamBlockRecipes(output);
         blackStickRecipes(output);
         materialRecipes(output);
         storageBagRecipes(output);
@@ -493,6 +496,43 @@ public class ModRecipesProvider extends RecipeProvider {
         SingleItemRecipeBuilder.stonecutting(quartzIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_quartz_block_wall_from_stonecutting"));
+    }
+
+    private void dyedreamBlockRecipes(RecipeOutput pWriter) {
+        // 染梦原木 → 染梦木头
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_WOOD.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.DYEDREAM_LOG.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_LOG.get()), has(ModItems.DYEDREAM_LOG.get()))
+                .save(pWriter);
+
+        dyeConversion(pWriter, Items.DIRT, ModBlocks.DYEDREAM_DIRT.get().asItem());
+        dyeConversion(pWriter, Items.GRASS_BLOCK, ModBlocks.DYEDREAM_GRASS_BLOCK.get().asItem());
+        dyeConversionTag(pWriter, ItemTags.LEAVES, ModBlocks.DYEDREAM_LEAVES.get().asItem());
+        dyeConversionTag(pWriter, ItemTags.LOGS, ModBlocks.DYEDREAM_LOG.get().asItem());
+    }
+
+    private void dyeConversion(RecipeOutput writer, ItemLike material, ItemLike result) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result, 8)
+                .pattern("aaa")
+                .pattern("ada")
+                .pattern("aaa")
+                .define('a', material)
+                .define('d', ModItems.DYEDREAM_DYE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
+                .save(writer, PasterDreamMod.MOD_ID + ":" + getItemName(result) + "_from_dye");
+    }
+
+    private void dyeConversionTag(RecipeOutput writer, TagKey<Item> tag, ItemLike result) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result, 8)
+                .pattern("aaa")
+                .pattern("ada")
+                .pattern("aaa")
+                .define('a', Ingredient.of(tag))
+                .define('d', ModItems.DYEDREAM_DYE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
+                .save(writer, PasterDreamMod.MOD_ID + ":" + getItemName(result) + "_from_dye");
     }
 
     private void blackStickRecipes(RecipeOutput pWriter) {

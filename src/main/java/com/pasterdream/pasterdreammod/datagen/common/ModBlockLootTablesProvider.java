@@ -5,17 +5,26 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.Set;
 
 public class ModBlockLootTablesProvider extends BlockLootSubProvider {
+    private static final float[] DYEDREAM_LEAVES_FRUIT_CHANCES = {0.05F, 0.0625F, 0.083333336F, 0.1F};
+    private static final float[] DYEDREAM_LEAVES_STICK_CHANCES = {0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
+
     public ModBlockLootTablesProvider(HolderLookup.Provider registries) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
     }
@@ -23,6 +32,17 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         var enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+
+        // ===== 染梦地形方块 =====
+        dropSelf(ModBlocks.DYEDREAM_DIRT.get());
+        add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(ModItems.DYEDREAM_DIRT.get())));
+        dropOther(ModBlocks.DYEDREAM_FARMLAND.get(), ModItems.DYEDREAM_DIRT.get());
+        dropSelf(ModBlocks.DYEDREAM_LOG.get());
+        dropSelf(ModBlocks.DYEDREAM_WOOD.get());
+        add(ModBlocks.DYEDREAM_LEAVES.get(), block -> createDyedreamLeavesDrops(block, ModItems.DYEDREAM_FRUIT.get()));
+        add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), block -> createDyedreamLeavesDrops(block, ModItems.DYEDREAM_FRUIT.get()));
+        dropSelf(ModBlocks.DYEDREAM_SAND.get());
+
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), block -> createSilkTouchDispatchTable(block,
                 applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_QUARTZ.get())
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
@@ -73,6 +93,21 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.UUZ_DOLL.get());
         dropSelf(ModBlocks.DESERT_HERO_TOMB.get());
         dropSelf(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
+    }
+
+    private LootTable.Builder createDyedreamLeavesDrops(Block leaves, ItemLike fruit) {
+        var enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        var hasShearsOrSilkTouch = HAS_SHEARS.or(this.hasSilkTouch());
+        return createSilkTouchOrShearsDispatchTable(leaves,
+                applyExplosionDecay(leaves, LootItem.lootTableItem(fruit))
+                        .when(BonusLevelTableCondition.bonusLevelFlatChance(
+                                enchantments.getOrThrow(Enchantments.FORTUNE), DYEDREAM_LEAVES_FRUIT_CHANCES)))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                        .when(hasShearsOrSilkTouch.invert())
+                        .add(applyExplosionDecay(leaves, LootItem.lootTableItem(Items.STICK)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                                .when(BonusLevelTableCondition.bonusLevelFlatChance(
+                                        enchantments.getOrThrow(Enchantments.FORTUNE), DYEDREAM_LEAVES_STICK_CHANCES))));
     }
 
     @Override

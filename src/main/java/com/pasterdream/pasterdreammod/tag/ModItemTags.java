@@ -44,6 +44,7 @@ public final class ModItemTags {
     public static final TagKey<Item> INGOTS_FLUFFY_WIND_ALLOY = common("ingots/fluffy_wind_alloy");
     public static final TagKey<Item> STORAGE_BLOCKS_DYEDREAM_ALLOY = common("storage_blocks/dyedream_alloy");
     public static final TagKey<Item> STORAGE_BLOCKS_DYEDREAM_BUD = common("storage_blocks/dyedream_bud");
+    public static final TagKey<Item> DYEDREAM_DIRT = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt"));
 
     private static TagKey<Item> common(String path) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));
