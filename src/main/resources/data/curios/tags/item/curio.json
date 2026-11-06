@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "minecraft:air",
-    "pasterdream:fractured_angel_statue"
+    "pasterdream:fractured_angel_statue",
+    "pasterdream:light_butterfly_curio",
+    "pasterdream:bright_butterfly_curio"
   ]
 }

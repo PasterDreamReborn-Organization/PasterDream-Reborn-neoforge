@@ -32,6 +32,14 @@ import com.pasterdream.pasterdreammod.world.item.curio.GoldCharmItem;
 import com.pasterdream.pasterdreammod.world.item.curio.SeaCharmItem;
 import com.pasterdream.pasterdreammod.world.item.curio.SnowVowHeadItem;
 import com.pasterdream.pasterdreammod.world.item.curio.WorldtreeSeedpodItem;
+import com.pasterdream.pasterdreammod.world.item.curio.LightButterflyCurioItem;
+import com.pasterdream.pasterdreammod.world.item.curio.BrightButterflyCurioItem;
+import com.pasterdream.pasterdreammod.world.item.curio.QymButterflyStarHairpinItem;
+import com.pasterdream.pasterdreammod.world.item.curio.RabbitFootNecklaceItem;
+import com.pasterdream.pasterdreammod.world.item.curio.FeatherNecklaceItem;
+import com.pasterdream.pasterdreammod.world.item.curio.HealthNecklaceItem;
+import com.pasterdream.pasterdreammod.world.item.curio.FireNecklaceItem;
+import com.pasterdream.pasterdreammod.world.item.curio.CrossNecklaceItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
@@ -121,6 +129,14 @@ public class ModItems {
     public static final DeferredItem<Item> WORLDTREE_SEEDPOD = ITEMS.register("worldtree_seedpod", WorldtreeSeedpodItem::new);
     public static final DeferredItem<Item> GARLAND = ITEMS.register("garland", GarlandItem::new);
     public static final DeferredItem<Item> SNOW_VOW_HEAD = ITEMS.register("snow_vow_head", SnowVowHeadItem::new);
+    public static final DeferredItem<Item> LIGHT_BUTTERFLY_CURIO = ITEMS.register("light_butterfly_curio", LightButterflyCurioItem::new);
+    public static final DeferredItem<Item> BRIGHT_BUTTERFLY_CURIO = ITEMS.register("bright_butterfly_curio", BrightButterflyCurioItem::new);
+    public static final DeferredItem<Item> QYM_BUTTERFLY_STAR_HAIRPIN = ITEMS.register("qym_butterfly_star_hairpin", QymButterflyStarHairpinItem::new);
+    public static final DeferredItem<Item> RABBIT_FOOT_NECKLACE = ITEMS.register("rabbit_foot_necklace", RabbitFootNecklaceItem::new);
+    public static final DeferredItem<Item> FEATHER_NECKLACE = ITEMS.register("feather_necklace", FeatherNecklaceItem::new);
+    public static final DeferredItem<Item> HEALTH_NECKLACE = ITEMS.register("health_necklace", HealthNecklaceItem::new);
+    public static final DeferredItem<Item> FIRE_NECKLACE = ITEMS.register("fire_necklace", FireNecklaceItem::new);
+    public static final DeferredItem<Item> CROSS_NECKLACE = ITEMS.register("cross_necklace", CrossNecklaceItem::new);
 
     // ===== 露滴 =====
     public static final DeferredItem<Item> BLUE_HEART_OF_THE_SEA = ITEMS.register("blue_heart_of_the_sea",

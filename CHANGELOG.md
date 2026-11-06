@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 033：八件蝴蝶与项链饰品（2026-11-06）
+
+- 搬运琴雨梦的蝴蝶星发卡、夜明蝶、光明飞蝶、雪兔脚项链、轻羽护符、生命项链、业火项链和十字章项链；接入 Curios 槽位、贴图、模型、语言与创造栏。
+- 保留发卡防主动锁定、夜明蝶低亮度耗能夜视、光明飞蝶常驻夜视与亮度提升及黑暗免疫、五件项链的来源被动；接通雪兔脚项链原配方。
+- 其余来源配方与箱子奖励依赖未迁入材料或战利品体系，分项待后续迁入；客户端亮度、佩戴视觉和多人行为待实测。
+- `runData`、`build` 通过，`runGameTestServer` 92/92 通过；夜明蝶暗室耗能与夜视已由 GameTest 验证。
+
 ### 批次 032：七件基础饰品（2026-11-06）
 
 - 搬运纯金、邪眼、海波、龟壳护身符，世界树种荚、雪下的誓言与花环；接通 Curios 槽位、物品被动、雪下的誓言效果、贴图、模型、语言与创造栏。
