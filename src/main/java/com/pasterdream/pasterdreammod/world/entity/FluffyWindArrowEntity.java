@@ -3,6 +3,9 @@ package com.pasterdream.pasterdreammod.world.entity;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -28,6 +31,12 @@ public class FluffyWindArrowEntity extends Arrow {
     private static final double MIN_SAMPLE_DISTANCE_SQR = 1.0E-6;
     private static final int GROUND_TRAIL_LIFETIME = 20;
     private static final int MAX_FLIGHT_TICKS = 200;
+    /** 光灵箭命中后的原版发光时长（tick） */
+    private static final int SPECTRAL_GLOW_DURATION = 200;
+
+    /** 同步的弹药物品：武器强化后替换了实体类，仍需据此复现光灵箭贴图与命中发光。 */
+    private static final EntityDataAccessor<ItemStack> DATA_AMMO_ITEM =
+            SynchedEntityData.defineId(FluffyWindArrowEntity.class, EntityDataSerializers.ITEM_STACK);
     private final List<Vec3> clientTrail = new ArrayList<>();
     private int flightTicks;
     private boolean channelingLightning;
@@ -43,9 +52,27 @@ public class FluffyWindArrowEntity extends Arrow {
         this.setPos(shooter.getX(), shooter.getEyeY() - 0.1, shooter.getZ());
         this.setOwner(shooter);
         this.setPickupItemStack(ammo.copyWithCount(1));
+        this.setAmmoItem(ammo);
         if (shooter instanceof Player) this.pickup = AbstractArrow.Pickup.ALLOWED;
         PotionContents contents = ammo.get(DataComponents.POTION_CONTENTS);
         if (contents != null) contents.forEachEffect(this::addEffect);
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_AMMO_ITEM, ItemStack.EMPTY);
+    }
+
+    /** 记录本次发射使用的弹药，供客户端选择贴图与服务端结算特殊箭矢效果。 */
+    public void setAmmoItem(ItemStack stack) {
+        this.entityData.set(DATA_AMMO_ITEM, stack.copyWithCount(1));
+    }
+
+    /** 本次发射使用的弹药；未同步或未记录时回退到拾取物。 */
+    public ItemStack getAmmoItem() {
+        ItemStack ammo = this.entityData.get(DATA_AMMO_ITEM);
+        return ammo.isEmpty() ? this.getPickupItemStackOrigin() : ammo;
     }
 
     public void enableChannelingLightning(int flameLevel) {
@@ -106,6 +133,9 @@ public class FluffyWindArrowEntity extends Arrow {
     protected void doPostHurtEffects(LivingEntity target) {
         super.doPostHurtEffects(target);
         if (!this.level().isClientSide()) {
+            if (this.getAmmoItem().is(Items.SPECTRAL_ARROW)) {
+                target.addEffect(new MobEffectInstance(MobEffects.GLOWING, SPECTRAL_GLOW_DURATION, 0));
+            }
             target.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 20, 0, false, true));
         }
     }
@@ -126,6 +156,7 @@ public class FluffyWindArrowEntity extends Arrow {
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
+        this.setAmmoItem(this.getPickupItemStackOrigin());
         this.flightTicks = tag.getInt("WindFlightTicks");
         this.channelingLightning = tag.getBoolean("WindChanneling");
         this.channelingFlameLevel = tag.getInt("WindFlame");

@@ -21,6 +21,14 @@ description: 新增/修改实体（生物、弹射物、投影物）。覆盖实
 
 ---
 
+## 强化弹射物与光灵箭
+
+- 武器强化箭（当前为 `FluffyWindArrowEntity`）在能量充足时必须统一创建自定义箭实体，**不能因弹药是光灵箭（`Items.SPECTRAL_ARROW`）而退回原版实体**，否则会出现能量已扣但强化未生效
+- 自定义箭实体通过同步的弹药栈识别光灵箭：命中施加 200 tick `GLOWING`，渲染器按弹药选用原版 `spectral_arrow.png` 贴图，并保留光灵箭拾取物
+- 弹药同步使用 `SynchedEntityData`，客户端渲染不能只读 `getPickupItemStackOrigin()`（该字段不参与实体同步）
+
+---
+
 ## 刷怪蛋
 
 - `init/ModItems.java` 注册刷怪蛋（NeoForge 用原版 `net.minecraft.world.item.SpawnEggItem`，构造 `(EntityType, 底色, 斑点色, Properties)`，以 1.21 API 为准；不再有 `ForgeSpawnEggItem`）
