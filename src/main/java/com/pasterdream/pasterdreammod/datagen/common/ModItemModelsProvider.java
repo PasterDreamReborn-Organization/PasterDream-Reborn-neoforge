@@ -116,6 +116,18 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.DESERT_SWORD.get());
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD.get());
         handheldItem(ModItems.BROKEN_HERO_SWORD.get());
+        basicItem(ModItems.BLACK_METAL_INGOT.get());
+        basicItem(ModItems.BLACK_METAL_NUGGET.get());
+        basicItem(ModItems.SHADOW_ALLOY_INGOT.get());
+        handheldItem(ModItems.SHADOW_EROSION_DAGGER.get());
+        handheldItem(ModItems.SHADOW_EROSION_PICKAXE.get());
+        handheldItem(ModItems.SHADOW_EROSION_AXE.get());
+        handheldItem(ModItems.SHADOW_EROSION_SHOVEL.get());
+        handheldItem(ModItems.SHADOW_EROSION_HOE.get());
+        handheldItem(ModItems.SHADOW_ALLOY_PICKAXE.get());
+        handheldItem(ModItems.SHADOW_ALLOY_AXE.get());
+        handheldItem(ModItems.SHADOW_ALLOY_SHOVEL.get());
+        handheldItem(ModItems.SHADOW_ALLOY_HOE.get());
         basicItem(ModItems.NIGHTMARE_FUEL.get());
         basicItem(ModItems.RICE_CAKE.get());
         getBuilder(ModItems.QYM_DOLL.getId().getPath())

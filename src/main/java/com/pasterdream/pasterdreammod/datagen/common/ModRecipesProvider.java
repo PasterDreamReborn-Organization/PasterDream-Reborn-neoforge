@@ -38,6 +38,9 @@ public class ModRecipesProvider extends RecipeProvider {
         quartzRecipes(output);
         blackStickRecipes(output);
         materialRecipes(output);
+        blackMetalRecipes(output);
+        shadowAlloyToolRecipes(output);
+        shadowErosionWorkshopRecipes(output);
         pinkSlimeRecipes(output);
         titaniumUpgradeRecipe(output);
         sculkUpgradeRecipe(output);
@@ -1115,6 +1118,107 @@ public class ModRecipesProvider extends RecipeProvider {
         WeaponWorkshopCraftingTableRecipe recipe = new WeaponWorkshopCraftingTableRecipe(itemInputs, enhanceStone, itemOutput);
         output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                 "weapon_workshop_crafting_table/windwreathed_thunder_spear"), recipe, null);
+    }
+
+    // ===== 暗影合金工具配方（合成台 NBT 保留升级，耐久重置满） =====
+
+    private void shadowAlloyToolRecipes(RecipeOutput pWriter) {
+        // aba / bcb / aba（a 噩梦燃料、b 暗影合金锭、c 原影蚀工具）→ 暗影合金工具（保留附魔/名字，耐久归满）
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_ALLOY_PICKAXE.get())
+                .pattern("aba").pattern("bcb").pattern("aba")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.SHADOW_ALLOY_INGOT.get())
+                .define('c', ModItems.SHADOW_EROSION_PICKAXE.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get())),
+                pWriter, "shadow_alloy_pickaxe_upgrade");
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_ALLOY_AXE.get())
+                .pattern("aba").pattern("bcb").pattern("aba")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.SHADOW_ALLOY_INGOT.get())
+                .define('c', ModItems.SHADOW_EROSION_AXE.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get())),
+                pWriter, "shadow_alloy_axe_upgrade");
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_ALLOY_SHOVEL.get())
+                .pattern("aba").pattern("bcb").pattern("aba")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.SHADOW_ALLOY_INGOT.get())
+                .define('c', ModItems.SHADOW_EROSION_SHOVEL.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get())),
+                pWriter, "shadow_alloy_shovel_upgrade");
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_ALLOY_HOE.get())
+                .pattern("aba").pattern("bcb").pattern("aba")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.SHADOW_ALLOY_INGOT.get())
+                .define('c', ModItems.SHADOW_EROSION_HOE.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get())),
+                pWriter, "shadow_alloy_hoe_upgrade");
+    }
+
+    private void blackMetalRecipes(RecipeOutput pWriter) {
+        // 黑金属粒 → 黑金属锭；首份粒仍待暗影高炉。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLACK_METAL_INGOT.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.BLACK_METAL_NUGGET.get())
+                .unlockedBy(getHasName(ModItems.BLACK_METAL_NUGGET.get()), has(ModItems.BLACK_METAL_NUGGET.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_ingot_from_grain"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLACK_METAL_NUGGET.get(), 4)
+                .requires(ModItems.BLACK_METAL_INGOT.get())
+                .unlockedBy(getHasName(ModItems.BLACK_METAL_INGOT.get()), has(ModItems.BLACK_METAL_INGOT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_grain_from_ingot"));
+    }
+
+    private void shadowErosionWorkshopRecipes(RecipeOutput output) {
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                "weapon_workshop_crafting_table/shadow_erosion_dagger"),
+                new WeaponWorkshopCraftingTableRecipe(List.of(
+                        ItemIngredient.of(Items.IRON_SWORD, 1),
+                        ItemIngredient.of(ModItems.BLACK_METAL_INGOT.get(), 2),
+                        ItemIngredient.of(ModItems.NIGHTMARE_FUEL.get(), 1),
+                        ItemIngredient.of(Items.CRYING_OBSIDIAN, 3),
+                        ItemIngredient.of(ModItems.BLACK_STICK.get(), 1)),
+                        ItemIngredient.of(ModItemTags.ENHANCE_STONE, 1),
+                        ItemIngredient.of(ModItems.SHADOW_EROSION_DAGGER.get(), 1)), null);
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                "weapon_workshop_crafting_table/shadow_erosion_pickaxe"),
+                new WeaponWorkshopCraftingTableRecipe(List.of(
+                        ItemIngredient.of(Items.IRON_PICKAXE, 1),
+                        ItemIngredient.of(ModItems.BLACK_METAL_INGOT.get(), 2),
+                        ItemIngredient.of(ModItems.NIGHTMARE_FUEL.get(), 1),
+                        ItemIngredient.of(Items.CRYING_OBSIDIAN, 3),
+                        ItemIngredient.of(ModItems.BLACK_STICK.get(), 1)),
+                        ItemIngredient.of(ModItemTags.ENHANCE_STONE, 1),
+                        ItemIngredient.of(ModItems.SHADOW_EROSION_PICKAXE.get(), 1)), null);
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                "weapon_workshop_crafting_table/shadow_erosion_axe"),
+                new WeaponWorkshopCraftingTableRecipe(List.of(
+                        ItemIngredient.of(Items.IRON_AXE, 1),
+                        ItemIngredient.of(ModItems.BLACK_METAL_INGOT.get(), 2),
+                        ItemIngredient.of(ModItems.NIGHTMARE_FUEL.get(), 1),
+                        ItemIngredient.of(Items.CRYING_OBSIDIAN, 3),
+                        ItemIngredient.of(ModItems.BLACK_STICK.get(), 1)),
+                        ItemIngredient.of(ModItemTags.ENHANCE_STONE, 1),
+                        ItemIngredient.of(ModItems.SHADOW_EROSION_AXE.get(), 1)), null);
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                "weapon_workshop_crafting_table/shadow_erosion_shovel"),
+                new WeaponWorkshopCraftingTableRecipe(List.of(
+                        ItemIngredient.of(Items.IRON_SHOVEL, 1),
+                        ItemIngredient.of(ModItems.BLACK_METAL_INGOT.get(), 2),
+                        ItemIngredient.of(ModItems.NIGHTMARE_FUEL.get(), 1),
+                        ItemIngredient.of(Items.CRYING_OBSIDIAN, 3),
+                        ItemIngredient.of(ModItems.BLACK_STICK.get(), 1)),
+                        ItemIngredient.of(ModItemTags.ENHANCE_STONE, 1),
+                        ItemIngredient.of(ModItems.SHADOW_EROSION_SHOVEL.get(), 1)), null);
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                "weapon_workshop_crafting_table/shadow_erosion_hoe"),
+                new WeaponWorkshopCraftingTableRecipe(List.of(
+                        ItemIngredient.of(Items.IRON_HOE, 1),
+                        ItemIngredient.of(ModItems.BLACK_METAL_INGOT.get(), 2),
+                        ItemIngredient.of(ModItems.NIGHTMARE_FUEL.get(), 1),
+                        ItemIngredient.of(Items.CRYING_OBSIDIAN, 3),
+                        ItemIngredient.of(ModItems.BLACK_STICK.get(), 1)),
+                        ItemIngredient.of(ModItemTags.ENHANCE_STONE, 1),
+                        ItemIngredient.of(ModItems.SHADOW_EROSION_HOE.get(), 1)), null);
     }
 
     private void moltenGoldCooking(RecipeOutput output, ItemLike ingredient, String recipePrefix) {

@@ -39,6 +39,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
                         output.accept(ModItems.BLACK_STICK.get());
+                        output.accept(ModItems.BLACK_METAL_INGOT.get());
+                        output.accept(ModItems.BLACK_METAL_NUGGET.get());
+                        output.accept(ModItems.SHADOW_ALLOY_INGOT.get());
                         output.accept(ModItems.NIGHTMARE_FUEL.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
                         output.accept(ModItems.PROTECT_DECK.get());
@@ -183,6 +186,15 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.HELLFIRE_SWORD.get());
                         output.accept(ModItems.HELLFIRE_PICKAXE.get());
                         output.accept(ModItems.INFERNO_SWORD.get());
+                        output.accept(ModItems.SHADOW_EROSION_DAGGER.get());
+                        output.accept(ModItems.SHADOW_EROSION_PICKAXE.get());
+                        output.accept(ModItems.SHADOW_EROSION_AXE.get());
+                        output.accept(ModItems.SHADOW_EROSION_SHOVEL.get());
+                        output.accept(ModItems.SHADOW_EROSION_HOE.get());
+                        output.accept(ModItems.SHADOW_ALLOY_PICKAXE.get());
+                        output.accept(ModItems.SHADOW_ALLOY_AXE.get());
+                        output.accept(ModItems.SHADOW_ALLOY_SHOVEL.get());
+                        output.accept(ModItems.SHADOW_ALLOY_HOE.get());
                         // 独立武器
                         output.accept(ModItems.TIDE_SWORD.get());
                         output.accept(ModItems.BEIHAI_RUO_TIDE_SWORD.get());

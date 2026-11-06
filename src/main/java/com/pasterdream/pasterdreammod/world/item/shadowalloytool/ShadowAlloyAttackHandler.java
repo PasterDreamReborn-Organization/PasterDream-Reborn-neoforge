@@ -1,0 +1,31 @@
+package com.pasterdream.pasterdreammod.world.item.shadowalloytool;
+
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+
+/**
+ * 暗影合金工具攻击特性：低 SAN 时按档位提升攻击伤害（作用于最终伤害，含暴击/附魔）。
+ * <p>
+ * 攻击加成不能用 getAttributeModifiers（SAN 变化不会刷新属性缓存），
+ * 因此在 LivingHurtEvent 里动态结算。
+ */
+@EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
+public class ShadowAlloyAttackHandler {
+
+    @SubscribeEvent
+    public static void onLivingHurt(LivingIncomingDamageEvent event) {
+        if (!(event.getSource().getEntity() instanceof Player player)) return;
+        if (!(player instanceof ServerPlayer sp)) return;
+        if (!(player.getMainHandItem().getItem() instanceof ShadowAlloyTool)) return;
+        if (event.getSource().getDirectEntity() != player) return;
+
+        float multiplier = ShadowAlloyToolHelper.getLowSanMultiplier(sp);
+        if (multiplier > 1.0F) {
+            event.setAmount(event.getAmount() * multiplier);
+        }
+    }
+}

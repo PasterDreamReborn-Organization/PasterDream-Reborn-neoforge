@@ -20,6 +20,11 @@ public final class ModItemTags {
     public static final TagKey<Item> ORES_TITANIUM = common("ores/titanium");
     public static final TagKey<Item> STORAGE_BLOCKS_TITANIUM = common("storage_blocks/titanium");
     public static final TagKey<Item> STORAGE_BLOCKS_RAW_TITANIUM = common("storage_blocks/raw_titanium");
+    public static final TagKey<Item> INGOTS_BLACK_METAL = common("ingots/black_metal");
+    public static final TagKey<Item> INGOTS_SHADOW_ALLOY = common("ingots/shadow_alloy");
+    public static final TagKey<Item> NUGGETS_BLACK_METAL = common("nuggets/black_metal");
+    public static final TagKey<Item> LAMP_SHADOW_WEAPON = TagKey.create(Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "lamp_shadow_weapon"));
     public static final TagKey<Item> INGOTS_TITANIUM = common("ingots/titanium");
     public static final TagKey<Item> NUGGETS_TITANIUM = common("nuggets/titanium");
     public static final TagKey<Item> RAW_MATERIALS_TITANIUM = common("raw_materials/titanium");

@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -19,7 +20,36 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(ModBlockTags.SHADOW_EROSION_TOOL_CAN_BOOST).add(ModBlocks.SHADOW.get(), ModBlocks.THICK_SHADOW.get());
+        tag(ModBlockTags.SHADOW_EROSION_TOOL_CAN_BOOST)
+                .add(ModBlocks.SHADOW.get())
+                .add(ModBlocks.THICK_SHADOW.get())
+                .add(Blocks.DEEPSLATE)
+                .add(Blocks.COBBLED_DEEPSLATE)
+                .add(Blocks.COBBLED_DEEPSLATE_STAIRS)
+                .add(Blocks.COBBLED_DEEPSLATE_SLAB)
+                .add(Blocks.COBBLED_DEEPSLATE_WALL)
+                .add(Blocks.POLISHED_DEEPSLATE)
+                .add(Blocks.POLISHED_DEEPSLATE_STAIRS)
+                .add(Blocks.POLISHED_DEEPSLATE_SLAB)
+                .add(Blocks.POLISHED_DEEPSLATE_WALL)
+                .add(Blocks.DEEPSLATE_BRICKS)
+                .add(Blocks.DEEPSLATE_BRICK_STAIRS)
+                .add(Blocks.DEEPSLATE_BRICK_SLAB)
+                .add(Blocks.DEEPSLATE_BRICK_WALL)
+                .add(Blocks.DEEPSLATE_TILES)
+                .add(Blocks.DEEPSLATE_TILE_STAIRS)
+                .add(Blocks.DEEPSLATE_TILE_SLAB)
+                .add(Blocks.DEEPSLATE_TILE_WALL)
+                .add(Blocks.CHISELED_DEEPSLATE)
+                .add(Blocks.CRACKED_DEEPSLATE_BRICKS)
+                .add(Blocks.CRACKED_DEEPSLATE_TILES)
+                .addTag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE)
+                .add(Blocks.SCULK)
+                .add(Blocks.SCULK_SENSOR)
+                .add(Blocks.CALIBRATED_SCULK_SENSOR)
+                .add(Blocks.SCULK_SHRIEKER)
+                .add(Blocks.SCULK_CATALYST)
+                .add(Blocks.SCULK_VEIN);
         // 可以用镐来挖掘
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
