@@ -72,6 +72,14 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.RAW_MOLTEN_GOLD.get());
         basicItem(ModItems.SOUL_DUST.get());
         basicItem(ModItems.SOUL_ESSENCE.get());
+        basicItem(ModItems.MAGIC_STONE.get());
+        basicItem(ModItems.CHARGED_AMETHYST.get());
+        basicItem(ModItems.REED_ROD.get());
+        basicItem(ModItems.PERGAMYN.get());
+        basicItem(ModItems.RYE_SEED.get());
+        basicItem(ModItems.FLOUR.get());
+        basicItem(ModItems.COARSE_SALT.get());
+        basicItem(ModItems.SALT.get());
         basicItem(ModItems.EMBRYO_CHARM.get());
         basicItem(ModItems.EMBRYO_NECKLACE.get());
         basicItem(ModItems.EMBRYO_RING.get());

@@ -48,6 +48,9 @@ public final class ModItemTags {
     public static final TagKey<Item> STORAGE_BLOCKS_DYEDREAM_BUD = common("storage_blocks/dyedream_bud");
     public static final TagKey<Item> STORAGE_BLOCKS_CHARGED_AMETHYST = common("storage_blocks/charged_amethyst");
     public static final TagKey<Item> STORAGE_BLOCKS_SALT = common("storage_blocks/salt");
+    public static final TagKey<Item> SALT = common("salt");
+    public static final TagKey<Item> FLOUR = common("flour");
+    public static final TagKey<Item> FLOUR_WHEAT = common("flour/wheat");
     public static final TagKey<Item> DYEDREAM_DIRT = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt"));
 
     private static TagKey<Item> common(String path) {

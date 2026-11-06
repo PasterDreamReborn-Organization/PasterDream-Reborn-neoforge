@@ -39,6 +39,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
                         output.accept(ModItems.SOUL_DUST.get());
                         output.accept(ModItems.SOUL_ESSENCE.get());
+                        output.accept(ModItems.MAGIC_STONE.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
                         output.accept(ModItems.BLACK_STICK.get());
@@ -56,6 +57,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
                         output.accept(ModItems.BLUE_HEART_OF_THE_SEA.get());
                         output.accept(ModItems.ELDER_GUARDIAN_SCALE.get());
+                        output.accept(ModItems.CHARGED_AMETHYST.get());
+                        output.accept(ModItems.PERGAMYN.get());
+                        output.accept(ModItems.REED_ROD.get());
+                        output.accept(ModItems.RYE_SEED.get());
+                        output.accept(ModItems.FLOUR.get());
+                        output.accept(ModItems.SALT.get());
+                        output.accept(ModItems.COARSE_SALT.get());
                         // 饰品原胚
                         output.accept(ModItems.EMBRYO_CHARM.get());
                         output.accept(ModItems.EMBRYO_NECKLACE.get());

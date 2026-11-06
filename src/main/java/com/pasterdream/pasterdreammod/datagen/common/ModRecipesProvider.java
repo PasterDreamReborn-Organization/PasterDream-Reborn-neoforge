@@ -52,6 +52,7 @@ public class ModRecipesProvider extends RecipeProvider {
         dyedreamMaterialRecipes(output);
         blackStickRecipes(output);
         materialRecipes(output);
+        chargedAmethystAndSaltRecipes(output);
         storageBagRecipes(output);
         blackMetalRecipes(output);
         shadowAlloyToolRecipes(output);
@@ -1319,6 +1320,53 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('b', Items.LEATHER)
                 .define('c', ModItems.FABRIC.get())
                 .unlockedBy(getHasName(ModItems.FABRIC.get()), has(ModItems.FABRIC.get()))
+                .save(pWriter);
+    }
+
+    private void chargedAmethystAndSaltRecipes(RecipeOutput pWriter) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CHARGED_AMETHYST.get(), 1)
+                .requires(Items.AMETHYST_SHARD)
+                .requires(Items.POPPED_CHORUS_FRUIT)
+                .requires(Items.DRAGON_BREATH)
+                .unlockedBy(getHasName(Items.AMETHYST_SHARD), has(Items.AMETHYST_SHARD))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHARGED_AMETHYST_BLOCK.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.CHARGED_AMETHYST.get())
+                .unlockedBy(getHasName(ModItems.CHARGED_AMETHYST.get()), has(ModItems.CHARGED_AMETHYST.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.CHARGED_AMETHYST.get(), 4)
+                .requires(ModItems.CHARGED_AMETHYST_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.CHARGED_AMETHYST_BLOCK.get()), has(ModItems.CHARGED_AMETHYST_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":charged_amethyst_from_charged_amethyst_block");
+        RecipeHelpers.storageCompress(pWriter, ModItems.SALT.get(), ModItems.SALT_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.SALT_BLOCK.get(), ModItems.SALT.get(), PasterDreamMod.MOD_ID);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGIC_STONE.get(), 32)
+                .pattern("ab")
+                .pattern("bb")
+                .define('a', Items.DIAMOND)
+                .define('b', ModItems.SOUL_DUST.get())
+                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":magic_stone_from_diamond");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGIC_STONE.get(), 32)
+                .pattern("ab")
+                .pattern("bb")
+                .define('a', ModItems.ICE_BUD.get())
+                .define('b', ModItems.SOUL_DUST.get())
+                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":magic_stone_from_ice_bud");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PERGAMYN.get(), 1)
+                .requires(Items.PAPER)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 3)
+                .pattern("   ")
+                .pattern("aaa")
+                .pattern("   ")
+                .define('a', ModItems.REED_ROD.get())
+                .unlockedBy(getHasName(ModItems.REED_ROD.get()), has(ModItems.REED_ROD.get()))
                 .save(pWriter);
     }
 

@@ -297,6 +297,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.SOUL_ORE.get(), "Soul Ore");
         add(ModItems.SOUL_DUST.get(), "Soul Dust");
         add(ModItems.SOUL_ESSENCE.get(), "Soul Essence");
+        add(ModItems.MAGIC_STONE.get(), "Magic Stone");
+        add(ModItems.CHARGED_AMETHYST.get(), "Charged Amethyst");
+        add(ModItems.REED_ROD.get(), "Reed Rod");
+        add(ModItems.PERGAMYN.get(), "Pergamyn");
+        add(ModItems.RYE_SEED.get(), "Rye Seed");
+        add(ModItems.FLOUR.get(), "Flour");
+        add(ModItems.COARSE_SALT.get(), "Coarse Salt");
+        add(ModItems.SALT.get(), "Salt");
         add(ModItems.EMBRYO_CHARM.get(), "Embryo Charm");
         add(ModItems.EMBRYO_NECKLACE.get(), "Embryo Necklace");
         add(ModItems.EMBRYO_RING.get(), "Embryo Ring");
@@ -368,6 +376,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9Luck +1~+3");
         add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "Weapon Workshop Crafting Table");
         add("button.pasterdream.锻造", "Forge");
+        add("tooltip.pasterdreammod.magic_stone", "§7§oWhat kind of mage doesn't carry a few magic stones?");
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7All creatures with souls in this world have dreams\nThose fleeting memories that cannot be recalled upon waking\nShatter and melt, buried across the world, condensing into crystals\nWaiting to be discovered by new souls");
         add("tooltip.pasterdream.melt_dream_coin", "§7Right-click with 10+ to combine into a coin pile");
         add("tooltip.pasterdream.melt_dream_coin_pile", "§7Right-click to split into 10 Melt Dream Coins");
