@@ -54,6 +54,8 @@ import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
+import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
+import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
 import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.MurakumoKusanagiItem;
 import com.pasterdream.pasterdreammod.world.item.hellfiretool.*;
@@ -67,6 +69,8 @@ import com.pasterdream.pasterdreammod.world.item.shadowalloytool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
 import com.pasterdream.pasterdreammod.world.item.tidetool.*;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
@@ -210,6 +214,15 @@ public class ModItems {
     public static final DeferredItem<BlockItem> DYEDREAM_DUST_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DUST_ORE);
     public static final DeferredItem<BlockItem> PINK_SLIME_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_SLIME_BLOCK);
 
+    public static final DeferredItem<BlockItem> DYEDREAM_DIRT = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DIRT);
+    public static final DeferredItem<BlockItem> DYEDREAM_GRASS_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_GRASS_BLOCK);
+    public static final DeferredItem<BlockItem> DYEDREAM_FARMLAND = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_FARMLAND);
+    public static final DeferredItem<BlockItem> DYEDREAM_LOG = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_LOG);
+    public static final DeferredItem<BlockItem> DYEDREAM_WOOD = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_WOOD);
+    public static final DeferredItem<BlockItem> DYEDREAM_LEAVES = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_LEAVES);
+    public static final DeferredItem<BlockItem> DYEDREAM_WORLDTREE_LEAVES = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_WORLDTREE_LEAVES);
+    public static final DeferredItem<BlockItem> DYEDREAM_SAND = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_SAND);
+
     public static final DeferredItem<BlockItem> DYEDREAM_BUDDING_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_BUDDING_BLOCK);
     public static final DeferredItem<BlockItem> SMALL_DYEDREAM_BUD = ITEMS.registerSimpleBlockItem(ModBlocks.SMALL_DYEDREAM_BUD);
     public static final DeferredItem<BlockItem> MEDIUM_DYEDREAM_BUD = ITEMS.registerSimpleBlockItem(ModBlocks.MEDIUM_DYEDREAM_BUD);
@@ -239,6 +252,10 @@ public class ModItems {
     public static final DeferredItem<Item> JUNGLE_SPORE = ITEMS.register("jungle_spore",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
                     .nutrition(1).saturationModifier(0f).build())));
+    public static final DeferredItem<Item> DYEDREAM_FRUIT = ITEMS.register("dyedream_fruit",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 100, 0), 1.0f)
+                            .nutrition(3).saturationModifier(0.5f).build())));
     public static final DeferredItem<Item> RICE_CAKE = ITEMS.register("rice_cake",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
                     .nutrition(6).saturationModifier(0.415f).build())));

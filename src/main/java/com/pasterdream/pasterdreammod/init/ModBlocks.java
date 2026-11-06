@@ -6,6 +6,8 @@ import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlock;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollBlock;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.DyedreamBuddingBlock;
+import com.pasterdream.pasterdreammod.world.block.DyedreamFarmlandBlock;
+import com.pasterdream.pasterdreammod.world.block.DyedreamGrassBlock;
 import com.pasterdream.pasterdreammod.world.block.SoulOreBlock;
 import com.pasterdream.pasterdreammod.world.block.DyedreamClusterBlock;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlock;
@@ -15,12 +17,14 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.W
 import net.minecraft.world.level.block.Block;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.level.block.ColoredFallingBlock;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
@@ -64,6 +68,22 @@ public class ModBlocks {
                     .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
                     .strength(6f, 3f).requiresCorrectToolForDrops()));
     public static final DeferredBlock<Block> PINK_SLIME_BLOCK = BLOCKS.register("pink_slime_block", () -> new ColoredFallingBlock(new ColorRGBA(0xFF000000 | MapColor.COLOR_PINK.col), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.SLIME_BLOCK).strength(0.2f, 0.1f).friction(0.7f).speedFactor(0.9f).jumpFactor(0.7f).noOcclusion()));
+
+    // ===== 染梦地形方块 =====
+    public static final DeferredBlock<Block> DYEDREAM_DIRT = BLOCKS.register("dyedream_dirt", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GRAVEL).strength(0.75F, 0.5F)));
+    public static final DeferredBlock<Block> DYEDREAM_GRASS_BLOCK = BLOCKS.register("dyedream_grass_block", DyedreamGrassBlock::new);
+    public static final DeferredBlock<Block> DYEDREAM_FARMLAND = BLOCKS.register("dyedream_farmland", DyedreamFarmlandBlock::new);
+    public static final DeferredBlock<Block> DYEDREAM_LOG = BLOCKS.register("dyedream_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).sound(SoundType.WOOD).strength(2.0F, 2.0F).ignitedByLava()));
+    public static final DeferredBlock<Block> DYEDREAM_WOOD = BLOCKS.register("dyedream_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).sound(SoundType.WOOD).strength(2.0F, 2.0F).ignitedByLava()));
+    public static final DeferredBlock<Block> DYEDREAM_LEAVES = BLOCKS.register("dyedream_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GRASS).strength(0.2F, 0.2F).noOcclusion().ignitedByLava().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false)));
+    public static final DeferredBlock<Block> DYEDREAM_WORLDTREE_LEAVES = BLOCKS.register("dyedream_worldtree_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GRASS).strength(0.2F, 0.2F).noOcclusion().ignitedByLava().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false))
+    {
+        @Override
+        public boolean isRandomlyTicking(BlockState state) {
+            return false;
+        }
+    });
+    public static final DeferredBlock<Block> DYEDREAM_SAND = BLOCKS.register("dyedream_sand", () -> new ColoredFallingBlock(new ColorRGBA(0xFF000000 | MapColor.COLOR_PINK.col), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instrument(NoteBlockInstrument.SNARE).sound(SoundType.SAND).strength(0.5f)));
 
     // ===== 染梦石英建材系列 =====
     public static final DeferredBlock<Block> DYEDREAM_QUARTZ_BLOCK = BLOCKS.register("dyedream_quartz_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(0.8f)));

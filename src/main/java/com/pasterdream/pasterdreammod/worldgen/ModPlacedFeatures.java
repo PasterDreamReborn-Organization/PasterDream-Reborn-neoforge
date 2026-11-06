@@ -15,6 +15,11 @@ public final class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> TITANIUM_ORE = key("titanium_ore");
     public static final ResourceKey<PlacedFeature> MOLTEN_GOLD_ORE_PATCH = key("molten_gold_ore_patch");
     public static final ResourceKey<PlacedFeature> SOUL_ORE_PATCH = key("soul_ore_patch");
+    // 染梦草方块骨粉植被筛选引用；对应 placed feature 注册随 T16 迁入。
+    public static final ResourceKey<PlacedFeature> CALCITE_STALICRIPE = key("calcite_stalicripe");
+    public static final ResourceKey<PlacedFeature> SMALL_CALCITE_STALICRIPE = key("small_calcite_stalicripe");
+    public static final ResourceKey<PlacedFeature> CLOUD_PILLAR_SMALL = key("cloud_pillar_small");
+    public static final ResourceKey<PlacedFeature> CLOUD_PILLAR_LARGE = key("cloud_pillar_large");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var features = context.lookup(Registries.CONFIGURED_FEATURE);

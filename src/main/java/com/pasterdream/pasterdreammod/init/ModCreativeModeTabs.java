@@ -13,7 +13,7 @@ public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, PasterDreamMod.MOD_ID);
 
-    // 物品/装备图标已按来源恢复；方块图标所需 DYEDREAM_GRASS_BLOCK 尚未迁入，暂用钛矿。保留来源物品栏 ID 和条目顺序。
+    // 物品/装备图标已按来源恢复。保留来源物品栏 ID 和条目顺序。
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_ITEMS_TAB =
             CREATIVE_MODE_TABS.register("pasterdream_items_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_items_tab"))
@@ -63,22 +63,30 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.EMBRYO_BELT.get());
                     }).build());
 
-    // 食物栏图标暂用蔚蓝露滴；来源图标 DYEDREAM_FRUIT 尚未迁入。
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_FOOD_TAB =
             CREATIVE_MODE_TABS.register("pasterdream_food_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_food_tab"))
-                    .icon(() -> ModItems.BLUE_DEW.toStack())
+                    .icon(() -> ModItems.DYEDREAM_FRUIT.toStack())
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.BLUE_DEW.get());
                         output.accept(ModItems.JUNGLE_SPORE.get());
                         output.accept(ModItems.RICE_CAKE.get());
+                        output.accept(ModItems.DYEDREAM_FRUIT.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_BLOCKS_TAB =
             CREATIVE_MODE_TABS.register("pasterdream_blocks_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_blocks_tab"))
-                    .icon(() -> ModItems.TITANIUM_ORE.toStack())
+                    .icon(() -> ModItems.DYEDREAM_GRASS_BLOCK.toStack())
                     .displayItems((parameters, output) -> {
+                        output.accept(ModItems.DYEDREAM_GRASS_BLOCK.get());
+                        output.accept(ModItems.DYEDREAM_FARMLAND.get());
+                        output.accept(ModItems.DYEDREAM_DIRT.get());
+                        output.accept(ModItems.DYEDREAM_SAND.get());
+                        output.accept(ModItems.DYEDREAM_LOG.get());
+                        output.accept(ModItems.DYEDREAM_WOOD.get());
+                        output.accept(ModItems.DYEDREAM_LEAVES.get());
+                        output.accept(ModItems.DYEDREAM_WORLDTREE_LEAVES.get());
                         output.accept(ModItems.DYEDREAM_QUARTZ_ORE.get());
                         output.accept(ModItems.DYEDREAM_DUST_ORE.get());
                         output.accept(ModItems.TITANIUM_ORE.get());

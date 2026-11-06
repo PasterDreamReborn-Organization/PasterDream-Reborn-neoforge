@@ -56,6 +56,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.UUZ_DOLL.get(), "幼幼紫Doll");
         add("itemGroup.pasterdream.pasterdream_equipment_tab", "Paster Dream | Equipment");
         add("tooltip.pasterdreammod.san_value", "SAN: ");
+        add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
         add("effect.pasterdream.cheer_up", "Cheer Up");
         add("effect.pasterdream.lethargy", "Lethargy");
         add("effect.pasterdream.trance", "Trance");
@@ -573,5 +574,15 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive2", "§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");
         add("message.pasterdream.windwreathed_thunder_spear.no_energy", "§cNot enough Melt Dream Energy");
         add("jei.pasterdream.pulse_wind_runner_crystal.info", "Dropped by the Wind Knight.");
+
+        add(ModItems.DYEDREAM_FRUIT.get(), "Dyedream Fruit");
+        add(ModBlocks.DYEDREAM_DIRT.get(), "Dyedream Dirt");
+        add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "Dyedream Grass Block");
+        add(ModBlocks.DYEDREAM_FARMLAND.get(), "Dyedream Farmland");
+        add(ModBlocks.DYEDREAM_LOG.get(), "Dyedream Log");
+        add(ModBlocks.DYEDREAM_WOOD.get(), "Dyedream Wood");
+        add(ModBlocks.DYEDREAM_LEAVES.get(), "Dyedream Leaves");
+        add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), "Dyedream Worldtree Leaves");
+        add(ModBlocks.DYEDREAM_SAND.get(), "Dyedream Sand");
     }
 }

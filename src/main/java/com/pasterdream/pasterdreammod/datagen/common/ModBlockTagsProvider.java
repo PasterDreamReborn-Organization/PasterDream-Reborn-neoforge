@@ -20,6 +20,54 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        // ===== 染梦地形方块 =====
+        tag(BlockTags.DIRT)
+                .add(ModBlocks.DYEDREAM_DIRT.get())
+                .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get());
+
+        tag(BlockTags.ANIMALS_SPAWNABLE_ON)
+                .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get());
+
+        tag(BlockTags.FOXES_SPAWNABLE_ON)
+                .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get());
+
+        tag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .add(ModBlocks.DYEDREAM_DIRT.get())
+                .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_FARMLAND.get())
+                .add(ModBlocks.DYEDREAM_SAND.get());
+
+        tag(BlockTags.SAND)
+                .add(ModBlocks.DYEDREAM_SAND.get());
+
+        tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(ModBlocks.DYEDREAM_LEAVES.get())
+                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get());
+
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.DYEDREAM_LOG.get())
+                .add(ModBlocks.DYEDREAM_WOOD.get());
+
+        tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
+                .add(ModBlocks.DYEDREAM_LOG.get())
+                .add(ModBlocks.DYEDREAM_WOOD.get());
+
+        tag(BlockTags.LOGS_THAT_BURN)
+                .add(ModBlocks.DYEDREAM_LOG.get())
+                .add(ModBlocks.DYEDREAM_WOOD.get());
+
+        tag(BlockTags.LOGS)
+                .add(ModBlocks.DYEDREAM_LOG.get())
+                .add(ModBlocks.DYEDREAM_WOOD.get());
+
+        tag(BlockTags.LEAVES)
+                .add(ModBlocks.DYEDREAM_LEAVES.get())
+                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get());
+
+        tag(ModBlockTags.DYEDREAM_DIRT)
+                .add(ModBlocks.DYEDREAM_DIRT.get())
+                .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get());
+
         tag(ModBlockTags.SHADOW_EROSION_TOOL_CAN_BOOST)
                 .add(ModBlocks.SHADOW.get())
                 .add(ModBlocks.THICK_SHADOW.get())

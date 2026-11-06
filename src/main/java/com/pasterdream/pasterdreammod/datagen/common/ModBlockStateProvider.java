@@ -3,11 +3,15 @@ package com.pasterdream.pasterdreammod.datagen.common;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SnowyDirtBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -18,6 +22,35 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        // ===== 染梦地形方块 =====
+        simpleBlockWithItem(ModBlocks.DYEDREAM_DIRT.get(), cubeAll(ModBlocks.DYEDREAM_DIRT.get()));
+
+        farmlandBlock(ModBlocks.DYEDREAM_FARMLAND.get());
+
+        var grassBlock = models().cubeBottomTop(
+                ModBlocks.DYEDREAM_GRASS_BLOCK.getId().getPath(),
+                modLoc("block/dyedream_grass_block_side"),
+                modLoc("block/dyedream_dirt"),
+                modLoc("block/dyedream_grass_block_top"));
+        var snowyGrassBlock = models().cubeBottomTop(
+                ModBlocks.DYEDREAM_GRASS_BLOCK.getId().getPath() + "_snow",
+                modLoc("block/dyedream_grass_block_snow"),
+                modLoc("block/dyedream_dirt"),
+                mcLoc("block/snow"));
+        getVariantBuilder(ModBlocks.DYEDREAM_GRASS_BLOCK.get())
+                .partialState().with(SnowyDirtBlock.SNOWY, false).modelForState().modelFile(grassBlock).addModel()
+                .partialState().with(SnowyDirtBlock.SNOWY, true).modelForState().modelFile(snowyGrassBlock).addModel();
+        simpleBlockItem(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), grassBlock);
+
+        logBlock((RotatedPillarBlock) ModBlocks.DYEDREAM_LOG.get());
+        blockItem(ModBlocks.DYEDREAM_LOG);
+        var logTex = blockTexture(ModBlocks.DYEDREAM_LOG.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.DYEDREAM_WOOD.get(), logTex, logTex);
+        blockItem(ModBlocks.DYEDREAM_WOOD);
+        simpleBlockWithItem(ModBlocks.DYEDREAM_LEAVES.get(), cubeAll(ModBlocks.DYEDREAM_LEAVES.get()));
+        simpleBlockWithItem(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), cubeAll(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get()));
+        simpleBlockWithItem(ModBlocks.DYEDREAM_SAND.get(), cubeAll(ModBlocks.DYEDREAM_SAND.get()));
+
         simpleBlockWithItem(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), cubeAll(ModBlocks.DYEDREAM_QUARTZ_ORE.get()));
         simpleBlockWithItem(ModBlocks.DYEDREAM_DUST_ORE.get(), cubeAll(ModBlocks.DYEDREAM_DUST_ORE.get()));
         simpleBlockWithItem(ModBlocks.PINK_SLIME_BLOCK.get(), models().cubeAll(ModBlocks.PINK_SLIME_BLOCK.getId().getPath(), blockTexture(ModBlocks.PINK_SLIME_BLOCK.get())).renderType("minecraft:translucent"));
@@ -95,6 +128,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 new ModelFile.UncheckedModelFile(modLoc("custom/uuz_doll_particle")));
         horizontalBlock(ModBlocks.DESERT_HERO_TOMB.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/desert_hero_tomb_particle")));
+    }
+
+    private void farmlandBlock(Block block) {
+        String baseName = net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(block).getPath();
+        ModelFile dry = models().getExistingFile(modLoc("block/" + baseName));
+        ModelFile moist = models().getExistingFile(modLoc("block/" + baseName + "_moist"));
+        getVariantBuilder(block).forAllStates(state -> {
+            int moisture = state.getValue(FarmBlock.MOISTURE);
+            return ConfiguredModel.builder().modelFile(moisture == 7 ? moist : dry).build();
+        });
+        simpleBlockItem(block, dry);
     }
 
     private void blockItem(net.neoforged.neoforge.registries.DeferredBlock<?> block) {

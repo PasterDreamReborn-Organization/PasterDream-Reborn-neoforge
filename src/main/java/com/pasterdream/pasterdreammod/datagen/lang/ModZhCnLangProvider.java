@@ -56,6 +56,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.UUZ_DOLL.get(), "娇小幼幼紫玩偶");
         add("itemGroup.pasterdream.pasterdream_equipment_tab", "帕斯特之梦 | 设备");
         add("tooltip.pasterdreammod.san_value", "SAN值: ");
+        add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: ");
         add("effect.pasterdream.cheer_up", "振奋");
         add("effect.pasterdream.lethargy", "不振");
         add("effect.pasterdream.trance", "恍惚");
@@ -573,5 +574,15 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive2", "§7▪ §9破坏方块或击杀生物时，掉落物会被风卷至身边");
         add("message.pasterdream.windwreathed_thunder_spear.no_energy", "§c融梦能量不足");
         add("jei.pasterdream.pulse_wind_runner_crystal.info", "由破风骑士掉落。");
+
+        add(ModItems.DYEDREAM_FRUIT.get(), "染梦果");
+        add(ModBlocks.DYEDREAM_DIRT.get(), "染梦泥土");
+        add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "染梦草方块");
+        add(ModBlocks.DYEDREAM_FARMLAND.get(), "染梦耕地");
+        add(ModBlocks.DYEDREAM_LOG.get(), "染梦原木");
+        add(ModBlocks.DYEDREAM_WOOD.get(), "染梦木头");
+        add(ModBlocks.DYEDREAM_LEAVES.get(), "染梦树叶");
+        add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), "染梦世界树树叶");
+        add(ModBlocks.DYEDREAM_SAND.get(), "染梦沙");
     }
 }
