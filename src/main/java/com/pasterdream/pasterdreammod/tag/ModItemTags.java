@@ -15,6 +15,7 @@ public final class ModItemTags {
             ResourceLocation.fromNamespaceAndPath("pasterdream", "channeling_enchantable"));
     public static final TagKey<Item> ORES_DYEDREAM_QUARTZ = common("ores/dyedream_quartz");
     public static final TagKey<Item> ORES_DYEDREAM_DUST = common("ores/dyedream_dust");
+    public static final TagKey<Item> ORES_AMBER_CANDY = common("ores/amber_candy");
     public static final TagKey<Item> ORES_IN_GROUND_CALCITE = common("ores_in_ground/calcite");
     public static final TagKey<Item> ORE_RATES_SINGULAR = common("ore_rates/singular");
     public static final TagKey<Item> ORE_RATES_DENSE = common("ore_rates/dense");
@@ -45,6 +46,8 @@ public final class ModItemTags {
     public static final TagKey<Item> INGOTS_FLUFFY_WIND_ALLOY = common("ingots/fluffy_wind_alloy");
     public static final TagKey<Item> STORAGE_BLOCKS_DYEDREAM_ALLOY = common("storage_blocks/dyedream_alloy");
     public static final TagKey<Item> STORAGE_BLOCKS_DYEDREAM_BUD = common("storage_blocks/dyedream_bud");
+    public static final TagKey<Item> STORAGE_BLOCKS_CHARGED_AMETHYST = common("storage_blocks/charged_amethyst");
+    public static final TagKey<Item> STORAGE_BLOCKS_SALT = common("storage_blocks/salt");
     public static final TagKey<Item> DYEDREAM_DIRT = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt"));
 
     private static TagKey<Item> common(String path) {

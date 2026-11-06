@@ -198,6 +198,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<BlockItem> MOLTEN_GOLD_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.MOLTEN_GOLD_ORE);
     public static final DeferredItem<BlockItem> MOLTEN_GOLD_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.MOLTEN_GOLD_BLOCK);
+    public static final DeferredItem<BlockItem> SALT_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.SALT_BLOCK);
+    public static final DeferredItem<BlockItem> CHARGED_AMETHYST_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.CHARGED_AMETHYST_BLOCK);
 
     public static final DeferredItem<Item> DYEDREAM_QUARTZ = ITEMS.registerSimpleItem("dyedream_quartz");
     public static final DeferredItem<Item> DYEDREAM_DUST = ITEMS.registerSimpleItem("dyedream_dust");
@@ -212,6 +214,7 @@ public class ModItems {
             () -> new MeltDreamCoinItem(new Item.Properties(), true));
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_ORE);
     public static final DeferredItem<BlockItem> DYEDREAM_DUST_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DUST_ORE);
+    public static final DeferredItem<BlockItem> AMBER_CANDY_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.AMBER_CANDY_ORE);
     public static final DeferredItem<BlockItem> CALCITE_COAL_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_COAL_ORE);
     public static final DeferredItem<BlockItem> CALCITE_IRON_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_IRON_ORE);
     public static final DeferredItem<BlockItem> CALCITE_COPPER_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_COPPER_ORE);
@@ -221,6 +224,9 @@ public class ModItems {
     public static final DeferredItem<BlockItem> CALCITE_DIAMOND_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_DIAMOND_ORE);
     public static final DeferredItem<BlockItem> CALCITE_EMERALD_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_EMERALD_ORE);
     public static final DeferredItem<BlockItem> PINK_SLIME_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_SLIME_BLOCK);
+    public static final DeferredItem<BlockItem> PINK_MUSHROOM_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_MUSHROOM_BLOCK);
+    public static final DeferredItem<BlockItem> PINK_MUSHROOM_STEM = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_MUSHROOM_STEM);
+    public static final DeferredItem<BlockItem> PINK_SHROOMLIGHT = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_SHROOMLIGHT);
 
     public static final DeferredItem<BlockItem> DYEDREAM_DIRT = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DIRT);
     public static final DeferredItem<BlockItem> DYEDREAM_GRASS_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_GRASS_BLOCK);
@@ -236,7 +242,20 @@ public class ModItems {
     public static final DeferredItem<BlockItem> MEDIUM_DYEDREAM_BUD = ITEMS.registerSimpleBlockItem(ModBlocks.MEDIUM_DYEDREAM_BUD);
     public static final DeferredItem<BlockItem> LARGE_DYEDREAM_BUD = ITEMS.registerSimpleBlockItem(ModBlocks.LARGE_DYEDREAM_BUD);
     public static final DeferredItem<BlockItem> DYEDREAM_BUD_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_BUD_BLOCK);
+    public static final DeferredItem<BlockItem> DYEDREAM_BUD_BRICKS = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_BUD_BRICKS);
+    public static final DeferredItem<BlockItem> DYEDREAM_BUD_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_BUD_STAIRS);
+    public static final DeferredItem<BlockItem> DYEDREAM_BUD_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_BUD_SLAB);
+    public static final DeferredItem<BlockItem> DYEDREAM_BUD_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_BUD_WALL);
     public static final DeferredItem<BlockItem> DYEDREAM_ALLOY_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_ALLOY_BLOCK);
+    public static final DeferredItem<BlockItem> DYEDREAM_ICE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_ICE);
+    public static final DeferredItem<BlockItem> DYEDREAM_PACKED_ICE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_PACKED_ICE);
+    public static final DeferredItem<BlockItem> CLOUD = ITEMS.registerSimpleBlockItem(ModBlocks.CLOUD);
+    public static final DeferredItem<BlockItem> DARK_CLOUD = ITEMS.registerSimpleBlockItem(ModBlocks.DARK_CLOUD);
+    public static final DeferredItem<BlockItem> BIG_BUBBLE = ITEMS.registerSimpleBlockItem(ModBlocks.BIG_BUBBLE);
+    public static final DeferredItem<BlockItem> DYEDREAM_CRYSTAL_LANTERN = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_CRYSTAL_LANTERN);
+    public static final DeferredItem<BlockItem> DYEDREAM_LANTERN = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_LANTERN);
+    public static final DeferredItem<BlockItem> ICE_STONE = ITEMS.registerSimpleBlockItem(ModBlocks.ICE_STONE);
+    public static final DeferredItem<BlockItem> ICE_BUD = ITEMS.registerSimpleBlockItem(ModBlocks.ICE_BUD);
 
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK);
     public static final DeferredItem<BlockItem> SMOOTH_DYEDREAM_QUARTZ_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK);
@@ -246,6 +265,20 @@ public class ModItems {
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS);
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB);
     public static final DeferredItem<BlockItem> DYEDREAM_QUARTZ_BLOCK_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL);
+
+    public static final DeferredItem<BlockItem> DYEDREAM_SANDSTONE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_SANDSTONE);
+    public static final DeferredItem<BlockItem> DYEDREAM_SANDSTONE_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_SANDSTONE_STAIRS);
+    public static final DeferredItem<BlockItem> DYEDREAM_SANDSTONE_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_SANDSTONE_SLAB);
+    public static final DeferredItem<BlockItem> DYEDREAM_SANDSTONE_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_SANDSTONE_WALL);
+    public static final DeferredItem<BlockItem> CUT_DYEDREAM_SANDSTONE = ITEMS.registerSimpleBlockItem(ModBlocks.CUT_DYEDREAM_SANDSTONE);
+    public static final DeferredItem<BlockItem> CUT_DYEDREAM_SANDSTONE_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.CUT_DYEDREAM_SANDSTONE_STAIRS);
+    public static final DeferredItem<BlockItem> CUT_DYEDREAM_SANDSTONE_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.CUT_DYEDREAM_SANDSTONE_SLAB);
+    public static final DeferredItem<BlockItem> CUT_DYEDREAM_SANDSTONE_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.CUT_DYEDREAM_SANDSTONE_WALL);
+    public static final DeferredItem<BlockItem> CHISELED_DYEDREAM_SANDSTONE = ITEMS.registerSimpleBlockItem(ModBlocks.CHISELED_DYEDREAM_SANDSTONE);
+    public static final DeferredItem<BlockItem> SMOOTH_DYEDREAM_SANDSTONE = ITEMS.registerSimpleBlockItem(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE);
+    public static final DeferredItem<BlockItem> SMOOTH_DYEDREAM_SANDSTONE_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_STAIRS);
+    public static final DeferredItem<BlockItem> SMOOTH_DYEDREAM_SANDSTONE_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_SLAB);
+    public static final DeferredItem<BlockItem> SMOOTH_DYEDREAM_SANDSTONE_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_WALL);
 
     public static final DeferredItem<BlockItem> DYEDREAM_PLANKS = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_PLANKS);
     public static final DeferredItem<BlockItem> DYEDREAM_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_STAIRS);
@@ -258,6 +291,13 @@ public class ModItems {
     public static final DeferredItem<BlockItem> DYEDREAM_PRESSURE_PLATE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_PRESSURE_PLATE);
     public static final DeferredItem<BlockItem> DYEDREAM_BUTTON = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_BUTTON);
 
+    public static final DeferredItem<BlockItem> DYEDREAM_GLASS = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_GLASS);
+    public static final DeferredItem<BlockItem> DYEDREAM_GLASS_PANE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_GLASS_PANE);
+    public static final DeferredItem<BlockItem> CARVE_DYEDREAM_GLASS = ITEMS.registerSimpleBlockItem(ModBlocks.CARVE_DYEDREAM_GLASS);
+    public static final DeferredItem<BlockItem> CARVE_DYEDREAM_GLASS_PANE = ITEMS.registerSimpleBlockItem(ModBlocks.CARVE_DYEDREAM_GLASS_PANE);
+    public static final DeferredItem<BlockItem> GOLD_CARVE_DYEDREAM_GLASS = ITEMS.registerSimpleBlockItem(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS);
+    public static final DeferredItem<BlockItem> GOLD_CARVE_DYEDREAM_GLASS_PANE = ITEMS.registerSimpleBlockItem(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE);
+
     public static final DeferredItem<BlockItem> POLISHED_CALCITE = ITEMS.registerSimpleBlockItem(ModBlocks.POLISHED_CALCITE);
     public static final DeferredItem<BlockItem> POLISHED_CALCITE_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.POLISHED_CALCITE_STAIRS);
     public static final DeferredItem<BlockItem> POLISHED_CALCITE_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.POLISHED_CALCITE_SLAB);
@@ -266,6 +306,7 @@ public class ModItems {
     public static final DeferredItem<BlockItem> CALCITE_TILES_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_TILES_STAIRS);
     public static final DeferredItem<BlockItem> CALCITE_TILES_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_TILES_SLAB);
     public static final DeferredItem<BlockItem> CALCITE_TILES_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_TILES_WALL);
+    public static final DeferredItem<BlockItem> CALCITE_CONE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_CONE);
 
     public static final DeferredItem<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SCULK_HEART = ITEMS.register("sculk_heart",

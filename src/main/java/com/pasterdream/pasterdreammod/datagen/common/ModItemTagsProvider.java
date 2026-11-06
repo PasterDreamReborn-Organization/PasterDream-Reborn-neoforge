@@ -41,6 +41,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         // copy(BlockTag, ItemTag) 将 BlockTagsProvider 中注册的方块标签自动同步到对应物品标签
         copy(ModBlockTags.ORES_DYEDREAM_QUARTZ, ModItemTags.ORES_DYEDREAM_QUARTZ);
         copy(ModBlockTags.ORES_DYEDREAM_DUST, ModItemTags.ORES_DYEDREAM_DUST);
+        copy(ModBlockTags.ORES_AMBER_CANDY, ModItemTags.ORES_AMBER_CANDY);
         copy(ModBlockTags.ORES_IN_GROUND_CALCITE, ModItemTags.ORES_IN_GROUND_CALCITE);
         copy(ModBlockTags.ORE_RATES_SINGULAR, ModItemTags.ORE_RATES_SINGULAR);
         copy(ModBlockTags.ORE_RATES_DENSE, ModItemTags.ORE_RATES_DENSE);
@@ -53,6 +54,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModBlockTags.STORAGE_BLOCKS_MOLTEN_GOLD, ModItemTags.STORAGE_BLOCKS_MOLTEN_GOLD);
         copy(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_ALLOY, ModItemTags.STORAGE_BLOCKS_DYEDREAM_ALLOY);
         copy(ModBlockTags.STORAGE_BLOCKS_DYEDREAM_BUD, ModItemTags.STORAGE_BLOCKS_DYEDREAM_BUD);
+        copy(ModBlockTags.STORAGE_BLOCKS_CHARGED_AMETHYST, ModItemTags.STORAGE_BLOCKS_CHARGED_AMETHYST);
+        copy(ModBlockTags.STORAGE_BLOCKS_SALT, ModItemTags.STORAGE_BLOCKS_SALT);
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
         copy(Tags.Blocks.ORES_COAL, Tags.Items.ORES_COAL);
         copy(Tags.Blocks.ORES_IRON, Tags.Items.ORES_IRON);
@@ -63,6 +66,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(Tags.Blocks.ORES_DIAMOND, Tags.Items.ORES_DIAMOND);
         copy(Tags.Blocks.ORES_EMERALD, Tags.Items.ORES_EMERALD);
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
+        copy(Tags.Blocks.GLASS_BLOCKS, Tags.Items.GLASS_BLOCKS);
+        copy(Tags.Blocks.GLASS_PANES, Tags.Items.GLASS_PANES);
+        copy(BlockTags.STAIRS, ItemTags.STAIRS);
+        copy(BlockTags.SLABS, ItemTags.SLABS);
+        copy(BlockTags.WALLS, ItemTags.WALLS);
         copy(ModBlockTags.DYEDREAM_DIRT, ModItemTags.DYEDREAM_DIRT);
         copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
         copy(BlockTags.LOGS, ItemTags.LOGS);

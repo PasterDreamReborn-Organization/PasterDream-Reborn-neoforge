@@ -42,7 +42,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.DYEDREAM_LEAVES.get())
-                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get());
+                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get())
+                .add(ModBlocks.PINK_MUSHROOM_BLOCK.get())
+                .add(ModBlocks.PINK_MUSHROOM_STEM.get())
+                .add(ModBlocks.PINK_SHROOMLIGHT.get());
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.DYEDREAM_LOG.get())
@@ -56,7 +59,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_DOOR.get())
                 .add(ModBlocks.DYEDREAM_TRAPDOOR.get())
                 .add(ModBlocks.DYEDREAM_PRESSURE_PLATE.get())
-                .add(ModBlocks.DYEDREAM_BUTTON.get());
+                .add(ModBlocks.DYEDREAM_BUTTON.get())
+                .add(ModBlocks.PINK_MUSHROOM_BLOCK.get())
+                .add(ModBlocks.PINK_MUSHROOM_STEM.get())
+                .add(ModBlocks.PINK_SHROOMLIGHT.get());
 
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.DYEDREAM_PLANKS.get());
@@ -139,6 +145,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
+                .add(ModBlocks.AMBER_CANDY_ORE.get())
                 .add(ModBlocks.CALCITE_COAL_ORE.get())
                 .add(ModBlocks.CALCITE_IRON_ORE.get())
                 .add(ModBlocks.CALCITE_COPPER_ORE.get())
@@ -172,12 +179,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.SOUL_ORE.get());
+        tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.SALT_BLOCK.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.CALCITE_COAL_ORE.get())
                 .add(ModBlocks.CALCITE_IRON_ORE.get())
                 .add(ModBlocks.CALCITE_COPPER_ORE.get())
-                .add(ModBlocks.CALCITE_LAPIS_ORE.get());
+                .add(ModBlocks.CALCITE_LAPIS_ORE.get())
+                .add(ModBlocks.ICE_BUD.get())
+                .add(ModBlocks.CHARGED_AMETHYST_BLOCK.get());
 
         // 需要铁工具挖掘
         tag(BlockTags.NEEDS_IRON_TOOL)
@@ -193,7 +203,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CALCITE_GOLD_ORE.get())
                 .add(ModBlocks.CALCITE_REDSTONE_ORE.get())
                 .add(ModBlocks.CALCITE_DIAMOND_ORE.get())
-                .add(ModBlocks.CALCITE_EMERALD_ORE.get());
+                .add(ModBlocks.CALCITE_EMERALD_ORE.get())
+                .add(ModBlocks.DYEDREAM_BUD_BRICKS.get())
+                .add(ModBlocks.DYEDREAM_BUD_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_BUD_SLAB.get())
+                .add(ModBlocks.DYEDREAM_BUD_WALL.get());
 
         // 需要钻石工具挖掘
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -315,7 +329,32 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CALCITE_TILES.get())
                 .add(ModBlocks.CALCITE_TILES_STAIRS.get())
                 .add(ModBlocks.CALCITE_TILES_SLAB.get())
-                .add(ModBlocks.CALCITE_TILES_WALL.get());
+                .add(ModBlocks.CALCITE_TILES_WALL.get())
+                .add(ModBlocks.CALCITE_CONE.get())
+                .add(ModBlocks.DYEDREAM_SANDSTONE.get())
+                .add(ModBlocks.DYEDREAM_SANDSTONE_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_SANDSTONE_SLAB.get())
+                .add(ModBlocks.DYEDREAM_SANDSTONE_WALL.get())
+                .add(ModBlocks.CUT_DYEDREAM_SANDSTONE.get())
+                .add(ModBlocks.CUT_DYEDREAM_SANDSTONE_STAIRS.get())
+                .add(ModBlocks.CUT_DYEDREAM_SANDSTONE_SLAB.get())
+                .add(ModBlocks.CUT_DYEDREAM_SANDSTONE_WALL.get())
+                .add(ModBlocks.CHISELED_DYEDREAM_SANDSTONE.get())
+                .add(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE.get())
+                .add(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_STAIRS.get())
+                .add(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_SLAB.get())
+                .add(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_WALL.get())
+                .add(ModBlocks.DYEDREAM_BUD_BRICKS.get())
+                .add(ModBlocks.DYEDREAM_BUD_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_BUD_SLAB.get())
+                .add(ModBlocks.DYEDREAM_BUD_WALL.get())
+                .add(ModBlocks.DYEDREAM_ICE.get())
+                .add(ModBlocks.DYEDREAM_PACKED_ICE.get())
+                .add(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get())
+                .add(ModBlocks.DYEDREAM_LANTERN.get())
+                .add(ModBlocks.ICE_STONE.get())
+                .add(ModBlocks.ICE_BUD.get())
+                .add(ModBlocks.CHARGED_AMETHYST_BLOCK.get());
 
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.POLISHED_CALCITE_STAIRS.get())
@@ -328,6 +367,46 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.WALLS)
                 .add(ModBlocks.POLISHED_CALCITE_WALL.get())
                 .add(ModBlocks.CALCITE_TILES_WALL.get());
+        // ===== 染梦砂岩与水晶建材标签 =====
+        tag(BlockTags.STAIRS)
+                .add(ModBlocks.DYEDREAM_SANDSTONE_STAIRS.get())
+                .add(ModBlocks.CUT_DYEDREAM_SANDSTONE_STAIRS.get())
+                .add(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_BUD_STAIRS.get());
+
+        tag(BlockTags.SLABS)
+                .add(ModBlocks.DYEDREAM_SANDSTONE_SLAB.get())
+                .add(ModBlocks.CUT_DYEDREAM_SANDSTONE_SLAB.get())
+                .add(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_SLAB.get())
+                .add(ModBlocks.DYEDREAM_BUD_SLAB.get());
+
+        tag(BlockTags.WALLS)
+                .add(ModBlocks.DYEDREAM_SANDSTONE_WALL.get())
+                .add(ModBlocks.CUT_DYEDREAM_SANDSTONE_WALL.get())
+                .add(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_WALL.get())
+                .add(ModBlocks.DYEDREAM_BUD_WALL.get());
+
+        // ===== 玻璃标签 =====
+        tag(Tags.Blocks.GLASS_BLOCKS)
+                .add(ModBlocks.DYEDREAM_GLASS.get())
+                .add(ModBlocks.CARVE_DYEDREAM_GLASS.get())
+                .add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get());
+        tag(Tags.Blocks.GLASS_PANES)
+                .add(ModBlocks.DYEDREAM_GLASS_PANE.get())
+                .add(ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get())
+                .add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get());
+
+        // ===== 琥珀糖矿石与储块标签 =====
+        tag(Tags.Blocks.ORES).add(ModBlocks.AMBER_CANDY_ORE.get());
+        tag(ModBlockTags.ORES_IN_GROUND_CALCITE).add(ModBlocks.AMBER_CANDY_ORE.get());
+        tag(ModBlockTags.ORE_RATES_DENSE).add(ModBlocks.AMBER_CANDY_ORE.get());
+        tag(ModBlockTags.ORES_AMBER_CANDY).add(ModBlocks.AMBER_CANDY_ORE.get());
+        tag(ModBlockTags.STORAGE_BLOCKS_CHARGED_AMETHYST).add(ModBlocks.CHARGED_AMETHYST_BLOCK.get());
+        tag(ModBlockTags.STORAGE_BLOCKS_SALT).add(ModBlocks.SALT_BLOCK.get());
+        tag(Tags.Blocks.STORAGE_BLOCKS)
+                .addTag(ModBlockTags.STORAGE_BLOCKS_CHARGED_AMETHYST)
+                .addTag(ModBlockTags.STORAGE_BLOCKS_SALT);
+
         // 矿石/金属块不属于动物自然生成地表，不加入 ANIMALS_SPAWNABLE_ON。
     }
 }
