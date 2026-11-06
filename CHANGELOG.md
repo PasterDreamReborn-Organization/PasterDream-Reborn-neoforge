@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 042：熔融阴影桶、融梦涌泉桶与流体系统（2026-11-07）
+
+- 搬运两种桶、源液/流动液、流体类型和世界液体方块，保留注册 ID、物理属性、融梦涌泉粒子与来源动画纹理；生成 NeoForge 桶模型、流体标签及中英文名称。
+- 两种桶接入 1000 mB 标准物品流体接口；GameTest 覆盖整桶充排、模拟操作、部分排放与错液拒绝。通用容器/流体槽及生存获取链仍按迁移任务线后续推进。
+- `runData`、`build` 与 `runGameTestServer` 通过，107/107；客户端视觉与实际放桶/收桶交互待验。
+
 ### 批次 041：盈能紫水晶与料理基础材料（2026-11-06）
 
 - 搬运 `charged_amethyst`、`pergamyn`、`reed_rod`、`rye_seed`、`flour`、`magic_stone`、`salt`、`coarse_salt` 共 8 种物品；保留来源注册 ID、纹理、物品模型与创造模式物品栏顺序。

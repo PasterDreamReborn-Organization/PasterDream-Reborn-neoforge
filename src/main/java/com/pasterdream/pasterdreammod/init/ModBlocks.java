@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.world.block.fluidblock.MeltDreamLiquidBlock;
+import com.pasterdream.pasterdreammod.world.block.fluidblock.ShadowLiquidBlock;
 import com.pasterdream.pasterdreammod.world.block.shadow.ShadowBlock;
 import com.pasterdream.pasterdreammod.world.block.shadow.ThickShadowBlock;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlock;
@@ -100,6 +102,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> CALCITE_LAPIS_ORE = BLOCKS.register("calcite_lapis_ore", () -> new DropExperienceBlock(UniformInt.of(2, 5), BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
     public static final DeferredBlock<Block> CALCITE_DIAMOND_ORE = BLOCKS.register("calcite_diamond_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
     public static final DeferredBlock<Block> CALCITE_EMERALD_ORE = BLOCKS.register("calcite_emerald_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
+    public static final DeferredBlock<Block> MELTDREAM_LIQUID = BLOCKS.register("melt_dream_liquid", MeltDreamLiquidBlock::new);
+    public static final DeferredBlock<Block> SHADOW_LIQUID = BLOCKS.register("shadow_liquid", ShadowLiquidBlock::new);
+
     public static final DeferredBlock<Block> PINK_SLIME_BLOCK = BLOCKS.register("pink_slime_block", () -> new ColoredFallingBlock(new ColorRGBA(0xFF000000 | MapColor.COLOR_PINK.col), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.SLIME_BLOCK).strength(0.2f, 0.1f).friction(0.7f).speedFactor(0.9f).jumpFactor(0.7f).noOcclusion()));
     // ===== 绮夐《鑿岀郴鍒?=====
     public static final DeferredBlock<Block> PINK_MUSHROOM_BLOCK = BLOCKS.register("pink_mushroom_block", () -> new HugeMushroomBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(0.3f, 0.1f).jumpFactor(1.2f)));
