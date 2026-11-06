@@ -5,6 +5,11 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 修复：精铸工坊工作台物品提示（2026-11-06）
+
+- 恢复工作台界面在绘制槽位后调用 `renderTooltip`，鼠标悬停输入、强化石、输出和玩家背包物品时可显示提示。
+- `runData`、`build` 通过，数据生成写入 0 个文件；客户端实际悬停显示待人工确认。
+
 ### 批次 030：影蚀工具与暗影合金工具材料（2026-11-06）
 
 - 搬运影蚀匕首/镐/斧/锹/锄、暗影合金镐/斧/锹/锄，以及黑金属锭/粒、暗影合金锭的注册、属性、贴图、模型、语言、标签与创造栏；噩梦燃料沿用批次 022 已迁的 1200 tick 燃烧与掉落实现。
