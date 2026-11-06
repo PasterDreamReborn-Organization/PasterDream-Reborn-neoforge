@@ -183,6 +183,12 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.HEALTH_NECKLACE.get());
         basicItem(ModItems.FIRE_NECKLACE.get());
         basicItem(ModItems.CROSS_NECKLACE.get());
+        basicItem(ModItems.BOBOJI_CURIO.get());
+        basicItem(ModItems.SHADOW_BREATH.get());
+        basicItem(ModItems.WAR_FLAG.get());
+        basicItem(ModItems.WIND_SPIRIT.get());
+        basicItem(ModItems.STORAGE_BAG.get());
+        basicItem(ModItems.LARGE_STORAGE_BAG.get());
         basicItem(ModItems.NATURE_BELT.get());
         basicItem(ModItems.TRAVELER_BELT.get());
         basicItem(ModItems.DREAM_TRAVELER_BELT.get());

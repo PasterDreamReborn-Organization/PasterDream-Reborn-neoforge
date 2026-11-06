@@ -20,6 +20,7 @@ import com.pasterdream.pasterdreammod.world.effect.SculkArmorEffect;
 import com.pasterdream.pasterdreammod.world.effect.MeltDreamCrystalArmorEffect;
 import com.pasterdream.pasterdreammod.world.effect.SnowVowEffect;
 import com.pasterdream.pasterdreammod.world.effect.TitaniumArmorEffect;
+import com.pasterdream.pasterdreammod.world.effect.WarFlagEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.neoforged.bus.api.IEventBus;
@@ -55,6 +56,9 @@ public class ModEffects {
             MOB_EFFECTS.register("highly_toxic", HighlyToxicEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> SNOW_VOW =
             MOB_EFFECTS.register("snow_vow", SnowVowEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> WAR_FLAG =
+            MOB_EFFECTS.register("war_flag", WarFlagEffect::new);
 
     public static final DeferredHolder<MobEffect, MobEffect> REST =
             MOB_EFFECTS.register("rest", RestEffect::new);

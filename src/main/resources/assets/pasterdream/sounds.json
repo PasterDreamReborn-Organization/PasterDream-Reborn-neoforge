@@ -95,5 +95,13 @@
         "stream": false
       }
     ]
+  },
+  "zipper": {
+    "sounds": [
+      {
+        "name": "pasterdream:zipper",
+        "stream": false
+      }
+    ]
   }
 }

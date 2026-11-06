@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 035：便携储物袋与四件饰品（2026-11-06）
+
+- 搬运便携储物袋、大型便携储物袋、暗影之息、战争旗帜、啵啵鸡的华丽飞羽与风精灵；保留来源注册 ID、贴图、模型、语言与创造栏顺序。
+- 储物袋内容改存于 1.21 `DataComponents.CONTAINER`，新增 `RegisterCapabilitiesEvent` 物品 `IItemHandler`、9/25 格菜单与界面、袋体烧毁散落和大型袋生物捕获/释放配置。
+- 暗影之息接入理智比例加成与实时 Tooltip；战争旗帜接入战意效果、击杀叠层和范围共享；啵啵鸡提供瞬身术属性与回避粒子/音效；风精灵提供箭矢速度与装填缩减。
+- 补充 `ARROW_VELOCITY`、`MAGIC_DAMAGE_RATE` 自定义属性，以及储物袋配方、战意效果图标与 `zipper` 音效；新增 `MagicDamageHandler`，使投掷伤害药水等间接魔法伤害按魔法伤害倍率缩放。
+- 来源进度 `get_boboji_curios`、JEI 暗影之息信息与宝库/风之旅途宝箱战利品表暂未迁移；当前可从创造栏与储物袋配方取得。
+- `runData`、`build` 通过；`runGameTestServer` 99/99 通过，新增储物袋内容往返、槽位/配方、饰品属性、暗影之息、战意效果与间接魔法伤害测试。
+
 ### 批次 034：三件腰带与三枚戒指（2026-11-06）
 
 - 搬运自然腰带、旅者腰带、迷梦旅者腰带、强击戒指、反击戒指与融梦光环戒指；接入 Curios `belt` / `ring` 槽位、贴图、模型、语言与创造栏。

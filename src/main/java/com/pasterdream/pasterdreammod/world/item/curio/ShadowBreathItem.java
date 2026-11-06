@@ -1,0 +1,181 @@
+package com.pasterdream.pasterdreammod.world.item.curio;
+
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.capability.san.SanHelper;
+import com.pasterdream.pasterdreammod.init.ModAttributes;
+import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
+
+import java.util.List;
+
+public class ShadowBreathItem extends Item implements ICurioItem {
+    private static final ResourceLocation ATTACK_DAMAGE_ID = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_breath_attack_damage");
+    private static final ResourceLocation MAGIC_DAMAGE_ID = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_breath_magic_damage");
+    private static final ResourceLocation ARMOR_ID = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_breath_armor");
+
+    /** 生命恢复效果持续时间（刷新阈值 5 秒），足够覆盖每次恢复间隔。 */
+    private static final int REGEN_DURATION = 100;
+    /** 生命恢复效果刷新阈值（1 tick 时重新施加，保证恢复不断档） */
+    private static final int REGEN_REFRESH_THRESHOLD = 1;
+    /** 生命恢复等级对应的罗马数字显示文本 */
+    static final String[] REGEN_LEVELS = {"I", "II", "III", "IV"};
+
+    static String getRegenLevelName(int regenTier) {
+        return REGEN_LEVELS[regenTier];
+    }
+
+    public ShadowBreathItem() {
+        super(new Item.Properties().stacksTo(1).rarity(ModRarities.ancient()));
+    }
+
+    @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        LivingEntity entity = slotContext.entity();
+        if (entity == null || entity.level().isClientSide()) return;
+        updateState(entity);
+    }
+
+    @Override
+    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
+        LivingEntity entity = slotContext.entity();
+        if (entity == null || entity.level().isClientSide()) return;
+        updateState(entity);
+    }
+
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        LivingEntity entity = slotContext.entity();
+        if (entity == null || entity.level().isClientSide()) return;
+        removeAllBonuses(entity);
+    }
+
+    /**
+     * 根据当前理智比例刷新加成：
+     * 理智 ≥ 50%：每增加 10% 理智，攻击力 +4%、魔法伤害 +4%（最高 +20%）。
+     * 理智 < 50%：每降低 10% 理智，护甲值 +2（最高 +10）；理智 ≤ 40% 时获得生命恢复 I，每降低 10% 理智，生命恢复 +1 级（最高 IV）。
+     * 理智系统使用开关关闭时：无效果。
+     */
+    private static void updateState(LivingEntity entity) {
+        if (!(entity instanceof ServerPlayer player)) return;
+        if (!SanHelper.getIsSanEnabled(player)) {
+            removeAllBonuses(player);
+            return;
+        }
+
+        double maxSan = SanHelper.getPlayerMaxSanEffective(player);
+        int damageTier = 0;
+        int armorTier = 0;
+        int regenTier = -1;
+        if (maxSan > 0) {
+            double ratio = SanHelper.getPlayerSan(player) / maxSan;
+            damageTier = getDamageTier(ratio);
+            armorTier = getArmorTier(ratio);
+            regenTier = getRegenTier(ratio);
+        }
+
+        if (damageTier > 0) {
+            setModifier(player, Attributes.ATTACK_DAMAGE, ATTACK_DAMAGE_ID,
+                    damageTier * 0.04, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+            setModifier(player, ModAttributes.MAGIC_DAMAGE_RATE, MAGIC_DAMAGE_ID,
+                    damageTier * 0.04, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+        } else {
+            setModifier(player, Attributes.ATTACK_DAMAGE, ATTACK_DAMAGE_ID,
+                    0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+            setModifier(player, ModAttributes.MAGIC_DAMAGE_RATE, MAGIC_DAMAGE_ID,
+                    0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+        }
+        setModifier(player, Attributes.ARMOR, ARMOR_ID,
+                armorTier * 2.0, AttributeModifier.Operation.ADD_VALUE);
+        if (regenTier >= 0) {
+            applyRegeneration(player, regenTier);
+        } else {
+            removeRegeneration(player);
+        }
+    }
+
+    /** 理智 ≥ 50%：每 +10% 理智 1 级，最高 5 级（+20%）。 */
+    static int getDamageTier(double ratio) {
+        return ratio >= 0.5 ? Math.min((int) ((ratio - 0.5) * 10.0), 5) : 0;
+    }
+
+    /** 理智 < 50%：每 -10% 理智 1 级，最高 5 级（+10 护甲）。 */
+    static int getArmorTier(double ratio) {
+        return ratio < 0.5 ? Math.min((int) ((0.5 - ratio) * 10.0), 5) : 0;
+    }
+
+    /** 理智 ≤ 40%：每 -10% 理智 1 级，最高 4 级（生命恢复 IV）；0 级时达到阈值（40% 即获得生命恢复）。 */
+    static int getRegenTier(double ratio) {
+        return ratio <= 0.4 ? Math.min((int) ((0.4 - ratio) * 10.0), 3) : -1;
+    }
+
+    private static void setModifier(LivingEntity entity, Holder<Attribute> attribute, ResourceLocation id,
+                                    double amount, AttributeModifier.Operation operation) {
+        AttributeInstance instance = entity.getAttribute(attribute);
+        if (instance == null) return;
+        AttributeModifier existing = instance.getModifier(id);
+        if (existing != null && existing.amount() == amount) return;
+        if (existing != null) instance.removeModifier(id);
+        if (amount != 0.0) {
+            instance.addPermanentModifier(new AttributeModifier(id, amount, operation));
+        }
+    }
+
+    private static void applyRegeneration(LivingEntity entity, int amplifier) {
+        MobEffectInstance existing = entity.getEffect(MobEffects.REGENERATION);
+        if (existing == null) {
+            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, REGEN_DURATION, amplifier, false, false, true));
+        } else if (existing.getDuration() <= REGEN_REFRESH_THRESHOLD
+                || (existing.getAmplifier() != amplifier && existing.getDuration() <= REGEN_DURATION)) {
+            entity.removeEffect(MobEffects.REGENERATION);
+            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, REGEN_DURATION, amplifier, false, false, true));
+        }
+    }
+
+    private static void removeRegeneration(LivingEntity entity) {
+        MobEffectInstance existing = entity.getEffect(MobEffects.REGENERATION);
+        if (existing != null && existing.getDuration() <= REGEN_DURATION) {
+            entity.removeEffect(MobEffects.REGENERATION);
+        }
+    }
+
+    private static void removeAllBonuses(LivingEntity entity) {
+        setModifier(entity, Attributes.ATTACK_DAMAGE, ATTACK_DAMAGE_ID,
+                0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+        setModifier(entity, ModAttributes.MAGIC_DAMAGE_RATE, MAGIC_DAMAGE_ID,
+                0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+        setModifier(entity, Attributes.ARMOR, ARMOR_ID,
+                0.0, AttributeModifier.Operation.ADD_VALUE);
+        removeRegeneration(entity);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, context, tooltip, flag);
+        Level level = context.level();
+        if (Screen.hasShiftDown() && level != null && level.isClientSide()) {
+            ShadowBreathClientTooltip.addCurrentBonusTooltip(tooltip);
+        } else {
+            for (int i = 0; i < 9; i++) {
+                tooltip.add(Component.translatable("tooltip.pasterdream.shadow_breath." + i));
+            }
+            tooltip.add(Component.translatable("tooltip.pasterdream.shadow_breath.hint"));
+        }
+    }
+}

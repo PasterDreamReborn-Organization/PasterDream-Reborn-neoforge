@@ -2,6 +2,10 @@ package com.pasterdream.pasterdreammod.event;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
+import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
+import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagInventoryCapability;
+import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -19,5 +23,11 @@ public final class ModCapabilities
     {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_CRAFTING_TABLE.get(),
                 (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
+        event.registerItem(Capabilities.ItemHandler.ITEM,
+                (stack, context) -> new StorageBagInventoryCapability(stack, StorageBagItem.SLOT_COUNT),
+                ModItems.STORAGE_BAG.get());
+        event.registerItem(Capabilities.ItemHandler.ITEM,
+                (stack, context) -> new StorageBagInventoryCapability(stack, LargeStorageBagItem.SLOT_COUNT),
+                ModItems.LARGE_STORAGE_BAG.get());
     }
 }

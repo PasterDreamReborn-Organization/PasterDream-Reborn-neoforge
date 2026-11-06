@@ -46,6 +46,7 @@ public class ModRecipesProvider extends RecipeProvider {
         quartzRecipes(output);
         blackStickRecipes(output);
         materialRecipes(output);
+        storageBagRecipes(output);
         blackMetalRecipes(output);
         shadowAlloyToolRecipes(output);
         shadowErosionWorkshopRecipes(output);
@@ -990,6 +991,29 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('c', ModItems.FABRIC.get())
                 .unlockedBy(getHasName(ModItems.FABRIC.get()), has(ModItems.FABRIC.get()))
                 .save(pWriter);
+    }
+
+    // ===== 便携储物袋配方 =====
+    private void storageBagRecipes(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.STORAGE_BAG.get(), 1)
+                .pattern(" b ")
+                .pattern("a a")
+                .pattern(" a ")
+                .define('a', ModItems.FABRIC.get())
+                .define('b', ModItems.SPOOL.get())
+                .unlockedBy(getHasName(ModItems.FABRIC.get()), has(ModItems.FABRIC.get()))
+                .save(pWriter);
+
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.LARGE_STORAGE_BAG.get())
+                        .pattern(" d ")
+                        .pattern("bab")
+                        .pattern(" c ")
+                        .define('a', ModItems.STORAGE_BAG.get())
+                        .define('b', ModItems.FABRIC.get())
+                        .define('c', Items.ENDER_PEARL)
+                        .define('d', Items.DIAMOND)
+                        .unlockedBy(getHasName(ModItems.STORAGE_BAG.get()), has(ModItems.STORAGE_BAG.get())),
+                pWriter, "large_storage_bag");
     }
 
     // ===== 钛金装备配方 =====

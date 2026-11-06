@@ -3,6 +3,8 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableMenu;
+import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagMenu;
+import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -27,6 +29,14 @@ public class ModMenus {
                 BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
                 return new WeaponWorkshopCraftingTableMenu(windowId, inv, (WeaponWorkshopCraftingTableBlockEntity) blockEntity);
             }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<StorageBagMenu>> STORAGE_BAG =
+            MENUS.register("storage_bag", () -> IMenuTypeExtension.create(
+                    (windowId, inv, data) -> new StorageBagMenu(windowId, inv, data)));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<LargeStorageBagMenu>> LARGE_STORAGE_BAG =
+            MENUS.register("large_storage_bag", () -> IMenuTypeExtension.create(
+                    (windowId, inv, data) -> new LargeStorageBagMenu(windowId, inv, data)));
 
     public static void register(IEventBus eventBus) {
         MENUS.register(eventBus);
