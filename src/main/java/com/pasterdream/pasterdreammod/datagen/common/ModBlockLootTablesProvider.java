@@ -51,6 +51,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_DUST_PIECE.get())
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                         .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
+        // 琥珀糖物品尚未迁移，暂以自掉落保持数据生成闭合，获取待后续批次补全。
+        dropSelf(ModBlocks.AMBER_CANDY_ORE.get());
         // ===== 染梦世界·方解石原版矿物（掉落与原版一致） =====
         add(ModBlocks.CALCITE_COAL_ORE.get(), block -> createOreDrop(block, Items.COAL));
         add(ModBlocks.CALCITE_IRON_ORE.get(), block -> createOreDrop(block, Items.RAW_IRON));
@@ -89,6 +91,11 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.CALCITE_TILES_SLAB.get(), block -> createSlabItemTable(ModBlocks.CALCITE_TILES_SLAB.get()));
         dropSelf(ModBlocks.CALCITE_TILES_WALL.get());
         dropSelf(ModBlocks.PINK_SLIME_BLOCK.get());
+        // 粉顶菇植物尚未迁移，暂以自掉落保持数据生成闭合，获取待后续批次补全。
+        dropSelf(ModBlocks.PINK_MUSHROOM_BLOCK.get());
+        add(ModBlocks.PINK_MUSHROOM_STEM.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(Items.AIR)));
+        dropSelf(ModBlocks.PINK_SHROOMLIGHT.get());
         add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), block -> createSilkTouchOnlyTable(block));
         add(ModBlocks.SMALL_DYEDREAM_BUD.get(),
                 block -> createSilkTouchDispatchTable(block,
@@ -104,6 +111,48 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))))));
         dropSelf(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
         dropSelf(ModBlocks.DYEDREAM_BUD_BLOCK.get());
+        dropSelf(ModBlocks.DYEDREAM_BUD_BRICKS.get());
+        dropSelf(ModBlocks.DYEDREAM_BUD_STAIRS.get());
+        add(ModBlocks.DYEDREAM_BUD_SLAB.get(), block -> createSlabItemTable(ModBlocks.DYEDREAM_BUD_SLAB.get()));
+        dropSelf(ModBlocks.DYEDREAM_BUD_WALL.get());
+        dropSelf(ModBlocks.DYEDREAM_SANDSTONE.get());
+        dropSelf(ModBlocks.DYEDREAM_SANDSTONE_STAIRS.get());
+        add(ModBlocks.DYEDREAM_SANDSTONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.DYEDREAM_SANDSTONE_SLAB.get()));
+        dropSelf(ModBlocks.DYEDREAM_SANDSTONE_WALL.get());
+        dropSelf(ModBlocks.CUT_DYEDREAM_SANDSTONE.get());
+        dropSelf(ModBlocks.CUT_DYEDREAM_SANDSTONE_STAIRS.get());
+        add(ModBlocks.CUT_DYEDREAM_SANDSTONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.CUT_DYEDREAM_SANDSTONE_SLAB.get()));
+        dropSelf(ModBlocks.CUT_DYEDREAM_SANDSTONE_WALL.get());
+        dropSelf(ModBlocks.CHISELED_DYEDREAM_SANDSTONE.get());
+        dropSelf(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE.get());
+        dropSelf(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_STAIRS.get());
+        add(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_SLAB.get()));
+        dropSelf(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_WALL.get());
+        add(ModBlocks.DYEDREAM_GLASS.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(Items.AIR)));
+        add(ModBlocks.DYEDREAM_GLASS_PANE.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(Items.AIR)));
+        add(ModBlocks.CARVE_DYEDREAM_GLASS.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(Items.AIR)));
+        add(ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(Items.AIR)));
+        add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(Items.AIR)));
+        add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(Items.AIR)));
+        add(ModBlocks.DYEDREAM_ICE.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(Items.AIR)));
+        add(ModBlocks.DYEDREAM_PACKED_ICE.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(Items.AIR)));
+        dropSelf(ModBlocks.CLOUD.get());
+        dropSelf(ModBlocks.DARK_CLOUD.get());
+        dropSelf(ModBlocks.BIG_BUBBLE.get());
+        dropSelf(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get());
+        dropSelf(ModBlocks.DYEDREAM_LANTERN.get());
+        dropSelf(ModBlocks.ICE_STONE.get());
+        add(ModBlocks.ICE_BUD.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModBlocks.ICE_BUD.get()))));
+        dropSelf(ModBlocks.CALCITE_CONE.get());
+        dropSelf(ModBlocks.SALT_BLOCK.get());
+        dropSelf(ModBlocks.CHARGED_AMETHYST_BLOCK.get());
         add(ModBlocks.TITANIUM_ORE.get(), block -> createOreDrop(block, ModItems.RAW_TITANIUM.get()));
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), block -> createOreDrop(block, ModItems.RAW_TITANIUM.get()));
         dropSelf(ModBlocks.RAW_TITANIUM_BLOCK.get());

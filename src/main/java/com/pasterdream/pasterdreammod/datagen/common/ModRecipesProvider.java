@@ -49,6 +49,7 @@ public class ModRecipesProvider extends RecipeProvider {
         calciteRecipes(output);
         calciteOreCookingRecipes(output);
         dyedreamBlockRecipes(output);
+        dyedreamMaterialRecipes(output);
         blackStickRecipes(output);
         materialRecipes(output);
         storageBagRecipes(output);
@@ -657,6 +658,148 @@ public class ModRecipesProvider extends RecipeProvider {
         dyeConversionTag(pWriter, ItemTags.LEAVES, ModBlocks.DYEDREAM_LEAVES.get().asItem());
         dyeConversionTag(pWriter, ItemTags.LOGS, ModBlocks.DYEDREAM_LOG.get().asItem());
         dyeConversionTag(pWriter, ItemTags.PLANKS, ModBlocks.DYEDREAM_PLANKS.get().asItem());
+        dyeConversion(pWriter, Items.SHROOMLIGHT, ModBlocks.PINK_SHROOMLIGHT.get().asItem());
+        dyeConversion(pWriter, Items.ICE, ModBlocks.DYEDREAM_ICE.get().asItem());
+        dyeConversion(pWriter, Items.PACKED_ICE, ModBlocks.DYEDREAM_PACKED_ICE.get().asItem());
+        dyeConversion(pWriter, Items.GLASS, ModBlocks.DYEDREAM_GLASS.get().asItem());
+    }
+
+    private void dyedreamMaterialRecipes(RecipeOutput pWriter) {
+        // 9 染梦冰 → 1 染梦浮冰
+        RecipeHelpers.storageCompress(pWriter, ModBlocks.DYEDREAM_ICE.get(), ModBlocks.DYEDREAM_PACKED_ICE.get(), PasterDreamMod.MOD_ID);
+
+        // ===== 染梦玻璃系列 =====
+        // 染梦沙 → 染梦玻璃（熔炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DYEDREAM_SAND.get()),
+                        RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_GLASS.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_SAND.get()), has(ModBlocks.DYEDREAM_SAND.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_glass_from_smelting");
+
+        // 染梦玻璃 → 16× 染梦玻璃板
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_GLASS_PANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModBlocks.DYEDREAM_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_GLASS.get()), has(ModBlocks.DYEDREAM_GLASS.get()))
+                .save(pWriter);
+
+        // 4× 染梦玻璃 → 4× 雕花染梦玻璃
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CARVE_DYEDREAM_GLASS.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModBlocks.DYEDREAM_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_GLASS.get()), has(ModBlocks.DYEDREAM_GLASS.get()))
+                .save(pWriter);
+
+        // 雕花染梦玻璃 → 16× 雕花染梦玻璃板
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModBlocks.CARVE_DYEDREAM_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.CARVE_DYEDREAM_GLASS.get()), has(ModBlocks.CARVE_DYEDREAM_GLASS.get()))
+                .save(pWriter);
+
+        // 雕花染梦玻璃 + 金粒 → 镶金雕花染梦玻璃
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get(), 1)
+                .pattern("ab")
+                .define('a', ModBlocks.CARVE_DYEDREAM_GLASS.get())
+                .define('b', Items.GOLD_NUGGET)
+                .unlockedBy(getHasName(ModBlocks.CARVE_DYEDREAM_GLASS.get()), has(ModBlocks.CARVE_DYEDREAM_GLASS.get()))
+                .save(pWriter);
+
+        // 镶金雕花染梦玻璃 → 16× 镶金雕花染梦玻璃板
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get()), has(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get()))
+                .save(pWriter);
+
+        // ===== 染梦灯 =====
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get(), 2)
+                .pattern("aba")
+                .pattern("bcb")
+                .pattern("aba")
+                .define('a', ModItems.DYEDREAM_QUARTZ.get())
+                .define('b', ModBlocks.DYEDREAM_GLASS.get())
+                .define('c', ModItems.DYEDREAM_DYE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_LANTERN.get(), 1)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', Items.IRON_NUGGET)
+                .define('b', ModItems.DYEDREAM_DYE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
+                .save(pWriter);
+
+        // ===== 染梦水晶建材 =====
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_BRICKS.get(), 4)
+                .pattern("ab")
+                .pattern("ba")
+                .define('a', ModBlocks.DYEDREAM_GLASS.get())
+                .define('b', ModItems.DYEDREAM_BUD_NUGGET.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_BUD_NUGGET.get()), has(ModItems.DYEDREAM_BUD_NUGGET.get()))
+                .save(pWriter);
+
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModBlocks.DYEDREAM_BUD_BRICKS.get(), ModBlocks.DYEDREAM_BUD_STAIRS.get(),
+                ModBlocks.DYEDREAM_BUD_SLAB.get(), ModBlocks.DYEDREAM_BUD_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        // ===== 染梦砂岩 =====
+        // 4× 染梦沙 → 染梦砂岩
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_SANDSTONE.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModBlocks.DYEDREAM_SAND.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_SAND.get()), has(ModBlocks.DYEDREAM_SAND.get()))
+                .save(pWriter);
+
+        // 4× 染梦砂岩 → 4× 切制染梦砂岩
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CUT_DYEDREAM_SANDSTONE.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.DYEDREAM_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_SANDSTONE.get()), has(ModItems.DYEDREAM_SANDSTONE.get()))
+                .save(pWriter);
+
+        // 2× 染梦砂岩台阶 → 雕纹染梦砂岩
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_DYEDREAM_SANDSTONE.get(), 1)
+                .pattern("a")
+                .pattern("a")
+                .define('a', ModItems.DYEDREAM_SANDSTONE_SLAB.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_SANDSTONE_SLAB.get()), has(ModItems.DYEDREAM_SANDSTONE_SLAB.get()))
+                .save(pWriter);
+
+        // 烧炼：染梦砂岩 → 平滑染梦砂岩
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.DYEDREAM_SANDSTONE.get()),
+                        RecipeCategory.MISC, ModItems.SMOOTH_DYEDREAM_SANDSTONE.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_SANDSTONE.get()), has(ModItems.DYEDREAM_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":smooth_dyedream_sandstone_from_smelting");
+
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.DYEDREAM_SANDSTONE.get(), ModItems.DYEDREAM_SANDSTONE_STAIRS.get(),
+                ModItems.DYEDREAM_SANDSTONE_SLAB.get(), ModItems.DYEDREAM_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.CUT_DYEDREAM_SANDSTONE.get(), ModItems.CUT_DYEDREAM_SANDSTONE_STAIRS.get(),
+                ModItems.CUT_DYEDREAM_SANDSTONE_SLAB.get(), ModItems.CUT_DYEDREAM_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.SMOOTH_DYEDREAM_SANDSTONE.get(), ModItems.SMOOTH_DYEDREAM_SANDSTONE_STAIRS.get(),
+                ModItems.SMOOTH_DYEDREAM_SANDSTONE_SLAB.get(), ModItems.SMOOTH_DYEDREAM_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        var sandstoneIngredient = Ingredient.of(ModItems.DYEDREAM_SANDSTONE.get());
+        SingleItemRecipeBuilder.stonecutting(sandstoneIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.CUT_DYEDREAM_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_SANDSTONE.get()), has(ModItems.DYEDREAM_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cut_dyedream_sandstone_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(sandstoneIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_DYEDREAM_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_SANDSTONE.get()), has(ModItems.DYEDREAM_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_dyedream_sandstone_from_stonecutting");
     }
 
     private void dyeConversion(RecipeOutput writer, ItemLike material, ItemLike result) {

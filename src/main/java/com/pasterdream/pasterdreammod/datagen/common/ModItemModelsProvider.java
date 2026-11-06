@@ -119,6 +119,20 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/dyedream_trapdoor"));
         wallItem(ModItems.POLISHED_CALCITE_WALL.getId().getPath(), ModItems.POLISHED_CALCITE.getId().getPath());
         wallItem(ModItems.CALCITE_TILES_WALL.getId().getPath(), ModItems.CALCITE_TILES.getId().getPath());
+        wallItem(ModItems.DYEDREAM_SANDSTONE_WALL.getId().getPath(), ModItems.DYEDREAM_SANDSTONE.getId().getPath());
+        wallItem(ModItems.CUT_DYEDREAM_SANDSTONE_WALL.getId().getPath(), ModItems.CUT_DYEDREAM_SANDSTONE.getId().getPath());
+        withExistingParent(ModItems.SMOOTH_DYEDREAM_SANDSTONE_WALL.getId().getPath(), mcLoc("block/wall_inventory"))
+                .texture("wall", modLoc("block/dyedream_sandstone_top"));
+        wallItem(ModItems.DYEDREAM_BUD_WALL.getId().getPath(), ModItems.DYEDREAM_BUD_BRICKS.getId().getPath());
+        withExistingParent(ModItems.DYEDREAM_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_glass")).renderType("minecraft:translucent");
+        withExistingParent(ModItems.CARVE_DYEDREAM_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/carve_dyedream_glass")).renderType("minecraft:translucent");
+        withExistingParent(ModItems.GOLD_CARVE_DYEDREAM_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/gold_carve_dyedream_glass")).renderType("minecraft:translucent");
+        withExistingParent(ModItems.ICE_BUD.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/ice_bud"));
+        withExistingParent(ModItems.CALCITE_CONE.getId().getPath(), modLoc("block/calcite_cone_tip"));
         withExistingParent(ModItems.SMALL_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/small_dyedream_bud"));
         withExistingParent(ModItems.MEDIUM_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
