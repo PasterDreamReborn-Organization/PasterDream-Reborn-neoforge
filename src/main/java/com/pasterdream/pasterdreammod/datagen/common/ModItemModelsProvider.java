@@ -168,6 +168,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .predicate(ResourceLocation.withDefaultNamespace("pull"), 0.9F)
                 .model(fluffyWindBowPulling2).end();
         basicItem(ModItems.FRACTURED_ANGEL_STATUE.get());
+        basicItem(ModItems.GOLD_CHARM.get());
+        basicItem(ModItems.ENDEYE_CHARM.get());
+        basicItem(ModItems.SEA_CHARM.get());
+        basicItem(ModItems.CARAPAX_CHARM.get());
+        basicItem(ModItems.WORLDTREE_SEEDPOD.get());
+        basicItem(ModItems.GARLAND.get());
+        basicItem(ModItems.SNOW_VOW_HEAD.get());
         basicItem(ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
         basicItem(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get());
         basicItem(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());

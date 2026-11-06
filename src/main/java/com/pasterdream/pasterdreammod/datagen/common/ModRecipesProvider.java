@@ -36,6 +36,7 @@ public class ModRecipesProvider extends RecipeProvider {
     protected void buildRecipes(RecipeOutput output) {
         dustRecipes(output);
         soulRecipes(output);
+        curioRecipes(output);
         quartzRecipes(output);
         blackStickRecipes(output);
         materialRecipes(output);
@@ -150,6 +151,39 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('a', ModItems.TITANIUM_NUGGET.get())
                 .define('b', ModItems.SOUL_ESSENCE.get())
                 .unlockedBy(getHasName(ModItems.SOUL_ESSENCE.get()), has(ModItems.SOUL_ESSENCE.get()))
+                .save(pWriter);
+    }
+
+    private void curioRecipes(RecipeOutput pWriter) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GOLD_CHARM.get(), 1)
+                .requires(ModItems.EMBRYO_CHARM.get())
+                .requires(Items.GOLD_INGOT)
+                .unlockedBy(getHasName(ModItems.EMBRYO_CHARM.get()), has(ModItems.EMBRYO_CHARM.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ENDEYE_CHARM.get(), 1)
+                .requires(ModItems.EMBRYO_CHARM.get())
+                .requires(Items.ENDER_EYE)
+                .requires(Items.CHORUS_FLOWER)
+                .unlockedBy(getHasName(ModItems.EMBRYO_CHARM.get()), has(ModItems.EMBRYO_CHARM.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CARAPAX_CHARM.get(), 1)
+                .pattern("aba")
+                .pattern("bcb")
+                .pattern("aba")
+                .define('a', Items.SEAGRASS)
+                .define('b', Items.TURTLE_SCUTE)
+                .define('c', ModItems.EMBRYO_CHARM.get())
+                .unlockedBy(getHasName(ModItems.EMBRYO_CHARM.get()), has(ModItems.EMBRYO_CHARM.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GARLAND.get(), 1)
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("aaa")
+                .define('a', ItemTags.SMALL_FLOWERS)
+                .unlockedBy("has_poppy", has(ItemTags.SMALL_FLOWERS))
                 .save(pWriter);
     }
 

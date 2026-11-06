@@ -17,6 +17,7 @@ import com.pasterdream.pasterdreammod.world.effect.DyedreamUpEffect;
 import com.pasterdream.pasterdreammod.world.effect.HighlyToxicEffect;
 import com.pasterdream.pasterdreammod.world.effect.SculkArmorEffect;
 import com.pasterdream.pasterdreammod.world.effect.MeltDreamCrystalArmorEffect;
+import com.pasterdream.pasterdreammod.world.effect.SnowVowEffect;
 import com.pasterdream.pasterdreammod.world.effect.TitaniumArmorEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
@@ -51,6 +52,8 @@ public class ModEffects {
             MOB_EFFECTS.register("melt_dream_crystal_armor", MeltDreamCrystalArmorEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> HIGHLY_TOXIC =
             MOB_EFFECTS.register("highly_toxic", HighlyToxicEffect::new);
+    public static final DeferredHolder<MobEffect, MobEffect> SNOW_VOW =
+            MOB_EFFECTS.register("snow_vow", SnowVowEffect::new);
 
     public static final DeferredHolder<MobEffect, MobEffect> REST =
             MOB_EFFECTS.register("rest", RestEffect::new);

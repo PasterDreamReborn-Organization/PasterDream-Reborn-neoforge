@@ -401,6 +401,25 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("rarity.pasterdream.miracle", "Miracle");
         add("tooltip.pasterdream.quality", "Quality: %s %s");
 
+        // ===== Curios =====
+        add(ModItems.GOLD_CHARM.get(), "Gold Charm");
+        add(ModItems.ENDEYE_CHARM.get(), "Endeye Charm");
+        add(ModItems.SEA_CHARM.get(), "Sea Charm");
+        add(ModItems.CARAPAX_CHARM.get(), "Carapax Charm");
+        add(ModItems.WORLDTREE_SEEDPOD.get(), "Worldtree Seedpod");
+        add(ModItems.GARLAND.get(), "Garland");
+        add(ModItems.SNOW_VOW_HEAD.get(), "Snow Vow");
+        add("effect.pasterdream.snow_vow", "Snow Vow");
+        add("tooltip.pasterdream.gold_charm.piglin", "§7▪ §9Makes piglins neutral");
+        add("tooltip.pasterdream.endeye_charm.enderman", "§7▪ §9Makes endermen neutral");
+        add("tooltip.pasterdream.snow_vow_head.effect.area", "§7▪ §9Grants nearby players within 7 blocks an effect");
+        add("tooltip.pasterdream.snow_vow_head.effect.bonus", "§7▪ §9Luck +3  Immune to burning and freezing");
+        add("tooltip.pasterdream.worldtree_seedpod.condition", "§7▪ §9In Dyedream World, open sky, Y>160, daytime, standing on Worldtree Leaves");
+        add("tooltip.pasterdream.worldtree_seedpod.hunger", "§7▪ §4Constantly increases exhaustion");
+        add("tooltip.pasterdream.worldtree_seedpod.energy", "§7▪ §9Melt Dream Energy +360/h");
+        add("tooltip.pasterdream.worldtree_seedpod.flavor", "§7§o--Leaves fall to root, pods burst to crown");
+        add("jei.pasterdream.snow_vow_head.info", "Has a chance to be obtained by opening Melt Dream Crystal Chests.\nCan also be obtained from chests on the Christmas Tree Island.");
+
         // ===== Wind Journey materials and gear =====
         add(ModItems.CONGEAL_WIND.get(), "Congeal Wind");
         add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "Congeal Wind Iron Ingot");

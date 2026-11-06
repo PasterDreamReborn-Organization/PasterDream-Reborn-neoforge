@@ -25,6 +25,13 @@ import com.pasterdream.pasterdreammod.world.item.curio.EmbryoBeltItem;
 import com.pasterdream.pasterdreammod.world.item.curio.EmbryoCharmItem;
 import com.pasterdream.pasterdreammod.world.item.curio.EmbryoNecklaceItem;
 import com.pasterdream.pasterdreammod.world.item.curio.EmbryoRingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.CarapaxCharmItem;
+import com.pasterdream.pasterdreammod.world.item.curio.EndeyeCharmItem;
+import com.pasterdream.pasterdreammod.world.item.curio.GarlandItem;
+import com.pasterdream.pasterdreammod.world.item.curio.GoldCharmItem;
+import com.pasterdream.pasterdreammod.world.item.curio.SeaCharmItem;
+import com.pasterdream.pasterdreammod.world.item.curio.SnowVowHeadItem;
+import com.pasterdream.pasterdreammod.world.item.curio.WorldtreeSeedpodItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
@@ -107,6 +114,13 @@ public class ModItems {
     public static final DeferredItem<Item> EMBRYO_BELT = ITEMS.register("embryo_belt", EmbryoBeltItem::new);
     public static final DeferredItem<Item> FRACTURED_ANGEL_STATUE = ITEMS.register("fractured_angel_statue",
             FracturedAngelStatueItem::new);
+    public static final DeferredItem<Item> GOLD_CHARM = ITEMS.register("gold_charm", GoldCharmItem::new);
+    public static final DeferredItem<Item> ENDEYE_CHARM = ITEMS.register("endeye_charm", EndeyeCharmItem::new);
+    public static final DeferredItem<Item> SEA_CHARM = ITEMS.register("sea_charm", SeaCharmItem::new);
+    public static final DeferredItem<Item> CARAPAX_CHARM = ITEMS.register("carapax_charm", CarapaxCharmItem::new);
+    public static final DeferredItem<Item> WORLDTREE_SEEDPOD = ITEMS.register("worldtree_seedpod", WorldtreeSeedpodItem::new);
+    public static final DeferredItem<Item> GARLAND = ITEMS.register("garland", GarlandItem::new);
+    public static final DeferredItem<Item> SNOW_VOW_HEAD = ITEMS.register("snow_vow_head", SnowVowHeadItem::new);
 
     // ===== 露滴 =====
     public static final DeferredItem<Item> BLUE_HEART_OF_THE_SEA = ITEMS.register("blue_heart_of_the_sea",
