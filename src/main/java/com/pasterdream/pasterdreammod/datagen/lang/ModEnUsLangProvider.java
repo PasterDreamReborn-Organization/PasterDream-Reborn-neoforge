@@ -14,6 +14,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "Meltdream Liquid Bucket");
+        add(ModItems.SHADOW_LIQUID_BUCKET.get(), "Shadow Liquid Bucket");
+        add("fluid.pasterdream.melt_dream_liquid", "Meltdream Liquid");
+        add("fluid.pasterdream.shadow_liquid", "Shadow Liquid");
         add("key.pasterdream.blink", "Blink");
         add("key.categories.pasterdream", "PasterDream");
         add("effect.pasterdream.evasion", "Evasion");

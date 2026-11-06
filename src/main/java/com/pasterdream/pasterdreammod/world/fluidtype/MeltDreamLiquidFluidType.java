@@ -1,0 +1,24 @@
+package com.pasterdream.pasterdreammod.world.fluidtype;
+
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.pathfinder.PathType;
+import net.neoforged.neoforge.common.SoundActions;
+import net.neoforged.neoforge.fluids.FluidType;
+
+public class MeltDreamLiquidFluidType extends PasterDreamBaseFluidType
+{
+    public static final FluidType TYPE = new MeltDreamLiquidFluidType();
+
+    public MeltDreamLiquidFluidType()
+    {
+        super(Properties.create().canSwim(false).canDrown(false).pathType(PathType.LAVA).adjacentPathType(null).motionScale(0.007).lightLevel(12).viscosity(100).temperature(10).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "block/melt_dream_liquid_still"), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "block/melt_dream_liquid_flowing"), 0XFFFFFFFF);
+    }
+
+    @Override
+    public String getDescriptionId()
+    {
+        return "fluid." + PasterDreamMod.MOD_ID + ".melt_dream_liquid";
+    }
+}

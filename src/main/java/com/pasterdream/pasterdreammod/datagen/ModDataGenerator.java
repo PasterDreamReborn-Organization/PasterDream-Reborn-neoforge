@@ -27,6 +27,7 @@ public final class ModDataGenerator {
                 new ModWorldGenProvider(output, event.getLookupProvider()));
         var lookup = worldgen.getRegistryProvider();
 
+        generator.addProvider(event.includeServer(), new ModFluidTagsProvider(output, lookup, existing));
         generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(output, lookup, existing));
         generator.addProvider(event.includeServer(), new ModBiomeTagsProvider(output, lookup, existing));
         var blockTags = generator.addProvider(event.includeServer(),

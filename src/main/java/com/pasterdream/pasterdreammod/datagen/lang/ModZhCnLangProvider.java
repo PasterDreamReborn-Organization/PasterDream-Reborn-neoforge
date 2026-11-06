@@ -14,6 +14,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "融梦涌泉桶");
+        add(ModItems.SHADOW_LIQUID_BUCKET.get(), "熔融阴影桶");
+        add("fluid.pasterdream.melt_dream_liquid", "融梦涌泉");
+        add("fluid.pasterdream.shadow_liquid", "熔融阴影");
         add("key.pasterdream.blink", "瞬身术");
         add("key.categories.pasterdream", "帕斯特之梦");
         add("effect.pasterdream.evasion", "回避");

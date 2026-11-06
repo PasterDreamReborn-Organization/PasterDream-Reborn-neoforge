@@ -1,10 +1,12 @@
 package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.init.ModFluids;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -15,6 +17,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        withExistingParent(ModItems.MELT_DREAM_LIQUID_BUCKET.getId().getPath(), "neoforge:item/bucket_drip")
+                .customLoader(DynamicFluidContainerModelBuilder::begin).fluid(ModFluids.MELT_DREAM_LIQUID.get()).end();
+        withExistingParent(ModItems.SHADOW_LIQUID_BUCKET.getId().getPath(), "neoforge:item/bucket_drip")
+                .customLoader(DynamicFluidContainerModelBuilder::begin).fluid(ModFluids.SHADOW_LIQUID.get()).end();
+
         basicItem(ModItems.TITANIUM_INGOT.get());
         basicItem(ModItems.TITANIUM_NUGGET.get());
         basicItem(ModItems.RAW_TITANIUM.get());

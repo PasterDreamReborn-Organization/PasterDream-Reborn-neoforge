@@ -246,6 +246,11 @@ public class ModItems {
     public static final DeferredItem<BlockItem> CALCITE_LAPIS_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_LAPIS_ORE);
     public static final DeferredItem<BlockItem> CALCITE_DIAMOND_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_DIAMOND_ORE);
     public static final DeferredItem<BlockItem> CALCITE_EMERALD_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CALCITE_EMERALD_ORE);
+    public static final DeferredItem<BucketItem> MELT_DREAM_LIQUID_BUCKET = ITEMS.register("melt_dream_liquid_bucket",
+            () -> new BucketItem(ModFluids.MELT_DREAM_LIQUID.get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.RARE)));
+    public static final DeferredItem<BucketItem> SHADOW_LIQUID_BUCKET = ITEMS.register("shadow_liquid_bucket",
+            () -> new BucketItem(ModFluids.SHADOW_LIQUID.get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON)));
+
     public static final DeferredItem<BlockItem> PINK_SLIME_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_SLIME_BLOCK);
     public static final DeferredItem<BlockItem> PINK_MUSHROOM_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_MUSHROOM_BLOCK);
     public static final DeferredItem<BlockItem> PINK_MUSHROOM_STEM = ITEMS.registerSimpleBlockItem(ModBlocks.PINK_MUSHROOM_STEM);
