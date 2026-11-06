@@ -4,6 +4,9 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.client.model.KusanagiVenomStingerModel;
 import com.pasterdream.pasterdreammod.init.ModBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.init.ModEntityRenderer;
+import com.pasterdream.pasterdreammod.init.ModItems;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -22,6 +25,18 @@ import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 @EventBusSubscriber(modid = PasterDreamMod.MOD_ID, value = Dist.CLIENT)
 public final class ClientModEvents {
     private ClientModEvents() {
+    }
+
+    @SubscribeEvent
+    public static void clientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            ItemProperties.register(ModItems.FLUFFY_WIND_BOW.get(), ResourceLocation.withDefaultNamespace("pulling"),
+                    (stack, level, entity, seed) -> entity != null && entity.isUsingItem()
+                            && entity.getUseItem() == stack ? 1.0F : 0.0F);
+            ItemProperties.register(ModItems.FLUFFY_WIND_BOW.get(), ResourceLocation.withDefaultNamespace("pull"),
+                    (stack, level, entity, seed) -> entity == null || entity.getUseItem() != stack ? 0.0F
+                            : (float) (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F);
+        });
     }
 
     /** 实体渲染器 + 方块实体渲染器。 */

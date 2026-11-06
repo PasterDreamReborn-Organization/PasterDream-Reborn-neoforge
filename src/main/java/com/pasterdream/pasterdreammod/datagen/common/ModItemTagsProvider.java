@@ -109,10 +109,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.TRIDENT_ENCHANTABLE)
                 .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get())
                 .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
-        tag(ItemTags.HEAD_ARMOR).add(ModItems.COPPER_HELMET.get()).add(ModItems.MELT_DREAM_HELMET.get()).add(ModItems.TITANIUM_HELMET.get()).add(ModItems.SCULK_HELMET.get()).add(ModItems.DYEDREAM_HELMET.get());
-        tag(ItemTags.CHEST_ARMOR).add(ModItems.COPPER_CHESTPLATE.get()).add(ModItems.MELT_DREAM_CHESTPLATE.get()).add(ModItems.TITANIUM_CHESTPLATE.get()).add(ModItems.SCULK_CHESTPLATE.get()).add(ModItems.DYEDREAM_CHESTPLATE.get());
-        tag(ItemTags.LEG_ARMOR).add(ModItems.COPPER_LEGGINGS.get()).add(ModItems.MELT_DREAM_LEGGINGS.get()).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.SCULK_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get());
-        tag(ItemTags.FOOT_ARMOR).add(ModItems.COPPER_BOOTS.get()).add(ModItems.MELT_DREAM_BOOTS.get()).add(ModItems.TITANIUM_BOOTS.get()).add(ModItems.SCULK_BOOTS.get()).add(ModItems.DYEDREAM_BOOTS.get());
+        tag(ItemTags.BOW_ENCHANTABLE).add(ModItems.FLUFFY_WIND_BOW.get());
+        tag(ModItemTags.CHANNELING_ENCHANTABLE)
+                .addTag(ItemTags.TRIDENT_ENCHANTABLE)
+                .add(ModItems.FLUFFY_WIND_BOW.get());
+        tag(ItemTags.HEAD_ARMOR).add(ModItems.COPPER_HELMET.get()).add(ModItems.MELT_DREAM_HELMET.get()).add(ModItems.TITANIUM_HELMET.get()).add(ModItems.SCULK_HELMET.get()).add(ModItems.DYEDREAM_HELMET.get()).add(ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR).add(ModItems.COPPER_CHESTPLATE.get()).add(ModItems.MELT_DREAM_CHESTPLATE.get()).add(ModItems.TITANIUM_CHESTPLATE.get()).add(ModItems.SCULK_CHESTPLATE.get()).add(ModItems.DYEDREAM_CHESTPLATE.get()).add(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get()).add(ModItems.WIND_RUNNER_CLOAK.get());
+        tag(ItemTags.LEG_ARMOR).add(ModItems.COPPER_LEGGINGS.get()).add(ModItems.MELT_DREAM_LEGGINGS.get()).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.SCULK_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get()).add(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR).add(ModItems.COPPER_BOOTS.get()).add(ModItems.MELT_DREAM_BOOTS.get()).add(ModItems.TITANIUM_BOOTS.get()).add(ModItems.SCULK_BOOTS.get()).add(ModItems.DYEDREAM_BOOTS.get()).add(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
 
         // 金属锭标签
         tag(ModItemTags.INGOTS_TITANIUM)

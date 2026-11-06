@@ -2,7 +2,8 @@
   "required": true,
   "package": "com.pasterdream.pasterdreammod.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": ["CampfireBlockEntityMixin", "PlayerCanEatMixin", "LivingEntityAccessor", "ProtectedEffectApplicableMixin", "ProtectedEffectRemovalMixin", "SculkArmorWardenImmunityMixin", "WardenTargetMixin"],
+  "mixins": ["CampfireBlockEntityMixin", "PlayerCanEatMixin", "LivingEntityAccessor", "ProtectedEffectApplicableMixin", "ProtectedEffectRemovalMixin", "SculkArmorWardenImmunityMixin", "WardenTargetMixin", "UsingItemSpeedMixin"],
+  "client": ["CapeLayerMixin"],
   "injectors": {
     "defaultRequire": 1
   },

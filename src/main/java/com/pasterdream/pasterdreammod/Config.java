@@ -19,6 +19,13 @@ public class Config {
             .comment("『天丛云』草薙进化需要击杀的生物数，默认 200")
             .defineInRange("the_number_of_kill_enemy_to_evolve", 200, 1, Integer.MAX_VALUE);
 
+    public static final ModConfigSpec.DoubleValue FRACTURED_ANGEL_STATUE_INVULNERABLE_CHANCE = BUILDER
+            .comment("折翼天使雕像：受击后获得无敌的触发概率，默认 0.1（10%）")
+            .defineInRange("fracturedAngelStatueInvulnerableChance", 0.1, 0.0, 1.0);
+    public static final ModConfigSpec.IntValue FRACTURED_ANGEL_STATUE_INVULNERABLE_TICKS = BUILDER
+            .comment("折翼天使雕像：受击后获得的无敌时长，默认 20 tick")
+            .defineInRange("fracturedAngelStatueInvulnerableTicks", 20, 1, Integer.MAX_VALUE);
+
     // === SAN 阈值（ratio = 当前SAN / 最大SAN） ===
     public static final ModConfigSpec.DoubleValue SAN_CHEER_UP_THRESHOLD = BUILDER
             .comment("振奋效果触发阈值（ratio >= 该值），默认 0.9（90%）")

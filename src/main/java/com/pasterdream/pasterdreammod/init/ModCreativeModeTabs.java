@@ -129,6 +129,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_AXE.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_HOE.get());
+                        output.accept(ModItems.FLUFFY_WIND_BOW.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
+                        output.accept(ModItems.WIND_RUNNER_CLOAK.get());
+                        output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());
                         output.accept(ModItems.TITANIUM_AXE.get());

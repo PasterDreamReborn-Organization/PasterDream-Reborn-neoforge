@@ -1,8 +1,10 @@
 package com.pasterdream.pasterdreammod.helper.tooltipadder;
 
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 import java.util.List;
@@ -13,6 +15,12 @@ public class AddToolTip
     {
         ItemStack stack = event.getItemStack();
         List<Component> tooltip = event.getToolTip();
+
+        // 自定义稀有度自动品质行（无需在物品内手动添加）
+        Rarity rarity = stack.getRarity();
+        if (ModRarities.tierOf(rarity) != null) {
+            tooltip.add(1, ModRarities.qualityTooltip(rarity));
+        }
 
         if(stack.is(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_crystal_fragment"));

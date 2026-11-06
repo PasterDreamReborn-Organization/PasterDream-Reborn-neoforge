@@ -18,6 +18,9 @@ import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.WindRunnerCloakItem;
+import com.pasterdream.pasterdreammod.world.item.curio.FracturedAngelStatueItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
@@ -85,6 +88,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> PULSE_WIND_RUNNER_CRYSTAL = ITEMS.register("pulse_wind_runner_crystal",
             () -> new PulseWindRunnerCrystalItem());
+    public static final DeferredItem<Item> FRACTURED_ANGEL_STATUE = ITEMS.register("fractured_angel_statue",
+            FracturedAngelStatueItem::new);
 
     // ===== 露滴 =====
     public static final DeferredItem<Item> BLUE_HEART_OF_THE_SEA = ITEMS.register("blue_heart_of_the_sea",
@@ -281,6 +286,26 @@ public class ModItems {
             () -> new FluffyWindAlloyShovelItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_HOE = ITEMS.register("fluffy_wind_alloy_hoe",
             () -> new FluffyWindAlloyHoeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> FLUFFY_WIND_BOW = ITEMS.register("fluffy_wind_bow",
+            () -> new FluffyWindBowItem(new Item.Properties().fireResistant().durability(842).rarity(Rarity.UNCOMMON)));
+
+    // ===== 萦风合金装备与风行者披风 =====
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_HELMET = ITEMS.register("fluffy_wind_alloy_helmet",
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.HELMET,
+                    new Item.Properties().rarity(Rarity.UNCOMMON).durability(ArmorItem.Type.HELMET.getDurability(46))));
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_CHESTPLATE = ITEMS.register("fluffy_wind_alloy_chestplate",
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().rarity(Rarity.UNCOMMON).durability(ArmorItem.Type.CHESTPLATE.getDurability(46))));
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_LEGGINGS = ITEMS.register("fluffy_wind_alloy_leggings",
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().rarity(Rarity.UNCOMMON).durability(ArmorItem.Type.LEGGINGS.getDurability(46))));
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_BOOTS = ITEMS.register("fluffy_wind_alloy_boots",
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.BOOTS,
+                    new Item.Properties().rarity(Rarity.UNCOMMON).durability(ArmorItem.Type.BOOTS.getDurability(46))));
+    public static final DeferredItem<Item> WIND_RUNNER_CLOAK = ITEMS.register("wind_runner_cloak",
+            () -> new WindRunnerCloakItem(ModArmorMaterials.WIND_RUNNER_CLOAK, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(30))));
 
     // ===== 狱炎工具 =====
     public static final DeferredItem<Item> HELLFIRE_SWORD = ITEMS.register("hellfire_sword",

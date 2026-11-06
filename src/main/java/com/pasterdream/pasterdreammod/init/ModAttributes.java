@@ -26,6 +26,9 @@ public class ModAttributes {
     public static final DeferredHolder<Attribute, Attribute> SKILL_DAMAGE_RATE =
             ATTRIBUTES.register("skill_damage_rate", () -> new RangedAttribute(
                     "attribute.pasterdream.skill_damage_rate", 1.0, 0.0, 100.0).setSyncable(true));
+    public static final DeferredHolder<Attribute, Attribute> RANGED_CHARGE_TIME_REDUCTION =
+            ATTRIBUTES.register("ranged_charge_time_reduction", () -> new RangedAttribute(
+                    "attribute.pasterdream.ranged_charge_time_reduction", 0.0, -10.0, 1.0).setSyncable(true));
     public static final DeferredHolder<Attribute, Attribute> MAX_MELT_DREAM_ENERGY_EXTRA =
             ATTRIBUTES.register("max_melt_dream_energy_extra", () -> new RangedAttribute(
                     "attribute.pasterdream.max_melt_dream_energy_extra", 0.0, -100000.0, 100000.0).setSyncable(true));
@@ -64,6 +67,7 @@ public class ModAttributes {
         event.add(EntityType.PLAYER, MAX_SAN_EXTRA);
         event.add(EntityType.PLAYER, SKILL_COOLDOWN_REDUCTION);
         event.add(EntityType.PLAYER, SKILL_DAMAGE_RATE);
+        event.add(EntityType.PLAYER, RANGED_CHARGE_TIME_REDUCTION);
         event.add(EntityType.PLAYER, MAX_MELT_DREAM_ENERGY_EXTRA);
         event.add(EntityType.PLAYER, MELT_DREAM_VARIABILITY);
     }

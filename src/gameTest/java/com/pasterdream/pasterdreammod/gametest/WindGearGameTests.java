@@ -9,6 +9,8 @@ import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.resources.ResourceLocation;
@@ -16,11 +18,16 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SmithingRecipeInput;
 import net.neoforged.neoforge.common.util.FakePlayer;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.gametest.GameTestHolder;
 import net.neoforged.neoforge.gametest.PrefixGameTestTemplate;
 
@@ -32,6 +39,30 @@ import java.util.UUID;
 public class WindGearGameTests {
 
     private static final String MODE_TAG = "pasterdream:fluffy_wind_alloy_mode";
+
+    @GameTest(template = "empty")
+    public static void customRarityAddsQualityTooltip(GameTestHelper helper) {
+        var spear = ModItems.WINDWREATHED_THUNDER_SPEAR.toStack();
+        var tooltip = new java.util.ArrayList<Component>();
+        tooltip.add(Component.literal("item name"));
+        NeoForge.EVENT_BUS.post(new ItemTooltipEvent(spear, null, tooltip,
+                TooltipFlag.NORMAL, Item.TooltipContext.EMPTY));
+        var quality = tooltip.size() > 1 ? tooltip.get(1) : Component.empty();
+        boolean sevenStars = quality.getContents() instanceof TranslatableContents translated
+                && translated.getArgs().length == 2
+                && translated.getArgs()[1] instanceof Component stars
+                && "★★★★★★★".equals(stars.getString());
+        helper.assertTrue(tooltip.size() >= 2 && quality.equals(ModRarities.qualityTooltip(spear.getRarity()))
+                        && sevenStars,
+                "自定义传说品质应自动插入七星提示行");
+
+        var vanillaTooltip = new java.util.ArrayList<Component>();
+        vanillaTooltip.add(Component.literal("item name"));
+        NeoForge.EVENT_BUS.post(new ItemTooltipEvent(new ItemStack(Items.DIAMOND), null, vanillaTooltip,
+                TooltipFlag.NORMAL, Item.TooltipContext.EMPTY));
+        helper.assertTrue(vanillaTooltip.size() == 1, "原版品质不应增加自定义星级提示");
+        helper.succeed();
+    }
 
     @GameTest(template = "empty")
     public static void windGearPropertiesAndTags(GameTestHelper helper) {
