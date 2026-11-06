@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.WeaponWorkshopCraftingTableCraftPacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindAlloyMiningSpeedSyncPacket;
+import com.pasterdream.pasterdreammod.network.shadowerosion.ShadowErosionMiningSpeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindHoverInputPacket;
 import com.pasterdream.pasterdreammod.network.skill.KusanagiVenomStingerPacket;
 import com.pasterdream.pasterdreammod.network.skill.BlinkPacket;
@@ -44,6 +45,8 @@ public final class ModNetwork {
         registrar.playToClient(LowSanConfigSyncPacket.TYPE, LowSanConfigSyncPacket.STREAM_CODEC, LowSanConfigSyncPacket::handle);
         registrar.playToClient(WindAlloyMiningSpeedSyncPacket.TYPE, WindAlloyMiningSpeedSyncPacket.STREAM_CODEC,
                 WindAlloyMiningSpeedSyncPacket::handle);
+        registrar.playToClient(ShadowErosionMiningSpeedSyncPacket.TYPE, ShadowErosionMiningSpeedSyncPacket.STREAM_CODEC,
+                ShadowErosionMiningSpeedSyncPacket::handle);
     }
 
     /** 客户端 → 服务端。 */

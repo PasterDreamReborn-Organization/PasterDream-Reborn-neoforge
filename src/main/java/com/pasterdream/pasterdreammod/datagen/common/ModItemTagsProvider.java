@@ -69,6 +69,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.DESERT_SWORD.get())
                 .add(ModItems.CHENJINGMEN_DESERT_SWORD.get())
                 .add(ModItems.BROKEN_HERO_SWORD.get())
+                .add(ModItems.SHADOW_EROSION_DAGGER.get())
                 .add(ModItems.CONGEAL_WIND_IRON_SWORD.get())
                 .add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get())
                 .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
@@ -80,7 +81,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.MELT_DREAM_PICKAXE.get())
                 .add(ModItems.HELLFIRE_PICKAXE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_PICKAXE.get())
-                .add(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get());
+                .add(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get())
+                .add(ModItems.SHADOW_EROSION_PICKAXE.get())
+                .add(ModItems.SHADOW_ALLOY_PICKAXE.get());
         tag(ItemTags.AXES)
                 .add(ModItems.COPPER_AXE.get())
                 .add(ModItems.TITANIUM_AXE.get())
@@ -88,7 +91,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.DYEDREAM_AXE.get())
                 .add(ModItems.MELT_DREAM_AXE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_AXE.get())
-                .add(ModItems.FLUFFY_WIND_ALLOY_AXE.get());
+                .add(ModItems.FLUFFY_WIND_ALLOY_AXE.get())
+                .add(ModItems.SHADOW_EROSION_AXE.get())
+                .add(ModItems.SHADOW_ALLOY_AXE.get());
         tag(ItemTags.SHOVELS)
                 .add(ModItems.COPPER_SHOVEL.get())
                 .add(ModItems.TITANIUM_SHOVEL.get())
@@ -96,7 +101,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.DYEDREAM_SHOVEL.get())
                 .add(ModItems.MELT_DREAM_SHOVEL.get())
                 .add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get())
-                .add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get());
+                .add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get())
+                .add(ModItems.SHADOW_EROSION_SHOVEL.get())
+                .add(ModItems.SHADOW_ALLOY_SHOVEL.get());
         tag(ItemTags.HOES)
                 .add(ModItems.COPPER_HOE.get())
                 .add(ModItems.TITANIUM_HOE.get())
@@ -104,7 +111,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.DYEDREAM_HOE.get())
                 .add(ModItems.MELT_DREAM_HOE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_HOE.get())
-                .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get());
+                .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get())
+                .add(ModItems.SHADOW_EROSION_HOE.get())
+                .add(ModItems.SHADOW_ALLOY_HOE.get());
         // 『北海若』引潮沿用来源可在附魔台获得三叉戟专属附魔；1.21 由物品标签驱动。
         tag(ItemTags.TRIDENT_ENCHANTABLE)
                 .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get())
@@ -117,6 +126,17 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.CHEST_ARMOR).add(ModItems.COPPER_CHESTPLATE.get()).add(ModItems.MELT_DREAM_CHESTPLATE.get()).add(ModItems.TITANIUM_CHESTPLATE.get()).add(ModItems.SCULK_CHESTPLATE.get()).add(ModItems.DYEDREAM_CHESTPLATE.get()).add(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get()).add(ModItems.WIND_RUNNER_CLOAK.get());
         tag(ItemTags.LEG_ARMOR).add(ModItems.COPPER_LEGGINGS.get()).add(ModItems.MELT_DREAM_LEGGINGS.get()).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.SCULK_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get()).add(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
         tag(ItemTags.FOOT_ARMOR).add(ModItems.COPPER_BOOTS.get()).add(ModItems.MELT_DREAM_BOOTS.get()).add(ModItems.TITANIUM_BOOTS.get()).add(ModItems.SCULK_BOOTS.get()).add(ModItems.DYEDREAM_BOOTS.get()).add(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
+
+        tag(ModItemTags.LAMP_SHADOW_WEAPON)
+                .add(ModItems.SHADOW_EROSION_DAGGER.get())
+                .add(ModItems.SHADOW_EROSION_PICKAXE.get())
+                .add(ModItems.SHADOW_EROSION_AXE.get())
+                .add(ModItems.SHADOW_EROSION_SHOVEL.get())
+                .add(ModItems.SHADOW_EROSION_HOE.get())
+                .add(ModItems.SHADOW_ALLOY_PICKAXE.get())
+                .add(ModItems.SHADOW_ALLOY_AXE.get())
+                .add(ModItems.SHADOW_ALLOY_SHOVEL.get())
+                .add(ModItems.SHADOW_ALLOY_HOE.get());
 
         // 金属锭标签
         tag(ModItemTags.INGOTS_TITANIUM)
@@ -131,13 +151,18 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .addTag(ModItemTags.INGOTS_RAW_DYEDREAM_ALLOY)
                 .addTag(ModItemTags.INGOTS_DYEDREAM_ALLOY)
                 .addTag(ModItemTags.INGOTS_CONGEAL_WIND_IRON)
-                .addTag(ModItemTags.INGOTS_FLUFFY_WIND_ALLOY);
+                .addTag(ModItemTags.INGOTS_FLUFFY_WIND_ALLOY)
+                .addTag(ModItemTags.INGOTS_BLACK_METAL)
+                .addTag(ModItemTags.INGOTS_SHADOW_ALLOY);
         tag(ModItemTags.INGOTS_MOLTEN_GOLD)
                 .add(ModItems.MOLTEN_GOLD_INGOT.get());
         tag(ModItemTags.INGOTS_CONGEAL_WIND_IRON)
                 .add(ModItems.CONGEAL_WIND_IRON_INGOT.get());
         tag(ModItemTags.INGOTS_FLUFFY_WIND_ALLOY)
                 .add(ModItems.FLUFFY_WIND_ALLOY_INGOT.get());
+
+        tag(ModItemTags.INGOTS_BLACK_METAL).add(ModItems.BLACK_METAL_INGOT.get());
+        tag(ModItemTags.INGOTS_SHADOW_ALLOY).add(ModItems.SHADOW_ALLOY_INGOT.get());
 
         // 金属粒标签
         tag(ModItemTags.NUGGETS_TITANIUM)
@@ -151,9 +176,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .addTag(ModItemTags.NUGGETS_MOLTEN_GOLD)
                 .addTag(ModItemTags.NUGGETS_DYEDREAM_ALLOY)
                 .addTag(ModItemTags.NUGGETS_DYEDREAM_BUD)
-                .addTag(ModItemTags.NUGGETS_CONGEAL_WIND_IRON);
+                .addTag(ModItemTags.NUGGETS_CONGEAL_WIND_IRON)
+                .addTag(ModItemTags.NUGGETS_BLACK_METAL);
         tag(ModItemTags.NUGGETS_MOLTEN_GOLD)
                 .add(ModItems.MOLTEN_GOLD_NUGGET.get());
+        tag(ModItemTags.NUGGETS_BLACK_METAL).add(ModItems.BLACK_METAL_NUGGET.get());
         tag(ModItemTags.NUGGETS_CONGEAL_WIND_IRON)
                 .add(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
 

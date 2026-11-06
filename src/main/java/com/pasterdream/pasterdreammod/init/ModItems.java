@@ -31,6 +31,8 @@ import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombIte
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalItem;
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.*;
 import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
+import com.pasterdream.pasterdreammod.world.item.shadowerosiontool.*;
+import com.pasterdream.pasterdreammod.world.item.shadowalloytool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
 import com.pasterdream.pasterdreammod.world.item.tidetool.*;
 import net.minecraft.network.chat.Component;
@@ -76,6 +78,13 @@ public class ModItems {
                     tooltip.add(Component.translatable("tooltip.pasterdream.luck_enhance_stone.effect"));
                 }
             });
+
+    public static final DeferredItem<Item> BLACK_METAL_INGOT = ITEMS.register("black_metal_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BLACK_METAL_NUGGET = ITEMS.register("black_metal_nugget",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_ALLOY_INGOT = ITEMS.register("shadow_alloy_ingot",
+            () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
 
     // ===== 风之旅途材料 =====
     public static final DeferredItem<Item> CONGEAL_WIND = ITEMS.register("congeal_wind",
@@ -413,6 +422,28 @@ public class ModItems {
     public static final DeferredItem<BlockItem> SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW);
     public static final DeferredItem<BlockItem> THICK_SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.THICK_SHADOW);
     public static final DeferredItem<BlockItem> WEAPON_WORKSHOP_CRAFTING_TABLE = ITEMS.registerSimpleBlockItem(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE);
+
+    // ===== 影蚀系列 =====
+    public static final DeferredItem<Item> SHADOW_EROSION_DAGGER = ITEMS.register("shadow_erosion_dagger",
+            () -> new ShadowErosionDaggerItem(ModToolTiers.SHADOW_EROSION, 3, -2.0f, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_EROSION_PICKAXE = ITEMS.register("shadow_erosion_pickaxe",
+            () -> new ShadowErosionPickaxeItem(ModToolTiers.SHADOW_EROSION, 2, -2.8f, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_EROSION_AXE = ITEMS.register("shadow_erosion_axe",
+            () -> new ShadowErosionAxeItem(ModToolTiers.SHADOW_EROSION, 7, -3.0f, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_EROSION_SHOVEL = ITEMS.register("shadow_erosion_shovel",
+            () -> new ShadowErosionShovelItem(ModToolTiers.SHADOW_EROSION, 3, -3.0f, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_EROSION_HOE = ITEMS.register("shadow_erosion_hoe",
+            () -> new ShadowErosionHoeItem(ModToolTiers.SHADOW_EROSION, -2, 0.0f, new Item.Properties()));
+
+    // ===== 暗影合金系列 =====
+    public static final DeferredItem<Item> SHADOW_ALLOY_PICKAXE = ITEMS.register("shadow_alloy_pickaxe",
+            () -> new ShadowAlloyPickaxeItem(ModToolTiers.SHADOW_ALLOY, 2, -2.8f, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_ALLOY_AXE = ITEMS.register("shadow_alloy_axe",
+            () -> new ShadowAlloyAxeItem(ModToolTiers.SHADOW_ALLOY, 7, -3.0f, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_ALLOY_SHOVEL = ITEMS.register("shadow_alloy_shovel",
+            () -> new ShadowAlloyShovelItem(ModToolTiers.SHADOW_ALLOY, 3, -3.0f, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_ALLOY_HOE = ITEMS.register("shadow_alloy_hoe",
+            () -> new ShadowAlloyHoeItem(ModToolTiers.SHADOW_ALLOY, -2, 0.0f, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
