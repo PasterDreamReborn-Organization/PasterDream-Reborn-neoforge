@@ -14,6 +14,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.MORTAR.get(), "Mortar");
+        add("gui.pasterdream.mortar", "Mortar");
+        add("button.pasterdream.mortarbutton", "grinding");
+        add("tooltip.pasterdream.右键打开GUI", "§7Press right mouse button to open GUI");
         add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "Meltdream Liquid Bucket");
         add(ModItems.SHADOW_LIQUID_BUCKET.get(), "Shadow Liquid Bucket");
         add("fluid.pasterdream.melt_dream_liquid", "Meltdream Liquid");

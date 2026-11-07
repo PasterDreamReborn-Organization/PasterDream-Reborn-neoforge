@@ -14,6 +14,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.MORTAR.get(), "研钵");
+        add("gui.pasterdream.mortar", "研钵");
+        add("button.pasterdream.mortarbutton", "研磨");
+        add("tooltip.pasterdream.右键打开GUI", "§7右键打开GUI");
         add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "融梦涌泉桶");
         add(ModItems.SHADOW_LIQUID_BUCKET.get(), "熔融阴影桶");
         add("fluid.pasterdream.melt_dream_liquid", "融梦涌泉");

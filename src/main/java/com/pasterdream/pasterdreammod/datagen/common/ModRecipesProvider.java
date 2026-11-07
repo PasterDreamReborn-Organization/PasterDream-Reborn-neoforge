@@ -7,6 +7,9 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapedRecipe;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapelessRecipe;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarCraftingRecipe;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
+import net.minecraft.core.registries.Registries;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
@@ -53,6 +56,7 @@ public class ModRecipesProvider extends RecipeProvider {
         blackStickRecipes(output);
         materialRecipes(output);
         chargedAmethystAndSaltRecipes(output);
+        mortarRecipes(output);
         storageBagRecipes(output);
         blackMetalRecipes(output);
         shadowAlloyToolRecipes(output);
@@ -1512,6 +1516,89 @@ public class ModRecipesProvider extends RecipeProvider {
                         RecipeCategory.COMBAT, ModItems.SCULK_BOOTS.get())
                 .unlocks("has_sculk_upgrade", has(ModItems.SCULK_UPGRADE.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sculk_boots_smithing"));
+    }
+
+    private void mortarRecipes(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MORTAR.get(), 1)
+                .pattern("  a")
+                .pattern("bcb")
+                .pattern(" b ")
+                .define('a', Items.IRON_NUGGET)
+                .define('b', Items.POLISHED_DEEPSLATE)
+                .define('c', Items.IRON_INGOT)
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MORTAR.get(), 1)
+                .requires(ModItems.MORTAR.get())
+                .unlockedBy(getHasName(ModItems.MORTAR.get()), has(ModItems.MORTAR.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "mortar_from_mortar"));
+
+        saveMortarCrafting(ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_DYE.get(), 7)
+                .requires(ModItems.DYEDREAM_DUST_PIECE.get())
+                .requires(Items.BONE_MEAL)
+                .requires(ModItems.MORTAR.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DUST_PIECE.get()), has(ModItems.DYEDREAM_DUST_PIECE.get())),
+                pWriter, "dyedream_dye_from_dust_piece");
+        saveMortarCrafting(ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_DYE.get(), 63)
+                .requires(ModItems.DYEDREAM_DUST.get())
+                .requires(Items.BONE_BLOCK)
+                .requires(ModItems.MORTAR.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DUST.get()), has(ModItems.DYEDREAM_DUST.get())),
+                pWriter, "dyedream_dye_from_dust");
+        saveMortarCrafting(ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SALT.get(), 1)
+                .requires(ModItems.MORTAR.get())
+                .requires(ModItems.COARSE_SALT.get())
+                .unlockedBy(getHasName(ModItems.COARSE_SALT.get()), has(ModItems.COARSE_SALT.get())),
+                pWriter, "salt_from_coarse_salt");
+        saveMortarCrafting(ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 1)
+                .requires(ModItems.MORTAR.get())
+                .requires(Items.WHEAT, 2)
+                .unlockedBy(getHasName(Items.WHEAT), has(Items.WHEAT)),
+                pWriter, "flour_from_wheat");
+        saveMortarCrafting(ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 1)
+                .requires(ModItems.MORTAR.get())
+                .requires(ModItems.RYE_SEED.get(), 2)
+                .unlockedBy(getHasName(ModItems.RYE_SEED.get()), has(ModItems.RYE_SEED.get())),
+                pWriter, "flour_from_rye_seed");
+        saveMortarCrafting(ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 1)
+                .requires(ModItems.MORTAR.get())
+                .requires(Items.WHEAT_SEEDS, 4)
+                .unlockedBy(getHasName(Items.WHEAT_SEEDS), has(Items.WHEAT_SEEDS)),
+                pWriter, "flour_from_wheat_seeds");
+
+        TagKey<Item> wheat = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "crops/wheat"));
+        TagKey<Item> seeds = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "seeds"));
+        saveMortarRecipe(pWriter, "flour_from_wheat", List.of(ItemIngredient.of(wheat, 2)),
+                List.of(ItemIngredient.of(ModItems.FLOUR.get(), 1)));
+        saveMortarRecipe(pWriter, "flour_from_seeds", List.of(ItemIngredient.of(seeds, 4)),
+                List.of(ItemIngredient.of(ModItems.FLOUR.get(), 1)));
+        saveMortarRecipe(pWriter, "flour_from_rye_seed", List.of(ItemIngredient.of(ModItems.RYE_SEED.get(), 2)),
+                List.of(ItemIngredient.of(ModItems.FLOUR.get(), 1)));
+        saveMortarRecipe(pWriter, "salt", List.of(ItemIngredient.of(ModItems.COARSE_SALT.get(), 1)),
+                List.of(ItemIngredient.of(ModItems.SALT.get(), 1)));
+        saveMortarRecipe(pWriter, "dyedream_dye_from_dyedream_dust_piece_and_bone_meal",
+                List.of(ItemIngredient.of(ModItems.DYEDREAM_DUST_PIECE.get(), 1), ItemIngredient.of(Items.BONE_MEAL, 1)),
+                List.of(ItemIngredient.of(ModItems.DYEDREAM_DYE.get(), 9)));
+    }
+
+    private void saveMortarRecipe(RecipeOutput output, String name, List<ItemIngredient> inputs, List<ItemIngredient> outputs) {
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "mortar/" + name),
+                new MortarRecipe(List.of(), inputs, List.of(), outputs, 0), null);
+    }
+
+    private void saveMortarCrafting(ShapelessRecipeBuilder builder, RecipeOutput output, String name) {
+        builder.save(new RecipeOutput() {
+            @Override
+            public Advancement.Builder advancement() {
+                return output.advancement();
+            }
+
+            @Override
+            public void accept(ResourceLocation id, Recipe<?> recipe, AdvancementHolder advancement, ICondition... conditions) {
+                output.accept(id, new MortarCraftingRecipe((ShapelessRecipe) recipe), advancement, conditions);
+            }
+        }, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name));
     }
 
     private void saveNbtPreserving(ShapelessRecipeBuilder builder, RecipeOutput output, String name) {

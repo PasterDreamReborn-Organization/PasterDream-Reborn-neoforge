@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdes
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskMenu;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagMenu;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -42,6 +43,9 @@ public class ModMenus {
     public static final DeferredHolder<MenuType<?>, MenuType<StorageBagMenu>> STORAGE_BAG =
             MENUS.register("storage_bag", () -> IMenuTypeExtension.create(
                     (windowId, inv, data) -> new StorageBagMenu(windowId, inv, data)));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<MortarMenu>> MORTAR =
+            MENUS.register("mortar", () -> IMenuTypeExtension.create(MortarMenu::new));
 
     public static final DeferredHolder<MenuType<?>, MenuType<LargeStorageBagMenu>> LARGE_STORAGE_BAG =
             MENUS.register("large_storage_bag", () -> IMenuTypeExtension.create(
