@@ -22,6 +22,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_LIQUID_BUCKET.get(), "熔融阴影桶");
         add("fluid.pasterdream.melt_dream_liquid", "融梦涌泉");
         add("fluid.pasterdream.shadow_liquid", "熔融阴影");
+        add("fluid.pasterdream.guiding_drug", "药引（流体）");
+        add("fluid.pasterdream.wind_plant_extract", "风植萃取液（流体）");
+        add("fluid.pasterdream.yeast", "酵母（流体）");
+        add("fluid.pasterdream.ink", "墨水（流体）");
         add("key.pasterdream.blink", "瞬身术");
         add("key.categories.pasterdream", "帕斯特之梦");
         add("effect.pasterdream.evasion", "回避");
@@ -313,6 +317,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FLOUR.get(), "面粉");
         add(ModItems.COARSE_SALT.get(), "粗盐");
         add(ModItems.SALT.get(), "盐");
+        add(ModItems.GLASS_JAR.get(), "玻璃罐");
+        add(ModItems.GLASS_JAR_OF_WATER.get(), "水罐");
+        add(ModItems.GLASS_JAR_OF_MILK.get(), "牛奶罐");
+        add(ModItems.GLASS_JAR_OF_YEAST.get(), "酵母");
+        add(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(), "药引瓶");
+        add(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), "风植萃取液");
+        add(ModItems.GLASS_JAR_OF_INK.get(), "墨水罐");
         add(ModItems.EMBRYO_CHARM.get(), "护身符原胚");
         add(ModItems.EMBRYO_NECKLACE.get(), "项链原胚");
         add(ModItems.EMBRYO_RING.get(), "戒指原胚");

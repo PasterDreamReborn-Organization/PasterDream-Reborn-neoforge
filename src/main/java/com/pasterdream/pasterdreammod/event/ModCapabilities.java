@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagInventoryC
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarDataHandler;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarInventory;
+import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.GenericContainerFluidHandler;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -39,5 +40,14 @@ public final class ModCapabilities
         event.registerItem(Capabilities.FluidHandler.ITEM,
                 (stack, context) -> new MortarInventory(new MortarDataHandler(stack)),
                 ModItems.MORTAR.get());
+        event.registerItem(Capabilities.FluidHandler.ITEM,
+                (stack, context) -> new GenericContainerFluidHandler(stack),
+                ModItems.GLASS_JAR.get(),
+                ModItems.GLASS_JAR_OF_WATER.get(),
+                ModItems.GLASS_JAR_OF_MILK.get(),
+                ModItems.GLASS_JAR_OF_YEAST.get(),
+                ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(),
+                ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(),
+                ModItems.GLASS_JAR_OF_INK.get());
     }
 }

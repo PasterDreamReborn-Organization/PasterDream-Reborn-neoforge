@@ -178,6 +178,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.SHADOW_ALLOY_HOE.get());
         basicItem(ModItems.NIGHTMARE_FUEL.get());
         basicItem(ModItems.RICE_CAKE.get());
+        basicItem(ModItems.GLASS_JAR.get());
+        basicItem(ModItems.GLASS_JAR_OF_WATER.get());
+        basicItem(ModItems.GLASS_JAR_OF_MILK.get());
+        basicItem(ModItems.GLASS_JAR_OF_YEAST.get());
+        basicItem(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get());
+        basicItem(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
+        basicItem(ModItems.GLASS_JAR_OF_INK.get());
         getBuilder(ModItems.QYM_DOLL.getId().getPath())
                 .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
                         modLoc("displaysettings/qym_doll.item")));

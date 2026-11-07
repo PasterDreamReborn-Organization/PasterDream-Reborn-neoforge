@@ -29,6 +29,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MELT_DREAM_COIN_PILE.get());
                         output.accept(ModItems.MELT_DREAM_LIQUID_BUCKET.get());
                         output.accept(ModItems.SHADOW_LIQUID_BUCKET.get());
+                        output.accept(ModItems.GLASS_JAR_OF_INK.get());
                         output.accept(ModItems.RAW_TITANIUM.get());
                         output.accept(ModItems.RAW_MOLTEN_GOLD.get());
                         output.accept(ModItems.TITANIUM_INGOT.get());
@@ -78,6 +79,12 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_food_tab"))
                     .icon(() -> ModItems.DYEDREAM_FRUIT.toStack())
                     .displayItems((parameters, output) -> {
+                        output.accept(ModItems.GLASS_JAR.get());
+                        output.accept(ModItems.GLASS_JAR_OF_WATER.get());
+                        output.accept(ModItems.GLASS_JAR_OF_MILK.get());
+                        output.accept(ModItems.GLASS_JAR_OF_YEAST.get());
+                        output.accept(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get());
+                        output.accept(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
                         output.accept(ModItems.BLUE_DEW.get());
                         output.accept(ModItems.JUNGLE_SPORE.get());
                         output.accept(ModItems.RICE_CAKE.get());

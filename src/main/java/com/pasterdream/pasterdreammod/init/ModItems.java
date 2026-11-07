@@ -58,6 +58,7 @@ import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
+import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
 import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.MurakumoKusanagiItem;
@@ -361,6 +362,15 @@ public class ModItems {
     public static final DeferredItem<Item> RICE_CAKE = ITEMS.register("rice_cake",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
                     .nutrition(6).saturationModifier(0.415f).build())));
+
+    // ===== 玻璃罐系列 =====
+    public static final DeferredItem<Item> GLASS_JAR = ITEMS.register("glass_jar", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GLASS_JAR_OF_WATER = ITEMS.register("glass_jar_of_water", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().alwaysEdible().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())));
+    public static final DeferredItem<Item> GLASS_JAR_OF_MILK = ITEMS.register("glass_jar_of_milk", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().alwaysEdible().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())));
+    public static final DeferredItem<Item> GLASS_JAR_OF_YEAST = ITEMS.register("glass_jar_of_yeast", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_JAR.get())));
+    public static final DeferredItem<Item> GLASS_JAR_OF_GUIDING_DRUG = ITEMS.register("glass_jar_of_guiding_drug", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_JAR.get())));
+    public static final DeferredItem<Item> GLASS_JAR_OF_WIND_PLANT_EXTRACT = ITEMS.register("glass_jar_of_wind_plant_extract", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_JAR.get())));
+    public static final DeferredItem<Item> GLASS_JAR_OF_INK = ITEMS.register("glass_jar_of_ink", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_JAR.get())));
 
     public static final DeferredItem<Item> BLACK_STICK = ITEMS.registerSimpleItem("black_stick");
     public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));
