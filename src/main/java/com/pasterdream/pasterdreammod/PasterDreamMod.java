@@ -120,6 +120,7 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onLivingHurt);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onLivingDamage);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
+        NeoForge.EVENT_BUS.addListener(PasterDreamMod::onVulnerabilityHurt);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
         NeoForge.EVENT_BUS.addListener(MeltDreamAuraHandler::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(MeltDreamCrystalArmorHandler::onPlayerTick);
@@ -157,6 +158,16 @@ public class PasterDreamMod {
                     || tiered.getTier() == ModToolTiers.MELT_DREAM)) {
                 event.setAmount(event.getAmount() * 1.5f);
             }
+        }
+    }
+
+    // 易伤 debuff：每级 +10% 所受伤害
+    public static void onVulnerabilityHurt(LivingIncomingDamageEvent event) {
+        var effect = ModEffects.VULNERABILITY;
+        var instance = event.getEntity().getEffect(effect);
+        if (instance != null) {
+            int amplifier = instance.getAmplifier();
+            event.setAmount(event.getAmount() * (1.0f + 0.1f * (amplifier + 1)));
         }
     }
 

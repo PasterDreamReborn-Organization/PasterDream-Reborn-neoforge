@@ -59,6 +59,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_ALLOY_AXE.get(), "暗影合金斧");
         add(ModItems.SHADOW_ALLOY_SHOVEL.get(), "暗影合金锹");
         add(ModItems.SHADOW_ALLOY_HOE.get(), "暗影合金锄");
+        add(ModItems.SHADOW_ALLOY_CROSSBOW.get(), "暗影合金弩");
         add("tooltip.pasterdreammod.shadow_erosion_tool.1","§7▪ §9挖掘速率会随着亮度降低而提升");
         add("tooltip.pasterdreammod.shadow_erosion_tool.2","§7▪ §9对于暗影类，深板岩类和幽匿类方块，提供挖掘速率提升");
         add("tooltip.pasterdreammod.shadow_alloy_tool.passive","被动：§5影之侵蚀");
@@ -67,6 +68,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.shadow_alloy_tool.3","§7▪ §9最高+50%挖掘速度与攻击伤害");
         add("tooltip.pasterdreammod.shadow_alloy_tool.repair_header","在背包中时");
         add("tooltip.pasterdreammod.shadow_alloy_tool.repair","§7▪ §5噬心修补：0.1SAN/1耐久");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.1", "被动：§5暗影飞矢");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.2", "§7▪ §9消耗0.2融梦能量，命中的生物获得 10s 易伤");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.3", "§7▪ §9命中的生物随机获得 5s 负面效果");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.4", "§7▪ §9能量不足时照常发射，但不触发被动");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.5", "特性：");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.6", "§7▪ §9自带力量 III，可与力量附魔叠加");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.7", "§7▪ §9可附魔无限");
         add(ModItems.NIGHTMARE_FUEL.get(), "噩梦燃料");
         add("tooltip.pasterdreammod.nightmare_fuel", "§7傻子和疯子使用的邪恶残渣");
         add(ModBlocks.SHADOW.get(), "阴影");
@@ -353,6 +361,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.lost_sword_tomb", "§7既然拔不出来，那就带着石头用吧！");
         add("message.pasterdream.lost_sword_tomb.lack_strength", "你的力气不足以拔出这柄剑");
         add("effect.pasterdream.highly_toxic", "剧毒");
+        add("effect.pasterdream.vulnerability", "易伤");
+        add("effect.pasterdream.bind", "束缚");
         add("structure.pasterdream.the_lost_sword_tomb", "失落剑冢");
         add("itemGroup.pasterdream.pasterdream_items_tab", "帕斯特之梦 | 物品");
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "染梦世界");

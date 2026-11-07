@@ -1,8 +1,11 @@
 package com.pasterdream.pasterdreammod;
 
+import java.util.ArrayList;
 import java.util.List;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
@@ -181,7 +184,38 @@ public class Config {
                             "minecraft:salmon", "minecraft:cod", "minecraft:wolf", "minecraft:parrot"),
                     obj -> obj instanceof String);
 
+    // === 暗影合金弩 ===
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> SHADOW_ALLOY_CROSSBOW_DEBUFFS = BUILDER
+            .comment("暗影合金弩命中生物时随机施加的负面效果 ID 列表，格式：modid:effect_id",
+                    "\n例如 minecraft:slowness 为缓慢，minecraft:weakness 为虚弱")
+            .defineListAllowEmpty("shadowAlloyCrossbowDebuffs",
+                    List.of("minecraft:slowness", "minecraft:mining_fatigue", "minecraft:blindness",
+                            "minecraft:weakness", "minecraft:poison", "minecraft:wither",
+                            "minecraft:levitation", "pasterdream:confusion", "pasterdream:bind"),
+                    obj -> obj instanceof String);
+
+    public static final ModConfigSpec.IntValue SHADOW_ALLOY_CROSSBOW_DEBUFF_DURATION = BUILDER
+            .comment("暗影合金弩随机负面效果的持续时间（tick），默认 100（5 秒）")
+            .defineInRange("shadowAlloyCrossbowDebuffDuration", 100, 0, 6000);
+
+    public static final ModConfigSpec.IntValue SHADOW_ALLOY_CROSSBOW_DEBUFF_AMPLIFIER = BUILDER
+            .comment("暗影合金弩随机负面效果的等级（0=I, 1=II, ...），默认 0")
+            .defineInRange("shadowAlloyCrossbowDebuffAmplifier", 0, 0, 255);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
+
+    /** 暗影合金弩随机负面效果缓存（按配置即时解析） */
+    public static List<Holder<MobEffect>> getShadowAlloyCrossbowDebuffs() {
+        List<Holder<MobEffect>> list = new ArrayList<>();
+        for (String idStr : SHADOW_ALLOY_CROSSBOW_DEBUFFS.get()) {
+            ResourceLocation id = ResourceLocation.tryParse(idStr);
+            if (id == null) {
+                continue;
+            }
+            BuiltInRegistries.MOB_EFFECT.getHolder(id).ifPresent(list::add);
+        }
+        return list;
+    }
 
     public static boolean isCapturableEntity(EntityType<?> type) {
         for (String idStr : CREATURE_CAPTURE_ENTITIES.get()) {
