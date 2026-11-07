@@ -561,6 +561,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DREAM_TRAVELER_BELT.get(), "迷梦旅者腰带");
         add("tooltip.pasterdream.dream_traveler_belt.effect1", "§7▪ §9+3% 移动速度");
         add("tooltip.pasterdream.dream_traveler_belt.effect2", "§7▪ §9+10% 瞬身术冷却缩减");
+        add(ModItems.RED_DEW_RING.get(), "红露滴戒指");
+        add("tooltip.pasterdream.red_dew_ring.effect", "§7▪ §9+%s最大生命值");
         add(ModItems.STRIKE_RING.get(), "强击戒指");
         add("tooltip.pasterdream.strike_ring.effect", "§7▪ §9+%s攻击伤害");
         add(ModItems.COUNTER_RING.get(), "反击戒指");

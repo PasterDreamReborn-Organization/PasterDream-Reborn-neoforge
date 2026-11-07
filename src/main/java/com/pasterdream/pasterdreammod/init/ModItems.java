@@ -46,6 +46,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.CrossNecklaceItem;
 import com.pasterdream.pasterdreammod.world.item.curio.NatureBeltItem;
 import com.pasterdream.pasterdreammod.world.item.curio.TravelerBeltItem;
 import com.pasterdream.pasterdreammod.world.item.curio.DreamTravelerBeltItem;
+import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.CounterRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.MeltDreamEnergyRingItem;
@@ -188,6 +189,7 @@ public class ModItems {
     public static final DeferredItem<Item> LARGE_STORAGE_BAG = ITEMS.register("large_storage_bag", LargeStorageBagItem::new);
 
     // ===== 饰品（戒指） =====
+    public static final DeferredItem<Item> RED_DEW_RING = ITEMS.register("red_dew_ring", RedDewRingItem::new);
     public static final DeferredItem<Item> STRIKE_RING = ITEMS.register("strike_ring", StrikeRingItem::new);
     public static final DeferredItem<Item> COUNTER_RING = ITEMS.register("counter_ring", CounterRingItem::new);
     public static final DeferredItem<Item> MELT_DREAM_ENERGY_RING = ITEMS.register("melt_dream_energy_ring",

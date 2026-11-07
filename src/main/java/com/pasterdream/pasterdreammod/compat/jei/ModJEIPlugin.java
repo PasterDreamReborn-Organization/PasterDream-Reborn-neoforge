@@ -7,6 +7,8 @@ import com.pasterdream.pasterdreammod.compat.jei.weaponworkshopcraftingtablereci
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
+import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import mezz.jei.api.IModPlugin;
@@ -14,6 +16,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.ISubtypeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
@@ -36,6 +39,18 @@ public class ModJEIPlugin implements IModPlugin
     {
         registration.addRecipeCategories(new WeaponWorkshopCraftingTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new MortarRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+    }
+
+    @Override
+    public void registerItemSubtypes(ISubtypeRegistration registration)
+    {
+        registration.registerSubtypeInterpreter(
+                ModItems.RED_DEW_RING.get(),
+                (stack, context) -> String.valueOf(RedDewRingItem.getLv(stack)));
+
+        registration.registerSubtypeInterpreter(
+                ModItems.STRIKE_RING.get(),
+                (stack, context) -> String.valueOf(StrikeRingItem.getLv(stack)));
     }
 
     @Override
