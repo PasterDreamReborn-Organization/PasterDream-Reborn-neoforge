@@ -33,6 +33,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("fluid.pasterdream.honey_juice", "蜂蜜汁（流体）");
         add("fluid.pasterdream.uncooked_dyedream_flower_tea", "未烹调的染梦花茶（流体）");
         add("fluid.pasterdream.watermelon_juice", "西瓜汁（流体）");
+        add("fluid.pasterdream.rage_elixir", "狂暴战意灵药（流体）");
         add("key.pasterdream.blink", "瞬身术");
         add("key.categories.pasterdream", "帕斯特之梦");
         add("effect.pasterdream.evasion", "回避");
@@ -690,6 +691,19 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.JELLYFISH_MUD.get(), "水母泥");
         add(ModItems.JELLYFISH_JELLO.get(), "水母果冻");
         add(ModItems.PINEAPPLE_LOVE_SEA.get(), "凤梨爱琴海");
+        add(ModItems.ELIXIR_BOTTLE.get(), "灵药瓶");
+        add(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get(), "融梦灵药瓶");
+        add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "狂暴战意灵药");
+        add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.1", "§7饮用后获得效果：");
+        add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.2", "§7▪ §9技能冷却时间-15%，攻击伤害+20%（直至死亡）");
+        add("item.pasterdream.elixir_bottle_of_rage_elixir.client.success", "§5你感到一股力量在身体内涌动......");
+        add("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail", "§7你已经饮用过这个药水了");
+        add("tooltip.pasterdream.空", "空");
+        add("tooltip.pasterdream.总容量:", "总容量:");
+        add("tooltip.pasterdream.每次饮用:", "每次饮用:");
+        add("tooltip.pasterdream.不可饮用", "不可饮用");
+        add("pasterdream.tooltip.elixir_capacity", "%s mB（瓶内液体容量）");
+        add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "帕斯特之梦 | 灵药瓶");
         add(ModItems.GLASS_CUP.get(), "玻璃杯");
         add(ModItems.GLASS_CUP_OF_APPLE_JUICE.get(), "苹果汁");
         add(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(), "染梦花茶");

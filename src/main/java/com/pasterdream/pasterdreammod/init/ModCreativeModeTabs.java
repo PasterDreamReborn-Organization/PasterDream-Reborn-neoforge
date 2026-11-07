@@ -3,9 +3,14 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
+import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleWithFluidNBTBuilder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -144,6 +149,24 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ODD_BACON_AND_EGG.get());
                         output.accept(ModItems.JUNGLE_SPORE.get());
                         output.accept(ModItems.BUBBLE_TEA.get());
+                        output.accept(ModItems.ELIXIR_BOTTLE.get());
+                        output.accept(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get());
+                        output.accept(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get());
+                    }).build());
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_ELIXIR_BOTTLE_TAB =
+            CREATIVE_MODE_TABS.register("pasterdream_elixir_bottle_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_elixir_bottle_tab"))
+                    .icon(() -> ModItems.ELIXIR_BOTTLE.toStack())
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.ELIXIR_BOTTLE.get());
+                        for (Fluid fluid : BuiltInRegistries.FLUID)
+                        {
+                            if (fluid != Fluids.EMPTY)
+                            {
+                                output.accept(ElixirBottleWithFluidNBTBuilder.builder(new FluidStack(fluid, 1000)));
+                            }
+                        }
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_BLOCKS_TAB =

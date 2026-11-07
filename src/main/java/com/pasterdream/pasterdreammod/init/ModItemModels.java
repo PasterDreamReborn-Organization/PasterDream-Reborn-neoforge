@@ -1,6 +1,10 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.renderhelper.CustomRendererBakedModel;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -13,16 +17,28 @@ import net.neoforged.neoforge.client.event.ModelEvent;
  */
 @EventBusSubscriber(modid = PasterDreamMod.MOD_ID, value = Dist.CLIENT)
 public final class ModItemModels {
+    private static BakedModel elixirBottleModel;
     private ModItemModels() {
     }
 
     @SubscribeEvent
     public static void modifyBakingResult(ModelEvent.ModifyBakingResult event) {
-        // TODO: 替换指定物品的 baked model
+        ModelResourceLocation modelLocation = new ModelResourceLocation(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "elixir_bottle"), "inventory");
+        BakedModel original = event.getModels().get(modelLocation);
+        if (original != null && !(original instanceof CustomRendererBakedModel))
+        {
+            elixirBottleModel = original;
+            event.getModels().put(modelLocation, new CustomRendererBakedModel(original));
+        }
     }
 
     @SubscribeEvent
     public static void bakingCompleted(ModelEvent.BakingCompleted event) {
         // TODO: Curios 渲染器注册等
+    }
+
+    public static BakedModel getElixirBottleModel()
+    {
+        return elixirBottleModel;
     }
 }

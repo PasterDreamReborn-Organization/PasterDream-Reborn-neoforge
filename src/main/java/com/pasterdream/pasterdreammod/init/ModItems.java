@@ -56,6 +56,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.WarFlagItem;
 import com.pasterdream.pasterdreammod.world.item.curio.WindSpiritItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
+import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
@@ -751,6 +752,59 @@ public class ModItems {
                             }
                         }
                     }
+                }
+            });
+
+    public static final DeferredItem<Item> ELIXIR_BOTTLE = ITEMS.register("elixir_bottle", () -> new ElixirBottleItem(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> ELIXIR_BOTTLE_OF_MELT_DREAM = ITEMS.register("elixir_bottle_of_melt_dream",
+            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).meltDreamEnergyAdd(25).rarity(Rarity.UNCOMMON)
+                    .craftRemainder(ModItems.ELIXIR_BOTTLE.get())
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(2).alwaysEdible().build())));
+
+    private static final ResourceLocation ELIXIR_BOTTLE_OF_RAGE_ELIXIR_SKILL_CD_ID = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "elixir_bottle_of_rage_elixir_skill_cd_reduction");
+    private static final ResourceLocation ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_DAMAGE_ID = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "elixir_bottle_of_rage_elixir_attack_damage");
+    public static final DeferredItem<Item> ELIXIR_BOTTLE_OF_RAGE_ELIXIR = ITEMS.register("elixir_bottle_of_rage_elixir",
+            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).rarity(Rarity.UNCOMMON)
+                    .craftRemainder(ModItems.ELIXIR_BOTTLE.get())
+                    .food(new FoodProperties.Builder().alwaysEdible().build())) {
+                @Override
+                protected void onDrinkSpecial(LivingEntity entity, Level level) {
+                    if (level.isClientSide) {
+                        return;
+                    }
+
+                    boolean applied = false;
+
+                    var skillCdAttr = entity.getAttribute(ModAttributes.SKILL_COOLDOWN_REDUCTION);
+                    if (skillCdAttr != null && skillCdAttr.getModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_SKILL_CD_ID) == null) {
+                        skillCdAttr.addPermanentModifier(new AttributeModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_SKILL_CD_ID,
+                                0.15, AttributeModifier.Operation.ADD_VALUE));
+                        applied = true;
+                    }
+
+                    var attackDamageAttr = entity.getAttribute(Attributes.ATTACK_DAMAGE);
+                    if (attackDamageAttr != null && attackDamageAttr.getModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_DAMAGE_ID) == null) {
+                        attackDamageAttr.addPermanentModifier(new AttributeModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_DAMAGE_ID,
+                                0.2, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+                        applied = true;
+                    }
+
+                    if (applied) {
+                        level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                                ModSounds.AWAKE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                        if (entity instanceof Player player) {
+                            player.displayClientMessage(Component.translatable("item.pasterdream.elixir_bottle_of_rage_elixir.client.success"), false);
+                        }
+                    } else if (entity instanceof Player player) {
+                        player.displayClientMessage(Component.translatable("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail"), false);
+                    }
+                }
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, context, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.1"));
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.2"));
                 }
             });
 
