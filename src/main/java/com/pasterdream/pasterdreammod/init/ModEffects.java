@@ -2,6 +2,11 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.world.effect.ShadowSilenceEffect;
 import com.pasterdream.pasterdreammod.world.effect.WindThunderBoonEffect;
+import com.pasterdream.pasterdreammod.world.effect.DyedreamPerfumeEffect;
+import com.pasterdream.pasterdreammod.world.effect.GoldenrodTeaEffect;
+import com.pasterdream.pasterdreammod.world.effect.MistyDreamEffect;
+import com.pasterdream.pasterdreammod.world.effect.WindproofEffect;
+import com.pasterdream.pasterdreammod.world.effect.WindRunnerEffect;
 import com.pasterdream.pasterdreammod.world.effect.BlinkCooldownEffect;
 import com.pasterdream.pasterdreammod.world.effect.EvasionEffect;
 import com.pasterdream.pasterdreammod.world.effect.ConfusionEffect;
@@ -86,6 +91,21 @@ public class ModEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> COUNTER_ATTACK =
             MOB_EFFECTS.register("counter_attack", CounterAttackEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> DYEDREAM_PERFUME =
+            MOB_EFFECTS.register("dyedream_perfume", DyedreamPerfumeEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> GOLDENROD_TEA =
+            MOB_EFFECTS.register("goldenrod_tea", GoldenrodTeaEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> WINDPROOF =
+            MOB_EFFECTS.register("windproof", WindproofEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> MISTY_DREAM =
+            MOB_EFFECTS.register("misty_dream", MistyDreamEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> WIND_RUNNER =
+            MOB_EFFECTS.register("wind_runner", WindRunnerEffect::new);
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

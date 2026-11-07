@@ -1,15 +1,31 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
+import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.core.registries.Registries;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
 /**
  * 自定义进度触发器注册中心。
  *
  * <p>对应 Forge 1.20.1 源仓库的 {@code init/ModCriteriaTriggers.java}。
- * 搬运时声明 {@code CriterionTrigger} 常量并在 {@link #init()} 中通过
- * {@code CriteriaTriggers.register(...)} 注册。
+ * 1.21 的 {@code Registries.TRIGGER_TYPES} 在模组构造前已冻结，必须通过
+ * {@link DeferredRegister} 在注册事件阶段写入。
  */
 public final class ModCriteriaTriggers {
-    public static void init() {
-        // TODO: CriteriaTriggers.register(...)
+
+    public static final DeferredRegister<CriterionTrigger<?>> TRIGGERS =
+            DeferredRegister.create(Registries.TRIGGER_TYPE, PasterDreamMod.MOD_ID);
+
+    /** 在指定高度以上食用星河果冻 */
+    public static final DeferredHolder<CriterionTrigger<?>, EatGalaxyJellyAtHeightTrigger> EAT_GALAXY_JELLY_AT_HEIGHT =
+            TRIGGERS.register("eat_galaxy_jelly_at_height", EatGalaxyJellyAtHeightTrigger::new);
+
+    public static void register(IEventBus eventBus) {
+        TRIGGERS.register(eventBus);
     }
 
     private ModCriteriaTriggers() {

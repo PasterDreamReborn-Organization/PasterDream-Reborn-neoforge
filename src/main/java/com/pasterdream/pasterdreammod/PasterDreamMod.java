@@ -96,6 +96,7 @@ public class PasterDreamMod {
         ModTreeDecoratorTypes.register(modEventBus); // 树木装饰器类型
         ModDataComponents.register(modEventBus);   // DataComponents
         ModAttachments.register(modEventBus);      // AttachmentType（取代 Forge Capability）
+        ModCriteriaTriggers.register(modEventBus); // 自定义进度触发器
 
         // ---- 启动阶段监听 ----
         modEventBus.addListener(this::commonSetup);
@@ -126,7 +127,6 @@ public class PasterDreamMod {
 
         // ---- 静态初始化（不走 DeferredRegister）----
         ModGameRules.init();        // gamerule
-        ModCriteriaTriggers.init(); // 自定义进度触发器
         // 网络框架由 ModNetwork 的 @EventBusSubscriber 自行注册（RegisterPayloadHandlersEvent）
 
         // ---- 配置文件 ----

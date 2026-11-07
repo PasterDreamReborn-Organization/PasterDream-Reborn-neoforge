@@ -14,6 +14,7 @@ import com.pasterdream.pasterdreammod.world.item.MeltDreamCoinItem;
 import com.pasterdream.pasterdreammod.world.item.MeltDreamCrystalFragmentItem;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.world.item.PulseWindRunnerCrystalItem;
+import com.pasterdream.pasterdreammod.world.item.RedDewItem;
 import com.pasterdream.pasterdreammod.world.item.WindwreathedThunderSpearItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorItem;
@@ -73,13 +74,30 @@ import com.pasterdream.pasterdreammod.world.item.shadowalloytool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
 import com.pasterdream.pasterdreammod.world.item.tidetool.*;
 import net.minecraft.network.chat.Component;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Phantom;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.IEventBus;
 import org.jetbrains.annotations.Nullable;
+import com.pasterdream.pasterdreammod.tag.ModItemTags;
+import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.List;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -186,6 +204,7 @@ public class ModItems {
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> ELDER_GUARDIAN_SCALE = ITEMS.register("elder_guardian_scale",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RED_DEW = ITEMS.register("red_dew", RedDewItem::new);
     public static final DeferredItem<Item> BLUE_DEW = ITEMS.register("blue_dew", BlueDewItem::new);
 
     public static final DeferredItem<BlockItem> TITANIUM_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.TITANIUM_ORE);
@@ -371,6 +390,404 @@ public class ModItems {
     public static final DeferredItem<Item> GLASS_JAR_OF_GUIDING_DRUG = ITEMS.register("glass_jar_of_guiding_drug", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_JAR.get())));
     public static final DeferredItem<Item> GLASS_JAR_OF_WIND_PLANT_EXTRACT = ITEMS.register("glass_jar_of_wind_plant_extract", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_JAR.get())));
     public static final DeferredItem<Item> GLASS_JAR_OF_INK = ITEMS.register("glass_jar_of_ink", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_JAR.get())));
+
+    // ===== 食材系列 =====
+    public static final DeferredItem<Item> AMBER_CANDY = ITEMS.register("amber_candy",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).alwaysEdible()
+                            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 60, 0), 1.0f).build())
+                    .useDuration(16)));
+
+    public static final DeferredItem<Item> CHOCOLATE = ITEMS.register("chocolate",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.375f).build())));
+
+    public static final DeferredItem<Item> DOUGH = ITEMS.register("dough",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.5f).build())));
+
+    public static final DeferredItem<Item> DOUGH_WITH_EGG = ITEMS.register("dough_with_egg",
+            () -> new Item(new Item.Properties()));
+
+    // ===== 蛋糕系列 =====
+    public static final DeferredItem<Item> CAKE_BASE = ITEMS.register("cake_base",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.375f).build())));
+
+    public static final DeferredItem<Item> CREAM_BUN_CAKE = ITEMS.register("cream_bun_cake",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.625f).build())));
+
+    public static final DeferredItem<Item> BERRY_BUN_CAKE = ITEMS.register("berry_bun_cake",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 0), 1.0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(7).saturationModifier(0.625f).alwaysEdible().build())));
+
+    public static final DeferredItem<Item> TUBER_BUN_CAKE = ITEMS.register("tuber_bun_cake",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 0), 1.0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(7).saturationModifier(0.625f).alwaysEdible().build())));
+
+    public static final DeferredItem<Item> WATERMELON_BUN_CAKE = ITEMS.register("watermelon_bun_cake",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400, 0), 1.0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(7).saturationModifier(0.625f).alwaysEdible().build())));
+
+    public static final DeferredItem<Item> PUMPKIN_BUN_CAKE = ITEMS.register("pumpkin_bun_cake",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.JUMP, 1200, 0), 1.0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(7).saturationModifier(0.625f).alwaysEdible().build())));
+
+    public static final DeferredItem<Item> GLOW_BERRY_BUN_CAKE = ITEMS.register("glow_berry_bun_cake",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 1200, 0), 1.0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(7).saturationModifier(0.625f).alwaysEdible().build())));
+
+    public static final DeferredItem<Item> DYEDREAM_FRUIT_BUN_CAKE = ITEMS.register("dyedream_fruit_bun_cake",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1).meltDreamEnergyAdd(0.3)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(7).alwaysEdible().saturationModifier(0.625f).build())));
+
+    public static final DeferredItem<Item> CHOCOLATE_MATCHA_CAKE = ITEMS.register("chocolate_matcha_cake",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(8).saturationModifier(1).build())));
+
+    // ===== 杂项食物系列 =====
+    public static final DeferredItem<Item> DYEDREAM_POPSICLE = ITEMS.register("dyedream_popsicle",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1).meltDreamEnergyAdd(0.2)
+                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.5f).alwaysEdible().build())){
+                @Override
+                protected void onFoodSpecial(LivingEntity entity, Level level) {
+                    if (entity.isOnFire()) {
+                        int remainingTicks = entity.getRemainingFireTicks();
+                        entity.setRemainingFireTicks(Math.max(0, remainingTicks - 100));
+                    }
+                }//减少燃烧时间
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, context, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_popsicle"));
+                }
+            });
+
+    public static final DeferredItem<Item> FRIED_EGG = ITEMS.register("fried_egg",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.25f).build())));
+
+    public static final DeferredItem<Item> BACON_AND_EGG = ITEMS.register("bacon_and_egg",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(10).saturationModifier(1.2f).build())));
+
+    public static final DeferredItem<Item> ODD_BACON_AND_EGG = ITEMS.register("odd_bacon_and_egg",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(2)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK, 2400, 0), 1.0f)
+                            .nutrition(11).saturationModifier(1.365f).build())));
+
+    public static final DeferredItem<Item> HEART_CHOCOLATE = ITEMS.register("heart_chocolate",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(0.5)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.375f).build())));
+
+    public static final DeferredItem<Item> WHITE_HEART_CHOCOLATE = ITEMS.register("white_heart_chocolate",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.375f).build())));
+
+    public static final DeferredItem<Item> PINK_HEART_CHOCOLATE = ITEMS.register("pink_heart_chocolate",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1.5).meltDreamEnergyAdd(0.9)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.375f).build())));
+
+    public static final DeferredItem<Item> BREAD_SLICE = ITEMS.register("bread_slice",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.5f).build())));
+
+    public static final DeferredItem<Item> SWISS_ROLL = ITEMS.register("swiss_roll",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(6).saturationModifier(0.75f).build())));
+
+    public static final DeferredItem<Item> SANDWICH = ITEMS.register("sandwich",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(10).saturationModifier(0.9f).build())));
+
+    public static final DeferredItem<Item> WAFER_BISCUIT = ITEMS.register("wafer_biscuit",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.165f).build())));
+
+    public static final DeferredItem<Item> STUFFED_WAFER_COOKIES = ITEMS.register("stuffed_wafer_cookies",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(7).saturationModifier(1).build())));
+
+    public static final DeferredItem<Item> GINGERBREAD_MAN = ITEMS.register("gingerbread_man",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(5).saturationModifier(0.6f).build())));
+
+    public static final DeferredItem<Item> CANDY_CANE = ITEMS.register("candy_cane",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK, 1200, 0), 1.0f)
+                            .nutrition(3).saturationModifier(0.5f).build())));
+
+    public static final DeferredItem<Item> POPPING_CANDY = ITEMS.register("popping_candy",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.JUMP, 400, 3), 1.0f)
+                            .nutrition(2).saturationModifier(0.25f).alwaysEdible().build())));
+
+    public static final DeferredItem<Item> YINHUL_COTTON_CANDY = ITEMS.register("yinhul_cotton_candy",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15).meltDreamEnergyAdd(15).rarity(Rarity.EPIC)
+                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.75f).alwaysEdible().build())));
+
+    public static final DeferredItem<Item> MELT_DREAM_COTTON_CANDY = ITEMS.register("melt_dream_cotton_candy",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().meltDreamEnergyAdd(4)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.625f).alwaysEdible().build())));
+
+    public static final DeferredItem<Item> BUBBLE_GUM = ITEMS.register("bubble_gum",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(3)
+                    .food(new FoodProperties.Builder().nutrition(1).alwaysEdible().build()).useDuration(64)));
+
+    public static final DeferredItem<Item> GALAXY_JELLY = ITEMS.register("galaxy_jelly",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(6).alwaysEdible().saturationModifier(0.415f).build()).useDuration(25)
+            ){
+                @Override
+                protected void onFoodSpecial(LivingEntity entity, Level level) {
+                    // 检测饰品栏或盔甲栏是否有 galaxy_jelly_boost 标签的物品
+                    boolean hasBoost = entity.getItemBySlot(EquipmentSlot.CHEST).is(ModItemTags.GALAXY_JELLY_BOOST)
+                            || CuriosApi.getCuriosInventory(entity)
+                                    .map(inv -> inv.findFirstCurio(
+                                            stack -> stack.is(ModItemTags.GALAXY_JELLY_BOOST)).isPresent())
+                                    .orElse(false);
+
+                    if (hasBoost || entity.hasEffect(ModEffects.WIND_RUNNER)) {
+                        entity.setDeltaMovement(entity.getDeltaMovement().x, 2, entity.getDeltaMovement().z);
+                        entity.hurtMarked = true;
+                        entity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 140, 0));
+                        if (entity instanceof Player player) {
+                            player.getCooldowns().addCooldown(this, 80);
+                        }
+                        level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                                SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 3.0F, 1.0F);
+                    } else {
+                        // 常规效果
+                        entity.setDeltaMovement(entity.getDeltaMovement().x, 3, entity.getDeltaMovement().z);
+                        entity.hurtMarked = true;
+                        entity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 140, 0));
+                        if (entity instanceof Player player) {
+                            player.getCooldowns().addCooldown(this, 40);
+                        }
+                        level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                                SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 3.0F, 1.0F);
+                    }
+
+                    // 进度触发器：在建筑高度上限吃下星河果冻
+                    if (entity instanceof ServerPlayer sp) {
+                        ModCriteriaTriggers.EAT_GALAXY_JELLY_AT_HEIGHT.get().trigger(sp, sp.getY());
+                    }
+                }
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, context, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.galaxy_jelly"));
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.galaxy_jelly.flavor"));
+                }
+            });
+
+    public static final DeferredItem<Item> MILKY_WAY_JELLY = ITEMS.register("milky_way_jelly",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(8).alwaysEdible().saturationModifier(0.5f).build()).useDuration(25)
+            ){
+                @Override
+                protected void onFoodSpecial(LivingEntity entity, Level level) {
+                    if (entity instanceof ServerPlayer sp) {
+                        sp.teleportTo(sp.serverLevel(), sp.getX(), level.getMaxBuildHeight(), sp.getZ(), sp.getYRot(), sp.getXRot());
+                    } else {
+                        entity.setPos(entity.getX(), level.getMaxBuildHeight(), entity.getZ());
+                    }
+                    entity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0));
+                    if (entity instanceof Player player) {
+                        player.getCooldowns().addCooldown(this, 400);
+                    }
+                    level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                            SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 3.0F, 1.0F);
+                }
+                @Override
+                public boolean isFoil(ItemStack stack) {
+                    return true;
+                }
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, context, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.milky_way_jelly"));
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.milky_way_jelly.flavor"));
+                }
+            });
+
+    public static final DeferredItem<Item> FORTUNE_JELLY = ITEMS.register("fortune_jelly",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(6).alwaysEdible().saturationModifier(0.415f).build()).useDuration(25)
+            ){
+                @Override
+                protected void onFoodSpecial(LivingEntity entity, Level level) {
+                    entity.addEffect(new MobEffectInstance(MobEffects.LUCK, 1200, 0));
+                }
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, context, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.fortune_jelly"));
+                }
+            });
+
+    public static final DeferredItem<Item> WIND_RUNNER_JELLY = ITEMS.register("wind_runner_jelly",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(6).alwaysEdible().saturationModifier(0.415f)
+                            .effect(() -> new MobEffectInstance(ModEffects.WIND_RUNNER, 3600, 0), 1.0f)
+                            .build()).useDuration(25)
+            ));
+
+    public static final DeferredItem<Item> LIGHT_ORGAN = ITEMS.register("light_organ",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-1)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.GLOWING, 100, 0), 1.0f)
+                            .nutrition(1).build())));
+
+    public static final DeferredItem<Item> JELLYFISH_MUD = ITEMS.register("jellyfish_mud",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-3)
+                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.WINDPROOF, 1200, 0), 1.0f).build())));
+
+    public static final DeferredItem<Item> JELLYFISH_JELLO = ITEMS.register("jellyfish_jello",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.5f).alwaysEdible()
+                            .effect(() -> new MobEffectInstance(ModEffects.WINDPROOF, 12000, 0), 1.0f).build())));
+
+    public static final DeferredItem<Item> QUEER_SOUP = ITEMS.register("queer_soup",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().meltDreamEnergyAdd(1)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.375f).alwaysEdible()
+                            .effect(() -> new MobEffectInstance(ModEffects.MISTY_DREAM, 6000, 0), 1.0f).build()))
+            {
+                @Override
+                protected void onFoodSpecial(LivingEntity entity, Level level)
+                {
+                    if (!level.isClientSide && entity instanceof Player player && !player.isCreative())
+                    {
+                            ItemStack containerStack = new ItemStack(Items.BOWL);
+                            if (!player.getInventory().add(containerStack))
+                            {
+                                player.drop(containerStack, false);
+                            }
+                    }
+                }
+            });
+
+    private static final ResourceLocation LEGENDARY_DRAGON_HORN_ICE_CREAM_LUCK_ID =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "legendary_dragon_horn_ice_cream_luck");
+
+    public static final DeferredItem<Item> LEGENDARY_DRAGON_HORN_ICE_CREAM = ITEMS.register("legendary_dragon_horn_ice_cream",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).alwaysEdible().build())
+                    .rarity(Rarity.EPIC)) {
+                @Override
+                protected void onFoodSpecial(LivingEntity entity, Level level) {
+                    if (!level.isClientSide) {
+                        if (entity instanceof Player player && !player.isCreative()) {
+                            ItemStack containerStack = new ItemStack(Items.BOWL);
+                            if (!player.getInventory().add(containerStack)) {
+                                player.drop(containerStack, false);
+                            }
+                        }
+
+                        var luckAttr = entity.getAttribute(Attributes.LUCK);
+                        if (luckAttr != null) {
+                            AttributeModifier existingModifier = luckAttr.getModifier(LEGENDARY_DRAGON_HORN_ICE_CREAM_LUCK_ID);
+                            if (existingModifier == null) {
+                                luckAttr.addPermanentModifier(new AttributeModifier(LEGENDARY_DRAGON_HORN_ICE_CREAM_LUCK_ID,
+                                        10, AttributeModifier.Operation.ADD_VALUE));
+                                if (level instanceof ServerLevel serverLevel) {
+                                    serverLevel.sendParticles(ParticleTypes.SNOWFLAKE,
+                                            entity.getX(), entity.getY() + 3, entity.getZ(),
+                                            128, 2, 0.5, 2, 1);
+                                }
+                                if (entity instanceof Player player) {
+                                    player.displayClientMessage(Component.translatable("item.pasterdream.legendary_dragon_horn_ice_cream.client.success"), false);
+                                }
+                            } else {
+                                if (entity instanceof Player player) {
+                                    player.displayClientMessage(Component.translatable("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail"), false);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+    public static final DeferredItem<Item> PINEAPPLE_LOVE_SEA = ITEMS.register("pineapple_love_sea",
+            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15).rarity(Rarity.UNCOMMON)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK, 6000, 1), 1.0f)
+                            .nutrition(3).saturationModifier(0.5f).alwaysEdible().build())));
+
+    public static final DeferredItem<Item> BUBBLE_TEA = ITEMS.register("bubble_tea", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties()
+            .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.7f).alwaysEdible().build())));
+
+    // ===== 特殊食物 =====
+    public static final DeferredItem<Item> MOLTEN_GOLD_APPLE = ITEMS.register("molten_gold_apple",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().rarity(Rarity.RARE)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(1.2f).alwaysEdible()//金苹果数值
+                            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2400, 0), 1.0f)//2分钟抗火
+                            .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 2400, 1), 1.0f)//2分钟急迫II
+                            .build())));
+
+    public static final DeferredItem<Item> ENCHANTED_MOLTEN_GOLD_APPLE = ITEMS.register("enchanted_molten_gold_apple",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().rarity(Rarity.EPIC)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(1.2f).alwaysEdible()//附魔金苹果数值
+                            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 6000, 0), 1.0f)//5分钟抗火
+                            .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 6000, 3), 1.0f)//5分钟急迫IV
+                            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 6000, 2), 1.0f)//5分钟迅捷III
+                            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400, 1), 1.0f)//20秒生命恢复II
+                            .build())) {
+                @Override
+                public boolean isFoil(ItemStack stack) {
+                    return true;
+                }
+            });
+
+    // ===== 秋麒麟茶与染梦香水 =====
+    public static final DeferredItem<Item> GLASS_JAR_OF_GOLDENROD_TEA = ITEMS.register("glass_jar_of_goldenrod_tea",
+            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(1).effect(() -> new MobEffectInstance(ModEffects.GOLDENROD_TEA, 3600, 0), 1.0f).alwaysEdible().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())) {
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, context, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.goldenrod_tea"));
+                }
+            });
+    public static final DeferredItem<Item> GLASS_JAR_OF_DYEDREAM_PERFUME = ITEMS.register("glass_jar_of_dyedream_perfume",
+            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.DYEDREAM_PERFUME, 12000, 0), 1.0f).alwaysEdible().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())) {
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, context, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_perfume"));
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_perfume.flavor.1"));
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_perfume.flavor.2"));
+                }
+
+                @Override
+                protected void onDrinkSpecial(LivingEntity entity, Level level) {
+                    if (entity instanceof ServerPlayer serverPlayer) {
+                        serverPlayer.getStats().setValue(serverPlayer, Stats.CUSTOM.get(Stats.TIME_SINCE_REST), 0);
+                        AABB range = entity.getBoundingBox().inflate(64.0D);
+                        for (Phantom phantom : level.getEntitiesOfClass(Phantom.class, range)) {
+                            if (phantom.getTarget() == entity) {
+                                phantom.setTarget(null);
+                            }
+                        }
+                    }
+                }
+            });
 
     public static final DeferredItem<Item> BLACK_STICK = ITEMS.registerSimpleItem("black_stick");
     public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));

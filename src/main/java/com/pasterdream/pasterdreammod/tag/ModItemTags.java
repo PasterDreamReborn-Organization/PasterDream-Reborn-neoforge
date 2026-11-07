@@ -51,6 +51,9 @@ public final class ModItemTags {
     public static final TagKey<Item> SALT = common("salt");
     public static final TagKey<Item> FLOUR = common("flour");
     public static final TagKey<Item> FLOUR_WHEAT = common("flour/wheat");
+    public static final TagKey<Item> COOKED_EGGS = common("cooked_eggs");
+    public static final TagKey<Item> GALAXY_JELLY_BOOST = TagKey.create(Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "galaxy_jelly_boost"));
     public static final TagKey<Item> DYEDREAM_DIRT = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt"));
 
     private static TagKey<Item> common(String path) {

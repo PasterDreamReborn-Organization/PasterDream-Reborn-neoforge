@@ -59,6 +59,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ModItemTags.SALT).add(ModItems.SALT.get());
         tag(ModItemTags.FLOUR).add(ModItems.FLOUR.get());
         tag(ModItemTags.FLOUR_WHEAT).add(ModItems.FLOUR.get());
+        tag(Tags.Items.FOODS_DOUGH).add(ModItems.DOUGH.get());
+        tag(ModItemTags.COOKED_EGGS).add(ModItems.FRIED_EGG.get());
+        tag(ModItemTags.GALAXY_JELLY_BOOST).add(Items.ELYTRA);
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
         copy(Tags.Blocks.ORES_COAL, Tags.Items.ORES_COAL);
         copy(Tags.Blocks.ORES_IRON, Tags.Items.ORES_IRON);

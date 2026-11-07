@@ -106,7 +106,7 @@ public class PasterDreamDrinkItem extends Item
             {
                 if (level.random.nextFloat() < effectPair.probability())
                 {
-                    entity.addEffect(effectPair.effect());
+                    entity.addEffect(new MobEffectInstance(effectPair.effect()));
                 }
             }
         }
