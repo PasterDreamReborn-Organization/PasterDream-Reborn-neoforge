@@ -5,6 +5,11 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 043：植物物品栏与植物掉落（2026-11-07）
+
+- 搬运来源植物栏 51 个条目及花冠、棉花、光球和幸运四叶草等掉落产物；补齐植物模型（含睡莲、莲花、四叶草的自定义几何）、纹理、中英文名称、种植标签与战利品表，并恢复粉顶菌方块的来源掉落。
+- 花园解密转换暂缓；园艺钳、衍梦肥泥、盆栽与树苗/巨菇世界生成链待后续迁移。`runData`、`build` 和 `runGameTestServer` 通过，109/109。
+
 ### 批次 042：熔融阴影桶、融梦涌泉桶与流体系统（2026-11-07）
 
 - 搬运两种桶、源液/流动液、流体类型和世界液体方块，保留注册 ID、物理属性、融梦涌泉粒子与来源动画纹理；生成 NeoForge 桶模型、流体标签及中英文名称。

@@ -2,17 +2,26 @@ package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.block.cropblock.PasterDreamCropBlock;
+import com.pasterdream.pasterdreammod.world.conditions.RealPlayerCondition;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DoublePlantBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
@@ -32,6 +41,65 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         var enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+
+        dropSelf(ModBlocks.DYEDREAM_SAPLING.get());
+        dropSelf(ModBlocks.PINK_MUSHROOM.get());
+        add(ModBlocks.TALL_PINK_MUSHROOM.get(), block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        dropSelf(ModBlocks.GOLDENROD.get());
+        dropSelf(ModBlocks.FERRARIA_CRISPA.get());
+        dropSelf(ModBlocks.EUSTOMA.get());
+        dropSelf(ModBlocks.MALVA_SINENSIS_CAVAN.get());
+        dropSelf(ModBlocks.LINHT_FLOWER.get());
+        add(ModBlocks.DREAMING_LOTUS.get(), block -> plantTallFlowerDrops(block));
+        add(ModBlocks.MISTY_DREAMING_LOTUS.get(), block -> plantTallFlowerDrops(block));
+        dropSelf(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get());
+        add(ModBlocks.BLAZE_FLOWER.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(Items.BLAZE_POWDER)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
+        dropSelf(ModBlocks.WHITE_ORCHID_FLOWER.get());
+        dropSelf(ModBlocks.EDELWEISS.get());
+        dropSelf(ModBlocks.NIPPY_EDELWEISS.get());
+        dropSelf(ModBlocks.DYEDREAM_LILY_PAD.get());
+        dropSelf(ModBlocks.DYEDREAM_LOTUS.get());
+        add(ModBlocks.DYEDREAM_MOSS.get(), block -> plantGrassDrops(block));
+        add(ModBlocks.STEM_GRASS.get(), block -> plantGrassDrops(block));
+        add(ModBlocks.TALL_STEM_GRASS.get(), block -> plantTallGrassDrops(block, ModBlocks.STEM_GRASS.get(), 2));
+        add(ModBlocks.SINGULARITY_FERN.get(), block -> plantGrassDrops(block));
+        add(ModBlocks.CRIMSON_THORNS.get(), block -> plantTallGrassDrops(block, block, 1));
+        add(ModBlocks.OATS.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModItems.RYE_SEED.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
+        add(ModBlocks.RYE.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModItems.RYE_SEED.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
+        add(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), block -> createSilkTouchOnlyTable(block));
+        add(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), block -> createSilkTouchOnlyTable(block));
+        add(ModBlocks.DYEDREAM_SEAGRASS.get(), block -> plantGrassDrops(block));
+        add(ModBlocks.REED.get(), block -> plantShearsOrSilkElseItem(block, ModItems.REED_ROD.get(), 1, 3));
+        add(ModBlocks.DYEDREAM_VINE.get(), block -> plantShearsOrSilkElseItem(block, ModItems.DYEDREAM_FRUIT.get(), 0, 1));
+        add(ModBlocks.JUNGLE_SPORANGIUM.get(), block -> plantShearsOrSilkElseItem(block, ModItems.JUNGLE_SPORE.get(), 1, 1));
+        add(ModBlocks.FOURLEAF_CLOVER.get(), block -> createSilkTouchOrShearsDispatchTable(block,
+                LootItem.lootTableItem(ModItems.FOURLEAF_CLOVER_CURIO.get())
+                        .when(LootItemRandomChanceCondition.randomChance(0.05F))));
+        add(ModBlocks.HAIRY_MOSS.get(), block -> plantGrassDrops(block));
+        add(ModBlocks.WIND_CLEAVING_GRASS.get(), block -> plantGrassDrops(block));
+        add(ModBlocks.WIND_FEATHER_GRASS.get(), block -> plantTallGrassDrops(block, block, 1));
+        add(ModBlocks.WIND_ISLAND_REED.get(), block -> plantShearsOrSilkElseItem(block, ModItems.REED_ROD.get(), 1, 3));
+        dropSelf(ModBlocks.SHADOW_SHORT_ROOTS.get());
+        dropSelf(ModBlocks.SHADOW_ROOTS.get());
+        add(ModBlocks.SHADOW_STEM_FERN.get(), block -> plantTallFlowerDrops(block));
+        add(ModBlocks.SHADOW_SPROUTS.get(), block -> plantGrassDrops(block));
+        dropSelf(ModBlocks.SHADOW_FERN.get());
+        dropSelf(ModBlocks.SHADOW_FUNGUS.get());
+        dropSelf(ModBlocks.LIGHT_BALL.get());
+        cropDrops(ModBlocks.DYEDREAM_COROLLA_CROP.get(), ModItems.DYEDREAM_COROLLA.get(), 1, ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
+        cropDrops(ModBlocks.WHITE_COROLLA_CROP.get(), ModItems.WHITE_COROLLA.get(), 1, ModItems.WHITE_COROLLA_CROP_AGE_1.get(), ModItems.WHITE_COROLLA_CROP_AGE_0.get());
+        cropDrops(ModBlocks.LIGHT_BALL_CROP.get(), ModItems.LIGHT_BALL.get(), 1, ModItems.LIGHT_BALL_CROP_AGE_1.get(), ModItems.LIGHT_BALL_CROP_AGE_0.get());
+        cropDrops(ModBlocks.CLOUD_CROP.get(), ModItems.CLOUD.get(), 5, ModItems.CLOUD_CROP_AGE_1.get(), ModItems.CLOUD_CROP_AGE_0.get());
+        cropDrops(ModBlocks.COTTON_CROP.get(), ModItems.COTTON.get(), 1, ModItems.COTTON_CROP_AGE_1.get(), ModItems.COTTON_CROP_AGE_0.get());
 
         // ===== 染梦地形方块 =====
         dropSelf(ModBlocks.DYEDREAM_DIRT.get());
@@ -91,8 +159,11 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.CALCITE_TILES_SLAB.get(), block -> createSlabItemTable(ModBlocks.CALCITE_TILES_SLAB.get()));
         dropSelf(ModBlocks.CALCITE_TILES_WALL.get());
         dropSelf(ModBlocks.PINK_SLIME_BLOCK.get());
-        // 粉顶菇植物尚未迁移，暂以自掉落保持数据生成闭合，获取待后续批次补全。
-        dropSelf(ModBlocks.PINK_MUSHROOM_BLOCK.get());
+        // 粉顶菌方块精准采集掉落自身，普通破坏掉落粉顶菌。
+        add(ModBlocks.PINK_MUSHROOM_BLOCK.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModBlocks.PINK_MUSHROOM.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
         add(ModBlocks.PINK_MUSHROOM_STEM.get(),
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(Items.AIR)));
         dropSelf(ModBlocks.PINK_SHROOMLIGHT.get());
@@ -171,6 +242,46 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.UUZ_DOLL.get());
         dropSelf(ModBlocks.DESERT_HERO_TOMB.get());
         dropSelf(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
+    }
+
+    private LootTable.Builder plantGrassDrops(Block block) {
+        return createSilkTouchOrShearsDispatchTable(block, EmptyLootItem.emptyItem());
+    }
+
+    private LootTable.Builder plantTallFlowerDrops(Block block) {
+        return createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER);
+    }
+
+    private LootTable.Builder plantTallGrassDrops(Block block, Block drop, int count) {
+        var lower = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .when(lower).when(HAS_SHEARS.or(hasSilkTouch()))
+                .add(LootItem.lootTableItem(drop).apply(SetItemCountFunction.setCount(ConstantValue.exactly(count)))));
+    }
+
+    private LootTable.Builder plantShearsOrSilkElseItem(Block block, ItemLike drop, float min, float max) {
+        var fortune = registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE);
+        return createSilkTouchOrShearsDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(drop)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
+                        .apply(ApplyBonusCount.addOreBonusCount(fortune))));
+    }
+
+    private void cropDrops(Block cropBlock, Item productItem, int productCount, Item matureItem, Item immatureItem) {
+        var mature = LootItemBlockStatePropertyCondition.hasBlockStateProperties(cropBlock)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PasterDreamCropBlock.AGE, 1));
+        var immature = LootItemBlockStatePropertyCondition.hasBlockStateProperties(cropBlock)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PasterDreamCropBlock.AGE, 0));
+        var realPlayer = RealPlayerCondition.builder();
+        add(cropBlock, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(mature).when(realPlayer)
+                        .add(LootItem.lootTableItem(matureItem)))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(mature).when(realPlayer.invert())
+                        .add(LootItem.lootTableItem(productItem)
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(productCount)))))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(immature)
+                        .add(LootItem.lootTableItem(immatureItem))));
     }
 
     private LootTable.Builder createDyedreamLeavesDrops(Block leaves, ItemLike fruit) {

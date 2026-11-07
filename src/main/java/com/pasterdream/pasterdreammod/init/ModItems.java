@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import net.minecraft.world.item.BlockItem;
+import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.item.NightmareFuelItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
@@ -21,6 +22,7 @@ import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.WindRunnerCloakItem;
 import com.pasterdream.pasterdreammod.world.item.curio.FracturedAngelStatueItem;
+import com.pasterdream.pasterdreammod.world.item.curio.FourleafCloverCurioItem;
 import com.pasterdream.pasterdreammod.world.item.curio.EmbryoBeltItem;
 import com.pasterdream.pasterdreammod.world.item.curio.EmbryoCharmItem;
 import com.pasterdream.pasterdreammod.world.item.curio.EmbryoNecklaceItem;
@@ -83,6 +85,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(PasterDreamMod.MOD_ID);
+    public static final DeferredItem<Item> FOURLEAF_CLOVER_CURIO = ITEMS.register("fourleaf_clover_curio", FourleafCloverCurioItem::new);
 
     public static final DeferredItem<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
@@ -632,6 +635,158 @@ public class ModItems {
             () -> new ShadowAlloyShovelItem(ModToolTiers.SHADOW_ALLOY, 3, -3.0f, new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_ALLOY_HOE = ITEMS.register("shadow_alloy_hoe",
             () -> new ShadowAlloyHoeItem(ModToolTiers.SHADOW_ALLOY, -2, 0.0f, new Item.Properties()));
+
+    public static final DeferredItem<Item> DYEDREAM_SAPLING = ITEMS.register("dyedream_sapling",
+            () -> new BlockItem(ModBlocks.DYEDREAM_SAPLING.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> DYEDREAM_COROLLA_CROP_AGE_0 = ITEMS.register("dyedream_corolla_crop_age_0", () -> new BlockItem(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> DYEDREAM_COROLLA_CROP_AGE_1 = ITEMS.register("dyedream_corolla_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.DYEDREAM_COROLLA_CROP.get()));
+
+    public static final DeferredItem<Item> LIGHT_BALL_CROP_AGE_0 = ITEMS.register("light_ball_crop_age_0", () -> new BlockItem(ModBlocks.LIGHT_BALL_CROP.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> LIGHT_BALL_CROP_AGE_1 = ITEMS.register("light_ball_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.LIGHT_BALL_CROP.get()));
+
+    public static final DeferredItem<Item> CLOUD_CROP_AGE_0 = ITEMS.register("cloud_crop_age_0", () -> new BlockItem(ModBlocks.CLOUD_CROP.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> CLOUD_CROP_AGE_1 = ITEMS.register("cloud_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.CLOUD_CROP.get()));
+
+    public static final DeferredItem<Item> STEM_GRASS = ITEMS.register("stem_grass",
+            () -> new BlockItem(ModBlocks.STEM_GRASS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> TALL_STEM_GRASS = ITEMS.register("tall_stem_grass",
+            () -> new BlockItem(ModBlocks.TALL_STEM_GRASS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> PINK_MUSHROOM = ITEMS.register("pink_mushroom",
+            () -> new BlockItem(ModBlocks.PINK_MUSHROOM.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> TALL_PINK_MUSHROOM = ITEMS.register("tall_pink_mushroom",
+            () -> new BlockItem(ModBlocks.TALL_PINK_MUSHROOM.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> POLISHED_CALCITE_STALICRIPE = ITEMS.register("polished_calcite_stalicripe",
+            () -> new BlockItem(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> SMALL_POLISHED_CALCITE_STALICRIPE = ITEMS.register("small_polished_calcite_stalicripe",
+            () -> new BlockItem(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> DYEDREAM_MOSS = ITEMS.register("dyedream_moss",
+            () -> new BlockItem(ModBlocks.DYEDREAM_MOSS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> LINHT_FLOWER = ITEMS.register("linht_flower",
+            () -> new BlockItem(ModBlocks.LINHT_FLOWER.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> DYEDREAM_LILY_OF_THE_VALLEY = ITEMS.register("dyedream_lily_of_the_valley",
+            () -> new BlockItem(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> SINGULARITY_FERN = ITEMS.register("singularity_fern",
+            () -> new BlockItem(ModBlocks.SINGULARITY_FERN.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> DYEDREAM_VINE = ITEMS.register("dyedream_vine",
+            () -> new BlockItem(ModBlocks.DYEDREAM_VINE.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> DYEDREAM_LILY_PAD = ITEMS.register("dyedream_lily_pad",
+            () -> new PlaceOnWaterBlockItem(ModBlocks.DYEDREAM_LILY_PAD.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> DYEDREAM_SEAGRASS = ITEMS.register("dyedream_seagrass",
+            () -> new BlockItem(ModBlocks.DYEDREAM_SEAGRASS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> DYEDREAM_LOTUS = ITEMS.register("dyedream_lotus",
+            () -> new PlaceOnWaterBlockItem(ModBlocks.DYEDREAM_LOTUS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> DREAMING_LOTUS = ITEMS.register("dreaming_lotus",
+            () -> new BlockItem(ModBlocks.DREAMING_LOTUS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> MISTY_DREAMING_LOTUS = ITEMS.register("misty_dreaming_lotus",
+            () -> new BlockItem(ModBlocks.MISTY_DREAMING_LOTUS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> EDELWEISS = ITEMS.register("edelweiss",
+            () -> new BlockItem(ModBlocks.EDELWEISS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> NIPPY_EDELWEISS = ITEMS.register("nippy_edelweiss",
+            () -> new BlockItem(ModBlocks.NIPPY_EDELWEISS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> WHITE_COROLLA_CROP_AGE_0 = ITEMS.register("white_corolla_crop_age_0", () -> new BlockItem(ModBlocks.WHITE_COROLLA_CROP.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> WHITE_COROLLA_CROP_AGE_1 = ITEMS.register("white_corolla_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.WHITE_COROLLA_CROP.get()));
+
+    public static final DeferredItem<Item> COTTON_CROP_AGE_0 = ITEMS.register("cotton_crop_age_0", () -> new BlockItem(ModBlocks.COTTON_CROP.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> COTTON_CROP_AGE_1 = ITEMS.register("cotton_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.COTTON_CROP.get()));
+
+    public static final DeferredItem<Item> FERRARIA_CRISPA = ITEMS.register("ferraria_crispa",//f1
+            () -> new BlockItem(ModBlocks.FERRARIA_CRISPA.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> EUSTOMA = ITEMS.register("eustoma",//f2
+            () -> new BlockItem(ModBlocks.EUSTOMA.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> JUNGLE_SPORANGIUM = ITEMS.register("jungle_sporangium",
+            () -> new BlockItem(ModBlocks.JUNGLE_SPORANGIUM.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> MALVA_SINENSIS_CAVAN = ITEMS.register("malva_sinensis_cavan",//f5
+            () -> new BlockItem(ModBlocks.MALVA_SINENSIS_CAVAN.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> REED = ITEMS.register("reed",
+        () -> new BlockItem(ModBlocks.REED.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> RYE = ITEMS.register("rye",
+            () -> new BlockItem(ModBlocks.RYE.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> OATS = ITEMS.register("oats",
+            () -> new BlockItem(ModBlocks.OATS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> GOLDENROD = ITEMS.register("goldenrod",
+            () -> new BlockItem(ModBlocks.GOLDENROD.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> FOURLEAF_CLOVER = ITEMS.register("fourleaf_clover",
+            () -> new BlockItem(ModBlocks.FOURLEAF_CLOVER.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> BLAZE_FLOWER = ITEMS.register("blaze_flower",//f6
+            () -> new BlockItem(ModBlocks.BLAZE_FLOWER.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> CRIMSON_THORNS = ITEMS.register("crimson_thorns",
+            () -> new BlockItem(ModBlocks.CRIMSON_THORNS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> HAIRY_MOSS = ITEMS.register("hairy_moss",
+            () -> new BlockItem(ModBlocks.HAIRY_MOSS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> WIND_CLEAVING_GRASS = ITEMS.register("wind_cleaving_grass",
+            () -> new BlockItem(ModBlocks.WIND_CLEAVING_GRASS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> WIND_FEATHER_GRASS = ITEMS.register("wind_feather_grass",
+            () -> new BlockItem(ModBlocks.WIND_FEATHER_GRASS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> WIND_ISLAND_REED = ITEMS.register("wind_island_reed",
+            () -> new BlockItem(ModBlocks.WIND_ISLAND_REED.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> SHADOW_SHORT_ROOTS = ITEMS.register("shadow_short_roots",
+            () -> new BlockItem(ModBlocks.SHADOW_SHORT_ROOTS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> SHADOW_ROOTS = ITEMS.register("shadow_roots",
+            () -> new BlockItem(ModBlocks.SHADOW_ROOTS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> SHADOW_STEM_FERN = ITEMS.register("shadow_stem_fern",
+            () -> new BlockItem(ModBlocks.SHADOW_STEM_FERN.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> SHADOW_SPROUTS = ITEMS.register("shadow_sprouts",
+            () -> new BlockItem(ModBlocks.SHADOW_SPROUTS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> SHADOW_FERN = ITEMS.register("shadow_fern",
+            () -> new BlockItem(ModBlocks.SHADOW_FERN.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> SHADOW_FUNGUS = ITEMS.register("shadow_fungus",
+            () -> new BlockItem(ModBlocks.SHADOW_FUNGUS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> WHITE_ORCHID_FLOWER = ITEMS.register("white_orchid_flower",
+            () -> new BlockItem(ModBlocks.WHITE_ORCHID_FLOWER.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> DYEDREAM_COROLLA = ITEMS.register("dyedream_corolla", () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> WHITE_COROLLA = ITEMS.register("white_corolla", () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> LIGHT_BALL = ITEMS.register("light_ball",
+            () -> new BlockItem(ModBlocks.LIGHT_BALL.get(), new Item.Properties()));
+
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

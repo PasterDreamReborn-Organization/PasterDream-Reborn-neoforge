@@ -14,11 +14,31 @@ import com.pasterdream.pasterdreammod.world.block.CalciteConeBlock;
 import com.pasterdream.pasterdreammod.world.block.CalciteRedstoneOreBlock;
 import com.pasterdream.pasterdreammod.world.block.SoulOreBlock;
 import com.pasterdream.pasterdreammod.world.block.DyedreamClusterBlock;
+import com.pasterdream.pasterdreammod.world.block.*;
+import com.pasterdream.pasterdreammod.world.block.cropblock.PasterDreamCropBlock;
+import com.pasterdream.pasterdreammod.world.block.shadow.*;
+import com.pasterdream.pasterdreammod.tag.ModBlockTags;
+import com.pasterdream.pasterdreammod.world.behavior.ModTreeGrowers;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlock;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -224,6 +244,399 @@ public class ModBlocks {
     public static final DeferredBlock<Block> THICK_SHADOW = BLOCKS.register("thick_shadow", () -> new ThickShadowBlock());
 
     public static final DeferredBlock<Block> WEAPON_WORKSHOP_CRAFTING_TABLE = BLOCKS.register("weapon_workshop_crafting_table", () -> new WeaponWorkshopCraftingTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.ANVIL).strength(2f, 10f).requiresCorrectToolForDrops().noOcclusion()));
+
+    public static final DeferredBlock<Block> DYEDREAM_SAPLING = BLOCKS.register("dyedream_sapling", () -> new SaplingBlock(ModTreeGrowers.DYEDREAM, BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).noCollission().instabreak().randomTicks().sound(SoundType.GRASS)));
+
+    public static final DeferredBlock<Block> DYEDREAM_COROLLA_CROP = BLOCKS.register("dyedream_corolla_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).noCollission().randomTicks().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)));
+
+    public static final DeferredBlock<Block> LIGHT_BALL_CROP = BLOCKS.register("light_ball_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).lightLevel(blockState -> 12).noCollission().randomTicks().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)));
+
+    public static final DeferredBlock<Block> CLOUD_CROP = BLOCKS.register("cloud_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).noCollission().randomTicks().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)));
+
+    public static final DeferredBlock<Block> STEM_GRASS = BLOCKS.register("stem_grass", () -> new PlantBushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PINK)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+
+    ) {
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            return box(2, 0, 2, 14, 13, 14);
+        }
+    });
+
+    public static final DeferredBlock<Block> TALL_STEM_GRASS = BLOCKS.register("tall_stem_grass", () -> new DoublePlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()) {
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            Vec3 offset = state.getOffset(world, pos);
+            return box(2, 0, 2, 14, 16, 14).move(offset.x, offset.y, offset.z);
+        }
+    });
+
+    public static final DeferredBlock<Block> PINK_MUSHROOM = BLOCKS.register("pink_mushroom", () -> new PinkMushroom(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noCollission().noOcclusion().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> TALL_PINK_MUSHROOM = BLOCKS.register("tall_pink_mushroom", () -> new TallPinkMushroom(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noCollission().noOcclusion().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()));
+
+    public static final DeferredBlock<Block> POLISHED_CALCITE_STALICRIPE = BLOCKS.register("polished_calcite_stalicripe", () -> new PlantBushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.CALCITE)
+                    .pushReaction(PushReaction.DESTROY)
+    ){
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            Vec3 offset = state.getOffset(world, pos);
+            return box(1, 0, 1, 15, 1, 15).move(offset.x, offset.y, offset.z);
+        }
+        @Override
+        public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+            BlockPos belowPos = pPos.below();
+            BlockState belowState = pLevel.getBlockState(belowPos);
+            if (belowState.isAir()) return false;
+            return belowState.is(Blocks.CALCITE);
+        }
+    });
+
+    public static final DeferredBlock<Block> SMALL_POLISHED_CALCITE_STALICRIPE = BLOCKS.register("small_polished_calcite_stalicripe", () -> new PlantBushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.CALCITE)
+                    .pushReaction(PushReaction.DESTROY)
+    ){
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            Vec3 offset = state.getOffset(world, pos);
+            return box(0, 0, 0, 16, 1, 16).move(offset.x, offset.y, offset.z);
+        }
+        @Override
+        public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+            BlockPos belowPos = pPos.below();
+            BlockState belowState = pLevel.getBlockState(belowPos);
+            if (belowState.isAir()) return false;
+            return belowState.is(Blocks.CALCITE);
+        }
+    }
+    );
+
+    public static final DeferredBlock<Block> DYEDREAM_MOSS = BLOCKS.register("dyedream_moss", () -> new PlantBushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PINK)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .replaceable()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .lightLevel(s -> 7)
+                    .hasPostProcess((bs, br, bp) -> true)
+                    .emissiveRendering((bs, br, bp) -> true)
+    ) {
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            Vec3 offset = state.getOffset(world, pos);
+            return box(0, 0, 0, 16, 1, 16).move(offset.x, offset.y, offset.z);
+        }
+    });
+
+    public static final DeferredBlock<Block> LINHT_FLOWER = BLOCKS.register("linht_flower",
+            () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).lightLevel(s->12)));
+
+    public static final DeferredBlock<Block> DYEDREAM_LILY_OF_THE_VALLEY = BLOCKS.register("dyedream_lily_of_the_valley",
+            () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> SINGULARITY_FERN = BLOCKS.register("singularity_fern", () -> new PlantBushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PINK)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+    ));
+
+    public static final DeferredBlock<Block> DYEDREAM_VINE = BLOCKS.register("dyedream_vine", DyedreamVineBlock::new);
+
+    public static final DeferredBlock<Block> DYEDREAM_LILY_PAD = BLOCKS.register("dyedream_lily_pad", DyedreamLilyPadBlock::new);
+
+    public static final DeferredBlock<Block> DYEDREAM_SEAGRASS = BLOCKS.register("dyedream_seagrass", DyedreamSeagrassBlock::new);
+
+    public static final DeferredBlock<Block> DYEDREAM_LOTUS = BLOCKS.register("dyedream_lotus", DyedreamLotusBlock::new);
+
+    public static final DeferredBlock<Block> DREAMING_LOTUS = BLOCKS.register("dreaming_lotus", () -> new DreamingLotusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()));
+
+    public static final DeferredBlock<Block> MISTY_DREAMING_LOTUS = BLOCKS.register("misty_dreaming_lotus", () -> new DoublePlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()) {
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            Vec3 offset = state.getOffset(world, pos);
+            return box(2, 0, 2, 14, 16, 14).move(offset.x, offset.y, offset.z);
+        }
+    });
+
+    public static final DeferredBlock<Block> EDELWEISS = BLOCKS.register("edelweiss",
+            () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> NIPPY_EDELWEISS = BLOCKS.register("nippy_edelweiss",
+            () -> new NippyEdelweissBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).randomTicks()
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).lightLevel(s -> 5).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> WHITE_COROLLA_CROP = BLOCKS.register("white_corolla_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).noCollission().randomTicks().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)));
+
+    public static final DeferredBlock<Block> COTTON_CROP = BLOCKS.register("cotton_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).noCollission().randomTicks().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)));
+
+    public static final DeferredBlock<Block> FERRARIA_CRISPA = BLOCKS.register("ferraria_crispa",
+            () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> EUSTOMA = BLOCKS.register("eustoma",
+            () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> JUNGLE_SPORANGIUM = BLOCKS.register("jungle_sporangium", JungleSporangiumBlock::new);
+
+    public static final DeferredBlock<Block> MALVA_SINENSIS_CAVAN = BLOCKS.register("malva_sinensis_cavan",
+            () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> REED = BLOCKS.register("reed", () -> new PlantBushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BROWN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .pushReaction(PushReaction.DESTROY)
+    ){
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            Vec3 offset = state.getOffset(world, pos);
+            return box(0, 0, 0, 16, 8, 16).move(offset.x, offset.y, offset.z);
+        }
+    });
+
+    public static final DeferredBlock<Block> RYE = BLOCKS.register("rye", () -> new PlantBushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BROWN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+
+    ));
+
+    public static final DeferredBlock<Block> OATS = BLOCKS.register("oats", () -> new PlantBushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BROWN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+
+    ));
+
+    public static final DeferredBlock<Block> GOLDENROD = BLOCKS.register("goldenrod",
+            () -> new FlowerBlock(MobEffects.MOVEMENT_SLOWDOWN, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> FOURLEAF_CLOVER = BLOCKS.register("fourleaf_clover",
+            () -> new FlowerBlock(MobEffects.LUCK, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)) {
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+                    Vec3 offset = state.getOffset(world, pos);
+                    return box(4, 0, 4, 12, 5, 12).move(offset.x, offset.y, offset.z);
+                }
+            });
+
+    public static final DeferredBlock<Block> BLAZE_FLOWER = BLOCKS.register("blaze_flower",
+            () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY))
+            {
+                @Override
+                public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+                    BlockPos belowPos = pPos.below();
+                    BlockState belowState = pLevel.getBlockState(belowPos);
+                    if (belowState.isAir()) return false;
+                    return belowState.is(ModBlockTags.BLAZE_FLOWER_CAN_PLACE_ON);
+                }
+            });
+
+    public static final DeferredBlock<Block> CRIMSON_THORNS = BLOCKS.register("crimson_thorns", () ->
+            new DoublePlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
+            .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY).replaceable())
+            {
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+                    return box(3, 0, 3, 13, 16, 13);
+                }
+                @Override
+                public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+                    DoubleBlockHalf half = pState.getValue(DoublePlantBlock.HALF);
+                    if (half == DoubleBlockHalf.UPPER) {
+                        return super.canSurvive(pState, pLevel, pPos);
+                    }
+                    BlockPos belowPos = pPos.below();
+                    BlockState belowState = pLevel.getBlockState(belowPos);
+                    if (belowState.isAir()) return false;
+                    return belowState.is(ModBlockTags.CRIMSON_THORNS_CAN_PLACE_ON);
+                }
+                @Override
+                public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
+                    if (pLevel.isClientSide()) {
+                        return;
+                    }
+                    if (pEntity instanceof LivingEntity livingEntity) {
+                        if (!livingEntity.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)) {
+                            livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 0));
+                        }
+                            if (livingEntity.getRemainingFireTicks() < 20) {
+                                livingEntity.igniteForSeconds(1);
+                        }
+                    }
+                }
+
+            });
+
+    public static final DeferredBlock<Block> HAIRY_MOSS = BLOCKS.register("hairy_moss", () -> new WindPlantBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
+
+    public static final DeferredBlock<Block> WIND_CLEAVING_GRASS = BLOCKS.register("wind_cleaving_grass", () -> new WindPlantBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
+
+    public static final DeferredBlock<Block> WIND_FEATHER_GRASS = BLOCKS.register("wind_feather_grass", () -> new WindTallPlantBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
+
+    public static final DeferredBlock<Block> WIND_ISLAND_REED = BLOCKS.register("wind_island_reed", () -> new WindIslandReedBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
+
+    public static final DeferredBlock<Block> SHADOW_SHORT_ROOTS = BLOCKS.register("shadow_short_roots",
+            () -> new ShadowPlantBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).sound(SoundType.ROOTS)
+                    .instabreak().noCollission().noOcclusion()
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> SHADOW_ROOTS = BLOCKS.register("shadow_roots",
+            () -> new ShadowPlantBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).sound(SoundType.ROOTS)
+                    .instabreak().noCollission().noOcclusion()
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> SHADOW_STEM_FERN = BLOCKS.register("shadow_stem_fern",
+            () -> new ShadowStemFernBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).sound(SoundType.ROOTS)
+                    .instabreak().noCollission().noOcclusion()
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()));
+
+    public static final DeferredBlock<Block> SHADOW_SPROUTS = BLOCKS.register("shadow_sprouts",
+            () -> new ShadowPlantBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).sound(SoundType.ROOTS)
+                    .instabreak().noCollission().noOcclusion()
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> SHADOW_FERN = BLOCKS.register("shadow_fern",
+            () -> new ShadowPlantBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).sound(SoundType.ROOTS)
+                    .instabreak().noCollission().noOcclusion()
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> SHADOW_FUNGUS = BLOCKS.register("shadow_fungus",
+            () -> new ShadowFungusBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY).sound(SoundType.FUNGUS)
+                    .instabreak().noCollission().noOcclusion()
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> WHITE_ORCHID_FLOWER = BLOCKS.register("white_orchid_flower",
+            () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).lightLevel(s->7)) {
+                @Override
+                public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
+                    return super.mayPlaceOn(groundState, worldIn, pos)
+                            || groundState.is(Blocks.CRIMSON_NYLIUM)
+                            || groundState.is(Blocks.WARPED_NYLIUM)
+                            || groundState.is(ModBlockTags.SHADOW_PLANTS_CAN_PLACE_ON);
+                }
+
+                @Override
+                public boolean canSurvive(BlockState blockstate, LevelReader worldIn, BlockPos pos) {
+                    BlockPos blockpos = pos.below();
+                    BlockState groundState = worldIn.getBlockState(blockpos);
+                    return this.mayPlaceOn(groundState, worldIn, blockpos);
+                }
+            });
+
+    public static final DeferredBlock<Block> LIGHT_BALL = BLOCKS.register("light_ball", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SWEET_BERRY_BUSH).instabreak().lightLevel(s -> 13).noCollission().noOcclusion().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)
+            .isRedstoneConductor((bs, br, bp) -> false)){
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            return box(5, 5, 5, 11, 11, 11);
+        }
+    });
+
+
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

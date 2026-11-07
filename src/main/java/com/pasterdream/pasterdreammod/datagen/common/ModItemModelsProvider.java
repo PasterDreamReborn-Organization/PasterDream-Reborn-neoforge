@@ -30,6 +30,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get());
         basicItem(ModItems.DYEDREAM_ALLOY_NUGGET.get());
         basicItem(ModItems.COTTON.get());
+        withExistingParent(ModItems.FOURLEAF_CLOVER_CURIO.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/fourleaf_clover"));
         basicItem(ModItems.SCULK_HEART.get());
         basicItem(ModItems.SPOOL.get());
         basicItem(ModItems.FABRIC.get());
@@ -252,6 +254,108 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
                         modLoc("displaysettings/windwreathed_thunder_spear.item")))
                 .texture("layer0", modLoc("item/windwreathed_thunder_spear"));
+        withExistingParent(ModItems.GOLDENROD.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/goldenrod"));
+        withExistingParent(ModItems.FERRARIA_CRISPA.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/ferraria_crispa"));
+        withExistingParent(ModItems.EUSTOMA.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/eustoma"));
+        withExistingParent(ModItems.MALVA_SINENSIS_CAVAN.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/malva_sinensis_cavan"));
+        withExistingParent(ModItems.LINHT_FLOWER.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/linht_flower"));
+        withExistingParent(ModItems.DREAMING_LOTUS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dreaming_lotus_top"));
+        withExistingParent(ModItems.MISTY_DREAMING_LOTUS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/misty_dreaming_lotus_top"));
+        withExistingParent(ModItems.DYEDREAM_LILY_OF_THE_VALLEY.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_lily_of_the_valley"));
+        withExistingParent(ModItems.BLAZE_FLOWER.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/blaze_flower"));
+        withExistingParent(ModItems.WHITE_ORCHID_FLOWER.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/white_orchid_flower"));
+        withExistingParent(ModItems.EDELWEISS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/edelweiss"));
+        withExistingParent(ModItems.NIPPY_EDELWEISS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/nippy_edelweiss"));
+        withExistingParent(ModItems.LIGHT_BALL.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/light_ball"));
+
+        withExistingParent(ModItems.DYEDREAM_MOSS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_moss"));
+        withExistingParent(ModItems.STEM_GRASS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/stem_grass"));
+        withExistingParent(ModItems.TALL_STEM_GRASS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/stem_grass"));
+        withExistingParent(ModItems.SINGULARITY_FERN.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/singularity_fern"));
+        withExistingParent(ModItems.CRIMSON_THORNS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/crimson_thorns_top"));
+        withExistingParent(ModItems.OATS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/oats"));
+        withExistingParent(ModItems.RYE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/rye"));
+        withExistingParent(ModItems.POLISHED_CALCITE_STALICRIPE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/polished_calcite_stalicripe"));
+        withExistingParent(ModItems.SMALL_POLISHED_CALCITE_STALICRIPE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/small_polished_calcite_stalicripe"));
+        withExistingParent(ModItems.DYEDREAM_SEAGRASS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_seagrass"));
+        withExistingParent(ModItems.REED.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/reed"));
+        withExistingParent(ModItems.DYEDREAM_VINE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_vine"));
+        withExistingParent(ModItems.JUNGLE_SPORANGIUM.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/jungle_sporangium"));
+        withExistingParent(ModItems.FOURLEAF_CLOVER.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/fourleaf_clover"));
+
+        // 风之植物系列
+        withExistingParent(ModItems.HAIRY_MOSS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/hairy_moss"));
+        withExistingParent(ModItems.WIND_CLEAVING_GRASS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_cleaving_grass"));
+        withExistingParent(ModItems.WIND_FEATHER_GRASS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_feather_grass_top"));
+        withExistingParent(ModItems.WIND_ISLAND_REED.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_island_reed_top"));
+
+        withExistingParent(ModItems.SHADOW_SHORT_ROOTS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/shadow_short_roots"));
+        withExistingParent(ModItems.SHADOW_ROOTS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/shadow_roots"));
+        withExistingParent(ModItems.SHADOW_STEM_FERN.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/shadow_stem_fern_top"));
+        withExistingParent(ModItems.SHADOW_SPROUTS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/shadow_sprouts"));
+        withExistingParent(ModItems.SHADOW_FERN.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/shadow_fern"));
+
+        withExistingParent(ModItems.SHADOW_FUNGUS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/shadow_fungus"));
+
+        withExistingParent(ModItems.PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/pink_mushroom"));
+        withExistingParent(ModItems.TALL_PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/pink_mushroom"));
+
+        withExistingParent(ModItems.DYEDREAM_SAPLING.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_sapling"));
+
+
+        basicItem(ModItems.DYEDREAM_COROLLA.get());
+        basicItem(ModItems.WHITE_COROLLA.get());
+        basicItem(ModItems.COTTON.get());
+        basicItem(ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
+        basicItem(ModItems.WHITE_COROLLA_CROP_AGE_0.get());
+        basicItem(ModItems.LIGHT_BALL_CROP_AGE_0.get());
+        basicItem(ModItems.CLOUD_CROP_AGE_0.get());
+        basicItem(ModItems.COTTON_CROP_AGE_0.get());
+        withExistingParent(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/dyedream_corolla_crop"));
+        withExistingParent(ModItems.WHITE_COROLLA_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/white_corolla_crop"));
+        withExistingParent(ModItems.LIGHT_BALL_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/light_ball_crop"));
+        withExistingParent(ModItems.CLOUD_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/cloud_crop"));
+        withExistingParent(ModItems.COTTON_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/cotton_crop"));
     }
 
     private void wallItem(String wall, String base) {

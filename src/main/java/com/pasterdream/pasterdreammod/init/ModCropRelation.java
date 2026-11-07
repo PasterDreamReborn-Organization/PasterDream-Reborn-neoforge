@@ -1,15 +1,36 @@
 package com.pasterdream.pasterdreammod.init;
 
-/**
- * 作物关系注册。
- *
- * <p>对应 Forge 1.20.1 源仓库的 {@code init/ModCropRelation.java}。
- */
-public final class ModCropRelation {
-    public static void registerCropRelation() {
-        // TODO
+import com.pasterdream.pasterdreammod.world.block.cropblock.CropBindingContent;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ModCropRelation
+{
+    private static final Map<Block, CropBindingContent> BINDINGS = new HashMap<>();
+
+    public static void register(Block cropBlock, CropBindingContent binding)
+    {
+        BINDINGS.put(cropBlock, binding);
     }
 
-    private ModCropRelation() {
+    public static CropBindingContent getBinding(Block cropBlock)
+    {
+        if (BINDINGS.isEmpty()) registerCropRelation();
+        return BINDINGS.get(cropBlock);
+    }
+
+    public static void registerCropRelation()
+    {
+        register(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new CropBindingContent(ModItems.DYEDREAM_COROLLA.get(), 1, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt")), ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get()));
+        register(ModBlocks.WHITE_COROLLA_CROP.get(), new CropBindingContent(ModItems.WHITE_COROLLA.get(), 1, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "white_corolla_can_place_on")), ModItems.WHITE_COROLLA_CROP_AGE_1.get(), ModItems.WHITE_COROLLA_CROP_AGE_0.get()));
+        register(ModBlocks.LIGHT_BALL_CROP.get(), new CropBindingContent(ModItems.LIGHT_BALL.get(), 1, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt")), ModItems.LIGHT_BALL_CROP_AGE_1.get(), ModItems.LIGHT_BALL_CROP_AGE_0.get()));
+        register(ModBlocks.CLOUD_CROP.get(), new CropBindingContent(ModItems.CLOUD.get(), 5, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt")), ModItems.CLOUD_CROP_AGE_1.get(), ModItems.CLOUD_CROP_AGE_0.get()));
+        register(ModBlocks.COTTON_CROP.get(), new CropBindingContent(ModItems.COTTON.get(), 1, BlockTags.DIRT, ModItems.COTTON_CROP_AGE_1.get(), ModItems.COTTON_CROP_AGE_0.get()));
     }
 }
