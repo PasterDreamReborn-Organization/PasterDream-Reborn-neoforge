@@ -3,8 +3,13 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.List;
 
 /**
  * DataComponents 注册中心。
@@ -17,7 +22,11 @@ public class ModDataComponents {
     public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENTS =
             DeferredRegister.create(Registries.DATA_COMPONENT_TYPE, PasterDreamMod.MOD_ID);
 
-    // TODO: 在此注册 DataComponentType（Codec + StreamCodec）
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<List<FluidStack>>> MORTAR_FLUIDS =
+            DATA_COMPONENTS.register("mortar_fluids", () -> DataComponentType.<List<FluidStack>>builder()
+                    .persistent(FluidStack.OPTIONAL_CODEC.listOf())
+                    .networkSynchronized(FluidStack.OPTIONAL_STREAM_CODEC.apply(ByteBufCodecs.list()))
+                    .build());
 
     public static void register(IEventBus eventBus) {
         DATA_COMPONENTS.register(eventBus);

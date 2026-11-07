@@ -43,7 +43,7 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 | 梦之釜 | `world/block/dreamcauldron/` | GeckoLib 渲染 |
 | 梦蓄器 | `world/block/dreamaccumulator/` | 按群系条件产出 |
 | 研究台 | `world/block/researchtable/` | Copy + Research 双模式 |
-| 研钵（物品容器） | `world/item/mortar/` | 物品型容器，含 NBT 同步 |
+| 研钵（物品容器） | `world/item/mortar/` | 物品/流体槽已用组件存储并接通共享框架；未迁流体内容待 T07/T09 |
 | 金狐交易 | `recipe/GoldenFoxTradeRecipe.java` | 交易配方 |
 | 精铸工坊工作台 | `world/block/weaponworkshop/craftingtable/` | 数据驱动配方，强化石追加主手属性与附魔 |
 

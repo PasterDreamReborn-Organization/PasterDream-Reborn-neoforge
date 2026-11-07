@@ -2,6 +2,8 @@ package com.pasterdream.pasterdreammod.recipe;
 
 import com.mojang.serialization.MapCodec;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
+import com.pasterdream.pasterdreammod.helper.ContainerBalanceHelper;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.component.DataComponents;
@@ -34,6 +36,12 @@ public class NbtPreservingShapedRecipe extends ShapedRecipe {
             result.setDamageValue(0);
         }
         return result;
+    }
+
+    @Override
+    public NonNullList<ItemStack> getRemainingItems(CraftingInput input) {
+        return ContainerBalanceHelper.balance(input, getResultItem(RegistryAccess.EMPTY),
+                super.getRemainingItems(input), getIngredients());
     }
 
     @Override

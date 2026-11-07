@@ -3,6 +3,9 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.WeaponWorkshopCraftingTableCraftPacket;
+import com.pasterdream.pasterdreammod.network.mortar.MortarCraftPacket;
+import com.pasterdream.pasterdreammod.network.fluidslot.FluidSlotInteractPacket;
+import com.pasterdream.pasterdreammod.network.fluidslot.FluidSyncPacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindAlloyMiningSpeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.shadowerosion.ShadowErosionMiningSpeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindHoverInputPacket;
@@ -39,6 +42,11 @@ public final class ModNetwork {
                 KusanagiVenomStingerPacket::handle);
         registrar.playToServer(WeaponWorkshopCraftingTableCraftPacket.TYPE, WeaponWorkshopCraftingTableCraftPacket.STREAM_CODEC,
                 WeaponWorkshopCraftingTableCraftPacket::handle);
+        registrar.playToServer(MortarCraftPacket.TYPE, MortarCraftPacket.STREAM_CODEC, MortarCraftPacket::handle);
+        registrar.playToServer(FluidSlotInteractPacket.TYPE, FluidSlotInteractPacket.STREAM_CODEC,
+                FluidSlotInteractPacket::handle);
+        registrar.playToClient(FluidSyncPacket.TYPE, FluidSyncPacket.STREAM_CODEC,
+                FluidSyncPacket::handle);
         registrar.playToServer(BlinkPacket.TYPE, BlinkPacket.STREAM_CODEC, BlinkPacket::handle);
         registrar.playToServer(WindHoverInputPacket.TYPE, WindHoverInputPacket.STREAM_CODEC,
                 WindHoverInputPacket::handle);

@@ -87,6 +87,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.PERGAMYN.get());
         basicItem(ModItems.RYE_SEED.get());
         basicItem(ModItems.FLOUR.get());
+        basicItem(ModItems.MORTAR.get());
         basicItem(ModItems.COARSE_SALT.get());
         basicItem(ModItems.SALT.get());
         basicItem(ModItems.EMBRYO_CHARM.get());

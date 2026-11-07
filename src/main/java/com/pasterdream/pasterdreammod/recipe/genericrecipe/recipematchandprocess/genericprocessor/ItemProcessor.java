@@ -7,71 +7,38 @@ import java.util.List;
 
 public class ItemProcessor
 {
-    public static List<ItemStack> processor(List<ItemStack> matchedItemStacks, List<ItemStack> machineItemStacks, Boolean isAdd)
+    public static List<ItemStack> processor(List<ItemStack> required, List<ItemStack> inventory, Boolean isAdd)
     {
-        List<ItemStack> remainingItemStacks = new ArrayList<>(matchedItemStacks);
-        List<ItemStack> processedItemStacks = new ArrayList<>(machineItemStacks);
-
-        for(int i = 0; i < matchedItemStacks.size(); i++)
+        List<ItemStack> result = new ArrayList<>(inventory.size());
+        for (ItemStack stack : inventory) result.add(stack.copy());
+        for (ItemStack requirement : required)
         {
-            for(int j = 0; j < machineItemStacks.size(); j++)
+            if (requirement.isEmpty()) return null;
+            int remaining = requirement.getCount();
+            for (int i = 0; i < result.size() && remaining > 0; i++)
             {
-                ItemStack matchedItemStack = remainingItemStacks.get(i);
-                int matchedItemCount = matchedItemStack.getCount();
-
-                ItemStack machineItemStack = processedItemStacks.get(j);
-                int machineItemCount = machineItemStack.getCount();
-
-                if(isAdd)
+                ItemStack stack = result.get(i);
+                if (stack.isEmpty() || !(isAdd
+                        ? ItemStack.isSameItemSameComponents(stack, requirement)
+                        : ItemStack.isSameItem(stack, requirement))) continue;
+                int amount = Math.min(remaining, isAdd ? stack.getMaxStackSize() - stack.getCount() : stack.getCount());
+                if (amount <= 0) continue;
+                if (isAdd) stack.grow(amount);
+                else stack.shrink(amount);
+                remaining -= amount;
+            }
+            if (isAdd)
+            {
+                for (int i = 0; i < result.size() && remaining > 0; i++)
                 {
-                    if(ItemStack.isSameItemSameComponents(matchedItemStack, machineItemStack))
-                    {
-                        int itemMaxStackSize = matchedItemStack.getMaxStackSize();
-                        if(machineItemCount + matchedItemCount <= itemMaxStackSize)
-                        {
-                            machineItemStack.grow(matchedItemCount);
-                            remainingItemStacks.set(i, ItemStack.EMPTY);
-                            break;
-                        }
-                            else
-                            {
-                                machineItemStack.setCount(itemMaxStackSize);
-                                matchedItemStack.shrink(itemMaxStackSize - machineItemCount);
-                            }
-                    }
-                    else
-                        if(machineItemStack.isEmpty())
-                        {
-                            processedItemStacks.set(j, matchedItemStack.copy());
-                            remainingItemStacks.set(i, ItemStack.EMPTY);
-                            break;
-                        }
+                    if (!result.get(i).isEmpty()) continue;
+                    int amount = Math.min(remaining, requirement.getMaxStackSize());
+                    result.set(i, requirement.copyWithCount(amount));
+                    remaining -= amount;
                 }
-                    else
-                    {
-                        if(ItemStack.isSameItem(matchedItemStack, machineItemStack))
-                        {
-                            if(machineItemCount >= matchedItemCount)
-                            {
-                                machineItemStack.shrink(matchedItemCount);
-                                remainingItemStacks.set(i, ItemStack.EMPTY);
-                                break;
-                            }
-                                else
-                                {
-                                    processedItemStacks.set(j, ItemStack.EMPTY);
-                                    matchedItemStack.shrink(machineItemCount);
-                                }
-                        }
-                    }
             }
-
-            if (!remainingItemStacks.get(i).isEmpty())
-            {
-                return null;
-            }
+            if (remaining > 0) return null;
         }
-
-        return processedItemStacks;
+        return result;
     }
 }

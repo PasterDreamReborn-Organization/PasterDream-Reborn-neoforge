@@ -5,6 +5,9 @@ import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapedRecipe;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapelessRecipe;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipeSerializer;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarCraftingRecipe;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipeSerializer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -35,6 +38,15 @@ public class ModRecipes {
 
     public static final DeferredHolder<RecipeSerializer<?>, WeaponWorkshopCraftingTableRecipeSerializer> WEAPON_WORKSHOP_CRAFTING_TABLE_SERIALIZER =
             RECIPE_SERIALIZERS.register("weapon_workshop_crafting_table", WeaponWorkshopCraftingTableRecipeSerializer::new);
+
+    public static final DeferredHolder<RecipeType<?>, RecipeType<MortarRecipe>> MORTAR =
+            RECIPE_TYPES.register("mortar", () -> new RecipeType<>() {});
+
+    public static final DeferredHolder<RecipeSerializer<?>, MortarRecipeSerializer> MORTAR_SERIALIZER =
+            RECIPE_SERIALIZERS.register("mortar", MortarRecipeSerializer::new);
+
+    public static final DeferredHolder<RecipeSerializer<?>, MortarCraftingRecipe.Serializer> MORTAR_CRAFTING_SERIALIZER =
+            RECIPE_SERIALIZERS.register("mortar_crafting", MortarCraftingRecipe.Serializer::new);
 
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZERS.register(eventBus);

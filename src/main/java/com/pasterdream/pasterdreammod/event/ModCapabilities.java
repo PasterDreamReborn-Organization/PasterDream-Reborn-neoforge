@@ -6,6 +6,8 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagInventoryCapability;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarDataHandler;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarInventory;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -31,5 +33,11 @@ public final class ModCapabilities
         event.registerItem(Capabilities.ItemHandler.ITEM,
                 (stack, context) -> new StorageBagInventoryCapability(stack, LargeStorageBagItem.SLOT_COUNT),
                 ModItems.LARGE_STORAGE_BAG.get());
+        event.registerItem(Capabilities.ItemHandler.ITEM,
+                (stack, context) -> new MortarInventory(new MortarDataHandler(stack)),
+                ModItems.MORTAR.get());
+        event.registerItem(Capabilities.FluidHandler.ITEM,
+                (stack, context) -> new MortarInventory(new MortarDataHandler(stack)),
+                ModItems.MORTAR.get());
     }
 }

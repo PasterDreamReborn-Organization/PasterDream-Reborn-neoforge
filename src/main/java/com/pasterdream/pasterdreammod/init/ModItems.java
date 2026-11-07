@@ -54,6 +54,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.WarFlagItem;
 import com.pasterdream.pasterdreammod.world.item.curio.WindSpiritItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
@@ -209,6 +210,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RYE_SEED = ITEMS.register("rye_seed",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MORTAR = ITEMS.register("mortar", () -> new MortarItem(new Item.Properties()));
     public static final DeferredItem<Item> FLOUR = ITEMS.register("flour",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> COARSE_SALT = ITEMS.register("coarse_salt",

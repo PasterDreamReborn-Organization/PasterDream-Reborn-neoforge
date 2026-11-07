@@ -344,6 +344,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.LOST_SWORD_TOMB.get());
                         output.accept(ModItems.DESERT_HERO_TOMB.get());
                         output.accept(ModItems.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
+                        output.accept(ModItems.MORTAR.get());
                         output.accept(ModItems.DYEDREAM_DESK.get());
                     }).build());
 
