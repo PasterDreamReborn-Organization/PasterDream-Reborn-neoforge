@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class NippyEdelweissBlock extends FlowerBlock {
+public class NippyEdelweissBlock extends FlowerBlock implements EntityBlock {
 
     public NippyEdelweissBlock(Properties properties) {
         super(net.minecraft.world.effect.MobEffects.MOVEMENT_SPEED, 5.0F, properties);
@@ -35,6 +35,13 @@ public class NippyEdelweissBlock extends FlowerBlock {
     @Override
     public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
         return 60;
+    }
+
+    @Override
+    public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
+        super.triggerEvent(state, world, pos, eventID, eventParam);
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
     }
 
 
@@ -56,6 +63,11 @@ public class NippyEdelweissBlock extends FlowerBlock {
         }
     }
 
+    @Override
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        tick(state, level, pos, random);
+    }
+
     private static void freezeNearby(Level world, BlockPos pos) {
         if (world.isClientSide()) return;
 
@@ -70,6 +82,12 @@ public class NippyEdelweissBlock extends FlowerBlock {
         } else if (targetState.is(Blocks.WATER)) {
             world.setBlock(target, Blocks.ICE.defaultBlockState(), 3);
         }
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new NippyEdelweissBlockEntity(pos, state);
     }
 
 }

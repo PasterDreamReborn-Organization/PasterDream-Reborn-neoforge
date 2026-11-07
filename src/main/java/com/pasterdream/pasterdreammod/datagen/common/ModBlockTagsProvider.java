@@ -20,6 +20,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        var flowerPots = tag(BlockTags.FLOWER_POTS);
+        for (var potted : ModBlocks.POTTED_PLANTS.values()) {
+            flowerPots.add(potted.get());
+        }
         tag(ModBlockTags.WHITE_COROLLA_CAN_PLACE_ON).add(Blocks.SNOW_BLOCK).addTag(BlockTags.DIRT);
         tag(ModBlockTags.CRIMSON_THORNS_CAN_PLACE_ON).add(Blocks.CRIMSON_NYLIUM, Blocks.NETHERRACK, Blocks.MAGMA_BLOCK);
         tag(ModBlockTags.BLAZE_FLOWER_CAN_PLACE_ON).add(Blocks.CRIMSON_NYLIUM, Blocks.NETHERRACK, Blocks.MAGMA_BLOCK);
@@ -64,6 +68,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_TRAPDOOR.get())
                 .add(ModBlocks.DYEDREAM_PRESSURE_PLATE.get())
                 .add(ModBlocks.DYEDREAM_BUTTON.get())
+                .add(ModBlocks.DYEDREAM_DESK.get())
                 .add(ModBlocks.PINK_MUSHROOM_BLOCK.get())
                 .add(ModBlocks.PINK_MUSHROOM_STEM.get())
                 .add(ModBlocks.PINK_SHROOMLIGHT.get());

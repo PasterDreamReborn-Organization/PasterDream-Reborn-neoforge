@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.client.particle.Buff0Particle;
+import com.pasterdream.pasterdreammod.client.particle.CrackParticle;
 import com.pasterdream.pasterdreammod.client.particle.Dust0Particle;
 import com.pasterdream.pasterdreammod.client.particle.MeltdreamCrystalParticle;
 import com.pasterdream.pasterdreammod.client.particle.PoisonGasParticle;
@@ -32,6 +33,7 @@ public final class ModParticles {
         event.registerSpriteSet(ModParticleTypes.POISON_GAS_PARTICLE.get(), PoisonGasParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.BUFF_0_PARTICLE.get(), Buff0Particle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.SOUL_PARTICLE.get(), SoulParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.CRACK_0_PARTICLE.get(), CrackParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.MELTDREAM_CRYSTAL_PARTICLE.get(), MeltdreamCrystalParticle.Provider::new);
     }
 }

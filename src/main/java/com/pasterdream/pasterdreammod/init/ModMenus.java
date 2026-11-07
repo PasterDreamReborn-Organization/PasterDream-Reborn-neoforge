@@ -3,6 +3,8 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskMenu;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagMenu;
 import net.minecraft.core.registries.Registries;
@@ -28,6 +30,13 @@ public class ModMenus {
             {
                 BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
                 return new WeaponWorkshopCraftingTableMenu(windowId, inv, (WeaponWorkshopCraftingTableBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<DyedreamDeskMenu>> DYEDREAM_DESK =
+            MENUS.register("dyedream_desk", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new DyedreamDeskMenu(windowId, inv, (DyedreamDeskBlockEntity) blockEntity);
             }));
 
     public static final DeferredHolder<MenuType<?>, MenuType<StorageBagMenu>> STORAGE_BAG =

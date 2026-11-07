@@ -23,6 +23,8 @@ public final class ModCapabilities
     {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_CRAFTING_TABLE.get(),
                 (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.DYEDREAM_DESK.get(),
+                (blockEntity, direction) -> blockEntity.getItemHandler());
         event.registerItem(Capabilities.ItemHandler.ITEM,
                 (stack, context) -> new StorageBagInventoryCapability(stack, StorageBagItem.SLOT_COUNT),
                 ModItems.STORAGE_BAG.get());

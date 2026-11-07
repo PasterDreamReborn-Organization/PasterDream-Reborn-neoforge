@@ -613,6 +613,7 @@ public class ModItems {
     public static final DeferredItem<BlockItem> SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW);
     public static final DeferredItem<BlockItem> THICK_SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.THICK_SHADOW);
     public static final DeferredItem<BlockItem> WEAPON_WORKSHOP_CRAFTING_TABLE = ITEMS.registerSimpleBlockItem(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE);
+    public static final DeferredItem<BlockItem> DYEDREAM_DESK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DESK);
 
     // ===== 影蚀系列 =====
     public static final DeferredItem<Item> SHADOW_EROSION_DAGGER = ITEMS.register("shadow_erosion_dagger",

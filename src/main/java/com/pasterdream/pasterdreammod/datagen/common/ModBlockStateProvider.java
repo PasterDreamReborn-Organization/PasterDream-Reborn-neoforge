@@ -340,6 +340,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("2", modLoc("block/lost_sword"))
                 .renderType("cutout");
         horizontalBlock(ModBlocks.LOST_SWORD_TOMB.get(), lostSwordTomb);
+        horizontalBlock(ModBlocks.DYEDREAM_DESK.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/dyedream_desk")));
         horizontalBlock(ModBlocks.LIFE_CRYSTAL.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/life_crystal_particle")));
         blockItem(ModBlocks.LOST_SWORD_TOMB);
@@ -508,6 +510,37 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 new ModelFile.UncheckedModelFile(modLoc("custom/uuz_doll_particle")));
         horizontalBlock(ModBlocks.DESERT_HERO_TOMB.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/desert_hero_tomb_particle")));
+
+        // ===== 盆栽植物 =====
+        for (var entry : ModBlocks.POTTED_PLANTS.entrySet()) {
+            var plant = entry.getKey();
+            var potted = entry.getValue();
+            boolean isCrop = ModBlocks.POTTED_CROPS.contains(potted);
+
+            if (isCrop) {
+                var plantName = plant.getId().getPath();
+                var seedlingTex = modLoc("block/" + plantName + "_age_0");
+                var matureTex = modLoc("block/" + plantName);
+
+                var seedlingModel = models().withExistingParent(potted.getId().getPath() + "_age_0", mcLoc("block/flower_pot_cross"))
+                        .texture("plant", seedlingTex).renderType("cutout");
+                var matureModel = models().withExistingParent(potted.getId().getPath(), mcLoc("block/flower_pot_cross"))
+                        .texture("plant", matureTex).renderType("cutout");
+
+                getVariantBuilder(potted.get())
+                        .partialState().with(BlockStateProperties.AGE_1, 0)
+                        .addModels(new ConfiguredModel(seedlingModel))
+                        .partialState().with(BlockStateProperties.AGE_1, 1)
+                        .addModels(new ConfiguredModel(matureModel));
+            } else if (potted == ModBlocks.POTTED_FOURLEAF_CLOVER) {
+                simpleBlock(potted.get(), models().getExistingFile(modLoc("block/potted_fourleaf_clover")));
+            } else {
+                var plantTex = modLoc("block/" + plant.getId().getPath());
+                var pottedModel = models().withExistingParent(potted.getId().getPath(), mcLoc("block/flower_pot_cross"))
+                        .texture("plant", plantTex).renderType("cutout");
+                simpleBlock(potted.get(), pottedModel);
+            }
+        }
     }
 
     private void generateTwoStageCrop(Block block, String baseName)

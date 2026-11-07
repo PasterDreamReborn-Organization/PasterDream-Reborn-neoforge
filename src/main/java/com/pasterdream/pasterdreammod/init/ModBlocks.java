@@ -23,6 +23,8 @@ import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombB
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlock;
+import com.pasterdream.pasterdreammod.world.block.PottedCropBlock;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.*;
 import net.minecraft.core.BlockPos;
@@ -73,6 +75,13 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import java.util.Map;
+import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.function.Supplier;
+import net.minecraft.world.item.Item;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(PasterDreamMod.MOD_ID);
@@ -244,6 +253,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> THICK_SHADOW = BLOCKS.register("thick_shadow", () -> new ThickShadowBlock());
 
     public static final DeferredBlock<Block> WEAPON_WORKSHOP_CRAFTING_TABLE = BLOCKS.register("weapon_workshop_crafting_table", () -> new WeaponWorkshopCraftingTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.ANVIL).strength(2f, 10f).requiresCorrectToolForDrops().noOcclusion()));
+    public static final DeferredBlock<Block> DYEDREAM_DESK = BLOCKS.register("dyedream_desk", () -> new DyedreamDeskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1F).requiresCorrectToolForDrops().noOcclusion()));
 
     public static final DeferredBlock<Block> DYEDREAM_SAPLING = BLOCKS.register("dyedream_sapling", () -> new SaplingBlock(ModTreeGrowers.DYEDREAM, BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).noCollission().instabreak().randomTicks().sound(SoundType.GRASS)));
 
@@ -389,7 +399,7 @@ public class ModBlocks {
     });
 
     public static final DeferredBlock<Block> EDELWEISS = BLOCKS.register("edelweiss",
-            () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY)
+            () -> new EdelweissBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY)
                     .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> NIPPY_EDELWEISS = BLOCKS.register("nippy_edelweiss",
@@ -637,6 +647,89 @@ public class ModBlocks {
     });
 
 
+
+    // ===== 盆栽植物 =====
+    public static final Map<DeferredBlock<Block>, DeferredBlock<Block>> POTTED_PLANTS = new LinkedHashMap<>();
+    public static final Set<DeferredBlock<Block>> POTTED_CROPS = new HashSet<>();
+    public static final Map<DeferredBlock<Block>, CropPottedItems> POTTED_CROP_ITEMS = new LinkedHashMap<>();
+    public static final Map<Block, PottedCropBlock> CROP_TO_POTTED = new HashMap<>();
+
+    public record CropPottedItems(Supplier<? extends Item> seedling, Supplier<? extends Item> mature) {}
+
+    private static final BlockBehaviour.Properties POT_PROPERTIES = BlockBehaviour.Properties.of()
+            .instabreak().noOcclusion().pushReaction(PushReaction.DESTROY);
+
+    public static final DeferredBlock<Block> POTTED_STEM_GRASS = registerPotted(STEM_GRASS, "potted_stem_grass");
+    public static final DeferredBlock<Block> POTTED_PINK_MUSHROOM = registerPotted(PINK_MUSHROOM, "potted_pink_mushroom");
+    public static final DeferredBlock<Block> POTTED_DYEDREAM_MOSS = registerPotted(DYEDREAM_MOSS, "potted_dyedream_moss", 7);
+    public static final DeferredBlock<Block> POTTED_LINHT_FLOWER = registerPotted(LINHT_FLOWER, "potted_linht_flower", 12);
+    public static final DeferredBlock<Block> POTTED_DYEDREAM_LILY_OF_THE_VALLEY = registerPotted(DYEDREAM_LILY_OF_THE_VALLEY, "potted_dyedream_lily_of_the_valley");
+    public static final DeferredBlock<Block> POTTED_SINGULARITY_FERN = registerPotted(SINGULARITY_FERN, "potted_singularity_fern");
+    public static final DeferredBlock<Block> POTTED_FERRARIA_CRISPA = registerPotted(FERRARIA_CRISPA, "potted_ferraria_crispa");
+    public static final DeferredBlock<Block> POTTED_EUSTOMA = registerPotted(EUSTOMA, "potted_eustoma");
+    public static final DeferredBlock<Block> POTTED_JUNGLE_SPORANGIUM = registerPotted(JUNGLE_SPORANGIUM, "potted_jungle_sporangium", 6);
+    public static final DeferredBlock<Block> POTTED_MALVA_SINENSIS_CAVAN = registerPotted(MALVA_SINENSIS_CAVAN, "potted_malva_sinensis_cavan");
+    public static final DeferredBlock<Block> POTTED_GOLDENROD = registerPotted(GOLDENROD, "potted_goldenrod");
+    public static final DeferredBlock<Block> POTTED_FOURLEAF_CLOVER = registerPotted(FOURLEAF_CLOVER, "potted_fourleaf_clover");
+    public static final DeferredBlock<Block> POTTED_BLAZE_FLOWER = registerPotted(BLAZE_FLOWER, "potted_blaze_flower");
+    public static final DeferredBlock<Block> POTTED_WHITE_ORCHID_FLOWER = registerPotted(WHITE_ORCHID_FLOWER, "potted_white_orchid_flower", 7);
+    public static final DeferredBlock<Block> POTTED_SHADOW_SHORT_ROOTS = registerPotted(SHADOW_SHORT_ROOTS, "potted_shadow_short_roots");
+    public static final DeferredBlock<Block> POTTED_SHADOW_ROOTS = registerPotted(SHADOW_ROOTS, "potted_shadow_roots");
+    public static final DeferredBlock<Block> POTTED_SHADOW_SPROUTS = registerPotted(SHADOW_SPROUTS, "potted_shadow_sprouts");
+    public static final DeferredBlock<Block> POTTED_SHADOW_FERN = registerPotted(SHADOW_FERN, "potted_shadow_fern");
+    public static final DeferredBlock<Block> POTTED_SHADOW_FUNGUS = registerPotted(SHADOW_FUNGUS, "potted_shadow_fungus");
+    public static final DeferredBlock<Block> POTTED_EDELWEISS = registerPotted(EDELWEISS, "potted_edelweiss");
+    public static final DeferredBlock<Block> POTTED_NIPPY_EDELWEISS = registerPotted(NIPPY_EDELWEISS, "potted_nippy_edelweiss", 5);
+    public static final DeferredBlock<Block> POTTED_DYEDREAM_SAPLING = registerPotted(DYEDREAM_SAPLING, "potted_dyedream_sapling");
+    public static final DeferredBlock<Block> POTTED_REED = registerPotted(REED, "potted_reed");
+    public static final DeferredBlock<Block> POTTED_RYE = registerPotted(RYE, "potted_rye");
+    public static final DeferredBlock<Block> POTTED_OATS = registerPotted(OATS, "potted_oats");
+    public static final DeferredBlock<Block> POTTED_HAIRY_MOSS = registerPotted(HAIRY_MOSS, "potted_hairy_moss");
+    public static final DeferredBlock<Block> POTTED_WIND_CLEAVING_GRASS = registerPotted(WIND_CLEAVING_GRASS, "potted_wind_cleaving_grass");
+    public static final DeferredBlock<Block> POTTED_DYEDREAM_COROLLA_CROP = registerPottedCrop(DYEDREAM_COROLLA_CROP, "potted_dyedream_corolla_crop", ModItems.DYEDREAM_COROLLA, 1, ModItems.DYEDREAM_COROLLA_CROP_AGE_0, ModItems.DYEDREAM_COROLLA_CROP_AGE_1);
+    public static final DeferredBlock<Block> POTTED_WHITE_COROLLA_CROP = registerPottedCrop(WHITE_COROLLA_CROP, "potted_white_corolla_crop", ModItems.WHITE_COROLLA, 1, ModItems.WHITE_COROLLA_CROP_AGE_0, ModItems.WHITE_COROLLA_CROP_AGE_1);
+    public static final DeferredBlock<Block> POTTED_LIGHT_BALL_CROP = registerPottedCrop(LIGHT_BALL_CROP, "potted_light_ball_crop", ModItems.LIGHT_BALL, 1, ModItems.LIGHT_BALL_CROP_AGE_0, ModItems.LIGHT_BALL_CROP_AGE_1, 12);
+    public static final DeferredBlock<Block> POTTED_CLOUD_CROP = registerPottedCrop(CLOUD_CROP, "potted_cloud_crop", ModItems.CLOUD, 5, ModItems.CLOUD_CROP_AGE_0, ModItems.CLOUD_CROP_AGE_1);
+    public static final DeferredBlock<Block> POTTED_COTTON_CROP = registerPottedCrop(COTTON_CROP, "potted_cotton_crop", ModItems.COTTON, 1, ModItems.COTTON_CROP_AGE_0, ModItems.COTTON_CROP_AGE_1);
+
+    private static BlockBehaviour.Properties potLight(int light) {
+        return BlockBehaviour.Properties.of()
+                .instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
+                .lightLevel(s -> light);
+    }
+
+    private static DeferredBlock<Block> registerPotted(DeferredBlock<Block> plant, String name) {
+        return registerPotted(plant, name, 0);
+    }
+
+    private static DeferredBlock<Block> registerPotted(DeferredBlock<Block> plant, String name, int light) {
+        BlockBehaviour.Properties props = light > 0 ? potLight(light) : POT_PROPERTIES;
+        DeferredBlock<Block> potted = BLOCKS.register(name, () -> new FlowerPotBlock(plant.get(), props));
+        POTTED_PLANTS.put(plant, potted);
+        return potted;
+    }
+
+    private static DeferredBlock<Block> registerPottedCrop(DeferredBlock<Block> plant, String name,
+                                                             Supplier<? extends Item> harvestItem, int harvestCount,
+                                                             Supplier<? extends Item> seedlingItem, Supplier<? extends Item> matureItem) {
+        return registerPottedCrop(plant, name, harvestItem, harvestCount, seedlingItem, matureItem, 0);
+    }
+
+    private static DeferredBlock<Block> registerPottedCrop(DeferredBlock<Block> plant, String name,
+                                                             Supplier<? extends Item> harvestItem, int harvestCount,
+                                                             Supplier<? extends Item> seedlingItem, Supplier<? extends Item> matureItem,
+                                                             int light) {
+        BlockBehaviour.Properties props = light > 0 ? potLight(light) : POT_PROPERTIES;
+        DeferredBlock<Block> potted = BLOCKS.register(name, () -> {
+            PottedCropBlock block = new PottedCropBlock(plant.get(), harvestItem, harvestCount, seedlingItem, matureItem, props);
+            CROP_TO_POTTED.put(plant.get(), block);
+            return block;
+        });
+        POTTED_PLANTS.put(plant, potted);
+        POTTED_CROPS.add(potted);
+        POTTED_CROP_ITEMS.put(potted, new CropPottedItems(seedlingItem, matureItem));
+        return potted;
+    }
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
