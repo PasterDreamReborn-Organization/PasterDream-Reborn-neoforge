@@ -27,6 +27,10 @@ public final class ModBlockTags {
 
     public static final TagKey<Block> SHADOW_EROSION_TOOL_CAN_BOOST = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:shadow_erosion_tool_can_boost"));
     public static final TagKey<Block> DYEDREAM_DIRT = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt"));
+    public static final TagKey<Block> WHITE_COROLLA_CAN_PLACE_ON = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:white_corolla_can_place_on"));
+    public static final TagKey<Block> CRIMSON_THORNS_CAN_PLACE_ON = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:crimson_thorns_can_place_on"));
+    public static final TagKey<Block> BLAZE_FLOWER_CAN_PLACE_ON = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:blaze_flower_can_place_on"));
+    public static final TagKey<Block> SHADOW_PLANTS_CAN_PLACE_ON = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:shadow_plants_can_place_on"));
 
     private static TagKey<Block> common(String path) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", path));

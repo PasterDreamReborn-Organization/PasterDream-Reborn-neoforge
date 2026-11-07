@@ -304,6 +304,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CARAPAX_CHARM.get());
                         output.accept(ModItems.WORLDTREE_SEEDPOD.get());
                         output.accept(ModItems.GARLAND.get());
+                        output.accept(ModItems.FOURLEAF_CLOVER_CURIO.get());
                         output.accept(ModItems.SNOW_VOW_HEAD.get());
                         output.accept(ModItems.QYM_BUTTERFLY_STAR_HAIRPIN.get());
                         output.accept(ModItems.LIGHT_BUTTERFLY_CURIO.get());
@@ -344,6 +345,67 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DESERT_HERO_TOMB.get());
                         output.accept(ModItems.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
                     }).build());
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_PLANTS_TAB = CREATIVE_MODE_TABS.register("pasterdream_plants_tab",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_plants_tab"))
+                    .icon(() -> ModItems.DYEDREAM_SAPLING.toStack())
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.DYEDREAM_SAPLING.get());
+                        output.accept(ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
+                        output.accept(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get());
+                        output.accept(ModItems.LIGHT_BALL_CROP_AGE_0.get());
+                        output.accept(ModItems.LIGHT_BALL_CROP_AGE_1.get());
+                        output.accept(ModItems.CLOUD_CROP_AGE_0.get());
+                        output.accept(ModItems.CLOUD_CROP_AGE_1.get());
+                        output.accept(ModItems.STEM_GRASS.get());
+                        output.accept(ModItems.TALL_STEM_GRASS.get());
+                        output.accept(ModItems.PINK_MUSHROOM.get());
+                        output.accept(ModItems.TALL_PINK_MUSHROOM.get());
+                        output.accept(ModItems.POLISHED_CALCITE_STALICRIPE.get());
+                        output.accept(ModItems.SMALL_POLISHED_CALCITE_STALICRIPE.get());
+                        output.accept(ModItems.DYEDREAM_MOSS.get());
+                        output.accept(ModItems.LINHT_FLOWER.get());
+                        output.accept(ModItems.DYEDREAM_LILY_OF_THE_VALLEY.get());
+                        output.accept(ModItems.SINGULARITY_FERN.get());
+                        output.accept(ModItems.DYEDREAM_VINE.get());
+                        output.accept(ModItems.DYEDREAM_LILY_PAD.get());
+                        output.accept(ModItems.DYEDREAM_SEAGRASS.get());
+                        output.accept(ModItems.DYEDREAM_LOTUS.get());
+                        output.accept(ModItems.DREAMING_LOTUS.get());
+                        output.accept(ModItems.MISTY_DREAMING_LOTUS.get());
+                        output.accept(ModItems.EDELWEISS.get());
+                        output.accept(ModItems.NIPPY_EDELWEISS.get());
+                        output.accept(ModItems.WHITE_COROLLA_CROP_AGE_0.get());
+                        output.accept(ModItems.WHITE_COROLLA_CROP_AGE_1.get());
+                        output.accept(ModItems.COTTON_CROP_AGE_0.get());
+                        output.accept(ModItems.COTTON_CROP_AGE_1.get());
+                        output.accept(ModItems.FERRARIA_CRISPA.get());
+                        output.accept(ModItems.EUSTOMA.get());
+                        output.accept(ModItems.JUNGLE_SPORANGIUM.get());
+                        output.accept(ModItems.MALVA_SINENSIS_CAVAN.get());
+                        output.accept(ModItems.REED.get());
+                        output.accept(ModItems.RYE.get());
+                        output.accept(ModItems.OATS.get());
+                        output.accept(ModItems.GOLDENROD.get());
+                        output.accept(ModItems.FOURLEAF_CLOVER.get());
+                        output.accept(ModItems.BLAZE_FLOWER.get());
+                        output.accept(ModItems.CRIMSON_THORNS.get());
+                        output.accept(ModItems.HAIRY_MOSS.get());
+                        output.accept(ModItems.WIND_CLEAVING_GRASS.get());
+                        output.accept(ModItems.WIND_FEATHER_GRASS.get());
+                        output.accept(ModItems.WIND_ISLAND_REED.get());
+                        output.accept(ModItems.SHADOW_SHORT_ROOTS.get());
+                        output.accept(ModItems.SHADOW_ROOTS.get());
+                        output.accept(ModItems.SHADOW_STEM_FERN.get());
+                        output.accept(ModItems.SHADOW_SPROUTS.get());
+                        output.accept(ModItems.SHADOW_FERN.get());
+                        output.accept(ModItems.SHADOW_FUNGUS.get());
+
+
+                        output.accept(ModItems.WHITE_ORCHID_FLOWER.get());
+                    })
+                    .build());
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TABS.register(eventBus);

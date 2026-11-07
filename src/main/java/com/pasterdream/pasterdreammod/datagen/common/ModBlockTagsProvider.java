@@ -20,6 +20,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        tag(ModBlockTags.WHITE_COROLLA_CAN_PLACE_ON).add(Blocks.SNOW_BLOCK).addTag(BlockTags.DIRT);
+        tag(ModBlockTags.CRIMSON_THORNS_CAN_PLACE_ON).add(Blocks.CRIMSON_NYLIUM, Blocks.NETHERRACK, Blocks.MAGMA_BLOCK);
+        tag(ModBlockTags.BLAZE_FLOWER_CAN_PLACE_ON).add(Blocks.CRIMSON_NYLIUM, Blocks.NETHERRACK, Blocks.MAGMA_BLOCK);
+        tag(ModBlockTags.SHADOW_PLANTS_CAN_PLACE_ON).add(Blocks.CRIMSON_NYLIUM, Blocks.WARPED_NYLIUM, Blocks.MYCELIUM);
         // ===== 染梦地形方块 =====
         tag(BlockTags.DIRT)
                 .add(ModBlocks.DYEDREAM_DIRT.get())

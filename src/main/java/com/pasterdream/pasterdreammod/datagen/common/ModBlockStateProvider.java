@@ -6,6 +6,9 @@ import com.pasterdream.pasterdreammod.world.block.CalciteConeBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DoublePlantBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FarmBlock;
@@ -346,6 +349,158 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var thickShadowModel = models().cubeAll(ModBlocks.THICK_SHADOW.getId().getPath(), blockTexture(ModBlocks.THICK_SHADOW.get())).renderType("translucent");
         simpleBlockWithItem(ModBlocks.THICK_SHADOW.get(), thickShadowModel);
 
+        simpleBlock(ModBlocks.DYEDREAM_SAPLING.get(),
+                models().cross(ModBlocks.DYEDREAM_SAPLING.getId().getPath(),
+                        blockTexture(ModBlocks.DYEDREAM_SAPLING.get())).renderType("cutout"));
+
+        var pinkMushroom = models().cross(ModBlocks.PINK_MUSHROOM.getId().getPath(), blockTexture(ModBlocks.PINK_MUSHROOM.get())).renderType("cutout");
+        simpleBlock(ModBlocks.PINK_MUSHROOM.get(), pinkMushroom);
+
+        var tallUpper = models().cross(ModBlocks.TALL_PINK_MUSHROOM.getId().getPath() + "_top", modLoc("block/pink_mushroom")).renderType("cutout");
+        var tallLower = models().cross(ModBlocks.TALL_PINK_MUSHROOM.getId().getPath() + "_bottom", modLoc("block/tall_pink_mushroom_bottom")).renderType("cutout");
+        getVariantBuilder(ModBlocks.TALL_PINK_MUSHROOM.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(tallLower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(tallUpper));
+
+
+        // ===== 植物系列 =====
+        var goldenrod = models().cross(ModBlocks.GOLDENROD.getId().getPath(), blockTexture(ModBlocks.GOLDENROD.get())).renderType("cutout");
+        simpleBlock(ModBlocks.GOLDENROD.get(), goldenrod);
+        var ferraria_crispa = models().cross(ModBlocks.FERRARIA_CRISPA.getId().getPath(), blockTexture(ModBlocks.FERRARIA_CRISPA.get())).renderType("cutout");
+        simpleBlock(ModBlocks.FERRARIA_CRISPA.get(), ferraria_crispa);
+        var eustoma = models().cross(ModBlocks.EUSTOMA.getId().getPath(), blockTexture(ModBlocks.EUSTOMA.get())).renderType("cutout");
+        simpleBlock(ModBlocks.EUSTOMA.get(), eustoma);
+        var dreaming_lotus_Upper = models().cross(ModBlocks.DREAMING_LOTUS.getId().getPath(),
+                modLoc("block/dreaming_lotus_top")).renderType("cutout");
+        var dreaming_lotus_Lower = models().cross(ModBlocks.DREAMING_LOTUS.getId().getPath() + "_bottom",
+                modLoc("block/dreaming_lotus")).renderType("cutout");
+        var misty_dreaming_lotus_Upper = models().cross(ModBlocks.MISTY_DREAMING_LOTUS.getId().getPath(),
+                modLoc("block/misty_dreaming_lotus_top")).renderType("cutout");
+        var misty_dreaming_lotus_Lower = models().cross(ModBlocks.MISTY_DREAMING_LOTUS.getId().getPath() + "_bottom",
+                modLoc("block/dreaming_lotus")).renderType("cutout");
+        getVariantBuilder(ModBlocks.DREAMING_LOTUS.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(dreaming_lotus_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(dreaming_lotus_Upper));
+        getVariantBuilder(ModBlocks.MISTY_DREAMING_LOTUS.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(misty_dreaming_lotus_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(misty_dreaming_lotus_Upper));
+        var linht_flower = models().cross(ModBlocks.LINHT_FLOWER.getId().getPath(), blockTexture(ModBlocks.LINHT_FLOWER.get())).renderType("cutout");
+        simpleBlock(ModBlocks.LINHT_FLOWER.get(), linht_flower);
+        var blaze_flower = models().cross(ModBlocks.BLAZE_FLOWER.getId().getPath(), blockTexture(ModBlocks.BLAZE_FLOWER.get())).renderType("cutout");
+        simpleBlock(ModBlocks.BLAZE_FLOWER.get(), blaze_flower);
+        var dyedream_lily_of_the_valley = models().cross(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get())).renderType("cutout");
+        simpleBlock(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get(), dyedream_lily_of_the_valley);
+
+        var white_orchid_flower = models().cross(ModBlocks.WHITE_ORCHID_FLOWER.getId().getPath(), blockTexture(ModBlocks.WHITE_ORCHID_FLOWER.get())).renderType("cutout");
+        simpleBlock(ModBlocks.WHITE_ORCHID_FLOWER.get(), white_orchid_flower);
+        var edelweiss = models().cross(ModBlocks.EDELWEISS.getId().getPath(), blockTexture(ModBlocks.EDELWEISS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.EDELWEISS.get(), edelweiss);
+        var nippy_edelweiss = models().cross(ModBlocks.NIPPY_EDELWEISS.getId().getPath(), blockTexture(ModBlocks.NIPPY_EDELWEISS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.NIPPY_EDELWEISS.get(), nippy_edelweiss);
+
+
+        var malva_sinensis_cavan = models().cross(ModBlocks.MALVA_SINENSIS_CAVAN.getId().getPath(), blockTexture(ModBlocks.MALVA_SINENSIS_CAVAN.get())).renderType("cutout");
+        simpleBlock(ModBlocks.MALVA_SINENSIS_CAVAN.get(), malva_sinensis_cavan);
+        var GrassTallUpper = models().cross(ModBlocks.TALL_STEM_GRASS.getId().getPath() + "_top", modLoc("block/stem_grass")).renderType("cutout");
+        var GrassTallLower = models().cross(ModBlocks.TALL_STEM_GRASS.getId().getPath() + "_bottom", modLoc("block/tall_stem_grass")).renderType("cutout");
+        getVariantBuilder(ModBlocks.TALL_STEM_GRASS.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(GrassTallLower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(GrassTallUpper));
+
+        var crimson_thorns_Upper = models().cross(ModBlocks.CRIMSON_THORNS.getId().getPath(), modLoc("block/crimson_thorns_top")).renderType("cutout");
+        var crimson_thorns_Lower = models().cross(ModBlocks.CRIMSON_THORNS.getId().getPath() + "_bottom", modLoc("block/crimson_thorns")).renderType("cutout");
+        getVariantBuilder(ModBlocks.CRIMSON_THORNS.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(crimson_thorns_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(crimson_thorns_Upper));
+        var oats = models().cross(ModBlocks.OATS.getId().getPath(), blockTexture(ModBlocks.OATS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.OATS.get(), oats);
+        var rye = models().cross(ModBlocks.RYE.getId().getPath(), blockTexture(ModBlocks.RYE.get())).renderType("cutout");
+        simpleBlock(ModBlocks.RYE.get(), rye);
+
+        var stalicripe = models().cross(ModBlocks.POLISHED_CALCITE_STALICRIPE.getId().getPath(), blockTexture(ModBlocks.POLISHED_CALCITE_STALICRIPE.get())).renderType("cutout");
+        simpleBlock(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), stalicripe);
+        var small_stalicripe = models().cross(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.getId().getPath(), blockTexture(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get())).renderType("cutout");
+        simpleBlock(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), small_stalicripe);
+        var reed = models().cross(ModBlocks.REED.getId().getPath(), blockTexture(ModBlocks.REED.get())).renderType("cutout");
+        simpleBlock(ModBlocks.REED.get(), reed);
+        var Dyedream_vine = models().cross(ModBlocks.DYEDREAM_VINE.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_VINE.get())).renderType("cutout");
+        simpleBlock(ModBlocks.DYEDREAM_VINE.get(), Dyedream_vine);
+        var Jungle_sporangium = models().cross(ModBlocks.JUNGLE_SPORANGIUM.getId().getPath(), blockTexture(ModBlocks.JUNGLE_SPORANGIUM.get())).renderType("cutout");
+        simpleBlock(ModBlocks.JUNGLE_SPORANGIUM.get(),Jungle_sporangium);
+        // 风之植物系列
+        var hairy_moss = models().cross(ModBlocks.HAIRY_MOSS.getId().getPath(), blockTexture(ModBlocks.HAIRY_MOSS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.HAIRY_MOSS.get(), hairy_moss);
+        var wind_cleaving_grass = models().cross(ModBlocks.WIND_CLEAVING_GRASS.getId().getPath(), blockTexture(ModBlocks.WIND_CLEAVING_GRASS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.WIND_CLEAVING_GRASS.get(), wind_cleaving_grass);
+        var wind_feather_grass_Upper = models().cross(ModBlocks.WIND_FEATHER_GRASS.getId().getPath() + "_top", modLoc("block/wind_feather_grass_top")).renderType("cutout");
+        var wind_feather_grass_Lower = models().cross(ModBlocks.WIND_FEATHER_GRASS.getId().getPath() + "_bottom", modLoc("block/wind_feather_grass_bottom")).renderType("cutout");
+        getVariantBuilder(ModBlocks.WIND_FEATHER_GRASS.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(wind_feather_grass_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(wind_feather_grass_Upper));
+        var wind_island_reed_Upper = models().cross(ModBlocks.WIND_ISLAND_REED.getId().getPath() + "_top", modLoc("block/wind_island_reed_top")).renderType("cutout");
+        var wind_island_reed_Lower = models().cross(ModBlocks.WIND_ISLAND_REED.getId().getPath() + "_bottom", modLoc("block/wind_island_reed_bottom")).renderType("cutout");
+        getVariantBuilder(ModBlocks.WIND_ISLAND_REED.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(wind_island_reed_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(wind_island_reed_Upper));
+        // fourleaf_clover uses manual custom model
+        simpleBlock(ModBlocks.FOURLEAF_CLOVER.get(), models().getExistingFile(modLoc("block/fourleaf_clover")));
+        var light_ball = models().cross(ModBlocks.LIGHT_BALL.getId().getPath(), blockTexture(ModBlocks.LIGHT_BALL.get())).renderType("cutout");
+        simpleBlock(ModBlocks.LIGHT_BALL.get(),light_ball);
+
+
+        //植株方块
+        generateTwoStageCrop(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "dyedream_corolla_crop");
+        generateTwoStageCrop(ModBlocks.WHITE_COROLLA_CROP.get(), "white_corolla_crop");
+        generateTwoStageCrop(ModBlocks.LIGHT_BALL_CROP.get(), "light_ball_crop");
+        generateTwoStageCrop(ModBlocks.CLOUD_CROP.get(), "cloud_crop");
+        generateTwoStageCrop(ModBlocks.COTTON_CROP.get(), "cotton_crop");
+
+        generateTwoStageCropBlockModel("dyedream_corolla_crop");
+        generateTwoStageCropBlockModel("white_corolla_crop");
+        generateTwoStageCropBlockModel("light_ball_crop");
+        generateTwoStageCropBlockModel("cloud_crop");
+        generateTwoStageCropBlockModel("cotton_crop");
+
+        var dyedreamMoss = models().cross(ModBlocks.DYEDREAM_MOSS.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_MOSS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.DYEDREAM_MOSS.get(), dyedreamMoss);
+
+        var stemGrass = models().cross(ModBlocks.STEM_GRASS.getId().getPath(), blockTexture(ModBlocks.STEM_GRASS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.STEM_GRASS.get(), stemGrass);
+
+        var singularity_fern = models().cross(ModBlocks.SINGULARITY_FERN.getId().getPath(), blockTexture(ModBlocks.SINGULARITY_FERN.get())).renderType("cutout");
+        simpleBlock(ModBlocks.SINGULARITY_FERN.get(), singularity_fern);
+
+        // 阴影植物系列
+        var shadowShortRoots = models().cross(ModBlocks.SHADOW_SHORT_ROOTS.getId().getPath(), blockTexture(ModBlocks.SHADOW_SHORT_ROOTS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.SHADOW_SHORT_ROOTS.get(), shadowShortRoots);
+
+        var shadowRoots = models().cross(ModBlocks.SHADOW_ROOTS.getId().getPath(), blockTexture(ModBlocks.SHADOW_ROOTS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.SHADOW_ROOTS.get(), shadowRoots);
+
+        var shadowStemFernUpper = models().cross(ModBlocks.SHADOW_STEM_FERN.getId().getPath() + "_top", modLoc("block/shadow_stem_fern_top")).renderType("cutout");
+        var shadowStemFernLower = models().cross(ModBlocks.SHADOW_STEM_FERN.getId().getPath() + "_bottom", modLoc("block/shadow_stem_fern")).renderType("cutout");
+        getVariantBuilder(ModBlocks.SHADOW_STEM_FERN.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(shadowStemFernLower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(shadowStemFernUpper));
+
+        var shadowSprouts = models().cross(ModBlocks.SHADOW_SPROUTS.getId().getPath(), blockTexture(ModBlocks.SHADOW_SPROUTS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.SHADOW_SPROUTS.get(), shadowSprouts);
+
+        var shadowFern = models().cross(ModBlocks.SHADOW_FERN.getId().getPath(), blockTexture(ModBlocks.SHADOW_FERN.get())).renderType("cutout");
+        simpleBlock(ModBlocks.SHADOW_FERN.get(), shadowFern);
+
+        var shadowFungus = models().cross(ModBlocks.SHADOW_FUNGUS.getId().getPath(), blockTexture(ModBlocks.SHADOW_FUNGUS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.SHADOW_FUNGUS.get(), shadowFungus);
+
+        // 染梦海草
+        var dyedreamSeagrass = models().cross(ModBlocks.DYEDREAM_SEAGRASS.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_SEAGRASS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.DYEDREAM_SEAGRASS.get(), dyedreamSeagrass);
+
+        // 染梦睡莲 / 染梦莲花 (custom Blockbench models)
+        simpleBlock(ModBlocks.DYEDREAM_LILY_PAD.get(), models().getExistingFile(modLoc("block/dyedream_lily_pad")));
+        simpleBlock(ModBlocks.DYEDREAM_LOTUS.get(), models().getExistingFile(modLoc("block/dyedream_lotus")));
+
+
         // ===== 荒漠英雄之墓 =====
         horizontalBlock(ModBlocks.QYM_DOLL.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/qym_doll_particle")));
@@ -354,6 +509,27 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ModBlocks.DESERT_HERO_TOMB.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/desert_hero_tomb_particle")));
     }
+
+    private void generateTwoStageCrop(Block block, String baseName)
+    {
+        getVariantBuilder(block)
+                .partialState().with(BlockStateProperties.AGE_1, 0)
+                .modelForState().modelFile(modelFile(baseName + "_age_0")).addModel()
+                .partialState().with(BlockStateProperties.AGE_1, 1)
+                .modelForState().modelFile(modelFile(baseName)).addModel();
+    }
+
+    private ModelFile modelFile(String name)
+    {
+        return new ModelFile.UncheckedModelFile(modLoc("block/" + name));
+    }
+
+    private void generateTwoStageCropBlockModel(String baseName)
+    {
+        models().withExistingParent(baseName + "_age_0", mcLoc("block/cross")).texture("cross", modLoc("block/" + baseName + "_age_0")).renderType("cutout");
+        models().withExistingParent(baseName, mcLoc("block/cross")).texture("cross", modLoc("block/" + baseName)).renderType("cutout");
+    }
+
 
     private void farmlandBlock(Block block) {
         String baseName = net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(block).getPath();

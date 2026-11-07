@@ -76,6 +76,7 @@ public class PasterDreamMod {
     public PasterDreamMod(IEventBus modEventBus, ModContainer modContainer) {
         // ---- 注册中心 ----
         ModLootTables.LOOT_FUNCTION_TYPES.register(modEventBus);
+        ModLootTables.LOOT_CONDITION_TYPES.register(modEventBus);
         ModBlocks.register(modEventBus);           // 方块
         ModItems.register(modEventBus);            // 物品
         ModArmorMaterials.register(modEventBus);    // 护甲材质
