@@ -561,6 +561,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DREAM_TRAVELER_BELT.get(), "Dream Traveler Belt");
         add("tooltip.pasterdream.dream_traveler_belt.effect1", "§7▪ §9+3% Movement Speed");
         add("tooltip.pasterdream.dream_traveler_belt.effect2", "§7▪ §9+10% Blink Cooldown Reduction");
+        add(ModItems.RED_DEW_RING.get(), "Red Dew Ring");
+        add("tooltip.pasterdream.red_dew_ring.effect", "§7▪ §9+%sMax Health");
         add(ModItems.STRIKE_RING.get(), "Strike Ring");
         add("tooltip.pasterdream.strike_ring.effect", "§7▪ §9+%s Attack Damage");
         add(ModItems.COUNTER_RING.get(), "Counter Ring");

@@ -13,6 +13,7 @@ import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import net.minecraft.core.registries.Registries;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
+import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
@@ -244,6 +245,51 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('d', Items.DIAMOND)
                 .unlockedBy(getHasName(ModItems.EMBRYO_BELT.get()), has(ModItems.EMBRYO_BELT.get()))
                 .save(pWriter);
+
+        //4个红露滴戒指配方
+        ItemStack redDewRingLv1 = RedDewRingItem.createWithLv(ModItems.RED_DEW_RING.get(), 1);
+        ItemStack redDewRingLv2 = RedDewRingItem.createWithLv(ModItems.RED_DEW_RING.get(), 2);
+        ItemStack redDewRingLv3 = RedDewRingItem.createWithLv(ModItems.RED_DEW_RING.get(), 3);
+        ItemStack redDewRingLv4 = RedDewRingItem.createWithLv(ModItems.RED_DEW_RING.get(), 4);
+        CompoundTag redDewRingLv1Tag = new CompoundTag();
+        redDewRingLv1Tag.putInt(RedDewRingItem.TAG_LV, 1);
+        CompoundTag redDewRingLv2Tag = new CompoundTag();
+        redDewRingLv2Tag.putInt(RedDewRingItem.TAG_LV, 2);
+        CompoundTag redDewRingLv3Tag = new CompoundTag();
+        redDewRingLv3Tag.putInt(RedDewRingItem.TAG_LV, 3);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, redDewRingLv1)
+                .requires(ModItems.EMBRYO_RING.get())
+                .requires(Items.GOLD_INGOT)
+                .requires(ModItems.RED_DEW.get())
+                .unlockedBy(getHasName(ModItems.EMBRYO_RING.get()), has(ModItems.EMBRYO_RING.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "red_dew_ring_lv1"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, redDewRingLv2)
+                .requires(DataComponentIngredient.of(false, DataComponents.CUSTOM_DATA,
+                        CustomData.of(redDewRingLv1Tag), ModItems.RED_DEW_RING.get()))
+                .requires(ModItems.DYEDREAM_DUST.get())
+                .requires(ModItems.RED_DEW.get())
+                .unlockedBy(getHasName(ModItems.RED_DEW_RING.get()), has(ModItems.RED_DEW_RING.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "red_dew_ring_lv2"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, redDewRingLv3)
+                .requires(DataComponentIngredient.of(false, DataComponents.CUSTOM_DATA,
+                        CustomData.of(redDewRingLv2Tag), ModItems.RED_DEW_RING.get()))
+                .requires(ModItems.DYEDREAM_DUST.get())
+                .requires(ModItems.RED_DEW.get())
+                .requires(ModItems.MELT_DREAM_LIQUID_BUCKET.get())
+                .unlockedBy(getHasName(ModItems.RED_DEW_RING.get()), has(ModItems.RED_DEW_RING.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "red_dew_ring_lv3"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, redDewRingLv4)
+                .requires(DataComponentIngredient.of(false, DataComponents.CUSTOM_DATA,
+                        CustomData.of(redDewRingLv3Tag), ModItems.RED_DEW_RING.get()))
+                .requires(ModItems.DYEDREAM_DUST.get())
+                .requires(ModItems.RED_DEW.get())
+                .requires(ModItems.LIFE_CRYSTAL.get())
+                .unlockedBy(getHasName(ModItems.RED_DEW_RING.get()), has(ModItems.RED_DEW_RING.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "red_dew_ring_lv4"));
 
         ItemStack strikeRingLv1 = StrikeRingItem.createWithLv(ModItems.STRIKE_RING.get(), 1);
         ItemStack strikeRingLv2 = StrikeRingItem.createWithLv(ModItems.STRIKE_RING.get(), 2);

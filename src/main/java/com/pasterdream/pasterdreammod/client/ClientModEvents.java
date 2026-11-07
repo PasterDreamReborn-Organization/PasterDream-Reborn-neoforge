@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.client.model.KusanagiVenomStingerModel;
 import com.pasterdream.pasterdreammod.init.ModBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.init.ModEntityRenderer;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -37,6 +38,9 @@ public final class ClientModEvents {
             ItemProperties.register(ModItems.FLUFFY_WIND_BOW.get(), ResourceLocation.withDefaultNamespace("pull"),
                     (stack, level, entity, seed) -> entity == null || entity.getUseItem() != stack ? 0.0F
                             : (float) (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F);
+            ItemProperties.register(ModItems.RED_DEW_RING.get(),
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lv"),
+                    (stack, level, entity, seed) -> RedDewRingItem.getPredicateValue(RedDewRingItem.getLv(stack)));
             ItemProperties.register(ModItems.STRIKE_RING.get(),
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lv"),
                     (stack, level, entity, seed) -> StrikeRingItem.getPredicateValue(StrikeRingItem.getLv(stack)));

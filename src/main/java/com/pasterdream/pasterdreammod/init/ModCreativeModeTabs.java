@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -378,6 +379,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.NATURE_BELT.get());
                         output.accept(ModItems.TRAVELER_BELT.get());
                         output.accept(ModItems.DREAM_TRAVELER_BELT.get());
+                        output.accept(RedDewRingItem.createWithLv(ModItems.RED_DEW_RING.get(), 1));
+                        output.accept(RedDewRingItem.createWithLv(ModItems.RED_DEW_RING.get(), 2));
+                        output.accept(RedDewRingItem.createWithLv(ModItems.RED_DEW_RING.get(), 3));
+                        output.accept(RedDewRingItem.createWithLv(ModItems.RED_DEW_RING.get(), 4));
                         output.accept(StrikeRingItem.createWithLv(ModItems.STRIKE_RING.get(), 1));
                         output.accept(StrikeRingItem.createWithLv(ModItems.STRIKE_RING.get(), 2));
                         output.accept(ModItems.COUNTER_RING.get());

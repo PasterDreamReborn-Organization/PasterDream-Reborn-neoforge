@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.core.registries.Registries;
@@ -277,6 +278,46 @@ public class CurioGameTests {
         helper.assertTrue(lv2.is(ModItems.STRIKE_RING.get()) && StrikeRingItem.getLv(lv2) == 2
                         && lv2.getRarity() == ModRarities.excellent(),
                 "强击戒指二级配方应用 lv=1 升级为 lv=2 并提升品质");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void redDewRingSlotsRecipesAndHealth(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        helper.assertTrue(new ItemStack(ModItems.RED_DEW_RING.get()).is(curiosTag("ring"))
+                        && CuriosApi.getItemStackSlots(new ItemStack(ModItems.RED_DEW_RING.get()), player).containsKey("ring"),
+                "红露滴戒指应能佩戴于 ring 槽");
+
+        ItemStack lv1 = craft(helper, CraftingInput.of(1, 3, List.of(ModItems.EMBRYO_RING.toStack(),
+                new ItemStack(Items.GOLD_INGOT), ModItems.RED_DEW.toStack())));
+        helper.assertTrue(lv1.is(ModItems.RED_DEW_RING.get()) && RedDewRingItem.getLv(lv1) == 1
+                        && lv1.getRarity() == ModRarities.common(),
+                "红露滴戒指一级配方应产出 lv=1");
+
+        ItemStack lv2 = craft(helper, CraftingInput.of(1, 3, List.of(lv1,
+                ModItems.DYEDREAM_DUST.toStack(), ModItems.RED_DEW.toStack())));
+        helper.assertTrue(RedDewRingItem.getLv(lv2) == 2 && lv2.getRarity() == ModRarities.excellent(),
+                "红露滴戒指二级配方应升级为 lv=2 并提升品质");
+
+        ItemStack lv3 = craft(helper, CraftingInput.of(2, 2, List.of(lv2, ModItems.DYEDREAM_DUST.toStack(),
+                ModItems.RED_DEW.toStack(), ModItems.MELT_DREAM_LIQUID_BUCKET.toStack())));
+        helper.assertTrue(RedDewRingItem.getLv(lv3) == 3 && lv3.getRarity() == ModRarities.superior(),
+                "红露滴戒指三级配方应升级为 lv=3 并提升品质");
+
+        ItemStack lv4 = craft(helper, CraftingInput.of(2, 2, List.of(lv3, ModItems.DYEDREAM_DUST.toStack(),
+                ModItems.RED_DEW.toStack(), ModItems.LIFE_CRYSTAL.toStack())));
+        helper.assertTrue(RedDewRingItem.getLv(lv4) == 4 && lv4.getRarity() == ModRarities.master(),
+                "红露滴戒指四级配方应升级为 lv=4 并提升品质");
+
+        ICurioItem redDewRing = (ICurioItem) ModItems.RED_DEW_RING.get();
+        SlotContext ringSlot = new SlotContext("ring", player, 0, false, true);
+        double healthBefore = player.getAttributeValue(Attributes.MAX_HEALTH);
+        redDewRing.onEquip(ringSlot, ItemStack.EMPTY, lv4);
+        helper.assertTrue(Math.abs(player.getAttributeValue(Attributes.MAX_HEALTH) - (healthBefore + 10.0)) < 0.0001,
+                "四级红露滴戒指应提供 +10 最大生命值");
+        redDewRing.onUnequip(ringSlot, ItemStack.EMPTY, lv4);
+        helper.assertTrue(Math.abs(player.getAttributeValue(Attributes.MAX_HEALTH) - healthBefore) < 0.0001,
+                "卸下红露滴戒指应移除最大生命值修饰符");
         helper.succeed();
     }
 
