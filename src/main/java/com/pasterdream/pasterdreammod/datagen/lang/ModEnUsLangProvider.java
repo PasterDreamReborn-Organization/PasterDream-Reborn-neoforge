@@ -59,6 +59,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_ALLOY_AXE.get(), "Shadow Alloy Axe");
         add(ModItems.SHADOW_ALLOY_SHOVEL.get(), "Shadow Alloy Shovel");
         add(ModItems.SHADOW_ALLOY_HOE.get(), "Shadow Alloy Hoe");
+        add(ModItems.SHADOW_ALLOY_CROSSBOW.get(), "Shadow Alloy Crossbow");
         add("tooltip.pasterdreammod.shadow_erosion_tool.1","§7▪ §9The digging speed will increase as the brightness decreases.");
         add("tooltip.pasterdreammod.shadow_erosion_tool.2","§7▪ §9Provides a mining speed boost for shadow-type, deepslate-type, and sculk-type blocks");
         add("tooltip.pasterdreammod.shadow_alloy_tool.passive","Passive: §5Shadow Erosion");
@@ -67,6 +68,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.shadow_alloy_tool.3","§7▪ §9Up to +50% mining speed and attack damage");
         add("tooltip.pasterdreammod.shadow_alloy_tool.repair_header","While in inventory");
         add("tooltip.pasterdreammod.shadow_alloy_tool.repair","§7▪ §5Heart-Devour Repair: 0.1SAN/1 Durability");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.1", "Passive: §5Shadow Flying Arrow");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.2", "§7▪ §9Consumes 0.2 Melt Dream Energy; creatures hit gain 10s Vulnerability");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.3", "§7▪ §9Creatures hit gain a random 5s negative effect");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.4", "§7▪ §9Fires normally when Melt Dream Energy is insufficient, without the passive");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.5", "Traits:");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.6", "§7▪ §9Built-in Power III, stacks with the Power enchantment");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.7", "§7▪ §9Can be enchanted with Infinity");
         add(ModItems.NIGHTMARE_FUEL.get(), "Nightmare Fuel");
         add("tooltip.pasterdreammod.nightmare_fuel", "§7This is the stuff of nightmares!");
         add(ModBlocks.SHADOW.get(), "Shadow");
@@ -353,6 +361,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.lost_sword_tomb", "§7If you can't pull it out, just use it with the stone!");
         add("message.pasterdream.lost_sword_tomb.lack_strength", "Your strength is not enough to pull out this sword");
         add("effect.pasterdream.highly_toxic", "Highly Toxic");
+        add("effect.pasterdream.vulnerability", "Vulnerability");
+        add("effect.pasterdream.bind", "Bind");
         add("structure.pasterdream.the_lost_sword_tomb", "The Lost Sword Tomb");
         add("itemGroup.pasterdream.pasterdream_items_tab", "Paster Dream | Items");
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "Dyedream World");

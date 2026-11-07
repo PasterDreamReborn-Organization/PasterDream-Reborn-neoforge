@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import com.pasterdream.pasterdreammod.world.entity.FluffyWindArrowEntity;
+import com.pasterdream.pasterdreammod.world.entity.ShadowAlloyArrowEntity;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.KusanagiVenomStingerEntity;
@@ -73,6 +74,14 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<FluffyWindArrowEntity>> FLUFFY_WIND_ARROW =
             register("fluffy_wind_arrow",
                     EntityType.Builder.<FluffyWindArrowEntity>of(FluffyWindArrowEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ShadowAlloyArrowEntity>> SHADOW_ALLOY_ARROW =
+            register("shadow_alloy_arrow",
+                    EntityType.Builder.<ShadowAlloyArrowEntity>of(ShadowAlloyArrowEntity::new, MobCategory.MISC)
                             .setShouldReceiveVelocityUpdates(true)
                             .setTrackingRange(64)
                             .setUpdateInterval(1)

@@ -164,6 +164,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get())
                 .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
         tag(ItemTags.BOW_ENCHANTABLE).add(ModItems.FLUFFY_WIND_BOW.get());
+        // 暗影合金弩：1.21 由物品标签驱动附魔可应用范围；加入弩标签获得多重射击/穿透/快速装填，
+        // 加入耐久标签获得耐久/经验修补/消失诅咒；力量与无限由物品类覆写放行。
+        tag(ItemTags.CROSSBOW_ENCHANTABLE).add(ModItems.SHADOW_ALLOY_CROSSBOW.get());
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ModItems.SHADOW_ALLOY_CROSSBOW.get());
         tag(ModItemTags.CHANNELING_ENCHANTABLE)
                 .addTag(ItemTags.TRIDENT_ENCHANTABLE)
                 .add(ModItems.FLUFFY_WIND_BOW.get());
@@ -181,7 +185,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.SHADOW_ALLOY_PICKAXE.get())
                 .add(ModItems.SHADOW_ALLOY_AXE.get())
                 .add(ModItems.SHADOW_ALLOY_SHOVEL.get())
-                .add(ModItems.SHADOW_ALLOY_HOE.get());
+                .add(ModItems.SHADOW_ALLOY_HOE.get())
+                .add(ModItems.SHADOW_ALLOY_CROSSBOW.get());
 
         // 金属锭标签
         tag(ModItemTags.INGOTS_TITANIUM)

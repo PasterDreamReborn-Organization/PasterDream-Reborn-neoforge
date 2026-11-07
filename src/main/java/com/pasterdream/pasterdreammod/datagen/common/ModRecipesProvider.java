@@ -69,6 +69,7 @@ public class ModRecipesProvider extends RecipeProvider {
         storageBagRecipes(output);
         blackMetalRecipes(output);
         shadowAlloyToolRecipes(output);
+        shadowAlloyCrossbowRecipe(output);
         shadowErosionWorkshopRecipes(output);
         pinkSlimeRecipes(output);
         titaniumUpgradeRecipe(output);
@@ -2341,6 +2342,21 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('c', ModItems.SHADOW_EROSION_HOE.get())
                 .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get())),
                 pWriter, "shadow_alloy_hoe_upgrade");
+    }
+
+    // ===== 暗影合金弩配方（合成台：黑木棍 + 暗影合金锭 + 原版弩 + 噩梦燃料） =====
+
+    private void shadowAlloyCrossbowRecipe(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SHADOW_ALLOY_CROSSBOW.get())
+                .pattern("aba")
+                .pattern("bcb")
+                .pattern("dbd")
+                .define('a', ModItems.BLACK_STICK.get())
+                .define('b', ModItems.SHADOW_ALLOY_INGOT.get())
+                .define('c', Items.CROSSBOW)
+                .define('d', ModItems.NIGHTMARE_FUEL.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get()))
+                .save(pWriter);
     }
 
     private void blackMetalRecipes(RecipeOutput pWriter) {

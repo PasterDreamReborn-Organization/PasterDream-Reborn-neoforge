@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.world.effect.BindEffect;
 import com.pasterdream.pasterdreammod.world.effect.ShadowSilenceEffect;
+import com.pasterdream.pasterdreammod.world.effect.VulnerabilityEffect;
 import com.pasterdream.pasterdreammod.world.effect.WindThunderBoonEffect;
 import com.pasterdream.pasterdreammod.world.effect.DyedreamPerfumeEffect;
 import com.pasterdream.pasterdreammod.world.effect.GoldenrodTeaEffect;
@@ -88,6 +90,12 @@ public class ModEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> SHADOW_SILENCE =
             MOB_EFFECTS.register("shadow_silence", ShadowSilenceEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> BIND =
+            MOB_EFFECTS.register("bind", BindEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> VULNERABILITY =
+            MOB_EFFECTS.register("vulnerability", VulnerabilityEffect::new);
 
     public static final DeferredHolder<MobEffect, MobEffect> COUNTER_ATTACK =
             MOB_EFFECTS.register("counter_attack", CounterAttackEffect::new);

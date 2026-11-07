@@ -350,6 +350,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_ALLOY_AXE.get());
                         output.accept(ModItems.SHADOW_ALLOY_SHOVEL.get());
                         output.accept(ModItems.SHADOW_ALLOY_HOE.get());
+                        output.accept(ModItems.SHADOW_ALLOY_CROSSBOW.get());
                         // 独立武器
                         output.accept(ModItems.TIDE_SWORD.get());
                         output.accept(ModItems.BEIHAI_RUO_TIDE_SWORD.get());

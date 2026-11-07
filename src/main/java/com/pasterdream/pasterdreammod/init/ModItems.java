@@ -1093,6 +1093,8 @@ public class ModItems {
             () -> new ShadowAlloyShovelItem(ModToolTiers.SHADOW_ALLOY, 3, -3.0f, new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_ALLOY_HOE = ITEMS.register("shadow_alloy_hoe",
             () -> new ShadowAlloyHoeItem(ModToolTiers.SHADOW_ALLOY, -2, 0.0f, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_ALLOY_CROSSBOW = ITEMS.register("shadow_alloy_crossbow",
+            () -> new ShadowAlloyCrossbowItem(new Item.Properties().stacksTo(1).durability(842)));
 
     public static final DeferredItem<Item> DYEDREAM_SAPLING = ITEMS.register("dyedream_sapling",
             () -> new BlockItem(ModBlocks.DYEDREAM_SAPLING.get(), new Item.Properties()));

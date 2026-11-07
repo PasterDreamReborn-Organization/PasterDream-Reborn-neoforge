@@ -176,6 +176,32 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.SHADOW_ALLOY_AXE.get());
         handheldItem(ModItems.SHADOW_ALLOY_SHOVEL.get());
         handheldItem(ModItems.SHADOW_ALLOY_HOE.get());
+        // 暗影合金弩物品模型（含 pulling 0/1/2 与装填 arrow/firework 覆盖）
+        ItemModelBuilder shadowAlloyCrossbow = withExistingParent(ModItems.SHADOW_ALLOY_CROSSBOW.getId().getPath(), mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow"));
+        ItemModelBuilder shadowAlloyCrossbowPulling0 = withExistingParent("shadow_alloy_crossbow_pulling_0", mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow_pulling_0"));
+        ItemModelBuilder shadowAlloyCrossbowPulling1 = withExistingParent("shadow_alloy_crossbow_pulling_1", mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow_pulling_1"));
+        ItemModelBuilder shadowAlloyCrossbowPulling2 = withExistingParent("shadow_alloy_crossbow_pulling_2", mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow_pulling_2"));
+        ItemModelBuilder shadowAlloyCrossbowArrow = withExistingParent("shadow_alloy_crossbow_arrow", mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow_arrow"));
+        ItemModelBuilder shadowAlloyCrossbowFirework = withExistingParent("shadow_alloy_crossbow_firework", mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow_firework"));
+        shadowAlloyCrossbow.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
+                .model(shadowAlloyCrossbowPulling0).end()
+                .override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), 0.58F)
+                .model(shadowAlloyCrossbowPulling1).end()
+                .override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), 1.0F)
+                .model(shadowAlloyCrossbowPulling2).end()
+                .override().predicate(ResourceLocation.withDefaultNamespace("charged"), 1.0F)
+                .model(shadowAlloyCrossbowArrow).end()
+                .override().predicate(ResourceLocation.withDefaultNamespace("charged"), 1.0F)
+                .predicate(ResourceLocation.withDefaultNamespace("firework"), 1.0F)
+                .model(shadowAlloyCrossbowFirework).end();
         basicItem(ModItems.NIGHTMARE_FUEL.get());
         basicItem(ModItems.RICE_CAKE.get());
         basicItem(ModItems.GLASS_JAR.get());
