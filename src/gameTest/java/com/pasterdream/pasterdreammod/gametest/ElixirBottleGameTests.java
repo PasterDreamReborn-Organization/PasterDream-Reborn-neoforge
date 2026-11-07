@@ -3,6 +3,8 @@ package com.pasterdream.pasterdreammod.gametest;
 import com.mojang.authlib.GameProfile;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
+import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModFluids;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -11,6 +13,8 @@ import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.Eli
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -20,6 +24,7 @@ import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import net.neoforged.neoforge.gametest.GameTestHolder;
 import net.neoforged.neoforge.gametest.PrefixGameTestTemplate;
 
+import java.util.List;
 import java.util.UUID;
 
 @GameTestHolder(PasterDreamMod.MOD_ID)
@@ -49,6 +54,23 @@ public class ElixirBottleGameTests
         helper.assertTrue(Math.abs(MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(player) - 18.75) < 0.001,
                 "750 mB 应按比例恢复融梦能量");
         helper.assertTrue(ElixirBottleItem.getElixirBottleFluidStack(bottle).isEmpty(), "饮用后应清空流体并保留灵药瓶");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void potionBottleAppliesPotionEffects(GameTestHelper helper)
+    {
+        ItemStack bottle = ElixirBottleWithFluidNBTBuilder.builder(PotionHelper.createNBTPotion(
+                List.of(new GenericMobEffect(MobEffects.MOVEMENT_SPEED, 0, 600)), 500));
+        FakePlayer player = new FakePlayer(helper.getLevel(), new GameProfile(UUID.randomUUID(), "elixir-potion"));
+        player.setItemInHand(InteractionHand.MAIN_HAND, bottle);
+        player.startUsingItem(InteractionHand.MAIN_HAND);
+
+        ModItems.ELIXIR_BOTTLE.get().finishUsingItem(bottle, helper.getLevel(), player);
+
+        helper.assertTrue(player.hasEffect(MobEffects.MOVEMENT_SPEED), "灵药瓶饮用普通药水应施加对应效果");
+        helper.assertTrue(ElixirBottleItem.getElixirBottleFluidStack(bottle).getAmount() == 250,
+                "饮用 250 mB 后应剩余 250 mB");
         helper.succeed();
     }
 

@@ -5,13 +5,17 @@ import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.FluidDrinkPropertiesRegistry;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.FoodValueTooltips;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.GenericFluidDrinkProperties;
+import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
+import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
@@ -61,7 +65,39 @@ public class ElixirBottleItem extends Item
             return;
         }
 
-        // 非药水流体：显示流体名称；药水流体与效果列表随炼药釜迁入。
+        // 药水流体：显示药水效果列表，足够详细时无需再展开名称
+        if (isPotionFluid(fluidStack))
+        {
+            for (GenericMobEffect effect : PotionHelper.getEffectType(fluidStack))
+            {
+                MobEffectInstance instance = GenericMobEffect.fromGenericMobEffectToEffectInstance(effect);
+                if(instance != null)
+                {
+                    MutableComponent line = Component.literal("· ");
+                    line.append(Component.translatable(instance.getDescriptionId()));
+                    if (instance.getAmplifier() > 0)
+                    {
+                        line.append(" ").append(Component.literal(PotionHelper.toRoman(instance.getAmplifier() + 1)));
+                    }
+                    if (instance.getDuration() > 20)
+                    {
+                        line.append(" (").append(MobEffectUtil.formatDuration(instance, 1.0F, 20.0F)).append(")");
+                    }
+                    else
+                        if(instance.getDuration() == -1)
+                        {
+                            line.append(" (∞)");
+                        }
+                    line.withStyle(instance.getEffect().value().getCategory().getTooltipFormatting());
+                    tooltip.add(line);
+                }
+            }
+            tooltip.add(Component.translatable("pasterdream.tooltip.elixir_capacity", fluidStack.getAmount())
+                    .withStyle(ChatFormatting.GRAY));
+            return;
+        }
+
+        // 非药水流体：显示流体名称
         tooltip.add(fluidStack.getDisplayName());
 
         if (FluidDrinkPropertiesRegistry.getProperties(fluidStack) != null)
@@ -79,6 +115,13 @@ public class ElixirBottleItem extends Item
 
         tooltip.add(Component.translatable("pasterdream.tooltip.elixir_capacity", fluidStack.getAmount())
                 .withStyle(ChatFormatting.GRAY));
+    }
+
+    /** 药水流体：判断流体为 potion 且随流体保存了非空 EffectList */
+    private static boolean isPotionFluid(FluidStack fluidStack)
+    {
+        return !fluidStack.isEmpty() && fluidStack.getFluid() == com.pasterdream.pasterdreammod.init.ModFluids.POTION.get()
+                && !PotionHelper.getEffectType(fluidStack).isEmpty();
     }
 
     @Override
@@ -135,6 +178,9 @@ public class ElixirBottleItem extends Item
                 int drinkAmount = drinkProperties.getDrinkAmount();
                 int fluidAmountInElixirBottle = fluidStack.getAmount();
 
+                // 特殊饮用效果需在排液前读取瓶内流体（药水按饮用前的剩余量折算效果）
+                drinkProperties.getDrinkSpecial().accept(entity, level);
+
                 if (!player.isCreative())
                 {
                     int drainAmount = Math.min(fluidAmountInElixirBottle, drinkAmount);
@@ -190,8 +236,6 @@ public class ElixirBottleItem extends Item
                             }
                     }
                 }
-
-                drinkProperties.getDrinkSpecial().accept(entity, level);
             }
         }
         return itemStack;

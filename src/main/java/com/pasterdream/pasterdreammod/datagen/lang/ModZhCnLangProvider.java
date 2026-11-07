@@ -34,6 +34,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("fluid.pasterdream.uncooked_dyedream_flower_tea", "未烹调的染梦花茶（流体）");
         add("fluid.pasterdream.watermelon_juice", "西瓜汁（流体）");
         add("fluid.pasterdream.rage_elixir", "狂暴战意灵药（流体）");
+        add("fluid.pasterdream.potion", "药水（流体）");
         add("key.pasterdream.blink", "瞬身术");
         add("key.categories.pasterdream", "帕斯特之梦");
         add("effect.pasterdream.evasion", "回避");

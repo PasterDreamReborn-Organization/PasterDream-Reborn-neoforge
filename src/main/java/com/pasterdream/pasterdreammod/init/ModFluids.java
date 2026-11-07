@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.world.fluid.GuidingDrugFluid;
 import com.pasterdream.pasterdreammod.world.fluid.HoneyJuiceFluid;
 import com.pasterdream.pasterdreammod.world.fluid.InkFluid;
 import com.pasterdream.pasterdreammod.world.fluid.MeltDreamLiquidFluid;
+import com.pasterdream.pasterdreammod.world.fluid.PotionFluid;
 import com.pasterdream.pasterdreammod.world.fluid.ShadowLiquidFluid;
 import com.pasterdream.pasterdreammod.world.fluid.UncookedDyedreamFlowerTeaFluid;
 import com.pasterdream.pasterdreammod.world.fluid.WatermelonJuiceFluid;
@@ -21,6 +22,7 @@ import com.pasterdream.pasterdreammod.world.fluidtype.DyedreamJuiceFluidType;
 import com.pasterdream.pasterdreammod.world.fluidtype.HoneyJuiceFluidType;
 import com.pasterdream.pasterdreammod.world.fluidtype.InkFluidType;
 import com.pasterdream.pasterdreammod.world.fluidtype.MeltDreamLiquidFluidType;
+import com.pasterdream.pasterdreammod.world.fluidtype.PotionFluidType;
 import com.pasterdream.pasterdreammod.world.fluidtype.ShadowLiquidFluidType;
 import com.pasterdream.pasterdreammod.world.fluidtype.UncookedDyedreamFlowerTeaFluidType;
 import com.pasterdream.pasterdreammod.world.fluidtype.WatermelonJuiceFluidType;
@@ -62,6 +64,7 @@ public class ModFluids {
     public static final DeferredHolder<FluidType, FluidType> YEAST_TYPE = FLUID_TYPES.register("yeast", () -> YeastFluidType.TYPE);
     public static final DeferredHolder<FluidType, FluidType> INK_TYPE = FLUID_TYPES.register("ink", () -> InkFluidType.TYPE);
     public static final DeferredHolder<FluidType, FluidType> RAGE_ELIXIR_TYPE = FLUID_TYPES.register("rage_elixir", () -> RageElixirFluidType.TYPE);
+    public static final DeferredHolder<FluidType, FluidType> POTION_TYPE = FLUID_TYPES.register("potion", () -> PotionFluidType.TYPE);
 
     public static final DeferredHolder<Fluid, Fluid> FLOWING_MELT_DREAM_LIQUID = FLUIDS.register("flowing_melt_dream_liquid", MeltDreamLiquidFluid.Flowing::new);
     public static final DeferredHolder<Fluid, Fluid> MELT_DREAM_LIQUID = FLUIDS.register("melt_dream_liquid", MeltDreamLiquidFluid.Source::new);
@@ -78,6 +81,7 @@ public class ModFluids {
     public static final DeferredHolder<Fluid, Fluid> YEAST = FLUIDS.register("yeast", YeastFluid::new);
     public static final DeferredHolder<Fluid, Fluid> INK = FLUIDS.register("ink", InkFluid::new);
     public static final DeferredHolder<Fluid, Fluid> RAGE_ELIXIR = FLUIDS.register("rage_elixir", RageElixirFluid::new);
+    public static final DeferredHolder<Fluid, Fluid> POTION = FLUIDS.register("potion", PotionFluid::new);
 
     public static void register(IEventBus eventBus) {
         NeoForgeMod.enableMilkFluid(); //启用NeoForge的牛奶
