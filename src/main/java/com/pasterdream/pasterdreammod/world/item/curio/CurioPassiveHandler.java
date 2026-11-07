@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.Vec3;
@@ -21,13 +22,19 @@ public class CurioPassiveHandler {
 
     @SubscribeEvent
     public static void onLivingChangeTarget(LivingChangeTargetEvent event) {
-        if (event.getNewAboutToBeSetTarget() instanceof Player player
-                && CuriosApi.getCuriosInventory(player)
+        if (event.getNewAboutToBeSetTarget() instanceof Player player) {
+            // 染梦香水：效果持续期间幻翼不会锁定玩家
+            if (event.getEntity() instanceof Phantom && player.hasEffect(ModEffects.DYEDREAM_PERFUME)) {
+                event.setCanceled(true);
+                return;
+            }
+            if (CuriosApi.getCuriosInventory(player)
                     .map(h -> h.findFirstCurio(ModItems.QYM_BUTTERFLY_STAR_HAIRPIN.get()).isPresent())
                     .orElse(false)) {
-            // 允许反击：如果玩家刚刚攻击过该生物则不取消
-            if (event.getEntity().getLastHurtByMob() == player) return;
-            event.setCanceled(true);
+                // 允许反击：如果玩家刚刚攻击过该生物则不取消
+                if (event.getEntity().getLastHurtByMob() == player) return;
+                event.setCanceled(true);
+            }
         }
     }
 

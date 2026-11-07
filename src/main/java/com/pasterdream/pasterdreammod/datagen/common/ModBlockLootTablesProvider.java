@@ -119,8 +119,10 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_DUST_PIECE.get())
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                         .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
-        // 琥珀糖物品尚未迁移，暂以自掉落保持数据生成闭合，获取待后续批次补全。
-        dropSelf(ModBlocks.AMBER_CANDY_ORE.get());
+        add(ModBlocks.AMBER_CANDY_ORE.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModItems.AMBER_CANDY.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
         // ===== 染梦世界·方解石原版矿物（掉落与原版一致） =====
         add(ModBlocks.CALCITE_COAL_ORE.get(), block -> createOreDrop(block, Items.COAL));
         add(ModBlocks.CALCITE_IRON_ORE.get(), block -> createOreDrop(block, Items.RAW_IRON));

@@ -58,5 +58,19 @@ public class AddToolTip
         if(stack.is(ModItems.RICE_CAKE.get())){
             tooltip.add(Component.translatable("item.pasterdream.rice_cake.describe"));
         }
+
+        if(stack.is(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get())){
+            tooltip.add(Component.translatable("item.pasterdream.legendary_dragon_horn_ice_cream.describe.0"));
+            tooltip.add(Component.translatable("item.pasterdream.legendary_dragon_horn_ice_cream.describe.1"));
+        }
+
+        if(stack.is(ModItems.QUEER_SOUP.get())){
+            tooltip.add(Component.translatable("item.pasterdream.queer_soup.describe"));
+        }
+
+        if(stack.is(ModItems.WIND_RUNNER_JELLY.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.wind_runner_jelly"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.wind_runner_jelly.flavor"));
+        }
     }
 }

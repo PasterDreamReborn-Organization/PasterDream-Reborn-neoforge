@@ -185,6 +185,55 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get());
         basicItem(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
         basicItem(ModItems.GLASS_JAR_OF_INK.get());
+        basicItem(ModItems.DOUGH.get());
+        basicItem(ModItems.DOUGH_WITH_EGG.get());
+        basicItem(ModItems.BREAD_SLICE.get());
+        basicItem(ModItems.CAKE_BASE.get());
+        basicItem(ModItems.WAFER_BISCUIT.get());
+        basicItem(ModItems.MOLTEN_GOLD_APPLE.get());
+        withExistingParent(ModItems.ENCHANTED_MOLTEN_GOLD_APPLE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/molten_gold_apple"));
+        basicItem(ModItems.AMBER_CANDY.get());
+        basicItem(ModItems.QUEER_SOUP.get());
+        basicItem(ModItems.DYEDREAM_POPSICLE.get());
+        basicItem(ModItems.FRIED_EGG.get());
+        basicItem(ModItems.BACON_AND_EGG.get());
+        basicItem(ModItems.SANDWICH.get());
+        basicItem(ModItems.CHOCOLATE.get());
+        basicItem(ModItems.POPPING_CANDY.get());
+        basicItem(ModItems.CHOCOLATE_MATCHA_CAKE.get());
+        basicItem(ModItems.SWISS_ROLL.get());
+        basicItem(ModItems.STUFFED_WAFER_COOKIES.get());
+        basicItem(ModItems.CREAM_BUN_CAKE.get());
+        basicItem(ModItems.BERRY_BUN_CAKE.get());
+        basicItem(ModItems.TUBER_BUN_CAKE.get());
+        basicItem(ModItems.WATERMELON_BUN_CAKE.get());
+        basicItem(ModItems.PUMPKIN_BUN_CAKE.get());
+        basicItem(ModItems.GLOW_BERRY_BUN_CAKE.get());
+        basicItem(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get());
+        basicItem(ModItems.HEART_CHOCOLATE.get());
+        basicItem(ModItems.WHITE_HEART_CHOCOLATE.get());
+        basicItem(ModItems.PINK_HEART_CHOCOLATE.get());
+        basicItem(ModItems.GINGERBREAD_MAN.get());
+        basicItem(ModItems.CANDY_CANE.get());
+        basicItem(ModItems.BUBBLE_GUM.get());
+        basicItem(ModItems.GALAXY_JELLY.get());
+        withExistingParent(ModItems.MILKY_WAY_JELLY.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/galaxy_jelly"));
+        basicItem(ModItems.FORTUNE_JELLY.get());
+        basicItem(ModItems.WIND_RUNNER_JELLY.get());
+        basicItem(ModItems.MELT_DREAM_COTTON_CANDY.get());
+        basicItem(ModItems.YINHUL_COTTON_CANDY.get());
+        basicItem(ModItems.JELLYFISH_MUD.get());
+        basicItem(ModItems.JELLYFISH_JELLO.get());
+        basicItem(ModItems.PINEAPPLE_LOVE_SEA.get());
+        basicItem(ModItems.RED_DEW.get());
+        basicItem(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get());
+        basicItem(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get());
+        basicItem(ModItems.GLASS_JAR_OF_DYEDREAM_PERFUME.get());
+        basicItem(ModItems.LIGHT_ORGAN.get());
+        basicItem(ModItems.ODD_BACON_AND_EGG.get());
+        basicItem(ModItems.BUBBLE_TEA.get());
         getBuilder(ModItems.QYM_DOLL.getId().getPath())
                 .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
                         modLoc("displaysettings/qym_doll.item")));

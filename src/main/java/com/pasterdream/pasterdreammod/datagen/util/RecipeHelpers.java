@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.datagen.util;
 
+import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -164,6 +165,39 @@ public final class RecipeHelpers {
         SingleItemRecipeBuilder.stonecutting(ingredient, RecipeCategory.BUILDING_BLOCKS, wall)
                 .unlockedBy(path(base), InventoryChangeTrigger.TriggerInstance.hasItems(base))
                 .save(output, ResourceLocation.fromNamespaceAndPath(modId, path(wall) + "_from_stonecutting"));
+    }
+
+    /**
+     * 小蛋糕合成配方：奶油小蛋糕 + 材料。
+     *
+     * @param material 合成材料
+     * @param cake     合成出的小蛋糕
+     */
+    public static void cake(RecipeOutput output, ItemLike material, ItemLike cake) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, cake)
+                .requires(ModItems.CREAM_BUN_CAKE.get())
+                .requires(material)
+                .unlockedBy(path(ModItems.CREAM_BUN_CAKE.get()),
+                        InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.CREAM_BUN_CAKE.get()))
+                .save(output);
+    }
+
+    /**
+     * 心形巧克力合成配方。
+     *
+     * @param heart  心形巧克力中心材料
+     * @param result 合成出的心形巧克力
+     */
+    public static void heartChocolate(RecipeOutput output, ItemLike heart, ItemLike result) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result, 2)
+                .pattern("a a")
+                .pattern("aca")
+                .pattern(" b ")
+                .define('a', Items.COCOA_BEANS)
+                .define('b', Items.SUGAR)
+                .define('c', heart)
+                .unlockedBy(path(heart), InventoryChangeTrigger.TriggerInstance.hasItems(heart))
+                .save(output);
     }
 
     private static String path(ItemLike item) {

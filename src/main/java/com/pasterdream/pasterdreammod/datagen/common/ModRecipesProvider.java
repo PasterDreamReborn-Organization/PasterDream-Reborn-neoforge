@@ -30,6 +30,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 import net.minecraft.world.item.Item;
@@ -62,6 +63,7 @@ public class ModRecipesProvider extends RecipeProvider {
         chargedAmethystAndSaltRecipes(output);
         mortarRecipes(output);
         glassJarRecipes(output);
+        foodRecipes(output);
         storageBagRecipes(output);
         blackMetalRecipes(output);
         shadowAlloyToolRecipes(output);
@@ -1679,6 +1681,263 @@ public class ModRecipesProvider extends RecipeProvider {
                         .unlockedBy(getHasName(ModItems.MORTAR.get()),
                                 has(ModItems.MORTAR.get())),
                 pWriter, "glass_jar_of_wind_plant_extract");
+    }
+
+    // ===== 食物与饮品配方 =====
+    private void foodRecipes(RecipeOutput pWriter) {
+        // 巧克力合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CHOCOLATE.get(), 1)
+                .requires(Items.COCOA_BEANS, 2)
+                .requires(Items.SUGAR, 1)
+                .unlockedBy(getHasName(Items.SUGAR), has(Items.SUGAR))
+                .save(pWriter);
+
+        // 面团合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DOUGH.get(), 1)
+                .requires(Ingredient.of(ModItemTags.FLOUR), 1)
+                .requires(ModItems.GLASS_JAR_OF_WATER.get(), 2)
+                .unlockedBy(getHasName(ModItems.FLOUR.get()), has(ModItems.FLOUR.get()))
+                .save(pWriter);
+
+        // 蛋液面团合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DOUGH_WITH_EGG.get(), 1)
+                .requires(Ingredient.of(Tags.Items.EGGS), 1)
+                .requires(Ingredient.of(Tags.Items.FOODS_DOUGH), 2)
+                .unlockedBy(getHasName(ModItems.DOUGH.get()), has(ModItems.DOUGH.get()))
+                .save(pWriter);
+
+        // 蛋糕胚合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CAKE_BASE.get(), 2)
+                .requires(ModItems.DOUGH_WITH_EGG.get(), 1)
+                .requires(Items.SUGAR, 1)
+                .requires(ModItems.GLASS_JAR_OF_YEAST.get(), 1)
+                .unlockedBy(getHasName(ModItems.DOUGH_WITH_EGG.get()), has(ModItems.DOUGH_WITH_EGG.get()))
+                .save(pWriter);
+
+        // 奶油小蛋糕合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CREAM_BUN_CAKE.get(), 1)
+                .requires(ModItems.CAKE_BASE.get(), 1)
+                .requires(ModItems.GLASS_JAR_OF_MILK.get(), 1)
+                .unlockedBy(getHasName(ModItems.CAKE_BASE.get()), has(ModItems.CAKE_BASE.get()))
+                .save(pWriter);
+
+        // 六种蛋糕合成
+        RecipeHelpers.cake(pWriter, Items.SWEET_BERRIES, ModItems.BERRY_BUN_CAKE.get());
+        RecipeHelpers.cake(pWriter, Items.POTATO, ModItems.TUBER_BUN_CAKE.get());
+        RecipeHelpers.cake(pWriter, Items.MELON_SLICE, ModItems.WATERMELON_BUN_CAKE.get());
+        RecipeHelpers.cake(pWriter, Items.PUMPKIN, ModItems.PUMPKIN_BUN_CAKE.get());
+        RecipeHelpers.cake(pWriter, Items.GLOW_BERRIES, ModItems.GLOW_BERRY_BUN_CAKE.get());
+        RecipeHelpers.cake(pWriter, ModItems.DYEDREAM_FRUIT.get(), ModItems.DYEDREAM_FRUIT_BUN_CAKE.get());
+
+        // 巧克力抹茶蛋糕合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CHOCOLATE_MATCHA_CAKE.get(), 1)
+                .requires(ModItems.CAKE_BASE.get(), 1)
+                .requires(Ingredient.of(ItemTags.LEAVES), 1)
+                .requires(ModItems.CHOCOLATE.get(), 1)
+                .unlockedBy(getHasName(ModItems.CAKE_BASE.get()), has(ModItems.CAKE_BASE.get()))
+                .save(pWriter);
+
+        // 三种心形巧克力合成
+        RecipeHelpers.heartChocolate(pWriter, Items.COCOA_BEANS, ModItems.HEART_CHOCOLATE.get());
+        RecipeHelpers.heartChocolate(pWriter, ModItems.GLASS_JAR_OF_MILK.get(), ModItems.WHITE_HEART_CHOCOLATE.get());
+        RecipeHelpers.heartChocolate(pWriter, ModItems.DYEDREAM_DUST.get(), ModItems.PINK_HEART_CHOCOLATE.get());
+
+        // 拐杖糖合成配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CANDY_CANE.get(), 1)
+                .pattern("ab ")
+                .pattern("ba ")
+                .pattern(" b ")
+                .define('a', ModItems.AMBER_CANDY.get())
+                .define('b', Items.SUGAR)
+                .unlockedBy(getHasName(ModItems.AMBER_CANDY.get()), has(ModItems.AMBER_CANDY.get()))
+                .save(pWriter);
+
+        // 姜饼人合成配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GINGERBREAD_MAN.get(), 1)
+                .pattern(" b ")
+                .pattern("aca")
+                .pattern(" d ")
+                .define('a', Items.SUGAR)
+                .define('b', Items.RED_DYE)
+                .define('c', ModItems.WAFER_BISCUIT.get())
+                .define('d', Items.SPRUCE_LEAVES)
+                .unlockedBy(getHasName(Items.SUGAR), has(Items.SUGAR))
+                .save(pWriter);
+
+        // 泡泡糖合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BUBBLE_GUM.get(), 2)
+                .requires(ModItems.AMBER_CANDY.get(), 2)
+                .requires(ModItems.PINK_SLIMEBALL.get(), 1)
+                .unlockedBy(getHasName(ModItems.AMBER_CANDY.get()), has(ModItems.AMBER_CANDY.get()))
+                .save(pWriter);
+
+        // 跳跳糖合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.POPPING_CANDY.get(), 2)
+                .requires(Items.SUGAR, 1)
+                .requires(ModItems.AMBER_CANDY.get(), 1)
+                .requires(Items.RABBIT_FOOT, 1)
+                .requires(Items.GUNPOWDER, 1)
+                .unlockedBy(getHasName(ModItems.AMBER_CANDY.get()), has(ModItems.AMBER_CANDY.get()))
+                .save(pWriter);
+
+        // 炙焰金苹果合成配方（8 炙焰金锭 + 1 苹果）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MOLTEN_GOLD_APPLE.get(), 1)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', ModItems.MOLTEN_GOLD_INGOT.get())
+                .define('b', Items.APPLE)
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_INGOT.get()), has(ModItems.MOLTEN_GOLD_INGOT.get()))
+                .save(pWriter);
+
+        // 附魔炙焰金苹果合成配方（8 炙焰金块 + 1 苹果）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ENCHANTED_MOLTEN_GOLD_APPLE.get(), 1)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', ModItems.MOLTEN_GOLD_BLOCK.get())
+                .define('b', Items.APPLE)
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_BLOCK.get()), has(ModItems.MOLTEN_GOLD_BLOCK.get()))
+                .save(pWriter);
+
+        // 染梦冰棒合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_POPSICLE.get(), 1)
+                .requires(Items.SNOWBALL, 1)
+                .requires(ModItems.DYEDREAM_DUST_PIECE.get(), 1)
+                .requires(Items.STICK, 1)
+                .requires(ModItems.DYEDREAM_LILY_OF_THE_VALLEY.get(), 1)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DUST_PIECE.get()), has(ModItems.DYEDREAM_DUST_PIECE.get()))
+                .save(pWriter);
+
+        // 煎蛋合成配方（熔炉，烟熏炉，篝火）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Tags.Items.EGGS),
+                        RecipeCategory.MISC, ModItems.FRIED_EGG.get(), 1.0F, 200)
+                .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":fried_egg_from_pink_egg_smelting");
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(Tags.Items.EGGS),
+                        RecipeCategory.MISC, ModItems.FRIED_EGG.get(), 1.0F, 100)
+                .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":fried_egg_from_pink_egg_smoking");
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(Tags.Items.EGGS),
+                        RecipeCategory.MISC, ModItems.FRIED_EGG.get(), 0, 600)
+                .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":fried_egg_from_pink_egg_campfire_cooking");
+
+        // 面包片合成配方（熔炉，烟熏炉，篝火）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.FLOUR.get()),
+                        RecipeCategory.MISC, ModItems.BREAD_SLICE.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.FLOUR.get()), has(ModItems.FLOUR.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":bread_slice_from_flour_smelting");
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItems.FLOUR.get()),
+                        RecipeCategory.MISC, ModItems.BREAD_SLICE.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.FLOUR.get()), has(ModItems.FLOUR.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":bread_slice_from_flour_smoking");
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItems.FLOUR.get()),
+                        RecipeCategory.MISC, ModItems.BREAD_SLICE.get(), 0, 600)
+                .unlockedBy(getHasName(ModItems.FLOUR.get()), has(ModItems.FLOUR.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":bread_slice_from_flour_campfire_cooking");
+
+        // 威化饼干合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.WAFER_BISCUIT.get(), 2)
+                .requires(ModItems.BREAD_SLICE.get(), 2)
+                .requires(ModItems.GLASS_JAR_OF_YEAST.get(), 1)
+                .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_YEAST.get()), has(ModItems.GLASS_JAR_OF_YEAST.get()))
+                .save(pWriter);
+
+        // 瑞士卷合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SWISS_ROLL.get(), 1)
+                .requires(ModItems.BREAD_SLICE.get(), 2)
+                .requires(ModItems.GLASS_JAR_OF_MILK.get(), 1)
+                .requires(ModItems.GLASS_JAR_OF_YEAST.get(), 1)
+                .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_YEAST.get()), has(ModItems.GLASS_JAR_OF_YEAST.get()))
+                .save(pWriter);
+
+        // 威化夹心合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.STUFFED_WAFER_COOKIES.get(), 1)
+                .requires(ModItems.WAFER_BISCUIT.get(), 2)
+                .requires(ModItems.GLASS_JAR_OF_MILK.get(), 1)
+                .requires(Items.SUGAR, 1)
+                .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_MILK.get()), has(ModItems.GLASS_JAR_OF_MILK.get()))
+                .save(pWriter);
+
+        // 三明治合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SANDWICH.get(), 1)
+                .requires(Items.BREAD, 1)
+                .requires(Items.COOKED_CHICKEN, 1)
+                .requires(Ingredient.of(ModItemTags.COOKED_EGGS), 1)
+                .requires(Items.KELP, 1)
+                .unlockedBy(getHasName(Items.BREAD), has(Items.BREAD))
+                .save(pWriter);
+
+        // 培根煎蛋合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BACON_AND_EGG.get(), 1)
+                .requires(Ingredient.of(ModItemTags.COOKED_EGGS), 2)
+                .requires(Items.COOKED_PORKCHOP, 1)
+                .requires(Ingredient.of(ModItemTags.SALT), 1)
+                .unlockedBy(getHasName(ModItems.SALT.get()), has(ModItems.SALT.get()))
+                .save(pWriter);
+
+        // 融梦棉花糖合成配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MELT_DREAM_COTTON_CANDY.get(), 8)
+                .pattern("bbb")
+                .pattern("bab")
+                .pattern("bbb")
+                .define('a', ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())
+                .define('b', Items.SUGAR)
+                .unlockedBy(getHasName(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()), has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter);
+
+        // 秋麒麟茶合成配方（空罐子由水罐 remainder 配平抵消）
+        saveContainerBalancedShapeless(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get(), 1)
+                        .requires(ModItems.GOLDENROD.get(), 1)
+                        .requires(ModItems.GLASS_JAR_OF_WATER.get(), 1)
+                        .unlockedBy(getHasName(ModItems.GOLDENROD.get()), has(ModItems.GOLDENROD.get())),
+                pWriter, "glass_jar_of_goldenrod_tea",
+                ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get(), 1,
+                ModItems.GOLDENROD.get(), 1,
+                ModItems.GLASS_JAR_OF_WATER.get(), 1);
+
+        // 染梦香水合成配方（空罐子由水罐 remainder 配平抵消）
+        saveContainerBalancedShapeless(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_DYEDREAM_PERFUME.get(), 1)
+                        .requires(ModItems.GLASS_JAR_OF_WATER.get(), 1)
+                        .requires(ModItems.DYEDREAM_DUST_PIECE.get(), 1)
+                        .requires(Items.FERMENTED_SPIDER_EYE, 1)
+                        .requires(ModItems.PINK_MUSHROOM.get(), 1)
+                        .requires(ModItems.DYEDREAM_MOSS.get(), 1)
+                        .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_WATER.get()), has(ModItems.GLASS_JAR_OF_WATER.get())),
+                pWriter, "glass_jar_of_dyedream_perfume",
+                ModItems.GLASS_JAR_OF_DYEDREAM_PERFUME.get(), 1,
+                ModItems.GLASS_JAR_OF_WATER.get(), 1,
+                ModItems.DYEDREAM_DUST_PIECE.get(), 1,
+                Items.FERMENTED_SPIDER_EYE, 1,
+                ModItems.PINK_MUSHROOM.get(), 1,
+                ModItems.DYEDREAM_MOSS.get(), 1);
+
+        // 奇异炖菜合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.QUEER_SOUP.get(), 1)
+                .requires(Items.MUSHROOM_STEW, 1)
+                .requires(ModItems.SINGULARITY_FERN.get(), 1)
+                .requires(ModItems.MISTY_DREAMING_LOTUS.get(), 1)
+                .requires(ModItems.DYEDREAM_COROLLA.get(), 1)
+                .requires(Items.GHAST_TEAR, 1)
+                .unlockedBy(getHasName(ModItems.MISTY_DREAMING_LOTUS.get()), has(ModItems.MISTY_DREAMING_LOTUS.get()))
+                .save(pWriter);
+
+        // 银河果冻合成配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MILKY_WAY_JELLY.get(), 1)
+                .pattern("cfc")
+                .pattern("fgf")
+                .pattern("cfc")
+                .define('c', ModItems.CLOUD.get())
+                .define('f', Items.FEATHER)
+                .define('g', ModItems.GALAXY_JELLY.get())
+                .unlockedBy(getHasName(ModItems.GALAXY_JELLY.get()), has(ModItems.GALAXY_JELLY.get()))
+                .save(pWriter);
+
+        // 琥珀糖合成配方
+        dyeConversion(pWriter, Items.SUGAR, ModItems.AMBER_CANDY.get());
     }
 
     private void saveMortarRecipe(RecipeOutput output, String name, List<ItemIngredient> inputs, List<ItemIngredient> outputs) {
