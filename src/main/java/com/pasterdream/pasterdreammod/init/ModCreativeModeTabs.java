@@ -1,12 +1,16 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
+import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleWithFluidNBTBuilder;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
@@ -14,6 +18,9 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
@@ -162,10 +169,23 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ELIXIR_BOTTLE.get());
                         for (Fluid fluid : BuiltInRegistries.FLUID)
                         {
-                            if (fluid != Fluids.EMPTY)
+                            if (fluid == ModFluids.POTION.get())
                             {
-                                output.accept(ElixirBottleWithFluidNBTBuilder.builder(new FluidStack(fluid, 1000)));
+                                List<GenericMobEffect> allEffectList = new ArrayList<>();
+                                for (Holder<MobEffect> effect : BuiltInRegistries.MOB_EFFECT.holders().toList())
+                                {
+                                    List<GenericMobEffect> effectList = new ArrayList<>();
+                                    effectList.add(new GenericMobEffect(effect, 2, 18000));
+                                    allEffectList.add(new GenericMobEffect(effect, 2, 18000));
+                                    output.accept(ElixirBottleWithFluidNBTBuilder.builder(PotionHelper.createNBTPotion(effectList, 1000)));
+                                }
+                                output.accept(ElixirBottleWithFluidNBTBuilder.builder(PotionHelper.createNBTPotion(allEffectList, 1000)));
                             }
+                                else
+                                if (fluid != Fluids.EMPTY)
+                                {
+                                    output.accept(ElixirBottleWithFluidNBTBuilder.builder(new FluidStack(fluid, 1000)));
+                                }
                         }
                     }).build());
 
