@@ -106,7 +106,19 @@ public class PasterDreamDrinkItem extends Item
             {
                 if (level.random.nextFloat() < effectPair.probability())
                 {
-                    entity.addEffect(new MobEffectInstance(effectPair.effect()));
+                    MobEffectInstance instance = new MobEffectInstance(effectPair.effect());
+                    if (instance.getEffect().value().isInstantenous())
+                    {
+                        if (!level.isClientSide)
+                        {
+                            instance.getEffect().value().applyInstantenousEffect(entity, entity, entity,
+                                    instance.getAmplifier(), 1.0);
+                        }
+                    }
+                    else
+                    {
+                        entity.addEffect(instance);
+                    }
                 }
             }
         }

@@ -200,6 +200,19 @@ public final class RecipeHelpers {
                 .save(output);
     }
 
+    /**
+     * 蛋糕类合成配方
+     * @param material 合成材料，决定合成出来的玻璃饮品
+     *@param drink 出来的饮料
+     */
+    public static void glass_cup_drink(RecipeOutput output, ItemLike material, ItemLike drink) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, drink)
+                .requires(ModItems.GLASS_CUP.get())
+                .requires(material)
+                .unlockedBy(path(ModItems.GLASS_CUP.get()), InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GLASS_CUP.get()))
+                .save(output);
+    }
+
     private static String path(ItemLike item) {
         return BuiltInRegistries.ITEM.getKey(item.asItem()).getPath();
     }

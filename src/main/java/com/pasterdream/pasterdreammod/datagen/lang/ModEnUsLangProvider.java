@@ -27,6 +27,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("fluid.pasterdream.wind_plant_extract", "Wind Plant Extract(fluid)");
         add("fluid.pasterdream.yeast", "Yeast(fluid)");
         add("fluid.pasterdream.ink", "Ink(fluid)");
+        add("fluid.pasterdream.apple_juice", "Apple Juice(fluid)");
+        add("fluid.pasterdream.dyedream_flower_tea", "Dyedream Flower Tea(fluid)");
+        add("fluid.pasterdream.dyedream_juice", "Dyedream Juice(fluid)");
+        add("fluid.pasterdream.honey_juice", "Honey Juice(fluid)");
+        add("fluid.pasterdream.uncooked_dyedream_flower_tea", "Uncooked Dyedream Flower Tea(fluid)");
+        add("fluid.pasterdream.watermelon_juice", "Watermelon Juice(fluid)");
         add("key.pasterdream.blink", "Blink");
         add("key.categories.pasterdream", "PasterDream");
         add("effect.pasterdream.evasion", "Evasion");
@@ -672,6 +678,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.JELLYFISH_MUD.get(), "Jellyfish Mud");
         add(ModItems.JELLYFISH_JELLO.get(), "Jellfish Jello");
         add(ModItems.PINEAPPLE_LOVE_SEA.get(), "Pineapple Love Sea");
+        add(ModItems.GLASS_CUP.get(), "Glass Cup");
+        add(ModItems.GLASS_CUP_OF_APPLE_JUICE.get(), "Glass Cup of Apple Juice");
+        add(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(), "Glass Cup of Cooked Dyedream Flower Tea");
+        add(ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get(), "Glass Cup of Dyedream Juice");
+        add(ModItems.GLASS_CUP_OF_HONEY_JUICE.get(), "Glass Cup of Honey Juice");
+        add(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get(), "Glass Cup of Uncooked Dyedream Flower Tea");
+        add(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get(), "Glass Cup of Watermelon Juice");
         add(ModItems.RED_DEW.get(), "Red Dew");
         add(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get(), "Glass Jar of Goldenrod Tea");
         add(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get(), "Legendary Dragon Horn Ice Cream");
@@ -679,6 +692,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.LIGHT_ORGAN.get(), "Light Organ");
         add(ModItems.ODD_BACON_AND_EGG.get(), "Odd Bacon and Egg");
         add(ModItems.BUBBLE_TEA.get(), "Bubble Tea");
+        add("tooltip.pasterdreammod.glass_cup_of_honey_juice", "§dClears all negative effects upon drinking");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§eThe taste feels familiar, as if it came from Snow Tears Cold...... wait, what?");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7You have already tasted this ice cream flavor");
         add("tooltip.pasterdreammod.goldenrod_tea", "§dContinuously removes Hunger and Nausea");

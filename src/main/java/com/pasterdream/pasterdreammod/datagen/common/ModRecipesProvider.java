@@ -63,6 +63,7 @@ public class ModRecipesProvider extends RecipeProvider {
         chargedAmethystAndSaltRecipes(output);
         mortarRecipes(output);
         glassJarRecipes(output);
+        glassCupRecipes(output);
         foodRecipes(output);
         storageBagRecipes(output);
         blackMetalRecipes(output);
@@ -1589,6 +1590,66 @@ public class ModRecipesProvider extends RecipeProvider {
         saveMortarRecipe(pWriter, "dyedream_dye_from_dyedream_dust_piece_and_bone_meal",
                 List.of(ItemIngredient.of(ModItems.DYEDREAM_DUST_PIECE.get(), 1), ItemIngredient.of(Items.BONE_MEAL, 1)),
                 List.of(ItemIngredient.of(ModItems.DYEDREAM_DYE.get(), 9)));
+    }
+
+    private void glassCupRecipes(RecipeOutput pWriter) {
+        // 玻璃杯合成配方（支持所有玻璃板tag）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GLASS_CUP.get(), 4)
+                .pattern("a a")
+                .pattern("a a")
+                .pattern(" a ")
+                .define('a', Ingredient.of(TagKey.create(Registries.ITEM,
+                        ResourceLocation.fromNamespaceAndPath("c", "glass_panes"))))
+                .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
+                .save(pWriter);
+
+        // 饮料（玻璃杯类）合成配方
+        RecipeHelpers.glass_cup_drink(pWriter, Items.APPLE, ModItems.GLASS_CUP_OF_APPLE_JUICE.get());
+        RecipeHelpers.glass_cup_drink(pWriter, Items.HONEYCOMB, ModItems.GLASS_CUP_OF_HONEY_JUICE.get());
+        RecipeHelpers.glass_cup_drink(pWriter, Items.MELON_SLICE, ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
+
+        // 染梦花茶（未烹调）合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get(), 1)
+                .requires(ModItems.GLASS_CUP.get(), 1)
+                .requires(ModItems.AMBER_CANDY.get(), 1)
+                .requires(ModItems.DYEDREAM_LEAVES.get(), 1)
+                .requires(ModItems.DYEDREAM_COROLLA.get(), 1)
+                .unlockedBy(getHasName(ModItems.GLASS_CUP.get()), has(ModItems.GLASS_CUP.get()))
+                .save(pWriter);
+
+        // 染梦花茶合成配方
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get()),
+                        RecipeCategory.MISC, ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get()), has(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "glass_cup_of_cooked_dyedream_flower_tea_from_glass_cup_of_uncooked_dyedream_flower_tea_smelting"));
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get()),
+                        RecipeCategory.MISC, ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get()), has(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "glass_cup_of_cooked_dyedream_flower_tea_from_glass_cup_of_uncooked_dyedream_flower_tea_smoking"));
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get()),
+                        RecipeCategory.MISC, ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(), 0, 600)
+                .unlockedBy(getHasName(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get()), has(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "glass_cup_of_cooked_dyedream_flower_tea_from_glass_cup_of_uncooked_dyedream_flower_tea_campfire_cooking"));
+
+        // 染梦果汁合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get(), 1)
+                .requires(ModItems.GLASS_CUP.get(), 1)
+                .requires(ModItems.DYEDREAM_FRUIT.get(), 1)
+                .requires(ModItems.DYEDREAM_DUST_PIECE.get(), 1)
+                .requires(ModItems.AMBER_CANDY.get(), 1)
+                .unlockedBy(getHasName(ModItems.GLASS_CUP.get()), has(ModItems.GLASS_CUP.get()))
+                .save(pWriter);
+
+        // 鲜红露滴合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RED_DEW.get(), 1)
+                .requires(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get())
+                .requires(Items.GLISTERING_MELON_SLICE)
+                .requires(Items.GOLDEN_APPLE)
+                .requires(Items.HONEY_BOTTLE)
+                .requires(Items.RED_DYE)
+                .unlockedBy(getHasName(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get()),
+                        has(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get()))
+                .save(pWriter);
     }
 
     private void glassJarRecipes(RecipeOutput pWriter) {

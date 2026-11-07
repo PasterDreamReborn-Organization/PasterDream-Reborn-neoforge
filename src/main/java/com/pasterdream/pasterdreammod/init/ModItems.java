@@ -382,6 +382,32 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
                     .nutrition(6).saturationModifier(0.415f).build())));
 
+    // ===== 玻璃杯系列 =====
+    public static final DeferredItem<Item> GLASS_CUP = ITEMS.register("glass_cup", () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> GLASS_CUP_OF_APPLE_JUICE = ITEMS.register("glass_cup_of_apple_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.5f).alwaysEdible().build()).craftRemainder(ModItems.GLASS_CUP.get())));
+    public static final DeferredItem<Item> GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA = ITEMS.register("glass_cup_of_uncooked_dyedream_flower_tea", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_CUP.get())));
+    public static final DeferredItem<Item> GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA = ITEMS.register("glass_cup_of_cooked_dyedream_flower_tea", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.HEAL, 1, 0), 1.0f).alwaysEdible().build()).craftRemainder(ModItems.GLASS_CUP.get())) {
+        @Override
+        public boolean isFoil(ItemStack stack) {
+            return true;
+        }
+    });
+    public static final DeferredItem<Item> GLASS_CUP_OF_DYEDREAM_JUICE = ITEMS.register("glass_cup_of_dyedream_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.5f).alwaysEdible().build()).meltDreamEnergyAdd(0.2).craftRemainder(ModItems.GLASS_CUP.get())));
+    public static final DeferredItem<Item> GLASS_CUP_OF_HONEY_JUICE = ITEMS.register("glass_cup_of_honey_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.5f).alwaysEdible().build()).craftRemainder(ModItems.GLASS_CUP.get())) {
+        @Override
+        protected void onDrinkSpecial(LivingEntity entity, Level level) {
+            if (!level.isClientSide) {
+                entity.getActiveEffects().stream()
+                        .map(MobEffectInstance::getEffect)
+                        .filter(effect -> !effect.value().isBeneficial())
+                        .toList()
+                        .forEach(entity::removeEffect);
+            }
+        }
+    });
+    public static final DeferredItem<Item> GLASS_CUP_OF_WATERMELON_JUICE = ITEMS.register("glass_cup_of_watermelon_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.5f).alwaysEdible().build()).craftRemainder(ModItems.GLASS_CUP.get())));
+
     // ===== 玻璃罐系列 =====
     public static final DeferredItem<Item> GLASS_JAR = ITEMS.register("glass_jar", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> GLASS_JAR_OF_WATER = ITEMS.register("glass_jar_of_water", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().alwaysEdible().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())));

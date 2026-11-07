@@ -68,6 +68,10 @@ public class AddToolTip
             tooltip.add(Component.translatable("item.pasterdream.queer_soup.describe"));
         }
 
+        if(stack.is(ModItems.GLASS_CUP_OF_HONEY_JUICE.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.glass_cup_of_honey_juice"));
+        }
+
         if(stack.is(ModItems.WIND_RUNNER_JELLY.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.wind_runner_jelly"));
             tooltip.add(Component.translatable("tooltip.pasterdreammod.wind_runner_jelly.flavor"));
