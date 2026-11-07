@@ -7,6 +7,8 @@ import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombB
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.NippyEdelweissBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -44,6 +46,14 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("weapon_workshop_crafting_table",
                     () -> BlockEntityType.Builder.of(WeaponWorkshopCraftingTableBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get())
                             .build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DyedreamDeskBlockEntity>> DYEDREAM_DESK =
+            BLOCK_ENTITIES.register("dyedream_desk",
+                    () -> BlockEntityType.Builder.of(DyedreamDeskBlockEntity::new, ModBlocks.DYEDREAM_DESK.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<NippyEdelweissBlockEntity>> NIPPY_EDELWEISS =
+            BLOCK_ENTITIES.register("nippy_edelweiss",
+                    () -> BlockEntityType.Builder.of(NippyEdelweissBlockEntity::new, ModBlocks.NIPPY_EDELWEISS.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

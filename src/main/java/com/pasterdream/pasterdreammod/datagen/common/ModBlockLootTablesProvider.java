@@ -242,6 +242,32 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.UUZ_DOLL.get());
         dropSelf(ModBlocks.DESERT_HERO_TOMB.get());
         dropSelf(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
+        dropSelf(ModBlocks.DYEDREAM_DESK.get());
+
+        // ===== 盆栽植物 =====
+        for (var entry : ModBlocks.POTTED_PLANTS.entrySet()) {
+            var plant = entry.getKey();
+            var potted = entry.getValue();
+            if (ModBlocks.POTTED_CROPS.contains(potted)) {
+                var items = ModBlocks.POTTED_CROP_ITEMS.get(potted);
+                var matureCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(potted.get())
+                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                .hasProperty(com.pasterdream.pasterdreammod.world.block.PottedCropBlock.AGE, 1));
+                add(potted.get(), LootTable.lootTable()
+                        .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(Items.FLOWER_POT)))
+                        .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(items.seedling().get()).when(matureCondition.invert())))
+                        .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(items.mature().get()).when(matureCondition))));
+            } else {
+                add(potted.get(), block -> LootTable.lootTable()
+                        .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(Items.FLOWER_POT)))
+                        .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(plant.get()))));
+            }
+        }
     }
 
     private LootTable.Builder plantGrassDrops(Block block) {

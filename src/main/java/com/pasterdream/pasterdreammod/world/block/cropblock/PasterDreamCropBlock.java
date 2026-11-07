@@ -114,7 +114,7 @@ public class PasterDreamCropBlock extends PlantBushBlock
                     }
                     level.playSound(null, pos, SoundEvents.SHEEP_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
                     if (level instanceof ServerLevel serverLevel)
-                        serverLevel.sendParticles(net.minecraft.core.particles.ParticleTypes.HAPPY_VILLAGER, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 10, 0.5, 0.5, 0.5, 0.1);
+                        serverLevel.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(), pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 10, 0.5, 0.5, 0.5, 0.1);
                 }
             }
             return ItemInteractionResult.sidedSuccess(level.isClientSide);

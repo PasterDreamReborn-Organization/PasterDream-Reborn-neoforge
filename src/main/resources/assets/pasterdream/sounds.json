@@ -1,4 +1,12 @@
 {
+  "awake": {
+    "sounds": [
+      {
+        "name": "pasterdream:awake",
+        "stream": false
+      }
+    ]
+  },
   "sword_slash": {
     "sounds": [
       {

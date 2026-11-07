@@ -379,6 +379,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9Attack Damage +1~+3");
         add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9Luck +1~+3");
         add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "Weapon Workshop Crafting Table");
+        add(ModBlocks.DYEDREAM_DESK.get(), "Dyedream Desk");
         add("button.pasterdream.锻造", "Forge");
         add("tooltip.pasterdreammod.magic_stone", "§7§oWhat kind of mage doesn't carry a few magic stones?");
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7All creatures with souls in this world have dreams\nThose fleeting memories that cannot be recalled upon waking\nShatter and melt, buried across the world, condensing into crystals\nWaiting to be discovered by new souls");

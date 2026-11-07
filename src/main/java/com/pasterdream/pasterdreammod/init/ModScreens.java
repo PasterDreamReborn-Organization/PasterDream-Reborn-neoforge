@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskScreen;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagScreen;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagScreen;
 import net.neoforged.api.distmarker.Dist;
@@ -23,6 +24,7 @@ public final class ModScreens {
     @SubscribeEvent
     public static void register(RegisterMenuScreensEvent event) {
         event.register(ModMenus.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), WeaponWorkshopCraftingTableScreen::new);
+        event.register(ModMenus.DYEDREAM_DESK.get(), DyedreamDeskScreen::new);
         event.register(ModMenus.STORAGE_BAG.get(), StorageBagScreen::new);
         event.register(ModMenus.LARGE_STORAGE_BAG.get(), LargeStorageBagScreen::new);
         // TODO: event.register(ModMenus.CLAYPAN.get(), ClaypanScreen::new);

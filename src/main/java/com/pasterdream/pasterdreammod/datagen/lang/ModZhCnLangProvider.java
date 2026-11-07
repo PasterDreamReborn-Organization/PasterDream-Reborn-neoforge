@@ -379,6 +379,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9攻击力+1~+3");
         add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9幸运+1~+3");
         add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "精铸工坊工作台");
+        add(ModBlocks.DYEDREAM_DESK.get(), "染梦书桌");
         add("button.pasterdream.锻造", "锻造");
         add("tooltip.pasterdreammod.magic_stone", "§7§o哪个魔法使的兜里不会揣几块魔法石呢？");
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7此世间一切拥有灵魂的生物皆有梦\n那些醒来时无法想起的细缕回忆\n破碎并融化被埋藏在世界各处凝结成晶\n等待着被新的灵魂发现");
