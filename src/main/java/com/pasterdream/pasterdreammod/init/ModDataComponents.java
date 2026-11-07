@@ -5,6 +5,7 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -26,6 +27,12 @@ public class ModDataComponents {
             DATA_COMPONENTS.register("mortar_fluids", () -> DataComponentType.<List<FluidStack>>builder()
                     .persistent(FluidStack.OPTIONAL_CODEC.listOf())
                     .networkSynchronized(FluidStack.OPTIONAL_STREAM_CODEC.apply(ByteBufCodecs.list()))
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<SimpleFluidContent>> ELIXIR_BOTTLE_FLUID =
+            DATA_COMPONENTS.register("elixir_bottle_fluid", () -> DataComponentType.<SimpleFluidContent>builder()
+                    .persistent(SimpleFluidContent.CODEC)
+                    .networkSynchronized(SimpleFluidContent.STREAM_CODEC)
                     .build());
 
     public static void register(IEventBus eventBus) {

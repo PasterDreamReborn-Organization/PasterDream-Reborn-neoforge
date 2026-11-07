@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.event;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.init.ModDataComponents;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagInventoryCapability;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
@@ -13,6 +14,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStack;
 
 @EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
 public final class ModCapabilities
@@ -24,6 +26,9 @@ public final class ModCapabilities
     @SubscribeEvent
     public static void register(RegisterCapabilitiesEvent event)
     {
+        event.registerItem(Capabilities.FluidHandler.ITEM,
+                (stack, context) -> new FluidHandlerItemStack(ModDataComponents.ELIXIR_BOTTLE_FLUID, stack, 1000),
+                ModItems.ELIXIR_BOTTLE.get());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_CRAFTING_TABLE.get(),
                 (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.DYEDREAM_DESK.get(),

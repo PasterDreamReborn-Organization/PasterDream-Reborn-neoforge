@@ -64,6 +64,7 @@ public class ModRecipesProvider extends RecipeProvider {
         chargedAmethystAndSaltRecipes(output);
         mortarRecipes(output);
         glassJarRecipes(output);
+        elixirBottleRecipes(output);
         glassCupRecipes(output);
         foodRecipes(output);
         storageBagRecipes(output);
@@ -1696,6 +1697,24 @@ public class ModRecipesProvider extends RecipeProvider {
                 .requires(Items.RED_DYE)
                 .unlockedBy(getHasName(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get()),
                         has(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get()))
+                .save(pWriter);
+    }
+
+    private void elixirBottleRecipes(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ELIXIR_BOTTLE.get(), 1)
+                .pattern(" a ")
+                .pattern("bcb")
+                .pattern(" b ")
+                .define('a', Items.GOLD_NUGGET)
+                .define('b', ModItems.DYEDREAM_ALLOY_NUGGET.get())
+                .define('c', ModItems.GLASS_JAR.get())
+                .unlockedBy(getHasName(ModItems.GLASS_JAR.get()), has(ModItems.GLASS_JAR.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get(), 1)
+                .requires(ModItems.ELIXIR_BOTTLE.get(), 1)
+                .requires(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), 1)
+                .unlockedBy(getHasName(ModItems.MELT_DREAM_LIQUID_BUCKET.get()), has(ModItems.MELT_DREAM_LIQUID_BUCKET.get()))
                 .save(pWriter);
     }
 

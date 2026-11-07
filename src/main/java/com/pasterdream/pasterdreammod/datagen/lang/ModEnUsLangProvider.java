@@ -33,6 +33,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("fluid.pasterdream.honey_juice", "Honey Juice(fluid)");
         add("fluid.pasterdream.uncooked_dyedream_flower_tea", "Uncooked Dyedream Flower Tea(fluid)");
         add("fluid.pasterdream.watermelon_juice", "Watermelon Juice(fluid)");
+        add("fluid.pasterdream.rage_elixir", "Rage Elixir(fluid)");
         add("key.pasterdream.blink", "Blink");
         add("key.categories.pasterdream", "PasterDream");
         add("effect.pasterdream.evasion", "Evasion");
@@ -690,6 +691,19 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.JELLYFISH_MUD.get(), "Jellyfish Mud");
         add(ModItems.JELLYFISH_JELLO.get(), "Jellfish Jello");
         add(ModItems.PINEAPPLE_LOVE_SEA.get(), "Pineapple Love Sea");
+        add(ModItems.ELIXIR_BOTTLE.get(), "Elixir Bottle");
+        add(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get(), "Elixir Bottle of Melt Dream");
+        add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "Elixir Bottle of Rage Elixir");
+        add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.1", "§7Effects after drinking:");
+        add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.2", "§7▪ §9-15% Skill cooldown, +20% Attack damage (until death)");
+        add("item.pasterdream.elixir_bottle_of_rage_elixir.client.success", "§5You feel a surge of power coursing through your body......");
+        add("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail", "§7You have already drunk this potion.");
+        add("tooltip.pasterdream.空", "Empty");
+        add("tooltip.pasterdream.总容量:", "Total Capacity:");
+        add("tooltip.pasterdream.每次饮用:", "Drink every time:");
+        add("tooltip.pasterdream.不可饮用", "Can't drink.");
+        add("pasterdream.tooltip.elixir_capacity", "%s mB (bottle liquid capacity)");
+        add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "Paster Dream | Elixir Bottle");
         add(ModItems.GLASS_CUP.get(), "Glass Cup");
         add(ModItems.GLASS_CUP_OF_APPLE_JUICE.get(), "Glass Cup of Apple Juice");
         add(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(), "Glass Cup of Cooked Dyedream Flower Tea");
