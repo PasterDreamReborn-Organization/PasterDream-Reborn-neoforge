@@ -22,6 +22,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_LIQUID_BUCKET.get(), "Shadow Liquid Bucket");
         add("fluid.pasterdream.melt_dream_liquid", "Meltdream Liquid");
         add("fluid.pasterdream.shadow_liquid", "Shadow Liquid");
+        add("fluid.pasterdream.guiding_drug", "Guiding Drug(fluid)");
+        add("fluid.pasterdream.wind_plant_extract", "Wind Plant Extract(fluid)");
+        add("fluid.pasterdream.yeast", "Yeast(fluid)");
+        add("fluid.pasterdream.ink", "Ink(fluid)");
         add("key.pasterdream.blink", "Blink");
         add("key.categories.pasterdream", "PasterDream");
         add("effect.pasterdream.evasion", "Evasion");
@@ -313,6 +317,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.FLOUR.get(), "Flour");
         add(ModItems.COARSE_SALT.get(), "Coarse Salt");
         add(ModItems.SALT.get(), "Salt");
+        add(ModItems.GLASS_JAR.get(), "Glass Jar");
+        add(ModItems.GLASS_JAR_OF_WATER.get(), "Water Jar");
+        add(ModItems.GLASS_JAR_OF_MILK.get(), "Milk Jar");
+        add(ModItems.GLASS_JAR_OF_YEAST.get(), "Glass Jar of Yeast");
+        add(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(), "Glass Jar of Guiding Drug");
+        add(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), "Glass Jar of Wind Plant Extract");
+        add(ModItems.GLASS_JAR_OF_INK.get(), "Glass Jar of Ink");
         add(ModItems.EMBRYO_CHARM.get(), "Embryo Charm");
         add(ModItems.EMBRYO_NECKLACE.get(), "Embryo Necklace");
         add(ModItems.EMBRYO_RING.get(), "Embryo Ring");

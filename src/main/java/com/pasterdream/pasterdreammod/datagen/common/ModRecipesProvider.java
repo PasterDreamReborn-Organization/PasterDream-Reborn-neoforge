@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.datagen.util.RecipeHelpers;
+import com.pasterdream.pasterdreammod.helper.ContainerBalanceHelper;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -35,10 +36,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipesProvider extends RecipeProvider {
+    private final List<Runnable> containerValidations = new ArrayList<>();
+
     public ModRecipesProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
         super(output, lookup);
     }
@@ -57,6 +61,7 @@ public class ModRecipesProvider extends RecipeProvider {
         materialRecipes(output);
         chargedAmethystAndSaltRecipes(output);
         mortarRecipes(output);
+        glassJarRecipes(output);
         storageBagRecipes(output);
         blackMetalRecipes(output);
         shadowAlloyToolRecipes(output);
@@ -109,6 +114,8 @@ public class ModRecipesProvider extends RecipeProvider {
         RecipeHelpers.storageDecompress(output, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_NUGGET.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageCompress(output, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(output, ModItems.MOLTEN_GOLD_BLOCK.get(), ModItems.MOLTEN_GOLD_INGOT.get(), PasterDreamMod.MOD_ID);
+
+        validateContainerBalance();
     }
 
     private void soulRecipes(RecipeOutput pWriter) {
@@ -1582,6 +1589,98 @@ public class ModRecipesProvider extends RecipeProvider {
                 List.of(ItemIngredient.of(ModItems.DYEDREAM_DYE.get(), 9)));
     }
 
+    private void glassJarRecipes(RecipeOutput pWriter) {
+        // 玻璃罐合成（支持所有木台阶tag和玻璃板tag）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GLASS_JAR.get(), 8)
+                .pattern("aba")
+                .pattern("a a")
+                .pattern("aaa")
+                .define('a', Ingredient.of(TagKey.create(Registries.ITEM,
+                        ResourceLocation.fromNamespaceAndPath("c", "glass_panes"))))
+                .define('b', ItemTags.WOODEN_SLABS)
+                .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
+                .save(pWriter);
+
+        // 药引瓶合成（研钵作为工具不消耗）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(), 2)
+                        .requires(ModItems.MORTAR.get())
+                        .requires(ModItems.GLASS_JAR_OF_WATER.get(), 2)
+                        .requires(Items.NETHER_WART)
+                        .requires(ModItems.LINHT_FLOWER.get())
+                        .requires(ModItems.SOUL_DUST.get())
+                        .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get())),
+                pWriter, "glass_jar_of_guiding_drug");
+
+        // 重做酵母合成配方（产物罐子数多于输入空罐子数，自动配平）
+        saveContainerBalancedShapeless(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_YEAST.get(), 4)
+                        .requires(ModItems.GLASS_JAR.get(), 2)
+                        .requires(ModItems.FLOUR.get(), 1)
+                        .requires(ModItems.GLASS_JAR_OF_WATER.get(), 1)
+                        .requires(ModItems.GLASS_JAR_OF_YEAST.get(), 1)
+                        .requires(Items.SUGAR, 1)
+                        .unlockedBy(getHasName(ModItems.GLASS_JAR.get()), has(ModItems.GLASS_JAR.get())),
+                pWriter, "glass_jar_of_yeast",
+                ModItems.GLASS_JAR_OF_YEAST.get(), 4,
+                ModItems.GLASS_JAR.get(), 2,
+                ModItems.FLOUR.get(), 1,
+                ModItems.GLASS_JAR_OF_WATER.get(), 1,
+                ModItems.GLASS_JAR_OF_YEAST.get(), 1,
+                Items.SUGAR, 1);
+
+        // 水罐合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_WATER.get(), 8)
+                .requires(Items.WATER_BUCKET, 1)
+                .requires(ModItems.GLASS_JAR.get(), 8)
+                .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
+                .save(pWriter);
+
+        // 牛奶罐合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_MILK.get(), 8)
+                .requires(Items.MILK_BUCKET, 1)
+                .requires(ModItems.GLASS_JAR.get(), 8)
+                .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
+                .save(pWriter);
+
+        // 墨水罐合成配方一（水罐 + 玻璃罐 + 黑色染料，容器自动配平）
+        saveContainerBalancedShapeless(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_INK.get(), 2)
+                        .requires(ModItems.GLASS_JAR_OF_WATER.get(), 1)
+                        .requires(ModItems.GLASS_JAR.get(), 1)
+                        .requires(Items.BLACK_DYE, 1)
+                        .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_WATER.get()), has(ModItems.GLASS_JAR_OF_WATER.get())),
+                pWriter, "glass_jar_of_ink_from_black_dye",
+                ModItems.GLASS_JAR_OF_INK.get(), 2,
+                ModItems.GLASS_JAR_OF_WATER.get(), 1,
+                ModItems.GLASS_JAR.get(), 1,
+                Items.BLACK_DYE, 1);
+
+        // 墨水罐合成配方二（水罐*2 + 墨囊，容器自动配平）
+        saveContainerBalancedShapeless(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_INK.get(), 2)
+                        .requires(ModItems.GLASS_JAR_OF_WATER.get(), 2)
+                        .requires(Items.INK_SAC, 1)
+                        .unlockedBy(getHasName(Items.INK_SAC), has(Items.INK_SAC)),
+                pWriter, "glass_jar_of_ink_from_ink_sac",
+                ModItems.GLASS_JAR_OF_INK.get(), 2,
+                ModItems.GLASS_JAR_OF_WATER.get(), 2,
+                Items.INK_SAC, 1);
+
+        // 风植萃取液合成配方（研钵作为工具不消耗）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), 2)
+                        .requires(ModItems.MORTAR.get())
+                        .requires(ModItems.GLASS_JAR.get(), 2)
+                        .requires(ModItems.WIND_ISLAND_REED.get())
+                        .requires(ModItems.WIND_CLEAVING_GRASS.get())
+                        .requires(ModItems.WIND_FEATHER_GRASS.get())
+                        .requires(ModItems.HAIRY_MOSS.get())
+                        .unlockedBy(getHasName(ModItems.MORTAR.get()),
+                                has(ModItems.MORTAR.get())),
+                pWriter, "glass_jar_of_wind_plant_extract");
+    }
+
     private void saveMortarRecipe(RecipeOutput output, String name, List<ItemIngredient> inputs, List<ItemIngredient> outputs) {
         output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "mortar/" + name),
                 new MortarRecipe(List.of(), inputs, List.of(), outputs, 0), null);
@@ -1627,6 +1726,49 @@ public class ModRecipesProvider extends RecipeProvider {
                 output.accept(id, new NbtPreservingShapedRecipe((ShapedRecipe) recipe), advancement, conditions);
             }
         }, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name));
+    }
+
+    /**
+     * 保存无序配方并自动注册容器配平校验。
+     * 输入参数为 (产物, 产物数量, 原料1, 数量1, 原料2, 数量2, ...)
+     */
+    private void saveContainerBalancedShapeless(ShapelessRecipeBuilder builder, RecipeOutput writer,
+                                                String name, ItemLike result, int resultCount, Object... inputs) {
+        containerValidations.add(() -> {
+            ItemStack[] stacks = new ItemStack[inputs.length / 2];
+            for (int i = 0; i < inputs.length; i += 2) {
+                stacks[i / 2] = new ItemStack((ItemLike) inputs[i], (int) inputs[i + 1]);
+            }
+            ContainerBalanceHelper.validateOrThrow(name, new ItemStack(result, resultCount), stacks);
+        });
+        saveNbtPreserving(builder, writer, name);
+    }
+
+    /**
+     * 保存有序配方并自动注册容器配平校验。
+     */
+    private void saveContainerBalancedShaped(ShapedRecipeBuilder builder, RecipeOutput writer,
+                                             String name, ItemLike result, int resultCount, Object... inputs) {
+        containerValidations.add(() -> {
+            ItemStack[] stacks = new ItemStack[inputs.length / 2];
+            for (int i = 0; i < inputs.length; i += 2) {
+                stacks[i / 2] = new ItemStack((ItemLike) inputs[i], (int) inputs[i + 1]);
+            }
+            ContainerBalanceHelper.validateOrThrow(name, new ItemStack(result, resultCount), stacks);
+        });
+        saveNbtPreservingShaped(builder, writer, name);
+    }
+
+    // ===== 容器配平校验 =====
+
+    /**
+     * 校验所有通过 {@link #saveContainerBalancedShapeless} / {@link #saveContainerBalancedShaped}
+     * 注册的容器配方是否能配平。各配方在构建时已自动加入校验列表，此处统一执行。
+     */
+    private void validateContainerBalance() {
+        for (Runnable validation : containerValidations) {
+            validation.run();
+        }
     }
 
     // ===== 炙焰金工具配方 =====

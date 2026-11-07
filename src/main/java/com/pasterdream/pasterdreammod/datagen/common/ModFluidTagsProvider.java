@@ -17,6 +17,8 @@ import java.util.concurrent.CompletableFuture;
 public class ModFluidTagsProvider extends FluidTagsProvider {
     public static final TagKey<Fluid> CAULDRON_SPRING = TagKey.create(Registries.FLUID,
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cauldron_spring"));
+    public static final TagKey<Fluid> INK = TagKey.create(Registries.FLUID,
+            ResourceLocation.fromNamespaceAndPath("c", "ink"));
 
     public ModFluidTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
                                 @Nullable ExistingFileHelper existingFileHelper) {
@@ -26,5 +28,6 @@ public class ModFluidTagsProvider extends FluidTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(CAULDRON_SPRING).add(ModFluids.MELT_DREAM_LIQUID.get());
+        tag(INK).add(ModFluids.INK.get());
     }
 }
