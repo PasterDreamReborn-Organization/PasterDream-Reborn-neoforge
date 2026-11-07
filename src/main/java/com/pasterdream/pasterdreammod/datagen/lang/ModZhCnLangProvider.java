@@ -27,6 +27,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("fluid.pasterdream.wind_plant_extract", "风植萃取液（流体）");
         add("fluid.pasterdream.yeast", "酵母（流体）");
         add("fluid.pasterdream.ink", "墨水（流体）");
+        add("fluid.pasterdream.apple_juice", "苹果汁（流体）");
+        add("fluid.pasterdream.dyedream_flower_tea", "染梦花茶（流体）");
+        add("fluid.pasterdream.dyedream_juice", "染梦果汁（流体）");
+        add("fluid.pasterdream.honey_juice", "蜂蜜汁（流体）");
+        add("fluid.pasterdream.uncooked_dyedream_flower_tea", "未烹调的染梦花茶（流体）");
+        add("fluid.pasterdream.watermelon_juice", "西瓜汁（流体）");
         add("key.pasterdream.blink", "瞬身术");
         add("key.categories.pasterdream", "帕斯特之梦");
         add("effect.pasterdream.evasion", "回避");
@@ -672,6 +678,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.JELLYFISH_MUD.get(), "水母泥");
         add(ModItems.JELLYFISH_JELLO.get(), "水母果冻");
         add(ModItems.PINEAPPLE_LOVE_SEA.get(), "凤梨爱琴海");
+        add(ModItems.GLASS_CUP.get(), "玻璃杯");
+        add(ModItems.GLASS_CUP_OF_APPLE_JUICE.get(), "苹果汁");
+        add(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(), "染梦花茶");
+        add(ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get(), "染梦果汁");
+        add(ModItems.GLASS_CUP_OF_HONEY_JUICE.get(), "蜂蜜汁");
+        add(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get(), "未烹调的染梦花茶");
+        add(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get(), "西瓜汁");
         add(ModItems.RED_DEW.get(), "鲜红露滴");
         add(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get(), "秋麒麟茶");
         add(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get(), "传说龙角冰淇淋");
@@ -679,6 +692,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.LIGHT_ORGAN.get(), "发光器官");
         add(ModItems.ODD_BACON_AND_EGG.get(), "奇怪的培根煎蛋");
         add(ModItems.BUBBLE_TEA.get(), "珍珠奶茶");
+        add("tooltip.pasterdreammod.glass_cup_of_honey_juice", "§d饮用后清空所有负面效果");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§e味道有些熟悉，好像是来自雪泪寒......等等？");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7你已经品尝过这个冰淇淋的味道了");
         add("tooltip.pasterdreammod.goldenrod_tea", "§d持续移除饥饿与反胃效果");

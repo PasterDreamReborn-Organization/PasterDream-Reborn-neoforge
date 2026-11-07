@@ -48,6 +48,13 @@ public final class ModCapabilities
                 ModItems.GLASS_JAR_OF_YEAST.get(),
                 ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(),
                 ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(),
-                ModItems.GLASS_JAR_OF_INK.get());
+                ModItems.GLASS_JAR_OF_INK.get(),
+                ModItems.GLASS_CUP.get(),
+                ModItems.GLASS_CUP_OF_APPLE_JUICE.get(),
+                ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get(),
+                ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(),
+                ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get(),
+                ModItems.GLASS_CUP_OF_HONEY_JUICE.get(),
+                ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
     }
 }

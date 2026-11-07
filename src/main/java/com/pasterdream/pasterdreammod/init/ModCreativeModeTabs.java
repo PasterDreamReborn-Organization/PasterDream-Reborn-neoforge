@@ -95,6 +95,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ENCHANTED_MOLTEN_GOLD_APPLE.get());
                         output.accept(ModItems.AMBER_CANDY.get());
                         output.accept(ModItems.QUEER_SOUP.get());
+                        output.accept(ModItems.GLASS_CUP.get());
+                        output.accept(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get());
+                        output.accept(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get());
+                        output.accept(ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get());
+                        output.accept(ModItems.GLASS_CUP_OF_APPLE_JUICE.get());
+                        output.accept(ModItems.GLASS_CUP_OF_HONEY_JUICE.get());
+                        output.accept(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
                         output.accept(ModItems.DYEDREAM_POPSICLE.get());
                         output.accept(ModItems.FRIED_EGG.get());
                         output.accept(ModItems.BACON_AND_EGG.get());
