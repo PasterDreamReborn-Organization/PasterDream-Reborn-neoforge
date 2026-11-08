@@ -91,6 +91,7 @@ public class ModRecipesProvider extends RecipeProvider {
         dyedreamUpgradeRecipe(output);
         fluffyWindAlloyUpgradeRecipe(output);
         windJourneyMaterialRecipes(output);
+        windJourneyBlockRecipes(output);
         dyedreamToolRecipes(output);
         meltDreamToolRecipes(output);
         dyedreamArmorRecipes(output);
@@ -1057,6 +1058,295 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('c', ModItems.TITANIUM_INGOT.get())
                 .define('d', ModItems.CONGEAL_WIND.get())
                 .unlockedBy(getHasName(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()), has(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()))
+                .save(pWriter);
+    }
+
+    private void windJourneyBlockRecipes(RecipeOutput pWriter) {
+        // 风泊原木 → 风泊木
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.WIND_MOOR_WOOD.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.WIND_MOOR_LOG.get())
+                .unlockedBy(getHasName(ModItems.WIND_MOOR_LOG.get()), has(ModItems.WIND_MOOR_LOG.get()))
+                .save(pWriter);
+        // 去皮风泊原木 → 去皮风泊木
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.STRIPPED_WIND_MOOR_WOOD.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.STRIPPED_WIND_MOOR_LOG.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_WIND_MOOR_LOG.get()), has(ModItems.STRIPPED_WIND_MOOR_LOG.get()))
+                .save(pWriter);
+        // 风泊原木 → 风泊木板 + 全套建筑配方
+        RecipeHelpers.plankFamilyRecipes(pWriter,
+                ModItems.WIND_MOOR_LOG.get(),
+                ModItems.WIND_MOOR_PLANKS.get(),
+                ModItems.WIND_MOOR_STAIRS.get(),
+                ModItems.WIND_MOOR_SLAB.get(),
+                ModItems.WIND_MOOR_FENCE.get(),
+                ModItems.WIND_MOOR_FENCE_GATE.get(),
+                ModItems.WIND_MOOR_DOOR.get(),
+                ModItems.WIND_MOOR_TRAPDOOR.get(),
+                ModItems.WIND_MOOR_PRESSURE_PLATE.get(),
+                ModItems.WIND_MOOR_BUTTON.get(),
+                PasterDreamMod.MOD_ID);
+        // 风泊木窗棂
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.WIND_MOOR_PANE.get(), 1)
+                .requires(Items.GLASS_PANE)
+                .requires(ModItems.WIND_MOOR_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.WIND_MOOR_PLANKS.get()), has(ModItems.WIND_MOOR_PLANKS.get()))
+                .save(pWriter);
+
+        // 白砂 → 澄澈玻璃
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.WHITE_SAND.get()),
+                        RecipeCategory.BUILDING_BLOCKS, ModItems.CLARITY_GLASS.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.WHITE_SAND.get()), has(ModItems.WHITE_SAND.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":clarity_glass_from_smelting");
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CLARITY_GLASS_PANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModItems.CLARITY_GLASS.get())
+                .unlockedBy(getHasName(ModItems.CLARITY_GLASS.get()), has(ModItems.CLARITY_GLASS.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CARVE_CLARITY_GLASS.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.CLARITY_GLASS.get())
+                .unlockedBy(getHasName(ModItems.CLARITY_GLASS.get()), has(ModItems.CLARITY_GLASS.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CARVE_CLARITY_GLASS_PANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModItems.CARVE_CLARITY_GLASS.get())
+                .unlockedBy(getHasName(ModItems.CARVE_CLARITY_GLASS.get()), has(ModItems.CARVE_CLARITY_GLASS.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.FRAME_CLARITY_GLASS.get(), 4)
+                .requires(ModItems.CLARITY_GLASS.get())
+                .requires(ModItems.CLARITY_GLASS.get())
+                .requires(ModItems.CLARITY_GLASS.get())
+                .requires(ModItems.POLISHED_CALCITE.get())
+                .unlockedBy(getHasName(ModItems.CLARITY_GLASS.get()), has(ModItems.CLARITY_GLASS.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.FRAME_CLARITY_GLASS_PANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModItems.FRAME_CLARITY_GLASS.get())
+                .unlockedBy(getHasName(ModItems.FRAME_CLARITY_GLASS.get()), has(ModItems.FRAME_CLARITY_GLASS.get()))
+                .save(pWriter);
+        // 破风幕帐
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.BREAK_WIND_CURTAIN.get(), 8)
+                .pattern("aba")
+                .pattern("bab")
+                .pattern("aba")
+                .define('a', ModItems.CONGEAL_WIND.get())
+                .define('b', ModItems.CLARITY_GLASS_PANE.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND.get()), has(ModItems.CONGEAL_WIND.get()))
+                .save(pWriter);
+
+        // 白砂岩
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.WHITE_SANDSTONE.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.WHITE_SAND.get())
+                .unlockedBy(getHasName(ModItems.WHITE_SAND.get()), has(ModItems.WHITE_SAND.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CUT_WHITE_SANDSTONE.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.WHITE_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.WHITE_SANDSTONE.get()), has(ModItems.WHITE_SANDSTONE.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_WHITE_SANDSTONE.get(), 1)
+                .pattern("a")
+                .pattern("a")
+                .define('a', ModItems.WHITE_SANDSTONE_SLAB.get())
+                .unlockedBy(getHasName(ModItems.WHITE_SANDSTONE_SLAB.get()), has(ModItems.WHITE_SANDSTONE_SLAB.get()))
+                .save(pWriter);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.WHITE_SANDSTONE.get()),
+                        RecipeCategory.MISC, ModItems.SMOOTH_WHITE_SANDSTONE.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.WHITE_SANDSTONE.get()), has(ModItems.WHITE_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":smooth_white_sandstone_from_smelting");
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.WHITE_SANDSTONE.get(), ModItems.WHITE_SANDSTONE_STAIRS.get(),
+                ModItems.WHITE_SANDSTONE_SLAB.get(), ModItems.WHITE_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.CUT_WHITE_SANDSTONE.get(), ModItems.CUT_WHITE_SANDSTONE_STAIRS.get(),
+                ModItems.CUT_WHITE_SANDSTONE_SLAB.get(), ModItems.CUT_WHITE_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.SMOOTH_WHITE_SANDSTONE.get(), ModItems.SMOOTH_WHITE_SANDSTONE_STAIRS.get(),
+                ModItems.SMOOTH_WHITE_SANDSTONE_SLAB.get(), ModItems.SMOOTH_WHITE_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+        var whiteSandstoneIngredient = Ingredient.of(ModItems.WHITE_SANDSTONE.get());
+        SingleItemRecipeBuilder.stonecutting(whiteSandstoneIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.CUT_WHITE_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.WHITE_SANDSTONE.get()), has(ModItems.WHITE_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cut_white_sandstone_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(whiteSandstoneIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_WHITE_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.WHITE_SANDSTONE.get()), has(ModItems.WHITE_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_white_sandstone_from_stonecutting");
+
+        // 凝风系
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CONGEAL_WIND_ORE.get()),
+                        RecipeCategory.MISC, ModItems.CONGEAL_WIND.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_ORE.get()), has(ModItems.CONGEAL_WIND_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":congeal_wind_from_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CONGEAL_WIND_ORE.get()),
+                        RecipeCategory.MISC, ModItems.CONGEAL_WIND.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_ORE.get()), has(ModItems.CONGEAL_WIND_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":congeal_wind_from_blasting");
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()),
+                        RecipeCategory.MISC, ModItems.WIND_RUNNER_CRYSTAL.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()), has(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":wind_runner_crystal_from_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()),
+                        RecipeCategory.MISC, ModItems.WIND_RUNNER_CRYSTAL.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()), has(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":wind_runner_crystal_from_blasting");
+        RecipeHelpers.storageCompress(pWriter, ModItems.CONGEAL_WIND.get(), ModItems.CONGEAL_WIND_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.CONGEAL_WIND_BLOCK.get(), ModItems.CONGEAL_WIND.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageCompress(pWriter, ModItems.WIND_RUNNER_CRYSTAL.get(), ModItems.WIND_RUNNER_CRYSTAL_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.WIND_RUNNER_CRYSTAL_BLOCK.get(), ModItems.WIND_RUNNER_CRYSTAL.get(), PasterDreamMod.MOD_ID);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CONGEAL_WIND_IRON_INGOT.get(), 1)
+                .requires(Items.IRON_INGOT)
+                .requires(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get())
+                .requires(ModItems.CONGEAL_WIND.get())
+                .requires(ModItems.CONGEAL_WIND.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND.get()), has(ModItems.CONGEAL_WIND.get()))
+                .save(pWriter);
+        RecipeHelpers.storageCompress(pWriter, ModItems.CONGEAL_WIND_IRON_INGOT.get(), ModItems.CONGEAL_WIND_IRON_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.CONGEAL_WIND_IRON_BLOCK.get(), ModItems.CONGEAL_WIND_IRON_INGOT.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageCompress(pWriter, ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), ModItems.FLUFFY_WIND_ALLOY_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.FLUFFY_WIND_ALLOY_BLOCK.get(), ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), PasterDreamMod.MOD_ID);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CONGEAL_WIND_IRON_LANTERN.get(), 1)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', ModItems.CONGEAL_WIND_IRON_NUGGET.get())
+                .define('b', Items.TORCH)
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_NUGGET.get()), has(ModItems.CONGEAL_WIND_IRON_NUGGET.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.CONGEAL_WIND_IRON_TRAPDOOR.get(), 2)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CONGEAL_WIND_IRON_CHAIN.get(), 1)
+                .pattern("b")
+                .pattern("a")
+                .pattern("b")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .define('b', ModItems.CONGEAL_WIND_IRON_NUGGET.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.CONGEAL_WIND_IRON_PRESSURE_PLATE.get(), 1)
+                .pattern("aa")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CONGEAL_WIND_IRON_BARS.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EJECTION_PRESSURE_BLOCK.get(), 1)
+                .pattern("aa")
+                .pattern("bb")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .define('b', Items.SLIME_BALL)
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EJECTION_PRESSURE_PLATE.get(), 1)
+                .pattern("aaa")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+
+        // 苍青岩
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CYAN_STONE_BRICKS.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter);
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.CYAN_STONE_BRICKS.get(), ModItems.CYAN_STONE_BRICK_STAIRS.get(),
+                ModItems.CYAN_STONE_BRICK_SLAB.get(), ModItems.CYAN_STONE_BRICK_WALL.get(),
+                PasterDreamMod.MOD_ID);
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.CYAN_STONE.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.CYAN_STONE_BRICKS.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cyan_stone_bricks_from_stonecutting");
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CYAN_STONE_PILLAR.get(), 2)
+                .pattern("a")
+                .pattern("a")
+                .define('a', ModItems.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter);
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.CYAN_STONE.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.CYAN_STONE_PILLAR.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cyan_stone_pillar_from_stonecutting");
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_CYAN_STONE_BRICKS.get(), 1)
+                .pattern("a")
+                .pattern("a")
+                .define('a', ModItems.CYAN_STONE_BRICK_SLAB.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE_BRICK_SLAB.get()), has(ModItems.CYAN_STONE_BRICK_SLAB.get()))
+                .save(pWriter);
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.CYAN_STONE.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_CYAN_STONE_BRICKS.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_cyan_stone_bricks_from_stonecutting");
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.CYAN_STONE_PRESSURE_PLATE.get(), 1)
+                .pattern("aa")
+                .define('a', ModItems.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModItems.CYAN_STONE_BUTTON.get(), 1)
+                .requires(ModItems.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter);
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.CYAN_STONE.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.POLISHED_CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":polished_cyan_stone_from_stonecutting");
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.POLISHED_CYAN_STONE.get(), ModItems.POLISHED_CYAN_STONE_STAIRS.get(),
+                ModItems.POLISHED_CYAN_STONE_SLAB.get(), ModItems.POLISHED_CYAN_STONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.MOSSY_CYAN_STONE_BRICKS.get(), 1)
+                .requires(ModItems.CYAN_STONE_BRICKS.get())
+                .requires(Items.VINE)
+                .unlockedBy(getHasName(ModItems.CYAN_STONE_BRICKS.get()), has(ModItems.CYAN_STONE_BRICKS.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":mossy_cyan_stone_bricks_from_vine");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.MOSSY_CYAN_STONE_BRICKS.get(), 1)
+                .requires(ModItems.CYAN_STONE_BRICKS.get())
+                .requires(Items.MOSS_BLOCK)
+                .unlockedBy(getHasName(ModItems.CYAN_STONE_BRICKS.get()), has(ModItems.CYAN_STONE_BRICKS.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":mossy_cyan_stone_bricks_from_moss_block");
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.MOSSY_CYAN_STONE_BRICKS.get(), ModItems.MOSSY_CYAN_STONE_BRICK_STAIRS.get(),
+                ModItems.MOSSY_CYAN_STONE_BRICK_SLAB.get(), ModItems.MOSSY_CYAN_STONE_BRICK_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 厚云与暗云
+        RecipeHelpers.storageCompress(pWriter, ModItems.CLOUD.get(), ModItems.THICK_CLOUD.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.THICK_CLOUD.get(), ModItems.CLOUD.get(), PasterDreamMod.MOD_ID);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DARK_CLOUD.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.THICK_CLOUD.get())
+                .unlockedBy(getHasName(ModItems.THICK_CLOUD.get()), has(ModItems.THICK_CLOUD.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.THICK_CLOUD.get(), 4)
+                .requires(ModItems.DARK_CLOUD.get())
+                .unlockedBy(getHasName(ModItems.DARK_CLOUD.get()), has(ModItems.DARK_CLOUD.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":thick_cloud_from_dark_cloud");
+
+        // 水母果冻
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.JELLYFISH_JELLO.get(), 2)
+                .requires(ModItems.JELLYFISH_MUD.get(), 2)
+                .requires(Ingredient.of(ModItemTags.FRUITS_FIG), 1)
+                .requires(Items.SUGAR, 1)
+                .requires(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), 1)
+                .unlockedBy(getHasName(ModItems.JELLYFISH_MUD.get()), has(ModItems.JELLYFISH_MUD.get()))
                 .save(pWriter);
     }
 

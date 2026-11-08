@@ -348,6 +348,97 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                                 .add(LootItem.lootTableItem(plant.get()))));
             }
         }
+        windJourneyLoot();
+    }
+
+    // ===== 风之旅途 =====
+    private void windJourneyLoot() {
+        var fortune = registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE);
+        add(ModBlocks.CONGEAL_WIND_ORE.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModItems.CONGEAL_WIND.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(fortune)))));
+        add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModItems.WIND_RUNNER_CRYSTAL.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(fortune)))));
+        dropSelf(ModBlocks.CONGEAL_WIND_BLOCK.get());
+        dropSelf(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get());
+        dropSelf(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get());
+        dropSelf(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get());
+        dropSelf(ModBlocks.EJECTION_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.EJECTION_PRESSURE_BLOCK.get());
+        dropSelf(ModBlocks.CONGEAL_WIND_IRON_BARS.get());
+        dropSelf(ModBlocks.CONGEAL_WIND_IRON_LANTERN.get());
+        dropSelf(ModBlocks.CONGEAL_WIND_IRON_CHAIN.get());
+        dropSelf(ModBlocks.CONGEAL_WIND_IRON_TRAPDOOR.get());
+        dropSelf(ModBlocks.CONGEAL_WIND_IRON_PRESSURE_PLATE.get());
+
+        add(ModBlocks.CLARITY_GLASS.get(), block -> createSilkTouchOnlyTable(block));
+        add(ModBlocks.CLARITY_GLASS_PANE.get(), block -> createSilkTouchOnlyTable(block));
+        add(ModBlocks.CARVE_CLARITY_GLASS.get(), block -> createSilkTouchOnlyTable(block));
+        add(ModBlocks.CARVE_CLARITY_GLASS_PANE.get(), block -> createSilkTouchOnlyTable(block));
+        add(ModBlocks.FRAME_CLARITY_GLASS.get(), block -> createSilkTouchOnlyTable(block));
+        add(ModBlocks.FRAME_CLARITY_GLASS_PANE.get(), block -> createSilkTouchOnlyTable(block));
+
+        dropSelf(ModBlocks.WHITE_SAND.get());
+        dropSelf(ModBlocks.THICK_CLOUD.get());
+        dropSelf(ModBlocks.WHITE_SANDSTONE.get());
+        dropSelf(ModBlocks.WHITE_SANDSTONE_STAIRS.get());
+        add(ModBlocks.WHITE_SANDSTONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.WHITE_SANDSTONE_SLAB.get()));
+        dropSelf(ModBlocks.WHITE_SANDSTONE_WALL.get());
+        dropSelf(ModBlocks.CUT_WHITE_SANDSTONE.get());
+        dropSelf(ModBlocks.CUT_WHITE_SANDSTONE_STAIRS.get());
+        add(ModBlocks.CUT_WHITE_SANDSTONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.CUT_WHITE_SANDSTONE_SLAB.get()));
+        dropSelf(ModBlocks.CUT_WHITE_SANDSTONE_WALL.get());
+        dropSelf(ModBlocks.CHISELED_WHITE_SANDSTONE.get());
+        dropSelf(ModBlocks.SMOOTH_WHITE_SANDSTONE.get());
+        dropSelf(ModBlocks.SMOOTH_WHITE_SANDSTONE_STAIRS.get());
+        add(ModBlocks.SMOOTH_WHITE_SANDSTONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.SMOOTH_WHITE_SANDSTONE_SLAB.get()));
+        dropSelf(ModBlocks.SMOOTH_WHITE_SANDSTONE_WALL.get());
+
+        dropSelf(ModBlocks.CYAN_STONE.get());
+        add(ModBlocks.CYAN_MOSS_STONE.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(ModBlocks.CYAN_STONE.get())));
+        dropSelf(ModBlocks.CYAN_STONE_BRICKS.get());
+        dropSelf(ModBlocks.CYAN_STONE_BRICK_STAIRS.get());
+        add(ModBlocks.CYAN_STONE_BRICK_SLAB.get(), block -> createSlabItemTable(ModBlocks.CYAN_STONE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.CYAN_STONE_BRICK_WALL.get());
+        dropSelf(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.CYAN_STONE_BUTTON.get());
+        dropSelf(ModBlocks.MOSSY_CYAN_STONE_BRICKS.get());
+        dropSelf(ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS.get());
+        add(ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB.get(), block -> createSlabItemTable(ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL.get());
+        dropSelf(ModBlocks.CHISELED_CYAN_STONE_BRICKS.get());
+        dropSelf(ModBlocks.CYAN_STONE_PILLAR.get());
+        dropSelf(ModBlocks.POLISHED_CYAN_STONE.get());
+        dropSelf(ModBlocks.POLISHED_CYAN_STONE_STAIRS.get());
+        add(ModBlocks.POLISHED_CYAN_STONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.POLISHED_CYAN_STONE_SLAB.get()));
+        dropSelf(ModBlocks.POLISHED_CYAN_STONE_WALL.get());
+
+        dropSelf(ModBlocks.WIND_MOOR_LOG.get());
+        dropSelf(ModBlocks.WIND_MOOR_WOOD.get());
+        dropSelf(ModBlocks.STRIPPED_WIND_MOOR_LOG.get());
+        dropSelf(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
+        add(ModBlocks.WIND_MOOR_LEAVES_0.get(), block -> createLeavesDrops(block, ModBlocks.WIND_MOOR_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        add(ModBlocks.WIND_MOOR_LEAVES_1.get(), block -> createLeavesDrops(block, ModBlocks.WIND_MOOR_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.WIND_MOOR_SAPLING.get());
+        add(ModBlocks.FIG_VINE.get(), block -> LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(ModItems.FIG.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(fortune)))));
+        dropSelf(ModBlocks.WIND_MOOR_PLANKS.get());
+        dropSelf(ModBlocks.WIND_MOOR_STAIRS.get());
+        add(ModBlocks.WIND_MOOR_SLAB.get(), block -> createSlabItemTable(ModBlocks.WIND_MOOR_SLAB.get()));
+        dropSelf(ModBlocks.WIND_MOOR_FENCE.get());
+        dropSelf(ModBlocks.WIND_MOOR_FENCE_GATE.get());
+        dropSelf(ModBlocks.WIND_MOOR_PANE.get());
+        add(ModBlocks.WIND_MOOR_DOOR.get(), block -> createDoorTable(ModBlocks.WIND_MOOR_DOOR.get()));
+        dropSelf(ModBlocks.WIND_MOOR_TRAPDOOR.get());
+        dropSelf(ModBlocks.WIND_MOOR_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.WIND_MOOR_BUTTON.get());
+        dropSelf(ModBlocks.BREAK_WIND_CURTAIN.get());
     }
 
     private LootTable.Builder plantGrassDrops(Block block) {

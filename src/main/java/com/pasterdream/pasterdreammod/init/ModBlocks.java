@@ -738,6 +738,293 @@ public class ModBlocks {
 
 
     // ===== 盆栽植物 =====
+    // ===== 风之旅途·群系方块 =====
+    public static final DeferredBlock<Block> WHITE_SAND = BLOCKS.register("white_sand",
+            () -> new ColoredFallingBlock(new ColorRGBA(0xFF000000 | MapColor.SNOW.col), BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.SNARE).sound(SoundType.SAND).strength(0.5f)));
+    public static final DeferredBlock<Block> THICK_CLOUD = BLOCKS.register("thick_cloud",
+            () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .ignitedByLava().sound(SoundType.WOOL).strength(0.3f, 0.5f).noOcclusion()
+                    .isRedstoneConductor((blockState, level, blockPos) -> false)
+                    .isSuffocating((blockState, level, blockPos) -> false)
+                    .isViewBlocking((blockState, level, blockPos) -> false)));
+
+    // ===== 白砂岩建筑系列 =====
+    public static final DeferredBlock<Block> WHITE_SANDSTONE = BLOCKS.register("white_sandstone",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> WHITE_SANDSTONE_STAIRS = BLOCKS.register("white_sandstone_stairs",
+            () -> new StairBlock(WHITE_SANDSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops().dynamicShape().noOcclusion()));
+    public static final DeferredBlock<Block> WHITE_SANDSTONE_SLAB = BLOCKS.register("white_sandstone_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final DeferredBlock<Block> WHITE_SANDSTONE_WALL = BLOCKS.register("white_sandstone_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops().noOcclusion().dynamicShape().forceSolidOn()));
+    public static final DeferredBlock<Block> CUT_WHITE_SANDSTONE = BLOCKS.register("cut_white_sandstone",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> CUT_WHITE_SANDSTONE_STAIRS = BLOCKS.register("cut_white_sandstone_stairs",
+            () -> new StairBlock(CUT_WHITE_SANDSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops().dynamicShape().noOcclusion()));
+    public static final DeferredBlock<Block> CUT_WHITE_SANDSTONE_SLAB = BLOCKS.register("cut_white_sandstone_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final DeferredBlock<Block> CUT_WHITE_SANDSTONE_WALL = BLOCKS.register("cut_white_sandstone_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops().noOcclusion().dynamicShape().forceSolidOn()));
+    public static final DeferredBlock<Block> CHISELED_WHITE_SANDSTONE = BLOCKS.register("chiseled_white_sandstone",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> SMOOTH_WHITE_SANDSTONE = BLOCKS.register("smooth_white_sandstone",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> SMOOTH_WHITE_SANDSTONE_STAIRS = BLOCKS.register("smooth_white_sandstone_stairs",
+            () -> new StairBlock(SMOOTH_WHITE_SANDSTONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops().dynamicShape().noOcclusion()));
+    public static final DeferredBlock<Block> SMOOTH_WHITE_SANDSTONE_SLAB = BLOCKS.register("smooth_white_sandstone_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final DeferredBlock<Block> SMOOTH_WHITE_SANDSTONE_WALL = BLOCKS.register("smooth_white_sandstone_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE)
+                    .strength(0.8f).requiresCorrectToolForDrops().noOcclusion().dynamicShape().forceSolidOn()));
+
+    // ===== 澄澈玻璃系列 =====
+    public static final DeferredBlock<Block> CLARITY_GLASS = BLOCKS.register("clarity_glass",
+            () -> new TransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.NONE)
+                    .sound(SoundType.GLASS).strength(0.1f, 0f).lightLevel(s -> 15).noOcclusion()
+                    .isRedstoneConductor((blockState, level, blockPos) -> false)
+                    .isSuffocating((blockState, level, blockPos) -> false)
+                    .isViewBlocking((blockState, level, blockPos) -> false)));
+    public static final DeferredBlock<Block> CLARITY_GLASS_PANE = BLOCKS.register("clarity_glass_pane",
+            () -> new IronBarsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.NONE)
+                    .sound(SoundType.GLASS).strength(0.1f, 0f).lightLevel(s -> 15).noOcclusion()));
+    public static final DeferredBlock<Block> CARVE_CLARITY_GLASS = BLOCKS.register("carve_clarity_glass",
+            () -> new TransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.NONE)
+                    .sound(SoundType.GLASS).strength(0.1f, 0f).lightLevel(s -> 15).noOcclusion()
+                    .isRedstoneConductor((blockState, level, blockPos) -> false)
+                    .isSuffocating((blockState, level, blockPos) -> false)
+                    .isViewBlocking((blockState, level, blockPos) -> false)));
+    public static final DeferredBlock<Block> CARVE_CLARITY_GLASS_PANE = BLOCKS.register("carve_clarity_glass_pane",
+            () -> new IronBarsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.NONE)
+                    .sound(SoundType.GLASS).strength(0.1f, 0f).lightLevel(s -> 15).noOcclusion()));
+    public static final DeferredBlock<Block> FRAME_CLARITY_GLASS = BLOCKS.register("frame_clarity_glass",
+            () -> new TransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.NONE)
+                    .sound(SoundType.GLASS).strength(0.1f, 0f).lightLevel(s -> 15).noOcclusion()
+                    .isRedstoneConductor((blockState, level, blockPos) -> false)
+                    .isSuffocating((blockState, level, blockPos) -> false)
+                    .isViewBlocking((blockState, level, blockPos) -> false)));
+    public static final DeferredBlock<Block> FRAME_CLARITY_GLASS_PANE = BLOCKS.register("frame_clarity_glass_pane",
+            () -> new IronBarsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.NONE)
+                    .sound(SoundType.GLASS).strength(0.1f, 0f).lightLevel(s -> 15).noOcclusion()));
+    public static final DeferredBlock<Block> BREAK_WIND_CURTAIN = BLOCKS.register("break_wind_curtain", BreakWindCurtainBlock::new);
+
+    // ===== 凝风系方块 =====
+    public static final DeferredBlock<Block> CONGEAL_WIND_ORE = BLOCKS.register("congeal_wind_ore",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.WOOL).strength(1f, 0.5f)));
+    public static final DeferredBlock<Block> WIND_RUNNER_CRYSTAL_ORE = BLOCKS.register("wind_runner_crystal_ore",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(9f, 3f)));
+    public static final DeferredBlock<Block> CONGEAL_WIND_BLOCK = BLOCKS.register("congeal_wind_block",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.NETHER_ORE).strength(2f, 0.5f)));
+    public static final DeferredBlock<Block> WIND_RUNNER_CRYSTAL_BLOCK = BLOCKS.register("wind_runner_crystal_block",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(9f, 3.5f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> CONGEAL_WIND_IRON_BLOCK = BLOCKS.register("congeal_wind_iron_block",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE)
+                    .sound(SoundType.METAL).strength(7f, 5f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> FLUFFY_WIND_ALLOY_BLOCK = BLOCKS.register("fluffy_wind_alloy_block",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN)
+                    .sound(SoundType.METAL).strength(7f, 5f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> EJECTION_PRESSURE_PLATE = BLOCKS.register("ejection_pressure_plate",
+            () -> new EjectionPressurePlateBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE)
+                    .sound(SoundType.METAL).strength(0.5f).requiresCorrectToolForDrops()
+                    .noCollission().dynamicShape().forceSolidOn()));
+    public static final DeferredBlock<Block> EJECTION_PRESSURE_BLOCK = BLOCKS.register("ejection_pressure_block",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE)
+                    .sound(SoundType.METAL).strength(7f, 5f).requiresCorrectToolForDrops().jumpFactor(3.2f)));
+    public static final DeferredBlock<Block> CONGEAL_WIND_IRON_BARS = BLOCKS.register("congeal_wind_iron_bars",
+            () -> new IronBarsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE)
+                    .sound(SoundType.METAL).strength(4f, 2f).requiresCorrectToolForDrops().noOcclusion()));
+    public static final DeferredBlock<Block> CONGEAL_WIND_IRON_LANTERN = BLOCKS.register("congeal_wind_iron_lantern",
+            () -> new LanternBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE)
+                    .sound(SoundType.LANTERN).strength(3.5f).lightLevel(s -> 15).noOcclusion()));
+    public static final DeferredBlock<Block> CONGEAL_WIND_IRON_CHAIN = BLOCKS.register("congeal_wind_iron_chain",
+            () -> new ChainBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE)
+                    .sound(SoundType.CHAIN).strength(5f, 6f).requiresCorrectToolForDrops().noOcclusion()));
+    public static final DeferredBlock<Block> CONGEAL_WIND_IRON_TRAPDOOR = BLOCKS.register("congeal_wind_iron_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE)
+                    .sound(SoundType.METAL).strength(5f).noOcclusion().dynamicShape()));
+    public static final DeferredBlock<Block> CONGEAL_WIND_IRON_PRESSURE_PLATE = BLOCKS.register("congeal_wind_iron_pressure_plate",
+            () -> new PressurePlateBlock(BlockSetType.IRON, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.METAL).strength(0.5f)
+                    .noCollission().dynamicShape().forceSolidOn()));
+
+    // ===== 苍青岩系列 =====
+    public static final DeferredBlock<Block> CYAN_STONE = BLOCKS.register("cyan_stone",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(1.5f, 1f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> CYAN_MOSS_STONE = BLOCKS.register("cyan_moss_stone",
+            () -> new CyanMossStoneBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(1.5f, 1f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> CYAN_STONE_BRICKS = BLOCKS.register("cyan_stone_bricks",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(2f, 1.5f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> CYAN_STONE_BRICK_STAIRS = BLOCKS.register("cyan_stone_brick_stairs",
+            () -> new StairBlock(CYAN_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_CYAN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final DeferredBlock<Block> CYAN_STONE_BRICK_SLAB = BLOCKS.register("cyan_stone_brick_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final DeferredBlock<Block> CYAN_STONE_BRICK_WALL = BLOCKS.register("cyan_stone_brick_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape().forceSolidOn()));
+    public static final DeferredBlock<Block> CYAN_STONE_PRESSURE_PLATE = BLOCKS.register("cyan_stone_pressure_plate",
+            () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_CYAN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(1f, 0f).requiresCorrectToolForDrops().noCollission().dynamicShape().forceSolidOn()));
+    public static final DeferredBlock<Block> CYAN_STONE_BUTTON = BLOCKS.register("cyan_stone_button",
+            () -> new ButtonBlock(BlockSetType.STONE, 20, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(1f, 0f).requiresCorrectToolForDrops().noCollission().dynamicShape()));
+    public static final DeferredBlock<Block> MOSSY_CYAN_STONE_BRICKS = BLOCKS.register("mossy_cyan_stone_bricks",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(2f, 1.5f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> MOSSY_CYAN_STONE_BRICK_STAIRS = BLOCKS.register("mossy_cyan_stone_brick_stairs",
+            () -> new StairBlock(MOSSY_CYAN_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final DeferredBlock<Block> MOSSY_CYAN_STONE_BRICK_SLAB = BLOCKS.register("mossy_cyan_stone_brick_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final DeferredBlock<Block> MOSSY_CYAN_STONE_BRICK_WALL = BLOCKS.register("mossy_cyan_stone_brick_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape().forceSolidOn()));
+    public static final DeferredBlock<Block> CHISELED_CYAN_STONE_BRICKS = BLOCKS.register("chiseled_cyan_stone_bricks",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(2f, 1.5f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> CYAN_STONE_PILLAR = BLOCKS.register("cyan_stone_pillar",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(2f, 1.5f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> POLISHED_CYAN_STONE = BLOCKS.register("polished_cyan_stone",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(1.5f, 1f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> POLISHED_CYAN_STONE_STAIRS = BLOCKS.register("polished_cyan_stone_stairs",
+            () -> new StairBlock(POLISHED_CYAN_STONE.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_CYAN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(1.5f, 1f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final DeferredBlock<Block> POLISHED_CYAN_STONE_SLAB = BLOCKS.register("polished_cyan_stone_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(1.5f, 1f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final DeferredBlock<Block> POLISHED_CYAN_STONE_WALL = BLOCKS.register("polished_cyan_stone_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE)
+                    .strength(1.5f, 1f).requiresCorrectToolForDrops().dynamicShape().forceSolidOn()));
+
+    // ===== 风泊木系列 =====
+    public static final DeferredBlock<Block> STRIPPED_WIND_MOOR_LOG = BLOCKS.register("stripped_wind_moor_log",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f)));
+    public static final DeferredBlock<Block> STRIPPED_WIND_MOOR_WOOD = BLOCKS.register("stripped_wind_moor_wood",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f)));
+    public static final DeferredBlock<Block> WIND_MOOR_LOG = BLOCKS.register("wind_moor_log",
+            () -> new StrippableRotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f),
+                    () -> STRIPPED_WIND_MOOR_LOG.get()));
+    public static final DeferredBlock<Block> WIND_MOOR_WOOD = BLOCKS.register("wind_moor_wood",
+            () -> new StrippableRotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f),
+                    () -> STRIPPED_WIND_MOOR_WOOD.get()));
+    public static final DeferredBlock<Block> WIND_MOOR_SAPLING = BLOCKS.register("wind_moor_sapling",
+            () -> new SaplingBlock(ModTreeGrowers.WIND_MOOR, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
+                    .noCollission().instabreak().randomTicks().sound(SoundType.GRASS)));
+    public static final DeferredBlock<Block> WIND_MOOR_PLANKS = BLOCKS.register("wind_moor_planks",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f)));
+    public static final DeferredBlock<Block> WIND_MOOR_STAIRS = BLOCKS.register("wind_moor_stairs",
+            () -> new StairBlock(WIND_MOOR_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS)
+                    .sound(SoundType.WOOD).strength(2f, 3f).dynamicShape()));
+    public static final DeferredBlock<Block> WIND_MOOR_SLAB = BLOCKS.register("wind_moor_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD)
+                    .strength(2f, 3f).dynamicShape()));
+    public static final DeferredBlock<Block> WIND_MOOR_FENCE = BLOCKS.register("wind_moor_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD)
+                    .strength(2f, 3f).dynamicShape().forceSolidOn()));
+    public static final DeferredBlock<Block> WIND_MOOR_FENCE_GATE = BLOCKS.register("wind_moor_fence_gate",
+            () -> new FenceGateBlock(WoodType.OAK, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD)
+                    .strength(2f, 3f).dynamicShape().forceSolidOn()));
+    public static final DeferredBlock<Block> WIND_MOOR_PANE = BLOCKS.register("wind_moor_pane",
+            () -> new IronBarsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD)
+                    .strength(2f, 3f).noOcclusion().dynamicShape()));
+    public static final DeferredBlock<Block> WIND_MOOR_DOOR = BLOCKS.register("wind_moor_door",
+            () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD)
+                    .strength(2f, 3f).noOcclusion().dynamicShape()));
+    public static final DeferredBlock<Block> WIND_MOOR_TRAPDOOR = BLOCKS.register("wind_moor_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD)
+                    .strength(2f, 3f).noOcclusion().dynamicShape()));
+    public static final DeferredBlock<Block> WIND_MOOR_PRESSURE_PLATE = BLOCKS.register("wind_moor_pressure_plate",
+            () -> new PressurePlateBlock(BlockSetType.OAK, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS)
+                    .sound(SoundType.WOOD).strength(2f, 3f).noCollission().dynamicShape().forceSolidOn()));
+    public static final DeferredBlock<Block> WIND_MOOR_BUTTON = BLOCKS.register("wind_moor_button",
+            () -> new ButtonBlock(BlockSetType.OAK, 30, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)
+                    .ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD)
+                    .strength(2f, 3f).noCollission().dynamicShape()));
+    public static final DeferredBlock<Block> WIND_MOOR_LEAVES_0 = BLOCKS.register("wind_moor_leaves_0",
+            () -> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)
+                    .sound(SoundType.GRASS).strength(0.2F, 0.2F).noOcclusion().ignitedByLava()
+                    .isRedstoneConductor((blockState, level, blockPos) -> false)
+                    .isSuffocating((blockState, level, blockPos) -> false)
+                    .isViewBlocking((blockState, level, blockPos) -> false)));
+    public static final DeferredBlock<Block> WIND_MOOR_LEAVES_1 = BLOCKS.register("wind_moor_leaves_1",
+            () -> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)
+                    .sound(SoundType.GRASS).strength(0.2F, 0.2F).noOcclusion().ignitedByLava()
+                    .isRedstoneConductor((blockState, level, blockPos) -> false)
+                    .isSuffocating((blockState, level, blockPos) -> false)
+                    .isViewBlocking((blockState, level, blockPos) -> false)));
+    public static final DeferredBlock<Block> FIG_VINE = BLOCKS.register("fig_vine",
+            () -> new FigVineBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)
+                    .randomTicks().sound(SoundType.CAVE_VINES).instabreak().noCollission().noOcclusion().ignitedByLava()
+                    .isRedstoneConductor((blockState, level, blockPos) -> false).pushReaction(PushReaction.DESTROY)));
+
     public static final Map<DeferredBlock<Block>, DeferredBlock<Block>> POTTED_PLANTS = new LinkedHashMap<>();
     public static final Set<DeferredBlock<Block>> POTTED_CROPS = new HashSet<>();
     public static final Map<DeferredBlock<Block>, CropPottedItems> POTTED_CROP_ITEMS = new LinkedHashMap<>();
@@ -770,6 +1057,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> POTTED_EDELWEISS = registerPotted(EDELWEISS, "potted_edelweiss");
     public static final DeferredBlock<Block> POTTED_NIPPY_EDELWEISS = registerPotted(NIPPY_EDELWEISS, "potted_nippy_edelweiss", 5);
     public static final DeferredBlock<Block> POTTED_DYEDREAM_SAPLING = registerPotted(DYEDREAM_SAPLING, "potted_dyedream_sapling");
+    public static final DeferredBlock<Block> POTTED_WIND_MOOR_SAPLING = registerPotted(WIND_MOOR_SAPLING, "potted_wind_moor_sapling");
     public static final DeferredBlock<Block> POTTED_REED = registerPotted(REED, "potted_reed");
     public static final DeferredBlock<Block> POTTED_RYE = registerPotted(RYE, "potted_rye");
     public static final DeferredBlock<Block> POTTED_OATS = registerPotted(OATS, "potted_oats");

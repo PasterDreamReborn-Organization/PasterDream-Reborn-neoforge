@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModFeatures;
 import com.pasterdream.pasterdreammod.worldgen.feature.LightBallTreeDecorator;
 import com.pasterdream.pasterdreammod.worldgen.feature.PinkShroomlightTreeDecorator;
+import com.pasterdream.pasterdreammod.worldgen.feature.WindMoorDroopingDecorator;
 import com.pasterdream.pasterdreammod.worldgen.feature.foliageplacers.DreamFoliagePlacer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -21,10 +22,13 @@ import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguratio
 import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 
@@ -39,6 +43,7 @@ public final class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PINK_HUGE_MUSHROOM = key("pink_huge_mushroom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_TREE = key("dyedream_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_FUNGUS_TREE = key("shadow_fungus_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_WIND_MOOR_TREE = key("small_wind_moor_tree");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         context.register(DYEDREAM_TREE, new ConfiguredFeature<>(Feature.TREE,
@@ -49,6 +54,20 @@ public final class ModConfiguredFeatures {
                         new DreamFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0.16666667F, 0.33333334F),
                         new TwoLayersFeatureSize(1, 0, 2))
                         .decorators(List.of(LightBallTreeDecorator.INSTANCE))
+                        .ignoreVines()
+                        .build()));
+
+        // 小型风泊树 —— 风泊乔木：分叉树干 + 风泊树叶，悬挂无花果藤/风泊树叶
+        context.register(SMALL_WIND_MOOR_TREE, new ConfiguredFeature<>(Feature.TREE,
+                new TreeConfiguration.TreeConfigurationBuilder(
+                        BlockStateProvider.simple(ModBlocks.WIND_MOOR_LOG.get()),
+                        new ForkingTrunkPlacer(7, 2, 2),
+                        new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                                .add(ModBlocks.WIND_MOOR_LEAVES_0.get().defaultBlockState(), 1)
+                                .add(ModBlocks.WIND_MOOR_LEAVES_1.get().defaultBlockState(), 1)),
+                        new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+                        new TwoLayersFeatureSize(1, 0, 2))
+                        .decorators(List.of(WindMoorDroopingDecorator.INSTANCE))
                         .ignoreVines()
                         .build()));
 

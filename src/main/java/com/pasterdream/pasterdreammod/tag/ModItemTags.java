@@ -60,6 +60,15 @@ public final class ModItemTags {
     public static final TagKey<Item> SHADOW_STONES = common("shadow_stones");
     public static final TagKey<Item> SHADOW_STEMS = common("shadow_stems");
     public static final TagKey<Item> STORAGE_BLOCKS_BLACK_METAL = common("storage_blocks/black_metal");
+    public static final TagKey<Item> FRUITS_FIG = common("fruits/fig");
+    public static final TagKey<Item> ORES_CONGEAL_WIND = common("ores/congeal_wind");
+    public static final TagKey<Item> ORES_WIND_RUNNER_CRYSTAL = common("ores/wind_runner_crystal");
+    public static final TagKey<Item> ORES_IN_GROUND_CYAN_STONE = common("ores_in_ground/cyan_stone");
+    public static final TagKey<Item> ORES_IN_GROUND_THICK_CLOUD = common("ores_in_ground/thick_cloud");
+    public static final TagKey<Item> STORAGE_BLOCKS_CONGEAL_WIND_IRON = common("storage_blocks/congeal_wind_iron");
+    public static final TagKey<Item> STORAGE_BLOCKS_FLUFFY_WIND_ALLOY = common("storage_blocks/fluffy_wind_alloy");
+    public static final TagKey<Item> STORAGE_BLOCKS_CONGEAL_WIND = common("storage_blocks/congeal_wind");
+    public static final TagKey<Item> STORAGE_BLOCKS_WIND_RUNNER_CRYSTAL = common("storage_blocks/wind_runner_crystal");
 
     private static TagKey<Item> common(String path) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));

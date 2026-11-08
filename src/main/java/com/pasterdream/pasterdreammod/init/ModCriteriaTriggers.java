@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.advancement.critereon.BreakWindCurtainTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.registries.Registries;
@@ -23,6 +24,10 @@ public final class ModCriteriaTriggers {
     /** 在指定高度以上食用星河果冻 */
     public static final DeferredHolder<CriterionTrigger<?>, EatGalaxyJellyAtHeightTrigger> EAT_GALAXY_JELLY_AT_HEIGHT =
             TRIGGERS.register("eat_galaxy_jelly_at_height", EatGalaxyJellyAtHeightTrigger::new);
+
+    /** 穿过破风幕帐 */
+    public static final DeferredHolder<CriterionTrigger<?>, BreakWindCurtainTrigger> BREAK_WIND_CURTAIN =
+            TRIGGERS.register("break_wind_curtain", BreakWindCurtainTrigger::new);
 
     public static void register(IEventBus eventBus) {
         TRIGGERS.register(eventBus);

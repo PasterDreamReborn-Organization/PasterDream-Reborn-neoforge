@@ -308,5 +308,16 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.COBWEB_SHADOW_BOOKSHELF.get())
                 .add(ModItems.KEY_SHADOW_BOOKSHELF.get());
 
+        // ===== 风之旅途 =====
+        tag(ModItemTags.FRUITS_FIG).add(ModItems.FIG.get());
+        copy(ModBlockTags.ORES_CONGEAL_WIND, ModItemTags.ORES_CONGEAL_WIND);
+        copy(ModBlockTags.ORES_WIND_RUNNER_CRYSTAL, ModItemTags.ORES_WIND_RUNNER_CRYSTAL);
+        copy(ModBlockTags.ORES_IN_GROUND_CYAN_STONE, ModItemTags.ORES_IN_GROUND_CYAN_STONE);
+        copy(ModBlockTags.ORES_IN_GROUND_THICK_CLOUD, ModItemTags.ORES_IN_GROUND_THICK_CLOUD);
+        copy(ModBlockTags.STORAGE_BLOCKS_CONGEAL_WIND_IRON, ModItemTags.STORAGE_BLOCKS_CONGEAL_WIND_IRON);
+        copy(ModBlockTags.STORAGE_BLOCKS_FLUFFY_WIND_ALLOY, ModItemTags.STORAGE_BLOCKS_FLUFFY_WIND_ALLOY);
+        copy(ModBlockTags.STORAGE_BLOCKS_CONGEAL_WIND, ModItemTags.STORAGE_BLOCKS_CONGEAL_WIND);
+        copy(ModBlockTags.STORAGE_BLOCKS_WIND_RUNNER_CRYSTAL, ModItemTags.STORAGE_BLOCKS_WIND_RUNNER_CRYSTAL);
+
     }
 }

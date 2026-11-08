@@ -482,6 +482,38 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.LIGHT_BALL_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/light_ball_crop"));
         withExistingParent(ModItems.CLOUD_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/cloud_crop"));
         withExistingParent(ModItems.COTTON_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/cotton_crop"));
+        // ===== 风之旅途 =====
+        basicItem(ModItems.FIG.get());
+        withExistingParent(ModItems.WIND_MOOR_SAPLING.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_moor_sapling"));
+        withExistingParent(ModItems.WIND_MOOR_FENCE.getId().getPath(), mcLoc("block/fence_inventory"))
+                .texture("texture", modLoc("block/wind_moor_planks"));
+        withExistingParent(ModItems.WIND_MOOR_BUTTON.getId().getPath(), mcLoc("block/button_inventory"))
+                .texture("texture", modLoc("block/wind_moor_planks"));
+        basicItem(ModItems.WIND_MOOR_DOOR.get());
+        withExistingParent(ModItems.WIND_MOOR_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_moor_trapdoor"));
+        withExistingParent(ModItems.CYAN_STONE_BUTTON.getId().getPath(), mcLoc("block/button_inventory"))
+                .texture("texture", modLoc("block/cyan_stone"));
+        wallItem(ModItems.WHITE_SANDSTONE_WALL.getId().getPath(), ModItems.WHITE_SANDSTONE.getId().getPath());
+        wallItem(ModItems.CUT_WHITE_SANDSTONE_WALL.getId().getPath(), ModItems.CUT_WHITE_SANDSTONE.getId().getPath());
+        wallItem(ModItems.SMOOTH_WHITE_SANDSTONE_WALL.getId().getPath(), "white_sandstone_top");
+        wallItem(ModItems.CYAN_STONE_BRICK_WALL.getId().getPath(), ModItems.CYAN_STONE_BRICKS.getId().getPath());
+        wallItem(ModItems.MOSSY_CYAN_STONE_BRICK_WALL.getId().getPath(), ModItems.MOSSY_CYAN_STONE_BRICKS.getId().getPath());
+        wallItem(ModItems.POLISHED_CYAN_STONE_WALL.getId().getPath(), ModItems.POLISHED_CYAN_STONE.getId().getPath());
+        withExistingParent(ModItems.CLARITY_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/clarity_glass")).renderType("minecraft:translucent");
+        withExistingParent(ModItems.CARVE_CLARITY_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/carve_clarity_glass")).renderType("minecraft:translucent");
+        withExistingParent(ModItems.FRAME_CLARITY_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/frame_clarity_glass")).renderType("minecraft:translucent");
+        withExistingParent(ModItems.CONGEAL_WIND_IRON_BARS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/congeal_wind_iron_bars"));
+        withExistingParent(ModItems.CONGEAL_WIND_IRON_LANTERN.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/congeal_wind_iron_lantern"));
+        withExistingParent(ModItems.CONGEAL_WIND_IRON_CHAIN.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/congeal_wind_iron_chain"));
+        withExistingParent(ModItems.BREAK_WIND_CURTAIN.getId().getPath(), modLoc("block/break_wind_curtain"));
         registerProphecyCardModels();
         registerPotionBottleModels();
     }

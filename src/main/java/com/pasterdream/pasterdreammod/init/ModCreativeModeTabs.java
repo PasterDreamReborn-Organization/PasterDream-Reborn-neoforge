@@ -12,6 +12,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.material.Fluid;
@@ -128,6 +129,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CAKE_BASE.get());
                         output.accept(ModItems.WAFER_BISCUIT.get());
                         output.accept(ModItems.DYEDREAM_FRUIT.get());
+                        output.accept(ModItems.FIG.get());
                         output.accept(ModItems.MOLTEN_GOLD_APPLE.get());
                         output.accept(ModItems.ENCHANTED_MOLTEN_GOLD_APPLE.get());
                         output.accept(ModItems.AMBER_CANDY.get());
@@ -612,6 +614,86 @@ public class ModCreativeModeTabs {
 
 
                         output.accept(ModItems.WHITE_ORCHID_FLOWER.get());
+                    })
+                    .build());
+
+    // ===== 风之旅途 =====
+    // 来源：源 wind_journey_world 维度建筑方块
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WIND_JOURNEY_WORLD_TAB = CREATIVE_MODE_TABS.register("wind_journey_world",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.wind_journey_world"))
+                    .icon(() -> new ItemStack(ModBlocks.CYAN_MOSS_STONE.get()))
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.CYAN_MOSS_STONE.get());
+                        output.accept(ModItems.CYAN_STONE.get());
+                        output.accept(ModItems.WHITE_SAND.get());
+                        output.accept(ModItems.WHITE_SANDSTONE.get());
+                        output.accept(ModItems.WHITE_SANDSTONE_STAIRS.get());
+                        output.accept(ModItems.WHITE_SANDSTONE_SLAB.get());
+                        output.accept(ModItems.WHITE_SANDSTONE_WALL.get());
+                        output.accept(ModItems.CUT_WHITE_SANDSTONE.get());
+                        output.accept(ModItems.CUT_WHITE_SANDSTONE_STAIRS.get());
+                        output.accept(ModItems.CUT_WHITE_SANDSTONE_SLAB.get());
+                        output.accept(ModItems.CUT_WHITE_SANDSTONE_WALL.get());
+                        output.accept(ModItems.CHISELED_WHITE_SANDSTONE.get());
+                        output.accept(ModItems.SMOOTH_WHITE_SANDSTONE.get());
+                        output.accept(ModItems.SMOOTH_WHITE_SANDSTONE_STAIRS.get());
+                        output.accept(ModItems.SMOOTH_WHITE_SANDSTONE_SLAB.get());
+                        output.accept(ModItems.SMOOTH_WHITE_SANDSTONE_WALL.get());
+                        output.accept(ModItems.THICK_CLOUD.get());
+                        output.accept(ModItems.WIND_MOOR_LOG.get());
+                        output.accept(ModItems.WIND_MOOR_WOOD.get());
+                        output.accept(ModItems.STRIPPED_WIND_MOOR_LOG.get());
+                        output.accept(ModItems.STRIPPED_WIND_MOOR_WOOD.get());
+                        output.accept(ModItems.WIND_MOOR_LEAVES_0.get());
+                        output.accept(ModItems.WIND_MOOR_LEAVES_1.get());
+                        output.accept(ModItems.WIND_MOOR_SAPLING.get());
+                        output.accept(ModItems.WIND_MOOR_PLANKS.get());
+                        output.accept(ModItems.WIND_MOOR_STAIRS.get());
+                        output.accept(ModItems.WIND_MOOR_SLAB.get());
+                        output.accept(ModItems.WIND_MOOR_FENCE.get());
+                        output.accept(ModItems.WIND_MOOR_FENCE_GATE.get());
+                        output.accept(ModItems.WIND_MOOR_PANE.get());
+                        output.accept(ModItems.WIND_MOOR_DOOR.get());
+                        output.accept(ModItems.WIND_MOOR_TRAPDOOR.get());
+                        output.accept(ModItems.WIND_MOOR_PRESSURE_PLATE.get());
+                        output.accept(ModItems.WIND_MOOR_BUTTON.get());
+                        output.accept(ModItems.CYAN_STONE_BRICKS.get());
+                        output.accept(ModItems.CYAN_STONE_BRICK_STAIRS.get());
+                        output.accept(ModItems.CYAN_STONE_BRICK_SLAB.get());
+                        output.accept(ModItems.CYAN_STONE_BRICK_WALL.get());
+                        output.accept(ModItems.CYAN_STONE_PRESSURE_PLATE.get());
+                        output.accept(ModItems.CYAN_STONE_BUTTON.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICKS.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_STAIRS.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_SLAB.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_WALL.get());
+                        output.accept(ModItems.CHISELED_CYAN_STONE_BRICKS.get());
+                        output.accept(ModItems.CYAN_STONE_PILLAR.get());
+                        output.accept(ModItems.POLISHED_CYAN_STONE.get());
+                        output.accept(ModItems.POLISHED_CYAN_STONE_STAIRS.get());
+                        output.accept(ModItems.POLISHED_CYAN_STONE_SLAB.get());
+                        output.accept(ModItems.POLISHED_CYAN_STONE_WALL.get());
+                        output.accept(ModItems.CLARITY_GLASS.get());
+                        output.accept(ModItems.CLARITY_GLASS_PANE.get());
+                        output.accept(ModItems.CARVE_CLARITY_GLASS.get());
+                        output.accept(ModItems.CARVE_CLARITY_GLASS_PANE.get());
+                        output.accept(ModItems.FRAME_CLARITY_GLASS.get());
+                        output.accept(ModItems.FRAME_CLARITY_GLASS_PANE.get());
+                        output.accept(ModItems.BREAK_WIND_CURTAIN.get());
+                        output.accept(ModItems.CONGEAL_WIND_ORE.get());
+                        output.accept(ModItems.WIND_RUNNER_CRYSTAL_ORE.get());
+                        output.accept(ModItems.CONGEAL_WIND_BLOCK.get());
+                        output.accept(ModItems.WIND_RUNNER_CRYSTAL_BLOCK.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_BLOCK.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_BLOCK.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_BARS.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_LANTERN.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_CHAIN.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_TRAPDOOR.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_PRESSURE_PLATE.get());
+                        output.accept(ModItems.EJECTION_PRESSURE_PLATE.get());
+                        output.accept(ModItems.EJECTION_PRESSURE_BLOCK.get());
                     })
                     .build());
 
