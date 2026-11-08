@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 070：染梦维度地物生成补全（2026-11-08，T16-A 其余）
+
+- 迁入染梦维度全部地物：方解石锥/锥簇/尖锥、浮空流明光球、繁茂洞穴巨菇、粉顶菌垂帘、小粉顶菌与方解石尖锥 NBT 放置 8 个自定义 Feature，约 70 个 configured feature 与约 90 个 placed feature。
+- `ModBiomeModifiers` 按来源条目名、群系标签与生成阶段重建 `neoforge:add_features` 注入；`ModBiomeTagsProvider` 补齐 25 个 `dyedream_world_*` 分组标签与钓鱼标签。
+- 逐字节复制来源 `stone_pillar_0/1.nbt` 结构模板，供海洋方解石尖锥放置；1.21 `HeightmapPlacement.onHeightmap` 公开后移除来源反射构造。
+- 雪原水池新增 `DyedreamWaterPoolFeature`：1.21 原版 `LakeFeature` 的水面结冰查询会请求相邻区块的群系状态并抛出 `Requested chunk unavailable during world generation`，现保留水体/雪块围边算法并移除结冰查询，修复染梦维度进入时崩溃。
+- 染梦森林萤火虫巢因 `FIREFLY_NEST` 方块/实体/粒子与玻璃罐整组未迁而暂缓；`PINK_SLIME`/`PINK_CHICKEN` 生成项、结构与生存闭环仍待后续任务。
+- `runData` 写入 276 个文件，`build` 通过，`runGameTestServer` 153/153 通过；专用服务器在染梦维度强制生成 4 个区块无崩溃。真实维度分布、NBT 尖锥放置、客户端视觉与多人行为待游戏内验收。
+
 ### 批次 069：染梦维度地形与群系骨架（2026-11-08，T16-A 部分）
 
 - 迁入染梦维度类型、噪声设置与 `LevelStem`：复用主世界噪声路由，方解石默认方块，保留来源染梦草方块/染梦沙/染梦土/浮冰/冰/白沙等地表规则与海平面。

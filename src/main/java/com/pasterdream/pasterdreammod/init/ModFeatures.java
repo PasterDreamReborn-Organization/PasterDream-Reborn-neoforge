@@ -1,13 +1,24 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.worldgen.feature.CalciteConeClusterFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.CalciteConeFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.CalciteSpikeFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.DyedreamWaterPoolFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.FloatingLightBallFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.LushCaveMushroomFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.PinkHugeMushroomFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.PinkMushroomCurtainFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.SmallPinkMushroomFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.StonePillarFeature;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.LakeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 /**
  * 自定义 Feature 类型注册中心。
@@ -21,6 +32,33 @@ public class ModFeatures {
 
     public static final DeferredHolder<Feature<?>, Feature<HugeMushroomFeatureConfiguration>> PINK_HUGE_MUSHROOM =
             FEATURES.register("pink_huge_mushroom", () -> new PinkHugeMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> CALCITE_SPIKE =
+            FEATURES.register("calcite_spike", () -> new CalciteSpikeFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> CALCITE_CONE =
+            FEATURES.register("calcite_cone", () -> new CalciteConeFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> CALCITE_CONE_CLUSTER =
+            FEATURES.register("calcite_cone_cluster", () -> new CalciteConeClusterFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> LUSH_CAVE_MUSHROOM =
+            FEATURES.register("lush_cave_mushroom", () -> new LushCaveMushroomFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> FLOATING_LIGHT_BALL =
+            FEATURES.register("floating_light_ball", () -> new FloatingLightBallFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> SMALL_PINK_MUSHROOM =
+            FEATURES.register("small_pink_mushroom", () -> new SmallPinkMushroomFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> PINK_MUSHROOM_CURTAIN =
+            FEATURES.register("pink_mushroom_curtain", () -> new PinkMushroomCurtainFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> STONE_PILLAR =
+            FEATURES.register("stone_pillar", () -> new StonePillarFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<LakeFeature.Configuration>> DYEDREAM_WATER_POOL =
+            FEATURES.register("dyedream_water_pool", () -> new DyedreamWaterPoolFeature(LakeFeature.Configuration.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
