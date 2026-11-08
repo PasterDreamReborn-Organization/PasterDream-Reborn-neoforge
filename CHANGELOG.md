@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 061：灯影之下物品栏全量搬运（2026-11-08）
+
+- 全量搬运灯影之下创造模式物品栏 64 项条目，含阴影石系列、暗影地牢方块、灯影竞技场与裂隙、阴影菌岩/影灯/阴影蜡烛、阴影巨型菌与木建材、阴影书架、黑金属方块及阴影陶罐；保留来源注册 ID、方块属性与条目顺序。
+- 新增 `ShadowCandleBlock`、`ShadowBookshelfBlock`、`KeyShadowBookshelfBlock`、`ShadowNyliumBlock`、`ClayPotBlock`、`StrippableRotatedPillarBlock`、`FireproofBlockItem`，并将阴影方块补入独立 `pasterdream_shadow_tab`。
+- 1.21 适配：`ClayPotBlock` 补 `MapCodec`/`codec()` 与两参数 `isPathfindable`；`ShadowNyliumBlock` 采用新版 `isValidBonemealTarget`；门、活板门、压力板、按钮、栅栏门构造器改为 1.21 参数顺序；去皮柱改用 `ItemAbility` 判定。
+- 补齐方块状态、物品模型、战利品表、采集/工具/木质/书架/刷怪标签、`c:shadow_stones`/`c:shadow_stems` 与灯影建材/木板/书架/黑金属配方；复制来源方块与物品纹理、阴影蜡烛与陶罐手动模型。
+- `runData`、`build` 通过，`runGameTestServer` 148/148 通过；客户端视觉、方块交互与实际生存获取链待游戏内验收。
+
 ### 批次 060：成熟作物转换配方补齐（2026-11-08）
 
 - 按来源 `othersRecipes` 补入 5 条无形成熟作物转换配方：成熟梦染花冠/苍白花冠/流明光球/棉花植株各得 1 个对应产物，成熟云朵植株得 5 个云。

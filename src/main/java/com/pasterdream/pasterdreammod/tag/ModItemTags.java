@@ -57,6 +57,9 @@ public final class ModItemTags {
     public static final TagKey<Item> GALAXY_JELLY_BOOST = TagKey.create(Registries.ITEM,
             ResourceLocation.fromNamespaceAndPath("pasterdream", "galaxy_jelly_boost"));
     public static final TagKey<Item> DYEDREAM_DIRT = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt"));
+    public static final TagKey<Item> SHADOW_STONES = common("shadow_stones");
+    public static final TagKey<Item> SHADOW_STEMS = common("shadow_stems");
+    public static final TagKey<Item> STORAGE_BLOCKS_BLACK_METAL = common("storage_blocks/black_metal");
 
     private static TagKey<Item> common(String path) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));

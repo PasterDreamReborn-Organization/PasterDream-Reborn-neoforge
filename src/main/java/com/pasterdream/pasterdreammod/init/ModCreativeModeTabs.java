@@ -309,10 +309,80 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_BLOCK.get());
                         output.accept(ModItems.MOLTEN_GOLD_BLOCK.get());
                         output.accept(ModItems.CHARGED_AMETHYST_BLOCK.get());
-                        // 暗影物品栏尚未迁移，暂留于此避免创造模式检索丢失。
+                    }).build());
+
+    // ===== 灯影之下 =====
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_SHADOW_TAB = CREATIVE_MODE_TABS.register("pasterdream_shadow_tab",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_shadow_tab"))
+                    .icon(() -> ModBlocks.SHADOW.toStack())
+                    .displayItems((parameters, output) -> {
                         output.accept(ModItems.SHADOW.get());
                         output.accept(ModItems.THICK_SHADOW.get());
-                    }).build());
+                        output.accept(ModItems.SHADOW_STONE.get());
+                        output.accept(ModItems.SHADOW_STONE_BRICK.get());
+                        output.accept(ModItems.SHADOW_STONE_BRICK_STAIRS.get());
+                        output.accept(ModItems.SHADOW_STONE_BRICK_SLAB.get());
+                        output.accept(ModItems.SHADOW_STONE_BRICK_WALL.get());
+                        output.accept(ModItems.NARROW_SHADOW_STONE_BRICK.get());
+                        output.accept(ModItems.NARROW_SHADOW_STONE_BRICK_STAIRS.get());
+                        output.accept(ModItems.NARROW_SHADOW_STONE_BRICK_SLAB.get());
+                        output.accept(ModItems.NARROW_SHADOW_STONE_BRICK_WALL.get());
+                        output.accept(ModItems.SHADOW_STONE_TILES.get());
+                        output.accept(ModItems.SHADOW_STONE_TILES_STAIRS.get());
+                        output.accept(ModItems.SHADOW_STONE_TILES_SLAB.get());
+                        output.accept(ModItems.SHADOW_STONE_TILES_WALL.get());
+                        output.accept(ModItems.CRACKED_SHADOW_STONE_BRICK.get());
+                        output.accept(ModItems.CHISELED_SHADOW_STONE_BRICK.get());
+                        output.accept(ModItems.SHADOW_STONE_CAGE_RUNE.get());
+                        output.accept(ModItems.SHADOW_STONE_HOLY_GRAIL_RUNE.get());
+                        output.accept(ModItems.SHADOW_STONE_OBLATION_RUNE.get());
+                        output.accept(ModItems.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_STONE.get());
+                        output.accept(ModItems.CHISELED_SHADOW_DUNGEON_BRICKS.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_BRICKS.get());
+                        output.accept(ModItems.CRACKED_SHADOW_DUNGEON_BRICKS.get());
+                        output.accept(ModItems.FRACTURED_SHADOW_DUNGEON_BRICKS.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_BRICK_STAIRS.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_BRICK_SLAB.get());
+                        output.accept(ModItems.SHATTERED_SHADOW_DUNGEON_BRICKS.get());
+                        output.accept(ModItems.SHADOW_NYLIUM.get());
+                        output.accept(ModItems.SHADOW_LIGHT.get());
+                        output.accept(ModItems.SHADOW_SHROOMLIGHT.get());
+                        output.accept(ModItems.SHADOW_CANDLE.get());
+                        output.accept(ModItems.SHADOW_WART_BLOCK.get());
+                        output.accept(ModItems.SHADOW_STEM.get());
+                        output.accept(ModItems.SHADOW_HYPHAE.get());
+                        output.accept(ModItems.STRIPPED_SHADOW_STEM.get());
+                        output.accept(ModItems.STRIPPED_SHADOW_HYPHAE.get());
+                        output.accept(ModItems.SHADOW_PLANKS.get());
+                        output.accept(ModItems.SHADOW_STAIRS.get());
+                        output.accept(ModItems.SHADOW_SLAB.get());
+                        output.accept(ModItems.SHADOW_FENCE.get());
+                        output.accept(ModItems.SHADOW_FENCE_GATE.get());
+                        output.accept(ModItems.SHADOW_PANE.get());
+                        output.accept(ModItems.SHADOW_DOOR.get());
+                        output.accept(ModItems.SHADOW_TRAPDOOR.get());
+                        output.accept(ModItems.SHADOW_PRESSURE_PLATE.get());
+                        output.accept(ModItems.SHADOW_BUTTON.get());
+                        output.accept(ModItems.BLACK_METAL_BLOCK.get());
+                        output.accept(ModItems.RUST_BLACK_METAL_BLOCK.get());
+                        output.accept(ModItems.RUST_BLACK_METAL_WALL.get());
+                        output.accept(ModItems.RUST_BLACK_METAL_BARS.get());
+                        output.accept(ModItems.SHADOW_BOOKSHELF.get());
+                        output.accept(ModItems.WORN_SHADOW_BOOKSHELF.get());
+                        output.accept(ModItems.COBWEB_SHADOW_BOOKSHELF.get());
+                        output.accept(ModItems.KEY_SHADOW_BOOKSHELF.get());
+                        output.accept(ModItems.SHADOW_CLAY_POT.get());
+                        output.accept(ModItems.SHADOW_ARENA_BLOCK.get());
+                        output.accept(ModItems.SHADOW_FISSURE_0.get());
+                        output.accept(ModItems.SHADOW_FISSURE_1.get());
+                        output.accept(ModItems.SHADOW_FISSURE_2.get());
+                        output.accept(ModItems.SHADOW_FISSURE_3.get());
+                        output.accept(ModItems.SHADOW_FISSURE_4.get());
+                        output.accept(ModItems.SHADOW_FISSURE_5.get());
+                    })
+                    .build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_GEAR_TAB =
             CREATIVE_MODE_TABS.register("pasterdream_gear_tab", () -> CreativeModeTab.builder()

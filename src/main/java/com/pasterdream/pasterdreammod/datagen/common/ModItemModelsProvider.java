@@ -140,6 +140,23 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DYEDREAM_DOOR.get());
         withExistingParent(ModItems.DYEDREAM_PANE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/dyedream_trapdoor"));
+
+        withExistingParent(ModItems.SHADOW_FENCE.getId().getPath(), mcLoc("block/fence_inventory"))
+                .texture("texture", modLoc("block/shadow_planks"));
+        withExistingParent(ModItems.SHADOW_BUTTON.getId().getPath(), mcLoc("block/button_inventory"))
+                .texture("texture", modLoc("block/shadow_planks"));
+        basicItem(ModItems.SHADOW_DOOR.get());
+        withExistingParent(ModItems.SHADOW_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/shadow_trapdoor"));
+        wallItem(ModItems.SHADOW_STONE_BRICK_WALL.getId().getPath(), ModItems.SHADOW_STONE_BRICK.getId().getPath());
+        wallItem(ModItems.NARROW_SHADOW_STONE_BRICK_WALL.getId().getPath(), ModItems.NARROW_SHADOW_STONE_BRICK.getId().getPath());
+        wallItem(ModItems.SHADOW_STONE_TILES_WALL.getId().getPath(), ModItems.SHADOW_STONE_TILES.getId().getPath());
+        wallItem(ModItems.RUST_BLACK_METAL_WALL.getId().getPath(), ModItems.RUST_BLACK_METAL_BLOCK.getId().getPath());
+        withExistingParent(ModItems.RUST_BLACK_METAL_BARS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/rust_black_metal_bars"));
+        withExistingParent(ModItems.SHADOW_CANDLE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/shadow_candle"));
+        withExistingParent(ModItems.SHADOW_CLAY_POT.getId().getPath(), modLoc("block/clay_pot"));
         wallItem(ModItems.POLISHED_CALCITE_WALL.getId().getPath(), ModItems.POLISHED_CALCITE.getId().getPath());
         wallItem(ModItems.CALCITE_TILES_WALL.getId().getPath(), ModItems.CALCITE_TILES.getId().getPath());
         wallItem(ModItems.DYEDREAM_SANDSTONE_WALL.getId().getPath(), ModItems.DYEDREAM_SANDSTONE.getId().getPath());

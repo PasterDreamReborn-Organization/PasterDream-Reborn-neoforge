@@ -266,5 +266,47 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ModItemTags.RAW_MATERIALS_MOLTEN_GOLD)
                 .add(ModItems.RAW_MOLTEN_GOLD.get());
 
+        // ===== 灯影之下 =====
+        tag(ModItemTags.SHADOW_STONES)
+                .add(ModItems.SHADOW_STONE.get())
+                .add(ModItems.SHADOW_STONE_BRICK.get())
+                .add(ModItems.NARROW_SHADOW_STONE_BRICK.get())
+                .add(ModItems.SHADOW_STONE_TILES.get())
+                .add(ModItems.CRACKED_SHADOW_STONE_BRICK.get())
+                .add(ModItems.CHISELED_SHADOW_STONE_BRICK.get());
+
+        tag(ModItemTags.SHADOW_STEMS)
+                .add(ModItems.SHADOW_STEM.get())
+                .add(ModItems.SHADOW_HYPHAE.get())
+                .add(ModItems.STRIPPED_SHADOW_STEM.get())
+                .add(ModItems.STRIPPED_SHADOW_HYPHAE.get());
+
+        tag(ModItemTags.STORAGE_BLOCKS_BLACK_METAL)
+                .add(ModItems.BLACK_METAL_BLOCK.get());
+        tag(Tags.Items.STORAGE_BLOCKS)
+                .addTag(ModItemTags.STORAGE_BLOCKS_BLACK_METAL);
+
+        tag(ItemTags.NON_FLAMMABLE_WOOD)
+                .add(ModItems.SHADOW_STEM.get())
+                .add(ModItems.SHADOW_HYPHAE.get())
+                .add(ModItems.STRIPPED_SHADOW_STEM.get())
+                .add(ModItems.STRIPPED_SHADOW_HYPHAE.get())
+                .add(ModItems.SHADOW_PLANKS.get())
+                .add(ModItems.SHADOW_STAIRS.get())
+                .add(ModItems.SHADOW_SLAB.get())
+                .add(ModItems.SHADOW_FENCE.get())
+                .add(ModItems.SHADOW_FENCE_GATE.get())
+                .add(ModItems.SHADOW_PANE.get())
+                .add(ModItems.SHADOW_DOOR.get())
+                .add(ModItems.SHADOW_TRAPDOOR.get())
+                .add(ModItems.SHADOW_PRESSURE_PLATE.get())
+                .add(ModItems.SHADOW_BUTTON.get());
+
+        tag(Tags.Items.BOOKSHELVES)
+                .add(ModItems.SHADOW_BOOKSHELF.get())
+                .add(ModItems.WORN_SHADOW_BOOKSHELF.get())
+                .add(ModItems.COBWEB_SHADOW_BOOKSHELF.get())
+                .add(ModItems.KEY_SHADOW_BOOKSHELF.get());
+
     }
 }

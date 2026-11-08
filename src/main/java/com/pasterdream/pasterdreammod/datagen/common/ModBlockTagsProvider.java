@@ -418,6 +418,189 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(ModBlockTags.STORAGE_BLOCKS_CHARGED_AMETHYST)
                 .addTag(ModBlockTags.STORAGE_BLOCKS_SALT);
 
+        // ===== 灯影之下 =====
+        tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(ModBlocks.SHADOW_SHROOMLIGHT.get())
+                .add(ModBlocks.SHADOW_WART_BLOCK.get());
+
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.SHADOW_STEM.get())
+                .add(ModBlocks.SHADOW_HYPHAE.get())
+                .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
+                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get())
+                .add(ModBlocks.SHADOW_PLANKS.get())
+                .add(ModBlocks.SHADOW_STAIRS.get())
+                .add(ModBlocks.SHADOW_SLAB.get())
+                .add(ModBlocks.SHADOW_FENCE.get())
+                .add(ModBlocks.SHADOW_FENCE_GATE.get())
+                .add(ModBlocks.SHADOW_PANE.get())
+                .add(ModBlocks.SHADOW_DOOR.get())
+                .add(ModBlocks.SHADOW_TRAPDOOR.get())
+                .add(ModBlocks.SHADOW_PRESSURE_PLATE.get())
+                .add(ModBlocks.SHADOW_BUTTON.get())
+                .add(ModBlocks.SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.WORN_SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.KEY_SHADOW_BOOKSHELF.get());
+
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.SHADOW_STONE.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_STAIRS.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_SLAB.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_WALL.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL.get())
+                .add(ModBlocks.SHADOW_STONE_TILES.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_STAIRS.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_SLAB.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_WALL.get())
+                .add(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.SHADOW_STONE_CAGE_RUNE.get())
+                .add(ModBlocks.SHADOW_STONE_HOLY_GRAIL_RUNE.get())
+                .add(ModBlocks.SHADOW_STONE_OBLATION_RUNE.get())
+                .add(ModBlocks.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.get())
+                .add(ModBlocks.SHADOW_DUNGEON_STONE.get())
+                .add(ModBlocks.CHISELED_SHADOW_DUNGEON_BRICKS.get())
+                .add(ModBlocks.SHADOW_DUNGEON_BRICKS.get())
+                .add(ModBlocks.CRACKED_SHADOW_DUNGEON_BRICKS.get())
+                .add(ModBlocks.FRACTURED_SHADOW_DUNGEON_BRICKS.get())
+                .add(ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS.get())
+                .add(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get())
+                .add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get())
+                .add(ModBlocks.SHADOW_ARENA_BLOCK.get())
+                .add(ModBlocks.SHADOW_FISSURE_0.get())
+                .add(ModBlocks.SHADOW_FISSURE_1.get())
+                .add(ModBlocks.SHADOW_FISSURE_2.get())
+                .add(ModBlocks.SHADOW_FISSURE_3.get())
+                .add(ModBlocks.SHADOW_FISSURE_4.get())
+                .add(ModBlocks.SHADOW_FISSURE_5.get())
+                .add(ModBlocks.SHADOW_NYLIUM.get())
+                .add(ModBlocks.SHADOW_LIGHT.get())
+                .add(ModBlocks.SHADOW_CANDLE.get())
+                .add(ModBlocks.RUST_BLACK_METAL_BLOCK.get())
+                .add(ModBlocks.RUST_BLACK_METAL_WALL.get())
+                .add(ModBlocks.RUST_BLACK_METAL_BARS.get())
+                .add(ModBlocks.BLACK_METAL_BLOCK.get())
+                .add(ModBlocks.SHADOW_CLAY_POT.get());
+
+        tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.SHADOW_NYLIUM.get())
+                .add(ModBlocks.SHADOW_LIGHT.get());
+
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.RUST_BLACK_METAL_BLOCK.get())
+                .add(ModBlocks.RUST_BLACK_METAL_WALL.get())
+                .add(ModBlocks.RUST_BLACK_METAL_BARS.get());
+
+        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.BLACK_METAL_BLOCK.get());
+
+        tag(BlockTags.BEACON_BASE_BLOCKS)
+                .add(ModBlocks.BLACK_METAL_BLOCK.get());
+
+        tag(ModBlockTags.STORAGE_BLOCKS_BLACK_METAL)
+                .add(ModBlocks.BLACK_METAL_BLOCK.get());
+        tag(Tags.Blocks.STORAGE_BLOCKS)
+                .addTag(ModBlockTags.STORAGE_BLOCKS_BLACK_METAL);
+
+        tag(BlockTags.STAIRS)
+                .add(ModBlocks.SHADOW_STONE_BRICK_STAIRS.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_STAIRS.get())
+                .add(ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS.get())
+                .add(ModBlocks.SHADOW_STAIRS.get());
+
+        tag(BlockTags.SLABS)
+                .add(ModBlocks.SHADOW_STONE_BRICK_SLAB.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_SLAB.get())
+                .add(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get())
+                .add(ModBlocks.SHADOW_SLAB.get());
+
+        tag(BlockTags.WALLS)
+                .add(ModBlocks.SHADOW_STONE_BRICK_WALL.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_WALL.get())
+                .add(ModBlocks.RUST_BLACK_METAL_WALL.get());
+
+        tag(BlockTags.PLANKS).add(ModBlocks.SHADOW_PLANKS.get());
+        tag(BlockTags.WOODEN_STAIRS).add(ModBlocks.SHADOW_STAIRS.get());
+        tag(BlockTags.WOODEN_SLABS).add(ModBlocks.SHADOW_SLAB.get());
+        tag(BlockTags.WOODEN_FENCES).add(ModBlocks.SHADOW_FENCE.get());
+        tag(BlockTags.FENCE_GATES).add(ModBlocks.SHADOW_FENCE_GATE.get());
+        tag(BlockTags.WOODEN_DOORS).add(ModBlocks.SHADOW_DOOR.get());
+        tag(BlockTags.WOODEN_TRAPDOORS).add(ModBlocks.SHADOW_TRAPDOOR.get());
+        tag(BlockTags.WOODEN_PRESSURE_PLATES).add(ModBlocks.SHADOW_PRESSURE_PLATE.get());
+        tag(BlockTags.WOODEN_BUTTONS).add(ModBlocks.SHADOW_BUTTON.get());
+        tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
+                .add(ModBlocks.SHADOW_STEM.get())
+                .add(ModBlocks.SHADOW_HYPHAE.get())
+                .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
+                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get());
+
+        tag(Tags.Blocks.BOOKSHELVES)
+                .add(ModBlocks.SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.WORN_SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.KEY_SHADOW_BOOKSHELF.get());
+        tag(BlockTags.ENCHANTMENT_POWER_PROVIDER).add(ModBlocks.SHADOW_BOOKSHELF.get());
+
+        tag(ModBlockTags.SHADOW_PLANTS_CAN_PLACE_ON).add(ModBlocks.SHADOW_NYLIUM.get());
+        tag(BlockTags.VALID_SPAWN)
+                .add(ModBlocks.SHADOW_NYLIUM.get())
+                .add(ModBlocks.SHADOW_WART_BLOCK.get())
+                .add(ModBlocks.SHADOW_STONE.get());
+
+        tag(ModBlockTags.SHADOW_EROSION_TOOL_CAN_BOOST)
+                .add(ModBlocks.SHADOW_STONE.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_STAIRS.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_SLAB.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_WALL.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL.get())
+                .add(ModBlocks.SHADOW_STONE_TILES.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_STAIRS.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_SLAB.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_WALL.get())
+                .add(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get())
+                .add(ModBlocks.SHADOW_NYLIUM.get())
+                .add(ModBlocks.SHADOW_WART_BLOCK.get())
+                .add(ModBlocks.SHADOW_STEM.get())
+                .add(ModBlocks.SHADOW_HYPHAE.get())
+                .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
+                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get())
+                .add(ModBlocks.SHADOW_SHROOMLIGHT.get())
+                .add(ModBlocks.SHADOW_LIGHT.get())
+                .add(ModBlocks.SHADOW_CANDLE.get())
+                .add(ModBlocks.SHADOW_PLANKS.get())
+                .add(ModBlocks.SHADOW_STAIRS.get())
+                .add(ModBlocks.SHADOW_SLAB.get())
+                .add(ModBlocks.SHADOW_FENCE.get())
+                .add(ModBlocks.SHADOW_FENCE_GATE.get())
+                .add(ModBlocks.SHADOW_PANE.get())
+                .add(ModBlocks.SHADOW_DOOR.get())
+                .add(ModBlocks.SHADOW_TRAPDOOR.get())
+                .add(ModBlocks.SHADOW_PRESSURE_PLATE.get())
+                .add(ModBlocks.SHADOW_BUTTON.get())
+                .add(ModBlocks.SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.WORN_SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.KEY_SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.BLACK_METAL_BLOCK.get())
+                .add(ModBlocks.RUST_BLACK_METAL_BLOCK.get())
+                .add(ModBlocks.RUST_BLACK_METAL_WALL.get())
+                .add(ModBlocks.RUST_BLACK_METAL_BARS.get())
+                .add(ModBlocks.SHADOW_CLAY_POT.get());
+
         // 矿石/金属块不属于动物自然生成地表，不加入 ANIMALS_SPAWNABLE_ON。
     }
 }
