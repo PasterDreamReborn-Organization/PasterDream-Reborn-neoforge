@@ -206,7 +206,92 @@ public class Config {
             .comment("暗影合金弩随机负面效果的等级（0=I, 1=II, ...），默认 0")
             .defineInRange("shadowAlloyCrossbowDebuffAmplifier", 0, 0, 255);
 
+    // === 预言卡 · 平衡 ===
+    public static final ModConfigSpec.IntValue MIN_TAKE_EFFECT_DURATION = BUILDER
+            .comment("平衡预言卡：药水等级翻倍、时间减半时，低于此时长的效果不会被处理，默认 30 tick")
+            .defineInRange("minTakeEffectDuration", 30, 1, Integer.MAX_VALUE);
+
+    public static final ModConfigSpec.IntValue MAX_TAKE_EFFECT_DURATION = BUILDER
+            .comment("平衡预言卡：药水等级翻倍、时间减半时，高于此时长的效果不会被处理，默认 1 小时（3600 秒）")
+            .defineInRange("maxTakeEffectDuration", 3600, 1, Integer.MAX_VALUE);
+
+    public static final ModConfigSpec.IntValue MAX_LEVEL = BUILDER
+            .comment("高于该等级的药水效果平衡预言卡不会生效，默认 255 级（不限制）")
+            .defineInRange("maxLevel", 255, 1, Integer.MAX_VALUE);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> BALANCE_ALLOWED_EFFECTS = BUILDER
+            .comment("平衡预言卡允许翻倍的药水效果 ID 列表（格式：modid:effect_id），留空则允许所有")
+            .defineListAllowEmpty("balanceAllowedEffects",
+                    List.of("minecraft:regeneration", "minecraft:speed", "minecraft:strength", "minecraft:luck",
+                            "minecraft:jump_boost", "minecraft:health_boost", "pasterdream:cook"),
+                    obj -> obj instanceof String);
+
+    // === 预言卡 · 罪恶 ===
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> SIN_INSTAKILL_ENTITIES = BUILDER
+            .comment("罪之预言卡直接秒杀的实体类型 ID 列表（格式：modid:entity_id）。小僵尸（isBaby）的秒杀逻辑为硬编码，不在此列表中")
+            .defineListAllowEmpty("sinInstakillEntities",
+                    List.of("minecraft:vex", "minecraft:bat", "minecraft:endermite",
+                            "minecraft:silverfish", "minecraft:creeper", "minecraft:cave_spider",
+                            "alexsmobs:centipede_head", "alexsmobs:centipede_body", "alexsmobs:centipede_tail",
+                            "alexsmobs:crimson_mosquito", "alexsmobs:seagull", "iceandfire:pixie",
+                            "twilightforest:pinch_beetle", "born_in_chaos_v1:maggot",
+                            "born_in_chaos_v1:diamond_termite", "born_in_chaos_v1:firelight",
+                            "illageandspillage:villager_soul"),
+                    obj -> obj instanceof String);
+
+    // === 预言卡 · 守护 ===
+    public static final ModConfigSpec.DoubleValue HEALTH_PERCENT = BUILDER
+            .comment("守护效果触发时，需要伤害为最大生命值的占比，默认 0.3（30%）")
+            .defineInRange("healthPercentGuardNeed", 0.3, 0.0, 1.0);
+
+    public static final ModConfigSpec.DoubleValue RESIST_DAMAGE = BUILDER
+            .comment("守护效果触发时超过最大生命值部分减伤比例，默认 0.6（60%）")
+            .defineInRange("resistDamage", 0.6, 0.0, 1.0);
+
+    // === 预言卡 · 墓园 ===
+    public static final ModConfigSpec.DoubleValue GRAVEYARD_DAMAGE = BUILDER
+            .comment("墓园预言卡伤害，默认 50")
+            .defineInRange("graveyardDamage", 50.0, 0.0, Double.MAX_VALUE);
+
+    // === 预言卡 · 纷争 ===
+    public static final ModConfigSpec.DoubleValue CONFLICT_MARK_RANGE = BUILDER
+            .comment("纷争预言卡标记后，敌对生物检测被标记实体的范围（格），默认 16")
+            .defineInRange("conflictMarkRange", 16.0, 1.0, 128.0);
+
+    public static final ModConfigSpec.DoubleValue CONFLICT_CARD_REACH = BUILDER
+            .comment("纷争预言卡右键选中实体的最远距离（格），默认 32")
+            .defineInRange("conflictCardReach", 32.0, 4.0, 128.0);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> CONFLICT_MARK_BLACKLIST = BUILDER
+            .comment("纷争预言卡无法标记的实体类型 ID 列表（格式：modid:entity_id），用于排除不应被标记的实体")
+            .defineListAllowEmpty("conflictMarkBlacklist",
+                    List.of("dummmmmmy:target_dummy"),
+                    obj -> obj instanceof String);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
+
+    /** 查询指定实体类型是否在罪之预言卡秒杀列表中 */
+    public static boolean isSinInstakillTarget(EntityType<?> type) {
+        return isEntityTypeListed(SIN_INSTAKILL_ENTITIES.get(), type);
+    }
+
+    /** 查询指定实体类型是否在纷争预言卡标记黑名单中 */
+    public static boolean isConflictMarkBlacklisted(EntityType<?> type) {
+        return isEntityTypeListed(CONFLICT_MARK_BLACKLIST.get(), type);
+    }
+
+    private static boolean isEntityTypeListed(List<? extends String> ids, EntityType<?> type) {
+        for (String idStr : ids) {
+            ResourceLocation id = ResourceLocation.tryParse(idStr);
+            if (id == null) {
+                continue;
+            }
+            if (BuiltInRegistries.ENTITY_TYPE.getOptional(id).map(entityType -> entityType == type).orElse(false)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /** 暗影合金弩随机负面效果缓存（按配置即时解析） */
     public static List<Holder<MobEffect>> getShadowAlloyCrossbowDebuffs() {

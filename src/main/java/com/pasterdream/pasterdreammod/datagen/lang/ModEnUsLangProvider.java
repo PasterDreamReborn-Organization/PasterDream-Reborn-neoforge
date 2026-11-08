@@ -908,6 +908,56 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.berserk", "Frenzy");
         add("effect.pasterdream.frozen", "Flash Freeze");
         add("effect.pasterdream.broken_wing", "Broken Wing");
+        add("effect.pasterdream.guard", "Guard");
+        add("effect.pasterdream.rapid_reaction", "Rapid Reaction");
+        add("effect.pasterdream.holy_grail", "Holy Grail");
+        add("effect.pasterdream.flare_up", "Flare up");
+        add("effect.pasterdream.conflict_mark", "Conflict Mark");
+
+        // ===== Prophecy Cards =====
+        add(ModItems.EMPTY_PROPHECY_CARD.get(), "Empty Prophecy Card");
+        add("item.pasterdream.prophecy_card", "Prophecy Card");
+        add("item.pasterdream.prophecy_card.balance", "Prophecy Card of Balance");
+        add("item.pasterdream.prophecy_card.chaos", "Prophecy Card of Chaos");
+        add("item.pasterdream.prophecy_card.conflict", "Prophecy Card of Conflict");
+        add("item.pasterdream.prophecy_card.graveyard", "Prophecy Card of Graveyard");
+        add("item.pasterdream.prophecy_card.guard", "Prophecy Card of Guard");
+        add("item.pasterdream.prophecy_card.holy_grail", "Prophecy Card of Holy Grail");
+        add("item.pasterdream.prophecy_card.sin", "Prophecy Card of Sin");
+        add("item.pasterdream.prophecy_card.sprint", "Prophecy Card of Sprint");
+        add("item.pasterdream.prophecy_card.wielding_sword", "Prophecy Card of Wielding Sword");
+        add("item.pasterdream.prophecy_card.unknown", "Error Prophecy Card (%s)");
+        add("tooltip.pasterdream.prophecy_card.empty", "§7An empty prophecy card, yet to be assigned a type");
+        add("tooltip.pasterdream.prophecy_card.type.balance", "§bType: Balance");
+        add("tooltip.pasterdream.prophecy_card.type.chaos", "§bType: Chaos");
+        add("tooltip.pasterdream.prophecy_card.type.conflict", "§bType: Conflict");
+        add("tooltip.pasterdream.prophecy_card.type.graveyard", "§bType: Graveyard");
+        add("tooltip.pasterdream.prophecy_card.type.guard", "§bType: Guard");
+        add("tooltip.pasterdream.prophecy_card.type.holy_grail", "§bType: Holy Grail");
+        add("tooltip.pasterdream.prophecy_card.type.sin", "§bType: Sin");
+        add("tooltip.pasterdream.prophecy_card.type.sprint", "§bType: Sprint");
+        add("tooltip.pasterdream.prophecy_card.type.wielding_sword", "§bType: Wielding Sword");
+        add("tooltip.pasterdream.prophecy_card.unknown", "§cType: Error! (%s)");
+        add("tooltip.pasterdream.prophecy_card.balance.description", "§9When using a card, the levels of some potion effects you currently have are doubled, but their duration is halved.");
+        add("tooltip.pasterdream.prophecy_card.conflict.description.1", "§9When using a card, the entity corresponding to the cursor will be marked. The marked entity will become a target for attacks from other entities for 120 seconds.");
+        add("tooltip.pasterdream.prophecy_card.conflict.description.2", "§7§o--At least you don’t have to worry about being stabbed into glass shards by a girl in white after using this card.");
+        add("message.pasterdream.prophecy_card.conflict.marked", "Let's dance!");
+        add("message.pasterdream.prophecy_card.conflict.no_target", "No target selected.");
+        add("tooltip.pasterdream.prophecy_card.graveyard.description", "§9When using the card, deal %.1f damage to all enemies within a 7*7 range centered on yourself. This damage is not reduced by defense. (This effect does not apply to players)");
+        add("tooltip.pasterdream.prophecy_card.sprint.description", "§9When using the card, you gain Speed III, Jump Boost II, and Rapid Reaction effects for 120 seconds. During this time, your step height is increased, Blink cooldown is reduced by 30%, and you are immune to fall damage.");
+        add("tooltip.pasterdream.prophecy_card.guard.description.1", "§9When using the card, gain 120 seconds of Damage Absorption III and 60 seconds of Guardian effect.");
+        add("tooltip.pasterdream.prophecy_card.guard.description.2", "§9If a player takes any damage that exceeds %.1f%% of their maximum health, the excess part will be reduced by %.1f%%. This damage reduction is applied before the armor's damage reduction.");
+        add("tooltip.pasterdream.prophecy_card.holy_grail.description", "§9When using the card, you gain the Holy Grail effect for 120 seconds. During this time, you get 15 maximum HP, are immune to some negative statuses, and naturally regenerate health—the lower your HP, the faster the regeneration, reaching the maximum speed when below 33%.");
+        add("tooltip.pasterdream.prophecy_card.chaos.description.1", "§9When using the card, all enemies within a 7*7 area centered on yourself will become confused and unable to act for 10 seconds. (This effect does not apply to players)");
+        add("tooltip.pasterdream.prophecy_card.chaos.description.2", "§7§o--THE TRUE AND NEO CHAOS");
+        add("tooltip.pasterdream.prophecy_card.sin.description.1", "§9When using the card, it ignites all undead mobs and Illagers within a 19*19 area centered on yourself for 15 seconds, dealing 25 points damage.");
+        add("tooltip.pasterdream.prophecy_card.sin.description.2", "§9If this entity is a zombie villager, it won't take damage and will turn into a villager.");
+        add("tooltip.pasterdream.prophecy_card.sin.description.3", "§9As for those extremely annoying creatures, just ERASE them. As for what counts as extremely annoying, trust the prophecy card's judgment.");
+        add("tooltip.pasterdream.prophecy_card.sin.description.4", "§7§o--FACE YOUR SIN.");
+        add("tooltip.pasterdream.prophecy_card.wielding_sword.description", "§9When using the card, you gain the Flare up effect for 120 seconds. During this effect, attack damage +3, attack speed +0.2, skill damage multiplier +30%, and skill cooldown -20%.");
+        add("tooltip.pasterdream.prophecy_card.unknown.description.1", "§9How did you get this card? ");
+        add("tooltip.pasterdream.prophecy_card.unknown.description.2", "§9Please send what you did during game to GitHub or mcmod so we can pinpoint the issue, instead of just sending this error screenshot.");
+        add("message.pasterdream.prophecy_card.invalid", "§cProphecy Card data corrupted (%s), right-click disabled!");
 
         // ===== 灯影之下 =====
         add("itemGroup.pasterdream.pasterdream_shadow_tab", "Lamp Shadow World");

@@ -16,6 +16,7 @@ import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
+import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipe;
@@ -69,6 +70,10 @@ public class ModJEIPlugin implements IModPlugin
         registration.registerSubtypeInterpreter(
                 ModItems.POTION_BOTTLE.get(),
                 (stack, context) -> PotionBottleItem.getPotionType(stack));
+
+        registration.registerSubtypeInterpreter(
+                ModItems.PROPHECY_CARD.get(),
+                (stack, context) -> ProphecyCardItem.getType(stack));
     }
 
     @Override

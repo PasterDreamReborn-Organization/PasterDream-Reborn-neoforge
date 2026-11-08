@@ -17,6 +17,8 @@ import com.pasterdream.pasterdreammod.world.item.PulseWindRunnerCrystalItem;
 import com.pasterdream.pasterdreammod.world.item.RedDewItem;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
+import com.pasterdream.pasterdreammod.world.item.prophecycard.EmptyProphecyCardItem;
+import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.SnowballPebbleItem;
 import com.pasterdream.pasterdreammod.world.item.FireproofBlockItem;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
@@ -1434,6 +1436,12 @@ public class ModItems {
 
     public static final DeferredItem<Item> LIGHT_BALL = ITEMS.register("light_ball",
             () -> new BlockItem(ModBlocks.LIGHT_BALL.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> EMPTY_PROPHECY_CARD = ITEMS.register("empty_prophecy_card",
+            EmptyProphecyCardItem::new);
+
+    public static final DeferredItem<Item> PROPHECY_CARD = ITEMS.register("prophecy_card",
+            ProphecyCardItem::new);
 
 
 

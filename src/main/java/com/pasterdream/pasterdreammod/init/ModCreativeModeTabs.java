@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
 import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
+import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleWithFluidNBTBuilder;
@@ -99,6 +100,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.EMBRYO_NECKLACE.get());
                         output.accept(ModItems.EMBRYO_RING.get());
                         output.accept(ModItems.EMBRYO_BELT.get());
+                        // 预言卡（动态遍历所有已注册类型，含 KJS / 拓展模组注册的）
+                        output.accept(ModItems.EMPTY_PROPHECY_CARD.get());
+                        for (String type : ProphecyCardItem.getRegisteredTypes()) {
+                            output.accept(ProphecyCardItem.createCard(ModItems.PROPHECY_CARD.get(), type));
+                        }
                         // 药剂瓶（动态遍历所有已注册类型，含 KJS / 拓展模组注册的）
                         for (String type : PotionBottleItem.getRegisteredTypes()) {
                             output.accept(PotionBottleItem.createWithType(ModItems.POTION_BOTTLE.get(), type));
