@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 063：上游 #1290 粉顶菇菌光体去重（2026-11-08）
+
+- 同步上游 #1290：移除 `PinkMushroom`、`TallPinkMushroom` 骨粉催生成功后额外的菌光体散布逻辑，避免菌光体被放到巨菇外侧，与自然生成外观不一致。
+- 菌光体统一由 `PINK_HUGE_MUSHROOM` Feature 放置，并将放置概率由 `0.25f` 提升至 `0.4f` 以补偿密度。
+- 在程序规范「易犯错误记录」补充骨粉催生与共用 Feature 重复放置装饰方块的处理方式；`build` 与 149/149 GameTest 通过。
+
 ### 批次 062：上游 #1289 碰撞箱同步与阴影蘑菇生长补全（2026-11-08）
 
 - 同步上游 #1289：`PinkMushroom` 与 `ShadowFungusBlock` 的 `getShape` 应用方块随机偏移，使碰撞箱随视觉位置移动。

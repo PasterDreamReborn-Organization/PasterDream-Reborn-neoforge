@@ -64,6 +64,7 @@ description: 新增/修改世界生成（群系、维度类型、噪声设置、
 ## 引用文档
 
 - `document/rule/program/架构规范.md` — 世界生成数据流、子包划分
+- `document/rule/program/程序规范文档.md`「易犯错误记录」— 骨粉催生与世界生成共用 Feature 时避免重复放置装饰方块
 
 ## 当前已实现
 
