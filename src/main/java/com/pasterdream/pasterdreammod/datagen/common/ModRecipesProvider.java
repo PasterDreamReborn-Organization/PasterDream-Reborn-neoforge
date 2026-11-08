@@ -1428,6 +1428,26 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('b', ModItems.SOUL_DUST.get())
                 .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":magic_stone_from_ice_bud");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_COROLLA.get(), 1)
+                .requires(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get()), has(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.WHITE_COROLLA.get(), 1)
+                .requires(ModItems.WHITE_COROLLA_CROP_AGE_1.get())
+                .unlockedBy(getHasName(ModItems.WHITE_COROLLA_CROP_AGE_1.get()), has(ModItems.WHITE_COROLLA_CROP_AGE_1.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_BALL.get(), 1)
+                .requires(ModItems.LIGHT_BALL_CROP_AGE_1.get())
+                .unlockedBy(getHasName(ModItems.LIGHT_BALL_CROP_AGE_1.get()), has(ModItems.LIGHT_BALL_CROP_AGE_1.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CLOUD.get(), 5)
+                .requires(ModItems.CLOUD_CROP_AGE_1.get())
+                .unlockedBy(getHasName(ModItems.CLOUD_CROP_AGE_1.get()), has(ModItems.CLOUD_CROP_AGE_1.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.COTTON.get(), 1)
+                .requires(ModItems.COTTON_CROP_AGE_1.get())
+                .unlockedBy(getHasName(ModItems.COTTON_CROP_AGE_1.get()), has(ModItems.COTTON_CROP_AGE_1.get()))
+                .save(pWriter);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PERGAMYN.get(), 1)
                 .requires(Items.PAPER)
                 .requires(Items.HONEYCOMB)

@@ -7,11 +7,15 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.world.block.cropblock.PasterDreamCropBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.util.FakePlayer;
 import net.neoforged.neoforge.gametest.GameTestHolder;
@@ -66,6 +70,31 @@ public class PlantGameTests {
         helper.succeed();
     }
 
+    @GameTest(template = "empty")
+    public static void matureCropConversionRecipes(GameTestHelper helper) {
+        var conversions = List.of(
+                new CropConversion(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), ModItems.DYEDREAM_COROLLA.get(), 1),
+                new CropConversion(ModItems.WHITE_COROLLA_CROP_AGE_1.get(), ModItems.WHITE_COROLLA.get(), 1),
+                new CropConversion(ModItems.LIGHT_BALL_CROP_AGE_1.get(), ModItems.LIGHT_BALL.get(), 1),
+                new CropConversion(ModItems.CLOUD_CROP_AGE_1.get(), ModItems.CLOUD.get(), 5),
+                new CropConversion(ModItems.COTTON_CROP_AGE_1.get(), ModItems.COTTON.get(), 1));
+        for (var conversion : conversions) {
+            var input = CraftingInput.of(1, 1, List.of(new ItemStack(conversion.crop())));
+            var recipe = helper.getLevel().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, input,
+                    helper.getLevel()).orElseThrow();
+            helper.assertTrue(recipe.id().equals(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            BuiltInRegistries.ITEM.getKey(conversion.product()).getPath())),
+                    "成熟作物转换配方 ID 不符: " + conversion.product());
+            var result = recipe.value().assemble(input, helper.getLevel().registryAccess());
+            helper.assertTrue(result.is(conversion.product()) && result.getCount() == conversion.count(),
+                    "成熟作物转换产物不符: " + conversion.product());
+        }
+        helper.succeed();
+    }
+
     private record CropCase(Block block, Item seedling, Item product, int count) {
+    }
+
+    private record CropConversion(Item crop, Item product, int count) {
     }
 }
