@@ -15,6 +15,9 @@ import com.pasterdream.pasterdreammod.world.effect.WindRunnerEffect;
 import com.pasterdream.pasterdreammod.world.effect.BlinkCooldownEffect;
 import com.pasterdream.pasterdreammod.world.effect.EvasionEffect;
 import com.pasterdream.pasterdreammod.world.effect.ConfusionEffect;
+import com.pasterdream.pasterdreammod.world.effect.CeciliaBlessingEffect;
+import com.pasterdream.pasterdreammod.world.effect.TurnbackCloakBuffEffect;
+import com.pasterdream.pasterdreammod.world.effect.EvasionCloakBuffEffect;
 import com.pasterdream.pasterdreammod.world.effect.ConflictMarkEffect;
 import com.pasterdream.pasterdreammod.world.effect.FlareupEffect;
 import com.pasterdream.pasterdreammod.world.effect.GuardEffect;
@@ -143,6 +146,15 @@ public class ModEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> WIND_RUNNER =
             MOB_EFFECTS.register("wind_runner", WindRunnerEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> CECILIA_BLESSING =
+            MOB_EFFECTS.register("cecilia_blessing", CeciliaBlessingEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> TURNBACK_CLOAK =
+            MOB_EFFECTS.register("turnback_cloak", TurnbackCloakBuffEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> EVASION_CLOAK =
+            MOB_EFFECTS.register("evasion_cloak", EvasionCloakBuffEffect::new);
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

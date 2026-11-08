@@ -713,6 +713,33 @@ public class ModCreativeModeTabs {
                     })
                     .build());
 
+    // ===== 拓展 =====
+    // 来源: 旧 paster_tab_9
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_EXPANSION_TAB =
+            CREATIVE_MODE_TABS.register("pasterdream_expansion_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_expansion_tab"))
+                    .icon(() -> new ItemStack(ModItems.HIYORI_BUTTERFLY_HAIRPIN.get()))
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.DUKE_COIN_CURIO.get());
+                        output.accept(ModItems.HIYORI_BUTTERFLY_HAIRPIN.get());
+                        output.accept(ModItems.ALLKINDS_RING.get());
+                        output.accept(ModItems.KAICHU_OMAMORI.get());
+                        output.accept(ModItems.THERMAL_DAGGER.get());
+                        output.accept(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get());
+                        output.accept(ModItems.TERRA_BLADE.get());
+                        output.accept(ModItems.TERRA_FLOATING_ISLAND.get());
+                        output.accept(ModItems.FADED_BLESSING_OF_CECILIA.get());
+                        output.accept(ModItems.BLESSING_OF_CECILIA.get());
+                        output.accept(ModItems.STRAWBERRY_HEART.get());
+                        output.accept(ModItems.ANGEL_WING.get());
+                        output.accept(ModItems.FORSAKENS_WING.get());
+                        output.accept(ModItems.MACHINE_LIGHT_WING.get());
+                        output.accept(ModItems.TURNBACK_CLOAK.get());
+                        output.accept(ModItems.EVASION_CLOAK.get());
+                        output.accept(ModItems.SLIVER_BELL.get());
+                    })
+                    .build());
+
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TABS.register(eventBus);
     }

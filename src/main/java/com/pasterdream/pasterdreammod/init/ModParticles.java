@@ -14,6 +14,12 @@ import com.pasterdream.pasterdreammod.client.particle.YellowSmokeParticle;
 import com.pasterdream.pasterdreammod.client.particle.SharpSwordSlashParticle;
 import com.pasterdream.pasterdreammod.client.particle.SoulParticle;
 import com.pasterdream.pasterdreammod.client.particle.SporeParticle;
+import com.pasterdream.pasterdreammod.client.particle.FeatherWhiteParticle;
+import com.pasterdream.pasterdreammod.client.particle.FoxFire0Particle;
+import com.pasterdream.pasterdreammod.client.particle.FoxFire1Particle;
+import com.pasterdream.pasterdreammod.client.particle.GoldenParticle;
+import com.pasterdream.pasterdreammod.client.particle.SilverParticle;
+import com.pasterdream.pasterdreammod.client.particle.TerraswordWaveParticle;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -46,5 +52,11 @@ public final class ModParticles {
         event.registerSpriteSet(ModParticleTypes.SNOWFLAKE_0_PARTICLE.get(), SnowflakeParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.SNOWFLAKE_1_PARTICLE.get(), SnowflakeParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.INFERNO_PARTICLE.get(), InfernoParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.TERRASWORD_WAVE_PARTICLE.get(), TerraswordWaveParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.FOX_FIRE_0_PARTICLE.get(), FoxFire0Particle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.FOX_FIRE_1_PARTICLE.get(), FoxFire1Particle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.FEATHER_WHITE_PARTICLE.get(), FeatherWhiteParticle::provider);
+        event.registerSpriteSet(ModParticleTypes.GOLDEN_PARTICLE.get(), GoldenParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.SILVER_PARTICLE.get(), SilverParticle.Provider::new);
     }
 }

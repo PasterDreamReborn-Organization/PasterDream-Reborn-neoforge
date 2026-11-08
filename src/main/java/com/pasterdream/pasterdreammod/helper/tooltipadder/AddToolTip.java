@@ -93,6 +93,10 @@ public class AddToolTip
             tooltip.add(Component.translatable("tooltip.pasterdream.pure_horror"));
         }
 
+        if(stack.is(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_aurorian_steel"));
+        }
+
         if(stack.is(ModItems.LAMP_SHADOW_BROKEN_NOTE.get()) || stack.is(ModItems.DYEDREAM_BROKEN_NOTE.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.broken_note"));
         }

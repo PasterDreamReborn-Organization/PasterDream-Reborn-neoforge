@@ -46,6 +46,18 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("snowflake_1", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> INFERNO_PARTICLE =
             PARTICLE_TYPES.register("inferno", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> TERRASWORD_WAVE_PARTICLE =
+            PARTICLE_TYPES.register("terrasword_wave", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FOX_FIRE_0_PARTICLE =
+            PARTICLE_TYPES.register("fox_fire_0", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FOX_FIRE_1_PARTICLE =
+            PARTICLE_TYPES.register("fox_fire_1", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FEATHER_WHITE_PARTICLE =
+            PARTICLE_TYPES.register("feather_white", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> GOLDEN_PARTICLE =
+            PARTICLE_TYPES.register("golden", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SILVER_PARTICLE =
+            PARTICLE_TYPES.register("silver", () -> new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

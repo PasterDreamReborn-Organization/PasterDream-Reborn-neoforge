@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 068：拓展栏物品全量搬运（2026-11-08，T13 部分）
+
+- 搬运来源 `PASTERDREAM_EXPANSION_TAB` 全部 17 项物品：`duke_coin_curio`、`hiyori_butterfly_hairpin`、`allkinds_ring`、`kaichu_omamori`、`thermal_dagger`、`melt_dream_aurorian_steel_ingot`、`terra_blade`、`terra_floating_island`、`faded_blessing_of_cecilia`、`blessing_of_cecilia`、`strawberry_heart`、`angel_wing`、`forsakens_wing`、`machine_light_wing`、`turnback_cloak`、`evasion_cloak`、`silver_bell`，保留来源注册 ID、稀有度、创造栏顺序与数值。
+- 一并迁入依赖系统：`TERRA_SWORD`/`THERMAL_DAGGER` 工具等级、`cloak`/`thermal_dagger`/`sword_wave`/`fox_fire` 音效、`golden`/`silver`/`feather_white`/`fox_fire`/`terrasword_wave` 粒子、`cecilia_blessing`/`turnback_cloak`/`evasion_cloak` 效果、`kaichu_omamori`/`cloak_activate` 按键、四个网络包（含加护激活动画）、`fox_fire`/`terrasword_wave` 实体及 GeckoLib 模型渲染、三套翅膀饰品渲染器与 `kaichu_omamori` 配置项。
+- 补入塞西莉亚加护的常驻减伤、致命伤害拦截与加护替换、加护效果不可移除处理；转身/回避衣装接入瞬身术回避次数扣除、耗尽后取消转身状态与反击获取，回避衣装将瞬身术回避时间延长至 0.6 秒。
+- 塞西莉亚加护触发时向追踪客户端发送 `CurioActivationPacket`，恢复来源的物品激活展示动画。
+- 1.21 适配：`MobType` 改用 `EntityTypeTags.UNDEAD`/`ARTHROPOD`，`LivingEntity#getDimensions` 已为 final，`VertexConsumer#vertex/endVertex` 改为 `addVertex/setColor/setNormal`，物品 NBT 改用 `DataComponents.CUSTOM_DATA`，属性修饰符 id 改 `ResourceLocation`，能力改 `ModAttachments`，GeckoLib 包名与 `ClientTickEvent.Post`/`LivingIncomingDamageEvent` 等 NeoForge 事件同步调整。
+- `runData` 写入 25 个文件（物品模型、语言、标签、武器工坊配方），`build` 通过，`runGameTestServer` 151/151 通过。大地之刃使用来源手写 `models/item/terra_blade.json`（不入 datagen），热能匕首与融梦极光钢锭补入来源动画纹理 `.mcmeta`。宝箱/深海秘宝战利品、金狐交易与相关进度尚未迁入，生存获取闭环及客户端视觉/音效/GeckoLib 动画待后续批次与游戏内验收。
+
 ### 批次 067：设备栏容器、园艺钳与时之沙搬运（2026-11-08，T10/T11 部分）
 
 - 搬运 `pliers`、`shadow_desk`、`wind_moor_desk`、`picnic_basket`、`shadow_chest`、`wind_moor_crate`、`the_endless_book_of_dream_seekers`、`feather_pen`、`sand_of_time`，保留来源注册 ID、创造栏顺序、配方、耐久、冷却与战利品行为。

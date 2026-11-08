@@ -4,17 +4,29 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.init.ModParticleTypes;
+import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
@@ -90,5 +102,80 @@ public class CurioPassiveHandler {
         if (motion.lengthSqr() <= 0.0) return;
         projectile.setDeltaMovement(motion.scale(1.0 + bonus));
         projectile.getPersistentData().putBoolean("pasterdream_arrow_velocity_applied", true);
+    }
+
+    /** 塞西莉亚的加护：常驻减伤、致命伤害拦截、效果不可移除。 */
+    @SubscribeEvent
+    public static void onLivingIncomingDamage(LivingIncomingDamageEvent event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if (player.level().isClientSide()) return;
+
+        // 加护生效期间：取消所有伤害
+        if (player.hasEffect(ModEffects.CECILIA_BLESSING)) {
+            event.setCanceled(true);
+            return;
+        }
+
+        boolean hasCharm = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent())
+                .orElse(false);
+        if (hasCharm) {
+            event.setAmount(event.getAmount() * 0.8F);
+        }
+
+        // 致死于伤害判定（event.getAmount() 已计算抗性）
+        if (player.getHealth() + player.getAbsorptionAmount() - event.getAmount() > 0.0F) return;
+
+        if (!event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)
+                && (player.getMainHandItem().is(Items.TOTEM_OF_UNDYING)
+                    || player.getOffhandItem().is(Items.TOTEM_OF_UNDYING))) {
+            return;
+        }
+
+        if (hasCharm) {
+            event.setCanceled(true);
+            player.setHealth(1.0F);
+
+            CuriosApi.getCuriosInventory(player).ifPresent(handler ->
+                    handler.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).ifPresent(slotResult ->
+                            handler.setEquippedCurio(slotResult.slotContext().identifier(),
+                                    slotResult.slotContext().index(),
+                                    new ItemStack(ModItems.FADED_BLESSING_OF_CECILIA.get()))));
+
+            player.level().playSound(null, player.blockPosition(), SoundEvents.TOTEM_USE,
+                    SoundSource.NEUTRAL, 1.0F, 1.0F);
+
+            ModNetwork.sendToTrackingAndSelf(player,
+                    new CurioActivationPacket(new ItemStack(ModItems.BLESSING_OF_CECILIA.get())));
+
+            if (player.level() instanceof ServerLevel sl) {
+                sl.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(),
+                        player.getX(), player.getY(), player.getZ(), 64, 1, 1, 1, 0.2);
+                sl.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
+                        player.getX(), player.getY(), player.getZ(), 64, 1, 1, 1, 0.2);
+                sl.sendParticles(ModParticleTypes.BUFF_0_PARTICLE.get(),
+                        player.getX(), player.getY(), player.getZ(), 32, 1, 1, 1, 0.2);
+            }
+
+            player.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING, 100, 0, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 4, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 9, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 4, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false));
+        }
+    }
+
+    /** 佩戴塞西莉亚的加护时，加护效果不可被移除。 */
+    @SubscribeEvent
+    public static void onMobEffectRemove(MobEffectEvent.Remove event) {
+        var instance = event.getEffectInstance();
+        if (instance == null || instance.getEffect() != ModEffects.CECILIA_BLESSING) return;
+        if (event.getEntity() instanceof Player player
+                && CuriosApi.getCuriosInventory(player).map(h ->
+                    h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent()
+                    || h.findFirstCurio(ModItems.FADED_BLESSING_OF_CECILIA.get()).isPresent()
+                ).orElse(false)) {
+            event.setCanceled(true);
+        }
     }
 }

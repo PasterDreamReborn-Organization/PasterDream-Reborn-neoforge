@@ -13,6 +13,10 @@ import com.pasterdream.pasterdreammod.network.shadowerosion.ShadowErosionMiningS
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindHoverInputPacket;
 import com.pasterdream.pasterdreammod.network.skill.KusanagiVenomStingerPacket;
 import com.pasterdream.pasterdreammod.network.skill.BlinkPacket;
+import com.pasterdream.pasterdreammod.network.skill.TerraBladeSwingPacket;
+import com.pasterdream.pasterdreammod.network.curio.CloakActivationPacket;
+import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
+import com.pasterdream.pasterdreammod.network.curio.KaichuOmamoriActivationPacket;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -52,6 +56,14 @@ public final class ModNetwork {
         registrar.playToClient(FluidSyncPacket.TYPE, FluidSyncPacket.STREAM_CODEC,
                 FluidSyncPacket::handle);
         registrar.playToServer(BlinkPacket.TYPE, BlinkPacket.STREAM_CODEC, BlinkPacket::handle);
+        registrar.playToServer(TerraBladeSwingPacket.TYPE, TerraBladeSwingPacket.STREAM_CODEC,
+                TerraBladeSwingPacket::handle);
+        registrar.playToServer(CloakActivationPacket.TYPE, CloakActivationPacket.STREAM_CODEC,
+                CloakActivationPacket::handle);
+        registrar.playToServer(KaichuOmamoriActivationPacket.TYPE, KaichuOmamoriActivationPacket.STREAM_CODEC,
+                KaichuOmamoriActivationPacket::handle);
+        registrar.playToClient(CurioActivationPacket.TYPE, CurioActivationPacket.STREAM_CODEC,
+                CurioActivationPacket::handle);
         registrar.playToServer(WindHoverInputPacket.TYPE, WindHoverInputPacket.STREAM_CODEC,
                 WindHoverInputPacket::handle);
         registrar.playToClient(LowSanConfigSyncPacket.TYPE, LowSanConfigSyncPacket.STREAM_CODEC, LowSanConfigSyncPacket::handle);
@@ -64,5 +76,11 @@ public final class ModNetwork {
     /** 客户端 → 服务端。 */
     public static void sendToServer(CustomPacketPayload payload) {
         PacketDistributor.sendToServer(payload);
+    }
+
+    /** 服务端 → 追踪该实体及自身的客户端 */
+    public static void sendToTrackingAndSelf(net.minecraft.world.entity.Entity entity,
+                                             CustomPacketPayload payload) {
+        PacketDistributor.sendToPlayersTrackingEntityAndSelf(entity, payload);
     }
 }

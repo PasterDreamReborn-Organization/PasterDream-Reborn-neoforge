@@ -15,8 +15,9 @@ import net.minecraft.world.phys.Vec3;
 
 public class BlinkSkill {
 
-    /** 瞬身术回避时长（tick）：基础 0.3s */
+    /** 瞬身术回避时长（tick）：基础 0.3s；穿戴激活后的回避衣装时延长至 0.6s */
     private static final int EVASION_DURATION = 6;
+    private static final int EVASION_CLOAK_DURATION = 12;
 
     public static void execute(ServerPlayer player) {
         if (player == null || player.level().isClientSide()) return;
@@ -71,7 +72,9 @@ public class BlinkSkill {
     }
 
     private static void applyEvasionBuff(Player player) {
-        player.addEffect(new MobEffectInstance(ModEffects.EVASION, EVASION_DURATION, 0,
+        int duration = player.hasEffect(ModEffects.EVASION_CLOAK)
+                ? EVASION_CLOAK_DURATION : EVASION_DURATION;
+        player.addEffect(new MobEffectInstance(ModEffects.EVASION, duration, 0,
                 false, false));
     }
 

@@ -272,6 +272,15 @@ public class Config {
                     List.of("dummmmmmy:target_dummy"),
                     obj -> obj instanceof String);
 
+    // === 怀中御守 / 狐火 ===
+    public static final ModConfigSpec.IntValue KAICHU_OMAMORI_COOLDOWN = BUILDER
+            .comment("怀中御守的冷却时间（秒），默认 24 秒")
+            .defineInRange("KaichuOmamoriCooldownSeconds", 24, 0, Integer.MAX_VALUE);
+
+    public static final ModConfigSpec.IntValue FOX_FIRE_LIFETIME = BUILDER
+            .comment("狐火力场的持续时间（秒），默认 15 秒")
+            .defineInRange("FoxFireLifetimeSeconds", 15, 0, Integer.MAX_VALUE);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     /** 查询指定实体类型是否在罪之预言卡秒杀列表中 */

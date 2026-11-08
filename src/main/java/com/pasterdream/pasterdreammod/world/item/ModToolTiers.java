@@ -47,7 +47,11 @@ public enum ModToolTiers implements Tier {
     BROKEN_HERO_SWORD(100, 1.0F, 3.0F, BlockTags.INCORRECT_FOR_STONE_TOOL, 0,
             Ingredient::of),
     WINDWREATHED_THUNDER_SPEAR(2011, 13.0F, 9.0F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 22,
-            () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get()));
+            () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get())),
+    TERRA_SWORD(2011, 4.0F, 8.0F, BlockTags.INCORRECT_FOR_STONE_TOOL, 2,
+            Ingredient::of),
+    THERMAL_DAGGER(1721, 1.0F, 2.5F, BlockTags.INCORRECT_FOR_WOODEN_TOOL, 2,
+            () -> Ingredient.of(ModItems.TITANIUM_NUGGET.get()));
 
     private final int uses;
     private final float speed;

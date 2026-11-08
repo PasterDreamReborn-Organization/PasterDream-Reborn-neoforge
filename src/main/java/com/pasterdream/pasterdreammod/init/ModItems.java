@@ -58,6 +58,21 @@ import com.pasterdream.pasterdreammod.world.item.curio.TravelerBeltItem;
 import com.pasterdream.pasterdreammod.world.item.curio.DreamTravelerBeltItem;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.DukeCoinCurioItem;
+import com.pasterdream.pasterdreammod.world.item.curio.HiyoriButterflyHairpinItem;
+import com.pasterdream.pasterdreammod.world.item.curio.AllkindsRingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.KaichuOmamoriItem;
+import com.pasterdream.pasterdreammod.world.item.curio.TerraFloatingIslandItem;
+import com.pasterdream.pasterdreammod.world.item.curio.BlessingOfCeciliaItem;
+import com.pasterdream.pasterdreammod.world.item.curio.FadedBlessingOfCeciliaItem;
+import com.pasterdream.pasterdreammod.world.item.curio.AngelWingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.ForsakensWingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.MachineLightWingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.TurnbackCloakItem;
+import com.pasterdream.pasterdreammod.world.item.curio.EvasionCloakItem;
+import com.pasterdream.pasterdreammod.world.item.ThermalDaggerItem;
+import com.pasterdream.pasterdreammod.world.item.TerraBladeItem;
+import com.pasterdream.pasterdreammod.world.item.StrawberryHeartItem;
 import com.pasterdream.pasterdreammod.world.item.curio.CounterRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.MeltDreamEnergyRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.BobojiCurioItem;
@@ -1548,6 +1563,48 @@ public class ModItems {
     public static final DeferredItem<Item> FIG = ITEMS.register("fig",
             () -> new ItemNameBlockItem(ModBlocks.FIG_VINE.get(), new Item.Properties()
                     .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.165f).build())));
+
+    // ===== 拓展栏物品 =====
+    public static final DeferredItem<Item> MELT_DREAM_AURORIAN_STEEL_INGOT = ITEMS.register("melt_dream_aurorian_steel_ingot",
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> THERMAL_DAGGER = ITEMS.register("thermal_dagger",
+            () -> new ThermalDaggerItem(new Item.Properties()));
+    public static final DeferredItem<Item> TERRA_BLADE = ITEMS.register("terra_blade",
+            () -> new TerraBladeItem(ModToolTiers.TERRA_SWORD, 7, -2.4f));
+    public static final DeferredItem<Item> DUKE_COIN_CURIO = ITEMS.register("duke_coin_curio",
+            DukeCoinCurioItem::new);
+    public static final DeferredItem<Item> HIYORI_BUTTERFLY_HAIRPIN = ITEMS.register("hiyori_butterfly_hairpin",
+            HiyoriButterflyHairpinItem::new);
+    public static final DeferredItem<Item> ALLKINDS_RING = ITEMS.register("allkinds_ring",
+            AllkindsRingItem::new);
+    public static final DeferredItem<Item> KAICHU_OMAMORI = ITEMS.register("kaichu_omamori",
+            KaichuOmamoriItem::new);
+    public static final DeferredItem<Item> TERRA_FLOATING_ISLAND = ITEMS.register("terra_floating_island",
+            TerraFloatingIslandItem::new);
+    public static final DeferredItem<Item> BLESSING_OF_CECILIA = ITEMS.register("blessing_of_cecilia",
+            BlessingOfCeciliaItem::new);
+    public static final DeferredItem<Item> FADED_BLESSING_OF_CECILIA = ITEMS.register("faded_blessing_of_cecilia",
+            FadedBlessingOfCeciliaItem::new);
+    public static final DeferredItem<Item> STRAWBERRY_HEART = ITEMS.register("strawberry_heart",
+            StrawberryHeartItem::new);
+    public static final DeferredItem<Item> ANGEL_WING = ITEMS.register("angel_wing",
+            AngelWingItem::new);
+    public static final DeferredItem<Item> FORSAKENS_WING = ITEMS.register("forsakens_wing",
+            ForsakensWingItem::new);
+    public static final DeferredItem<Item> MACHINE_LIGHT_WING = ITEMS.register("machine_light_wing",
+            MachineLightWingItem::new);
+    public static final DeferredItem<Item> TURNBACK_CLOAK = ITEMS.register("turnback_cloak",
+            TurnbackCloakItem::new);
+    public static final DeferredItem<Item> EVASION_CLOAK = ITEMS.register("evasion_cloak",
+            EvasionCloakItem::new);
+    public static final DeferredItem<Item> SLIVER_BELL = ITEMS.register("silver_bell",
+            () -> new Item(new Item.Properties().rarity(Rarity.COMMON)) {
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, java.util.List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, context, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdream.sliver_bell"));
+                }
+            });
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

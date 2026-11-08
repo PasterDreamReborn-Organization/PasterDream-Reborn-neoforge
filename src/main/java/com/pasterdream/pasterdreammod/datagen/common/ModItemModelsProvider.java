@@ -523,6 +523,23 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.CONGEAL_WIND_IRON_CHAIN.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/congeal_wind_iron_chain"));
         withExistingParent(ModItems.BREAK_WIND_CURTAIN.getId().getPath(), modLoc("block/break_wind_curtain"));
+        // ===== 拓展栏 =====
+        handheldItem(ModItems.THERMAL_DAGGER.get());
+        basicItem(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get());
+        basicItem(ModItems.DUKE_COIN_CURIO.get());
+        basicItem(ModItems.HIYORI_BUTTERFLY_HAIRPIN.get());
+        basicItem(ModItems.ALLKINDS_RING.get());
+        basicItem(ModItems.KAICHU_OMAMORI.get());
+        basicItem(ModItems.TERRA_FLOATING_ISLAND.get());
+        basicItem(ModItems.BLESSING_OF_CECILIA.get());
+        basicItem(ModItems.FADED_BLESSING_OF_CECILIA.get());
+        basicItem(ModItems.STRAWBERRY_HEART.get());
+        basicItem(ModItems.ANGEL_WING.get());
+        basicItem(ModItems.FORSAKENS_WING.get());
+        basicItem(ModItems.MACHINE_LIGHT_WING.get());
+        basicItem(ModItems.TURNBACK_CLOAK.get());
+        basicItem(ModItems.EVASION_CLOAK.get());
+        basicItem(ModItems.SLIVER_BELL.get());
         registerProphecyCardModels();
         registerPotionBottleModels();
     }
