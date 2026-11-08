@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.advancement.critereon.BreakWindCurtainTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.CaptureFireflyTrigger;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.bus.api.IEventBus;
@@ -28,6 +29,10 @@ public final class ModCriteriaTriggers {
     /** 穿过破风幕帐 */
     public static final DeferredHolder<CriterionTrigger<?>, BreakWindCurtainTrigger> BREAK_WIND_CURTAIN =
             TRIGGERS.register("break_wind_curtain", BreakWindCurtainTrigger::new);
+
+    /** 用生态玻璃罐右键捕获一只萤火虫 */
+    public static final DeferredHolder<CriterionTrigger<?>, CaptureFireflyTrigger> CAPTURE_FIREFLY =
+            TRIGGERS.register("capture_firefly", CaptureFireflyTrigger::new);
 
     public static void register(IEventBus eventBus) {
         TRIGGERS.register(eventBus);

@@ -60,6 +60,12 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("golden", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SILVER_PARTICLE =
             PARTICLE_TYPES.register("silver", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FIREFLY_GLASS_JAR_PARTICLE =
+            PARTICLE_TYPES.register("firefly_glass_jar", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> LIGHT_FIREFLY_GLASS_JAR_PARTICLE =
+            PARTICLE_TYPES.register("light_firefly_glass_jar", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FIREFLY_PARTICLE =
+            PARTICLE_TYPES.register("firefly", () -> new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

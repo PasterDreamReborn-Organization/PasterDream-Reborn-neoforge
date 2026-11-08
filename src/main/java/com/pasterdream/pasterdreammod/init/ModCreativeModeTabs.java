@@ -572,6 +572,15 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DREAM_CAULDRON.get());
                         output.accept(ModItems.DREAM_ACCUMULATOR.get());
                         output.accept(ModItems.SORBENT.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_WALL_KEY.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_FLOOR_KEY.get());
+                        output.accept(ModItems.SHADOW_BLAST_FURNACE_CORE.get());
+                        output.accept(ModItems.ECOLOGY_GLASS_JAR.get());
+                        output.accept(ModItems.FIREFLY_GLASS_JAR.get());
+                        output.accept(ModItems.FIREFLY_NEST.get());
+                        output.accept(ModItems.BIRDS_NEST.get());
+                        output.accept(ModItems.CHRISTMAS_LIGHTS.get());
+                        output.accept(ModItems.SMALL_STONE_SPIRIT_BLOCK.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_PLANTS_TAB = CREATIVE_MODE_TABS.register("pasterdream_plants_tab",
@@ -733,6 +742,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_HAND_SPAWN_EGG.get());
+                        output.accept(ModItems.FIREFLY_SPAWN_EGG.get());
+                        output.accept(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
                     })
                     .build());
 

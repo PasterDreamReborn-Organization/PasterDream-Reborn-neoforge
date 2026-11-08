@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.network.debugsword.DebugBlockActionPacket;
+import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
 import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.WeaponWorkshopCraftingTableCraftPacket;
@@ -74,6 +75,8 @@ public final class ModNetwork {
                 ShadowErosionMiningSpeedSyncPacket::handle);
         registrar.playToServer(DebugBlockActionPacket.TYPE, DebugBlockActionPacket.STREAM_CODEC,
                 DebugBlockActionPacket::handle);
+        registrar.playToClient(AnimationStateChangePacket.TYPE, AnimationStateChangePacket.STREAM_CODEC,
+                AnimationStateChangePacket::handle);
     }
 
     /** 客户端 → 服务端。 */

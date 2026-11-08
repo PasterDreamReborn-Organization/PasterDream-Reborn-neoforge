@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
+import com.pasterdream.pasterdreammod.world.entity.FireflyEntity;
+import com.pasterdream.pasterdreammod.world.entity.SmallStoneSpiritEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import com.pasterdream.pasterdreammod.world.entity.FluffyWindArrowEntity;
@@ -152,6 +154,20 @@ public class ModEntities {
                     .fireImmune()
                     .sized(0.6f, 0.8f));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<FireflyEntity>> FIREFLY = register("firefly",
+            EntityType.Builder.<FireflyEntity>of(FireflyEntity::new, MobCategory.CREATURE)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<SmallStoneSpiritEntity>> SMALL_STONE_SPIRIT = register("small_stone_spirit",
+            EntityType.Builder.<SmallStoneSpiritEntity>of(SmallStoneSpiritEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .sized(0.7f, 1f));
+
     public static final DeferredHolder<EntityType<?>, EntityType<TerraswordWaveEntity>> TERRASWORD_WAVE =
             register("terrasword_wave",
                     EntityType.Builder.<TerraswordWaveEntity>of(TerraswordWaveEntity::new, MobCategory.MISC)
@@ -179,6 +195,8 @@ public class ModEntities {
         ENTITY_TYPES.register(eventBus);
         eventBus.addListener(TerrorbeakEntity::init);
         eventBus.addListener(ShadowHandEntity::init);
+        eventBus.addListener(FireflyEntity::init);
+        eventBus.addListener(SmallStoneSpiritEntity::init);
     }
 
     public static void registerAttributes(EntityAttributeCreationEvent event) {
@@ -189,6 +207,8 @@ public class ModEntities {
         event.put(TERRASWORD_WAVE.get(), TerraswordWaveEntity.createAttributes().build());
         event.put(FOX_FIRE.get(), FoxFireEntity.createAttributes().build());
         event.put(MELT_DREAM_CRYSTAL_ENTITY.get(), MeltDreamCrystalEntityEntity.createAttributes().build());
+        event.put(FIREFLY.get(), FireflyEntity.createAttributes().build());
+        event.put(SMALL_STONE_SPIRIT.get(), SmallStoneSpiritEntity.createAttributes().build());
     }
 
     private ModEntities() {

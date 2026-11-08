@@ -9,6 +9,9 @@ import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlo
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestBlockEntityRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 /**
@@ -29,5 +32,8 @@ public final class ModBlockEntityRenderer {
         event.registerBlockEntityRenderer(ModBlockEntities.DREAM_ACCUMULATOR.get(), DreamAccumulatorBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_CHEST.get(), ShadowChestBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), TheEndlessBookOfDreamSeekersBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.ECOLOGY_GLASS_JAR.get(), EcologyGlassJarBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.FIREFLY_GLASS_JAR.get(), FireflyGlassJarBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.BIRDS_NEST.get(), BirdsNestBlockEntityRenderer::new);
     }
 }
