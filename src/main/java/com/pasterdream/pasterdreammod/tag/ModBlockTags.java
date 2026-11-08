@@ -24,6 +24,7 @@ public final class ModBlockTags {
     public static final TagKey<Block> STORAGE_BLOCKS_DYEDREAM_BUD = common("storage_blocks/dyedream_bud");
     public static final TagKey<Block> STORAGE_BLOCKS_CHARGED_AMETHYST = common("storage_blocks/charged_amethyst");
     public static final TagKey<Block> STORAGE_BLOCKS_SALT = common("storage_blocks/salt");
+    public static final TagKey<Block> STORAGE_BLOCKS_BLACK_METAL = common("storage_blocks/black_metal");
 
     public static final TagKey<Block> SHADOW_EROSION_TOOL_CAN_BOOST = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:shadow_erosion_tool_can_boost"));
     public static final TagKey<Block> DYEDREAM_DIRT = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt"));

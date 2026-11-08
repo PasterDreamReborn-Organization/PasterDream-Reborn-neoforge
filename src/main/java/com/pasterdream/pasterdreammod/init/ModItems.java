@@ -18,6 +18,7 @@ import com.pasterdream.pasterdreammod.world.item.RedDewItem;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.SnowballPebbleItem;
+import com.pasterdream.pasterdreammod.world.item.FireproofBlockItem;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.WindwreathedThunderSpearItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
@@ -1150,6 +1151,82 @@ public class ModItems {
             });
     public static final DeferredItem<BlockItem> SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW);
     public static final DeferredItem<BlockItem> THICK_SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.THICK_SHADOW);
+    public static final DeferredItem<BlockItem> SHADOW_STONE = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_BRICK = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_BRICK);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_BRICK_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_BRICK_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_BRICK_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_BRICK_WALL);
+    public static final DeferredItem<BlockItem> NARROW_SHADOW_STONE_BRICK = ITEMS.registerSimpleBlockItem(ModBlocks.NARROW_SHADOW_STONE_BRICK);
+    public static final DeferredItem<BlockItem> NARROW_SHADOW_STONE_BRICK_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> NARROW_SHADOW_STONE_BRICK_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> NARROW_SHADOW_STONE_BRICK_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_TILES = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_TILES);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_TILES_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_TILES_STAIRS);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_TILES_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_TILES_SLAB);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_TILES_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_TILES_WALL);
+    public static final DeferredItem<BlockItem> CRACKED_SHADOW_STONE_BRICK = ITEMS.registerSimpleBlockItem(ModBlocks.CRACKED_SHADOW_STONE_BRICK);
+    public static final DeferredItem<BlockItem> CHISELED_SHADOW_STONE_BRICK = ITEMS.registerSimpleBlockItem(ModBlocks.CHISELED_SHADOW_STONE_BRICK);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_CAGE_RUNE = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_CAGE_RUNE);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_HOLY_GRAIL_RUNE = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_HOLY_GRAIL_RUNE);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_OBLATION_RUNE = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_OBLATION_RUNE);
+    public static final DeferredItem<BlockItem> SHADOW_STONE_TRIPOD_CAULDRON_RUNE = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_STONE_TRIPOD_CAULDRON_RUNE);
+    public static final DeferredItem<BlockItem> SHADOW_DUNGEON_STONE = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_DUNGEON_STONE);
+    public static final DeferredItem<BlockItem> CHISELED_SHADOW_DUNGEON_BRICKS = ITEMS.registerSimpleBlockItem(ModBlocks.CHISELED_SHADOW_DUNGEON_BRICKS);
+    public static final DeferredItem<BlockItem> SHADOW_DUNGEON_BRICKS = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_DUNGEON_BRICKS);
+    public static final DeferredItem<BlockItem> CRACKED_SHADOW_DUNGEON_BRICKS = ITEMS.registerSimpleBlockItem(ModBlocks.CRACKED_SHADOW_DUNGEON_BRICKS);
+    public static final DeferredItem<BlockItem> FRACTURED_SHADOW_DUNGEON_BRICKS = ITEMS.registerSimpleBlockItem(ModBlocks.FRACTURED_SHADOW_DUNGEON_BRICKS);
+    public static final DeferredItem<BlockItem> SHADOW_DUNGEON_BRICK_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> SHADOW_DUNGEON_BRICK_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> SHATTERED_SHADOW_DUNGEON_BRICKS = ITEMS.registerSimpleBlockItem(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS);
+    public static final DeferredItem<BlockItem> SHADOW_ARENA_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_ARENA_BLOCK);
+    public static final DeferredItem<BlockItem> SHADOW_FISSURE_0 = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_FISSURE_0);
+    public static final DeferredItem<BlockItem> SHADOW_FISSURE_1 = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_FISSURE_1);
+    public static final DeferredItem<BlockItem> SHADOW_FISSURE_2 = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_FISSURE_2);
+    public static final DeferredItem<BlockItem> SHADOW_FISSURE_3 = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_FISSURE_3);
+    public static final DeferredItem<BlockItem> SHADOW_FISSURE_4 = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_FISSURE_4);
+    public static final DeferredItem<BlockItem> SHADOW_FISSURE_5 = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_FISSURE_5);
+    public static final DeferredItem<BlockItem> SHADOW_NYLIUM = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_NYLIUM);
+    public static final DeferredItem<BlockItem> SHADOW_LIGHT = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_LIGHT);
+    public static final DeferredItem<BlockItem> SHADOW_SHROOMLIGHT = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_SHROOMLIGHT);
+    public static final DeferredItem<BlockItem> SHADOW_CANDLE = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_CANDLE);
+    public static final DeferredItem<BlockItem> SHADOW_WART_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_WART_BLOCK);
+    public static final DeferredItem<BlockItem> SHADOW_STEM = ITEMS.register("shadow_stem",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_STEM.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_HYPHAE = ITEMS.register("shadow_hyphae",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_HYPHAE.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> STRIPPED_SHADOW_STEM = ITEMS.register("stripped_shadow_stem",
+            () -> new FireproofBlockItem(ModBlocks.STRIPPED_SHADOW_STEM.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> STRIPPED_SHADOW_HYPHAE = ITEMS.register("stripped_shadow_hyphae",
+            () -> new FireproofBlockItem(ModBlocks.STRIPPED_SHADOW_HYPHAE.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_PLANKS = ITEMS.register("shadow_planks",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_PLANKS.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_STAIRS = ITEMS.register("shadow_stairs",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_STAIRS.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_SLAB = ITEMS.register("shadow_slab",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_SLAB.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_FENCE = ITEMS.register("shadow_fence",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_FENCE.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_FENCE_GATE = ITEMS.register("shadow_fence_gate",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_FENCE_GATE.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_PANE = ITEMS.register("shadow_pane",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_PANE.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_DOOR = ITEMS.register("shadow_door",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_DOOR.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_TRAPDOOR = ITEMS.register("shadow_trapdoor",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_TRAPDOOR.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_PRESSURE_PLATE = ITEMS.register("shadow_pressure_plate",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_PRESSURE_PLATE.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_BUTTON = ITEMS.register("shadow_button",
+            () -> new FireproofBlockItem(ModBlocks.SHADOW_BUTTON.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_BOOKSHELF = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_BOOKSHELF);
+    public static final DeferredItem<BlockItem> WORN_SHADOW_BOOKSHELF = ITEMS.registerSimpleBlockItem(ModBlocks.WORN_SHADOW_BOOKSHELF);
+    public static final DeferredItem<BlockItem> COBWEB_SHADOW_BOOKSHELF = ITEMS.registerSimpleBlockItem(ModBlocks.COBWEB_SHADOW_BOOKSHELF);
+    public static final DeferredItem<BlockItem> KEY_SHADOW_BOOKSHELF = ITEMS.registerSimpleBlockItem(ModBlocks.KEY_SHADOW_BOOKSHELF);
+    public static final DeferredItem<BlockItem> BLACK_METAL_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.BLACK_METAL_BLOCK);
+    public static final DeferredItem<BlockItem> RUST_BLACK_METAL_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.RUST_BLACK_METAL_BLOCK);
+    public static final DeferredItem<BlockItem> RUST_BLACK_METAL_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.RUST_BLACK_METAL_WALL);
+    public static final DeferredItem<BlockItem> RUST_BLACK_METAL_BARS = ITEMS.registerSimpleBlockItem(ModBlocks.RUST_BLACK_METAL_BARS);
+    public static final DeferredItem<BlockItem> SHADOW_CLAY_POT = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_CLAY_POT);
     public static final DeferredItem<BlockItem> WEAPON_WORKSHOP_CRAFTING_TABLE = ITEMS.registerSimpleBlockItem(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE);
     public static final DeferredItem<BlockItem> DYEDREAM_DESK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DESK);
     public static final DeferredItem<BlockItem> CLAYPAN = ITEMS.registerSimpleBlockItem(ModBlocks.CLAYPAN);

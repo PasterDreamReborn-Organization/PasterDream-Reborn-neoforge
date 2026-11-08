@@ -70,6 +70,8 @@ public class ModRecipesProvider extends RecipeProvider {
         foodRecipes(output);
         storageBagRecipes(output);
         blackMetalRecipes(output);
+        shadowBuildingRecipes(output);
+        shadowBookshelfRecipes(output);
         shadowAlloyToolRecipes(output);
         shadowAlloyCrossbowRecipe(output);
         shadowErosionWorkshopRecipes(output);
@@ -2482,6 +2484,234 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('c', ModItemTags.PURE_HORROR_SOURCES)
                 .unlockedBy("has_pure_horror_source", has(ModItemTags.PURE_HORROR_SOURCES))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pure_horror_from_source"));
+
+        // 黑金属锭 → 黑金属块
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.BLACK_METAL_BLOCK.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.BLACK_METAL_INGOT.get())
+                .unlockedBy(getHasName(ModItems.BLACK_METAL_INGOT.get()), has(ModItems.BLACK_METAL_INGOT.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_block_from_ingot"));
+
+        // 黑金属块 → 黑金属锭（分解）
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLACK_METAL_INGOT.get(), 4)
+                .requires(ModItems.BLACK_METAL_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.BLACK_METAL_BLOCK.get()), has(ModItems.BLACK_METAL_BLOCK.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_ingot_from_block"));
+
+        // 锈蚀金属块
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.RUST_BLACK_METAL_BLOCK.get(), 4)
+                .pattern(" a ")
+                .pattern("aba")
+                .pattern(" a ")
+                .define('a', ModItems.RUST_BLACK_METAL_GRAIN.get())
+                .define('b', Items.IRON_INGOT)
+                .unlockedBy(getHasName(ModItems.RUST_BLACK_METAL_GRAIN.get()), has(ModItems.RUST_BLACK_METAL_GRAIN.get()))
+                .save(pWriter);
+
+        // 锈蚀金属墙
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.RUST_BLACK_METAL_WALL.get(), 2)
+                .pattern("aba")
+                .define('a', ModItems.RUST_BLACK_METAL_GRAIN.get())
+                .define('b', Items.IRON_INGOT)
+                .unlockedBy(getHasName(ModItems.RUST_BLACK_METAL_GRAIN.get()), has(ModItems.RUST_BLACK_METAL_GRAIN.get()))
+                .save(pWriter);
+
+        // 锈蚀金属栏杆
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.RUST_BLACK_METAL_BARS.get(), 1)
+                .requires(Items.IRON_BARS)
+                .requires(ModItems.RUST_BLACK_METAL_GRAIN.get())
+                .unlockedBy(getHasName(ModItems.RUST_BLACK_METAL_GRAIN.get()), has(ModItems.RUST_BLACK_METAL_GRAIN.get()))
+                .save(pWriter);
+    }
+
+    private void shadowBuildingRecipes(RecipeOutput pWriter) {
+        // 阴影菌柄 → 阴影木板 + 全套建材配方
+        RecipeHelpers.plankFamilyRecipes(pWriter,
+                ModItems.SHADOW_STEM.get(),
+                ModItems.SHADOW_PLANKS.get(),
+                ModItems.SHADOW_STAIRS.get(),
+                ModItems.SHADOW_SLAB.get(),
+                ModItems.SHADOW_FENCE.get(),
+                ModItems.SHADOW_FENCE_GATE.get(),
+                ModItems.SHADOW_DOOR.get(),
+                ModItems.SHADOW_TRAPDOOR.get(),
+                ModItems.SHADOW_PRESSURE_PLATE.get(),
+                ModItems.SHADOW_BUTTON.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 阴影菌核 → 阴影木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_PLANKS.get(), 4)
+                .requires(ModItems.SHADOW_HYPHAE.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_HYPHAE.get()), has(ModItems.SHADOW_HYPHAE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_planks_from_hyphae");
+
+        // 去皮阴影菌柄 → 阴影木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_PLANKS.get(), 4)
+                .requires(ModItems.STRIPPED_SHADOW_STEM.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_SHADOW_STEM.get()), has(ModItems.STRIPPED_SHADOW_STEM.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_planks_from_stripped_stem");
+
+        // 去皮阴影菌核 → 阴影木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_PLANKS.get(), 4)
+                .requires(ModItems.STRIPPED_SHADOW_HYPHAE.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_SHADOW_HYPHAE.get()), has(ModItems.STRIPPED_SHADOW_HYPHAE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_planks_from_stripped_hyphae");
+
+        // 阴影木窗格 - 玻璃板 + 阴影木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_PANE.get(), 1)
+                .requires(Items.GLASS_PANE)
+                .requires(ModItems.SHADOW_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+
+        // 阴影菌核 (2×2 shadow_stem → 3 shadow_hyphae)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_HYPHAE.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.SHADOW_STEM.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_STEM.get()), has(ModItems.SHADOW_STEM.get()))
+                .save(pWriter);
+
+        // 去皮阴影菌核 (2×2 stripped_shadow_stem → 3 stripped_shadow_hyphae)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.STRIPPED_SHADOW_HYPHAE.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.STRIPPED_SHADOW_STEM.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_SHADOW_STEM.get()), has(ModItems.STRIPPED_SHADOW_STEM.get()))
+                .save(pWriter);
+
+        // 2×2 阴影石 → 4× 阴影石砖
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_STONE_BRICK.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.SHADOW_STONE.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
+                .save(pWriter);
+
+        // 阴影石砖 → 楼梯/台阶/墙 + 切石机
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.SHADOW_STONE_BRICK.get(), ModItems.SHADOW_STONE_BRICK_STAIRS.get(),
+                ModItems.SHADOW_STONE_BRICK_SLAB.get(), ModItems.SHADOW_STONE_BRICK_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 阴影石 → 阴影石砖 (切石机)
+        var shadowStoneIngredient = Ingredient.of(ModItems.SHADOW_STONE.get());
+        SingleItemRecipeBuilder.stonecutting(shadowStoneIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_STONE_BRICK.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_stone_brick_from_stonecutting");
+
+        // 阴影石建材 → 阴影石 (切石机，使用 c:shadow_stones 标签)
+        var shadowStonesTag = Ingredient.of(ModItemTags.SHADOW_STONES);
+        SingleItemRecipeBuilder.stonecutting(shadowStonesTag, RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_STONE.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_stone_from_stonecutting");
+
+        // 2×2 阴影石砖 → 4× 细阴影石砖
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.NARROW_SHADOW_STONE_BRICK.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.SHADOW_STONE_BRICK.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_STONE_BRICK.get()), has(ModItems.SHADOW_STONE_BRICK.get()))
+                .save(pWriter);
+
+        // 细阴影石砖 → 楼梯/台阶/墙 + 切石机
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.NARROW_SHADOW_STONE_BRICK.get(), ModItems.NARROW_SHADOW_STONE_BRICK_STAIRS.get(),
+                ModItems.NARROW_SHADOW_STONE_BRICK_SLAB.get(), ModItems.NARROW_SHADOW_STONE_BRICK_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 阴影石建材 → 细阴影石砖 (切石机，使用 c:shadow_stones 标签)
+        SingleItemRecipeBuilder.stonecutting(shadowStonesTag, RecipeCategory.BUILDING_BLOCKS, ModItems.NARROW_SHADOW_STONE_BRICK.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":narrow_shadow_stone_brick_from_stonecutting");
+
+        // 2×2 细阴影石砖 → 4× 阴影石瓦
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_STONE_TILES.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.NARROW_SHADOW_STONE_BRICK.get())
+                .unlockedBy(getHasName(ModItems.NARROW_SHADOW_STONE_BRICK.get()), has(ModItems.NARROW_SHADOW_STONE_BRICK.get()))
+                .save(pWriter);
+
+        // 阴影石瓦 → 楼梯/台阶/墙 + 切石机
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.SHADOW_STONE_TILES.get(), ModItems.SHADOW_STONE_TILES_STAIRS.get(),
+                ModItems.SHADOW_STONE_TILES_SLAB.get(), ModItems.SHADOW_STONE_TILES_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 阴影石建材 → 阴影石瓦 (切石机，使用 c:shadow_stones 标签)
+        SingleItemRecipeBuilder.stonecutting(shadowStonesTag, RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_STONE_TILES.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_stone_tiles_from_stonecutting");
+
+        // 阴影石瓦 → 阴影陶罐 (切石机)
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.SHADOW_STONE_TILES.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_CLAY_POT.get())
+                .unlockedBy(getHasName(ModBlocks.SHADOW_STONE_TILES.get()), has(ModBlocks.SHADOW_STONE_TILES.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_clay_pot_from_stonecutting");
+
+        // 2× 阴影石砖台阶 → 1× 錾制阴影石砖 (工作台)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_SHADOW_STONE_BRICK.get(), 1)
+                .pattern("a")
+                .pattern("a")
+                .define('a', ModItems.SHADOW_STONE_BRICK_SLAB.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_STONE_BRICK.get()), has(ModItems.SHADOW_STONE_BRICK.get()))
+                .save(pWriter);
+
+        // 阴影石建材 → 裂阴影石砖 (切石机)
+        SingleItemRecipeBuilder.stonecutting(shadowStonesTag, RecipeCategory.BUILDING_BLOCKS, ModItems.CRACKED_SHADOW_STONE_BRICK.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cracked_shadow_stone_brick_from_stonecutting");
+
+        // 阴影石建材 → 錾制阴影石砖 (切石机)
+        SingleItemRecipeBuilder.stonecutting(shadowStonesTag, RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_SHADOW_STONE_BRICK.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_shadow_stone_brick_from_stonecutting");
+    }
+
+    private void shadowBookshelfRecipes(RecipeOutput pWriter) {
+        // 阴影书架：上下各 3 个阴影木板，中间 3 本书
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("bbb")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+
+        // 破旧阴影书架：左右两本书换成纸
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.WORN_SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("cbc")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .define('c', Items.PAPER)
+                .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+
+        // 蛛网阴影书架：左右两本书换成蜘蛛网
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.COBWEB_SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("cbc")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .define('c', Items.COBWEB)
+                .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+
+        // 钥匙阴影书架：中间的书换成暗影地牢钥匙
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.KEY_SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("bcb")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .define('c', ModItems.SHADOW_DUNGEON_KEY.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_DUNGEON_KEY.get()), has(ModItems.SHADOW_DUNGEON_KEY.get()))
+                .save(pWriter);
     }
 
     private void shadowErosionWorkshopRecipes(RecipeOutput output) {

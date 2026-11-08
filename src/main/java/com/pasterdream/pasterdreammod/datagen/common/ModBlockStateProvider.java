@@ -45,7 +45,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                         .build());
         simpleBlock(ModBlocks.SHADOW_LIQUID.get(), models().cubeAll(ModBlocks.SHADOW_LIQUID.getId().getPath(), modLoc("block/shadow_liquid_flowing")));
 
-        // ===== 染梦地形方块 =====
+        // ===== 鏌撴ⅵ鍦板舰鏂瑰潡 =====
         simpleBlockWithItem(ModBlocks.DYEDREAM_DIRT.get(), cubeAll(ModBlocks.DYEDREAM_DIRT.get()));
 
         farmlandBlock(ModBlocks.DYEDREAM_FARMLAND.get());
@@ -87,7 +87,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.CALCITE_EMERALD_ORE.get(), cubeAll(ModBlocks.CALCITE_EMERALD_ORE.get()));
         simpleBlockWithItem(ModBlocks.PINK_SLIME_BLOCK.get(), models().cubeAll(ModBlocks.PINK_SLIME_BLOCK.getId().getPath(), blockTexture(ModBlocks.PINK_SLIME_BLOCK.get())).renderType("minecraft:translucent"));
 
-        // ===== 粉顶菌系列 =====
+        // ===== 绮夐《鑿岀郴鍒?=====
         var capTex = modLoc("block/pink_mushroom_block_cap");
         var poreTex = modLoc("block/pink_mushroom_block_pores");
         var stemTex = modLoc("block/pink_mushroom_stem");
@@ -130,7 +130,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.PINK_MUSHROOM_STEM);
 
         simpleBlockWithItem(ModBlocks.PINK_SHROOMLIGHT.get(), cubeAll(ModBlocks.PINK_SHROOMLIGHT.get()));
-        // ===== 染梦石英建材系列 =====
+        // ===== 鏌撴ⅵ鐭宠嫳寤烘潗绯诲垪 =====
         var quartzTex = blockTexture(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get());
         simpleBlockWithItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get(), cubeAll(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get()));
         simpleBlockWithItem(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get(), cubeAll(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get()));
@@ -155,7 +155,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock((WallBlock) ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get(), quartzTex);
         // wall inventory model handled in ModItemModelsProvider
 
-        // ===== 染梦砂岩建材系列 =====
+        // ===== 鏌撴ⅵ鐮傚博寤烘潗绯诲垪 =====
         var sandstoneSide = modLoc("block/dyedream_sandstone");
         var sandstoneTop = modLoc("block/dyedream_sandstone_top");
         var sandstoneBottom = modLoc("block/dyedream_sandstone_bottom");
@@ -210,7 +210,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         wallBlock((WallBlock) ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_WALL.get(), sandstoneTop);
 
-        // ===== 染梦木板建材系列 =====
+        // ===== 鏌撴ⅵ鏈ㄦ澘寤烘潗绯诲垪 =====
         simpleBlockWithItem(ModBlocks.DYEDREAM_PLANKS.get(), cubeAll(ModBlocks.DYEDREAM_PLANKS.get()));
 
         stairsBlock((StairBlock) ModBlocks.DYEDREAM_STAIRS.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
@@ -242,7 +242,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         buttonBlock((ButtonBlock) ModBlocks.DYEDREAM_BUTTON.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
 
-        // ===== 染梦玻璃系列 =====
+        // ===== 鏌撴ⅵ鐜荤拑绯诲垪 =====
         simpleBlockWithItem(ModBlocks.DYEDREAM_GLASS.get(), models().cubeAll(ModBlocks.DYEDREAM_GLASS.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_GLASS.get())).renderType("translucent"));
         var glassTex = modLoc("block/dyedream_glass");
         paneBlockWithRenderType((IronBarsBlock) ModBlocks.DYEDREAM_GLASS_PANE.get(), glassTex, glassTex, "translucent");
@@ -255,7 +255,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var goldCarveTex = modLoc("block/gold_carve_dyedream_glass");
         paneBlockWithRenderType((IronBarsBlock) ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get(), goldCarveTex, goldCarveTex, "translucent");
 
-        // ===== 染梦晶芽与合金块 =====
+        // ===== 鏌撴ⅵ鏅惰娊涓庡悎閲戝潡 =====
         var buddingModel = models().cubeAll(ModBlocks.DYEDREAM_BUDDING_BLOCK.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_BUDDING_BLOCK.get()));
         simpleBlockWithItem(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), buddingModel);
 
@@ -273,10 +273,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), cubeAll(ModBlocks.DYEDREAM_ALLOY_BLOCK.get()));
 
-        // ===== 染梦水晶建材系列 =====
+        // ===== 鏌撴ⅵ姘存櫠寤烘潗绯诲垪 =====
         simpleBuildingFamily(ModBlocks.DYEDREAM_BUD_BRICKS, ModBlocks.DYEDREAM_BUD_STAIRS, ModBlocks.DYEDREAM_BUD_SLAB, ModBlocks.DYEDREAM_BUD_WALL, "translucent");
 
-        // ===== 染梦冰与云 =====
+        // ===== 鏌撴ⅵ鍐颁笌浜?=====
         simpleBlockWithItem(ModBlocks.DYEDREAM_ICE.get(), models().cubeAll(ModBlocks.DYEDREAM_ICE.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_ICE.get())).renderType("translucent"));
         simpleBlockWithItem(ModBlocks.DYEDREAM_PACKED_ICE.get(), models().cubeAll(ModBlocks.DYEDREAM_PACKED_ICE.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_PACKED_ICE.get())).renderType("translucent"));
         var bubbleModel = models().cubeAll(ModBlocks.BIG_BUBBLE.getId().getPath(), modLoc("block/big_bubble")).renderType("translucent");
@@ -286,7 +286,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var darkCloudModel = models().cubeAll(ModBlocks.DARK_CLOUD.getId().getPath(), blockTexture(ModBlocks.DARK_CLOUD.get())).renderType("translucent");
         simpleBlockWithItem(ModBlocks.DARK_CLOUD.get(), darkCloudModel);
 
-        // ===== 染梦灯 =====
+        // ===== 鏌撴ⅵ鐏?=====
         simpleBlockWithItem(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get(), models().cubeAll(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get())).renderType("translucent"));
         var lanternStanding = models().withExistingParent("dyedream_lantern", mcLoc("block/template_lantern"))
                 .texture("lantern", modLoc("block/dyedream_lantern")).renderType("cutout");
@@ -297,16 +297,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .partialState().with(LanternBlock.HANGING, true).modelForState().modelFile(lanternHanging).addModel();
         simpleBlockItem(ModBlocks.DYEDREAM_LANTERN.get(), lanternStanding);
 
-        // ===== 冰晶岩与冰凌晶芽 =====
+        // ===== 鍐版櫠宀╀笌鍐板噷鏅惰娊 =====
         simpleBlockWithItem(ModBlocks.ICE_STONE.get(), cubeAll(ModBlocks.ICE_STONE.get()));
         var iceBud = models().cross(ModBlocks.ICE_BUD.getId().getPath(), blockTexture(ModBlocks.ICE_BUD.get())).renderType("cutout");
         directionalBlock(ModBlocks.ICE_BUD.get(), iceBud);
 
-        // ===== 方解石系列 =====
+        // ===== 鏂硅В鐭崇郴鍒?=====
         simpleBuildingFamily(ModBlocks.POLISHED_CALCITE, ModBlocks.POLISHED_CALCITE_STAIRS, ModBlocks.POLISHED_CALCITE_SLAB, ModBlocks.POLISHED_CALCITE_WALL);
         simpleBuildingFamily(ModBlocks.CALCITE_TILES, ModBlocks.CALCITE_TILES_STAIRS, ModBlocks.CALCITE_TILES_SLAB, ModBlocks.CALCITE_TILES_WALL);
 
-        // ===== 方解石锥 =====
+        // ===== 鏂硅В鐭抽敟 =====
         var calciteConeBase = models().getExistingFile(modLoc("block/calcite_cone_base"));
         var calciteConeMiddle = models().getExistingFile(modLoc("block/calcite_cone_middle"));
         var calciteConeFrustum = models().getExistingFile(modLoc("block/calcite_cone_frustum"));
@@ -337,7 +337,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.SALT_BLOCK.get(), cubeAll(ModBlocks.SALT_BLOCK.get()));
         simpleBlockWithItem(ModBlocks.CHARGED_AMETHYST_BLOCK.get(), models().cubeAll(ModBlocks.CHARGED_AMETHYST_BLOCK.getId().getPath(), blockTexture(ModBlocks.CHARGED_AMETHYST_BLOCK.get())).renderType("translucent"));
 
-        // ===== 失落剑冢 =====
+        // ===== 澶辫惤鍓戝啟 =====
         var lostSwordTomb = models().getBuilder(ModBlocks.LOST_SWORD_TOMB.getId().getPath())
                 .parent(new ModelFile.UncheckedModelFile(modLoc("custom/lost_sword_tomb")))
                 .texture("all", modLoc("block/lost_sword"))
@@ -357,6 +357,108 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var thickShadowModel = models().cubeAll(ModBlocks.THICK_SHADOW.getId().getPath(), blockTexture(ModBlocks.THICK_SHADOW.get())).renderType("translucent");
         simpleBlockWithItem(ModBlocks.THICK_SHADOW.get(), thickShadowModel);
 
+        // ===== 鐏奖涔嬩笅 =====
+        simpleBlockWithItem(ModBlocks.SHADOW_STONE.get(), models().cubeAll(ModBlocks.SHADOW_STONE.getId().getPath(), blockTexture(ModBlocks.SHADOW_STONE.get())));
+        simpleBuildingFamily(ModBlocks.SHADOW_STONE_BRICK, ModBlocks.SHADOW_STONE_BRICK_STAIRS, ModBlocks.SHADOW_STONE_BRICK_SLAB, ModBlocks.SHADOW_STONE_BRICK_WALL);
+        simpleBuildingFamily(ModBlocks.NARROW_SHADOW_STONE_BRICK, ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS, ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB, ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL);
+        simpleBuildingFamily(ModBlocks.SHADOW_STONE_TILES, ModBlocks.SHADOW_STONE_TILES_STAIRS, ModBlocks.SHADOW_STONE_TILES_SLAB, ModBlocks.SHADOW_STONE_TILES_WALL);
+        simpleBlockWithItem(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get(), cubeAll(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get()));
+        simpleBlockWithItem(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get(), cubeAll(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get()));
+        var shadowStoneTopBottom = blockTexture(ModBlocks.SHADOW_STONE.get());
+        var cageRuneModel = models().cubeBottomTop(ModBlocks.SHADOW_STONE_CAGE_RUNE.getId().getPath(), modLoc("block/shadow_stone_cage_rune"), shadowStoneTopBottom, shadowStoneTopBottom);
+        simpleBlockWithItem(ModBlocks.SHADOW_STONE_CAGE_RUNE.get(), cageRuneModel);
+        var holyGrailRuneModel = models().cubeBottomTop(ModBlocks.SHADOW_STONE_HOLY_GRAIL_RUNE.getId().getPath(), modLoc("block/shadow_stone_holy_grail_rune"), shadowStoneTopBottom, shadowStoneTopBottom);
+        simpleBlockWithItem(ModBlocks.SHADOW_STONE_HOLY_GRAIL_RUNE.get(), holyGrailRuneModel);
+        var oblationRuneModel = models().cubeBottomTop(ModBlocks.SHADOW_STONE_OBLATION_RUNE.getId().getPath(), modLoc("block/shadow_stone_oblation_rune"), shadowStoneTopBottom, shadowStoneTopBottom);
+        simpleBlockWithItem(ModBlocks.SHADOW_STONE_OBLATION_RUNE.get(), oblationRuneModel);
+        var tripodCauldronRuneModel = models().cubeBottomTop(ModBlocks.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.getId().getPath(), modLoc("block/shadow_stone_tripod_cauldron_rune"), shadowStoneTopBottom, shadowStoneTopBottom);
+        simpleBlockWithItem(ModBlocks.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.get(), tripodCauldronRuneModel);
+
+        simpleBlockWithItem(ModBlocks.SHADOW_DUNGEON_STONE.get(), cubeAll(ModBlocks.SHADOW_DUNGEON_STONE.get()));
+        var chiseledDungeonSide = modLoc("block/chiseled_shadow_dungeon_bricks_side");
+        var chiseledDungeonTop = modLoc("block/chiseled_shadow_dungeon_bricks_top");
+        axisBlock((RotatedPillarBlock) ModBlocks.CHISELED_SHADOW_DUNGEON_BRICKS.get(), chiseledDungeonSide, chiseledDungeonTop);
+        blockItem(ModBlocks.CHISELED_SHADOW_DUNGEON_BRICKS);
+        simpleBlockWithItem(ModBlocks.SHADOW_DUNGEON_BRICKS.get(), cubeAll(ModBlocks.SHADOW_DUNGEON_BRICKS.get()));
+        simpleBlockWithItem(ModBlocks.CRACKED_SHADOW_DUNGEON_BRICKS.get(), cubeAll(ModBlocks.CRACKED_SHADOW_DUNGEON_BRICKS.get()));
+        simpleBlockWithItem(ModBlocks.FRACTURED_SHADOW_DUNGEON_BRICKS.get(), cubeAll(ModBlocks.FRACTURED_SHADOW_DUNGEON_BRICKS.get()));
+        var dungeonBrickTex = blockTexture(ModBlocks.SHADOW_DUNGEON_BRICKS.get());
+        stairsBlock((StairBlock) ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS.get(), dungeonBrickTex);
+        blockItem(ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS);
+        slabBlock((SlabBlock) ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get(), dungeonBrickTex, dungeonBrickTex);
+        blockItem(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB);
+        simpleBlockWithItem(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), cubeAll(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get()));
+
+        simpleBlockWithItem(ModBlocks.SHADOW_ARENA_BLOCK.get(), cubeAll(ModBlocks.SHADOW_ARENA_BLOCK.get()));
+        simpleBlockWithItem(ModBlocks.SHADOW_FISSURE_0.get(), cubeAll(ModBlocks.SHADOW_FISSURE_0.get()));
+        simpleBlockWithItem(ModBlocks.SHADOW_FISSURE_1.get(), models().cubeAll(ModBlocks.SHADOW_FISSURE_1.getId().getPath(), blockTexture(ModBlocks.SHADOW_FISSURE_1.get())).renderType("translucent"));
+        simpleBlockWithItem(ModBlocks.SHADOW_FISSURE_2.get(), cubeAll(ModBlocks.SHADOW_FISSURE_2.get()));
+        simpleBlockWithItem(ModBlocks.SHADOW_FISSURE_3.get(), models().cubeAll(ModBlocks.SHADOW_FISSURE_3.getId().getPath(), blockTexture(ModBlocks.SHADOW_FISSURE_3.get())).renderType("translucent"));
+        simpleBlockWithItem(ModBlocks.SHADOW_FISSURE_4.get(), cubeAll(ModBlocks.SHADOW_FISSURE_4.get()));
+        simpleBlockWithItem(ModBlocks.SHADOW_FISSURE_5.get(), models().cubeAll(ModBlocks.SHADOW_FISSURE_5.getId().getPath(), blockTexture(ModBlocks.SHADOW_FISSURE_5.get())).renderType("translucent"));
+
+        var shadowNyliumModel = models().cubeBottomTop(
+                ModBlocks.SHADOW_NYLIUM.getId().getPath(),
+                modLoc("block/shadow_nylium_side"),
+                modLoc("block/shadow_stone"),
+                modLoc("block/shadow_nylium_top"));
+        simpleBlockWithItem(ModBlocks.SHADOW_NYLIUM.get(), shadowNyliumModel);
+        var shadowLightModel = models().cubeBottomTop(
+                ModBlocks.SHADOW_LIGHT.getId().getPath(),
+                modLoc("block/shadow_light_side"),
+                modLoc("block/shadow_light_top"),
+                modLoc("block/shadow_light_top"));
+        simpleBlockWithItem(ModBlocks.SHADOW_LIGHT.get(), shadowLightModel);
+        simpleBlockWithItem(ModBlocks.SHADOW_SHROOMLIGHT.get(), cubeAll(ModBlocks.SHADOW_SHROOMLIGHT.get()));
+        simpleBlockWithItem(ModBlocks.SHADOW_WART_BLOCK.get(), cubeAll(ModBlocks.SHADOW_WART_BLOCK.get()));
+        logBlock((RotatedPillarBlock) ModBlocks.SHADOW_STEM.get());
+        blockItem(ModBlocks.SHADOW_STEM);
+        var shadowStemTex = blockTexture(ModBlocks.SHADOW_STEM.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.SHADOW_HYPHAE.get(), shadowStemTex, shadowStemTex);
+        blockItem(ModBlocks.SHADOW_HYPHAE);
+        logBlock((RotatedPillarBlock) ModBlocks.STRIPPED_SHADOW_STEM.get());
+        blockItem(ModBlocks.STRIPPED_SHADOW_STEM);
+        var strippedShadowStemTex = blockTexture(ModBlocks.STRIPPED_SHADOW_STEM.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.STRIPPED_SHADOW_HYPHAE.get(), strippedShadowStemTex, strippedShadowStemTex);
+        blockItem(ModBlocks.STRIPPED_SHADOW_HYPHAE);
+
+        simpleBlockWithItem(ModBlocks.SHADOW_PLANKS.get(), cubeAll(ModBlocks.SHADOW_PLANKS.get()));
+        stairsBlock((StairBlock) ModBlocks.SHADOW_STAIRS.get(), blockTexture(ModBlocks.SHADOW_PLANKS.get()));
+        blockItem(ModBlocks.SHADOW_STAIRS);
+        slabBlock((SlabBlock) ModBlocks.SHADOW_SLAB.get(), blockTexture(ModBlocks.SHADOW_PLANKS.get()), blockTexture(ModBlocks.SHADOW_PLANKS.get()));
+        blockItem(ModBlocks.SHADOW_SLAB);
+        fenceBlock((FenceBlock) ModBlocks.SHADOW_FENCE.get(), blockTexture(ModBlocks.SHADOW_PLANKS.get()));
+        fenceGateBlock((FenceGateBlock) ModBlocks.SHADOW_FENCE_GATE.get(), blockTexture(ModBlocks.SHADOW_PLANKS.get()));
+        blockItem(ModBlocks.SHADOW_FENCE_GATE);
+        paneBlock((IronBarsBlock) ModBlocks.SHADOW_PANE.get(), modLoc("block/shadow_trapdoor"), modLoc("block/shadow_trapdoor"));
+        doorBlockWithRenderType((DoorBlock) ModBlocks.SHADOW_DOOR.get(),
+                modLoc("block/shadow_door_bottom"),
+                modLoc("block/shadow_door_top"),
+                "cutout");
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.SHADOW_TRAPDOOR.get(),
+                modLoc("block/shadow_trapdoor"),
+                true,
+                "cutout");
+        blockItem(ModBlocks.SHADOW_TRAPDOOR, "_bottom");
+        pressurePlateBlock((PressurePlateBlock) ModBlocks.SHADOW_PRESSURE_PLATE.get(), blockTexture(ModBlocks.SHADOW_PLANKS.get()));
+        blockItem(ModBlocks.SHADOW_PRESSURE_PLATE);
+        buttonBlock((ButtonBlock) ModBlocks.SHADOW_BUTTON.get(), blockTexture(ModBlocks.SHADOW_PLANKS.get()));
+
+        horizontalBookshelf(ModBlocks.SHADOW_BOOKSHELF);
+        horizontalBookshelf(ModBlocks.WORN_SHADOW_BOOKSHELF);
+        horizontalBookshelf(ModBlocks.COBWEB_SHADOW_BOOKSHELF);
+        horizontalBookshelfKey(ModBlocks.KEY_SHADOW_BOOKSHELF);
+
+        simpleBlockWithItem(ModBlocks.BLACK_METAL_BLOCK.get(), cubeAll(ModBlocks.BLACK_METAL_BLOCK.get()));
+        simpleBlockWithItem(ModBlocks.RUST_BLACK_METAL_BLOCK.get(), cubeAll(ModBlocks.RUST_BLACK_METAL_BLOCK.get()));
+        var rustMetalTex = blockTexture(ModBlocks.RUST_BLACK_METAL_BLOCK.get());
+        wallBlock((WallBlock) ModBlocks.RUST_BLACK_METAL_WALL.get(), rustMetalTex);
+        var barsTex = modLoc("block/rust_black_metal_bars");
+        paneBlock((IronBarsBlock) ModBlocks.RUST_BLACK_METAL_BARS.get(), barsTex, barsTex);
+
+        var clayPotModel = models().getExistingFile(modLoc("block/clay_pot"));
+        horizontalBlock(ModBlocks.SHADOW_CLAY_POT.get(), clayPotModel);
+
         simpleBlock(ModBlocks.DYEDREAM_SAPLING.get(),
                 models().cross(ModBlocks.DYEDREAM_SAPLING.getId().getPath(),
                         blockTexture(ModBlocks.DYEDREAM_SAPLING.get())).renderType("cutout"));
@@ -371,7 +473,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(tallUpper));
 
 
-        // ===== 植物系列 =====
+        // ===== 妞嶇墿绯诲垪 =====
         var goldenrod = models().cross(ModBlocks.GOLDENROD.getId().getPath(), blockTexture(ModBlocks.GOLDENROD.get())).renderType("cutout");
         simpleBlock(ModBlocks.GOLDENROD.get(), goldenrod);
         var ferraria_crispa = models().cross(ModBlocks.FERRARIA_CRISPA.getId().getPath(), blockTexture(ModBlocks.FERRARIA_CRISPA.get())).renderType("cutout");
@@ -435,7 +537,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.DYEDREAM_VINE.get(), Dyedream_vine);
         var Jungle_sporangium = models().cross(ModBlocks.JUNGLE_SPORANGIUM.getId().getPath(), blockTexture(ModBlocks.JUNGLE_SPORANGIUM.get())).renderType("cutout");
         simpleBlock(ModBlocks.JUNGLE_SPORANGIUM.get(),Jungle_sporangium);
-        // 风之植物系列
+        // 椋庝箣妞嶇墿绯诲垪
         var hairy_moss = models().cross(ModBlocks.HAIRY_MOSS.getId().getPath(), blockTexture(ModBlocks.HAIRY_MOSS.get())).renderType("cutout");
         simpleBlock(ModBlocks.HAIRY_MOSS.get(), hairy_moss);
         var wind_cleaving_grass = models().cross(ModBlocks.WIND_CLEAVING_GRASS.getId().getPath(), blockTexture(ModBlocks.WIND_CLEAVING_GRASS.get())).renderType("cutout");
@@ -455,12 +557,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var light_ball = models().cross(ModBlocks.LIGHT_BALL.getId().getPath(), blockTexture(ModBlocks.LIGHT_BALL.get())).renderType("cutout");
         simpleBlock(ModBlocks.LIGHT_BALL.get(),light_ball);
 
-        // 小石子
+        // 灏忕煶瀛?
         var pebbleModel = models().getExistingFile(modLoc("block/pebble"));
         horizontalBlock(ModBlocks.PEBBLE.get(), pebbleModel);
 
 
-        //植株方块
+        //妞嶆牚鏂瑰潡
         generateTwoStageCrop(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "dyedream_corolla_crop");
         generateTwoStageCrop(ModBlocks.WHITE_COROLLA_CROP.get(), "white_corolla_crop");
         generateTwoStageCrop(ModBlocks.LIGHT_BALL_CROP.get(), "light_ball_crop");
@@ -482,7 +584,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var singularity_fern = models().cross(ModBlocks.SINGULARITY_FERN.getId().getPath(), blockTexture(ModBlocks.SINGULARITY_FERN.get())).renderType("cutout");
         simpleBlock(ModBlocks.SINGULARITY_FERN.get(), singularity_fern);
 
-        // 阴影植物系列
+        // 闃村奖妞嶇墿绯诲垪
         var shadowShortRoots = models().cross(ModBlocks.SHADOW_SHORT_ROOTS.getId().getPath(), blockTexture(ModBlocks.SHADOW_SHORT_ROOTS.get())).renderType("cutout");
         simpleBlock(ModBlocks.SHADOW_SHORT_ROOTS.get(), shadowShortRoots);
 
@@ -504,16 +606,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var shadowFungus = models().cross(ModBlocks.SHADOW_FUNGUS.getId().getPath(), blockTexture(ModBlocks.SHADOW_FUNGUS.get())).renderType("cutout");
         simpleBlock(ModBlocks.SHADOW_FUNGUS.get(), shadowFungus);
 
-        // 染梦海草
+        // 鏌撴ⅵ娴疯崏
         var dyedreamSeagrass = models().cross(ModBlocks.DYEDREAM_SEAGRASS.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_SEAGRASS.get())).renderType("cutout");
         simpleBlock(ModBlocks.DYEDREAM_SEAGRASS.get(), dyedreamSeagrass);
 
-        // 染梦睡莲 / 染梦莲花 (custom Blockbench models)
+        // 鏌撴ⅵ鐫¤幉 / 鏌撴ⅵ鑾茶姳 (custom Blockbench models)
         simpleBlock(ModBlocks.DYEDREAM_LILY_PAD.get(), models().getExistingFile(modLoc("block/dyedream_lily_pad")));
         simpleBlock(ModBlocks.DYEDREAM_LOTUS.get(), models().getExistingFile(modLoc("block/dyedream_lotus")));
 
 
-        // ===== 荒漠英雄之墓 =====
+        // ===== 鑽掓紶鑻遍泟涔嬪 =====
         horizontalBlock(ModBlocks.QYM_DOLL.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/qym_doll_particle")));
         horizontalBlock(ModBlocks.UUZ_DOLL.get(),
@@ -521,7 +623,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ModBlocks.DESERT_HERO_TOMB.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/desert_hero_tomb_particle")));
 
-        // ===== 盆栽植物 =====
+        // ===== 鐩嗘牻妞嶇墿 =====
         for (var entry : ModBlocks.POTTED_PLANTS.entrySet()) {
             var plant = entry.getKey();
             var potted = entry.getValue();
@@ -591,6 +693,34 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void blockItem(net.neoforged.neoforge.registries.DeferredBlock<?> block, String suffix) {
         simpleBlockItem(block.get(), new ModelFile.UncheckedModelFile(PasterDreamMod.MOD_ID + ":block/" + block.getId().getPath() + suffix));
+    }
+
+    private void horizontalBookshelf(net.neoforged.neoforge.registries.DeferredBlock<?> block) {
+        String name = block.getId().getPath();
+        ModelFile model = models().cube(name,
+                modLoc("block/shadow_bookshelf_top"),
+                modLoc("block/shadow_bookshelf_top"),
+                modLoc("block/" + name),
+                modLoc("block/" + name),
+                modLoc("block/" + name),
+                modLoc("block/" + name))
+                .texture("particle", modLoc("block/shadow_bookshelf_top"));
+        horizontalBlock(block.get(), model);
+        simpleBlockItem(block.get(), model);
+    }
+
+    private void horizontalBookshelfKey(net.neoforged.neoforge.registries.DeferredBlock<?> block) {
+        String name = block.getId().getPath();
+        ModelFile model = models().cube(name,
+                modLoc("block/shadow_bookshelf_top"),
+                modLoc("block/shadow_bookshelf_top"),
+                modLoc("block/key_shadow_bookshelf_front"),
+                modLoc("block/worn_shadow_bookshelf"),
+                modLoc("block/worn_shadow_bookshelf"),
+                modLoc("block/worn_shadow_bookshelf"))
+                .texture("particle", modLoc("block/shadow_bookshelf_top"));
+        horizontalBlock(block.get(), model);
+        simpleBlockItem(block.get(), model);
     }
 
     private void simpleBuildingFamily(net.neoforged.neoforge.registries.DeferredBlock<?> base,

@@ -241,6 +241,81 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LIFE_CRYSTAL.get());
         dropSelf(ModBlocks.SHADOW.get());
         dropSelf(ModBlocks.THICK_SHADOW.get());
+
+        // ===== 灯影之下 =====
+        dropSelf(ModBlocks.SHADOW_STONE.get());
+        dropSelf(ModBlocks.SHADOW_STONE_BRICK.get());
+        dropSelf(ModBlocks.SHADOW_STONE_BRICK_STAIRS.get());
+        add(ModBlocks.SHADOW_STONE_BRICK_SLAB.get(), block -> createSlabItemTable(ModBlocks.SHADOW_STONE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.SHADOW_STONE_BRICK_WALL.get());
+        dropSelf(ModBlocks.NARROW_SHADOW_STONE_BRICK.get());
+        dropSelf(ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS.get());
+        add(ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB.get(), block -> createSlabItemTable(ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL.get());
+        dropSelf(ModBlocks.SHADOW_STONE_TILES.get());
+        dropSelf(ModBlocks.SHADOW_STONE_TILES_STAIRS.get());
+        add(ModBlocks.SHADOW_STONE_TILES_SLAB.get(), block -> createSlabItemTable(ModBlocks.SHADOW_STONE_TILES_SLAB.get()));
+        dropSelf(ModBlocks.SHADOW_STONE_TILES_WALL.get());
+        dropSelf(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get());
+        dropSelf(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get());
+        dropSelf(ModBlocks.SHADOW_STONE_CAGE_RUNE.get());
+        dropSelf(ModBlocks.SHADOW_STONE_HOLY_GRAIL_RUNE.get());
+        dropSelf(ModBlocks.SHADOW_STONE_OBLATION_RUNE.get());
+        dropSelf(ModBlocks.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.get());
+        dropSelf(ModBlocks.SHADOW_DUNGEON_STONE.get());
+        dropSelf(ModBlocks.CHISELED_SHADOW_DUNGEON_BRICKS.get());
+        dropSelf(ModBlocks.SHADOW_DUNGEON_BRICKS.get());
+        dropSelf(ModBlocks.CRACKED_SHADOW_DUNGEON_BRICKS.get());
+        dropSelf(ModBlocks.FRACTURED_SHADOW_DUNGEON_BRICKS.get());
+        dropSelf(ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS.get());
+        add(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get(), block -> createSlabItemTable(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get()));
+        add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
+        dropSelf(ModBlocks.SHADOW_ARENA_BLOCK.get());
+        dropSelf(ModBlocks.SHADOW_FISSURE_0.get());
+        dropSelf(ModBlocks.SHADOW_FISSURE_1.get());
+        dropSelf(ModBlocks.SHADOW_FISSURE_2.get());
+        dropSelf(ModBlocks.SHADOW_FISSURE_3.get());
+        dropSelf(ModBlocks.SHADOW_FISSURE_4.get());
+        dropSelf(ModBlocks.SHADOW_FISSURE_5.get());
+        add(ModBlocks.SHADOW_NYLIUM.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(ModBlocks.SHADOW_STONE.get())));
+        dropSelf(ModBlocks.SHADOW_LIGHT.get());
+        dropSelf(ModBlocks.SHADOW_SHROOMLIGHT.get());
+        dropSelf(ModBlocks.SHADOW_CANDLE.get());
+        dropSelf(ModBlocks.SHADOW_WART_BLOCK.get());
+        dropSelf(ModBlocks.SHADOW_STEM.get());
+        dropSelf(ModBlocks.SHADOW_HYPHAE.get());
+        dropSelf(ModBlocks.STRIPPED_SHADOW_STEM.get());
+        dropSelf(ModBlocks.STRIPPED_SHADOW_HYPHAE.get());
+        dropSelf(ModBlocks.SHADOW_PLANKS.get());
+        dropSelf(ModBlocks.SHADOW_STAIRS.get());
+        add(ModBlocks.SHADOW_SLAB.get(), block -> createSlabItemTable(ModBlocks.SHADOW_SLAB.get()));
+        dropSelf(ModBlocks.SHADOW_FENCE.get());
+        dropSelf(ModBlocks.SHADOW_FENCE_GATE.get());
+        dropSelf(ModBlocks.SHADOW_PANE.get());
+        add(ModBlocks.SHADOW_DOOR.get(), createDoorTable(ModBlocks.SHADOW_DOOR.get()));
+        dropSelf(ModBlocks.SHADOW_TRAPDOOR.get());
+        dropSelf(ModBlocks.SHADOW_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.SHADOW_BUTTON.get());
+        add(ModBlocks.SHADOW_BOOKSHELF.get(), block -> createSilkTouchDispatchTable(block,
+                LootItem.lootTableItem(Items.BOOK).apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))));
+        add(ModBlocks.WORN_SHADOW_BOOKSHELF.get(), block -> createSilkTouchDispatchTable(block,
+                LootItem.lootTableItem(Items.BOOK)));
+        add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get(), block -> createSilkTouchDispatchTable(block,
+                LootItem.lootTableItem(Items.BOOK)));
+        add(ModBlocks.KEY_SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ModBlocks.KEY_SHADOW_BOOKSHELF.get()).when(this.hasSilkTouch())))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(Items.BOOK).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2))))
+                        .when(this.hasSilkTouch().invert()))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ModItems.SHADOW_DUNGEON_KEY.get()))
+                        .when(this.hasSilkTouch().invert())));
+        dropSelf(ModBlocks.BLACK_METAL_BLOCK.get());
+        dropSelf(ModBlocks.RUST_BLACK_METAL_BLOCK.get());
+        dropSelf(ModBlocks.RUST_BLACK_METAL_WALL.get());
+        dropSelf(ModBlocks.RUST_BLACK_METAL_BARS.get());
+        dropSelf(ModBlocks.SHADOW_CLAY_POT.get());
         dropSelf(ModBlocks.QYM_DOLL.get());
         dropSelf(ModBlocks.UUZ_DOLL.get());
         dropSelf(ModBlocks.DESERT_HERO_TOMB.get());
