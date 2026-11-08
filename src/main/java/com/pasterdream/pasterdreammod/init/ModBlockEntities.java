@@ -20,6 +20,10 @@ import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlo
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceAddonBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.fireflynest.FireflyNestBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -97,6 +101,22 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DreamAccumulatorBlockEntity>> DREAM_ACCUMULATOR =
             BLOCK_ENTITIES.register("dream_accumulator",
                     () -> BlockEntityType.Builder.of(DreamAccumulatorBlockEntity::new, ModBlocks.DREAM_ACCUMULATOR.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EcologyGlassJarBlockEntity>> ECOLOGY_GLASS_JAR =
+            BLOCK_ENTITIES.register("ecology_glass_jar",
+                    () -> BlockEntityType.Builder.of(EcologyGlassJarBlockEntity::new, ModBlocks.ECOLOGY_GLASS_JAR.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FireflyGlassJarBlockEntity>> FIREFLY_GLASS_JAR =
+            BLOCK_ENTITIES.register("firefly_glass_jar",
+                    () -> BlockEntityType.Builder.of(FireflyGlassJarBlockEntity::new, ModBlocks.FIREFLY_GLASS_JAR.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FireflyNestBlockEntity>> FIREFLY_NEST =
+            BLOCK_ENTITIES.register("firefly_nest",
+                    () -> BlockEntityType.Builder.of(FireflyNestBlockEntity::new, ModBlocks.FIREFLY_NEST.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BirdsNestBlockEntity>> BIRDS_NEST =
+            BLOCK_ENTITIES.register("birds_nest",
+                    () -> BlockEntityType.Builder.of(BirdsNestBlockEntity::new, ModBlocks.BIRDS_NEST.get()).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShadowBlastFurnaceBlockEntity>> SHADOW_BLAST_FURNACE =
             BLOCK_ENTITIES.register("shadow_blast_furnace",

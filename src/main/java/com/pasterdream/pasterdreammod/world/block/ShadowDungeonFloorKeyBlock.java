@@ -1,0 +1,71 @@
+package com.pasterdream.pasterdreammod.world.block;
+
+import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.block.HorizontalDirectionalGenericBlock;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.items.ItemHandlerHelper;
+
+public class ShadowDungeonFloorKeyBlock extends HorizontalDirectionalGenericBlock {
+    protected static final VoxelShape SHAPE = box(2, 0, 2, 14, 1, 14);
+
+    public ShadowDungeonFloorKeyBlock() {
+        super(BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_BLACK)
+                .sound(SoundType.CHAIN)
+                .strength(0.1f, 50f)
+                .noOcclusion()
+                .isRedstoneConductor((bs, br, bp) -> false));
+    }
+
+    @Override
+    protected MapCodec<? extends net.minecraft.world.level.block.DirectionalBlock> codec() {
+        return simpleCodec(properties -> new ShadowDungeonFloorKeyBlock());
+    }
+
+    @Override
+    public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return Shapes.empty();
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        this.useKey(state, level, pos, player);
+        return ItemInteractionResult.SUCCESS;
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        return this.useKey(state, level, pos, player);
+    }
+
+    private InteractionResult useKey(BlockState state, Level level, BlockPos pos, Player player) {
+        if (!level.isClientSide) {
+            level.destroyBlock(pos, false);
+            if (!player.isCreative()) {
+                ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.SHADOW_DUNGEON_KEY.get()));
+            }
+        }
+        return InteractionResult.SUCCESS;
+    }
+}

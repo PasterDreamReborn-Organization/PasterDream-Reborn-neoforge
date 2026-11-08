@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 074：暗影地牢钥匙、高炉核心与生态方块及生物（2026-11-09，T14/T18 部分）
+
+- 迁入 `shadow_dungeon_wall_key`、`shadow_dungeon_floor_key`、`shadow_blast_furnace_core`、`ecology_glass_jar`、`firefly_glass_jar`、`firefly_nest`、`birds_nest`、`christmas_lights`、`small_stone_spirit_block`，以及 `firefly`、`small_stone_spirit` 生物、刷怪蛋与 `capture_firefly` 触发器。
+- 方块实体与 GeckoLib 渲染/动画、萤火虫与玻璃罐粒子、玻璃罐动画状态网络同步（`CustomPacketPayload`）一并迁入；萤火虫玻璃罐的 `Lit` 状态改用 `DataComponents.CUSTOM_DATA`。
+- 圣诞彩灯与生态玻璃罐配方、方块掉落表、挖掘/铁工具/影蚀加速标签、方块状态、物品模型与中英文名称由 Provider 生成；其余方块暂无自制配方，结构/世界生成获取待后续。
+- 1.21 适配：`use`→`useWithoutItem`/`useItemOn`，`BaseEntityBlock`/方向方块补 `codec()`，`getDimensions`→`getDefaultDimensions`，`MeleeAttackGoal#getAttackReachSqr`→`canPerformAttack`，自定义触发器改 codec `SimpleInstance`。
+- 修复 `dyedream_pane`、`shadow_pane`、`wind_moor_pane` 三个木窗格方块的 alpha 渲染：来源在 `ClientSetRenderLayer` 将其设为 `cutout`，1.21 改为在生成的窗格模型写入 `render_type: minecraft:cutout`。
+- `runData` 写入 27 个新增文件；`build` 通过。客户端 GeckoLib/粒子视觉、动画同步、真实世界生成与多人行为待游戏内验收。
+
 ### 批次 073：蓄梦池与吸附剂（2026-11-08，T12-A 部分）
 
 - 迁入 `dream_accumulator` 方块、方块实体、菜单/界面、GeckoLib 模型/动画/物品渲染、`dream_accumulator` 配方类型与序列化器、JEI 类别，以及吸附剂 `sorbent`；保留 2 物品槽、6000 tick 蓄梦时间、吸附剂 10 倍速率、`dyedream_world_biome` 群系限定与输出槽合并语义。

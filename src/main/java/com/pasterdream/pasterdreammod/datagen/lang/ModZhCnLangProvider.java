@@ -1270,5 +1270,18 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("option.pasterdream.A: 模拟下界合金镐精准采集破坏", "A: 模拟下界合金镐精准采集破坏");
         add("option.pasterdream.S: 获取对应的BlockItem并掉落，并将方块设置为空气", "S: 获取对应的BlockItem并掉落，并将方块设置为空气");
         add("option.pasterdream.D: 将方块设置为空气的同时不触发方块更新", "D: 将方块设置为空气的同时不触发方块更新");
+        add(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), "小石堆");
+        add(ModBlocks.CHRISTMAS_LIGHTS.get(), "圣诞彩灯");
+        add(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), "暗影地牢钥匙（墙上）");
+        add(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), "暗影地牢钥匙（地上）");
+        add(ModBlocks.ECOLOGY_GLASS_JAR.get(), "生态玻璃罐");
+        add(ModBlocks.FIREFLY_GLASS_JAR.get(), "萤火虫玻璃罐");
+        add(ModBlocks.FIREFLY_NEST.get(), "萤火虫巢");
+        add(ModBlocks.BIRDS_NEST.get(), "鸟巢");
+        add("block.pasterdream.shadow_blast_furnace_core", "暗影高炉核心");
+        add(ModEntities.FIREFLY.get(), "萤火虫");
+        add(ModItems.FIREFLY_SPAWN_EGG.get(), "萤火虫刷怪蛋");
+        add(ModEntities.SMALL_STONE_SPIRIT.get(), "小石精");
+        add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "小石精刷怪蛋");
     }
 }

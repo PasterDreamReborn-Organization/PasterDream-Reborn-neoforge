@@ -204,6 +204,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.RUST_BLACK_METAL_GRAIN.get());
         basicItem(ModItems.SHADOW_ALLOY_INGOT.get());
         basicItem(ModItems.SHADOW_DUNGEON_KEY.get());
+        basicItem(ModItems.CHRISTMAS_LIGHTS.get());
         handheldItem(ModItems.SHADOW_EROSION_DAGGER.get());
         handheldItem(ModItems.SHADOW_EROSION_PICKAXE.get());
         handheldItem(ModItems.SHADOW_EROSION_AXE.get());
@@ -548,6 +549,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());
         spawnEggItem(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get());
         spawnEggItem(ModItems.SHADOW_HAND_SPAWN_EGG.get());
+        spawnEggItem(ModItems.FIREFLY_SPAWN_EGG.get());
+        spawnEggItem(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
 
         registerProphecyCardModels();
         registerPotionBottleModels();

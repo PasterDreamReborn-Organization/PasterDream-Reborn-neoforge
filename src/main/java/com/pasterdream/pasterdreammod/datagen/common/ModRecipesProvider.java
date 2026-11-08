@@ -65,6 +65,7 @@ public class ModRecipesProvider extends RecipeProvider {
         mortarRecipes(output);
         pebbleRecipes(output);
         glassJarRecipes(output);
+        christmasLightsRecipe(output);
         elixirBottleRecipes(output);
         glassCupRecipes(output);
         foodRecipes(output);
@@ -131,6 +132,21 @@ public class ModRecipesProvider extends RecipeProvider {
         RecipeHelpers.storageDecompress(output, ModItems.MOLTEN_GOLD_BLOCK.get(), ModItems.MOLTEN_GOLD_INGOT.get(), PasterDreamMod.MOD_ID);
 
         validateContainerBalance();
+    }
+
+    private void christmasLightsRecipe(RecipeOutput pWriter) {
+        // 圣诞彩灯：染色玻璃 + 云杉树叶 → 5× 圣诞彩灯
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHRISTMAS_LIGHTS.get(), 5)
+                .pattern("abc")
+                .pattern("def")
+                .define('a', Items.RED_STAINED_GLASS)
+                .define('b', Items.SPRUCE_LEAVES)
+                .define('c', Items.MAGENTA_STAINED_GLASS)
+                .define('d', Items.LIGHT_BLUE_STAINED_GLASS)
+                .define('e', Items.LIME_STAINED_GLASS)
+                .define('f', Items.YELLOW_STAINED_GLASS)
+                .unlockedBy(getHasName(Items.SPRUCE_LEAVES), has(Items.SPRUCE_LEAVES))
+                .save(pWriter);
     }
 
     private void soulRecipes(RecipeOutput pWriter) {
@@ -2082,6 +2098,13 @@ public class ModRecipesProvider extends RecipeProvider {
                         ResourceLocation.fromNamespaceAndPath("c", "glass_panes"))))
                 .define('b', ItemTags.WOODEN_SLABS)
                 .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
+                .save(pWriter);
+
+        // 生态玻璃罐合成（玻璃罐 + 灵魂尘埃）
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ECOLOGY_GLASS_JAR.get(), 1)
+                .requires(ModItems.GLASS_JAR.get())
+                .requires(ModItems.SOUL_DUST.get())
+                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
                 .save(pWriter);
 
         // 药引瓶合成（研钵作为工具不消耗）

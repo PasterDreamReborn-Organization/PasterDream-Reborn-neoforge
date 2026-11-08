@@ -87,6 +87,9 @@ import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceItem;
+import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarItem;
+import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarItem;
+import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
@@ -1283,6 +1286,15 @@ public class ModItems {
     public static final DeferredItem<Item> DREAM_ACCUMULATOR = ITEMS.register("dream_accumulator", () -> new com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorItem(ModBlocks.DREAM_ACCUMULATOR.get(), new Item.Properties()));
     public static final DeferredItem<Item> SORBENT = ITEMS.register("sorbent", () -> new Item(new Item.Properties().durability(54000)));
     public static final DeferredItem<Item> SHADOW_BLAST_FURNACE = ITEMS.register("shadow_blast_furnace", () -> new ShadowBlastFurnaceItem(ModBlocks.SHADOW_BLAST_FURNACE.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> SHADOW_BLAST_FURNACE_CORE = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_BLAST_FURNACE_CORE);
+    public static final DeferredItem<BlockItem> SHADOW_DUNGEON_WALL_KEY = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_DUNGEON_WALL_KEY);
+    public static final DeferredItem<BlockItem> SHADOW_DUNGEON_FLOOR_KEY = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY);
+    public static final DeferredItem<Item> ECOLOGY_GLASS_JAR = ITEMS.register("ecology_glass_jar", () -> new EcologyGlassJarItem(ModBlocks.ECOLOGY_GLASS_JAR.get(), new Item.Properties()));
+    public static final DeferredItem<Item> FIREFLY_GLASS_JAR = ITEMS.register("firefly_glass_jar", () -> new FireflyGlassJarItem(ModBlocks.FIREFLY_GLASS_JAR.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> FIREFLY_NEST = ITEMS.registerSimpleBlockItem(ModBlocks.FIREFLY_NEST);
+    public static final DeferredItem<Item> BIRDS_NEST = ITEMS.register("birds_nest", () -> new BirdsNestItem(ModBlocks.BIRDS_NEST.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> CHRISTMAS_LIGHTS = ITEMS.registerSimpleBlockItem(ModBlocks.CHRISTMAS_LIGHTS);
+    public static final DeferredItem<BlockItem> SMALL_STONE_SPIRIT_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.SMALL_STONE_SPIRIT_BLOCK);
 
     // ===== 影蚀系列 =====
     public static final DeferredItem<Item> SHADOW_EROSION_DAGGER = ITEMS.register("shadow_erosion_dagger",
@@ -1592,6 +1604,10 @@ public class ModItems {
             () -> new SpawnEggItem(ModEntities.WEAKENESS_TERRORBEAK.get(), -16777216, -13421773, new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_HAND_SPAWN_EGG = ITEMS.register("shadow_hand_spawn_egg",
             () -> new SpawnEggItem(ModEntities.SHADOW_HAND.get(), -12763843, -16316665, new Item.Properties()));
+    public static final DeferredItem<Item> FIREFLY_SPAWN_EGG = ITEMS.register("firefly_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.FIREFLY.get(), -12570340, -5382814, new Item.Properties()));
+    public static final DeferredItem<Item> SMALL_STONE_SPIRIT_SPAWN_EGG = ITEMS.register("small_stone_spirit_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.SMALL_STONE_SPIRIT.get(), -3937560, -9340294, new Item.Properties()));
 
     // ===== 拓展栏物品 =====
     public static final DeferredItem<Item> MELT_DREAM_AURORIAN_STEEL_INGOT = ITEMS.register("melt_dream_aurorian_steel_ingot",

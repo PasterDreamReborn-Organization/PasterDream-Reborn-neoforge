@@ -331,6 +331,22 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.CLAYPAN.get());
         dropSelf(ModBlocks.DREAM_CAULDRON.get());
         dropSelf(ModBlocks.DREAM_ACCUMULATOR.get());
+        dropSelf(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
+        dropOther(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), ModItems.SHADOW_DUNGEON_KEY.get());
+        dropOther(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), ModItems.SHADOW_DUNGEON_KEY.get());
+        dropSelf(ModBlocks.ECOLOGY_GLASS_JAR.get());
+        dropSelf(ModBlocks.FIREFLY_GLASS_JAR.get());
+        dropSelf(ModBlocks.FIREFLY_NEST.get());
+        dropSelf(ModBlocks.CHRISTMAS_LIGHTS.get());
+        add(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), block -> createSilkTouchOnlyTable(block));
+        // 鸟巢：精准采集掉落自身，否则掉落 2 次树枝/鸡蛋
+        add(ModBlocks.BIRDS_NEST.get(), block -> LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(2))
+                        .add(LootItem.lootTableItem(Items.STICK).setWeight(1).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
+                        .add(LootItem.lootTableItem(Items.EGG).setWeight(1).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
+                        .when(doesNotHaveSilkTouch()))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ModBlocks.BIRDS_NEST.get()).when(hasSilkTouch()))));
 
         // ===== 盆栽植物 =====
         for (var entry : ModBlocks.POTTED_PLANTS.entrySet()) {

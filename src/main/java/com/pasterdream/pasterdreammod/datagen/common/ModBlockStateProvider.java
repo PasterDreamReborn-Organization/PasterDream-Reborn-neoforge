@@ -49,6 +49,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ConfiguredModel.builder()
                         .modelFile(models().getExistingFile(modLoc("custom/dream_accumulator_particle")))
                         .build());
+        // 圣诞彩灯：水平朝向，手动模型
+        var christmasLightsModel = models().getExistingFile(modLoc("block/christmas_lights"));
+        horizontalBlock(ModBlocks.CHRISTMAS_LIGHTS.get(), christmasLightsModel);
+        // 小石堆：水平朝向，手动模型
+        var smallStoneSpiritBlockModel = models().getExistingFile(modLoc("block/small_stone_spirit_block"));
+        horizontalBlock(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), smallStoneSpiritBlockModel);
+        // 暗影高炉核心：上下侧面纹理
+        var shadowBlastFurnaceCoreSideTex = modLoc("block/shadow_blast_furnace_core_side");
+        var shadowBlastFurnaceCoreTopTex = modLoc("block/shadow_blast_furnace_core_top");
+        var shadowBlastFurnaceCoreModel = models().cubeBottomTop("shadow_blast_furnace_core", shadowBlastFurnaceCoreSideTex, shadowBlastFurnaceCoreTopTex, shadowBlastFurnaceCoreTopTex);
+        simpleBlockWithItem(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get(), shadowBlastFurnaceCoreModel);
         simpleBlock(ModBlocks.SHADOW_LIQUID.get(), models().cubeAll(ModBlocks.SHADOW_LIQUID.getId().getPath(), modLoc("block/shadow_liquid_flowing")));
 
         // ===== 鏌撴ⅵ鍦板舰鏂瑰潡 =====
@@ -230,7 +241,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         fenceGateBlock((FenceGateBlock) ModBlocks.DYEDREAM_FENCE_GATE.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
         blockItem(ModBlocks.DYEDREAM_FENCE_GATE);
 
-        paneBlock((IronBarsBlock) ModBlocks.DYEDREAM_PANE.get(), modLoc("block/dyedream_trapdoor"), modLoc("block/dyedream_trapdoor"));
+        paneBlockWithRenderType((IronBarsBlock) ModBlocks.DYEDREAM_PANE.get(), modLoc("block/dyedream_trapdoor"), modLoc("block/dyedream_trapdoor"), "cutout");
 
         doorBlockWithRenderType((DoorBlock) ModBlocks.DYEDREAM_DOOR.get(),
                 modLoc("block/dyedream_door_bottom"),
@@ -448,7 +459,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         fenceBlock((FenceBlock) ModBlocks.SHADOW_FENCE.get(), blockTexture(ModBlocks.SHADOW_PLANKS.get()));
         fenceGateBlock((FenceGateBlock) ModBlocks.SHADOW_FENCE_GATE.get(), blockTexture(ModBlocks.SHADOW_PLANKS.get()));
         blockItem(ModBlocks.SHADOW_FENCE_GATE);
-        paneBlock((IronBarsBlock) ModBlocks.SHADOW_PANE.get(), modLoc("block/shadow_trapdoor"), modLoc("block/shadow_trapdoor"));
+        paneBlockWithRenderType((IronBarsBlock) ModBlocks.SHADOW_PANE.get(), modLoc("block/shadow_trapdoor"), modLoc("block/shadow_trapdoor"), "cutout");
         doorBlockWithRenderType((DoorBlock) ModBlocks.SHADOW_DOOR.get(),
                 modLoc("block/shadow_door_bottom"),
                 modLoc("block/shadow_door_top"),
@@ -820,7 +831,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         fenceBlock((FenceBlock) ModBlocks.WIND_MOOR_FENCE.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
         fenceGateBlock((FenceGateBlock) ModBlocks.WIND_MOOR_FENCE_GATE.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
         blockItem(ModBlocks.WIND_MOOR_FENCE_GATE);
-        paneBlock((IronBarsBlock) ModBlocks.WIND_MOOR_PANE.get(), modLoc("block/wind_moor_trapdoor"), modLoc("block/wind_moor_trapdoor"));
+        paneBlockWithRenderType((IronBarsBlock) ModBlocks.WIND_MOOR_PANE.get(), modLoc("block/wind_moor_trapdoor"), modLoc("block/wind_moor_trapdoor"), "cutout");
         doorBlockWithRenderType((DoorBlock) ModBlocks.WIND_MOOR_DOOR.get(),
                 modLoc("block/wind_moor_door_bottom"),
                 modLoc("block/wind_moor_door_top"),

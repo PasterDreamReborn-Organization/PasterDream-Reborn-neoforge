@@ -1270,5 +1270,18 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("option.pasterdream.A: 模拟下界合金镐精准采集破坏", "A: Simulate Break With Silk Touch Netherite Pickaxe");
         add("option.pasterdream.S: 获取对应的BlockItem并掉落，并将方块设置为空气", "S: Get Corresponding BlockItem And Drop, And Set Block To Air");
         add("option.pasterdream.D: 将方块设置为空气的同时不触发方块更新", "D: Set The Block To Air Without NeighborChange");
+        add(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), "Small Stone Spirit Block");
+        add(ModBlocks.CHRISTMAS_LIGHTS.get(), "Christmas Lights");
+        add(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), "Shadow Dungeon Key (Wall)");
+        add(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), "Shadow Dungeon Key (Floor)");
+        add(ModBlocks.ECOLOGY_GLASS_JAR.get(), "Ecology Glass Jar");
+        add(ModBlocks.FIREFLY_GLASS_JAR.get(), "Firefly Glass Jar");
+        add(ModBlocks.FIREFLY_NEST.get(), "Firefly Nest");
+        add(ModBlocks.BIRDS_NEST.get(), "Birds Nest");
+        add("block.pasterdream.shadow_blast_furnace_core", "Shadow Blast Furnace Core");
+        add(ModEntities.FIREFLY.get(), "Firefly");
+        add(ModItems.FIREFLY_SPAWN_EGG.get(), "Firefly Spawn Egg");
+        add(ModEntities.SMALL_STONE_SPIRIT.get(), "Small Stone Spirit");
+        add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "Small Stone Spirit Spawn Egg");
     }
 }

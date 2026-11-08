@@ -813,6 +813,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(ModBlockTags.STORAGE_BLOCKS_CONGEAL_WIND)
                 .addTag(ModBlockTags.STORAGE_BLOCKS_WIND_RUNNER_CRYSTAL);
 
+        // ===== 生态方块 / 暗影地牢钥匙 / 暗影高炉核心 =====
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.BIRDS_NEST.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get())
+                .add(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get())
+                .add(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get())
+                .add(ModBlocks.CHRISTMAS_LIGHTS.get())
+                .add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
+        tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
+        tag(ModBlockTags.SHADOW_EROSION_TOOL_CAN_BOOST).add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
+
         // 矿石/金属块不属于动物自然生成地表，不加入 ANIMALS_SPAWNABLE_ON。
     }
 }

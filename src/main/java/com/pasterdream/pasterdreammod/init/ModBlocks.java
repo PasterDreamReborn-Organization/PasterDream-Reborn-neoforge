@@ -35,6 +35,10 @@ import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlock;
+import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarBlock;
+import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarBlock;
+import com.pasterdream.pasterdreammod.world.block.fireflynest.FireflyNestBlock;
+import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.*;
 import net.minecraft.core.BlockPos;
@@ -294,6 +298,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SHADOW_DUNGEON_BRICK_STAIRS = BLOCKS.register("shadow_dungeon_brick_stairs", () -> new StairBlock(SHADOW_DUNGEON_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(-1.0F, 3600000.0F).dynamicShape()));
     public static final DeferredBlock<Block> SHADOW_DUNGEON_BRICK_SLAB = BLOCKS.register("shadow_dungeon_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(-1.0F, 3600000.0F).dynamicShape()));
     public static final DeferredBlock<Block> SHATTERED_SHADOW_DUNGEON_BRICKS = BLOCKS.register("shattered_shadow_dungeon_bricks", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(10.0F).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> SHADOW_DUNGEON_WALL_KEY = BLOCKS.register("shadow_dungeon_wall_key", ShadowDungeonWallKeyBlock::new);
+    public static final DeferredBlock<Block> SHADOW_DUNGEON_FLOOR_KEY = BLOCKS.register("shadow_dungeon_floor_key", ShadowDungeonFloorKeyBlock::new);
     // ===== 灯影竞技场 / 裂隙方块 =====
     public static final DeferredBlock<Block> SHADOW_ARENA_BLOCK = BLOCKS.register("shadow_arena_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(-1.0F, 3600000.0F)));
     public static final DeferredBlock<Block> SHADOW_FISSURE_0 = BLOCKS.register("shadow_fissure_0", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
@@ -356,6 +362,13 @@ public class ModBlocks {
     public static final DeferredBlock<Block> DREAM_CAULDRON = BLOCKS.register("dream_cauldron", () -> new DreamCauldronBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.CALCITE).strength(2.0F).noOcclusion()));
     public static final DeferredBlock<Block> DREAM_ACCUMULATOR = BLOCKS.register("dream_accumulator", () -> new DreamAccumulatorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.CALCITE).strength(1f).requiresCorrectToolForDrops().noOcclusion()));
     public static final DeferredBlock<Block> SHADOW_BLAST_FURNACE = BLOCKS.register("shadow_blast_furnace", () -> new ShadowBlastFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.DEEPSLATE).strength(10f).requiresCorrectToolForDrops().noOcclusion()));
+    public static final DeferredBlock<Block> SHADOW_BLAST_FURNACE_CORE = BLOCKS.register("shadow_blast_furnace_core", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.METAL).strength(3f, 1f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> ECOLOGY_GLASS_JAR = BLOCKS.register("ecology_glass_jar", EcologyGlassJarBlock::new);
+    public static final DeferredBlock<Block> FIREFLY_GLASS_JAR = BLOCKS.register("firefly_glass_jar", FireflyGlassJarBlock::new);
+    public static final DeferredBlock<Block> FIREFLY_NEST = BLOCKS.register("firefly_nest", FireflyNestBlock::new);
+    public static final DeferredBlock<Block> BIRDS_NEST = BLOCKS.register("birds_nest", BirdsNestBlock::new);
+    public static final DeferredBlock<Block> CHRISTMAS_LIGHTS = BLOCKS.register("christmas_lights", ChristmasLightsBlock::new);
+    public static final DeferredBlock<Block> SMALL_STONE_SPIRIT_BLOCK = BLOCKS.register("small_stone_spirit_block", SmallStoneSpiritBlock::new);
 
     public static final DeferredBlock<Block> DYEDREAM_SAPLING = BLOCKS.register("dyedream_sapling", () -> new SaplingBlock(ModTreeGrowers.DYEDREAM, BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).noCollission().instabreak().randomTicks().sound(SoundType.GRASS)));
 
