@@ -3,6 +3,8 @@ package com.pasterdream.pasterdreammod.compat.jei;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.compat.jei.weaponworkshopcraftingtablerecipe.WeaponWorkshopCraftingTableJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.mortarrecipe.MortarRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.claypanrecipe.ClaypanJEIRecipe;
+import com.pasterdream.pasterdreammod.compat.jei.claypanrecipe.ClaypanRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldronRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldronJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.ElixirBottleSubtypeInterpreter;
@@ -16,11 +18,14 @@ import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
+import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipe;
+import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanScreen;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
+import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.ISubtypeRegistration;
 import net.minecraft.client.Minecraft;
@@ -45,6 +50,7 @@ public class ModJEIPlugin implements IModPlugin
     {
         registration.addRecipeCategories(new WeaponWorkshopCraftingTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new MortarRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new ClaypanRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new DreamCauldronRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
@@ -66,6 +72,12 @@ public class ModJEIPlugin implements IModPlugin
     }
 
     @Override
+    public void registerGuiHandlers(IGuiHandlerRegistration registration)
+    {
+        registration.addRecipeClickArea(ClaypanScreen.class, 74, 7, 22, 15, ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE);
+    }
+
+    @Override
     public void registerRecipes(IRecipeRegistration registration)
     {
         ClientLevel level = Minecraft.getInstance().level;
@@ -81,6 +93,10 @@ public class ModJEIPlugin implements IModPlugin
             List<MortarRecipe> mortarRecipes = level.getRecipeManager().getAllRecipesFor(ModRecipes.MORTAR.get())
                     .stream().map(RecipeHolder::value).toList();
             registration.addRecipes(MortarRecipeCategory.MORTAR_RECIPE_TYPE, mortarRecipes);
+            List<ClaypanRecipe> claypanRecipes = level.getRecipeManager().getAllRecipesFor(ModRecipes.CLAYPAN.get())
+                    .stream().map(RecipeHolder::value).toList();
+            registration.addRecipes(ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE,
+                    claypanRecipes.stream().map(ClaypanJEIRecipe::new).toList());
             List<DreamCauldronRecipe> cauldronRecipes = level.getRecipeManager()
                     .getAllRecipesFor(ModRecipes.DREAM_CAULDRON.get()).stream().map(RecipeHolder::value).toList();
             registration.addRecipes(DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE,
@@ -95,6 +111,7 @@ public class ModJEIPlugin implements IModPlugin
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get()),
                 WeaponWorkshopCraftingTableRecipeCategory.WEAPON_WORKSHOP_CRAFTING_TABLE_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModItems.MORTAR.get()), MortarRecipeCategory.MORTAR_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.CLAYPAN.get()), ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModItems.DREAM_CAULDRON.get()),
                 DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE);
     }

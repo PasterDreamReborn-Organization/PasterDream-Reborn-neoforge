@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 058：陶盆及配方系统（2026-11-08）
+
+- 搬运陶盆方块、方块实体、共享流体槽菜单/界面、流体液面渲染、配方类型与 JEI 类别；保留 1000 mB 单流体罐、三物品交互区与来源计时显示。
+- 载入 3 条来源加工配方：125 mB 水晾晒 24000 tick 得粗盐，苹果汁/西瓜汁各 125 mB 晾晒 6000 tick 得糖；工作台配方保留白染料加陶瓦产 2 个陶盆。
+- 1.21 适配：配方接入通用 `GenericPasterDreamRecipe` 序列化框架，方块实体使用 `HolderLookup` 保存/同步与 NeoForge 流体/物品能力，渲染改用 `addVertex`/`setUv`/`setLight`；因共享流体槽实现不占用菜单槽位，陶盆输出槽索引相应前移。
+- 复制来源 2 张方块纹理、2 张 GUI 纹理与 4 个模型/状态文件；加工配方放入 1.21 的 `data/pasterdream/recipe/claypan/`。
+- `runData` 写入 6 个文件，`build` 通过，`runGameTestServer` 147/147 通过（新增 2 项覆盖配方加载、加工扣料与计时持久化）；客户端界面、液面与实际多人交互待游戏内验证。
+
 ### 批次 057：药剂瓶系列投掷物（2026-11-08）
 
 - 搬运药剂瓶及狂暴、冰冻、剧毒、闪电、回春、狱火、飓风 7 种类型，保留来源堆叠数、7 秒冷却、投掷速度与类型 tooltip。

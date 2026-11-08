@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlockEntit
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntityRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
@@ -20,6 +21,7 @@ public final class ModBlockEntityRenderer {
 
         event.registerBlockEntityRenderer(ModBlockEntities.DESERT_HERO_TOMB.get(), DesertHeroTombBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.LIFE_CRYSTAL.get(), LifeCrystalBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.CLAYPAN.get(), ClaypanBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.DREAM_CAULDRON.get(), DreamCauldronBlockEntityRenderer::new);
     }
 }

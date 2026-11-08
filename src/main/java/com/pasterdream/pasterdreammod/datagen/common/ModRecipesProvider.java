@@ -104,6 +104,7 @@ public class ModRecipesProvider extends RecipeProvider {
         lostSwordTombRecipe(output);
         weaponWorkshopRecipe(output);
         dyedreamDeskRecipes(output);
+        claypanRecipes(output);
         windwreathedThunderSpearRecipe(output);
         titaniumCooking(output, ModItems.TITANIUM_ORE.get(), "titanium_ore_");
         titaniumCooking(output, ModItems.DEEPSLATE_TITANIUM_ORE.get(), "deepslate_titanium_ore_");
@@ -2342,6 +2343,17 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.MAGMA_BLOCK), has(Items.MAGMA_BLOCK))
                 .unlockedBy(getHasName(Items.CUT_COPPER), has(Items.CUT_COPPER))
                 .save(output, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "weapon_workshop_crafting_table"));
+    }
+
+    private void claypanRecipes(RecipeOutput pWriter) {
+        // 陶盆
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CLAYPAN.get(), 2)
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', ItemTags.TERRACOTTA)
+                .define('b', Items.WHITE_DYE)
+                .unlockedBy(getHasName(Items.WHITE_DYE), has(Items.WHITE_DYE))
+                .save(pWriter);
     }
 
     private void dyedreamDeskRecipes(RecipeOutput pWriter) {
