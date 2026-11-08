@@ -2,6 +2,8 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.skill.BlinkPacket;
+import com.pasterdream.pasterdreammod.network.curio.CloakActivationPacket;
+import com.pasterdream.pasterdreammod.network.curio.KaichuOmamoriActivationPacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindHoverInputPacket;
 import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorHandler;
 import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorItem;
@@ -25,6 +27,10 @@ import org.lwjgl.glfw.GLFW;
 public final class ModKeyMappings {
     public static final KeyMapping BLINK = new KeyMapping(
             "key.pasterdream.blink", GLFW.GLFW_KEY_C, "key.categories.pasterdream");
+    public static final KeyMapping KAICHU_OMAMORI = new KeyMapping(
+            "key.pasterdream.kaichu_omamori", GLFW.GLFW_KEY_V, "key.categories.pasterdream");
+    public static final KeyMapping CLOAK_ACTIVATE = new KeyMapping(
+            "key.pasterdream.cloak_activate", GLFW.GLFW_KEY_Z, "key.categories.pasterdream");
 
     private ModKeyMappings() {
     }
@@ -32,6 +38,8 @@ public final class ModKeyMappings {
     @SubscribeEvent
     public static void register(RegisterKeyMappingsEvent event) {
         event.register(BLINK);
+        event.register(KAICHU_OMAMORI);
+        event.register(CLOAK_ACTIVATE);
     }
 
     @EventBusSubscriber(modid = PasterDreamMod.MOD_ID, value = Dist.CLIENT)
@@ -42,6 +50,12 @@ public final class ModKeyMappings {
             if (Minecraft.getInstance().screen == null && Minecraft.getInstance().player != null) {
                 while (ModKeyMappings.BLINK.consumeClick()) {
                     ModNetwork.sendToServer(new BlinkPacket());
+                }
+                while (ModKeyMappings.KAICHU_OMAMORI.consumeClick()) {
+                    ModNetwork.sendToServer(new KaichuOmamoriActivationPacket());
+                }
+                while (ModKeyMappings.CLOAK_ACTIVATE.consumeClick()) {
+                    ModNetwork.sendToServer(new CloakActivationPacket());
                 }
             }
             var player = Minecraft.getInstance().player;

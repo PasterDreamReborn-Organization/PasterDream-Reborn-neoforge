@@ -5,6 +5,8 @@ import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import com.pasterdream.pasterdreammod.world.entity.FluffyWindArrowEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowAlloyArrowEntity;
+import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
+import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.KusanagiVenomStingerEntity;
@@ -150,6 +152,24 @@ public class ModEntities {
                     .fireImmune()
                     .sized(0.6f, 0.8f));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<TerraswordWaveEntity>> TERRASWORD_WAVE =
+            register("terrasword_wave",
+                    EntityType.Builder.<TerraswordWaveEntity>of(TerraswordWaveEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .fireImmune()
+                            .sized(0.1f, 0.1f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<FoxFireEntity>> FOX_FIRE =
+            register("fox_fire",
+                    EntityType.Builder.<FoxFireEntity>of(FoxFireEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .fireImmune()
+                            .sized(1f, 1f));
+
     private static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> register(String name, EntityType.Builder<T> builder) {
         return ENTITY_TYPES.register(name, () -> builder.build(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name).toString()));
@@ -166,6 +186,8 @@ public class ModEntities {
         event.put(CRAZY_TERRORBEAK.get(), TerrorbeakEntity.createCrazyTerrorbeakAttributes().build());
         event.put(WEAKENESS_TERRORBEAK.get(), TerrorbeakEntity.createWeakenessTerrorbeakAttributes().build());
         event.put(SHADOW_HAND.get(), ShadowHandEntity.createAttributes().build());
+        event.put(TERRASWORD_WAVE.get(), TerraswordWaveEntity.createAttributes().build());
+        event.put(FOX_FIRE.get(), FoxFireEntity.createAttributes().build());
         event.put(MELT_DREAM_CRYSTAL_ENTITY.get(), MeltDreamCrystalEntityEntity.createAttributes().build());
     }
 

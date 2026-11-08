@@ -58,7 +58,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.CHENJINGMEN_DESERT_SWORD.get())
                 .add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get())
                 .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get())
-                .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
+                .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get())
+                .add(ModItems.TERRA_BLADE.get());
         tag(ModItemTags.ENHANCE_STONE)
                 .add(Items.AIR)
                 .add(ModItems.ATTACK_ENHANCE_STONE.get())
@@ -142,7 +143,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.SHADOW_EROSION_DAGGER.get())
                 .add(ModItems.CONGEAL_WIND_IRON_SWORD.get())
                 .add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get())
-                .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
+                .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get())
+                .add(ModItems.TERRA_BLADE.get());
         tag(ItemTags.PICKAXES)
                 .add(ModItems.COPPER_PICKAXE.get())
                 .add(ModItems.TITANIUM_PICKAXE.get())
@@ -232,7 +234,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .addTag(ModItemTags.INGOTS_CONGEAL_WIND_IRON)
                 .addTag(ModItemTags.INGOTS_FLUFFY_WIND_ALLOY)
                 .addTag(ModItemTags.INGOTS_BLACK_METAL)
-                .addTag(ModItemTags.INGOTS_SHADOW_ALLOY);
+                .addTag(ModItemTags.INGOTS_SHADOW_ALLOY)
+                .add(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get());
+        tag(TagKey.create(BuiltInRegistries.ITEM.key(),
+                ResourceLocation.fromNamespaceAndPath("forge", "ingots/melt_dream_aurorian_steel")))
+                .add(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get());
         tag(ModItemTags.INGOTS_MOLTEN_GOLD)
                 .add(ModItems.MOLTEN_GOLD_INGOT.get());
         tag(ModItemTags.INGOTS_CONGEAL_WIND_IRON)

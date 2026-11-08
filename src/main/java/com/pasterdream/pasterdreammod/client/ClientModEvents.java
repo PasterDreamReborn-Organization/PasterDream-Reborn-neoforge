@@ -2,6 +2,9 @@ package com.pasterdream.pasterdreammod.client;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.client.model.KusanagiVenomStingerModel;
+import com.pasterdream.pasterdreammod.client.renderer.AngelWingRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.ForsakensWingRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.MachineLightWingRenderer;
 import com.pasterdream.pasterdreammod.init.ModBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.init.ModEntityRenderer;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -82,6 +85,12 @@ public final class ClientModEvents {
                         return CrossbowItem.isCharged(stack) && charged != null
                                 && charged.contains(Items.FIREWORK_ROCKET) ? 1.0F : 0.0F;
                     });
+            top.theillusivec4.curios.api.client.CuriosRendererRegistry.register(
+                    ModItems.ANGEL_WING.get(), AngelWingRenderer::new);
+            top.theillusivec4.curios.api.client.CuriosRendererRegistry.register(
+                    ModItems.FORSAKENS_WING.get(), ForsakensWingRenderer::new);
+            top.theillusivec4.curios.api.client.CuriosRendererRegistry.register(
+                    ModItems.MACHINE_LIGHT_WING.get(), MachineLightWingRenderer::new);
         });
     }
 

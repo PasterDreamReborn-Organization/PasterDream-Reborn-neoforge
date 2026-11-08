@@ -58,6 +58,18 @@ public class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> AWAKE =
             SOUND_EVENTS.register("awake", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "awake")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> CLOAK =
+            SOUND_EVENTS.register("cloak", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cloak")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> THERMAL_DAGGER =
+            SOUND_EVENTS.register("thermal_dagger", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "thermal_dagger")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_WAVE =
+            SOUND_EVENTS.register("sword_wave", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sword_wave")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> FOX_FIRE =
+            SOUND_EVENTS.register("fox_fire", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fox_fire")));
 
     public static final DeferredHolder<SoundEvent, SoundEvent> LIFE_CRYSTAL =
             SOUND_EVENTS.register("life_crystal", () -> SoundEvent.createVariableRangeEvent(

@@ -111,6 +111,7 @@ public class ModRecipesProvider extends RecipeProvider {
         claypanRecipes(output);
         musicDiscRecipes(output);
         windwreathedThunderSpearRecipe(output);
+        expansionWeaponWorkshopRecipes(output);
         titaniumCooking(output, ModItems.TITANIUM_ORE.get(), "titanium_ore_");
         titaniumCooking(output, ModItems.DEEPSLATE_TITANIUM_ORE.get(), "deepslate_titanium_ore_");
         titaniumCooking(output, ModItems.RAW_TITANIUM.get(), "");
@@ -2776,6 +2777,31 @@ public class ModRecipesProvider extends RecipeProvider {
         WeaponWorkshopCraftingTableRecipe recipe = new WeaponWorkshopCraftingTableRecipe(itemInputs, enhanceStone, itemOutput);
         output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                 "weapon_workshop_crafting_table/windwreathed_thunder_spear"), recipe, null);
+    }
+
+    private void expansionWeaponWorkshopRecipes(RecipeOutput output) {
+        ItemIngredient enhanceStone = ItemIngredient.of(ModItemTags.ENHANCE_STONE, 1);
+        List<ItemIngredient> terraInputs = List.of(
+                ItemIngredient.of(ModItems.INFERNO_SWORD.get(), 1),
+                ItemIngredient.of(ModItems.MURAKUMO_KUSANAGI.get(), 1),
+                ItemIngredient.of(ModItems.BEIHAI_RUO_TIDE_SWORD.get(), 1),
+                ItemIngredient.of(ModItems.CHENJINGMEN_DESERT_SWORD.get(), 1),
+                ItemIngredient.of(ModItems.BROKEN_HERO_SWORD.get(), 1));
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "weapon_workshop_crafting_table/terra_blade"),
+                new WeaponWorkshopCraftingTableRecipe(terraInputs, enhanceStone,
+                        ItemIngredient.of(ModItems.TERRA_BLADE.get(), 1)), null);
+
+        List<ItemIngredient> strawberryInputs = List.of(
+                ItemIngredient.of(ModItems.SLIVER_BELL.get(), 1),
+                ItemIngredient.of(ModItems.DYEDREAM_ALLOY_INGOT.get(), 1),
+                ItemIngredient.of(Items.STRING, 5),
+                ItemIngredient.of(ModItems.DYEDREAM_PLANKS.get(), 5),
+                ItemIngredient.of(ModItems.WHITE_CRYSTAL.get(), 1));
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "weapon_workshop_crafting_table/strawberry_heart"),
+                new WeaponWorkshopCraftingTableRecipe(strawberryInputs, enhanceStone,
+                        ItemIngredient.of(ModItems.STRAWBERRY_HEART.get(), 1)), null);
     }
 
     // ===== 暗影合金工具配方（合成台 NBT 保留升级，耐久重置满） =====

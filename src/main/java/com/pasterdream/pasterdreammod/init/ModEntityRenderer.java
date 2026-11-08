@@ -8,6 +8,8 @@ import com.pasterdream.pasterdreammod.client.renderer.TideSwordProjectileRendere
 import com.pasterdream.pasterdreammod.client.renderer.WindThunderSpearRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.FluffyWindArrowRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.ShadowAlloyArrowRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.FoxFireRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.TerraswordWaveRenderer;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -37,5 +39,7 @@ public final class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.THROWN_POTION_BOTTLE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.REJUVENATION_BOTTLE_ENTITY.get(), NoopRenderer::new);
         event.registerEntityRenderer(ModEntities.POTION_BOTTLE_EFFECT_ENTITY.get(), NoopRenderer::new);
+        event.registerEntityRenderer(ModEntities.FOX_FIRE.get(), FoxFireRenderer::new);
+        event.registerEntityRenderer(ModEntities.TERRASWORD_WAVE.get(), TerraswordWaveRenderer::new);
     }
 }
