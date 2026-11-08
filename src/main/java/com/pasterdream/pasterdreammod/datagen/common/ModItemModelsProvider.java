@@ -3,9 +3,11 @@ package com.pasterdream.pasterdreammod.datagen.common;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModFluids;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -460,6 +462,40 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.LIGHT_BALL_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/light_ball_crop"));
         withExistingParent(ModItems.CLOUD_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/cloud_crop"));
         withExistingParent(ModItems.COTTON_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/cotton_crop"));
+        registerPotionBottleModels();
+    }
+
+    private void registerPotionBottleModels() {
+        withExistingParent("potion_bottle_of_berserk", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/potion_bottle_of_berserk"));
+        withExistingParent("potion_bottle_of_frozen", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/potion_bottle_of_frozen"));
+        withExistingParent("potion_bottle_of_highly_toxic", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/potion_bottle_of_highly_toxic"));
+        withExistingParent("potion_bottle_of_inferno", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/potion_bottle_of_inferno"));
+        withExistingParent("potion_bottle_of_lightning", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/potion_bottle_of_lightning"));
+        withExistingParent("potion_bottle_of_rejuvenation", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/potion_bottle_of_rejuvenation"));
+        withExistingParent("potion_bottle_of_cyclone", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/potion_bottle_of_cyclone"));
+        ItemModelBuilder potionBottle = withExistingParent(ModItems.POTION_BOTTLE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/potion_bottle_of_berserk"));
+        potionBottle.override().predicate(modLoc("type"), PotionBottleItem.getPredicateForType(PotionBottleItem.TYPE_REJUVENATION))
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/potion_bottle_of_rejuvenation"))).end()
+                .override().predicate(modLoc("type"), PotionBottleItem.getPredicateForType(PotionBottleItem.TYPE_CYCLONE))
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/potion_bottle_of_cyclone"))).end()
+                .override().predicate(modLoc("type"), PotionBottleItem.getPredicateForType(PotionBottleItem.TYPE_HIGHLY_TOXIC))
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/potion_bottle_of_highly_toxic"))).end()
+                .override().predicate(modLoc("type"), PotionBottleItem.getPredicateForType(PotionBottleItem.TYPE_FROZEN))
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/potion_bottle_of_frozen"))).end()
+                .override().predicate(modLoc("type"), PotionBottleItem.getPredicateForType(PotionBottleItem.TYPE_INFERNO))
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/potion_bottle_of_inferno"))).end()
+                .override().predicate(modLoc("type"), PotionBottleItem.getPredicateForType(PotionBottleItem.TYPE_BERSERK))
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/potion_bottle_of_berserk"))).end()
+                .override().predicate(modLoc("type"), PotionBottleItem.getPredicateForType(PotionBottleItem.TYPE_LIGHTNING))
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/potion_bottle_of_lightning"))).end();
     }
 
     private void wallItem(String wall, String base) {

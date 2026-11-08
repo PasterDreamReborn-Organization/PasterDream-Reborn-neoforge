@@ -13,6 +13,7 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipe;
@@ -58,6 +59,10 @@ public class ModJEIPlugin implements IModPlugin
         registration.registerSubtypeInterpreter(
                 ModItems.STRIKE_RING.get(),
                 (stack, context) -> String.valueOf(StrikeRingItem.getLv(stack)));
+
+        registration.registerSubtypeInterpreter(
+                ModItems.POTION_BOTTLE.get(),
+                (stack, context) -> PotionBottleItem.getPotionType(stack));
     }
 
     @Override

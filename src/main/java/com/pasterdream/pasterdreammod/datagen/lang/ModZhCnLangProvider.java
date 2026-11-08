@@ -882,5 +882,30 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fourleaf_clover_curio.flavor", "§7§o哪片叶子代表着幸运？");
         add("tooltip.pasterdream.fourleaf_clover_curio.effect.health", "§7▪ §9+1 最大生命值");
         add("tooltip.pasterdream.fourleaf_clover_curio.effect.luck", "§7▪ §9+6 幸运值");
+        // 药剂瓶
+        add(ModItems.POTION_BOTTLE.get(), "药剂瓶");
+        add("item.pasterdream.potion_bottle.berserk", "狂暴药剂瓶");
+        add("item.pasterdream.potion_bottle.frozen", "冰冻药剂瓶");
+        add("item.pasterdream.potion_bottle.highly_toxic", "剧毒药剂瓶");
+        add("item.pasterdream.potion_bottle.lightning", "雷电药剂瓶");
+        add("item.pasterdream.potion_bottle.rejuvenation", "回春药剂瓶");
+        add("item.pasterdream.potion_bottle.inferno", "狱火药剂瓶");
+        add("item.pasterdream.potion_bottle.cyclone", "飓风药剂瓶");
+        add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9砸碎后释放剧毒云，对6*6区域范围内的生物施加剧毒、缓慢和虚弱");
+        add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9砸碎后在落地地点释放乌云，并在短时间后对5*5区域范围内生成4次随机落雷");
+        add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§o--瓶装闪电");
+        add("tooltip.pasterdream.potion_bottle.rejuvenation.description","§9砸碎后释放5*5区域的治疗雾气，持续20秒，为在雾气内的玩家或和平生物恢复最大生命值的5%的血量");
+        add("tooltip.pasterdream.potion_bottle.frozen.description.1","§9砸碎后在落地地点释放7*7的冷冻雾气，在其中的实体将无法移动并失去战斗能力");
+        add("tooltip.pasterdream.potion_bottle.frozen.description.2","§7§o--谁将召唤那位施雪的女孩？");
+        add("tooltip.pasterdream.potion_bottle.berserk.description.1","§9砸碎后在落地地点释放8*8的狂暴雾气");
+        add("tooltip.pasterdream.potion_bottle.berserk.description.2","§9在其中的玩家攻击力+20%，移动速度+10%，攻击速度+50%，战技冷却-30%，瞬身术冷却-30%，战技伤害+30%");
+        add("tooltip.pasterdream.potion_bottle.inferno.description.1","§9在6x6范围制造烈火，对范围内所有敌人周期造成魔法伤害并点燃敌人");
+        add("tooltip.pasterdream.potion_bottle.inferno.description.2","§9波及的敌人会被赋予易伤buff，最高3级");
+        add("tooltip.pasterdream.potion_bottle.cyclone.description.1","§9砸碎后将落地地点8*8范围内除玩家以外所有实体抛飞");
+        add("tooltip.pasterdream.potion_bottle.cyclone.description.2","§9波及的实体每拥有20最大生命值，增加1级折翼buff，最高5级，拥有该buff将增加实体的摔落伤害");
+        add("tooltip.pasterdream.potion_bottle.cyclone.description.3","§7§o--粉骨砕身カジノゥ");
+        add("effect.pasterdream.berserk", "狂暴");
+        add("effect.pasterdream.frozen", "急冻");
+        add("effect.pasterdream.broken_wing", "折翼");
     }
 }

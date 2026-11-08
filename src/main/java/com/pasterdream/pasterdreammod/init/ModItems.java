@@ -16,6 +16,7 @@ import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.world.item.PulseWindRunnerCrystalItem;
 import com.pasterdream.pasterdreammod.world.item.RedDewItem;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.SnowballPebbleItem;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.WindwreathedThunderSpearItem;
@@ -764,6 +765,8 @@ public class ModItems {
             });
 
     public static final DeferredItem<Item> ELIXIR_BOTTLE = ITEMS.register("elixir_bottle", () -> new ElixirBottleItem(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> POTION_BOTTLE = ITEMS.register("potion_bottle", () -> new PotionBottleItem(""));
 
     public static final DeferredItem<Item> ELIXIR_BOTTLE_OF_MELT_DREAM = ITEMS.register("elixir_bottle_of_melt_dream",
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).meltDreamEnergyAdd(25).rarity(Rarity.UNCOMMON)
