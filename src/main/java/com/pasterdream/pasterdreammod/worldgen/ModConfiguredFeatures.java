@@ -13,8 +13,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.HugeFungusConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -70,6 +72,17 @@ public final class ModConfiguredFeatures {
                         BlockStateProvider.simple(pinkMushroomCap),
                         BlockStateProvider.simple(ModBlocks.PINK_MUSHROOM_STEM.get()),
                         3)));
+
+        // ========= 灯影之下 =========
+        // 阴影真菌树 — 骨粉催熟+自然生成，诡异菌形态
+        context.register(SHADOW_FUNGUS_TREE, new ConfiguredFeature<>(Feature.HUGE_FUNGUS,
+                new HugeFungusConfiguration(
+                        ModBlocks.SHADOW_NYLIUM.get().defaultBlockState(),
+                        ModBlocks.SHADOW_STEM.get().defaultBlockState(),
+                        ModBlocks.SHADOW_WART_BLOCK.get().defaultBlockState(),
+                        ModBlocks.SHADOW_SHROOMLIGHT.get().defaultBlockState(),
+                        BlockPredicate.matchesBlocks(ModBlocks.SHADOW_NYLIUM.get()),
+                        true)));
 
         var targets = List.of(Blocks.DEEPSLATE, Blocks.GRANITE, Blocks.DIORITE, Blocks.ANDESITE).stream()
                 .map(block -> OreConfiguration.target(new BlockMatchTest(block),

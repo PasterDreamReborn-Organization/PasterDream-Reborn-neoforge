@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 062：上游 #1289 碰撞箱同步与阴影蘑菇生长补全（2026-11-08）
+
+- 同步上游 #1289：`PinkMushroom` 与 `ShadowFungusBlock` 的 `getShape` 应用方块随机偏移，使碰撞箱随视觉位置移动。
+- 补全阴影蘑菇骨粉生长：注册此前遗漏的 `shadow_fungus_tree` configured feature，采用阴影菌岩基底、阴影菌柄、阴影疣块菌盖与阴影菌光体装饰的诡异菌形态配置。
+- `runData` 写入 1 个文件，`build` 通过，`runGameTestServer` 149/149 通过（新增阴影蘑菇骨粉生长测试）；placed feature、群系挂载与自然生成仍待 T16。
+
 ### 批次 061：灯影之下物品栏全量搬运（2026-11-08）
 
 - 全量搬运灯影之下创造模式物品栏 64 项条目，含阴影石系列、暗影地牢方块、灯影竞技场与裂隙、阴影菌岩/影灯/阴影蜡烛、阴影巨型菌与木建材、阴影书架、黑金属方块及阴影陶罐；保留来源注册 ID、方块属性与条目顺序。
