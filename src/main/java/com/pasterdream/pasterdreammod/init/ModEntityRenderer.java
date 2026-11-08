@@ -34,5 +34,8 @@ public final class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.FLUFFY_WIND_ARROW.get(), FluffyWindArrowRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_ALLOY_ARROW.get(), ShadowAlloyArrowRenderer::new);
         event.registerEntityRenderer(ModEntities.PEBBLE_PROJECTILE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.THROWN_POTION_BOTTLE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.REJUVENATION_BOTTLE_ENTITY.get(), NoopRenderer::new);
+        event.registerEntityRenderer(ModEntities.POTION_BOTTLE_EFFECT_ENTITY.get(), NoopRenderer::new);
     }
 }

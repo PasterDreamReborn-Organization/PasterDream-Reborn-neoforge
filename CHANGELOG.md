@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 057：药剂瓶系列投掷物（2026-11-08）
+
+- 搬运药剂瓶及狂暴、冰冻、剧毒、闪电、回春、狱火、飓风 7 种类型，保留来源堆叠数、7 秒冷却、投掷速度与类型 tooltip。
+- 注册药剂瓶投掷物、多阶段效果实体与回春治疗实体；迁移闪电落雷、毒气波、冰冻脉冲、狱火伤害波和飓风抛飞逻辑，新增狂暴、冰冻、折翼效果及折翼摔落伤害 Mixin。冰冻效果到期后通过 `MobEffectEvent.Expired` 恢复生物 AI，并保持来源的不可被牛奶治愈行为。
+- 药剂类型在 1.21 使用 `CUSTOM_DATA` 持久化，与梦之釜配方 `nbt` 输出兼容；发射器改用 `ProjectileItem` + `registerProjectileBehavior`。
+- 补入 7 条梦之釜药剂瓶配方，复制来源纹理、粒子、音效并生成模型与双语文本；闪电瓶 t=86 祭坛召唤因祭坛未迁入暂缓，JEI 按药剂类型注册子类型解释器。
+- `runData` 写入 10 个文件，`build` 与 145/145 GameTest 通过；客户端模型切换、粒子音效与真实投掷命中待游戏内验证。
+
 ### 批次 056：基础素材与小石子投掷（2026-11-08）
 
 - 搬运锈蚀金属碎屑、风行者水晶、白厄水晶、凝影剑柄、纯粹恐惧、暗影地牢钥匙、厚翅甲壳、振音声膜、小石子与雪球，沿用来源 ID、堆叠数、稀有度和 tooltip。

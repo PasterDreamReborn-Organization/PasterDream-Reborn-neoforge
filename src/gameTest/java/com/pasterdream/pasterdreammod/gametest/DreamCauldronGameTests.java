@@ -12,6 +12,7 @@ import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronMen
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.potion.CauldronPotionModule;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.potion.PotionEffectCodec;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
@@ -39,7 +40,13 @@ public class DreamCauldronGameTests
     public static void sourceRecipesLoadAndCraft(GameTestHelper helper)
     {
         var recipes = helper.getLevel().getRecipeManager().getAllRecipesFor(ModRecipes.DREAM_CAULDRON.get());
-        helper.assertTrue(recipes.size() == 92, "梦之釜可用来源配方应加载 92 条，实际 " + recipes.size());
+        helper.assertTrue(recipes.size() == 99, "梦之釜可用来源配方应加载 99 条，实际 " + recipes.size());
+        helper.assertTrue(helper.getLevel().getRecipeManager().byKey(ResourceLocation.fromNamespaceAndPath(
+                PasterDreamMod.MOD_ID, "dream_cauldron/potion_bottle_of_lightning")).isPresent(),
+                "闪电药剂瓶配方应随药剂瓶迁入");
+        helper.assertTrue(helper.getLevel().getRecipeManager().byKey(ResourceLocation.fromNamespaceAndPath(
+                PasterDreamMod.MOD_ID, "dream_cauldron/potion_bottle_of_cyclone")).isPresent(),
+                "飓风药剂瓶配方应随药剂瓶迁入");
         helper.assertTrue(helper.getLevel().getRecipeManager().byKey(ResourceLocation.fromNamespaceAndPath(
                 PasterDreamMod.MOD_ID, "dream_cauldron/potion_recipe/speed_long")).isPresent(),
                 "来源迅捷延长配方 ID 应保留");
@@ -100,6 +107,27 @@ public class DreamCauldronGameTests
         helper.assertTrue(cauldron.getFluidTank(0).getFluid().getAmount() == 1000
                 && cauldron.getItemHandler().getStackInSlot(0).getCount() == 1,
                 "输出槽已满时不得扣除输入");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void potionBottleRecipeAppliesType(GameTestHelper helper)
+    {
+        BlockPos pos = new BlockPos(1, 1, 1);
+        helper.setBlock(pos, ModBlocks.DREAM_CAULDRON.get());
+        DreamCauldronBlockEntity cauldron = helper.getBlockEntity(pos);
+        cauldron.getFluidTank(0).setFluid(new FluidStack(ModFluids.MELT_DREAM_LIQUID.get(), 100));
+        cauldron.getFluidTank(1).setFluid(new FluidStack(ModFluids.GUIDING_DRUG.get(), 125));
+        cauldron.getItemHandler().setStackInSlot(0, new ItemStack(Items.CORNFLOWER));
+        cauldron.getItemHandler().setStackInSlot(1, new ItemStack(Items.REDSTONE));
+        cauldron.getItemHandler().setStackInSlot(2, new ItemStack(ModItems.DARK_CLOUD.get()));
+        cauldron.craft(null);
+        ItemStack bottle = cauldron.getItemHandler().getStackInSlot(3);
+        helper.assertTrue(bottle.is(ModItems.POTION_BOTTLE.get()), "闪电药剂瓶配方应产出药剂瓶");
+        helper.assertTrue(PotionBottleItem.TYPE_LIGHTNING.equals(PotionBottleItem.getPotionType(bottle)),
+                "药剂瓶应保留 lightning 类型");
+        helper.assertTrue(PotionBottleItem.getEffect(PotionBottleItem.TYPE_LIGHTNING) != null,
+                "闪电药剂瓶效果应已绑定");
         helper.succeed();
     }
 

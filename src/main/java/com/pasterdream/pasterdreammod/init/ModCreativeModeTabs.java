@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
 import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleWithFluidNBTBuilder;
@@ -72,6 +73,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PURE_HORROR.get());
                         output.accept(ModItems.BLACK_BEETLE_CARAPACE.get());
                         output.accept(ModItems.BLACK_BEETLE_VOCALCORD.get());
+                        // 药剂瓶（动态遍历所有已注册类型，含 KJS / 拓展模组注册的）
+                        for (String type : PotionBottleItem.getRegisteredTypes()) {
+                            output.accept(PotionBottleItem.createWithType(ModItems.POTION_BOTTLE.get(), type));
+                        }
                         output.accept(ModItems.PINK_SLIMEBALL.get());
                         output.accept(ModItems.PROTECT_DECK.get());
                         output.accept(ModItems.COTTON.get());

@@ -1,0 +1,239 @@
+package com.pasterdream.pasterdreammod.world.item;
+
+import com.pasterdream.pasterdreammod.init.ModEffects;
+import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.init.ModParticleTypes;
+import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.entity.PotionBottleEffectEntity;
+import com.pasterdream.pasterdreammod.world.entity.RejuvenationBottleEntity;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+
+/**
+ * 药剂瓶物品注册 + 效果绑定。
+ * 物品本体在 {@link ModItems} 注册，本类负责 commonSetup 中的效果绑定与发射器行为。
+ * 多阶段时序（闪电落雷/毒气波/冰冻脉冲/狱火波）由 {@link PotionBottleEffectEntity} 的 tick 状态机驱动。
+ */
+public class PotionBottleRegistry {
+
+    // ===== 效果注册入口 =====
+
+    /** 在 commonSetup 中调用，绑定所有内置药剂瓶的砸碎效果 */
+    public static void registerAllEffects() {
+        registerLightningBottleEffect();
+        registerHighlyToxicBottleEffect();
+        registerRejuvenationBottleEffect();
+        registerBerserkBottleEffect();
+        registerFrozenBottleEffect();
+        registerInfernoBottleEffect();
+        registerCycloneBottleEffect();
+    }
+
+    /** 注册发射器行为 */
+    public static void registerDispenserBehavior() {
+        DispenserBlock.registerProjectileBehavior(ModItems.POTION_BOTTLE.get());
+    }
+
+    // ===== 闪电药剂瓶 =====
+
+    private static void registerLightningBottleEffect() {
+        PotionBottleItem.registerEffect(PotionBottleItem.TYPE_LIGHTNING,
+                (stack, level, thrower, hitPos) -> {
+                    if (!(level instanceof ServerLevel serverLevel)) return;
+
+                    // t=0: 释放乌云 + 充能音效
+                    serverLevel.playSound(null, hitPos.x, hitPos.y, hitPos.z,
+                            ModSounds.LIGHTNING_CHARGE.get(), SoundSource.NEUTRAL,
+                            1.0F, 1.0F);
+                    serverLevel.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE,
+                            hitPos.x, hitPos.y, hitPos.z, 64, 2.0, 0.5, 2.0, 0.0);
+                    serverLevel.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                            hitPos.x, hitPos.y, hitPos.z, 32, 2.0, 0.5, 2.0, 0.0);
+
+                    // 电火花分时刷新 + 4 道落雷 + t=86 召唤祭坛：由效果实体驱动
+                    serverLevel.addFreshEntity(new PotionBottleEffectEntity(serverLevel,
+                            hitPos.x, hitPos.y, hitPos.z, PotionBottleEffectEntity.TYPE_LIGHTNING, thrower));
+                });
+    }
+
+    // ===== 剧毒药剂瓶：多轮毒气波 =====
+
+    private static void registerHighlyToxicBottleEffect() {
+        PotionBottleItem.registerEffect(PotionBottleItem.TYPE_HIGHLY_TOXIC,
+                (stack, level, thrower, hitPos) -> {
+                    if (!(level instanceof ServerLevel sl)) return;
+
+                    // t=0: 初始毒雾爆发 + 音效
+                    sl.playSound(null, hitPos.x, hitPos.y, hitPos.z,
+                            SoundEvents.SPLASH_POTION_BREAK, SoundSource.NEUTRAL,
+                            0.7F, 1.0F);
+                    sl.sendParticles(ModParticleTypes.POISON_GAS_PARTICLE.get(),
+                            hitPos.x, hitPos.y + 1, hitPos.z, 72, 2.0, 1.0, 2.0, 0.01);
+
+                    // 3 轮毒气波：由效果实体驱动
+                    sl.addFreshEntity(new PotionBottleEffectEntity(sl,
+                            hitPos.x, hitPos.y, hitPos.z, PotionBottleEffectEntity.TYPE_TOXIC, thrower));
+                });
+    }
+
+    // ===== 回春药剂瓶 =====
+
+    private static void registerRejuvenationBottleEffect() {
+        PotionBottleItem.registerEffect(PotionBottleItem.TYPE_REJUVENATION,
+                (stack, level, thrower, hitPos) -> {
+                    if (!(level instanceof ServerLevel sl)) return;
+
+                    // t=0: 初始粒子爆发 + 音效
+                    sl.playSound(null, hitPos.x, hitPos.y, hitPos.z,
+                            SoundEvents.SPLASH_POTION_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
+                    sl.sendParticles(ModParticleTypes.REJUVENATION_PARTICLE.get(),
+                            hitPos.x, hitPos.y + 1, hitPos.z, 64, 2.0, 1.0, 2.0, 0.05);
+                    sl.sendParticles(ModParticleTypes.YELLOW_SMOKE_PARTICLE.get(),
+                            hitPos.x, hitPos.y + 0.5, hitPos.z, 32, 2.0, 1.0, 2.0, 0.05);
+
+                    // 生成治疗实体：400tick自删，每tick刷粒子+治疗
+                    RejuvenationBottleEntity entity = new RejuvenationBottleEntity(sl,
+                            hitPos.x, hitPos.y, hitPos.z);
+                    sl.addFreshEntity(entity);
+
+                    // 治疗音效
+                    sl.playSound(null, hitPos.x, hitPos.y, hitPos.z,
+                            SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.NEUTRAL, 0.2F, 1.0F);
+                });
+    }
+
+    // ===== 狂暴药剂瓶 =====
+
+    private static void registerBerserkBottleEffect() {
+        PotionBottleItem.registerEffect(PotionBottleItem.TYPE_BERSERK,
+                (stack, level, thrower, hitPos) -> {
+                    if (!(level instanceof ServerLevel sl)) return;
+
+                    // t=0: 粒子爆发 + 音效
+                    sl.playSound(null, hitPos.x, hitPos.y, hitPos.z,
+                            SoundEvents.SPLASH_POTION_BREAK, SoundSource.NEUTRAL, 1.2F, 1.0F);
+
+                    // 1. 附魔符文 — 高层
+                    sl.sendParticles(ParticleTypes.ENCHANT,
+                            hitPos.x, hitPos.y + 3, hitPos.z, 100, 2.5, 1.0, 2.5, 0.02);
+                    // 2. 龙息 — 低层
+                    sl.sendParticles(ParticleTypes.DRAGON_BREATH,
+                            hitPos.x, hitPos.y + 0.8, hitPos.z, 100, 2.5, 0.3, 2.5, 0.01);
+                    // 3. 狂暴专属粒子 — 中层
+                    sl.sendParticles(ModParticleTypes.BERSERK_PARTICLE.get(),
+                            hitPos.x, hitPos.y + 2, hitPos.z, 12, 2.5, 1.0, 2.5, 0.02);
+                    // 4. 末地烛闪烁 — 点缀
+                    sl.sendParticles(ParticleTypes.END_ROD,
+                            hitPos.x, hitPos.y + 2, hitPos.z, 6, 2.5, 1.0, 2.5, 0.02);
+
+                    // 8格半径内所有玩家施加狂暴buff（60tick=3秒）
+                    sl.getEntitiesOfClass(Player.class,
+                            new AABB(
+                                    hitPos.x - 8, hitPos.y - 8, hitPos.z - 8,
+                                    hitPos.x + 8, hitPos.y + 8, hitPos.z + 8),
+                            e -> true)
+                            .forEach(e -> e.addEffect(
+                                    new MobEffectInstance(
+                                            ModEffects.BERSERK, 60, 0)));
+                });
+    }
+
+    // ===== 冰冻药剂瓶 =====
+
+    private static void registerFrozenBottleEffect() {
+        PotionBottleItem.registerEffect(PotionBottleItem.TYPE_FROZEN,
+                (stack, level, thrower, hitPos) -> {
+                    if (!(level instanceof ServerLevel sl)) return;
+
+                    double x = hitPos.x + 0.5, y = hitPos.y, z = hitPos.z + 0.5;
+
+                    // t=0: 冰冻冲击音效
+                    sl.playSound(null, hitPos.x, hitPos.y, hitPos.z,
+                            ModSounds.FROZEN_SHOCK.get(), SoundSource.NEUTRAL,
+                            1.0F, 1.0F);
+
+                    // t=0: 落地爆发 496 颗雪花
+                    sl.sendParticles(ParticleTypes.SNOWFLAKE,
+                            x, y + 1.5, z, 240, 2.5, 1.5, 2.5, 0.1);
+                    sl.sendParticles(ModParticleTypes.SNOWFLAKE_0_PARTICLE.get(),
+                            x, y + 2, z, 128, 2.5, 1.5, 2.5, 0.1);
+                    sl.sendParticles(ModParticleTypes.SNOWFLAKE_1_PARTICLE.get(),
+                            x, y + 2, z, 128, 2.5, 1.5, 2.5, 0.1);
+
+                    // 5 波脉冲 (t=10,20,30,40,50)：由效果实体驱动
+                    sl.addFreshEntity(new PotionBottleEffectEntity(sl,
+                            hitPos.x, hitPos.y, hitPos.z, PotionBottleEffectEntity.TYPE_FROZEN, thrower));
+                });
+    }
+
+    // ===== 狱火药剂瓶 =====
+
+    private static void registerInfernoBottleEffect() {
+        PotionBottleItem.registerEffect(PotionBottleItem.TYPE_INFERNO,
+                (stack, level, thrower, hitPos) -> {
+                    if (!(level instanceof ServerLevel sl)) return;
+
+                    // t=0: 狱火爆发音效 + 粒子
+                    sl.playSound(null, hitPos.x, hitPos.y, hitPos.z,
+                            ModSounds.INFERNO_IMPACT.get(), SoundSource.NEUTRAL,
+                            1.0F, 1.0F);
+                    // 下层火焰粒子
+                    sl.sendParticles(ParticleTypes.FLAME,
+                            hitPos.x, hitPos.y + 0.5, hitPos.z, 80, 3.0, 0.5, 3.0, 0.03);
+                    // 上层狱火粒子
+                    sl.sendParticles(ModParticleTypes.INFERNO_PARTICLE.get(),
+                            hitPos.x, hitPos.y + 1.5, hitPos.z, 60, 3.0, 1.0, 3.0, 0.02);
+
+                    // 5 轮伤害波 (t=10,30,50,70,90)：由效果实体驱动
+                    sl.addFreshEntity(new PotionBottleEffectEntity(sl,
+                            hitPos.x, hitPos.y, hitPos.z, PotionBottleEffectEntity.TYPE_INFERNO, thrower));
+                });
+    }
+
+    // ===== 飓风药剂瓶 =====
+
+    private static void registerCycloneBottleEffect() {
+        PotionBottleItem.registerEffect(PotionBottleItem.TYPE_CYCLONE,
+                (stack, level, thrower, hitPos) -> {
+                    if (!(level instanceof ServerLevel sl)) return;
+
+                    double x = hitPos.x, y = hitPos.y, z = hitPos.z;
+
+                    // t=0: 风爆音效 + 白色粒子爆发
+                    sl.playSound(null, x, y, z,
+                            SoundEvents.SPLASH_POTION_BREAK, SoundSource.NEUTRAL,
+                            1.0F, 1.0F);
+                    sl.sendParticles(ParticleTypes.CLOUD, x, y + 1, z, 64, 3.0, 1.0, 3.0, 0.02);
+                    sl.sendParticles(ParticleTypes.END_ROD, x, y + 1, z, 24, 3.0, 2.0, 3.0, 0.02);
+
+                    // 8x8 范围内除玩家外、且不免疫摔落伤害的实体抛飞（×20）
+                    double r = 4.0;
+                    sl.getEntitiesOfClass(LivingEntity.class,
+                            new AABB(x - r, y - r, z - r, x + r, y + r, z + r),
+                            e -> !(e instanceof Player) && !e.getType().is(EntityTypeTags.FALL_DAMAGE_IMMUNE))
+                            .forEach(e -> {
+                                e.setDeltaMovement(
+                                        (sl.random.nextDouble() - 0.5) * 0.6,
+                                        3.2,
+                                        (sl.random.nextDouble() - 0.5) * 0.6);
+                                e.hurtMarked = true;
+                                int brokenWingLevel = Math.max(1, Math.min((int) (e.getMaxHealth() / 20.0F), 5));
+                                e.addEffect(new MobEffectInstance(
+                                        ModEffects.BROKEN_WING, 200, brokenWingLevel - 1));
+                            });
+
+                    // 白色粒子旋风柱（向上漂浮）：由效果实体驱动
+                    sl.addFreshEntity(new PotionBottleEffectEntity(sl,
+                            x, y, z, PotionBottleEffectEntity.TYPE_CYCLONE, thrower));
+                });
+    }
+}

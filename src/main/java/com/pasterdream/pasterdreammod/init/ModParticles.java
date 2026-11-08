@@ -4,8 +4,13 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.client.particle.Buff0Particle;
 import com.pasterdream.pasterdreammod.client.particle.CrackParticle;
 import com.pasterdream.pasterdreammod.client.particle.Dust0Particle;
+import com.pasterdream.pasterdreammod.client.particle.FurySpellParticle;
+import com.pasterdream.pasterdreammod.client.particle.InfernoParticle;
 import com.pasterdream.pasterdreammod.client.particle.MeltdreamCrystalParticle;
 import com.pasterdream.pasterdreammod.client.particle.PoisonGasParticle;
+import com.pasterdream.pasterdreammod.client.particle.RejuvenationParticle;
+import com.pasterdream.pasterdreammod.client.particle.SnowflakeParticle;
+import com.pasterdream.pasterdreammod.client.particle.YellowSmokeParticle;
 import com.pasterdream.pasterdreammod.client.particle.SharpSwordSlashParticle;
 import com.pasterdream.pasterdreammod.client.particle.SoulParticle;
 import com.pasterdream.pasterdreammod.client.particle.SporeParticle;
@@ -35,5 +40,11 @@ public final class ModParticles {
         event.registerSpriteSet(ModParticleTypes.SOUL_PARTICLE.get(), SoulParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.CRACK_0_PARTICLE.get(), CrackParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.MELTDREAM_CRYSTAL_PARTICLE.get(), MeltdreamCrystalParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.REJUVENATION_PARTICLE.get(), RejuvenationParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.YELLOW_SMOKE_PARTICLE.get(), YellowSmokeParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.BERSERK_PARTICLE.get(), FurySpellParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.SNOWFLAKE_0_PARTICLE.get(), SnowflakeParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.SNOWFLAKE_1_PARTICLE.get(), SnowflakeParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.INFERNO_PARTICLE.get(), InfernoParticle.Provider::new);
     }
 }

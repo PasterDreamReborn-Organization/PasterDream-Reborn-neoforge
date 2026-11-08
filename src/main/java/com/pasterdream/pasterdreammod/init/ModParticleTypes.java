@@ -34,6 +34,18 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("crack", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> MELTDREAM_CRYSTAL_PARTICLE =
             PARTICLE_TYPES.register("melt_dream_crystal", () -> new SimpleParticleType(true));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> REJUVENATION_PARTICLE =
+            PARTICLE_TYPES.register("rejuvenation", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> YELLOW_SMOKE_PARTICLE =
+            PARTICLE_TYPES.register("yellow_smoke", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BERSERK_PARTICLE =
+            PARTICLE_TYPES.register("berserk", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SNOWFLAKE_0_PARTICLE =
+            PARTICLE_TYPES.register("snowflake_0", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SNOWFLAKE_1_PARTICLE =
+            PARTICLE_TYPES.register("snowflake_1", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> INFERNO_PARTICLE =
+            PARTICLE_TYPES.register("inferno", () -> new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

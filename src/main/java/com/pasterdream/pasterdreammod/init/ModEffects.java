@@ -1,6 +1,9 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.world.effect.BindEffect;
+import com.pasterdream.pasterdreammod.world.effect.BrokenWingEffect;
+import com.pasterdream.pasterdreammod.world.effect.BerserkEffect;
+import com.pasterdream.pasterdreammod.world.effect.FrozenEffect;
 import com.pasterdream.pasterdreammod.world.effect.ShadowSilenceEffect;
 import com.pasterdream.pasterdreammod.world.effect.VulnerabilityEffect;
 import com.pasterdream.pasterdreammod.world.effect.WindThunderBoonEffect;
@@ -61,6 +64,12 @@ public class ModEffects {
             MOB_EFFECTS.register("melt_dream_crystal_armor", MeltDreamCrystalArmorEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> HIGHLY_TOXIC =
             MOB_EFFECTS.register("highly_toxic", HighlyToxicEffect::new);
+    public static final DeferredHolder<MobEffect, MobEffect> BERSERK =
+            MOB_EFFECTS.register("berserk", BerserkEffect::new);
+    public static final DeferredHolder<MobEffect, MobEffect> FROZEN =
+            MOB_EFFECTS.register("frozen", FrozenEffect::new);
+    public static final DeferredHolder<MobEffect, MobEffect> BROKEN_WING =
+            MOB_EFFECTS.register("broken_wing", BrokenWingEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> SNOW_VOW =
             MOB_EFFECTS.register("snow_vow", SnowVowEffect::new);
 

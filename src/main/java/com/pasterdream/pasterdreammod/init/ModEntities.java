@@ -10,6 +10,9 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.KusanagiVenomStingerEntity;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
 import com.pasterdream.pasterdreammod.world.entity.PebbleProjectile;
+import com.pasterdream.pasterdreammod.world.entity.PotionBottleEffectEntity;
+import com.pasterdream.pasterdreammod.world.entity.RejuvenationBottleEntity;
+import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
 import com.pasterdream.pasterdreammod.world.entity.TideSwordProjectileEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -94,6 +97,27 @@ public class ModEntities {
                     .setTrackingRange(64)
                     .setUpdateInterval(3)
                     .sized(0.25f, 0.25f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ThrownPotionBottle>> THROWN_POTION_BOTTLE = register("thrown_potion_bottle",
+            EntityType.Builder.<ThrownPotionBottle>of(ThrownPotionBottle::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .sized(0.25f, 0.25f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<RejuvenationBottleEntity>> REJUVENATION_BOTTLE_ENTITY = register("rejuvenation_bottle_entity",
+            EntityType.Builder.<RejuvenationBottleEntity>of(RejuvenationBottleEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(false)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<PotionBottleEffectEntity>> POTION_BOTTLE_EFFECT_ENTITY = register("potion_bottle_effect_entity",
+            EntityType.Builder.<PotionBottleEffectEntity>of(PotionBottleEffectEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(false)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .sized(0.5f, 0.5f));
 
     public static final DeferredHolder<EntityType<?>, EntityType<TerrorbeakEntity>> TERRORBEAK = register("terrorbeak",
             EntityType.Builder.<TerrorbeakEntity>of(TerrorbeakEntity::new, MobCategory.MONSTER)

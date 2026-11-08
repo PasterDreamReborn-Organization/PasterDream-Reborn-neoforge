@@ -42,12 +42,15 @@ import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.init.ModTreeDecoratorTypes;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorHandler;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamAuraHandler;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -122,6 +125,7 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onVulnerabilityHurt);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
+        NeoForge.EVENT_BUS.addListener(PasterDreamMod::onFrozenEffectExpired);
         NeoForge.EVENT_BUS.addListener(MeltDreamAuraHandler::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(MeltDreamCrystalArmorHandler::onPlayerTick);
         NeoForge.EVENT_BUS.addListener((RegisterCommandsEvent event) -> ModCommands.register(event.getDispatcher()));
@@ -145,6 +149,8 @@ public class PasterDreamMod {
             ModCropRelation.registerCropRelation();
             ModEnhanceStoneAttributeRelation.registerModEnhanceStoneAttributeRelation();
             ModShadowDungeonStructureSet.register();
+            PotionBottleRegistry.registerDispenserBehavior();
+            PotionBottleRegistry.registerAllEffects();
         });
     }
 
@@ -168,6 +174,16 @@ public class PasterDreamMod {
         if (instance != null) {
             int amplifier = instance.getAmplifier();
             event.setAmount(event.getAmount() * (1.0f + 0.1f * (amplifier + 1)));
+        }
+    }
+
+    // 冰冻效果到期后恢复生物 AI
+    public static void onFrozenEffectExpired(MobEffectEvent.Expired event) {
+        if (event.getEffectInstance() != null
+                && event.getEffectInstance().getEffect().value() == ModEffects.FROZEN.get()
+                && event.getEntity() instanceof Mob mob
+                && !event.getEntity().level().isClientSide) {
+            mob.setNoAi(false);
         }
     }
 
