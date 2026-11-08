@@ -15,6 +15,9 @@ import com.pasterdream.pasterdreammod.world.item.MeltDreamCrystalFragmentItem;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.world.item.PulseWindRunnerCrystalItem;
 import com.pasterdream.pasterdreammod.world.item.RedDewItem;
+import com.pasterdream.pasterdreammod.world.item.PebbleItem;
+import com.pasterdream.pasterdreammod.world.item.SnowballPebbleItem;
+import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.WindwreathedThunderSpearItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorItem;
@@ -85,6 +88,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -145,11 +149,15 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BLACK_METAL_NUGGET = ITEMS.register("black_metal_nugget",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RUST_BLACK_METAL_GRAIN = ITEMS.register("rust_black_metal_grain",
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_ALLOY_INGOT = ITEMS.register("shadow_alloy_ingot",
             () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
 
     // ===== 风之旅途材料 =====
     public static final DeferredItem<Item> CONGEAL_WIND = ITEMS.register("congeal_wind",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WIND_RUNNER_CRYSTAL = ITEMS.register("wind_runner_crystal",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> CONGEAL_WIND_IRON_INGOT = ITEMS.register("congeal_wind_iron_ingot",
             () -> new Item(new Item.Properties()));
@@ -1121,6 +1129,22 @@ public class ModItems {
     public static final DeferredItem<Item> UUZ_DOLL = ITEMS.register("uuz_doll", () -> new UUZDollItem(ModBlocks.UUZ_DOLL.get(), new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 
     public static final DeferredItem<Item> NIGHTMARE_FUEL = ITEMS.register("nightmare_fuel", NightmareFuelItem::new);
+    public static final DeferredItem<Item> SHADOW_DUNGEON_KEY = ITEMS.register("shadow_dungeon_key",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)) {
+                @Override
+                public boolean hasCustomEntity(ItemStack stack) {
+                    return true;
+                }
+
+                @Nullable
+                @Override
+                public Entity createEntity(Level level, Entity location, ItemStack stack) {
+                    var entity = new IndestructibleItemEntity(level, location.getX(), location.getY(), location.getZ(), stack);
+                    entity.setDefaultPickUpDelay();
+                    entity.setDeltaMovement(location.getDeltaMovement());
+                    return entity;
+                }
+            });
     public static final DeferredItem<BlockItem> SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW);
     public static final DeferredItem<BlockItem> THICK_SHADOW = ITEMS.registerSimpleBlockItem(ModBlocks.THICK_SHADOW);
     public static final DeferredItem<BlockItem> WEAPON_WORKSHOP_CRAFTING_TABLE = ITEMS.registerSimpleBlockItem(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE);
@@ -1297,6 +1321,35 @@ public class ModItems {
     public static final DeferredItem<Item> DYEDREAM_COROLLA = ITEMS.register("dyedream_corolla", () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> WHITE_COROLLA = ITEMS.register("white_corolla", () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> WHITE_CRYSTAL = ITEMS.register("white_crystal",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
+
+    public static final DeferredItem<Item> SHADOW_HILT = ITEMS.register("shadow_hilt",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
+
+    // ===== 小石子 =====
+    public static final DeferredItem<Item> PEBBLE = ITEMS.register("pebble",
+            () -> new PebbleItem(ModBlocks.PEBBLE.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> SNOWBALL_PEBBLE = ITEMS.register("snowball_pebble",
+            () -> new SnowballPebbleItem(new Item.Properties()));
+
+    public static final DeferredItem<Item> PURE_HORROR = ITEMS.register("pure_horror",
+            () -> new Item(new Item.Properties().stacksTo(64)));
+
+    // 厚翅甲壳
+    public static final DeferredItem<Item> BLACK_BEETLE_CARAPACE = ITEMS.register("black_beetle_carapace",
+            () -> new Item(new Item.Properties()));
+
+    // 振音声膜
+    public static final DeferredItem<Item> BLACK_BEETLE_VOCALCORD = ITEMS.register("black_beetle_vocalcord",
+            () -> new Item(new Item.Properties()) {
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
+                    tooltipComponents.add(Component.translatable("tooltip.pasterdream.black_beetle_vocalcord"));
+                }
+            });
 
     public static final DeferredItem<Item> LIGHT_BALL = ITEMS.register("light_ball",
             () -> new BlockItem(ModBlocks.LIGHT_BALL.get(), new Item.Properties()));

@@ -61,8 +61,17 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BLACK_STICK.get());
                         output.accept(ModItems.BLACK_METAL_INGOT.get());
                         output.accept(ModItems.BLACK_METAL_NUGGET.get());
+                        output.accept(ModItems.RUST_BLACK_METAL_GRAIN.get());
                         output.accept(ModItems.SHADOW_ALLOY_INGOT.get());
                         output.accept(ModItems.NIGHTMARE_FUEL.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_KEY.get());
+                        output.accept(ModItems.WHITE_CRYSTAL.get());
+                        output.accept(ModItems.SHADOW_HILT.get());
+                        output.accept(ModItems.PEBBLE.get());
+                        output.accept(ModItems.SNOWBALL_PEBBLE.get());
+                        output.accept(ModItems.PURE_HORROR.get());
+                        output.accept(ModItems.BLACK_BEETLE_CARAPACE.get());
+                        output.accept(ModItems.BLACK_BEETLE_VOCALCORD.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
                         output.accept(ModItems.PROTECT_DECK.get());
                         output.accept(ModItems.COTTON.get());
@@ -70,6 +79,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SPOOL.get());
                         output.accept(ModItems.FABRIC.get());
                         output.accept(ModItems.CONGEAL_WIND.get());
+                        output.accept(ModItems.WIND_RUNNER_CRYSTAL.get());
                         output.accept(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
                         output.accept(ModItems.BLUE_HEART_OF_THE_SEA.get());
                         output.accept(ModItems.ELDER_GUARDIAN_SCALE.get());

@@ -51,7 +51,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModEntities.SHADOW_HAND.get(), "Shadow Hand");
         add(ModItems.BLACK_METAL_INGOT.get(), "Black Metal Ingot");
         add(ModItems.BLACK_METAL_NUGGET.get(), "Black Metal Grain");
+        add(ModItems.RUST_BLACK_METAL_GRAIN.get(), "Rust Black Metal Grain");
         add(ModItems.SHADOW_ALLOY_INGOT.get(), "Shadow Alloy Ingot");
+        add(ModItems.SHADOW_DUNGEON_KEY.get(), "Shadow Dungeon Key");
+        add("tooltip.pasterdream.shadow_dungeon_key", "§7Used to open the door to the lower level of the Shadow Dungeon");
+        add(ModItems.WHITE_CRYSTAL.get(), "White Crystal");
+        add("tooltip.pasterdream.white_crystal", "§7Core material for crafting the White Calamity Sword");
+        add(ModItems.SHADOW_HILT.get(), "Condensed Shadow Hilt");
+        add("tooltip.pasterdream.shadow_hilt", "§7A core material for crafting shadow blades");
+        add(ModItems.PURE_HORROR.get(), "Pure Horror");
+        add("tooltip.pasterdream.pure_horror", "§7It sends a terrible shiver down my spine......");
         add(ModItems.SHADOW_EROSION_DAGGER.get(), "Shadow Erosion Dagger");
         add(ModItems.SHADOW_EROSION_PICKAXE.get(), "Shadow Erosion Pickaxe");
         add(ModItems.SHADOW_EROSION_AXE.get(), "Shadow Erosion Axe");
@@ -604,6 +613,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         // ===== Wind Journey materials and gear =====
         add(ModItems.CONGEAL_WIND.get(), "Congeal Wind");
+        add(ModItems.WIND_RUNNER_CRYSTAL.get(), "Windrunner Crystal");
         add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "Congeal Wind Iron Ingot");
         add(ModItems.CONGEAL_WIND_IRON_NUGGET.get(), "Congeal Wind Iron Nugget");
         add(ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), "Fluffy Wind Alloy Ingot");
@@ -808,6 +818,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.CALCITE_CONE.get(), "Calcite Cone");
         add(ModItems.DYEDREAM_COROLLA.get(), "Dyedream Corolla");
         add(ModItems.WHITE_COROLLA.get(), "White Corolla");
+        add(ModBlocks.PEBBLE.get(), "Pebble");
+        add("tooltip.pasterdream.pebble.throw", "§7Right-click to throw");
+        add("tooltip.pasterdream.pebble.place", "§7Sneak + Right-click to place");
+        add(ModItems.SNOWBALL_PEBBLE.get(), "Snowball");
+        add(ModItems.BLACK_BEETLE_CARAPACE.get(), "Black Beetle Carapace");
+        add(ModItems.BLACK_BEETLE_VOCALCORD.get(), "Black Beetle Vocalcord");
+        add("tooltip.pasterdream.black_beetle_vocalcord", "§7You can still faintly feel its vibration");
         add(ModItems.LIGHT_BALL.get(), "Light Ball");
         add(ModBlocks.DYEDREAM_SAPLING.get(), "Dyedream Sapling");
         add(ModBlocks.PINK_MUSHROOM.get(), "Pink Mushroom");
