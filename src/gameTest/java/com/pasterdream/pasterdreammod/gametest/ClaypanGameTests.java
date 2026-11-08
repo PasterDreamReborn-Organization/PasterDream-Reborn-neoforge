@@ -38,7 +38,7 @@ public class ClaypanGameTests
         var holder = helper.getLevel().getRecipeManager().byKey(ResourceLocation.fromNamespaceAndPath(
                 PasterDreamMod.MOD_ID, "claypan/coarse_salt_from_water")).orElseThrow();
         ClaypanRecipe recipe = (ClaypanRecipe) holder.value();
-        helper.assertTrue(recipe.getRecipeTime() == 24000, "粗盐晾晒时间应保留 24000 tick");
+        helper.assertTrue(recipe.getRecipeTime() == 6000, "粗盐晾晒时间应为 6000 tick");
         helper.assertTrue(recipe.getInputFluidIngredients().get(0).getFluid() == Fluids.WATER
                 && recipe.getInputFluidIngredients().get(0).getAmount() == 125, "粗盐配方应消耗 125 mB 水");
         helper.assertTrue(recipe.getOutputItemIngredients().get(0).getItem() == ModItems.COARSE_SALT.get(),
@@ -88,7 +88,7 @@ public class ClaypanGameTests
 
         claypan.getFluidTank(0).setFluid(new FluidStack(Fluids.WATER, 125));
         claypan.tick();
-        helper.assertTrue(claypan.getMaxProgress() == 24000 && claypan.getProgress() == 1
+        helper.assertTrue(claypan.getMaxProgress() == 6000 && claypan.getProgress() == 1
                 && claypan.getFluidTank(0).getFluid().isEmpty(),
                 "陶盆匹配后应立即扣除流体并开始计时");
         helper.assertTrue(claypan.getItemHandler().getStackInSlot(0).isEmpty(),
@@ -97,7 +97,7 @@ public class ClaypanGameTests
         var saved = claypan.saveWithFullMetadata(helper.getLevel().registryAccess());
         ClaypanBlockEntity restored = new ClaypanBlockEntity(helper.absolutePos(pos), helper.getBlockState(pos));
         restored.loadWithComponents(saved, helper.getLevel().registryAccess());
-        helper.assertTrue(restored.getMaxProgress() == 24000 && restored.getProgress() == 1
+        helper.assertTrue(restored.getMaxProgress() == 6000 && restored.getProgress() == 1
                 && restored.getFluidTank(0).getFluid().isEmpty(), "陶盆重载后应保留计时进度");
         helper.succeed();
     }

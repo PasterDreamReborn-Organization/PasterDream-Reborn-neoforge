@@ -7,7 +7,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class MeltDreamShovelItem extends ShovelItem {
+public class MeltDreamShovelItem extends ShovelItem implements MeltDreamTool {
 
     public MeltDreamShovelItem(Tier tier, float damage, float speed, Properties properties) {
         super(tier, properties.fireResistant().attributes(DiggerItem.createAttributes(tier, damage, speed)));

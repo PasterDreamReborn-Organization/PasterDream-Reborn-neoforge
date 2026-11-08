@@ -41,9 +41,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_QUARTZ.get());
                         output.accept(ModItems.MELT_DREAM_COIN.get());
                         output.accept(ModItems.MELT_DREAM_COIN_PILE.get());
-                        output.accept(ModItems.MELT_DREAM_LIQUID_BUCKET.get());
-                        output.accept(ModItems.SHADOW_LIQUID_BUCKET.get());
-                        output.accept(ModItems.GLASS_JAR_OF_INK.get());
                         output.accept(ModItems.RAW_TITANIUM.get());
                         output.accept(ModItems.RAW_MOLTEN_GOLD.get());
                         output.accept(ModItems.TITANIUM_INGOT.get());
@@ -54,11 +51,38 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_INGOT.get());
                         output.accept(ModItems.TITANIUM_NUGGET.get());
                         output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
+                        output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
                         output.accept(ModItems.SOUL_DUST.get());
                         output.accept(ModItems.SOUL_ESSENCE.get());
                         output.accept(ModItems.MAGIC_STONE.get());
-                        output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
-                        output.accept(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
+                        output.accept(ModItems.PINK_SLIMEBALL.get());
+                        output.accept(ModItems.LIGHT_BALL.get());
+                        output.accept(ModItems.DYEDREAM_COROLLA.get());
+                        output.accept(ModItems.WHITE_COROLLA.get());
+                        output.accept(ModItems.WHITE_CRYSTAL.get());
+                        output.accept(ModItems.SHADOW_HILT.get());
+                        output.accept(ModItems.PURE_HORROR.get());
+                        output.accept(ModItems.CONGEAL_WIND.get());
+                        output.accept(ModItems.WIND_RUNNER_CRYSTAL.get());
+                        output.accept(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
+                        output.accept(ModItems.BLUE_HEART_OF_THE_SEA.get());
+                        output.accept(ModItems.ELDER_GUARDIAN_SCALE.get());
+                        output.accept(ModItems.CHARGED_AMETHYST.get());
+                        output.accept(ModItems.PROTECT_DECK.get());
+                        output.accept(ModItems.COTTON.get());
+                        output.accept(ModItems.SPOOL.get());
+                        output.accept(ModItems.FABRIC.get());
+                        output.accept(ModItems.PERGAMYN.get());
+                        output.accept(ModItems.REED_ROD.get());
+                        output.accept(ModItems.RYE_SEED.get());
+                        output.accept(ModItems.FLOUR.get());
+                        output.accept(ModItems.SALT.get());
+                        output.accept(ModItems.COARSE_SALT.get());
+                        output.accept(ModItems.MELT_DREAM_LIQUID_BUCKET.get());
+                        output.accept(ModItems.SHADOW_LIQUID_BUCKET.get());
+                        output.accept(ModItems.GLASS_JAR_OF_INK.get());
+                        output.accept(ModItems.SCULK_HEART.get());
                         output.accept(ModItems.BLACK_STICK.get());
                         output.accept(ModItems.BLACK_METAL_INGOT.get());
                         output.accept(ModItems.BLACK_METAL_NUGGET.get());
@@ -66,40 +90,19 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_ALLOY_INGOT.get());
                         output.accept(ModItems.NIGHTMARE_FUEL.get());
                         output.accept(ModItems.SHADOW_DUNGEON_KEY.get());
-                        output.accept(ModItems.WHITE_CRYSTAL.get());
-                        output.accept(ModItems.SHADOW_HILT.get());
-                        output.accept(ModItems.PEBBLE.get());
-                        output.accept(ModItems.SNOWBALL_PEBBLE.get());
-                        output.accept(ModItems.PURE_HORROR.get());
                         output.accept(ModItems.BLACK_BEETLE_CARAPACE.get());
                         output.accept(ModItems.BLACK_BEETLE_VOCALCORD.get());
-                        // 药剂瓶（动态遍历所有已注册类型，含 KJS / 拓展模组注册的）
-                        for (String type : PotionBottleItem.getRegisteredTypes()) {
-                            output.accept(PotionBottleItem.createWithType(ModItems.POTION_BOTTLE.get(), type));
-                        }
-                        output.accept(ModItems.PINK_SLIMEBALL.get());
-                        output.accept(ModItems.PROTECT_DECK.get());
-                        output.accept(ModItems.COTTON.get());
-                        output.accept(ModItems.SCULK_HEART.get());
-                        output.accept(ModItems.SPOOL.get());
-                        output.accept(ModItems.FABRIC.get());
-                        output.accept(ModItems.CONGEAL_WIND.get());
-                        output.accept(ModItems.WIND_RUNNER_CRYSTAL.get());
-                        output.accept(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
-                        output.accept(ModItems.BLUE_HEART_OF_THE_SEA.get());
-                        output.accept(ModItems.ELDER_GUARDIAN_SCALE.get());
-                        output.accept(ModItems.CHARGED_AMETHYST.get());
-                        output.accept(ModItems.PERGAMYN.get());
-                        output.accept(ModItems.REED_ROD.get());
-                        output.accept(ModItems.RYE_SEED.get());
-                        output.accept(ModItems.FLOUR.get());
-                        output.accept(ModItems.SALT.get());
-                        output.accept(ModItems.COARSE_SALT.get());
+                        output.accept(ModItems.PEBBLE.get());
+                        output.accept(ModItems.SNOWBALL_PEBBLE.get());
                         // 饰品原胚
                         output.accept(ModItems.EMBRYO_CHARM.get());
                         output.accept(ModItems.EMBRYO_NECKLACE.get());
                         output.accept(ModItems.EMBRYO_RING.get());
                         output.accept(ModItems.EMBRYO_BELT.get());
+                        // 药剂瓶（动态遍历所有已注册类型，含 KJS / 拓展模组注册的）
+                        for (String type : PotionBottleItem.getRegisteredTypes()) {
+                            output.accept(PotionBottleItem.createWithType(ModItems.POTION_BOTTLE.get(), type));
+                        }
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_FOOD_TAB =
