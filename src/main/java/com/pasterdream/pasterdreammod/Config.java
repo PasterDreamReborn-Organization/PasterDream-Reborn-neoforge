@@ -21,6 +21,10 @@ public class Config {
             .comment("是否输出调试日志 / Enable debug logging")
             .define("debugLogging", false);
 
+    public static final ModConfigSpec.BooleanValue DREAM_CAULDRON_POTION_ENABLED = BUILDER
+            .comment("梦之釜的酿造、融合、勾兑和装瓶模块，默认开启")
+            .define("dreamCauldronPotionEnabled", true);
+
     public static final ModConfigSpec.BooleanValue DESTROY_DESK_ON_DREAMING_LOTUS_CONVERSION = BUILDER
             .comment("冶梦莲转化为迷梦冶梦莲时是否摧毁染梦书桌，默认 true")
             .define("destroyDeskOnDreamingLotusConversion", true);

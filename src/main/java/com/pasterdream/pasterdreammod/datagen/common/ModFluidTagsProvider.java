@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModFluids;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.potion.CauldronPotionFluidTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -28,6 +29,7 @@ public class ModFluidTagsProvider extends FluidTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(CAULDRON_SPRING).add(ModFluids.MELT_DREAM_LIQUID.get());
+        tag(CauldronPotionFluidTags.POTION).add(ModFluids.POTION.get());
         tag(INK).add(ModFluids.INK.get());
     }
 }

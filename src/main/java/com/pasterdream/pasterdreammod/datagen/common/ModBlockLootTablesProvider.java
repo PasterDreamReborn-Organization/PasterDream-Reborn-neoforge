@@ -245,6 +245,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.DESERT_HERO_TOMB.get());
         dropSelf(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
         dropSelf(ModBlocks.DYEDREAM_DESK.get());
+        dropSelf(ModBlocks.DREAM_CAULDRON.get());
 
         // ===== 盆栽植物 =====
         for (var entry : ModBlocks.POTTED_PLANTS.entrySet()) {

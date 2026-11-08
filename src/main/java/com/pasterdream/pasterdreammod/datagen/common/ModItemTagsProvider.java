@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.potion.CauldronPotionTags;
 import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
 import net.minecraft.core.HolderLookup;
@@ -25,6 +26,25 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        tag(CauldronPotionTags.BASE).add(ModItems.DYEDREAM_FRUIT.get());
+        tag(CauldronPotionTags.ENHANCE_REDSTONE).add(Items.REDSTONE);
+        tag(CauldronPotionTags.ENHANCE_GLOWSTONE).add(Items.GLOWSTONE_DUST);
+        tag(CauldronPotionTags.ENHANCE)
+                .addTag(CauldronPotionTags.ENHANCE_REDSTONE)
+                .addTag(CauldronPotionTags.ENHANCE_GLOWSTONE);
+        tag(CauldronPotionTags.CATALYST)
+                .add(Items.SUGAR)
+                .add(Items.RABBIT_FOOT)
+                .add(Items.BLAZE_POWDER)
+                .add(Items.GLISTERING_MELON_SLICE)
+                .add(Items.SPIDER_EYE)
+                .add(Items.GHAST_TEAR)
+                .add(Items.MAGMA_CREAM)
+                .add(Items.PUFFERFISH)
+                .add(Items.GOLDEN_CARROT)
+                .add(Items.PHANTOM_MEMBRANE)
+                .add(Items.TURTLE_HELMET)
+                .add(Items.FERMENTED_SPIDER_EYE);
         tag(ModItemTags.SKILL_COOLDOWN)
                 .add(ModItems.SHARP_MELT_DREAM_SWORD.get())
                 .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get())

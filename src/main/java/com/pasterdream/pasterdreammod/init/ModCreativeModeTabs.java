@@ -456,6 +456,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
                         output.accept(ModItems.MORTAR.get());
                         output.accept(ModItems.DYEDREAM_DESK.get());
+                        output.accept(ModItems.DREAM_CAULDRON.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_PLANTS_TAB = CREATIVE_MODE_TABS.register("pasterdream_plants_tab",

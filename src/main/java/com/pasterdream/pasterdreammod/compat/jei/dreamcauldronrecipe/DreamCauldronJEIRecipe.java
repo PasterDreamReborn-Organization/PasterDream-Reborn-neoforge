@@ -1,0 +1,61 @@
+package com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe;
+
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipe;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
+
+public class DreamCauldronJEIRecipe
+{
+    private final List<FluidIngredient> inputFluidIngredients;
+    private final List<ItemIngredient> inputItemIngredients;
+    private final List<FluidIngredient> outputFluidIngredients;
+    private final List<ItemIngredient> outputItemIngredients;
+    private final ItemStack displayBottle;
+
+    public DreamCauldronJEIRecipe(DreamCauldronRecipe recipe)
+    {
+        this.inputFluidIngredients = recipe.getInputFluidIngredients() != null ? recipe.getInputFluidIngredients() : List.of();
+        this.inputItemIngredients = recipe.getInputItemIngredients() != null ? recipe.getInputItemIngredients() : List.of();
+        this.outputFluidIngredients = recipe.getOutputFluidIngredients() != null ? recipe.getOutputFluidIngredients() : List.of();
+        this.outputItemIngredients = recipe.getOutputItemIngredients() != null ? recipe.getOutputItemIngredients() : List.of();
+        this.displayBottle = ItemStack.EMPTY;
+    }
+
+    public DreamCauldronJEIRecipe(List<FluidIngredient> fluidInputs, List<ItemIngredient> itemInputs,
+                                  List<FluidIngredient> fluidOutputs, ItemStack displayBottle)
+    {
+        this.inputFluidIngredients = fluidInputs;
+        this.inputItemIngredients = itemInputs;
+        this.outputFluidIngredients = fluidOutputs;
+        this.outputItemIngredients = List.of();
+        this.displayBottle = displayBottle;
+    }
+
+    public ItemStack getDisplayBottle()
+    {
+        return displayBottle;
+    }
+
+    public List<FluidIngredient> getInputFluidIngredients()
+    {
+        return inputFluidIngredients;
+    }
+
+    public List<ItemIngredient> getInputItemIngredients()
+    {
+        return inputItemIngredients;
+    }
+
+    public List<FluidIngredient> getOutputFluidIngredients()
+    {
+        return outputFluidIngredients;
+    }
+
+    public List<ItemIngredient> getOutputItemIngredients()
+    {
+        return outputItemIngredients;
+    }
+}

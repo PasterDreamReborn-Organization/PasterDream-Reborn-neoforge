@@ -5,6 +5,17 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 055：梦之釜 JEI 流体槽对齐（2026-11-08）
+
+- 梦之釜 JEI 配方界面中三个流体槽向右、向下各调整 1 像素，使流体与槽框内缘对齐；游戏内梦之釜界面的绘制坐标保持原值。
+
+### 批次 054：梦之釜及配方系统（2026-11-08）
+
+- 搬运梦之釜方块、方块实体、GUI、GeckoLib 模型与动画、四物品槽和三流体罐；接通配方加工、酿造、融合、勾兑、装瓶及红石控制。
+- 注册物品/方块流体能力、菜单与网络请求、JEI 类别和灵药瓶药水子类型；来源药水 `EffectList` 转为 1.21 的 `POTION_CONTENTS` 组件，保留效果顺序与时长。
+- 载入 90 条来源配方，另 9 条依赖未迁入的 `potion_bottle` 或 `black_beetle_carapace`，待前置完成后接入；复制 10 个来源资源文件。
+- `runData`、`build` 和 143/143 GameTest 通过；客户端视觉、JEI 实际展示及多人交互待游戏内验证。
+
 ### 批次 052：灵药瓶及衍生饮品（2026-11-08）
 
 - 搬运空灵药瓶、融梦灵药瓶和狂暴战意灵药；空瓶使用 1000 mB 流体组件，支持装液、部分排液与按量饮用。两种成品沿用来源数值和空瓶余料；狂暴战意效果使用 1.21 属性修饰符，重复饮用不叠加。

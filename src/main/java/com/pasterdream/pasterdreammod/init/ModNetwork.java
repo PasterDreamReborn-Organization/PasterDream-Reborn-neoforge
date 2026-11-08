@@ -6,6 +6,8 @@ import com.pasterdream.pasterdreammod.network.WeaponWorkshopCraftingTableCraftPa
 import com.pasterdream.pasterdreammod.network.mortar.MortarCraftPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSlotInteractPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSyncPacket;
+import com.pasterdream.pasterdreammod.network.DreamCauldronCraftPacket;
+import com.pasterdream.pasterdreammod.network.DreamCauldronMessagePacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindAlloyMiningSpeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.shadowerosion.ShadowErosionMiningSpeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindHoverInputPacket;
@@ -43,6 +45,8 @@ public final class ModNetwork {
         registrar.playToServer(WeaponWorkshopCraftingTableCraftPacket.TYPE, WeaponWorkshopCraftingTableCraftPacket.STREAM_CODEC,
                 WeaponWorkshopCraftingTableCraftPacket::handle);
         registrar.playToServer(MortarCraftPacket.TYPE, MortarCraftPacket.STREAM_CODEC, MortarCraftPacket::handle);
+        registrar.playToServer(DreamCauldronCraftPacket.TYPE, DreamCauldronCraftPacket.STREAM_CODEC, DreamCauldronCraftPacket::handle);
+        registrar.playToClient(DreamCauldronMessagePacket.TYPE, DreamCauldronMessagePacket.STREAM_CODEC, DreamCauldronMessagePacket::handle);
         registrar.playToServer(FluidSlotInteractPacket.TYPE, FluidSlotInteractPacket.STREAM_CODEC,
                 FluidSlotInteractPacket::handle);
         registrar.playToClient(FluidSyncPacket.TYPE, FluidSyncPacket.STREAM_CODEC,
