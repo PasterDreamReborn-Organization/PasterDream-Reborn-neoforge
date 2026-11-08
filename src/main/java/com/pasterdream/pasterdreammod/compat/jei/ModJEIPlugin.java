@@ -10,6 +10,8 @@ import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldr
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.ElixirBottleSubtypeInterpreter;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.CauldronBrewRecipeCatalog;
 import com.pasterdream.pasterdreammod.compat.jei.weaponworkshopcraftingtablerecipe.WeaponWorkshopCraftingTableRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.shadowblastfurnacerecipe.ShadowBlastFurnaceJEIRecipe;
+import com.pasterdream.pasterdreammod.compat.jei.shadowblastfurnacerecipe.ShadowBlastFurnaceRecipeCategory;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
@@ -22,6 +24,8 @@ import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipe;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanScreen;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipe;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceRecipe;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceScreen;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
@@ -53,6 +57,7 @@ public class ModJEIPlugin implements IModPlugin
         registration.addRecipeCategories(new MortarRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new ClaypanRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new DreamCauldronRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new ShadowBlastFurnaceRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -80,6 +85,7 @@ public class ModJEIPlugin implements IModPlugin
     public void registerGuiHandlers(IGuiHandlerRegistration registration)
     {
         registration.addRecipeClickArea(ClaypanScreen.class, 74, 7, 22, 15, ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE);
+        registration.addRecipeClickArea(ShadowBlastFurnaceScreen.class, 65, 51, 40, 36, ShadowBlastFurnaceRecipeCategory.SHADOW_BLAST_FURNACE_RECIPE_TYPE);
     }
 
     @Override
@@ -107,6 +113,10 @@ public class ModJEIPlugin implements IModPlugin
             registration.addRecipes(DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE,
                     java.util.stream.Stream.concat(cauldronRecipes.stream().map(DreamCauldronJEIRecipe::new),
                             CauldronBrewRecipeCatalog.createAll(level).stream()).toList());
+            List<ShadowBlastFurnaceRecipe> shadowBlastFurnaceRecipes = level.getRecipeManager()
+                    .getAllRecipesFor(ModRecipes.SHADOW_BLAST_FURNACE.get()).stream().map(RecipeHolder::value).toList();
+            registration.addRecipes(ShadowBlastFurnaceRecipeCategory.SHADOW_BLAST_FURNACE_RECIPE_TYPE,
+                    shadowBlastFurnaceRecipes.stream().map(ShadowBlastFurnaceJEIRecipe::new).toList());
         }
     }
 
@@ -119,5 +129,7 @@ public class ModJEIPlugin implements IModPlugin
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.CLAYPAN.get()), ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModItems.DREAM_CAULDRON.get()),
                 DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.SHADOW_BLAST_FURNACE.get()),
+                ShadowBlastFurnaceRecipeCategory.SHADOW_BLAST_FURNACE_RECIPE_TYPE);
     }
 }

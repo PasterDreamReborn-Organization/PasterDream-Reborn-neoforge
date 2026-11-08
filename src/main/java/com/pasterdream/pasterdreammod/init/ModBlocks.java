@@ -33,6 +33,7 @@ import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcr
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlock;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.*;
 import net.minecraft.core.BlockPos;
@@ -352,6 +353,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> THE_ENDLESS_BOOK_OF_DREAM_SEEKERS = BLOCKS.register("the_endless_book_of_dream_seekers", () -> new TheEndlessBookOfDreamSeekersBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(-1F, 2147483647F).noOcclusion().noCollission().lightLevel(state -> 15)));
     public static final DeferredBlock<Block> CLAYPAN = BLOCKS.register("claypan", () -> new ClaypanBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(0.5F, 10.0F).requiresCorrectToolForDrops().noOcclusion()));
     public static final DeferredBlock<Block> DREAM_CAULDRON = BLOCKS.register("dream_cauldron", () -> new DreamCauldronBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.CALCITE).strength(2.0F).noOcclusion()));
+    public static final DeferredBlock<Block> SHADOW_BLAST_FURNACE = BLOCKS.register("shadow_blast_furnace", () -> new ShadowBlastFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.DEEPSLATE).strength(10f).requiresCorrectToolForDrops().noOcclusion()));
 
     public static final DeferredBlock<Block> DYEDREAM_SAPLING = BLOCKS.register("dyedream_sapling", () -> new SaplingBlock(ModTreeGrowers.DYEDREAM, BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).noCollission().instabreak().randomTicks().sound(SoundType.GRASS)));
 

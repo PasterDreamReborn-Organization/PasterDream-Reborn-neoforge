@@ -221,6 +221,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.LIFE_CRYSTAL.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.DREAM_CAULDRON.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.SHADOW_BLAST_FURNACE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.CLAYPAN.get());
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.SHADOW_DESK.get())

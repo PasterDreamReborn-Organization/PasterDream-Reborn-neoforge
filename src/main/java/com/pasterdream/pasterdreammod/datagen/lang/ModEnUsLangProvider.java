@@ -430,6 +430,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "Weapon Workshop Crafting Table");
         add(ModBlocks.CLAYPAN.get(), "Claypan");
         add(ModBlocks.DREAM_CAULDRON.get(), "Dream Cauldron");
+        add(ModBlocks.SHADOW_BLAST_FURNACE.get(), "Shadow Blast Furnace");
         add("pasterdream.cauldron.brew", "§dBrewed %s ml potion");
         add("pasterdream.cauldron.fuse", "§dFused effects! Got %s ml potion");
         add("pasterdream.cauldron.blend", "§dBlended %s ml potion");

@@ -12,6 +12,8 @@ import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipe;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipeSerializer;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipe;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipeSerializer;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceRecipe;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceRecipeSerializer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -63,6 +65,12 @@ public class ModRecipes {
 
     public static final DeferredHolder<RecipeSerializer<?>, DreamCauldronRecipeSerializer> DREAM_CAULDRON_SERIALIZER =
             RECIPE_SERIALIZERS.register("dream_cauldron", DreamCauldronRecipeSerializer::new);
+
+    public static final DeferredHolder<RecipeType<?>, RecipeType<ShadowBlastFurnaceRecipe>> SHADOW_BLAST_FURNACE =
+            RECIPE_TYPES.register("shadow_blast_furnace", () -> new RecipeType<>() {});
+
+    public static final DeferredHolder<RecipeSerializer<?>, ShadowBlastFurnaceRecipeSerializer> SHADOW_BLAST_FURNACE_SERIALIZER =
+            RECIPE_SERIALIZERS.register("shadow_blast_furnace", ShadowBlastFurnaceRecipeSerializer::new);
 
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZERS.register(eventBus);

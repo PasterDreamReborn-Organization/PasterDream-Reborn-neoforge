@@ -22,6 +22,8 @@ import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronMenu;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -108,6 +110,13 @@ public class ModMenus {
             {
                 BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
                 return new DreamCauldronMenu(windowId, inv, (DreamCauldronBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<ShadowBlastFurnaceMenu>> SHADOW_BLAST_FURNACE =
+            MENUS.register("shadow_blast_furnace", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new ShadowBlastFurnaceMenu(windowId, inv, (ShadowBlastFurnaceBlockEntity) blockEntity);
             }));
 
     public static final DeferredHolder<MenuType<?>, MenuType<LargeStorageBagMenu>> LARGE_STORAGE_BAG =
