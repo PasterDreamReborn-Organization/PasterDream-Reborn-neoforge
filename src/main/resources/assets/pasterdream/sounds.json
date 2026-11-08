@@ -128,5 +128,39 @@
         "stream": false
       }
     ]
+  },
+  "sweet_dream_music": {
+    "sounds": [
+      {
+        "name": "pasterdream:sweet_dream_music",
+        "stream": true,
+        "volume": 0.3
+      }
+    ]
+  },
+  "snowfall_dream_music": {
+    "sounds": [
+      {
+        "name": "pasterdream:snowfall_dream_music",
+        "stream": true,
+        "volume": 0.3
+      }
+    ]
+  },
+  "aaroncos_music": {
+    "sounds": [
+      {
+        "name": "pasterdream:aaroncos_music",
+        "stream": true
+      }
+    ]
+  },
+  "wind_journey": {
+    "sounds": [
+      {
+        "name": "pasterdream:wind_journey",
+        "stream": true
+      }
+    ]
   }
 }

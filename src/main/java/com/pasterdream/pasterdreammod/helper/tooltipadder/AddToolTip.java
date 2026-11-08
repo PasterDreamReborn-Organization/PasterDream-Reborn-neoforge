@@ -92,5 +92,9 @@ public class AddToolTip
         if(stack.is(ModItems.PURE_HORROR.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.pure_horror"));
         }
+
+        if(stack.is(ModItems.LAMP_SHADOW_BROKEN_NOTE.get()) || stack.is(ModItems.DYEDREAM_BROKEN_NOTE.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.broken_note"));
+        }
     }
 }

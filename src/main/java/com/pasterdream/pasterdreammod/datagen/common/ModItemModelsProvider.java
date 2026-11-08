@@ -42,6 +42,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.FABRIC.get());
         basicItem(ModItems.PROTECT_DECK.get());
         basicItem(ModItems.BLACK_STICK.get());
+        basicItem(ModItems.LAMP_SHADOW_BROKEN_NOTE.get());
+        basicItem(ModItems.DYEDREAM_BROKEN_NOTE.get());
         basicItem(ModItems.TITANIUM_UPGRADE.get());
         basicItem(ModItems.SCULK_UPGRADE.get());
         basicItem(ModItems.DYEDREAM_UPGRADE.get());
@@ -99,6 +101,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.EMBRYO_NECKLACE.get());
         basicItem(ModItems.EMBRYO_RING.get());
         basicItem(ModItems.EMBRYO_BELT.get());
+        basicItem(ModItems.SWEET_DREAM_MUSIC_DISC.get());
+        basicItem(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get());
+        basicItem(ModItems.WIND_JOURNEY_MUSIC_DISC.get());
+        basicItem(ModItems.AARONCOS_MUSIC_DISC.get());
         handheldItem(ModItems.MOLTEN_GOLD_SWORD.get());
         handheldItem(ModItems.MOLTEN_GOLD_PICKAXE.get());
         handheldItem(ModItems.MOLTEN_GOLD_AXE.get());

@@ -134,6 +134,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.FABRIC.get(), "Fabric");
         add(ModItems.PROTECT_DECK.get(), "Protect Deck");
         add(ModItems.BLACK_STICK.get(), "Black Stick");
+        add(ModItems.LAMP_SHADOW_BROKEN_NOTE.get(), "Lamp Shadow Broken Note");
+        add(ModItems.DYEDREAM_BROKEN_NOTE.get(), "Dyedream World Broken Note");
+        add("tooltip.pasterdream.broken_note", "§7We still need to learn more......");
         add(ModItems.TITANIUM_UPGRADE.get(), "Titanium Upgrade");
         add(ModItems.DYEDREAM_UPGRADE.get(), "Dyedream Upgrade");
         add(ModItems.TITANIUM_SWORD.get(), "Titanium Sword");
@@ -746,6 +749,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.LIGHT_ORGAN.get(), "Light Organ");
         add(ModItems.ODD_BACON_AND_EGG.get(), "Odd Bacon and Egg");
         add(ModItems.BUBBLE_TEA.get(), "Bubble Tea");
+        add(ModItems.SWEET_DREAM_MUSIC_DISC.get(), "Music Disc");
+        add(ModItems.SWEET_DREAM_MUSIC_DISC.get().getDescriptionId() + ".desc", "PasterDream - Sweet Dream");
+        add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get(), "Music Disc");
+        add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get().getDescriptionId() + ".desc", "PasterDream - Snowfall Dream");
+        add(ModItems.WIND_JOURNEY_MUSIC_DISC.get(), "Music Disc");
+        add(ModItems.WIND_JOURNEY_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - Wind Journey");
+        add(ModItems.AARONCOS_MUSIC_DISC.get(), "Aaroncos Music Disc");
+        add(ModItems.AARONCOS_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - Aaroncos's Touch");
         add("tooltip.pasterdreammod.glass_cup_of_honey_juice", "§dClears all negative effects upon drinking");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§eThe taste feels familiar, as if it came from Snow Tears Cold...... wait, what?");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7You have already tasted this ice cream flavor");

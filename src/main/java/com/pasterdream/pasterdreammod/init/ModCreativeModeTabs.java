@@ -86,6 +86,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GLASS_JAR_OF_INK.get());
                         output.accept(ModItems.SCULK_HEART.get());
                         output.accept(ModItems.BLACK_STICK.get());
+                        output.accept(ModItems.LAMP_SHADOW_BROKEN_NOTE.get());
+                        output.accept(ModItems.DYEDREAM_BROKEN_NOTE.get());
                         output.accept(ModItems.BLACK_METAL_INGOT.get());
                         output.accept(ModItems.BLACK_METAL_NUGGET.get());
                         output.accept(ModItems.RUST_BLACK_METAL_GRAIN.get());
@@ -101,6 +103,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.EMBRYO_NECKLACE.get());
                         output.accept(ModItems.EMBRYO_RING.get());
                         output.accept(ModItems.EMBRYO_BELT.get());
+                        // 音乐唱片
+                        output.accept(ModItems.SWEET_DREAM_MUSIC_DISC.get());
+                        output.accept(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get());
+                        output.accept(ModItems.AARONCOS_MUSIC_DISC.get());
+                        output.accept(ModItems.WIND_JOURNEY_MUSIC_DISC.get());
                         // 预言卡（动态遍历所有已注册类型，含 KJS / 拓展模组注册的）
                         output.accept(ModItems.EMPTY_PROPHECY_CARD.get());
                         for (String type : ProphecyCardItem.getRegisteredTypes()) {

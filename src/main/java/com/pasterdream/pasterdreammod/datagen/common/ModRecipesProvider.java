@@ -108,6 +108,7 @@ public class ModRecipesProvider extends RecipeProvider {
         weaponWorkshopRecipe(output);
         dyedreamDeskRecipes(output);
         claypanRecipes(output);
+        musicDiscRecipes(output);
         windwreathedThunderSpearRecipe(output);
         titaniumCooking(output, ModItems.TITANIUM_ORE.get(), "titanium_ore_");
         titaniumCooking(output, ModItems.DEEPSLATE_TITANIUM_ORE.get(), "deepslate_titanium_ore_");
@@ -3055,6 +3056,54 @@ public class ModRecipesProvider extends RecipeProvider {
                         ItemIngredient.of(ModItems.BLACK_STICK.get(), 1)),
                         ItemIngredient.of(ModItemTags.ENHANCE_STONE, 1),
                         ItemIngredient.of(ModItems.SHADOW_EROSION_HOE.get(), 1)), null);
+    }
+
+    private void musicDiscRecipes(RecipeOutput pWriter) {
+        // 甜蜜的梦音乐唱片 = dyedream_dye + dyedream_alloy_nugget + soul_essence
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SWEET_DREAM_MUSIC_DISC.get(), 1)
+                .pattern("aba")
+                .pattern("bcb")
+                .pattern("aba")
+                .define('a', ModItems.DYEDREAM_DYE.get())
+                .define('b', ModItems.DYEDREAM_ALLOY_NUGGET.get())
+                .define('c', ModItems.SOUL_ESSENCE.get())
+                .unlockedBy(getHasName(ModItems.SOUL_ESSENCE.get()), has(ModItems.SOUL_ESSENCE.get()))
+                .save(pWriter);
+
+        // 落雪之梦音乐唱片 = snowball + dyedream_alloy_nugget + soul_essence
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SNOWFALL_DREAM_MUSIC_DISC.get(), 1)
+                .pattern("aba")
+                .pattern("bcb")
+                .pattern("aba")
+                .define('a', Items.SNOWBALL)
+                .define('b', ModItems.DYEDREAM_ALLOY_NUGGET.get())
+                .define('c', ModItems.SOUL_ESSENCE.get())
+                .unlockedBy(getHasName(ModItems.SOUL_ESSENCE.get()), has(ModItems.SOUL_ESSENCE.get()))
+                .save(pWriter);
+
+        // 亚伦柯斯之触音乐唱片 = nightmare_fuel + shadow_light + black_metal_nugget + pure_horror
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.AARONCOS_MUSIC_DISC.get(), 1)
+                .pattern("aba")
+                .pattern("cdc")
+                .pattern("aba")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.SHADOW_LIGHT.get())
+                .define('c', ModItems.BLACK_METAL_NUGGET.get())
+                .define('d', ModItems.PURE_HORROR.get())
+                .unlockedBy(getHasName(ModItems.PURE_HORROR.get()), has(ModItems.PURE_HORROR.get()))
+                .save(pWriter);
+
+        // 风之旅途音乐唱片 = 破风幕 + 凝风铁粒 + 云 + 灵魂精华
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WIND_JOURNEY_MUSIC_DISC.get(), 1)
+                .pattern("abc")
+                .pattern("bdb")
+                .pattern("cba")
+                .define('a', ModItems.BREAK_WIND_CURTAIN.get())
+                .define('b', ModItems.CONGEAL_WIND_IRON_NUGGET.get())
+                .define('c', ModItems.CLOUD.get())
+                .define('d', ModItems.SOUL_ESSENCE.get())
+                .unlockedBy(getHasName(ModItems.SOUL_ESSENCE.get()), has(ModItems.SOUL_ESSENCE.get()))
+                .save(pWriter);
     }
 
     private void moltenGoldCooking(RecipeOutput output, ItemLike ingredient, String recipePrefix) {
