@@ -713,6 +713,26 @@ public class ModCreativeModeTabs {
                     })
                     .build());
 
+    // ===== 调试 =====
+    // 来源: 旧 pasterdream_dream_debug_tab（当前仅迁入调试剑、战利品生成器、粒子方块与已存在实体的刷怪蛋）
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_DREAM_DEBUG_TAB =
+            CREATIVE_MODE_TABS.register("pasterdream_dream_debug_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_dream_debug_tab"))
+                    .icon(() -> new ItemStack(ModItems.DEBUG_SWORD.get()))
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.DEBUG_SWORD.get());
+                        output.accept(ModItems.LOOT_GENERATOR.get());
+                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get());
+                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());
+                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get());
+                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get());
+                        output.accept(ModItems.TERRORBEAK_SPAWN_EGG.get());
+                        output.accept(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());
+                        output.accept(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get());
+                        output.accept(ModItems.SHADOW_HAND_SPAWN_EGG.get());
+                    })
+                    .build());
+
     // ===== 拓展 =====
     // 来源: 旧 paster_tab_9
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_EXPANSION_TAB =

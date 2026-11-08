@@ -1120,6 +1120,12 @@ public class ModBlocks {
         return potted;
     }
 
+    // 调试方块
+    public static final DeferredBlock<Block> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0 = BLOCKS.register("model_break_particle_provider_block_0", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0, 2147483647)));
+    public static final DeferredBlock<Block> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1 = BLOCKS.register("model_break_particle_provider_block_1", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0, 2147483647)));
+    public static final DeferredBlock<Block> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2 = BLOCKS.register("model_break_particle_provider_block_2", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0, 2147483647).noOcclusion()));
+    public static final DeferredBlock<Block> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3 = BLOCKS.register("model_break_particle_provider_block_3", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(0, 2147483647)));
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }

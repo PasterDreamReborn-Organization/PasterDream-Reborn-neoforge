@@ -1216,5 +1216,37 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.turnback_cloak", "Turnback Cloak");
         add("effect.pasterdream.evasion_cloak", "Evasion Cloak");
         add("effect.pasterdream.cecilia_blessing", "Blessing of Cecilia");
+
+        add("itemGroup.pasterdream.pasterdream_dream_debug_tab", "Paster Dream | Debug");
+        add(ModItems.DEBUG_SWORD.get(), "Debug Sword");
+        add(ModItems.LOOT_GENERATOR.get(), "Loot Generator");
+        add(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get(), "Model Break Particle Provider Block 0");
+        add(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get(), "Model Break Particle Provider Block 1");
+        add(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get(), "Model Break Particle Provider Block 2");
+        add(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), "Model Break Particle Provider Block 3");
+        add(ModItems.TERRORBEAK_SPAWN_EGG.get(), "Terrorbeak Spawn Egg");
+        add(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get(), "Crazy Terrorbeak Spawn Egg");
+        add(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get(), "Weakness Terrorbeak Spawn Egg");
+        add(ModItems.SHADOW_HAND_SPAWN_EGG.get(), "Shadow Hand Spawn Egg");
+
+        add("tooltip.pasterdream.左键实体：直接删除此实体", "§7Left Button Press Entity: Delete This Entity");
+        add("tooltip.pasterdream.左键方块：模拟破坏此方块", "§7Left Button Press Block: Simulate Destroy This Block");
+        add("tooltip.pasterdream.右键实体：在聊天框打印此实体NBT", "§7Right Button Press Entity: Print This Entity's NBT In The Chat Box");
+        add("tooltip.pasterdream.右键方块：在聊天框打印此方块BlockState和NBT", "§7Right Button Press Block: Print This Block's BlockState And NBT In The Chat Box");
+        add("tooltip.pasterdream.此方块仅用于提供粒子效果，生存模式无法获得", "§7This block only provides particle effects and cannot be obtained in Survival mode");
+        add("tooltip.pasterdream.loot_generator.usage.shift", "§7Use Shift + Right Click on the container to generate loot in the container");
+        add("tooltip.pasterdream.当前设置战利品表：", "§7Current loot table settings:");
+        add("tooltip.pasterdream.loot_table.not_set", "§7Not set");
+
+        add("message.pasterdream.loot_generator.no_loot_table", "§cLoot generator has no loot table set");
+        add("message.pasterdream.loot_generator.not_container", "§cTarget block is not a container");
+        add("message.pasterdream.loot_generator.loot_table_set", "§aContainer cleared and loot table set: %s, will generate when opened");
+
+        add("option.pasterdream.Q: 模拟无工具破坏", "Q: Simulate Break Without Tool");
+        add("option.pasterdream.W: 模拟下界合金镐破坏", "W: Simulate Break With Netherite Pickaxe");
+        add("option.pasterdream.E: 模拟下界合金镐时运III破坏", "E: Simulate Break With Fortune III Netherite Pickaxe");
+        add("option.pasterdream.A: 模拟下界合金镐精准采集破坏", "A: Simulate Break With Silk Touch Netherite Pickaxe");
+        add("option.pasterdream.S: 获取对应的BlockItem并掉落，并将方块设置为空气", "S: Get Corresponding BlockItem And Drop, And Set Block To Air");
+        add("option.pasterdream.D: 将方块设置为空气的同时不触发方块更新", "D: Set The Block To Air Without NeighborChange");
     }
 }
