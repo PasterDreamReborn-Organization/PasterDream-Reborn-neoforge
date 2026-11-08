@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.init.ModBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.init.ModEntityRenderer;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
+import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -53,6 +54,10 @@ public final class ClientModEvents {
             ItemProperties.register(ModItems.POTION_BOTTLE.get(),
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "type"),
                     (stack, level, entity, seed) -> PotionBottleItem.getPredicateValue(stack));
+            // 预言卡按自定义数据 Type 切换模型
+            ItemProperties.register(ModItems.PROPHECY_CARD.get(),
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "type"),
+                    (stack, level, entity, seed) -> ProphecyCardItem.getPredicateValue(stack));
             // 暗影合金弩拉弦/装填模型切换（原版 pull/pulling/charged/firework 谓词仅注册在 Items.CROSSBOW 上）
             ItemProperties.register(ModItems.SHADOW_ALLOY_CROSSBOW.get(),
                     ResourceLocation.withDefaultNamespace("pull"),

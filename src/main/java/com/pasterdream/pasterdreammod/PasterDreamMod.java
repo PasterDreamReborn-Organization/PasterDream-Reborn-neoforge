@@ -43,10 +43,13 @@ import com.pasterdream.pasterdreammod.init.ModTreeDecoratorTypes;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
+import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorHandler;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamAuraHandler;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.block.Block;
@@ -60,6 +63,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
@@ -124,6 +128,8 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onLivingDamage);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onVulnerabilityHurt);
+        NeoForge.EVENT_BUS.addListener(PasterDreamMod::onGuardLivingHurt);
+        NeoForge.EVENT_BUS.addListener(PasterDreamMod::onRapidReactionFall);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
         NeoForge.EVENT_BUS.addListener(PasterDreamMod::onFrozenEffectExpired);
         NeoForge.EVENT_BUS.addListener(MeltDreamAuraHandler::onPlayerTick);
@@ -151,6 +157,7 @@ public class PasterDreamMod {
             ModShadowDungeonStructureSet.register();
             PotionBottleRegistry.registerDispenserBehavior();
             PotionBottleRegistry.registerAllEffects();
+            ProphecyCardItem.registerAllCardEffects();
         });
     }
 
@@ -174,6 +181,50 @@ public class PasterDreamMod {
         if (instance != null) {
             int amplifier = instance.getAmplifier();
             event.setAmount(event.getAmount() * (1.0f + 0.1f * (amplifier + 1)));
+        }
+    }
+
+    // 守护：若受到超过最大生命 30%的伤害，超出部分减少60%（在护甲减伤之前应用）
+    public static void onGuardLivingHurt(LivingIncomingDamageEvent event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if (!player.hasEffect(ModEffects.GUARD)) return;
+
+        float maxHealth = player.getMaxHealth();
+        float threshold = (float) (maxHealth * Config.HEALTH_PERCENT.get());
+        float postDamage = event.getAmount();
+        float armor = (float) player.getArmorValue();
+        float toughness = (float) player.getAttributeValue(Attributes.ARMOR_TOUGHNESS);
+
+        // 迭代反推护甲减伤前的原始伤害
+        float rawDamage = postDamage;
+        for (int i = 0; i < 3; i++) {
+            float afterArmor = CombatRules.getDamageAfterAbsorb(player, rawDamage, event.getSource(), armor, toughness);
+            float armorRatio = rawDamage > 0.001f ? afterArmor / rawDamage : 1.0f;
+            if (armorRatio < 0.01f) armorRatio = 0.01f;
+            rawDamage = postDamage / armorRatio;
+        }
+
+        // 计算护甲之后的其他减伤系数（附魔保护、抗性提升等）
+        float postArmorOfRaw = CombatRules.getDamageAfterAbsorb(player, rawDamage, event.getSource(), armor, toughness);
+        float otherFactor = postArmorOfRaw > 0.001f ? postDamage / postArmorOfRaw : 1.0f;
+
+        // 对原始伤害应用守护减伤
+        if (rawDamage > threshold) {
+            float excess = rawDamage - threshold;
+            float guardedRaw = (float) (threshold + excess * (1.0 - Config.RESIST_DAMAGE.get()));
+            // 重新应用护甲减伤
+            float newAfterArmor = CombatRules.getDamageAfterAbsorb(player, guardedRaw, event.getSource(), armor, toughness);
+            // 重新应用其他减伤
+            float newDamage = newAfterArmor * otherFactor;
+            event.setAmount(Math.max(0.0f, newDamage));
+        }
+    }
+
+    // 高速反射：免疫摔落伤害
+    public static void onRapidReactionFall(LivingFallEvent event) {
+        if (event.getEntity().hasEffect(ModEffects.RAPID_REACTION)) {
+            event.setDistance(0);
+            event.setDamageMultiplier(0);
         }
     }
 

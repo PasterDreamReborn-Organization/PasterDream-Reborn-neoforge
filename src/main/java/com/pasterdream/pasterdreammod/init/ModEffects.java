@@ -15,6 +15,11 @@ import com.pasterdream.pasterdreammod.world.effect.WindRunnerEffect;
 import com.pasterdream.pasterdreammod.world.effect.BlinkCooldownEffect;
 import com.pasterdream.pasterdreammod.world.effect.EvasionEffect;
 import com.pasterdream.pasterdreammod.world.effect.ConfusionEffect;
+import com.pasterdream.pasterdreammod.world.effect.ConflictMarkEffect;
+import com.pasterdream.pasterdreammod.world.effect.FlareupEffect;
+import com.pasterdream.pasterdreammod.world.effect.GuardEffect;
+import com.pasterdream.pasterdreammod.world.effect.HolyGrailEffect;
+import com.pasterdream.pasterdreammod.world.effect.RapidReactionEffect;
 import com.pasterdream.pasterdreammod.world.effect.CookEffect;
 import com.pasterdream.pasterdreammod.world.effect.InsaneEffect;
 import com.pasterdream.pasterdreammod.world.effect.TranceEffect;
@@ -96,6 +101,21 @@ public class ModEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> CONFUSION =
             MOB_EFFECTS.register("confusion", ConfusionEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> GUARD =
+            MOB_EFFECTS.register("guard", GuardEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> RAPID_REACTION =
+            MOB_EFFECTS.register("rapid_reaction", RapidReactionEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> HOLY_GRAIL =
+            MOB_EFFECTS.register("holy_grail", HolyGrailEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> FLARE_UP =
+            MOB_EFFECTS.register("flare_up", FlareupEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> CONFLICT_MARK =
+            MOB_EFFECTS.register("conflict_mark", ConflictMarkEffect::new);
 
     public static final DeferredHolder<MobEffect, MobEffect> SHADOW_SILENCE =
             MOB_EFFECTS.register("shadow_silence", ShadowSilenceEffect::new);

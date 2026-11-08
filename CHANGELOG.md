@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 064：预言卡系列物品搬运（2026-11-08，T21 部分）
+
+- 搬运 `empty_prophecy_card` 与九种 `prophecy_card`（平衡、混乱、纷争、墓园、守护、圣杯、罪恶、疾行、持剑），保留来源注册 ID、稀有度、创造栏顺序、右键效果、音效与模型 predicate 哈希；空白卡右键随机抽取一种类型。
+- 一并迁入守护、高速反射、圣杯、怒气爆发、纷争标记五个效果及守护减伤、摔落免疫处理器和对应配置项；混乱效果复用既有实现。
+- 1.21 适配：卡牌类型改用 `DataComponents.CUSTOM_DATA`，效果属性 modifier 改用 `ResourceLocation` id，罪恶卡的亡灵/灾厄判断改用实体标签，僵尸村民转换改用 `saveWithoutId`/`load`。
+- `runData` 生成 11 个物品模型与 2 个语言文件，`build` 通过，`runGameTestServer` 149/149 通过；生存获取依赖的宝箱/结构战利品与悲泣尖啸怨魂进度仍待后续批次，客户端视觉与卡牌效果待游戏内验收。
+
 ### 批次 063：上游 #1290 粉顶菇菌光体去重（2026-11-08）
 
 - 同步上游 #1290：移除 `PinkMushroom`、`TallPinkMushroom` 骨粉催生成功后额外的菌光体散布逻辑，避免菌光体被放到巨菇外侧，与自然生成外观不一致。

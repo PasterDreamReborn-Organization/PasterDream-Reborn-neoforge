@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModFluids;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
+import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
@@ -11,6 +12,8 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+
+import java.util.List;
 
 public class ModItemModelsProvider extends ItemModelProvider {
     public ModItemModelsProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -479,7 +482,33 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.LIGHT_BALL_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/light_ball_crop"));
         withExistingParent(ModItems.CLOUD_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/cloud_crop"));
         withExistingParent(ModItems.COTTON_CROP_AGE_1.getId().getPath(), mcLoc("item/generated")).texture("layer0", modLoc("item/cotton_crop"));
+        registerProphecyCardModels();
         registerPotionBottleModels();
+    }
+
+    private void registerProphecyCardModels() {
+        basicItem(ModItems.EMPTY_PROPHECY_CARD.get());
+        List<String> types = List.of(
+                ProphecyCardItem.TYPE_WIELDING_SWORD,
+                ProphecyCardItem.TYPE_HOLY_GRAIL,
+                ProphecyCardItem.TYPE_CONFLICT,
+                ProphecyCardItem.TYPE_GUARD,
+                ProphecyCardItem.TYPE_GRAVEYARD,
+                ProphecyCardItem.TYPE_CHAOS,
+                ProphecyCardItem.TYPE_SIN,
+                ProphecyCardItem.TYPE_BALANCE,
+                ProphecyCardItem.TYPE_SPRINT);
+        for (String type : types) {
+            withExistingParent("prophecy_card_" + type, mcLoc("item/generated"))
+                    .texture("layer0", modLoc("item/prophecy_card_" + type));
+        }
+        ItemModelBuilder prophecyCard = withExistingParent(ModItems.PROPHECY_CARD.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/empty_prophecy_card"));
+        for (String type : types) {
+            prophecyCard.override()
+                    .predicate(modLoc("type"), ProphecyCardItem.getPredicateForType(type))
+                    .model(new ModelFile.UncheckedModelFile(modLoc("item/prophecy_card_" + type))).end();
+        }
     }
 
     private void registerPotionBottleModels() {
