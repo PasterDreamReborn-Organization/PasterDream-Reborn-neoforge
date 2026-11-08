@@ -1,0 +1,126 @@
+package com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe;
+
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
+import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.init.ModBlocks;
+import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.biome.Biome;
+
+public class DreamAccumulatorRecipeCategory implements IRecipeCategory<DreamAccumulatorJEIRecipe>
+{
+    public static final RecipeType<DreamAccumulatorJEIRecipe> DREAM_ACCUMULATOR_RECIPE_TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_accumulator"), DreamAccumulatorJEIRecipe.class);
+    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_accumulator.png");
+    private final IDrawable background;
+    private final IDrawable icon;
+
+    public DreamAccumulatorRecipeCategory(IGuiHelper helper)
+    {
+        background = helper.drawableBuilder(GUIBackGroundRender.DREAM_ACCUMULATOR_GUI, 0, 0, 28, 81).setTextureSize(28, 81).build();
+        icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.DREAM_ACCUMULATOR.get()));
+    }
+
+    @Override
+    public RecipeType<DreamAccumulatorJEIRecipe> getRecipeType()
+    {
+        return DREAM_ACCUMULATOR_RECIPE_TYPE;
+    }
+
+    @Override
+    public Component getTitle()
+    {
+        return Component.translatable("block." + PasterDreamMod.MOD_ID + ".dream_accumulator");
+    }
+
+    @Override
+    public IDrawable getIcon()
+    {
+        return icon;
+    }
+
+    @Override
+    public int getWidth()
+    {
+        return 168;
+    }
+
+    @Override
+    public int getHeight()
+    {
+        return 81;
+    }
+
+    @Override
+    public void draw(DreamAccumulatorJEIRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY)
+    {
+        int time = recipe.getTime();
+        double catalystMultiplier = recipe.getCatalystMultiplier();
+        background.draw(guiGraphics);
+
+        Registry<Biome> biomeRegistry = Minecraft.getInstance().level.registryAccess().registryOrThrow(Registries.BIOME);
+        int line = 0;
+        int biomeCount = 0;
+
+        for (TagKey<Biome> tag : recipe.getBiomeTags())
+        {
+            ResourceLocation id = tag.location();
+            String key = "biome_tag." + id.getNamespace() + "." + id.getPath();
+            guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable(key), 112, 10 * line, 0xFFFFFFFF, false);
+            line++;
+
+            final int[] count = {0};
+            biomeRegistry.getTag(tag).ifPresent(holders ->
+            {
+                for (Holder<Biome> holder : holders)
+                {
+                    count[0]++;
+                }
+            });
+            biomeCount += count[0];
+        }
+
+        if (10 * line < 71)
+        {
+            guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("jei.pasterdream.dream_accumulator.biome_count", biomeCount), 112, 10 * line, 0xFFAAAAAA, false);
+        }
+
+        guiGraphics.drawString(Minecraft.getInstance().font, String.format("%02d", (time / 72000)) + "h" + String.format("%02d", ((time % 72000) / 1200)) + "m" + String.format("%02d", ((time % 1200) / 20)) + "s" + String.format("%02d", (time % 20)) + "tick", 28, 38, 0xFFFFFFFF, false);
+        guiGraphics.drawString(Minecraft.getInstance().font, catalystMultiplier + "x", 28, 65, 0xFFFFFFFF, false);
+    }
+
+    @Override
+    public void setRecipe(IRecipeLayoutBuilder builder, DreamAccumulatorJEIRecipe recipe, IFocusGroup focuses)
+    {
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 6, 6).addItemStack(recipe.getOutput());
+
+        IRecipeSlotBuilder catalystSlot = builder.addSlot(RecipeIngredientRole.INPUT, 6, 60);
+        ItemIngredient catalystIngredients = recipe.getCatalystIngredients();
+        if (catalystIngredients.getItem() != null)
+        {
+            catalystSlot.addItemStack(catalystIngredients.getItemStack());
+        }
+        else
+            if (catalystIngredients.getTag() != null)
+            {
+                catalystSlot.addItemStacks(catalystIngredients.getListItemStackFromTag());
+            }
+    }
+}

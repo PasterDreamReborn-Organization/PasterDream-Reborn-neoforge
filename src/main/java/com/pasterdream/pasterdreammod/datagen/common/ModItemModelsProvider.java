@@ -38,6 +38,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.FEATHER_PEN.get());
         handheldItem(ModItems.PLIERS.get());
         basicItem(ModItems.SAND_OF_TIME.get());
+        basicItem(ModItems.SORBENT.get());
         withExistingParent(ModItems.FOURLEAF_CLOVER_CURIO.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/fourleaf_clover"));
         basicItem(ModItems.SCULK_HEART.get());

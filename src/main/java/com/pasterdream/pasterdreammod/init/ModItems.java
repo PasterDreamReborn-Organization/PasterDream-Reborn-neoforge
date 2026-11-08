@@ -1280,6 +1280,8 @@ public class ModItems {
     public static final DeferredItem<Item> SAND_OF_TIME = ITEMS.register("sand_of_time", SandofTimeItem::new);
     public static final DeferredItem<BlockItem> CLAYPAN = ITEMS.registerSimpleBlockItem(ModBlocks.CLAYPAN);
     public static final DeferredItem<Item> DREAM_CAULDRON = ITEMS.register("dream_cauldron", () -> new com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem(ModBlocks.DREAM_CAULDRON.get(), new Item.Properties()));
+    public static final DeferredItem<Item> DREAM_ACCUMULATOR = ITEMS.register("dream_accumulator", () -> new com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorItem(ModBlocks.DREAM_ACCUMULATOR.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SORBENT = ITEMS.register("sorbent", () -> new Item(new Item.Properties().durability(54000)));
     public static final DeferredItem<Item> SHADOW_BLAST_FURNACE = ITEMS.register("shadow_blast_furnace", () -> new ShadowBlastFurnaceItem(ModBlocks.SHADOW_BLAST_FURNACE.get(), new Item.Properties()));
 
     // ===== 影蚀系列 =====

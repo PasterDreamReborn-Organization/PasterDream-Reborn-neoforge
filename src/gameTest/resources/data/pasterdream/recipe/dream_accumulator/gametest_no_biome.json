@@ -1,0 +1,13 @@
+{
+  "type": "pasterdream:dream_accumulator",
+  "time": 6000,
+  "catalyst":
+  {
+    "item": "pasterdream:sorbent"
+  },
+  "catalystMultiplier": 10.0,
+  "output":
+  {
+    "id": "pasterdream:dyedream_dust_piece"
+  }
+}
