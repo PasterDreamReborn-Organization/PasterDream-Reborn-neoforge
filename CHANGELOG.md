@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 066：笔记碎片与音乐唱片搬运（2026-11-08，T05/T21 部分）
+
+- 搬运 `lamp_shadow_broken_note`、`dyedream_broken_note` 两种笔记碎片与 `sweet_dream_music_disc`、`snowfall_dream_music_disc`、`wind_journey_music_disc`、`aaroncos_music_disc` 四张音乐唱片，保留来源注册 ID、稀有度、创造栏顺序与配方。
+- 1.21 适配：`RecordItem` 已移除，唱片改用 `JukeboxSong` 数据包注册表与 `JukeboxPlayable` 组件，时长按来源 tick 数换算为秒；新增 `ModJukeboxSongProvider` 数据生成。
+- 逐字节复制来源纹理与音效；`runData` 生成 4 个 JukeboxSong、4 个配方、6 个物品模型与语言条目，`build` 通过，`runGameTestServer` 149/149 通过；笔记碎片生存获取待战利品表批次。
+
 ### 批次 065：风之旅途物品栏与无花果搬运（2026-11-08，T19-A/T19-B 部分）
 
 - 搬运来源创造栏 `WIND_JOURNEY_WORLD_TAB` 全部条目：苍青岩系列、白砂岩全家、厚云、风泊木全家（原木/去皮/树叶/树苗/木板/楼梯/台阶/栅栏/栅栏门/窗格/门/活板门/压力板/按钮）、澄澈玻璃系列、破风幕帐、凝风矿与凝风块、凝风铁块/栏杆/灯笼/锁链/活板门/压力板、蓬松风合金块、弹射压力板与弹射方块；另搬运无花果 `fig` 与无花果藤 `fig_vine` 及其前置风泊树叶。

@@ -176,6 +176,14 @@ public class ModItems {
     public static final DeferredItem<Item> EMBRYO_NECKLACE = ITEMS.register("embryo_necklace", EmbryoNecklaceItem::new);
     public static final DeferredItem<Item> EMBRYO_RING = ITEMS.register("embryo_ring", EmbryoRingItem::new);
     public static final DeferredItem<Item> EMBRYO_BELT = ITEMS.register("embryo_belt", EmbryoBeltItem::new);
+    public static final DeferredItem<Item> SWEET_DREAM_MUSIC_DISC = ITEMS.register("sweet_dream_music_disc",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ModJukeboxSongs.SWEET_DREAM)));
+    public static final DeferredItem<Item> SNOWFALL_DREAM_MUSIC_DISC = ITEMS.register("snowfall_dream_music_disc",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ModJukeboxSongs.SNOWFALL_DREAM)));
+    public static final DeferredItem<Item> WIND_JOURNEY_MUSIC_DISC = ITEMS.register("wind_journey_music_disc",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ModJukeboxSongs.WIND_JOURNEY)));
+    public static final DeferredItem<Item> AARONCOS_MUSIC_DISC = ITEMS.register("aaroncos_music_disc",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ModJukeboxSongs.AARONCOS_MUSIC)));
     public static final DeferredItem<Item> FRACTURED_ANGEL_STATUE = ITEMS.register("fractured_angel_statue",
             FracturedAngelStatueItem::new);
     public static final DeferredItem<Item> GOLD_CHARM = ITEMS.register("gold_charm", GoldCharmItem::new);
@@ -887,6 +895,10 @@ public class ModItems {
             });
 
     public static final DeferredItem<Item> BLACK_STICK = ITEMS.registerSimpleItem("black_stick");
+    public static final DeferredItem<Item> LAMP_SHADOW_BROKEN_NOTE = ITEMS.register("lamp_shadow_broken_note",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
+    public static final DeferredItem<Item> DYEDREAM_BROKEN_NOTE = ITEMS.register("dyedream_broken_note",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
     public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> SCULK_UPGRADE = ITEMS.registerSimpleItem("sculk_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
     public static final DeferredItem<Item> DYEDREAM_UPGRADE = ITEMS.registerSimpleItem("dyedream_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));

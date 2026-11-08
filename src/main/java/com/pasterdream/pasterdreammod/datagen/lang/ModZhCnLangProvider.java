@@ -134,6 +134,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FABRIC.get(), "纺织布料");
         add(ModItems.PROTECT_DECK.get(), "护甲板");
         add(ModItems.BLACK_STICK.get(), "黑石棍");
+        add(ModItems.LAMP_SHADOW_BROKEN_NOTE.get(), "灯影之下笔记碎片");
+        add(ModItems.DYEDREAM_BROKEN_NOTE.get(), "染梦世界笔记碎片");
+        add("tooltip.pasterdream.broken_note", "§7我们还需要了解更多......");
         add(ModItems.TITANIUM_UPGRADE.get(), "钛金升级套件");
         add(ModItems.DYEDREAM_UPGRADE.get(), "染梦升级套件");
         add(ModItems.TITANIUM_SWORD.get(), "钛金剑");
@@ -746,6 +749,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.LIGHT_ORGAN.get(), "发光器官");
         add(ModItems.ODD_BACON_AND_EGG.get(), "奇怪的培根煎蛋");
         add(ModItems.BUBBLE_TEA.get(), "珍珠奶茶");
+        add(ModItems.SWEET_DREAM_MUSIC_DISC.get(), "音乐唱片");
+        add(ModItems.SWEET_DREAM_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - 甜蜜的梦");
+        add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get(), "音乐唱片");
+        add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - 落雪之梦");
+        add(ModItems.WIND_JOURNEY_MUSIC_DISC.get(), "音乐唱片");
+        add(ModItems.WIND_JOURNEY_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - 风之旅途");
+        add(ModItems.AARONCOS_MUSIC_DISC.get(), "音乐唱片");
+        add(ModItems.AARONCOS_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - 亚伦柯斯之触");
         add("tooltip.pasterdreammod.glass_cup_of_honey_juice", "§d饮用后清空所有负面效果");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§e味道有些熟悉，好像是来自雪泪寒......等等？");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7你已经品尝过这个冰淇淋的味道了");

@@ -23,6 +23,7 @@ public final class ModDataGenerator {
         var generator = event.getGenerator();
         var output = generator.getPackOutput();
         var existing = event.getExistingFileHelper();
+        generator.addProvider(event.includeServer(), new ModJukeboxSongProvider(output, event.getLookupProvider()));
         var worldgen = generator.addProvider(event.includeServer(),
                 new ModWorldGenProvider(output, event.getLookupProvider()));
         var lookup = worldgen.getRegistryProvider();

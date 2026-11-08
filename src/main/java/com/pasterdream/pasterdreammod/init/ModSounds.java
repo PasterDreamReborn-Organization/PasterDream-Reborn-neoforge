@@ -72,6 +72,19 @@ public class ModSounds {
             SOUND_EVENTS.register("zipper", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "zipper")));
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> SWEET_DREAM_MUSIC =
+            SOUND_EVENTS.register("sweet_dream_music", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sweet_dream_music")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> SNOWFALL_DREAM_MUSIC =
+            SOUND_EVENTS.register("snowfall_dream_music", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "snowfall_dream_music")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> WIND_JOURNEY =
+            SOUND_EVENTS.register("wind_journey", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> AARONCOS_MUSIC =
+            SOUND_EVENTS.register("aaroncos_music", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_music")));
+
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }
