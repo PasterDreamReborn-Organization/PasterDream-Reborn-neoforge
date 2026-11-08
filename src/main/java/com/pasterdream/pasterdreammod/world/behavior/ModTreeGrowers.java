@@ -15,6 +15,12 @@ public final class ModTreeGrowers {
     public static final TreeGrower DYEDREAM = new TreeGrower("dyedream",
             Optional.empty(), Optional.of(DYEDREAM_TREE), Optional.empty());
 
+    private static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_WIND_MOOR_TREE = ResourceKey.create(
+            Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_wind_moor_tree"));
+    // 风泊树：小型风泊乔木，分叉树干 + 风泊树叶与悬挂装饰
+    public static final TreeGrower WIND_MOOR = new TreeGrower("wind_moor",
+            Optional.empty(), Optional.of(SMALL_WIND_MOOR_TREE), Optional.empty());
+
     private ModTreeGrowers() {
     }
 }

@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemNameBlockItem;
 import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.item.NightmareFuelItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
@@ -1444,6 +1445,82 @@ public class ModItems {
             ProphecyCardItem::new);
 
 
+
+    // ===== 风之旅途·群系方块 =====
+    public static final DeferredItem<BlockItem> WHITE_SAND = ITEMS.registerSimpleBlockItem(ModBlocks.WHITE_SAND);
+    public static final DeferredItem<BlockItem> THICK_CLOUD = ITEMS.registerSimpleBlockItem(ModBlocks.THICK_CLOUD);
+    public static final DeferredItem<BlockItem> WHITE_SANDSTONE = ITEMS.registerSimpleBlockItem(ModBlocks.WHITE_SANDSTONE);
+    public static final DeferredItem<BlockItem> WHITE_SANDSTONE_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.WHITE_SANDSTONE_STAIRS);
+    public static final DeferredItem<BlockItem> WHITE_SANDSTONE_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.WHITE_SANDSTONE_SLAB);
+    public static final DeferredItem<BlockItem> WHITE_SANDSTONE_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.WHITE_SANDSTONE_WALL);
+    public static final DeferredItem<BlockItem> CUT_WHITE_SANDSTONE = ITEMS.registerSimpleBlockItem(ModBlocks.CUT_WHITE_SANDSTONE);
+    public static final DeferredItem<BlockItem> CUT_WHITE_SANDSTONE_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.CUT_WHITE_SANDSTONE_STAIRS);
+    public static final DeferredItem<BlockItem> CUT_WHITE_SANDSTONE_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.CUT_WHITE_SANDSTONE_SLAB);
+    public static final DeferredItem<BlockItem> CUT_WHITE_SANDSTONE_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.CUT_WHITE_SANDSTONE_WALL);
+    public static final DeferredItem<BlockItem> CHISELED_WHITE_SANDSTONE = ITEMS.registerSimpleBlockItem(ModBlocks.CHISELED_WHITE_SANDSTONE);
+    public static final DeferredItem<BlockItem> SMOOTH_WHITE_SANDSTONE = ITEMS.registerSimpleBlockItem(ModBlocks.SMOOTH_WHITE_SANDSTONE);
+    public static final DeferredItem<BlockItem> SMOOTH_WHITE_SANDSTONE_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.SMOOTH_WHITE_SANDSTONE_STAIRS);
+    public static final DeferredItem<BlockItem> SMOOTH_WHITE_SANDSTONE_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.SMOOTH_WHITE_SANDSTONE_SLAB);
+    public static final DeferredItem<BlockItem> SMOOTH_WHITE_SANDSTONE_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.SMOOTH_WHITE_SANDSTONE_WALL);
+    public static final DeferredItem<BlockItem> CLARITY_GLASS = ITEMS.registerSimpleBlockItem(ModBlocks.CLARITY_GLASS);
+    public static final DeferredItem<BlockItem> CLARITY_GLASS_PANE = ITEMS.registerSimpleBlockItem(ModBlocks.CLARITY_GLASS_PANE);
+    public static final DeferredItem<BlockItem> CARVE_CLARITY_GLASS = ITEMS.registerSimpleBlockItem(ModBlocks.CARVE_CLARITY_GLASS);
+    public static final DeferredItem<BlockItem> CARVE_CLARITY_GLASS_PANE = ITEMS.registerSimpleBlockItem(ModBlocks.CARVE_CLARITY_GLASS_PANE);
+    public static final DeferredItem<BlockItem> FRAME_CLARITY_GLASS = ITEMS.registerSimpleBlockItem(ModBlocks.FRAME_CLARITY_GLASS);
+    public static final DeferredItem<BlockItem> FRAME_CLARITY_GLASS_PANE = ITEMS.registerSimpleBlockItem(ModBlocks.FRAME_CLARITY_GLASS_PANE);
+    public static final DeferredItem<BlockItem> BREAK_WIND_CURTAIN = ITEMS.registerSimpleBlockItem(ModBlocks.BREAK_WIND_CURTAIN);
+    public static final DeferredItem<BlockItem> CONGEAL_WIND_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.CONGEAL_WIND_ORE);
+    public static final DeferredItem<BlockItem> WIND_RUNNER_CRYSTAL_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_RUNNER_CRYSTAL_ORE);
+    public static final DeferredItem<BlockItem> CONGEAL_WIND_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.CONGEAL_WIND_BLOCK);
+    public static final DeferredItem<BlockItem> WIND_RUNNER_CRYSTAL_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK);
+    public static final DeferredItem<BlockItem> CONGEAL_WIND_IRON_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.CONGEAL_WIND_IRON_BLOCK);
+    public static final DeferredItem<BlockItem> FLUFFY_WIND_ALLOY_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK);
+    public static final DeferredItem<BlockItem> EJECTION_PRESSURE_PLATE = ITEMS.registerSimpleBlockItem(ModBlocks.EJECTION_PRESSURE_PLATE);
+    public static final DeferredItem<BlockItem> EJECTION_PRESSURE_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.EJECTION_PRESSURE_BLOCK);
+    public static final DeferredItem<BlockItem> CONGEAL_WIND_IRON_BARS = ITEMS.registerSimpleBlockItem(ModBlocks.CONGEAL_WIND_IRON_BARS);
+    public static final DeferredItem<BlockItem> CONGEAL_WIND_IRON_LANTERN = ITEMS.registerSimpleBlockItem(ModBlocks.CONGEAL_WIND_IRON_LANTERN);
+    public static final DeferredItem<BlockItem> CONGEAL_WIND_IRON_CHAIN = ITEMS.registerSimpleBlockItem(ModBlocks.CONGEAL_WIND_IRON_CHAIN);
+    public static final DeferredItem<BlockItem> CONGEAL_WIND_IRON_TRAPDOOR = ITEMS.registerSimpleBlockItem(ModBlocks.CONGEAL_WIND_IRON_TRAPDOOR);
+    public static final DeferredItem<BlockItem> CONGEAL_WIND_IRON_PRESSURE_PLATE = ITEMS.registerSimpleBlockItem(ModBlocks.CONGEAL_WIND_IRON_PRESSURE_PLATE);
+    public static final DeferredItem<BlockItem> CYAN_STONE = ITEMS.registerSimpleBlockItem(ModBlocks.CYAN_STONE);
+    public static final DeferredItem<BlockItem> CYAN_MOSS_STONE = ITEMS.registerSimpleBlockItem(ModBlocks.CYAN_MOSS_STONE);
+    public static final DeferredItem<BlockItem> CYAN_STONE_BRICKS = ITEMS.registerSimpleBlockItem(ModBlocks.CYAN_STONE_BRICKS);
+    public static final DeferredItem<BlockItem> CYAN_STONE_BRICK_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.CYAN_STONE_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> CYAN_STONE_BRICK_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.CYAN_STONE_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> CYAN_STONE_BRICK_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.CYAN_STONE_BRICK_WALL);
+    public static final DeferredItem<BlockItem> CYAN_STONE_PRESSURE_PLATE = ITEMS.registerSimpleBlockItem(ModBlocks.CYAN_STONE_PRESSURE_PLATE);
+    public static final DeferredItem<BlockItem> CYAN_STONE_BUTTON = ITEMS.registerSimpleBlockItem(ModBlocks.CYAN_STONE_BUTTON);
+    public static final DeferredItem<BlockItem> MOSSY_CYAN_STONE_BRICKS = ITEMS.registerSimpleBlockItem(ModBlocks.MOSSY_CYAN_STONE_BRICKS);
+    public static final DeferredItem<BlockItem> MOSSY_CYAN_STONE_BRICK_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> MOSSY_CYAN_STONE_BRICK_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> MOSSY_CYAN_STONE_BRICK_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL);
+    public static final DeferredItem<BlockItem> CHISELED_CYAN_STONE_BRICKS = ITEMS.registerSimpleBlockItem(ModBlocks.CHISELED_CYAN_STONE_BRICKS);
+    public static final DeferredItem<BlockItem> CYAN_STONE_PILLAR = ITEMS.registerSimpleBlockItem(ModBlocks.CYAN_STONE_PILLAR);
+    public static final DeferredItem<BlockItem> POLISHED_CYAN_STONE = ITEMS.registerSimpleBlockItem(ModBlocks.POLISHED_CYAN_STONE);
+    public static final DeferredItem<BlockItem> POLISHED_CYAN_STONE_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.POLISHED_CYAN_STONE_STAIRS);
+    public static final DeferredItem<BlockItem> POLISHED_CYAN_STONE_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.POLISHED_CYAN_STONE_SLAB);
+    public static final DeferredItem<BlockItem> POLISHED_CYAN_STONE_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.POLISHED_CYAN_STONE_WALL);
+    public static final DeferredItem<BlockItem> WIND_MOOR_LOG = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_LOG);
+    public static final DeferredItem<BlockItem> WIND_MOOR_WOOD = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_WOOD);
+    public static final DeferredItem<BlockItem> STRIPPED_WIND_MOOR_LOG = ITEMS.registerSimpleBlockItem(ModBlocks.STRIPPED_WIND_MOOR_LOG);
+    public static final DeferredItem<BlockItem> STRIPPED_WIND_MOOR_WOOD = ITEMS.registerSimpleBlockItem(ModBlocks.STRIPPED_WIND_MOOR_WOOD);
+    public static final DeferredItem<BlockItem> WIND_MOOR_LEAVES_0 = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_LEAVES_0);
+    public static final DeferredItem<BlockItem> WIND_MOOR_LEAVES_1 = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_LEAVES_1);
+    public static final DeferredItem<BlockItem> WIND_MOOR_SAPLING = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_SAPLING);
+    public static final DeferredItem<BlockItem> WIND_MOOR_PLANKS = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_PLANKS);
+    public static final DeferredItem<BlockItem> WIND_MOOR_STAIRS = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_STAIRS);
+    public static final DeferredItem<BlockItem> WIND_MOOR_SLAB = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_SLAB);
+    public static final DeferredItem<BlockItem> WIND_MOOR_FENCE = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_FENCE);
+    public static final DeferredItem<BlockItem> WIND_MOOR_FENCE_GATE = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_FENCE_GATE);
+    public static final DeferredItem<BlockItem> WIND_MOOR_PANE = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_PANE);
+    public static final DeferredItem<BlockItem> WIND_MOOR_DOOR = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_DOOR);
+    public static final DeferredItem<BlockItem> WIND_MOOR_TRAPDOOR = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_TRAPDOOR);
+    public static final DeferredItem<BlockItem> WIND_MOOR_PRESSURE_PLATE = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_PRESSURE_PLATE);
+    public static final DeferredItem<BlockItem> WIND_MOOR_BUTTON = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_BUTTON);
+
+    public static final DeferredItem<Item> FIG = ITEMS.register("fig",
+            () -> new ItemNameBlockItem(ModBlocks.FIG_VINE.get(), new Item.Properties()
+                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.165f).build())));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

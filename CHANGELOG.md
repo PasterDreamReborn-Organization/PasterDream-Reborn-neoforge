@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 065：风之旅途物品栏与无花果搬运（2026-11-08，T19-A/T19-B 部分）
+
+- 搬运来源创造栏 `WIND_JOURNEY_WORLD_TAB` 全部条目：苍青岩系列、白砂岩全家、厚云、风泊木全家（原木/去皮/树叶/树苗/木板/楼梯/台阶/栅栏/栅栏门/窗格/门/活板门/压力板/按钮）、澄澈玻璃系列、破风幕帐、凝风矿与凝风块、凝风铁块/栏杆/灯笼/锁链/活板门/压力板、蓬松风合金块、弹射压力板与弹射方块；另搬运无花果 `fig` 与无花果藤 `fig_vine` 及其前置风泊树叶。
+- 一并迁入 `CyanMossStoneBlock`、`BreakWindCurtainBlock`、`EjectionPressurePlateBlock`、`FigVineBlock`、`WindMoorDroopingDecorator`、`BreakWindCurtainTrigger` 与 `small_wind_moor_tree` configured feature；无花果藤会自然垂落并按 1-2 个（受时运影响）掉落无花果。
+- 1.21 适配：`FallingBlock`→`ColoredFallingBlock`、`GlassBlock`→`TransparentBlock`，压力板/活板门/门/按钮/栅栏门构造参数改为 1.21 顺序，`BonemealableBlock` 去除 `isClient`，方块交互改用 `useItemOn`/`ItemInteractionResult`，`ItemStack#hurtAndBreak` 改用 `EquipmentSlot`，去皮改用 `ItemAbility`。
+- 澄澈玻璃、錾刻/框边变体及三种玻璃板的方块与物品模型显式写入 `render_type: translucent`，修复 alpha 通道未参与渲染的问题；补充盆栽风泊树苗及其方块状态、战利品与语言。
+- `runData` 写入 631 个文件，`build` 通过，`runGameTestServer` 149/149 通过；世界生成结构、群系与真实地形投放未纳入本批，客户端视觉和树苗实际生长待游戏内验收。
+
 ### 批次 064：预言卡系列物品搬运（2026-11-08，T21 部分）
 
 - 搬运 `empty_prophecy_card` 与九种 `prophecy_card`（平衡、混乱、纷争、墓园、守护、圣杯、罪恶、疾行、持剑），保留来源注册 ID、稀有度、创造栏顺序、右键效果、音效与模型 predicate 哈希；空白卡右键随机抽取一种类型。

@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.mojang.serialization.MapCodec;
 import com.pasterdream.pasterdreammod.worldgen.feature.LightBallTreeDecorator;
 import com.pasterdream.pasterdreammod.worldgen.feature.PinkShroomlightTreeDecorator;
+import com.pasterdream.pasterdreammod.worldgen.feature.WindMoorDroopingDecorator;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.neoforged.bus.api.IEventBus;
@@ -23,6 +24,8 @@ public class ModTreeDecoratorTypes {
             TREE_DECORATOR_TYPES.register("pink_shroomlight", () -> new TreeDecoratorType<>(MapCodec.unit(PinkShroomlightTreeDecorator.INSTANCE)));
     public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<LightBallTreeDecorator>> LIGHT_BALL =
             TREE_DECORATOR_TYPES.register("light_ball", () -> new TreeDecoratorType<>(MapCodec.unit(LightBallTreeDecorator.INSTANCE)));
+    public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<WindMoorDroopingDecorator>> WIND_MOOR_DROOPING =
+            TREE_DECORATOR_TYPES.register("wind_moor_drooping", () -> new TreeDecoratorType<>(MapCodec.unit(WindMoorDroopingDecorator.INSTANCE)));
 
     public static void register(IEventBus eventBus) {
         TREE_DECORATOR_TYPES.register(eventBus);
