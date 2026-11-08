@@ -40,6 +40,7 @@ public final class ModBlockTags {
     public static final TagKey<Block> CRIMSON_THORNS_CAN_PLACE_ON = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:crimson_thorns_can_place_on"));
     public static final TagKey<Block> BLAZE_FLOWER_CAN_PLACE_ON = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:blaze_flower_can_place_on"));
     public static final TagKey<Block> SHADOW_PLANTS_CAN_PLACE_ON = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:shadow_plants_can_place_on"));
+    public static final TagKey<Block> PLIER_PLANTS = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:plier_plants"));
 
     private static TagKey<Block> common(String path) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", path));

@@ -350,6 +350,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ModBlocks.LOST_SWORD_TOMB.get(), lostSwordTomb);
         horizontalBlock(ModBlocks.DYEDREAM_DESK.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/dyedream_desk")));
+        horizontalBlock(ModBlocks.SHADOW_DESK.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/shadow_desk")));
+        horizontalBlock(ModBlocks.WIND_MOOR_DESK.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/wind_moor_desk")));
+        horizontalBlock(ModBlocks.PICNIC_BASKET.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/picnic_basket")));
+        horizontalBlock(ModBlocks.SHADOW_CHEST.get(),
+                new ModelFile.UncheckedModelFile(modLoc("custom/shadow_chest_particle")));
+        horizontalBlock(ModBlocks.WIND_MOOR_CRATE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/wind_moor_crate")));
+        horizontalBlock(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(),
+                new ModelFile.UncheckedModelFile(modLoc("custom/the_endless_book_of_dream_seekers_particle")));
         horizontalBlock(ModBlocks.LIFE_CRYSTAL.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/life_crystal_particle")));
         blockItem(ModBlocks.LOST_SWORD_TOMB);

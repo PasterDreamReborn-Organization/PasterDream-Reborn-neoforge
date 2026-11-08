@@ -25,6 +25,12 @@ import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlock;
 import com.pasterdream.pasterdreammod.world.block.PottedCropBlock;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskBlock;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskBlock;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.windmoordesk.WindMoorDeskBlock;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbasket.PicnicBasketBlock;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestBlock;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateBlock;
+import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlock;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlock;
 import net.minecraft.world.level.block.Block;
@@ -338,6 +344,12 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> WEAPON_WORKSHOP_CRAFTING_TABLE = BLOCKS.register("weapon_workshop_crafting_table", () -> new WeaponWorkshopCraftingTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.ANVIL).strength(2f, 10f).requiresCorrectToolForDrops().noOcclusion()));
     public static final DeferredBlock<Block> DYEDREAM_DESK = BLOCKS.register("dyedream_desk", () -> new DyedreamDeskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1F).requiresCorrectToolForDrops().noOcclusion()));
+    public static final DeferredBlock<Block> SHADOW_DESK = BLOCKS.register("shadow_desk", () -> new ShadowDeskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1F).requiresCorrectToolForDrops().noOcclusion()));
+    public static final DeferredBlock<Block> WIND_MOOR_DESK = BLOCKS.register("wind_moor_desk", () -> new WindMoorDeskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1F).requiresCorrectToolForDrops().noOcclusion()));
+    public static final DeferredBlock<Block> PICNIC_BASKET = BLOCKS.register("picnic_basket", () -> new PicnicBasketBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).ignitedByLava().sound(SoundType.SCAFFOLDING).strength(0.4F).noOcclusion()));
+    public static final DeferredBlock<Block> SHADOW_CHEST = BLOCKS.register("shadow_chest", () -> new ShadowChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.DEEPSLATE_TILES).strength(1F, 0.5F).requiresCorrectToolForDrops().noOcclusion()));
+    public static final DeferredBlock<Block> WIND_MOOR_CRATE = BLOCKS.register("wind_moor_crate", () -> new WindMoorCrateBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1F).noOcclusion()));
+    public static final DeferredBlock<Block> THE_ENDLESS_BOOK_OF_DREAM_SEEKERS = BLOCKS.register("the_endless_book_of_dream_seekers", () -> new TheEndlessBookOfDreamSeekersBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(-1F, 2147483647F).noOcclusion().noCollission().lightLevel(state -> 15)));
     public static final DeferredBlock<Block> CLAYPAN = BLOCKS.register("claypan", () -> new ClaypanBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(0.5F, 10.0F).requiresCorrectToolForDrops().noOcclusion()));
     public static final DeferredBlock<Block> DREAM_CAULDRON = BLOCKS.register("dream_cauldron", () -> new DreamCauldronBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.CALCITE).strength(2.0F).noOcclusion()));
 

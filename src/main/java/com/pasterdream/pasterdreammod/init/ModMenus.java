@@ -5,6 +5,16 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.W
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableMenu;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.windmoordesk.WindMoorDeskBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.windmoordesk.WindMoorDeskMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbasket.PicnicBasketBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbasket.PicnicBasketMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateMenu;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanMenu;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagMenu;
@@ -42,6 +52,41 @@ public class ModMenus {
             {
                 BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
                 return new DyedreamDeskMenu(windowId, inv, (DyedreamDeskBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<ShadowDeskMenu>> SHADOW_DESK =
+            MENUS.register("shadow_desk", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new ShadowDeskMenu(windowId, inv, (ShadowDeskBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<WindMoorDeskMenu>> WIND_MOOR_DESK =
+            MENUS.register("wind_moor_desk", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new WindMoorDeskMenu(windowId, inv, (WindMoorDeskBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<PicnicBasketMenu>> PICNIC_BASKET =
+            MENUS.register("picnic_basket", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new PicnicBasketMenu(windowId, inv, (PicnicBasketBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<ShadowChestMenu>> SHADOW_CHEST =
+            MENUS.register("shadow_chest", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new ShadowChestMenu(windowId, inv, (ShadowChestBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<WindMoorCrateMenu>> WIND_MOOR_CRATE =
+            MENUS.register("wind_moor_crate", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new WindMoorCrateMenu(windowId, inv, (WindMoorCrateBlockEntity) blockEntity);
             }));
 
     public static final DeferredHolder<MenuType<?>, MenuType<StorageBagMenu>> STORAGE_BAG =

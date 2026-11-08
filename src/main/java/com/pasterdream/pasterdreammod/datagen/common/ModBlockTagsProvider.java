@@ -24,6 +24,40 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         for (var potted : ModBlocks.POTTED_PLANTS.values()) {
             flowerPots.add(potted.get());
         }
+        tag(ModBlockTags.PLIER_PLANTS)
+                .add(ModBlocks.STEM_GRASS.get())
+                .add(ModBlocks.TALL_STEM_GRASS.get())
+                .add(ModBlocks.DYEDREAM_MOSS.get())
+                .add(ModBlocks.SINGULARITY_FERN.get())
+                .add(ModBlocks.DYEDREAM_LILY_PAD.get())
+                .add(ModBlocks.DYEDREAM_SEAGRASS.get())
+                .add(ModBlocks.DYEDREAM_VINE.get())
+                .add(ModBlocks.DYEDREAM_LOTUS.get())
+                .add(ModBlocks.DREAMING_LOTUS.get())
+                .add(ModBlocks.MISTY_DREAMING_LOTUS.get())
+                .add(ModBlocks.GOLDENROD.get())
+                .add(ModBlocks.FERRARIA_CRISPA.get())
+                .add(ModBlocks.EUSTOMA.get())
+                .add(ModBlocks.MALVA_SINENSIS_CAVAN.get())
+                .add(ModBlocks.LINHT_FLOWER.get())
+                .add(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get())
+                .add(ModBlocks.BLAZE_FLOWER.get())
+                .add(ModBlocks.WHITE_ORCHID_FLOWER.get())
+                .add(ModBlocks.EDELWEISS.get())
+                .add(ModBlocks.NIPPY_EDELWEISS.get())
+                .add(ModBlocks.CRIMSON_THORNS.get())
+                .add(ModBlocks.REED.get())
+                .add(ModBlocks.OATS.get())
+                .add(ModBlocks.RYE.get())
+                .add(ModBlocks.JUNGLE_SPORANGIUM.get())
+                .add(ModBlocks.PINK_MUSHROOM.get())
+                .add(ModBlocks.TALL_PINK_MUSHROOM.get())
+                .add(ModBlocks.SHADOW_SHORT_ROOTS.get())
+                .add(ModBlocks.SHADOW_ROOTS.get())
+                .add(ModBlocks.SHADOW_STEM_FERN.get())
+                .add(ModBlocks.SHADOW_SPROUTS.get())
+                .add(ModBlocks.SHADOW_FERN.get())
+                .add(ModBlocks.SHADOW_FUNGUS.get());
         tag(ModBlockTags.WHITE_COROLLA_CAN_PLACE_ON).add(Blocks.SNOW_BLOCK).addTag(BlockTags.DIRT);
         tag(ModBlockTags.CRIMSON_THORNS_CAN_PLACE_ON).add(Blocks.CRIMSON_NYLIUM, Blocks.NETHERRACK, Blocks.MAGMA_BLOCK);
         tag(ModBlockTags.BLAZE_FLOWER_CAN_PLACE_ON).add(Blocks.CRIMSON_NYLIUM, Blocks.NETHERRACK, Blocks.MAGMA_BLOCK);
@@ -188,6 +222,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.DREAM_CAULDRON.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.CLAYPAN.get());
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.SHADOW_DESK.get())
+                .add(ModBlocks.WIND_MOOR_DESK.get())
+                .add(ModBlocks.PICNIC_BASKET.get())
+                .add(ModBlocks.WIND_MOOR_CRATE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.SHADOW_CHEST.get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.SOUL_ORE.get());
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.SALT_BLOCK.get());
@@ -599,7 +639,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.RUST_BLACK_METAL_BLOCK.get())
                 .add(ModBlocks.RUST_BLACK_METAL_WALL.get())
                 .add(ModBlocks.RUST_BLACK_METAL_BARS.get())
-                .add(ModBlocks.SHADOW_CLAY_POT.get());
+                .add(ModBlocks.SHADOW_CLAY_POT.get())
+                .add(ModBlocks.SHADOW_DESK.get())
+                .add(ModBlocks.SHADOW_CHEST.get());
 
         // ===== 风之旅途 =====
         tag(BlockTags.DIRT).add(ModBlocks.CYAN_MOSS_STONE.get());

@@ -6,6 +6,8 @@ import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombB
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlockEntityRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 /**
@@ -23,5 +25,7 @@ public final class ModBlockEntityRenderer {
         event.registerBlockEntityRenderer(ModBlockEntities.LIFE_CRYSTAL.get(), LifeCrystalBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.CLAYPAN.get(), ClaypanBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.DREAM_CAULDRON.get(), DreamCauldronBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_CHEST.get(), ShadowChestBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), TheEndlessBookOfDreamSeekersBlockEntityRenderer::new);
     }
 }

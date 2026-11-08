@@ -15,6 +15,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add(ModItems.MORTAR.get(), "Mortar");
+        add(ModItems.PLIERS.get(), "Pliers");
+        add(ModItems.FEATHER_PEN.get(), "Feather Pen");
+        add(ModItems.SAND_OF_TIME.get(), "Sand of Time");
         add("gui.pasterdream.mortar", "Mortar");
         add("gui.pasterdream.fluid_slot.hint", "When interacting with this slot using a fluid container: left-click to take fluid, right-click to add fluid");
         add("button.pasterdream.mortarbutton", "grinding");
@@ -443,12 +446,27 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("pasterdream.cauldron.error.output_not_empty", "§cOutput tank is not empty, bottle or clear it first");
         add("pasterdream.cauldron.error.bottle_empty", "§cNo potion in the output tank to bottle");
         add(ModBlocks.DYEDREAM_DESK.get(), "Dyedream Desk");
+        add(ModBlocks.SHADOW_DESK.get(), "Shadow Desk");
+        add(ModBlocks.WIND_MOOR_DESK.get(), "Wind Moor Desk");
+        add(ModBlocks.PICNIC_BASKET.get(), "Picnic Basket");
+        add(ModBlocks.SHADOW_CHEST.get(), "Shadow Chest");
+        add(ModBlocks.WIND_MOOR_CRATE.get(), "Wind Moor Crate");
+        add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), "The Endless Book Of Dream Seekers");
         add("button.pasterdream.锻造", "Forge");
         add("tooltip.pasterdreammod.magic_stone", "§7§oWhat kind of mage doesn't carry a few magic stones?");
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7All creatures with souls in this world have dreams\nThose fleeting memories that cannot be recalled upon waking\nShatter and melt, buried across the world, condensing into crystals\nWaiting to be discovered by new souls");
         add("tooltip.pasterdream.melt_dream_coin", "§7Right-click with 10+ to combine into a coin pile");
         add("tooltip.pasterdream.melt_dream_coin_pile", "§7Right-click to split into 10 Melt Dream Coins");
         add("tooltip.pasterdream.melt_dream_coin.value", "§7▪ §6Face Value : ");
+        add("tooltip.pasterdream.pliers.1", "§7▪ §9Can harvest crops and plants");
+        add("tooltip.pasterdream.pliers.2", "§7▪ §9Sneak + right-click to directly harvest Pasterdream plants");
+        add("tooltip.pasterdream.pliers.3", "§7▪ §9sneaking + right-click on leaves will greatly increases the drop rate of saplings and fruits");
+        add("message.pasterdream.sand_of_time.cooldown", "This Sand of Time is resting after a hard day of work and needs %s seconds to recover");
+        add("tooltip.pasterdream.sand_of_time.1", "§7Right click to change through the world's day and night");
+        add("tooltip.pasterdream.sand_of_time.2", "§7This item will go into cooldown for %s §7seconds after use");
+        add("tooltip.pasterdream.sand_of_time.3", "§7§o--The hourglass will remember the time we forgot");
+        add("tooltip.pasterdream.sand_of_time.4", "%s seconds remaining");
+        add("tooltip.pasterdream.sand_of_time.5", "§aReady to use");
         add("tooltip.pasterdreammod.melt_dream_tool.1", "While in inventory");
         add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §bMelt-Repair: 0.01E/1 Durability");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.1", "Inlaid: §dMelt Dream Crystal Fragment");

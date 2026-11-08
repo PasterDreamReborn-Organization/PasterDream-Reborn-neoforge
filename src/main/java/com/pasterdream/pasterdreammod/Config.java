@@ -37,6 +37,10 @@ public class Config {
             .comment("『天丛云』草薙进化需要击杀的生物数，默认 200")
             .defineInRange("the_number_of_kill_enemy_to_evolve", 200, 1, Integer.MAX_VALUE);
 
+    public static final ModConfigSpec.IntValue TIME_OF_SAND_COOLDOWN = BUILDER
+            .comment("时之沙切换昼夜的冷却时间（秒），默认 300 秒（5 分钟）")
+            .defineInRange("timeOfSandCooldownSeconds", 300, 0, Integer.MAX_VALUE);
+
     public static final ModConfigSpec.DoubleValue FRACTURED_ANGEL_STATUE_INVULNERABLE_CHANCE = BUILDER
             .comment("折翼天使雕像：受击后获得无敌的触发概率，默认 0.1（10%）")
             .defineInRange("fracturedAngelStatueInvulnerableChance", 0.1, 0.0, 1.0);

@@ -6,11 +6,14 @@ import com.pasterdream.pasterdreammod.world.block.dreamcauldron.potion.CauldronP
 import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
@@ -29,6 +32,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(CauldronPotionTags.BASE).add(ModItems.DYEDREAM_FRUIT.get());
         tag(CauldronPotionTags.ENHANCE_REDSTONE).add(Items.REDSTONE);
         tag(CauldronPotionTags.ENHANCE_GLOWSTONE).add(Items.GLOWSTONE_DUST);
+        tag(TagKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath("forge", "pen")))
+                .add(ModItems.FEATHER_PEN.get());
         tag(CauldronPotionTags.ENHANCE)
                 .addTag(CauldronPotionTags.ENHANCE_REDSTONE)
                 .addTag(CauldronPotionTags.ENHANCE_GLOWSTONE);

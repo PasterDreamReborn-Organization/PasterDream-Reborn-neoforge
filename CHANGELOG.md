@@ -5,6 +5,16 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 067：设备栏容器、园艺钳与时之沙搬运（2026-11-08，T10/T11 部分）
+
+- 搬运 `pliers`、`shadow_desk`、`wind_moor_desk`、`picnic_basket`、`shadow_chest`、`wind_moor_crate`、`the_endless_book_of_dream_seekers`、`feather_pen`、`sand_of_time`，保留来源注册 ID、创造栏顺序、配方、耐久、冷却与战利品行为。
+- 补齐来源通用 `ItemContainer` 及 `Desk`/`Crate` 基类，迁入两本书桌、野餐篮、浸影宝盒、风泊板条筐的单槽/十五槽容器、菜单、界面、战利品展开与物品接口；染梦书桌保留现有独立实现。
+- 浸影宝盒与永恒书卷接入来源 GeckoLib 模型、动画与物品渲染；1.21 动画同步改用方块更新，交互拆为 `useWithoutItem`/`useItemOn`，能力改由 `RegisterCapabilitiesEvent` 注册。
+- 三本书桌与野餐篮、浸影宝盒、风泊板条筐 GUI 显式启用透明混合，补齐遗漏的风泊板条筐 GUI 纹理，避免半透明边缘渲染成黑色。
+- 迁入来源 `BlockElementMixin`，放宽 1.21 方块模型旋转角/坐标限制，修复野餐篮等 Blockbench 模型因任意角度导致的模型加载失败。
+- 园艺钳生成已迁移树叶的剪取战利品表，眠椰树叶与风泊鹦鹉生成池因前置未迁移暂缺；时之沙跳过融梦水晶箱冷却的交互待水晶箱迁移，昼夜切换与冷却完整保留。
+- `runData` 写入 52 个文件，`build` 通过，`runGameTestServer` 151/151 通过（新增 2 项设备容器与园艺钳测试）；客户端 GUI/渲染/音效、实际昼夜切换与多人行为待游戏内验收。
+
 ### 批次 066：笔记碎片与音乐唱片搬运（2026-11-08，T05/T21 部分）
 
 - 搬运 `lamp_shadow_broken_note`、`dyedream_broken_note` 两种笔记碎片与 `sweet_dream_music_disc`、`snowfall_dream_music_disc`、`wind_journey_music_disc`、`aaroncos_music_disc` 四张音乐唱片，保留来源注册 ID、稀有度、创造栏顺序与配方。

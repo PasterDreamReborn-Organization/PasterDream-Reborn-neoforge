@@ -3,7 +3,10 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.functions.ApplyEntityLootingFunction;
 import com.pasterdream.pasterdreammod.world.conditions.RealPlayerCondition;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -26,6 +29,15 @@ public final class ModLootTables {
     public static final DeferredHolder<LootItemFunctionType<?>, LootItemFunctionType<ApplyEntityLootingFunction>> APPLY_ENTITY_LOOTING_FUNCTION =
             LOOT_FUNCTION_TYPES.register("apply_entity_looting",
                     () -> new LootItemFunctionType<>(ApplyEntityLootingFunction.CODEC));
+
+    /** 园艺钳剪树叶走自定义战利品表：pliers_cutting/<命名空间>/<方块注册名>，与 datagen 路径一致。 */
+    public static final String PLIERS_CUTTING_PREFIX = "pliers_cutting/";
+
+    public static ResourceLocation pliersCuttingLoot(Block block) {
+        ResourceLocation key = BuiltInRegistries.BLOCK.getKey(block);
+        return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                PLIERS_CUTTING_PREFIX + key.getNamespace() + "/" + key.getPath());
+    }
 
     private ModLootTables() {
     }

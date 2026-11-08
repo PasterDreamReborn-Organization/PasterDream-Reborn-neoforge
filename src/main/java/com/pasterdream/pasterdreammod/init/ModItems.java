@@ -17,6 +17,8 @@ import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.world.item.PulseWindRunnerCrystalItem;
 import com.pasterdream.pasterdreammod.world.item.RedDewItem;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
+import com.pasterdream.pasterdreammod.world.item.PliersItem;
+import com.pasterdream.pasterdreammod.world.item.SandofTimeItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.EmptyProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
@@ -77,6 +79,8 @@ import com.pasterdream.pasterdreammod.world.item.hellfiretool.*;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombItem;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombItem;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalItem;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestItem;
+import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersItem;
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.*;
 import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import com.pasterdream.pasterdreammod.world.item.shadowerosiontool.*;
@@ -1244,6 +1248,17 @@ public class ModItems {
     public static final DeferredItem<BlockItem> SHADOW_CLAY_POT = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_CLAY_POT);
     public static final DeferredItem<BlockItem> WEAPON_WORKSHOP_CRAFTING_TABLE = ITEMS.registerSimpleBlockItem(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE);
     public static final DeferredItem<BlockItem> DYEDREAM_DESK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_DESK);
+    public static final DeferredItem<BlockItem> SHADOW_DESK = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_DESK);
+    public static final DeferredItem<BlockItem> WIND_MOOR_DESK = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_DESK);
+    public static final DeferredItem<BlockItem> PICNIC_BASKET = ITEMS.registerSimpleBlockItem(ModBlocks.PICNIC_BASKET);
+    public static final DeferredItem<Item> SHADOW_CHEST = ITEMS.register("shadow_chest",
+            () -> new ShadowChestItem(ModBlocks.SHADOW_CHEST.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> WIND_MOOR_CRATE = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_CRATE);
+    public static final DeferredItem<Item> THE_ENDLESS_BOOK_OF_DREAM_SEEKERS = ITEMS.register("the_endless_book_of_dream_seekers",
+            () -> new TheEndlessBookOfDreamSeekersItem(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> PLIERS = ITEMS.register("pliers", () -> new PliersItem(new Item.Properties()));
+    public static final DeferredItem<Item> FEATHER_PEN = ITEMS.register("feather_pen", () -> new Item(new Item.Properties().durability(8)));
+    public static final DeferredItem<Item> SAND_OF_TIME = ITEMS.register("sand_of_time", SandofTimeItem::new);
     public static final DeferredItem<BlockItem> CLAYPAN = ITEMS.registerSimpleBlockItem(ModBlocks.CLAYPAN);
     public static final DeferredItem<Item> DREAM_CAULDRON = ITEMS.register("dream_cauldron", () -> new com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem(ModBlocks.DREAM_CAULDRON.get(), new Item.Properties()));
 

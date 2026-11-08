@@ -3,6 +3,11 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableScreen;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.windmoordesk.WindMoorDeskScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbasket.PicnicBasketScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateScreen;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagScreen;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagScreen;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarScreen;
@@ -28,6 +33,11 @@ public final class ModScreens {
     public static void register(RegisterMenuScreensEvent event) {
         event.register(ModMenus.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), WeaponWorkshopCraftingTableScreen::new);
         event.register(ModMenus.DYEDREAM_DESK.get(), DyedreamDeskScreen::new);
+        event.register(ModMenus.SHADOW_DESK.get(), ShadowDeskScreen::new);
+        event.register(ModMenus.WIND_MOOR_DESK.get(), WindMoorDeskScreen::new);
+        event.register(ModMenus.PICNIC_BASKET.get(), PicnicBasketScreen::new);
+        event.register(ModMenus.SHADOW_CHEST.get(), ShadowChestScreen::new);
+        event.register(ModMenus.WIND_MOOR_CRATE.get(), WindMoorCrateScreen::new);
         event.register(ModMenus.STORAGE_BAG.get(), StorageBagScreen::new);
         event.register(ModMenus.MORTAR.get(), MortarScreen::new);
         event.register(ModMenus.LARGE_STORAGE_BAG.get(), LargeStorageBagScreen::new);
