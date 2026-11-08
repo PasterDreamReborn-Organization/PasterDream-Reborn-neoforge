@@ -11,6 +11,10 @@ public class GUIBackGroundRender
     public static ResourceLocation STORAGE_BAG_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/storage_bag.png");
     public static ResourceLocation BIG_STORAGE_BAG_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/big_storage_bag.png");
     public static ResourceLocation MORTAR_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/mortar/mortar.png");
+    public static ResourceLocation DREAM_CAULDRON_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron.png");
+    public static ResourceLocation DREAM_CAULDRON_BUTTON_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_button.png");
+    public static ResourceLocation DREAM_CAULDRON_BUTTON_HOVERED_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_button_hovered.png");
+    public static ResourceLocation DREAM_CAULDRON_MELT_DREAM_LIQUID_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_melt_dream_liquid_amount_bar.png");
     public static ResourceLocation EMPTY_FLUID_SLOT_BUCKET_SHAPE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/empty_fluid_slot_bucket_shape.png");
     public static ResourceLocation WEAPON_WORKSHOP_CRAFTING_TABLE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_crafting_table.png");
     public static ResourceLocation DYEDREAM_DESK_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/desk/dyedream_desk.png");
@@ -62,6 +66,26 @@ public class GUIBackGroundRender
         RenderSystem.defaultBlendFunc();
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         guiGraphics.blit(MORTAR_GUI, x, y, 0, 0, 128, 90, 128, 90);
+    }
+
+    public static void rendDreamCauldronGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(DREAM_CAULDRON_GUI, x, y, 0, 0, 171, 93, 171, 93);
+    }
+
+    public static void rendDreamCauldronMeltDreamLiquidBar(GuiGraphics guiGraphics, int x, int y, double percent)
+    {
+        guiGraphics.blit(DREAM_CAULDRON_MELT_DREAM_LIQUID_AMOUNT_BAR, x, y + (int)(0.5 + (47 * (1 - percent))), 0, (int)(0.5 + (47 * (1 - percent))), 5, (int)(0.49999999 + (47 * percent)), 5, 47);
+    }
+
+    public static void rendDreamCauldronButtonGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(DREAM_CAULDRON_BUTTON_GUI, x, y, 0, 0, 38, 15, 38, 15);
+    }
+
+    public static void rendDreamCauldronButtonHoveredGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(DREAM_CAULDRON_BUTTON_HOVERED_GUI, x, y, 0, 0, 38, 15, 38, 15);
     }
 
     public static void rendEmptyFluidSlotBucketShape(GuiGraphics guiGraphics, int x, int y)

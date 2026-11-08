@@ -186,6 +186,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.LOST_SWORD_TOMB.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.LIFE_CRYSTAL.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.DREAM_CAULDRON.get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.SOUL_ORE.get());
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.SALT_BLOCK.get());

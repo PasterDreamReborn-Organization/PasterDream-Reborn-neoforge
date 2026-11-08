@@ -11,6 +11,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TagParser;
+import net.minecraft.nbt.Tag;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.item.alchemy.PotionContents;
+import com.pasterdream.pasterdreammod.init.ModFluids;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -49,6 +53,9 @@ public class FluidIngredient
         if (fluid != null && stack.getFluid() != fluid) return false;
         if (tag != null && !stack.getFluid().is(tag)) return false;
         if (fluid == null && tag == null) return false;
+        if (nbt != null && nbt.contains("EffectList") && stack.getFluid() == ModFluids.POTION.get())
+            return getFluidStack().getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY)
+                    .equals(stack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY));
         return nbt == null || nbt.equals(getCustomDataTag(stack));
     }
 
@@ -98,7 +105,7 @@ public class FluidIngredient
     {
         if (fluid == null) return FluidStack.EMPTY;
         FluidStack stack = new FluidStack(fluid, amount);
-        if (nbt != null && !nbt.isEmpty()) stack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
+        applyNbt(stack, nbt);
         return stack;
     }
 
@@ -110,7 +117,7 @@ public class FluidIngredient
             for (Holder<Fluid> holder : BuiltInRegistries.FLUID.getTagOrEmpty(tag))
             {
                 FluidStack stack = new FluidStack(holder.value(), amount);
-                if (nbt != null && !nbt.isEmpty()) stack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
+                applyNbt(stack, nbt);
                 stacks.add(stack);
             }
         }
@@ -138,6 +145,28 @@ public class FluidIngredient
     {
         try { return TagParser.parseTag(text); }
         catch (Exception exception) { throw new IllegalArgumentException("流体 NBT 解析出错：" + text, exception); }
+    }
+
+    private static PotionContents potionContentsFromLegacyNbt(CompoundTag tag)
+    {
+        List<MobEffectInstance> effects = new ArrayList<>();
+        var effectList = tag.getList("EffectList", Tag.TAG_COMPOUND);
+        for (int i = 0; i < effectList.size(); i++)
+        {
+            CompoundTag entry = effectList.getCompound(i);
+            BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.parse(entry.getString("id")))
+                    .ifPresent(effect -> effects.add(new MobEffectInstance(effect, entry.getInt("time"), entry.getInt("lvl"))));
+        }
+        return new PotionContents(Optional.empty(), Optional.empty(), effects);
+    }
+
+    private static void applyNbt(FluidStack stack, @Nullable CompoundTag nbt)
+    {
+        if (nbt == null || nbt.isEmpty()) return;
+        if (stack.getFluid() == ModFluids.POTION.get() && nbt.contains("EffectList"))
+            stack.set(DataComponents.POTION_CONTENTS, potionContentsFromLegacyNbt(nbt));
+        else
+            stack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
     }
 
     private record Raw(Optional<Fluid> fluid, Optional<TagKey<Fluid>> fluidTag, int amount, Optional<String> nbt)

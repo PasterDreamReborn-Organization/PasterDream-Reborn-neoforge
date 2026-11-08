@@ -1,0 +1,38 @@
+{
+  "type": "pasterdream:dream_cauldron",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:luck\",lvl:1,time:1800}]}"
+    },
+    {
+      "fluid": "pasterdream:guiding_drug",
+      "amount": 125
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "minecraft:emerald",
+      "count": 5
+    },
+    {
+      "item": "pasterdream:dyedream_dust",
+      "count": 2
+    },
+    {
+      "item": "pasterdream:singularity_fern",
+      "count": 1
+    }
+  ],
+  "fluidOutputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:luck\",lvl:2,time:3600}]}"
+    }
+  ]
+}

@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.world.block.CalciteConeBlock;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
@@ -37,6 +38,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        getVariantBuilder(ModBlocks.DREAM_CAULDRON.get()).forAllStates(state ->
+                ConfiguredModel.builder()
+                        .modelFile(models().getExistingFile(modLoc("custom/dream_cauldron_particle")))
+                        .rotationY(((int) state.getValue(DreamCauldronBlock.FACING).toYRot() + 180) % 360)
+                        .build());
         simpleBlock(ModBlocks.SHADOW_LIQUID.get(), models().cubeAll(ModBlocks.SHADOW_LIQUID.getId().getPath(), modLoc("block/shadow_liquid_flowing")));
 
         // ===== 染梦地形方块 =====

@@ -8,6 +8,8 @@ import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdes
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -46,6 +48,13 @@ public class ModMenus {
 
     public static final DeferredHolder<MenuType<?>, MenuType<MortarMenu>> MORTAR =
             MENUS.register("mortar", () -> IMenuTypeExtension.create(MortarMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<DreamCauldronMenu>> DREAM_CAULDRON =
+            MENUS.register("dream_cauldron", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new DreamCauldronMenu(windowId, inv, (DreamCauldronBlockEntity) blockEntity);
+            }));
 
     public static final DeferredHolder<MenuType<?>, MenuType<LargeStorageBagMenu>> LARGE_STORAGE_BAG =
             MENUS.register("large_storage_bag", () -> IMenuTypeExtension.create(
