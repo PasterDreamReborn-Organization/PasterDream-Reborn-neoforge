@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 059：上游 #1284 / #1287 增量同步（2026-11-08）
+
+- 同步上游 #1284：新增融梦工具与炙焰金工具的标记接口 `MeltDreamTool`、`MoltenGoldTool`，已迁入的 10 个工具类实现对应接口；融梦弓与提示管理器尚未迁入，暂不处理。
+- 同步上游 #1287：狂暴药剂瓶范围效果由 60 tick（3 秒）延长至 600 tick（30 秒）；陶盆粗盐晾晒加工时间由 24000 tick 缩短至 6000 tick。
+- `pasterdream_items_tab` 按来源顺序重排已迁入条目，并补入此前遗漏的流明光球、梦染花冠与苍白花冠；药剂瓶保持末尾动态生成。
+- `runData` 写入 0 个文件，`build` 通过，147/147 GameTest 通过。
+
 ### 批次 058：陶盆及配方系统（2026-11-08）
 
 - 搬运陶盆方块、方块实体、共享流体槽菜单/界面、流体液面渲染、配方类型与 JEI 类别；保留 1000 mB 单流体罐、三物品交互区与来源计时显示。
