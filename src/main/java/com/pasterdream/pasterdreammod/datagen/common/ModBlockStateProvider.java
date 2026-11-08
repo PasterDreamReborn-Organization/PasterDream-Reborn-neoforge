@@ -45,6 +45,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                         .modelFile(models().getExistingFile(modLoc("custom/dream_cauldron_particle")))
                         .rotationY(((int) state.getValue(DreamCauldronBlock.FACING).toYRot() + 180) % 360)
                         .build());
+        getVariantBuilder(ModBlocks.DREAM_ACCUMULATOR.get()).forAllStates(state ->
+                ConfiguredModel.builder()
+                        .modelFile(models().getExistingFile(modLoc("custom/dream_accumulator_particle")))
+                        .build());
         simpleBlock(ModBlocks.SHADOW_LIQUID.get(), models().cubeAll(ModBlocks.SHADOW_LIQUID.getId().getPath(), modLoc("block/shadow_liquid_flowing")));
 
         // ===== 鏌撴ⅵ鍦板舰鏂瑰潡 =====

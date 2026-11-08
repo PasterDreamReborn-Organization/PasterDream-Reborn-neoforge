@@ -221,13 +221,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.LIFE_CRYSTAL.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.DREAM_CAULDRON.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.DREAM_ACCUMULATOR.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.SHADOW_BLAST_FURNACE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.CLAYPAN.get());
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.SHADOW_DESK.get())
                 .add(ModBlocks.WIND_MOOR_DESK.get())
                 .add(ModBlocks.PICNIC_BASKET.get())
-                .add(ModBlocks.WIND_MOOR_CRATE.get());
+                .add(ModBlocks.WIND_MOOR_CRATE.get())
+                .add(ModBlocks.DREAM_ACCUMULATOR.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.SHADOW_CHEST.get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.SOUL_ORE.get());

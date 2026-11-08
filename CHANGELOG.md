@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 073：蓄梦池与吸附剂（2026-11-08，T12-A 部分）
+
+- 迁入 `dream_accumulator` 方块、方块实体、菜单/界面、GeckoLib 模型/动画/物品渲染、`dream_accumulator` 配方类型与序列化器、JEI 类别，以及吸附剂 `sorbent`；保留 2 物品槽、6000 tick 蓄梦时间、吸附剂 10 倍速率、`dyedream_world_biome` 群系限定与输出槽合并语义。
+- 来源配方 `pasterdream:dream_accumulator/dyedream_dust_piece` 以 1.21 配方目录与 1.21 物品栈书记格式迁入；方块工作台配方、掉落表、挖掘/功能标签、物品模型与语言由 Provider 生成。
+- 1.21 适配：`Recipe<RecipeInput>` 与 `MapCodec`/`StreamCodec`、`ItemStack.CODEC` 的 `id` 字段、`ItemStackHandler.serializeNBT(HolderLookup.Provider)`、`ItemStack.parseOptional`、`ItemStack#hurtAndBreak`、GeckoLib 4.x 包名与 `createGeoRenderer`、`RegisterCapabilitiesEvent` 物品接口。修正来源吸附剂仅在已有 Damage 标签时才扣耐久的问题，催化剂现在每 tick 正常消耗 1 点耐久。
+- 界面修正：蓄梦池 GUI 绘制显式启用透明混合；JEI 群系条件改为「标签名 + 群系数量」显示，并补齐 16 个染梦群系与标签翻译，避免逐群系长列表溢出分类框。
+- `runData` 写入 11 个文件；`build` 通过；`runGameTestServer` 158/158 通过，新增 3 项覆盖配方字段/工作台产物、方块实体槽位/能力/产物合并与吸附剂耐久消耗。客户端 GeckoLib/GUI 视觉、真实染梦群系蓄梦与多人同步待游戏内验收。
+
 ### 批次 072：暗影高炉及配方系统（2026-11-08，T18-C 部分）
 
 - 迁入 `shadow_blast_furnace` 3×3×3 多方块、主/附属方块实体、放置物品、菜单与界面，保留 9000 mB 暗影流体单罐、2 输入/2 输出槽与来源形状/放置/破坏逻辑。

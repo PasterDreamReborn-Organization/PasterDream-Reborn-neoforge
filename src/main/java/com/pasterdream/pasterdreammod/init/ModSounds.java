@@ -100,6 +100,10 @@ public class ModSounds {
             SOUND_EVENTS.register("aaroncos_music", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_music")));
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> DREAM_ACCUMULATOR =
+            SOUND_EVENTS.register("dream_accumulator", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_accumulator")));
+
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }

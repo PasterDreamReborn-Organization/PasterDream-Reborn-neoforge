@@ -203,5 +203,13 @@
         "stream": false
       }
     ]
+  },
+  "dream_accumulator": {
+    "sounds": [
+      {
+        "name": "pasterdream:dream_accumulator",
+        "stream": false
+      }
+    ]
   }
 }

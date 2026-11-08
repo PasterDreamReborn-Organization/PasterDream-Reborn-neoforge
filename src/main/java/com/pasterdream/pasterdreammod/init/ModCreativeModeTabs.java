@@ -570,6 +570,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FEATHER_PEN.get());
                         output.accept(ModItems.CLAYPAN.get());
                         output.accept(ModItems.DREAM_CAULDRON.get());
+                        output.accept(ModItems.DREAM_ACCUMULATOR.get());
+                        output.accept(ModItems.SORBENT.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_PLANTS_TAB = CREATIVE_MODE_TABS.register("pasterdream_plants_tab",

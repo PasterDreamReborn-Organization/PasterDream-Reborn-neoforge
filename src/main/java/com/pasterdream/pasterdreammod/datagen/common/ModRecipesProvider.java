@@ -109,6 +109,7 @@ public class ModRecipesProvider extends RecipeProvider {
         dyedreamDeskRecipes(output);
         equipmentDeviceRecipes(output);
         claypanRecipes(output);
+        dreamAccumulatorRecipe(output);
         musicDiscRecipes(output);
         windwreathedThunderSpearRecipe(output);
         expansionWeaponWorkshopRecipes(output);
@@ -2658,6 +2659,19 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.MAGMA_BLOCK), has(Items.MAGMA_BLOCK))
                 .unlockedBy(getHasName(Items.CUT_COPPER), has(Items.CUT_COPPER))
                 .save(output, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "weapon_workshop_crafting_table"));
+    }
+
+    private void dreamAccumulatorRecipe(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.DREAM_ACCUMULATOR.get(), 1)
+                .pattern(" a ")
+                .pattern("bcb")
+                .pattern("bdb")
+                .define('a', ModBlocks.DYEDREAM_GLASS.get())
+                .define('b', ModItems.POLISHED_CALCITE.get())
+                .define('c', ModItems.TITANIUM_INGOT.get())
+                .define('d', ModItems.CHISELED_DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter);
     }
 
     private void claypanRecipes(RecipeOutput pWriter) {

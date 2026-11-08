@@ -330,6 +330,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get());
         dropSelf(ModBlocks.CLAYPAN.get());
         dropSelf(ModBlocks.DREAM_CAULDRON.get());
+        dropSelf(ModBlocks.DREAM_ACCUMULATOR.get());
 
         // ===== 盆栽植物 =====
         for (var entry : ModBlocks.POTTED_PLANTS.entrySet()) {
