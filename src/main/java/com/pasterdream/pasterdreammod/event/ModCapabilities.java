@@ -33,6 +33,18 @@ public final class ModCapabilities
                 (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.DYEDREAM_DESK.get(),
                 (blockEntity, direction) -> blockEntity.getItemHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.SHADOW_DESK.get(),
+                (blockEntity, direction) -> blockEntity.getItemHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.WIND_MOOR_DESK.get(),
+                (blockEntity, direction) -> blockEntity.getItemHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.PICNIC_BASKET.get(),
+                (blockEntity, direction) -> blockEntity.getItemHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.SHADOW_CHEST.get(),
+                (blockEntity, direction) -> blockEntity.getItemHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.WIND_MOOR_CRATE.get(),
+                (blockEntity, direction) -> blockEntity.getItemHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(),
+                (blockEntity, direction) -> blockEntity.getItemHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.CLAYPAN.get(),
                 (blockEntity, direction) -> blockEntity.getItemHandler());
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.CLAYPAN.get(),

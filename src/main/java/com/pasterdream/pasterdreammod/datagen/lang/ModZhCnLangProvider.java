@@ -15,6 +15,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add(ModItems.MORTAR.get(), "研钵");
+        add(ModItems.PLIERS.get(), "园艺钳");
+        add(ModItems.FEATHER_PEN.get(), "羽毛笔");
+        add(ModItems.SAND_OF_TIME.get(), "时之沙");
         add("gui.pasterdream.mortar", "研钵");
         add("gui.pasterdream.fluid_slot.hint", "用流体容器交互该槽位时，左键取液，右键注液");
         add("button.pasterdream.mortarbutton", "研磨");
@@ -443,12 +446,27 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.cauldron.error.output_not_empty", "§c输出槽不为空，请先装瓶或清空");
         add("pasterdream.cauldron.error.bottle_empty", "§c输出槽没有成品药水，无法装瓶");
         add(ModBlocks.DYEDREAM_DESK.get(), "染梦书桌");
+        add(ModBlocks.SHADOW_DESK.get(), "阴影书桌");
+        add(ModBlocks.WIND_MOOR_DESK.get(), "风泊书桌");
+        add(ModBlocks.PICNIC_BASKET.get(), "野餐篮");
+        add(ModBlocks.SHADOW_CHEST.get(), "浸影宝盒");
+        add(ModBlocks.WIND_MOOR_CRATE.get(), "风泊板条筐");
+        add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), "寻梦者的永恒书卷");
         add("button.pasterdream.锻造", "锻造");
         add("tooltip.pasterdreammod.magic_stone", "§7§o哪个魔法使的兜里不会揣几块魔法石呢？");
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7此世间一切拥有灵魂的生物皆有梦\n那些醒来时无法想起的细缕回忆\n破碎并融化被埋藏在世界各处凝结成晶\n等待着被新的灵魂发现");
         add("tooltip.pasterdream.melt_dream_coin", "§7右键使用10个以上可合成为融梦星币堆");
         add("tooltip.pasterdream.melt_dream_coin_pile", "§7右键使用可分解为10个融梦星币");
         add("tooltip.pasterdream.melt_dream_coin.value", "§7▪ §6价值面额 : ");
+        add("tooltip.pasterdream.pliers.1", "§7▪ §9可以收获作物和植物");
+        add("tooltip.pasterdream.pliers.2", "§7▪ §9潜行右键可直接采集帕斯特的植物");
+        add("tooltip.pasterdream.pliers.3", "§7▪ §9潜行右键对树叶使用时，大幅提高树苗和果实的掉率");
+        add("message.pasterdream.sand_of_time.cooldown", "这个时之沙辛苦工作了一天之后，正在休息，还需要%s秒才能恢复");
+        add("tooltip.pasterdream.sand_of_time.1", "§7右键使用以跳跃世界时间更替昼夜");
+        add("tooltip.pasterdream.sand_of_time.2", "§7该物品在使用后，会进入%s§7秒的冷却");
+        add("tooltip.pasterdream.sand_of_time.3", "§7§o--沙漏将会记得 我们所遗忘的时光");
+        add("tooltip.pasterdream.sand_of_time.4", "还剩%s秒冷却");
+        add("tooltip.pasterdream.sand_of_time.5", "§a力量已恢复，可以切换昼夜");
         add("tooltip.pasterdreammod.melt_dream_tool.1", "在背包中时");
         add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §b融梦修补：0.01E/1耐久");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.1", "镶嵌：§d融梦水晶碎片");

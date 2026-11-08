@@ -9,6 +9,12 @@ import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEn
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.NippyEdelweissBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.windmoordesk.WindMoorDeskBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbasket.PicnicBasketBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -52,6 +58,30 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DyedreamDeskBlockEntity>> DYEDREAM_DESK =
             BLOCK_ENTITIES.register("dyedream_desk",
                     () -> BlockEntityType.Builder.of(DyedreamDeskBlockEntity::new, ModBlocks.DYEDREAM_DESK.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShadowDeskBlockEntity>> SHADOW_DESK =
+            BLOCK_ENTITIES.register("shadow_desk",
+                    () -> BlockEntityType.Builder.of(ShadowDeskBlockEntity::new, ModBlocks.SHADOW_DESK.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WindMoorDeskBlockEntity>> WIND_MOOR_DESK =
+            BLOCK_ENTITIES.register("wind_moot_desk",
+                    () -> BlockEntityType.Builder.of(WindMoorDeskBlockEntity::new, ModBlocks.WIND_MOOR_DESK.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PicnicBasketBlockEntity>> PICNIC_BASKET =
+            BLOCK_ENTITIES.register("picnic_basket",
+                    () -> BlockEntityType.Builder.of(PicnicBasketBlockEntity::new, ModBlocks.PICNIC_BASKET.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShadowChestBlockEntity>> SHADOW_CHEST =
+            BLOCK_ENTITIES.register("shadow_chest",
+                    () -> BlockEntityType.Builder.of(ShadowChestBlockEntity::new, ModBlocks.SHADOW_CHEST.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WindMoorCrateBlockEntity>> WIND_MOOR_CRATE =
+            BLOCK_ENTITIES.register("wind_moor_crate",
+                    () -> BlockEntityType.Builder.of(WindMoorCrateBlockEntity::new, ModBlocks.WIND_MOOR_CRATE.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TheEndlessBookOfDreamSeekersBlockEntity>> THE_ENDLESS_BOOK_OF_DREAM_SEEKERS =
+            BLOCK_ENTITIES.register("the_endless_book_of_dream_seekers",
+                    () -> BlockEntityType.Builder.of(TheEndlessBookOfDreamSeekersBlockEntity::new, ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get()).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClaypanBlockEntity>> CLAYPAN =
             BLOCK_ENTITIES.register("claypan",
