@@ -2,6 +2,9 @@ package com.pasterdream.pasterdreammod.init;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemNameBlockItem;
+import com.pasterdream.pasterdreammod.world.item.debugsword.DebugSwordItem;
+import com.pasterdream.pasterdreammod.world.item.lootgenerator.LootGeneratorItem;
+import com.pasterdream.pasterdreammod.world.item.modelbreakparticleproviderblockitem.ModelBreakParticleProviderBlockItem;
 import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.item.NightmareFuelItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
@@ -1563,6 +1566,28 @@ public class ModItems {
     public static final DeferredItem<Item> FIG = ITEMS.register("fig",
             () -> new ItemNameBlockItem(ModBlocks.FIG_VINE.get(), new Item.Properties()
                     .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.165f).build())));
+
+    // ===== 调试工具 =====
+    public static final DeferredItem<Item> DEBUG_SWORD = ITEMS.register("debug_sword", DebugSwordItem::new);
+    public static final DeferredItem<Item> LOOT_GENERATOR = ITEMS.register("loot_generator", LootGeneratorItem::new);
+    public static final DeferredItem<BlockItem> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0 = ITEMS.register("model_break_particle_provider_block_0",
+            () -> new ModelBreakParticleProviderBlockItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1 = ITEMS.register("model_break_particle_provider_block_1",
+            () -> new ModelBreakParticleProviderBlockItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2 = ITEMS.register("model_break_particle_provider_block_2",
+            () -> new ModelBreakParticleProviderBlockItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3 = ITEMS.register("model_break_particle_provider_block_3",
+            () -> new ModelBreakParticleProviderBlockItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), new Item.Properties()));
+
+    // ===== 刷怪蛋 =====
+    public static final DeferredItem<Item> TERRORBEAK_SPAWN_EGG = ITEMS.register("terrorbeak_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.TERRORBEAK.get(), 0x1c1c1c, 0x3d3d3d, new Item.Properties()));
+    public static final DeferredItem<Item> CRAZY_TERRORBEAK_SPAWN_EGG = ITEMS.register("crazy_terrorbeak_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.CRAZY_TERRORBEAK.get(), -16777216, -11271421, new Item.Properties()));
+    public static final DeferredItem<Item> WEAKENESS_TERRORBEAK_SPAWN_EGG = ITEMS.register("weakeness_terrorbeak_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.WEAKENESS_TERRORBEAK.get(), -16777216, -13421773, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_HAND_SPAWN_EGG = ITEMS.register("shadow_hand_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.SHADOW_HAND.get(), -12763843, -16316665, new Item.Properties()));
 
     // ===== 拓展栏物品 =====
     public static final DeferredItem<Item> MELT_DREAM_AURORIAN_STEEL_INGOT = ITEMS.register("melt_dream_aurorian_steel_ingot",

@@ -30,6 +30,16 @@ public class GUIBackGroundRender
     public static ResourceLocation SAN_CHANGE_UP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/san/san_change_up.png");
     public static ResourceLocation SAN_CHANGE_DOWN = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/san/san_change_down.png");
 
+    public static final ResourceLocation MINECRAFT_GUI_LEFT_TOP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/left_top.png");
+    public static final ResourceLocation MINECRAFT_GUI_TOP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_top.png");
+    public static final ResourceLocation MINECRAFT_GUI_RIGHT_TOP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/right_top.png");
+    public static final ResourceLocation MINECRAFT_GUI_LEFT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_left.png");
+    public static final ResourceLocation MINECRAFT_GUI_RIGHT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_right.png");
+    public static final ResourceLocation MINECRAFT_GUI_LEFT_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/left_bottom.png");
+    public static final ResourceLocation MINECRAFT_GUI_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_bottom.png");
+    public static final ResourceLocation MINECRAFT_GUI_RIGHT_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/right_bottom.png");
+    public static final ResourceLocation MINECRAFT_SINGLE_SLOT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/single_slot.png");
+
     public static void rendSanBar(GuiGraphics guiGraphics, int x, int y)
     {
         guiGraphics.blit(SAN_BAR, x, y, 0, 0, 28, 26, 28, 26);
@@ -161,6 +171,23 @@ public class GUIBackGroundRender
         RenderSystem.defaultBlendFunc();
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         guiGraphics.blit(WIND_MOOR_CRATE_GUI, x, y, 0, 0, 114, 96, 114, 96);
+    }
+
+    public static void rendMinecraftGUIBackground(GuiGraphics guiGraphics, int x, int y, int width, int height)
+    {
+        guiGraphics.blit(MINECRAFT_GUI_LEFT_TOP, x, y, 0, 0, 4, 4, 4, 4);
+        guiGraphics.blit(MINECRAFT_GUI_TOP, x + 4, y, 0, 0, width - 8, 4, 1, 4);
+        guiGraphics.blit(MINECRAFT_GUI_RIGHT_TOP, x + width - 4, y, 0, 0, 4, 4, 4, 4);
+        guiGraphics.blit(MINECRAFT_GUI_LEFT, x, y + 4, 0, 0, 4, height - 8, 4, 1);
+        guiGraphics.fill(x + 4, y + 4, x + width - 4, y + height - 4, 0xFFC6C6C6);
+        guiGraphics.blit(MINECRAFT_GUI_RIGHT, x + width - 4, y + 4, 0, 0, 4, height- 8, 4, 1);
+        guiGraphics.blit(MINECRAFT_GUI_LEFT_BOTTOM, x, y + height - 4, 0, 0, 4, 4, 4, 4);
+        guiGraphics.blit(MINECRAFT_GUI_BOTTOM, x + 4, y + height - 4, 0, 0, width - 8, 4, 1, 4);
+        guiGraphics.blit(MINECRAFT_GUI_RIGHT_BOTTOM, x + width - 4, y + height - 4, 0, 0, 4, 4, 4, 4);
+
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
     }
 
 }

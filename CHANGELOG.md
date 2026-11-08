@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 071：调试物品栏首批搬运（2026-11-08，T20 前置）
+
+- 从来源 `pasterdream_dream_debug_tab` 迁入无前置阻塞的 10 项：调试之剑、战利品生成器、4 个破碎粒子提供方块、恐怖尖喙/疯狂恐怖尖喙/虚弱恐怖尖喙/暗影之手刷怪蛋，并建立调试创造物品栏。
+- 调试之剑接入左键删除实体、左键方块选项界面（六种模拟破坏/清除方式）与右键实体/方块 NBT 打印；战利品生成器使用 `CustomData` 保存战利品表并写入容器；4 个粒子方块补齐模型、战利品表，半透明方块使用 `translucent` 渲染类型。
+- 1.21 适配：NeoForge 玩家事件与 `PartEntity`、`saveWithoutId`/`saveWithFullMetadata`/`loadWithComponents`、`DataComponents.CUSTOM_DATA`、`Capabilities.ItemHandler.BLOCK`、`CustomPacketPayload` 数据包与注册表附魔 `Holder`。
+- 剩余 56 个调试栏条目依赖箱子战利品表、融梦水晶箱、刷怪笼/暗影漩涡/暗影火盆或未迁实体，暂缓。
+- `runData` 写入 24 个文件；`build` 通过；`runGameTestServer` 153/153 通过。客户端界面与真实容器/刷怪行为待游戏内验收。
+
 ### 批次 070：染梦维度地物生成补全（2026-11-08，T16-A 其余）
 
 - 迁入染梦维度全部地物：方解石锥/锥簇/尖锥、浮空流明光球、繁茂洞穴巨菇、粉顶菌垂帘、小粉顶菌与方解石尖锥 NBT 放置 8 个自定义 Feature，约 70 个 configured feature 与约 90 个 placed feature。

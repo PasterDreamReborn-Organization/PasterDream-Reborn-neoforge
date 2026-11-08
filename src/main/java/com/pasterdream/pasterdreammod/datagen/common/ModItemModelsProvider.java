@@ -540,6 +540,14 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TURNBACK_CLOAK.get());
         basicItem(ModItems.EVASION_CLOAK.get());
         basicItem(ModItems.SLIVER_BELL.get());
+
+        basicItem(ModItems.DEBUG_SWORD.get());
+        basicItem(ModItems.LOOT_GENERATOR.get());
+        spawnEggItem(ModItems.TERRORBEAK_SPAWN_EGG.get());
+        spawnEggItem(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());
+        spawnEggItem(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get());
+        spawnEggItem(ModItems.SHADOW_HAND_SPAWN_EGG.get());
+
         registerProphecyCardModels();
         registerPotionBottleModels();
     }

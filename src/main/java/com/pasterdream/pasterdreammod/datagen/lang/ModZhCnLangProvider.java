@@ -1216,5 +1216,37 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.turnback_cloak", "转身衣装");
         add("effect.pasterdream.evasion_cloak", "回避衣装");
         add("effect.pasterdream.cecilia_blessing", "塞西莉亚的加护");
+
+        add("itemGroup.pasterdream.pasterdream_dream_debug_tab", "帕斯特之梦 | 调试");
+        add(ModItems.DEBUG_SWORD.get(), "调试之剑");
+        add(ModItems.LOOT_GENERATOR.get(), "战利品生成器");
+        add(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get(), "破碎粒子提供方块0");
+        add(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get(), "破碎粒子提供方块1");
+        add(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get(), "破碎粒子提供方块2");
+        add(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), "破碎粒子提供方块3");
+        add(ModItems.TERRORBEAK_SPAWN_EGG.get(), "恐怖尖喙刷怪蛋");
+        add(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get(), "疯狂恐怖尖喙刷怪蛋");
+        add(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get(), "虚弱恐怖尖喙刷怪蛋");
+        add(ModItems.SHADOW_HAND_SPAWN_EGG.get(), "暗影之手刷怪蛋");
+
+        add("tooltip.pasterdream.左键实体：直接删除此实体", "§7左键实体：直接删除此实体");
+        add("tooltip.pasterdream.左键方块：模拟破坏此方块", "§7左键方块：模拟破坏此方块");
+        add("tooltip.pasterdream.右键实体：在聊天框打印此实体NBT", "§7右键实体：在聊天框打印此实体NBT");
+        add("tooltip.pasterdream.右键方块：在聊天框打印此方块BlockState和NBT", "§7右键方块：在聊天框打印此方块BlockState和NBT");
+        add("tooltip.pasterdream.此方块仅用于提供粒子效果，生存模式无法获得", "§7此方块仅用于提供粒子效果，生存模式无法获得");
+        add("tooltip.pasterdream.loot_generator.usage.shift", "§7对容器使用Shift+右键以在容器生成战利品");
+        add("tooltip.pasterdream.当前设置战利品表：", "§7当前设置战利品表：");
+        add("tooltip.pasterdream.loot_table.not_set", "§7未设置");
+
+        add("message.pasterdream.loot_generator.no_loot_table", "§c战利品生成器未设置战利品表");
+        add("message.pasterdream.loot_generator.not_container", "§c目标方块不是容器");
+        add("message.pasterdream.loot_generator.loot_table_set", "§a已清空容器并写入战利品表：%s，下次打开容器时生成战利品");
+
+        add("option.pasterdream.Q: 模拟无工具破坏", "Q: 模拟无工具破坏");
+        add("option.pasterdream.W: 模拟下界合金镐破坏", "W: 模拟下界合金镐破坏");
+        add("option.pasterdream.E: 模拟下界合金镐时运III破坏", "E: 模拟下界合金镐时运III破坏");
+        add("option.pasterdream.A: 模拟下界合金镐精准采集破坏", "A: 模拟下界合金镐精准采集破坏");
+        add("option.pasterdream.S: 获取对应的BlockItem并掉落，并将方块设置为空气", "S: 获取对应的BlockItem并掉落，并将方块设置为空气");
+        add("option.pasterdream.D: 将方块设置为空气的同时不触发方块更新", "D: 将方块设置为空气的同时不触发方块更新");
     }
 }

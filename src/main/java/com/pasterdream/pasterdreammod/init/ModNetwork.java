@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.network.debugsword.DebugBlockActionPacket;
 import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.WeaponWorkshopCraftingTableCraftPacket;
@@ -71,6 +72,8 @@ public final class ModNetwork {
                 WindAlloyMiningSpeedSyncPacket::handle);
         registrar.playToClient(ShadowErosionMiningSpeedSyncPacket.TYPE, ShadowErosionMiningSpeedSyncPacket.STREAM_CODEC,
                 ShadowErosionMiningSpeedSyncPacket::handle);
+        registrar.playToServer(DebugBlockActionPacket.TYPE, DebugBlockActionPacket.STREAM_CODEC,
+                DebugBlockActionPacket::handle);
     }
 
     /** 客户端 → 服务端。 */

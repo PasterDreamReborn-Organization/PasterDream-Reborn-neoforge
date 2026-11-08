@@ -846,6 +846,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     .rotationY(rotationY)
                     .build();
         });
+        registerDebugBlocks();
+    }
+
+    private void registerDebugBlocks()
+    {
+        simpleBlockWithItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get(), cubeAll(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get()));
+        simpleBlockWithItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get(), cubeAll(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get()));
+        var translucentModel = models().cubeAll(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.getId().getPath(), blockTexture(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get())).renderType("translucent");
+        simpleBlockWithItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get(), translucentModel);
+        simpleBlockWithItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), cubeAll(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get()));
     }
 
     private void generateTwoStageCrop(Block block, String baseName)
