@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 060：成熟作物转换配方补齐（2026-11-08）
+
+- 按来源 `othersRecipes` 补入 5 条无形成熟作物转换配方：成熟梦染花冠/苍白花冠/流明光球/棉花植株各得 1 个对应产物，成熟云朵植株得 5 个云。
+- 作物方块、成熟/幼苗物品、掉落表与创造栏此前已迁入；本批只补齐成熟植株物品到产物的工作台转换路径，保留来源配方 ID、产物数量与解锁条件。
+- `runData` 生成 5 条配方及对应进度，`build` 通过，`runGameTestServer` 148/148 通过（新增 1 项覆盖 5 条配方的 ID、输入与产物数量）。
+
 ### 批次 059：上游 #1284 / #1287 增量同步（2026-11-08）
 
 - 同步上游 #1284：新增融梦工具与炙焰金工具的标记接口 `MeltDreamTool`、`MoltenGoldTool`，已迁入的 10 个工具类实现对应接口；融梦弓与提示管理器尚未迁入，暂不处理。
