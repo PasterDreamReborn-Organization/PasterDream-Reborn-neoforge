@@ -68,7 +68,7 @@ description: 新增/修改世界生成（群系、维度类型、噪声设置、
 
 ## 当前已实现
 
-`ModConfiguredFeatures` / `ModPlacedFeatures` / `biome/ModBiomeModifiers` 由 `ModWorldGenProvider` 统一 bootstrap。群系修改器通过 NeoForge registry codec 输出到 `data/pasterdream/neoforge/biome_modifier/`，不复制来源 `forge/` 目录。首批保留来源矿石分布和生成阶段；普通钛矿定义已生成，染梦维度挂载待后续迁移。完整状态见 `document/reference/迁移批次记录.md`。
+`ModConfiguredFeatures` / `ModPlacedFeatures` / `biome/ModBiomes` / `dimension/ModDimensionTypes` / `dimension/ModNoiseSettings` / `dimension/ModLevelStems` / `biome/ModBiomeModifiers` 由 `ModWorldGenProvider` 统一 bootstrap。群系修改器通过 NeoForge registry codec 输出到 `data/pasterdream/neoforge/biome_modifier/`，不复制来源 `forge/` 目录。普通钛矿定义已生成；批次 069 已迁入染梦维度类型、噪声设置、LevelStem 与 16 个群系骨架，但群系地物注入、结构、模组生物生成仍待后续任务。完整状态见 `document/reference/迁移批次记录.md`。
 
 批次 031 增加灵魂沙峡谷的 soul_ore_patch：仅替换灵魂土，矿脉大小 16、每区块 8 次、Y=0～128，群系标签由 ModBiomeTagsProvider 生成，ModBiomeModifiers 在 vegetal_decoration 阶段挂载。GameTest 覆盖目标群系和放置规则；真实自然分布待游戏内验证。
 

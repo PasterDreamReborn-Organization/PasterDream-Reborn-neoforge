@@ -18,6 +18,8 @@ public class ModParticleTypes {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES =
             DeferredRegister.create(Registries.PARTICLE_TYPE, PasterDreamMod.MOD_ID);
 
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> LEAVES_PARTICLE =
+            PARTICLE_TYPES.register("leaves", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SHARP_SWORD_SLASH =
             PARTICLE_TYPES.register("sharp_sword_slash", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DUST_0_PARTICLE =
