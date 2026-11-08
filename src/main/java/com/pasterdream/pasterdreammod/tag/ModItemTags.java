@@ -27,6 +27,8 @@ public final class ModItemTags {
     public static final TagKey<Item> NUGGETS_BLACK_METAL = common("nuggets/black_metal");
     public static final TagKey<Item> LAMP_SHADOW_WEAPON = TagKey.create(Registries.ITEM,
             ResourceLocation.fromNamespaceAndPath("pasterdream", "lamp_shadow_weapon"));
+    public static final TagKey<Item> PURE_HORROR_SOURCES = TagKey.create(Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "pure_horror_sources"));
     public static final TagKey<Item> INGOTS_TITANIUM = common("ingots/titanium");
     public static final TagKey<Item> NUGGETS_TITANIUM = common("nuggets/titanium");
     public static final TagKey<Item> RAW_MATERIALS_TITANIUM = common("raw_materials/titanium");

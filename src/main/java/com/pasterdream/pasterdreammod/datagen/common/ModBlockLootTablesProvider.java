@@ -95,6 +95,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADOW_FERN.get());
         dropSelf(ModBlocks.SHADOW_FUNGUS.get());
         dropSelf(ModBlocks.LIGHT_BALL.get());
+        dropSelf(ModBlocks.PEBBLE.get());
         cropDrops(ModBlocks.DYEDREAM_COROLLA_CROP.get(), ModItems.DYEDREAM_COROLLA.get(), 1, ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
         cropDrops(ModBlocks.WHITE_COROLLA_CROP.get(), ModItems.WHITE_COROLLA.get(), 1, ModItems.WHITE_COROLLA_CROP_AGE_1.get(), ModItems.WHITE_COROLLA_CROP_AGE_0.get());
         cropDrops(ModBlocks.LIGHT_BALL_CROP.get(), ModItems.LIGHT_BALL.get(), 1, ModItems.LIGHT_BALL_CROP_AGE_1.get(), ModItems.LIGHT_BALL_CROP_AGE_0.get());

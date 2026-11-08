@@ -648,6 +648,9 @@ public class ModBlocks {
         }
     });
 
+    // ===== 小石子 =====
+    public static final DeferredBlock<Block> PEBBLE = BLOCKS.register("pebble", PebbleBlock::new);
+
 
 
     // ===== 盆栽植物 =====

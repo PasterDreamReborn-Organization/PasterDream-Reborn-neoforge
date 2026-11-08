@@ -63,6 +63,7 @@ public class ModRecipesProvider extends RecipeProvider {
         materialRecipes(output);
         chargedAmethystAndSaltRecipes(output);
         mortarRecipes(output);
+        pebbleRecipes(output);
         glassJarRecipes(output);
         elixirBottleRecipes(output);
         glassCupRecipes(output);
@@ -330,6 +331,13 @@ public class ModRecipesProvider extends RecipeProvider {
                         has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                         "melt_dream_energy_ring_from_embryo"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BRIGHT_BUTTERFLY_CURIO.get(), 1)
+                .requires(ModItems.LIGHT_BUTTERFLY_CURIO.get())
+                .requires(ModItems.WHITE_CRYSTAL.get())
+                .requires(ModItems.SOUL_ESSENCE.get())
+                .unlockedBy(getHasName(ModItems.LIGHT_BUTTERFLY_CURIO.get()), has(ModItems.LIGHT_BUTTERFLY_CURIO.get()))
+                .save(pWriter);
     }
 
     // ===== 铜工具配方 =====
@@ -1640,6 +1648,35 @@ public class ModRecipesProvider extends RecipeProvider {
                 List.of(ItemIngredient.of(ModItems.DYEDREAM_DYE.get(), 9)));
     }
 
+    private void pebbleRecipes(RecipeOutput pWriter) {
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PEBBLE.get(), 2)
+                        .requires(Items.COBBLESTONE)
+                        .requires(ModItems.MORTAR.get())
+                        .unlockedBy(getHasName(Items.COBBLESTONE), has(Items.COBBLESTONE)),
+                pWriter, "pebble");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SNOWBALL_PEBBLE.get(), 1)
+                .requires(Items.SNOWBALL)
+                .requires(ModItems.PEBBLE.get())
+                .unlockedBy(getHasName(ModItems.PEBBLE.get()), has(ModItems.PEBBLE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.COBBLESTONE, 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.PEBBLE.get())
+                .unlockedBy(getHasName(ModItems.PEBBLE.get()), has(ModItems.PEBBLE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cobblestone_from_pebble");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.FLINT, 1)
+                .pattern("aa")
+                .pattern("a ")
+                .define('a', ModItems.PEBBLE.get())
+                .unlockedBy(getHasName(ModItems.PEBBLE.get()), has(ModItems.PEBBLE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":flint_from_pebble");
+    }
+
     private void glassCupRecipes(RecipeOutput pWriter) {
         // 玻璃杯合成配方（支持所有玻璃板tag）
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GLASS_CUP.get(), 4)
@@ -2065,6 +2102,19 @@ public class ModRecipesProvider extends RecipeProvider {
 
         // 琥珀糖合成配方
         dyeConversion(pWriter, Items.SUGAR, ModItems.AMBER_CANDY.get());
+
+        // 风行者果冻合成配方
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.WIND_RUNNER_JELLY.get(), 1)
+                        .requires(ModItems.MORTAR.get())
+                        .requires(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get())
+                        .requires(ModItems.JELLYFISH_JELLO.get())
+                        .requires(ModItems.WIND_RUNNER_CRYSTAL.get())
+                        .requires(ModItems.CONGEAL_WIND.get(), 2)
+                        .requires(Items.SUGAR, 2)
+                        .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get()),
+                                has(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get())),
+                pWriter, "wind_runner_jelly");
     }
 
     private void saveMortarRecipe(RecipeOutput output, String name, List<ItemIngredient> inputs, List<ItemIngredient> outputs) {
@@ -2390,6 +2440,16 @@ public class ModRecipesProvider extends RecipeProvider {
                 .requires(ModItems.BLACK_METAL_INGOT.get())
                 .unlockedBy(getHasName(ModItems.BLACK_METAL_INGOT.get()), has(ModItems.BLACK_METAL_INGOT.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_grain_from_ingot"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PURE_HORROR.get(), 2)
+                .pattern("aba")
+                .pattern("aca")
+                .pattern("aaa")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.PURE_HORROR.get())
+                .define('c', ModItemTags.PURE_HORROR_SOURCES)
+                .unlockedBy("has_pure_horror_source", has(ModItemTags.PURE_HORROR_SOURCES))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pure_horror_from_source"));
     }
 
     private void shadowErosionWorkshopRecipes(RecipeOutput output) {

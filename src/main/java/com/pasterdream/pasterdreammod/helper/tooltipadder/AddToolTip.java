@@ -76,5 +76,21 @@ public class AddToolTip
             tooltip.add(Component.translatable("tooltip.pasterdreammod.wind_runner_jelly"));
             tooltip.add(Component.translatable("tooltip.pasterdreammod.wind_runner_jelly.flavor"));
         }
+
+        if(stack.is(ModItems.WHITE_CRYSTAL.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.white_crystal"));
+        }
+
+        if(stack.is(ModItems.SHADOW_DUNGEON_KEY.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.shadow_dungeon_key"));
+        }
+
+        if(stack.is(ModItems.SHADOW_HILT.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.shadow_hilt"));
+        }
+
+        if(stack.is(ModItems.PURE_HORROR.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.pure_horror"));
+        }
     }
 }

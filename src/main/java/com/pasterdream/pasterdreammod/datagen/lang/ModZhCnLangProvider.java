@@ -51,7 +51,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModEntities.SHADOW_HAND.get(), "暗影之手");
         add(ModItems.BLACK_METAL_INGOT.get(), "黑金属锭");
         add(ModItems.BLACK_METAL_NUGGET.get(), "黑金属粒");
+        add(ModItems.RUST_BLACK_METAL_GRAIN.get(), "锈蚀金属碎屑");
         add(ModItems.SHADOW_ALLOY_INGOT.get(), "暗影合金锭");
+        add(ModItems.SHADOW_DUNGEON_KEY.get(), "暗影地牢钥匙");
+        add("tooltip.pasterdream.shadow_dungeon_key", "§7用于打开暗影地牢下层的门");
+        add(ModItems.WHITE_CRYSTAL.get(), "白厄水晶");
+        add("tooltip.pasterdream.white_crystal", "§7制作白厄剑的核心材料");
+        add(ModItems.SHADOW_HILT.get(), "凝影剑柄");
+        add("tooltip.pasterdream.shadow_hilt", "§7制作影刃的核心材料");
+        add(ModItems.PURE_HORROR.get(), "纯粹恐惧");
+        add("tooltip.pasterdream.pure_horror", "§7这份纯粹的恐惧令我不寒而栗......");
         add(ModItems.SHADOW_EROSION_DAGGER.get(), "影蚀匕首");
         add(ModItems.SHADOW_EROSION_PICKAXE.get(), "影蚀镐");
         add(ModItems.SHADOW_EROSION_AXE.get(), "影蚀斧");
@@ -604,6 +613,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // ===== 风之旅途材料与装备 =====
         add(ModItems.CONGEAL_WIND.get(), "凝结之风");
+        add(ModItems.WIND_RUNNER_CRYSTAL.get(), "风行者水晶");
         add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "凝风铁锭");
         add(ModItems.CONGEAL_WIND_IRON_NUGGET.get(), "凝风铁粒");
         add(ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), "萦风合金锭");
@@ -808,6 +818,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.CALCITE_CONE.get(), "方解石锥");
         add(ModItems.DYEDREAM_COROLLA.get(), "梦染花冠");
         add(ModItems.WHITE_COROLLA.get(), "苍白花冠");
+        add(ModBlocks.PEBBLE.get(), "小石子");
+        add("tooltip.pasterdream.pebble.throw", "§7右击投掷");
+        add("tooltip.pasterdream.pebble.place", "§7潜行 + 右击放置");
+        add(ModItems.SNOWBALL_PEBBLE.get(), "雪球");
+        add(ModItems.BLACK_BEETLE_CARAPACE.get(), "厚翅甲壳");
+        add(ModItems.BLACK_BEETLE_VOCALCORD.get(), "振音声膜");
+        add("tooltip.pasterdream.black_beetle_vocalcord", "§7仍能隐约感受到它的振动");
         add(ModItems.LIGHT_BALL.get(), "流明光球");
         add(ModBlocks.DYEDREAM_SAPLING.get(), "染梦树苗");
         add(ModBlocks.PINK_MUSHROOM.get(), "粉顶菇");

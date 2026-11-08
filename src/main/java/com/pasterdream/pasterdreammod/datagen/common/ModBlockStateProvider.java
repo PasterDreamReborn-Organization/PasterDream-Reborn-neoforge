@@ -455,6 +455,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var light_ball = models().cross(ModBlocks.LIGHT_BALL.getId().getPath(), blockTexture(ModBlocks.LIGHT_BALL.get())).renderType("cutout");
         simpleBlock(ModBlocks.LIGHT_BALL.get(),light_ball);
 
+        // 小石子
+        var pebbleModel = models().getExistingFile(modLoc("block/pebble"));
+        horizontalBlock(ModBlocks.PEBBLE.get(), pebbleModel);
+
 
         //植株方块
         generateTwoStageCrop(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "dyedream_corolla_crop");

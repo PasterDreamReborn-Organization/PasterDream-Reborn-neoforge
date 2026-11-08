@@ -169,7 +169,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.BROKEN_HERO_SWORD.get());
         basicItem(ModItems.BLACK_METAL_INGOT.get());
         basicItem(ModItems.BLACK_METAL_NUGGET.get());
+        basicItem(ModItems.RUST_BLACK_METAL_GRAIN.get());
         basicItem(ModItems.SHADOW_ALLOY_INGOT.get());
+        basicItem(ModItems.SHADOW_DUNGEON_KEY.get());
         handheldItem(ModItems.SHADOW_EROSION_DAGGER.get());
         handheldItem(ModItems.SHADOW_EROSION_PICKAXE.get());
         handheldItem(ModItems.SHADOW_EROSION_AXE.get());
@@ -280,6 +282,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
                         modLoc("displaysettings/desert_hero_tomb.item")));
         basicItem(ModItems.CONGEAL_WIND.get());
+        basicItem(ModItems.WIND_RUNNER_CRYSTAL.get());
         basicItem(ModItems.CONGEAL_WIND_IRON_INGOT.get());
         basicItem(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
         basicItem(ModItems.FLUFFY_WIND_ALLOY_INGOT.get());
@@ -438,6 +441,14 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
         basicItem(ModItems.DYEDREAM_COROLLA.get());
         basicItem(ModItems.WHITE_COROLLA.get());
+        basicItem(ModItems.WHITE_CRYSTAL.get());
+        basicItem(ModItems.SHADOW_HILT.get());
+        basicItem(ModItems.PEBBLE.get());
+        withExistingParent(ModItems.SNOWBALL_PEBBLE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", mcLoc("item/snowball"));
+        basicItem(ModItems.PURE_HORROR.get());
+        basicItem(ModItems.BLACK_BEETLE_CARAPACE.get());
+        basicItem(ModItems.BLACK_BEETLE_VOCALCORD.get());
         basicItem(ModItems.COTTON.get());
         basicItem(ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
         basicItem(ModItems.WHITE_COROLLA_CROP_AGE_0.get());

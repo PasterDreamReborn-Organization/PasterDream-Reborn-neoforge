@@ -196,6 +196,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.LEG_ARMOR).add(ModItems.COPPER_LEGGINGS.get()).add(ModItems.MELT_DREAM_LEGGINGS.get()).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.SCULK_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get()).add(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
         tag(ItemTags.FOOT_ARMOR).add(ModItems.COPPER_BOOTS.get()).add(ModItems.MELT_DREAM_BOOTS.get()).add(ModItems.TITANIUM_BOOTS.get()).add(ModItems.SCULK_BOOTS.get()).add(ModItems.DYEDREAM_BOOTS.get()).add(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
 
+        tag(ModItemTags.PURE_HORROR_SOURCES)
+                .add(ModItems.WHITE_CRYSTAL.get())
+                .add(ModItems.SHADOW_HILT.get());
+
         tag(ModItemTags.LAMP_SHADOW_WEAPON)
                 .add(ModItems.SHADOW_EROSION_DAGGER.get())
                 .add(ModItems.SHADOW_EROSION_PICKAXE.get())

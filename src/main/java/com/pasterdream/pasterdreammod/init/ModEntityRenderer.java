@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.client.renderer.WindThunderSpearRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.FluffyWindArrowRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.ShadowAlloyArrowRenderer;
 import net.minecraft.client.renderer.entity.NoopRenderer;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 /**
@@ -32,5 +33,6 @@ public final class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.WIND_THUNDER_SPEAR.get(), WindThunderSpearRenderer::new);
         event.registerEntityRenderer(ModEntities.FLUFFY_WIND_ARROW.get(), FluffyWindArrowRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_ALLOY_ARROW.get(), ShadowAlloyArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.PEBBLE_PROJECTILE.get(), ThrownItemRenderer::new);
     }
 }

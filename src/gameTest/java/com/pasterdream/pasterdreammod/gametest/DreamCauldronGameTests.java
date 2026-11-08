@@ -39,10 +39,16 @@ public class DreamCauldronGameTests
     public static void sourceRecipesLoadAndCraft(GameTestHelper helper)
     {
         var recipes = helper.getLevel().getRecipeManager().getAllRecipesFor(ModRecipes.DREAM_CAULDRON.get());
-        helper.assertTrue(recipes.size() == 90, "梦之釜可用来源配方应加载 90 条，实际 " + recipes.size());
+        helper.assertTrue(recipes.size() == 92, "梦之釜可用来源配方应加载 92 条，实际 " + recipes.size());
         helper.assertTrue(helper.getLevel().getRecipeManager().byKey(ResourceLocation.fromNamespaceAndPath(
                 PasterDreamMod.MOD_ID, "dream_cauldron/potion_recipe/speed_long")).isPresent(),
                 "来源迅捷延长配方 ID 应保留");
+        helper.assertTrue(helper.getLevel().getRecipeManager().byKey(ResourceLocation.fromNamespaceAndPath(
+                PasterDreamMod.MOD_ID, "dream_cauldron/potion_recipe/vulnerability_super_long")).isPresent(),
+                "易伤超长配方应随黑甲虫甲壳迁入");
+        helper.assertTrue(helper.getLevel().getRecipeManager().byKey(ResourceLocation.fromNamespaceAndPath(
+                PasterDreamMod.MOD_ID, "dream_cauldron/potion_recipe/vulnerability_super_strong_from_strong")).isPresent(),
+                "易伤超强配方应随黑甲虫甲壳迁入");
         for (var holder : recipes)
         {
             for (var ingredient : holder.value().getInputFluidIngredients())
