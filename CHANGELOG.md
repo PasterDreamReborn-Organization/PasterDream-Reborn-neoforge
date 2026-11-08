@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 069：染梦维度地形与群系骨架（2026-11-08，T16-A 部分）
+
+- 迁入染梦维度类型、噪声设置与 `LevelStem`：复用主世界噪声路由，方解石默认方块，保留来源染梦草方块/染梦沙/染梦土/浮冰/冰/白沙等地表规则与海平面。
+- 迁入 16 个染梦群系的多噪声源与群系定义，保留天空/雾/水色、温度/降水、环境粒子、背景音乐与洞穴雕刻器；本批不注入 configured/placed feature，不迁结构，`PINK_SLIME`/`PINK_CHICKEN` 生成项待实体迁移。
+- 补 `LEAVES` 粒子类型、客户端 Provider 与来源粒子资源；`ModWorldGenProvider` 增加 BIOME / DIMENSION_TYPE / NOISE_SETTINGS / LEVEL_STEM 注册。
+- `runData` 生成维度、维度类型、噪声设置与 16 个群系 JSON；`build` 通过，`runGameTestServer` 152/152 通过。真实维度生成、群系分布、客户端天空/雾与多人行为待游戏内验收。
+
 ### 批次 068：拓展栏物品全量搬运（2026-11-08，T13 部分）
 
 - 搬运来源 `PASTERDREAM_EXPANSION_TAB` 全部 17 项物品：`duke_coin_curio`、`hiyori_butterfly_hairpin`、`allkinds_ring`、`kaichu_omamori`、`thermal_dagger`、`melt_dream_aurorian_steel_ingot`、`terra_blade`、`terra_floating_island`、`faded_blessing_of_cecilia`、`blessing_of_cecilia`、`strawberry_heart`、`angel_wing`、`forsakens_wing`、`machine_light_wing`、`turnback_cloak`、`evasion_cloak`、`silver_bell`，保留来源注册 ID、稀有度、创造栏顺序与数值。
