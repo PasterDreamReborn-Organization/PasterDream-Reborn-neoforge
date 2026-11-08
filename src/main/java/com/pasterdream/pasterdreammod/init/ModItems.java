@@ -86,6 +86,7 @@ import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
@@ -1279,6 +1280,7 @@ public class ModItems {
     public static final DeferredItem<Item> SAND_OF_TIME = ITEMS.register("sand_of_time", SandofTimeItem::new);
     public static final DeferredItem<BlockItem> CLAYPAN = ITEMS.registerSimpleBlockItem(ModBlocks.CLAYPAN);
     public static final DeferredItem<Item> DREAM_CAULDRON = ITEMS.register("dream_cauldron", () -> new com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem(ModBlocks.DREAM_CAULDRON.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_BLAST_FURNACE = ITEMS.register("shadow_blast_furnace", () -> new ShadowBlastFurnaceItem(ModBlocks.SHADOW_BLAST_FURNACE.get(), new Item.Properties()));
 
     // ===== 影蚀系列 =====
     public static final DeferredItem<Item> SHADOW_EROSION_DAGGER = ITEMS.register("shadow_erosion_dagger",

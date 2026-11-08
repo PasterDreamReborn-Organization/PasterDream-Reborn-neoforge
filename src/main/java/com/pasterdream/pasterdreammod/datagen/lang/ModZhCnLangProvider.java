@@ -430,6 +430,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "精铸工坊工作台");
         add(ModBlocks.CLAYPAN.get(), "陶盆");
         add(ModBlocks.DREAM_CAULDRON.get(), "梦之釜");
+        add(ModBlocks.SHADOW_BLAST_FURNACE.get(), "暗影高炉");
         add("pasterdream.cauldron.brew", "§d酿造完成！得到 %s ml 药水");
         add("pasterdream.cauldron.fuse", "§d效果融合成功！得到 %s ml 药水");
         add("pasterdream.cauldron.blend", "§d勾兑成功！得到 %s ml 药水");

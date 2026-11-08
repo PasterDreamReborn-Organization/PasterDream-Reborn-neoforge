@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.init.ModDataComponents;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagInventoryCapability;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlockEntity;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarDataHandler;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarInventory;
 import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.GenericContainerFluidHandler;
@@ -53,6 +54,26 @@ public final class ModCapabilities
                 (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.DREAM_CAULDRON.get(),
                 (blockEntity, direction) -> blockEntity.getExternalFluidHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.SHADOW_BLAST_FURNACE.get(),
+                (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.SHADOW_BLAST_FURNACE.get(),
+                (blockEntity, direction) -> blockEntity.getFluidTank(0));
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.SHADOW_BLAST_FURNACE_ADDON.get(),
+                (blockEntity, direction) ->
+                {
+                    ShadowBlastFurnaceBlockEntity main = blockEntity.getMainBlockEntity();
+                    if (main == null)
+                    {
+                        return null;
+                    }
+                    return direction == null ? main.getItemHandler() : main.getExternalHandler();
+                });
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.SHADOW_BLAST_FURNACE_ADDON.get(),
+                (blockEntity, direction) ->
+                {
+                    ShadowBlastFurnaceBlockEntity main = blockEntity.getMainBlockEntity();
+                    return main == null ? null : main.getFluidTank(0);
+                });
         event.registerItem(Capabilities.ItemHandler.ITEM,
                 (stack, context) -> new StorageBagInventoryCapability(stack, StorageBagItem.SLOT_COUNT),
                 ModItems.STORAGE_BAG.get());

@@ -721,6 +721,7 @@ public class ModCreativeModeTabs {
                     .icon(() -> new ItemStack(ModItems.DEBUG_SWORD.get()))
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.DEBUG_SWORD.get());
+                        output.accept(ModItems.SHADOW_BLAST_FURNACE.get());
                         output.accept(ModItems.LOOT_GENERATOR.get());
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get());
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());

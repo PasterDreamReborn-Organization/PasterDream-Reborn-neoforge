@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 072：暗影高炉及配方系统（2026-11-08，T18-C 部分）
+
+- 迁入 `shadow_blast_furnace` 3×3×3 多方块、主/附属方块实体、放置物品、菜单与界面，保留 9000 mB 暗影流体单罐、2 输入/2 输出槽与来源形状/放置/破坏逻辑。
+- 新增 `shadow_blast_furnace` 配方类型、序列化器与 JEI 类别，补入黑金属粒、暗影、暗影石、暗影合金锭、凋灵玫瑰、凋灵骷髅头 6 条加工配方；`shadow_stone` 的 `forge:stone` 适配为 `c:stones`。
+- 1.21 适配：`BaseEntityBlock.codec()`、`useWithoutItem`/`useItemOn`、`ServerPlayer.openMenu`、`HolderLookup.Provider` 存档、`RegisterCapabilitiesEvent` 能力注册、共享流体槽菜单索引调整与 `ItemStack.parseOptional`。
+- 混沌之箭配方因黑石箭/混沌之箭物品未迁入暂缓；来源无工作台配方，方块本体仍依赖未迁入的蓝图获取链。
+- `runData` 写入 4 个文件；`build` 通过；`runGameTestServer` 155/155 通过。多方块实际摆放/破坏、附属能力、JEI/GUI 与客户端交互待游戏内验收。
+
 ### 批次 071：调试物品栏首批搬运（2026-11-08，T20 前置）
 
 - 从来源 `pasterdream_dream_debug_tab` 迁入无前置阻塞的 10 项：调试之剑、战利品生成器、4 个破碎粒子提供方块、恐怖尖喙/疯狂恐怖尖喙/虚弱恐怖尖喙/暗影之手刷怪蛋，并建立调试创造物品栏。

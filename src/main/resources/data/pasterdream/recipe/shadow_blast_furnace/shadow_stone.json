@@ -1,0 +1,23 @@
+{
+  "type": "pasterdream:shadow_blast_furnace",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:shadow_liquid",
+      "amount": 125
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "tag": "c:stones"
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:shadow_stone"
+    }
+  ],
+  "processingTime": 100
+}
