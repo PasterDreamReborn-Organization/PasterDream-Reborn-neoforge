@@ -422,6 +422,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9攻击力+1~+3");
         add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9幸运+1~+3");
         add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "精铸工坊工作台");
+        add(ModBlocks.CLAYPAN.get(), "陶盆");
         add(ModBlocks.DREAM_CAULDRON.get(), "梦之釜");
         add("pasterdream.cauldron.brew", "§d酿造完成！得到 %s ml 药水");
         add("pasterdream.cauldron.fuse", "§d效果融合成功！得到 %s ml 药水");

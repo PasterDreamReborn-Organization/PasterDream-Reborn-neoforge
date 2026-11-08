@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdes
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagScreen;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagScreen;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarScreen;
+import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanScreen;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -30,7 +31,7 @@ public final class ModScreens {
         event.register(ModMenus.STORAGE_BAG.get(), StorageBagScreen::new);
         event.register(ModMenus.MORTAR.get(), MortarScreen::new);
         event.register(ModMenus.LARGE_STORAGE_BAG.get(), LargeStorageBagScreen::new);
-        // TODO: event.register(ModMenus.CLAYPAN.get(), ClaypanScreen::new);
+        event.register(ModMenus.CLAYPAN.get(), ClaypanScreen::new);
         event.register(ModMenus.DREAM_CAULDRON.get(), DreamCauldronScreen::new);
     }
 }

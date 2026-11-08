@@ -5,6 +5,8 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.W
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableMenu;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskMenu;
+import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanMenu;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
@@ -48,6 +50,13 @@ public class ModMenus {
 
     public static final DeferredHolder<MenuType<?>, MenuType<MortarMenu>> MORTAR =
             MENUS.register("mortar", () -> IMenuTypeExtension.create(MortarMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<ClaypanMenu>> CLAYPAN =
+            MENUS.register("claypan", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new ClaypanMenu(windowId, inv, (ClaypanBlockEntity) blockEntity);
+            }));
 
     public static final DeferredHolder<MenuType<?>, MenuType<DreamCauldronMenu>> DREAM_CAULDRON =
             MENUS.register("dream_cauldron", () -> IMenuTypeExtension.create((windowId, inv, data) ->

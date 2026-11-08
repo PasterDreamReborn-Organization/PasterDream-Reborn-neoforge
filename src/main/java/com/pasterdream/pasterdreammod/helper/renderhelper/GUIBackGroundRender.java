@@ -10,6 +10,8 @@ public class GUIBackGroundRender
     public static ResourceLocation PASTERDREAM_INVENTORY_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/pasterdream_inventory.png");
     public static ResourceLocation STORAGE_BAG_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/storage_bag.png");
     public static ResourceLocation BIG_STORAGE_BAG_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/big_storage_bag.png");
+    public static ResourceLocation CLAYPAN_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/claypan/claypan.png");
+    public static ResourceLocation ARROW = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/claypan/arrow.png");
     public static ResourceLocation MORTAR_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/mortar/mortar.png");
     public static ResourceLocation DREAM_CAULDRON_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron.png");
     public static ResourceLocation DREAM_CAULDRON_BUTTON_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_button.png");
@@ -58,6 +60,16 @@ public class GUIBackGroundRender
     public static void rendBigStorageBagGUI(GuiGraphics guiGraphics, int x, int y)
     {
         guiGraphics.blit(BIG_STORAGE_BAG_GUI, x, y, 0, 0, 128, 110, 128, 110);
+    }
+
+    public static void rendClaypanGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(CLAYPAN_GUI, x, y, 0, 0, 82, 28, 82, 28);
+    }
+
+    public static void rendArrow(GuiGraphics guiGraphics, int x, int y, double percent)
+    {
+        guiGraphics.blit(ARROW, x, y, 0, 0, (int)(22 * percent), 15, 22, 15);
     }
 
     public static void rendMortarGUI(GuiGraphics guiGraphics, int x, int y)

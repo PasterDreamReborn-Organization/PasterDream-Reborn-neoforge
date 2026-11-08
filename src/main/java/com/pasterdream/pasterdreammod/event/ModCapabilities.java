@@ -33,6 +33,10 @@ public final class ModCapabilities
                 (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.DYEDREAM_DESK.get(),
                 (blockEntity, direction) -> blockEntity.getItemHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.CLAYPAN.get(),
+                (blockEntity, direction) -> blockEntity.getItemHandler());
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.CLAYPAN.get(),
+                (blockEntity, direction) -> blockEntity.getFluidTank(0));
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.DREAM_CAULDRON.get(),
                 (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.DREAM_CAULDRON.get(),

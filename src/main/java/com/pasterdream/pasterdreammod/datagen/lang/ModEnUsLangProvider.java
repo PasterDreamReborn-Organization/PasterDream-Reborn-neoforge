@@ -422,6 +422,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9Attack Damage +1~+3");
         add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9Luck +1~+3");
         add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "Weapon Workshop Crafting Table");
+        add(ModBlocks.CLAYPAN.get(), "Claypan");
         add(ModBlocks.DREAM_CAULDRON.get(), "Dream Cauldron");
         add("pasterdream.cauldron.brew", "§dBrewed %s ml potion");
         add("pasterdream.cauldron.fuse", "§dFused effects! Got %s ml potion");

@@ -8,6 +8,8 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.W
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarCraftingRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipeSerializer;
+import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipe;
+import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipeSerializer;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipe;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipeSerializer;
 import net.minecraft.core.registries.Registries;
@@ -49,6 +51,12 @@ public class ModRecipes {
 
     public static final DeferredHolder<RecipeSerializer<?>, MortarCraftingRecipe.Serializer> MORTAR_CRAFTING_SERIALIZER =
             RECIPE_SERIALIZERS.register("mortar_crafting", MortarCraftingRecipe.Serializer::new);
+
+    public static final DeferredHolder<RecipeType<?>, RecipeType<ClaypanRecipe>> CLAYPAN =
+            RECIPE_TYPES.register("claypan", () -> new RecipeType<>() {});
+
+    public static final DeferredHolder<RecipeSerializer<?>, ClaypanRecipeSerializer> CLAYPAN_SERIALIZER =
+            RECIPE_SERIALIZERS.register("claypan", ClaypanRecipeSerializer::new);
 
     public static final DeferredHolder<RecipeType<?>, RecipeType<DreamCauldronRecipe>> DREAM_CAULDRON =
             RECIPE_TYPES.register("dream_cauldron", () -> new RecipeType<>() {});
