@@ -566,6 +566,7 @@ public class ModCreativeModeTabs {
                     {
                         output.accept(ModItems.QYM_DOLL.get());
                         output.accept(ModItems.UUZ_DOLL.get());
+                        output.accept(ModItems.DYEDREAM_CRACK.get());
                         output.accept(ModItems.LIFE_CRYSTAL.get());
                         output.accept(ModItems.LOST_SWORD_TOMB.get());
                         output.accept(ModItems.SAND_OF_TIME.get());

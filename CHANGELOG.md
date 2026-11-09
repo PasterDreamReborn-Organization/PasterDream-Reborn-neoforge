@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 081：染梦裂隙与维度进入流程（2026-11-09，T17 部分）
+
+- 迁入 `dyedream_crack` 染梦裂隙方块与物品：保留可朝向形状、发光 15、随机 tick、粒子/音效和不可破坏属性；补主世界裂隙空岛结构模板、structure/structure_set/template_pool 与双语结构名。
+- 迁入染梦污染配方类型/序列化器与 10 条转换配方、来源方块标签及黑名单；新增 `dyedreamCrackContaminationEnabled`、`dyedreamCrackContaminationRadius` 配置。
+- 接通 `接触裂隙 → 睡眠 40 tick 获得笔记 → 阅读/授予染梦裂隙进度 → 进入裂隙传送 → 染梦维度授予世界进度` 链路；补 `TeleportHelper` 效果包重发、首次接触标记与双向传送冷却。
+- 1.21 适配：补方块 `codec()`、配方 `MapCodec`/`StreamCodec`、结构目录改为单数 `structure/`、短草改用 `short_grass`、效果包构造补 `blend` 参数。
+- `runData` 写入 25 个文件，`build` 通过，`runGameTestServer` 163/163 通过（新增结构模板、污染配方与方块注册断言）。真实结构分布、客户端视觉与多人传送待游戏内验收。
+- 复查修正方块双语名称键，并将传送音效限制在实际目标维度确定之后，首次接触裂隙不再播放。
+
 ### 批次 080：蓝图物品与搭建系统（2026-11-09，T05-B 部分）
 
 - 迁入 `blue_print` 蓝图物品、`精铸工坊` / `暗影高炉` 内容注册、蓝图结构预览界面、材料清单校验、按玩家朝向旋转放置与材料消耗；蓝图数据改用 `BLUEPRINT_CONTENT` / `BLUEPRINT_PLACING` 数据组件，三个网络包改为 NeoForge payload。

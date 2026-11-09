@@ -838,6 +838,40 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
         tag(ModBlockTags.SHADOW_EROSION_TOOL_CAN_BOOST).add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
 
-        // 矿石/金属块不属于动物自然生成地表，不加入 ANIMALS_SPAWNABLE_ON。
+        // ===== 染梦污染来源方块 → 染梦方块 =====
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_DIRT)
+                .add(Blocks.DIRT)
+                .add(Blocks.COARSE_DIRT)
+                .add(Blocks.ROOTED_DIRT)
+                .add(Blocks.NETHERRACK)
+                .add(Blocks.END_STONE);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_GRASS_BLOCK)
+                .add(Blocks.GRASS_BLOCK)
+                .add(Blocks.PODZOL)
+                .add(Blocks.MYCELIUM)
+                .add(Blocks.CRIMSON_NYLIUM)
+                .add(Blocks.WARPED_NYLIUM);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_SAND)
+                .add(Blocks.SAND)
+                .add(Blocks.RED_SAND)
+                .add(Blocks.GRAVEL);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_LOG)
+                .addTag(BlockTags.LOGS);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_LEAVES)
+                .addTag(BlockTags.LEAVES);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_PACKED_ICE)
+                .add(Blocks.PACKED_ICE)
+                .add(Blocks.BLUE_ICE);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_BLACKLIST)
+                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get())
+                .add(ModBlocks.DYEDREAM_CRACK.get());
+
+        // 矿石/深层方块不在对属性敏感的地表替代链中，未加入 ANIMALS_SPAWNABLE_ON。
     }
 }

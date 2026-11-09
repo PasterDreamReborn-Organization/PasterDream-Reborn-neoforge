@@ -282,8 +282,17 @@ public class Config {
             .defineInRange("FoxFireLifetimeSeconds", 15, 0, Integer.MAX_VALUE);
 
     public static final ModConfigSpec.DoubleValue TOOLSMITH_BLUEPRINT_TRADE_CHANCE = BUILDER
-            .comment("工具商（5级）出售精铸工坊蓝图的概率，默认 1.0（100%）")
+            .comment("工具匠（5级）出售蓝图的概率，默认 1.0（100%）")
             .defineInRange("toolsmithBlueprintTradeChance", 1.0, 0.0, 1.0);
+
+    // === 染梦裂隙污染 ===
+    public static final ModConfigSpec.BooleanValue DYEDREAM_CRACK_CONTAMINATION_ENABLED = BUILDER
+            .comment("染梦裂隙是否向外污染地形，默认 true")
+            .define("dyedreamCrackContaminationEnabled", true);
+
+    public static final ModConfigSpec.IntValue DYEDREAM_CRACK_CONTAMINATION_RADIUS = BUILDER
+            .comment("染梦裂隙的污染半径（格），默认 5")
+            .defineInRange("dyedreamCrackContaminationRadius", 5, 1, 32);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 

@@ -111,6 +111,10 @@ public class ModSounds {
             SOUND_EVENTS.register("dream_accumulator", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_accumulator")));
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> DYEDREAM_CRACK =
+            SOUND_EVENTS.register("dyedream_crack", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_crack")));
+
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }

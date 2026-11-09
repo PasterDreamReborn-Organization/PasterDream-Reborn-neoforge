@@ -381,6 +381,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 new ModelFile.UncheckedModelFile(modLoc("custom/life_crystal_particle")));
         blockItem(ModBlocks.LOST_SWORD_TOMB);
 
+        // ===== 染梦裂隙 =====
+        var dyedreamCrackModel = models().getBuilder(ModBlocks.DYEDREAM_CRACK.getId().getPath())
+                .parent(new ModelFile.UncheckedModelFile(modLoc("custom/dyedream_crack")))
+                .texture("all", modLoc("block/dyedream_crack"))
+                .texture("particle", modLoc("block/dyedream_crack"))
+                .texture("0", modLoc("block/dyedream_crack"))
+                .renderType("translucent");
+        horizontalBlock(ModBlocks.DYEDREAM_CRACK.get(), dyedreamCrackModel);
+
         var shadowModel = models().cubeAll(ModBlocks.SHADOW.getId().getPath(), blockTexture(ModBlocks.SHADOW.get())).renderType("translucent");
         simpleBlockWithItem(ModBlocks.SHADOW.get(), shadowModel);
         var thickShadowModel = models().cubeAll(ModBlocks.THICK_SHADOW.getId().getPath(), blockTexture(ModBlocks.THICK_SHADOW.get())).renderType("translucent");

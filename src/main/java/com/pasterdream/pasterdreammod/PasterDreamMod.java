@@ -126,6 +126,7 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(ModVillagerTrades::onVillagerTrades);
         NeoForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
+        NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerChangedDimension);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onLivingHurt);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onLivingDamage);
