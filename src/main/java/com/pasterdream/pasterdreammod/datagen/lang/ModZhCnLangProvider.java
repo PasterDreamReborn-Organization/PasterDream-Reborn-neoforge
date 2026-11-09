@@ -95,6 +95,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.THICK_SHADOW.get(), "厚重阴影");
         add(ModBlocks.QYM_DOLL.get(), "娇小琴雨梦玩偶");
         add(ModBlocks.UUZ_DOLL.get(), "娇小幼幼紫玩偶");
+        add(ModBlocks.DYEDREAM_CRACK.get(), "染梦裂隙");
         add("itemGroup.pasterdream.pasterdream_equipment_tab", "帕斯特之梦 | 设备");
         add("tooltip.pasterdreammod.san_value", "SAN值: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: ");
@@ -382,6 +383,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.vulnerability", "易伤");
         add("effect.pasterdream.bind", "束缚");
         add("structure.pasterdream.the_lost_sword_tomb", "失落剑冢");
+        add("structure.pasterdream.dyedream_crack", "染梦裂隙");
         add("itemGroup.pasterdream.pasterdream_items_tab", "帕斯特之梦 | 物品");
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "染梦世界");
         add("pasterdream.configuration.title", "帕斯特之梦：重生 配置");
@@ -1325,6 +1327,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.pure_and_flawless.description", "获得一朵苍白雪莲");
         add("advancements.pasterdream.story.dyedream_world.title", "哥德堡安眠曲");
         add("advancements.pasterdream.story.dyedream_world.description", "访问染梦之境");
+        add("advancements.pasterdream.story.dyedream_crack.title", "染梦裂隙");
+        add("advancements.pasterdream.story.dyedream_crack.description", "在下一次的梦中醒来，裂隙会与你的梦境共鸣。");
+        add("message.pasterdream.dyedream_crack.first_contact.1", "§5身体从这个奇怪的洞穴中穿过，但并没有什么反应。");
+        add("message.pasterdream.dyedream_crack.first_contact.2", "§5你能感觉到这个类似裂隙一样的东西在与这个世界和另外一处地方交互，附近不同的环境可能正是因为此而诞生。");
+        add("message.pasterdream.dyedream_crack.first_contact.3", "§5现在可能还不是时候，让我们交给在日夜轮转之间的时光中给予答案。");
+        add("message.pasterdream.dyedream_crack.first_contact.4", "§5也许你该翻翻那本旧梦归引……或许其中有关于这类裂隙的记载。");
+        add("message.pasterdream.sleep.dream_of_crack.1", "§5你在睡梦中惊醒，背后冒出了些许冷汗，你回忆起自己梦见了往日探索中遇见的奇怪裂隙，在慢慢靠近并凝视着你。");
+        add("message.pasterdream.sleep.dream_of_crack.2", "§5那裂隙很可能有古怪，或许应该返回那里去调查一下。");
+        add("message.pasterdream.sleep.dream_of_crack.3", "§5我必须知道发生了什么......");
+        add("message.pasterdream.sleep.dream_of_crack.4", "一张寻梦者笔记出现在了你的口袋里");
         add("advancements.pasterdream.story.dyedream_biomes.title", "山河入梦");
         add("advancements.pasterdream.story.dyedream_biomes.description", "踏遍染梦世界的每一处群系。");
         add("advancements.pasterdream.story.misty_dreaming_lotus.title", "冶梦花莲");

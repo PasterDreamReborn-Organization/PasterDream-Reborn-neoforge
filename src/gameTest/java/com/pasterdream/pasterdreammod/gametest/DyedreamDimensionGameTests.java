@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.gametest;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.worldgen.ModConfiguredFeatures;
 import com.pasterdream.pasterdreammod.worldgen.ModPlacedFeatures;
 import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomes;
@@ -89,9 +90,19 @@ public class DyedreamDimensionGameTests {
 
         var structures = helper.getLevel().getStructureManager();
         helper.assertTrue(structures.get(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stone_pillar_0")).isPresent(),
-                "方解石尖锥结构模板 stone_pillar_0 应可加载");
+                "����ʯ��׶�ṹģ�� stone_pillar_0 Ӧ�ɼ���");
         helper.assertTrue(structures.get(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stone_pillar_1")).isPresent(),
-                "方解石尖锥结构模板 stone_pillar_1 应可加载");
+                "����ʯ��׶�ṹģ�� stone_pillar_1 Ӧ�ɼ���");
+        helper.assertTrue(structures.get(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_crack")).isPresent(),
+                "染梦裂隙结构模板 dyedream_crack 应可加载");
+
+        var contaminationRecipes = helper.getLevel().getRecipeManager()
+                .getAllRecipesFor(ModRecipes.DYEDREAM_CONTAMINATION.get());
+        helper.assertTrue(contaminationRecipes.size() == 10,
+                "染梦污染配方应加载 10 条，实际 " + contaminationRecipes.size());
+        helper.assertTrue(net.minecraft.core.registries.BuiltInRegistries.BLOCK.containsKey(
+                        ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_crack")),
+                "染梦裂隙方块应已注册");
 
         helper.succeed();
     }

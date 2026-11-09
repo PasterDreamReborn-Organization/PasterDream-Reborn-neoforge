@@ -95,6 +95,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.THICK_SHADOW.get(), "Thick Shadow");
         add(ModBlocks.QYM_DOLL.get(), "琴雨梦Doll");
         add(ModBlocks.UUZ_DOLL.get(), "幼幼紫Doll");
+        add(ModBlocks.DYEDREAM_CRACK.get(), "Dyedream Crack");
         add("itemGroup.pasterdream.pasterdream_equipment_tab", "Paster Dream | Equipment");
         add("tooltip.pasterdreammod.san_value", "SAN: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
@@ -382,6 +383,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.vulnerability", "Vulnerability");
         add("effect.pasterdream.bind", "Bind");
         add("structure.pasterdream.the_lost_sword_tomb", "The Lost Sword Tomb");
+        add("structure.pasterdream.dyedream_crack", "Dyedream Crack");
         add("itemGroup.pasterdream.pasterdream_items_tab", "Paster Dream | Items");
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "Dyedream World");
         add("pasterdream.configuration.title", "PasterDream: Reborn Configs");
@@ -1325,6 +1327,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.pure_and_flawless.description", "Obtain a Pale Snow Lotus");
         add("advancements.pasterdream.story.dyedream_world.title", "Gothenburg Lullaby");
         add("advancements.pasterdream.story.dyedream_world.description", "Visit the Dyedream World");
+        add("advancements.pasterdream.story.dyedream_crack.title", "Dyedream Crack");
+        add("advancements.pasterdream.story.dyedream_crack.description", "Wake up in the next dream, the crack will resonate with your dream.");
+        add("message.pasterdream.dyedream_crack.first_contact.1", "§5Your body passes through this strange hole, but nothing happens.");
+        add("message.pasterdream.dyedream_crack.first_contact.2", "§5You can feel that this crack-like thing interacts with this world and another place. The different environments nearby might have been born because of it.");
+        add("message.pasterdream.dyedream_crack.first_contact.3", "§5Perhaps it's not the time yet. Let's leave the answer to the time that flows between day and night.");
+        add("message.pasterdream.dyedream_crack.first_contact.4", "§5Maybe you should flip through the Seniors Dream... there might be records about this kind of crack.");
+        add("message.pasterdream.sleep.dream_of_crack.1", "§5You wake up startled from your sleep, with cold sweat on your back. You recall dreaming of the strange crack you encountered during your past explorations, slowly approaching and staring at you.");
+        add("message.pasterdream.sleep.dream_of_crack.2", "§5That crack is likely suspicious. Perhaps you should return there to investigate.");
+        add("message.pasterdream.sleep.dream_of_crack.3", "§5I must find out what happened......");
+        add("message.pasterdream.sleep.dream_of_crack.4", "A Dream Seeker's note appeared in your pocket");
         add("advancements.pasterdream.story.dyedream_biomes.title", "Homelands in a Dream");
         add("advancements.pasterdream.story.dyedream_biomes.description", "Discover every biome in the Dyedream World.");
         add("advancements.pasterdream.story.misty_dreaming_lotus.title", "The Dream-Forging Lotus");

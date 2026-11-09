@@ -1,4 +1,12 @@
 {
+  "dyedream_crack": {
+    "sounds": [
+      {
+        "name": "pasterdream:dyedream_crack",
+        "stream": false
+      }
+    ]
+  },
   "awake": {
     "sounds": [
       {

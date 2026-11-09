@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModDataComponents;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -77,9 +78,25 @@ public class ModAdvancementProvider extends AdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/first_contact_dyedream_crack"), existingFileHelper);
 
-            // ========== 染梦世界（待染梦裂隙前置迁入后恢复其父节点）==========
-            AdvancementHolder dyedreamWorld = Advancement.Builder.advancement()
+            // ========== 子进度：染梦裂隙 ==========
+            AdvancementHolder dyedreamCrack = Advancement.Builder.advancement()
                     .parent(root)
+                    .display(
+                            ModBlocks.DYEDREAM_CRACK.get(),
+                            Component.translatable("advancements.pasterdream.story.dyedream_crack.title"),
+                            Component.translatable("advancements.pasterdream.story.dyedream_crack.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("read_dyedream_crack_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("染梦裂隙"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/dyedream_crack"), existingFileHelper);
+
+            // ========== 染梦世界 ==========
+            AdvancementHolder dyedreamWorld = Advancement.Builder.advancement()
+                    .parent(dyedreamCrack)
                     .display(
                             ModBlocks.DYEDREAM_GRASS_BLOCK.get(),
                             Component.translatable("advancements.pasterdream.story.dyedream_world.title"),

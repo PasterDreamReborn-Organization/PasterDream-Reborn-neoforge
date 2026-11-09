@@ -199,6 +199,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.LARGE_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/large_dyedream_bud"));
         withExistingParent(ModItems.LOST_SWORD_TOMB.getId().getPath(), modLoc("block/lost_sword_tomb"));
+        withExistingParent(ModItems.DYEDREAM_CRACK.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/dyedream_crack")).renderType("minecraft:translucent");
         getBuilder(ModItems.LIFE_CRYSTAL.getId().getPath())
                 .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
                         modLoc("displaysettings/life_crystal.item")));

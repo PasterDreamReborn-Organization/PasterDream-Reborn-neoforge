@@ -16,6 +16,8 @@ import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumula
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorRecipeSerializer;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceRecipe;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceRecipeSerializer;
+import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipe;
+import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipeSerializer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -79,6 +81,12 @@ public class ModRecipes {
 
     public static final DeferredHolder<RecipeSerializer<?>, ShadowBlastFurnaceRecipeSerializer> SHADOW_BLAST_FURNACE_SERIALIZER =
             RECIPE_SERIALIZERS.register("shadow_blast_furnace", ShadowBlastFurnaceRecipeSerializer::new);
+
+    public static final DeferredHolder<RecipeType<?>, RecipeType<DyedreamContaminationRecipe>> DYEDREAM_CONTAMINATION =
+            RECIPE_TYPES.register("dyedream_contamination", () -> new RecipeType<>() {});
+
+    public static final DeferredHolder<RecipeSerializer<?>, DyedreamContaminationRecipeSerializer> DYEDREAM_CONTAMINATION_SERIALIZER =
+            RECIPE_SERIALIZERS.register("dyedream_contamination", DyedreamContaminationRecipeSerializer::new);
 
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZERS.register(eventBus);

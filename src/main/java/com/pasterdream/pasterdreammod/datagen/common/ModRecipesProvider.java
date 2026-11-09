@@ -10,8 +10,10 @@ import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapedRecipe;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapelessRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarCraftingRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
+import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipe;
 import net.minecraft.core.registries.Registries;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
+import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
@@ -31,6 +33,8 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
@@ -108,6 +112,7 @@ public class ModRecipesProvider extends RecipeProvider {
         lostSwordTombRecipe(output);
         weaponWorkshopRecipe(output);
         dyedreamDeskRecipes(output);
+        dyedreamContaminationRecipes(output);
         equipmentDeviceRecipes(output);
         claypanRecipes(output);
         dreamAccumulatorRecipe(output);
@@ -3266,6 +3271,39 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('d', ModItems.SOUL_ESSENCE.get())
                 .unlockedBy(getHasName(ModItems.SOUL_ESSENCE.get()), has(ModItems.SOUL_ESSENCE.get()))
                 .save(pWriter);
+    }
+
+    private void dyedreamContaminationRecipes(RecipeOutput output) {
+        saveContaminationTag(output, "dyedream_contamination_to_dirt",
+                ModBlockTags.DYEDREAM_CONTAMINATION_TO_DIRT, ModBlocks.DYEDREAM_DIRT.get());
+        saveContaminationTag(output, "dyedream_contamination_to_grass_block",
+                ModBlockTags.DYEDREAM_CONTAMINATION_TO_GRASS_BLOCK, ModBlocks.DYEDREAM_GRASS_BLOCK.get());
+        saveContaminationTag(output, "dyedream_contamination_to_sand",
+                ModBlockTags.DYEDREAM_CONTAMINATION_TO_SAND, ModBlocks.DYEDREAM_SAND.get());
+        saveContaminationTag(output, "dyedream_contamination_to_log",
+                ModBlockTags.DYEDREAM_CONTAMINATION_TO_LOG, ModBlocks.DYEDREAM_LOG.get());
+        saveContaminationTag(output, "dyedream_contamination_to_leaves",
+                ModBlockTags.DYEDREAM_CONTAMINATION_TO_LEAVES, ModBlocks.DYEDREAM_LEAVES.get());
+        saveContaminationBlock(output, "dyedream_contamination_tall_grass",
+                Blocks.TALL_GRASS, ModBlocks.TALL_STEM_GRASS.get());
+        saveContaminationBlock(output, "dyedream_contamination_grass",
+                Blocks.SHORT_GRASS, ModBlocks.STEM_GRASS.get());
+        saveContaminationBlock(output, "dyedream_contamination_lily_of_the_valley",
+                Blocks.LILY_OF_THE_VALLEY, ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get());
+        saveContaminationBlock(output, "dyedream_contamination_ice",
+                Blocks.ICE, ModBlocks.DYEDREAM_ICE.get());
+        saveContaminationTag(output, "dyedream_contamination_packed_ice",
+                ModBlockTags.DYEDREAM_CONTAMINATION_TO_PACKED_ICE, ModBlocks.DYEDREAM_PACKED_ICE.get());
+    }
+
+    private void saveContaminationTag(RecipeOutput output, String name, TagKey<Block> inputTag, Block outputBlock) {
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name),
+                new DyedreamContaminationRecipe(inputTag, null, outputBlock.defaultBlockState()), null);
+    }
+
+    private void saveContaminationBlock(RecipeOutput output, String name, Block inputBlock, Block outputBlock) {
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name),
+                new DyedreamContaminationRecipe(null, inputBlock, outputBlock.defaultBlockState()), null);
     }
 
     private void moltenGoldCooking(RecipeOutput output, ItemLike ingredient, String recipePrefix) {

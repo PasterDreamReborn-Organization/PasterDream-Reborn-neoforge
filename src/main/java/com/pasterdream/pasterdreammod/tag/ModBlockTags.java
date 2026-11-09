@@ -5,6 +5,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+
 /** 跨模组材料分类使用 NeoForge 的 c 命名空间。 */
 public final class ModBlockTags {
     public static final TagKey<Block> ORES_DYEDREAM_QUARTZ = common("ores/dyedream_quartz");
@@ -42,6 +44,25 @@ public final class ModBlockTags {
     public static final TagKey<Block> BLAZE_FLOWER_CAN_PLACE_ON = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:blaze_flower_can_place_on"));
     public static final TagKey<Block> SHADOW_PLANTS_CAN_PLACE_ON = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:shadow_plants_can_place_on"));
     public static final TagKey<Block> PLIER_PLANTS = TagKey.create(Registries.BLOCK, ResourceLocation.parse("pasterdream:plier_plants"));
+
+    /** 染梦污染：匹配此标签的方块会被转换为染梦泥土。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_DIRT = create("dyedream_contamination_to_dirt");
+    /** 染梦污染：匹配此标签的方块会被转换为染梦草方块。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_GRASS_BLOCK = create("dyedream_contamination_to_grass_block");
+    /** 染梦污染：匹配此标签的方块会被转换为染梦沙子。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_SAND = create("dyedream_contamination_to_sand");
+    /** 染梦污染：匹配此标签的方块会被转换为染梦原木。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_LOG = create("dyedream_contamination_to_log");
+    /** 染梦污染：匹配此标签的方块会被转换为染梦树叶。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_LEAVES = create("dyedream_contamination_to_leaves");
+    /** 染梦污染：匹配此标签的方块会被转换为染梦浮冰。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_PACKED_ICE = create("dyedream_contamination_to_packed_ice");
+    /** 染梦污染：匹配此标签的方块永远不会被转换。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_BLACKLIST = create("dyedream_contamination_blacklist");
+
+    private static TagKey<Block> create(String pName) {
+        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, pName));
+    }
 
     private static TagKey<Block> common(String path) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", path));

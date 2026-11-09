@@ -238,6 +238,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                         .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
         dropSelf(ModBlocks.LOST_SWORD_TOMB.get());
+        dropSelf(ModBlocks.DYEDREAM_CRACK.get());
         dropSelf(ModBlocks.LIFE_CRYSTAL.get());
         dropSelf(ModBlocks.SHADOW.get());
         dropSelf(ModBlocks.THICK_SHADOW.get());
