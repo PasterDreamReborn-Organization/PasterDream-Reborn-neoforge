@@ -105,6 +105,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_ALLOY_INGOT.get());
                         output.accept(ModItems.NIGHTMARE_FUEL.get());
                         output.accept(ModItems.SHADOW_DUNGEON_KEY.get());
+                        output.accept(ModItems.PALE_BONENEEDLE.get());
+                        output.accept(ModItems.ROOTS_PALE_BONENEEDLE.get());
                         output.accept(ModItems.BLACK_BEETLE_CARAPACE.get());
                         output.accept(ModItems.BLACK_BEETLE_VOCALCORD.get());
                         output.accept(ModItems.PEBBLE.get());
@@ -148,6 +150,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WAFER_BISCUIT.get());
                         output.accept(ModItems.DYEDREAM_FRUIT.get());
                         output.accept(ModItems.FIG.get());
+                        output.accept(ModItems.GLASS_JAR_OF_DREAM_JUICE.get());
                         output.accept(ModItems.MOLTEN_GOLD_APPLE.get());
                         output.accept(ModItems.ENCHANTED_MOLTEN_GOLD_APPLE.get());
                         output.accept(ModItems.AMBER_CANDY.get());
@@ -520,6 +523,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CHENJINGMEN_DESERT_SWORD.get());
                         output.accept(ModItems.BROKEN_HERO_SWORD.get());
                         // 饰品
+                        output.accept(ModItems.PALE_BONE_NEEDLE_TALISMAN.get());
                         output.accept(ModItems.GOLD_CHARM.get());
                         output.accept(ModItems.ENDEYE_CHARM.get());
                         output.accept(ModItems.SEA_CHARM.get());

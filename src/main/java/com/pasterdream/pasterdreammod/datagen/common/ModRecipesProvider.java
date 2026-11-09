@@ -109,6 +109,7 @@ public class ModRecipesProvider extends RecipeProvider {
         tideSwordRecipes(output);
         grassSwordRecipe(output);
         jungleSporeRecipe(output);
+        paleBoneneedleRecipe(output);
         lostSwordTombRecipe(output);
         weaponWorkshopRecipe(output);
         dyedreamDeskRecipes(output);
@@ -2432,6 +2433,23 @@ public class ModRecipesProvider extends RecipeProvider {
                 ModItems.PINK_MUSHROOM.get(), 1,
                 ModItems.DYEDREAM_MOSS.get(), 1);
 
+        // 梦境果汁合成配方（产物是填充罐子，自动配平容器）
+        saveContainerBalancedShapeless(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_DREAM_JUICE.get(), 1)
+                        .requires(ModItems.GLASS_JAR_OF_WATER.get(), 1)
+                        .requires(Items.BLUE_DYE, 1)
+                        .requires(Items.PINK_DYE, 1)
+                        .requires(Items.PURPLE_DYE, 1)
+                        .requires(ModItems.DYEDREAM_DYE.get(), 1)
+                        .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_WATER.get()), has(ModItems.GLASS_JAR_OF_WATER.get())),
+                pWriter, "glass_jar_of_dream_juice",
+                ModItems.GLASS_JAR_OF_DREAM_JUICE.get(), 1,
+                ModItems.GLASS_JAR_OF_WATER.get(), 1,
+                Items.BLUE_DYE, 1,
+                Items.PINK_DYE, 1,
+                Items.PURPLE_DYE, 1,
+                ModItems.DYEDREAM_DYE.get(), 1);
+
         // 奇异炖菜合成配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.QUEER_SOUP.get(), 1)
                 .requires(Items.MUSHROOM_STEW, 1)
@@ -2647,6 +2665,42 @@ public class ModRecipesProvider extends RecipeProvider {
                 .requires(Items.BONE_MEAL)
                 .unlockedBy(getHasName(ModItems.JUNGLE_SPORE.get()), has(ModItems.JUNGLE_SPORE.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "jungle_spore_from_bone_meal"));
+    }
+
+    // ===== 苍白骨针配方 =====
+
+    private void paleBoneneedleRecipe(RecipeOutput pWriter) {
+        // 苍白骨针 = 骨头 + 苍白花冠
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PALE_BONENEEDLE.get(), 1)
+                .requires(Items.BONE)
+                .requires(ModItems.WHITE_COROLLA.get())
+                .unlockedBy(getHasName(ModItems.WHITE_COROLLA.get()), has(ModItems.WHITE_COROLLA.get()))
+                .save(pWriter);
+        // 溯源苍白骨针 = 苍白骨针 + 末影珍珠 + 回响碎片
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ROOTS_PALE_BONENEEDLE.get(), 1)
+                .requires(ModItems.PALE_BONENEEDLE.get())
+                .requires(Items.ENDER_PEARL)
+                .requires(Items.ECHO_SHARD)
+                .unlockedBy(getHasName(ModItems.PALE_BONENEEDLE.get()), has(ModItems.PALE_BONENEEDLE.get()))
+                .save(pWriter);
+        // 溯源苍白骨针（已记录坐标）→ 溯源苍白骨针（清除坐标）
+        CompoundTag waypointTag = new CompoundTag();
+        waypointTag.putInt("switch", 1);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ROOTS_PALE_BONENEEDLE.get(), 1)
+                .requires(DataComponentIngredient.of(false, DataComponents.CUSTOM_DATA,
+                        CustomData.of(waypointTag), ModItems.ROOTS_PALE_BONENEEDLE.get()))
+                .unlockedBy(getHasName(ModItems.ROOTS_PALE_BONENEEDLE.get()), has(ModItems.ROOTS_PALE_BONENEEDLE.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "roots_pale_boneneedle_clear"));
+        // 苍白骨针护符 = 线 + 苍白骨针 + 下界之星
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), 1)
+                .pattern(" a ")
+                .pattern("ana")
+                .pattern(" b ")
+                .define('a', Items.STRING)
+                .define('n', Items.NETHER_STAR)
+                .define('b', ModItems.PALE_BONENEEDLE.get())
+                .unlockedBy(getHasName(ModItems.PALE_BONENEEDLE.get()), has(ModItems.PALE_BONENEEDLE.get()))
+                .save(pWriter);
     }
 
     // ===== 失落剑冢配方 =====

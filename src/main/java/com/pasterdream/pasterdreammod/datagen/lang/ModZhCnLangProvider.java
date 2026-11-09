@@ -33,6 +33,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("fluid.pasterdream.apple_juice", "苹果汁（流体）");
         add("fluid.pasterdream.dyedream_flower_tea", "染梦花茶（流体）");
         add("fluid.pasterdream.dyedream_juice", "染梦果汁（流体）");
+        add("fluid.pasterdream.dream_juice", "梦境果汁（流体）");
         add("fluid.pasterdream.honey_juice", "蜂蜜汁（流体）");
         add("fluid.pasterdream.uncooked_dyedream_flower_tea", "未烹调的染梦花茶（流体）");
         add("fluid.pasterdream.watermelon_juice", "西瓜汁（流体）");
@@ -41,6 +42,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("key.pasterdream.blink", "瞬身术");
         add("key.categories.pasterdream", "帕斯特之梦");
         add("effect.pasterdream.evasion", "回避");
+        add("effect.pasterdream.dream_wish", "美梦祈愿");
         add("effect.pasterdream.blink_cooldown", "瞬身术冷却");
         add("attribute.pasterdream.blink_consume", "瞬身术消耗");
         add("attribute.pasterdream.blink_range", "瞬身术距离");
@@ -357,6 +359,22 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(), "药引瓶");
         add(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), "风植萃取液");
         add(ModItems.GLASS_JAR_OF_INK.get(), "墨水罐");
+        add(ModItems.GLASS_JAR_OF_DREAM_JUICE.get(), "梦境果汁");
+        add("tooltip.pasterdreammod.glass_jar_of_dream_juice", "§7§o--甜美而梦幻的味道 让你交融与梦");
+        add(ModItems.PALE_BONENEEDLE.get(), "苍白骨针");
+        add(ModItems.ROOTS_PALE_BONENEEDLE.get(), "溯源苍白骨针");
+        add(ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), "苍白骨针护符");
+        add("tooltip.pasterdream.pale_boneneedle", "§7让你从梦中清醒......");
+        add("tooltip.pasterdream.pale_boneneedle.use", "§7左键对其他玩家使用 | 右键对自己使用");
+        add("tooltip.pasterdream.roots_pale_boneneedle.1", "§7让你从梦中清醒......并回到标记的位置");
+        add("tooltip.pasterdream.roots_pale_boneneedle.2", "§7潜行右键以设置标记点");
+        add("tooltip.pasterdream.roots_pale_boneneedle.3", "§7如未设置标记将默认返回重生点");
+        add("tooltip.pasterdream.roots_pale_boneneedle.4", "§7左键对其他玩家使用 | 右键对自己使用");
+        add("tooltip.pasterdream.roots_pale_boneneedle.5", "§7仅可在主世界记录坐标点");
+        add("tooltip.pasterdream.roots_pale_boneneedle.6", "§7单独放入合成栏可清除已记录坐标");
+        add("message.pasterdream.roots_pale_boneneedle.waypoint_set", "已记录坐标点");
+        add("message.pasterdream.roots_pale_boneneedle.overworld_only", "只能在主世界记录坐标点");
+        add("tooltip.pasterdream.pale_bone_needle_talisman", "§7在梦境维度死亡时，抵消这次死亡并传送回重生点");
         add(ModItems.EMBRYO_CHARM.get(), "护身符原胚");
         add(ModItems.EMBRYO_NECKLACE.get(), "项链原胚");
         add(ModItems.EMBRYO_RING.get(), "戒指原胚");
@@ -1328,6 +1346,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.root.description", "以心之祈愿为始");
         add("advancements.pasterdream.story.pure_and_flawless.title", "纯洁无瑕");
         add("advancements.pasterdream.story.pure_and_flawless.description", "获得一朵苍白雪莲");
+        add("advancements.pasterdream.story.use_pale_boneneedle.title", "哦，痛！");
+        add("advancements.pasterdream.story.use_pale_boneneedle.description", "使用苍白骨针在梦境中醒来");
+        add("advancements.pasterdream.story.human_falls_out_of_dream.title", "人类坠出梦境");
+        add("advancements.pasterdream.story.human_falls_out_of_dream.description", "你一时分不清你的痛是摔出来的还是被骨针扎出来的");
         add("advancements.pasterdream.story.dyedream_world.title", "哥德堡安眠曲");
         add("advancements.pasterdream.story.dyedream_world.description", "访问染梦之境");
         add("advancements.pasterdream.story.dyedream_crack.title", "染梦裂隙");
@@ -1352,6 +1374,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.dyedream_dust.description", "从这个世界探寻它的踪迹");
         add("advancements.pasterdream.story.melt_dream_crystal_fragment.title", "熔融于梦");
         add("advancements.pasterdream.story.melt_dream_crystal_fragment.description", "收集到一颗融梦水晶碎片");
+        add("advancements.pasterdream.story.glass_jar_of_dream_juice.title", "好梦在何方");
+        add("advancements.pasterdream.story.glass_jar_of_dream_juice.description", "制作并饮用梦境果汁，在睡梦中前往染梦之境");
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.title", "百味杂陈");
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.description", "获得一桶融梦涌泉");
         add("advancements.pasterdream.story.galaxy_jelly.title", "星辰凝胶");

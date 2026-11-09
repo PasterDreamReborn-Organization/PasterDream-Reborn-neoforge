@@ -9,6 +9,9 @@ import com.pasterdream.pasterdreammod.world.item.lootgenerator.LootGeneratorItem
 import com.pasterdream.pasterdreammod.world.item.modelbreakparticleproviderblockitem.ModelBreakParticleProviderBlockItem;
 import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.item.NightmareFuelItem;
+import com.pasterdream.pasterdreammod.world.item.PaleBoneneedleItem;
+import com.pasterdream.pasterdreammod.world.item.RootsPaleBoneneedleItem;
+import com.pasterdream.pasterdreammod.world.item.curio.PaleBoneNeedleTalismanItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
@@ -493,6 +496,18 @@ public class ModItems {
     public static final DeferredItem<Item> GLASS_JAR_OF_YEAST = ITEMS.register("glass_jar_of_yeast", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_JAR.get())));
     public static final DeferredItem<Item> GLASS_JAR_OF_GUIDING_DRUG = ITEMS.register("glass_jar_of_guiding_drug", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_JAR.get())));
     public static final DeferredItem<Item> GLASS_JAR_OF_WIND_PLANT_EXTRACT = ITEMS.register("glass_jar_of_wind_plant_extract", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_JAR.get())));
+    public static final DeferredItem<Item> GLASS_JAR_OF_DREAM_JUICE = ITEMS.register("glass_jar_of_dream_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(8).food(new FoodProperties.Builder().alwaysEdible().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get()))
+    {
+        @Override
+        protected void onDrinkSpecial(LivingEntity entity, Level level)
+        {
+            //设置玩家标记，用于床交互时传送至染梦世界
+            entity.getPersistentData().putBoolean("pasterdream:dream_juice_drank", true);
+            if (!level.isClientSide()) {
+                entity.addEffect(new MobEffectInstance(ModEffects.DREAM_WISH, 1800, 0));
+            }
+        }
+    });
     public static final DeferredItem<Item> GLASS_JAR_OF_INK = ITEMS.register("glass_jar_of_ink", () -> new Item(new Item.Properties().craftRemainder(ModItems.GLASS_JAR.get())));
 
     // ===== 食材系列 =====
@@ -1203,6 +1218,11 @@ public class ModItems {
     public static final DeferredItem<BlockItem> DYEDREAM_CRACK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_CRACK);
 
     public static final DeferredItem<Item> NIGHTMARE_FUEL = ITEMS.register("nightmare_fuel", NightmareFuelItem::new);
+
+    public static final DeferredItem<Item> PALE_BONENEEDLE = ITEMS.register("pale_boneneedle",
+            PaleBoneneedleItem::new);
+    public static final DeferredItem<Item> ROOTS_PALE_BONENEEDLE = ITEMS.register("roots_pale_boneneedle",
+            RootsPaleBoneneedleItem::new);
     public static final DeferredItem<Item> SHADOW_DUNGEON_KEY = ITEMS.register("shadow_dungeon_key",
             () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)) {
                 @Override
@@ -1666,6 +1686,8 @@ public class ModItems {
             BlessingOfCeciliaItem::new);
     public static final DeferredItem<Item> FADED_BLESSING_OF_CECILIA = ITEMS.register("faded_blessing_of_cecilia",
             FadedBlessingOfCeciliaItem::new);
+    public static final DeferredItem<Item> PALE_BONE_NEEDLE_TALISMAN = ITEMS.register("pale_bone_needle_talisman",
+            PaleBoneNeedleTalismanItem::new);
     public static final DeferredItem<Item> STRAWBERRY_HEART = ITEMS.register("strawberry_heart",
             StrawberryHeartItem::new);
     public static final DeferredItem<Item> ANGEL_WING = ITEMS.register("angel_wing",

@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeig
 import com.pasterdream.pasterdreammod.advancement.critereon.CaptureFireflyTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.bus.api.IEventBus;
@@ -43,6 +44,10 @@ public final class ModCriteriaTriggers {
     /** 阅读寻梦者笔记（书） */
     public static final DeferredHolder<CriterionTrigger<?>, ReadDreamNoteTrigger> READ_DREAM_NOTE =
             TRIGGERS.register("read_dream_note", ReadDreamNoteTrigger::new);
+
+    /** 在梦境维度使用苍白骨针 */
+    public static final DeferredHolder<CriterionTrigger<?>, UseBoneNeedleTrigger> USE_BONE_NEEDLE =
+            TRIGGERS.register("use_boneneedle", UseBoneNeedleTrigger::new);
 
     public static void register(IEventBus eventBus) {
         TRIGGERS.register(eventBus);

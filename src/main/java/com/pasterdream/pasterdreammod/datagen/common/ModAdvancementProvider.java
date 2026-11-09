@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModDataComponents;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -17,6 +18,7 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.critereon.ConsumeItemTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.PlayerTrigger;
@@ -109,6 +111,23 @@ public class ModAdvancementProvider extends AdvancementProvider {
                             new ImpossibleTrigger.TriggerInstance()))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/dyedream_world"), existingFileHelper);
+
+            // ========== 染梦世界子进度：好梦在何方 ==========
+            Advancement.Builder.advancement()
+                    .parent(dyedreamWorld)
+                    .display(
+                            ModItems.GLASS_JAR_OF_DREAM_JUICE.get(),
+                            Component.translatable("advancements.pasterdream.story.glass_jar_of_dream_juice.title"),
+                            Component.translatable("advancements.pasterdream.story.glass_jar_of_dream_juice.description"),
+                            null,
+                            AdvancementType.GOAL,
+                            true, true, false
+                    )
+                    .addCriterion("drink_dream_juice", ConsumeItemTrigger.TriggerInstance.usedItem(
+                            ModItems.GLASS_JAR_OF_DREAM_JUICE.get()))
+                    .rewards(AdvancementRewards.Builder.experience(20))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/glass_jar_of_dream_juice"), existingFileHelper);
 
             // ========== 哥德堡安眠曲子进度：山河入梦（遍历全部染梦群系） ==========
             Advancement.Builder.advancement()
@@ -321,7 +340,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
                             "story/eat_galaxy_jelly_on_high_height"), existingFileHelper);
 
             // ========== 子进度：纯洁无瑕 ==========
-            Advancement.Builder.advancement()
+            AdvancementHolder pureAndFlawless = Advancement.Builder.advancement()
                     .parent(root)
                     .display(
                             ModItems.WHITE_COROLLA.get(),
@@ -335,6 +354,36 @@ public class ModAdvancementProvider extends AdvancementProvider {
                             ModItems.WHITE_COROLLA_CROP_AGE_1.get()))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/pure_and_flawless"), existingFileHelper);
+
+            // ========== 子进度：哦，痛！ ==========
+            AdvancementHolder useBoneNeedle = Advancement.Builder.advancement()
+                    .parent(pureAndFlawless)
+                    .display(
+                            ModItems.PALE_BONENEEDLE.get(),
+                            Component.translatable("advancements.pasterdream.story.use_pale_boneneedle.title"),
+                            Component.translatable("advancements.pasterdream.story.use_pale_boneneedle.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("used_boneneedle", UseBoneNeedleTrigger.TriggerInstance.use())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/use_pale_boneneedle"), existingFileHelper);
+
+            // ========== 挑战子进度：人类跌出梦境 ==========
+            Advancement.Builder.advancement()
+                    .parent(useBoneNeedle)
+                    .display(
+                            ModItems.PALE_BONENEEDLE.get(),
+                            Component.translatable("advancements.pasterdream.story.human_falls_out_of_dream.title"),
+                            Component.translatable("advancements.pasterdream.story.human_falls_out_of_dream.description"),
+                            null,
+                            AdvancementType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("fell_and_used", UseBoneNeedleTrigger.TriggerInstance.fellAndUse())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/human_falls_out_of_dream"), existingFileHelper);
         }
     }
 
