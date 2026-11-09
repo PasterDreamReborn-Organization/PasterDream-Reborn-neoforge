@@ -1,13 +1,21 @@
 package com.pasterdream.pasterdreammod.world.item.curio;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.DreamDimensionHelper;
+import com.pasterdream.pasterdreammod.helper.GameModeHelper;
+import com.pasterdream.pasterdreammod.helper.TeleportHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
+import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -19,6 +27,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -27,6 +36,7 @@ import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
@@ -162,7 +172,99 @@ public class CurioPassiveHandler {
             player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 9, false, false));
             player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 4, false, false));
             player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false));
+            return;
         }
+
+        // 苍白骨针护符：梦境维度中拦截致命伤害
+        if (DreamDimensionHelper.isDreamDimension(player.level())) {
+            boolean hasTalisman = CuriosApi.getCuriosInventory(player)
+                    .map(h -> h.findFirstCurio(ModItems.PALE_BONE_NEEDLE_TALISMAN.get()).isPresent())
+                    .orElse(false);
+            if (hasTalisman) {
+                event.setCanceled(true);
+                player.setHealth(1.0F);
+
+                // 销毁护符
+                CuriosApi.getCuriosInventory(player).ifPresent(handler ->
+                        handler.findFirstCurio(ModItems.PALE_BONE_NEEDLE_TALISMAN.get()).ifPresent(slotResult ->
+                                handler.setEquippedCurio(slotResult.slotContext().identifier(),
+                                        slotResult.slotContext().index(), ItemStack.EMPTY)));
+
+                // 饰品激活动画 + 骨针音效
+                ModNetwork.sendToTrackingAndSelf(player,
+                        new CurioActivationPacket(new ItemStack(ModItems.PALE_BONE_NEEDLE_TALISMAN.get())));
+                player.level().playSound(null, player.blockPosition(), ModSounds.AWAKE.get(),
+                        SoundSource.NEUTRAL, 1.0F, 1.0F);
+
+                // 粒子
+                if (player.level() instanceof ServerLevel sl) {
+                    sl.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(),
+                            player.getX(), player.getY(), player.getZ(), 64, 1, 1, 1, 0.2);
+                    sl.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
+                            player.getX(), player.getY(), player.getZ(), 64, 1, 1, 1, 0.2);
+                }
+
+                // 施加效果：1.5秒塞西莉亚的加护 + 瞬间治疗
+                player.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING, 30, 0, false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, 0, false, false));
+
+                // 触发骨针使用进度
+                if (player instanceof ServerPlayer sp) {
+                    boolean wasFalling = player.fallDistance > 10;
+                    ModCriteriaTriggers.USE_BONE_NEEDLE.get().trigger(sp, wasFalling);
+                }
+
+                // 记录传送延迟（1秒 = 20 tick）
+                player.getPersistentData().putInt("pasterdream_talisman_teleport_delay", 20);
+            }
+        }
+    }
+
+    /** 苍白骨针护符：延迟传送回重生点。 */
+    @SubscribeEvent
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        if (player.level().isClientSide) return;
+
+        CompoundTag pd = player.getPersistentData();
+        int talismanDelay = pd.getInt("pasterdream_talisman_teleport_delay");
+        if (talismanDelay > 0) {
+            talismanDelay--;
+            if (talismanDelay > 0) {
+                pd.putInt("pasterdream_talisman_teleport_delay", talismanDelay);
+            } else {
+                pd.remove("pasterdream_talisman_teleport_delay");
+                if (player instanceof ServerPlayer sp) {
+                    teleportToSpawn(sp);
+                }
+            }
+        }
+    }
+
+    private static void teleportToSpawn(ServerPlayer sp) {
+        ServerLevel overworld = sp.server.getLevel(Level.OVERWORLD);
+        if (overworld != null && sp.level().dimension() != Level.OVERWORLD) {
+            sp.teleportTo(overworld, sp.getX(), sp.getY(), sp.getZ(), sp.getYRot(), sp.getXRot());
+        }
+        ServerLevel targetLevel = (ServerLevel) sp.level();
+        double spawnX, spawnY, spawnZ;
+        if (sp.getRespawnDimension().equals(sp.level().dimension()) && sp.getRespawnPosition() != null) {
+            BlockPos respawn = sp.getRespawnPosition();
+            spawnX = respawn.getX() + 0.5;
+            spawnY = respawn.getY();
+            spawnZ = respawn.getZ() + 0.5;
+        } else {
+            BlockPos sharedSpawn = targetLevel.getLevelData().getSpawnPos();
+            spawnX = sharedSpawn.getX();
+            spawnY = sharedSpawn.getY();
+            spawnZ = sharedSpawn.getZ();
+        }
+        sp.teleportTo(spawnX, spawnY, spawnZ);
+        sp.fallDistance = 0;
+        // 跨维度传送会重建客户端 LocalPlayer，补发效果包以恢复图标
+        TeleportHelper.resendActiveEffects(sp);
+        // 离开梦境维度后恢复进入前的游戏模式（防止卡在冒险模式）
+        GameModeHelper.restorePreDreamGameMode(sp);
     }
 
     /** 佩戴塞西莉亚的加护时，加护效果不可被移除。 */

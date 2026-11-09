@@ -33,6 +33,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("fluid.pasterdream.apple_juice", "Apple Juice(fluid)");
         add("fluid.pasterdream.dyedream_flower_tea", "Dyedream Flower Tea(fluid)");
         add("fluid.pasterdream.dyedream_juice", "Dyedream Juice(fluid)");
+        add("fluid.pasterdream.dream_juice", "Dream Juice(fluid)");
         add("fluid.pasterdream.honey_juice", "Honey Juice(fluid)");
         add("fluid.pasterdream.uncooked_dyedream_flower_tea", "Uncooked Dyedream Flower Tea(fluid)");
         add("fluid.pasterdream.watermelon_juice", "Watermelon Juice(fluid)");
@@ -41,6 +42,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("key.pasterdream.blink", "Blink");
         add("key.categories.pasterdream", "PasterDream");
         add("effect.pasterdream.evasion", "Evasion");
+        add("effect.pasterdream.dream_wish", "Dream Wish");
         add("effect.pasterdream.blink_cooldown", "Blink Cooldown");
         add("attribute.pasterdream.blink_consume", "Blink Hunger Cost");
         add("attribute.pasterdream.blink_range", "Blink Distance");
@@ -357,6 +359,22 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(), "Glass Jar of Guiding Drug");
         add(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), "Glass Jar of Wind Plant Extract");
         add(ModItems.GLASS_JAR_OF_INK.get(), "Glass Jar of Ink");
+        add(ModItems.GLASS_JAR_OF_DREAM_JUICE.get(), "Glass Jar of Dream Juice");
+        add("tooltip.pasterdreammod.glass_jar_of_dream_juice", "§7§o--A sweet and dreamy taste that melds you into the dream");
+        add(ModItems.PALE_BONENEEDLE.get(), "Pale Boneneedle");
+        add(ModItems.ROOTS_PALE_BONENEEDLE.get(), "Roots Pale Boneneedle");
+        add(ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), "Pale Bone Needle Talisman");
+        add("tooltip.pasterdream.pale_boneneedle", "§7Awakens you from dreams......");
+        add("tooltip.pasterdream.pale_boneneedle.use", "§7Left-click on other players | Right-click on yourself");
+        add("tooltip.pasterdream.roots_pale_boneneedle.1", "§7Awakens you from dreams...... and returns to the marked location");
+        add("tooltip.pasterdream.roots_pale_boneneedle.2", "§7Sneak + right-click to set a waypoint");
+        add("tooltip.pasterdream.roots_pale_boneneedle.3", "§7If no waypoint is set, returns to spawn by default");
+        add("tooltip.pasterdream.roots_pale_boneneedle.4", "§7Left-click on other players | Right-click on yourself");
+        add("tooltip.pasterdream.roots_pale_boneneedle.5", "§7Waypoints can only be set in the Overworld");
+        add("tooltip.pasterdream.roots_pale_boneneedle.6", "§7Place it alone in a crafting grid to clear the waypoint");
+        add("message.pasterdream.roots_pale_boneneedle.waypoint_set", "Waypoint recorded");
+        add("message.pasterdream.roots_pale_boneneedle.overworld_only", "Waypoints can only be set in the Overworld");
+        add("tooltip.pasterdream.pale_bone_needle_talisman", "§7Negates a fatal blow in dream dimensions and teleports you to your respawn point");
         add(ModItems.EMBRYO_CHARM.get(), "Embryo Charm");
         add(ModItems.EMBRYO_NECKLACE.get(), "Embryo Necklace");
         add(ModItems.EMBRYO_RING.get(), "Embryo Ring");
@@ -1328,6 +1346,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.root.description", "Begins with a wish from the heart");
         add("advancements.pasterdream.story.pure_and_flawless.title", "Pure and Flawless");
         add("advancements.pasterdream.story.pure_and_flawless.description", "Obtain a Pale Snow Lotus");
+        add("advancements.pasterdream.story.use_pale_boneneedle.title", "Ouch, it's hurt!");
+        add("advancements.pasterdream.story.use_pale_boneneedle.description", "Use the Pale Boneneedle to Wake You up from the Dream");
+        add("advancements.pasterdream.story.human_falls_out_of_dream.title", "Human Falls out of Dream");
+        add("advancements.pasterdream.story.human_falls_out_of_dream.description", "You can’t tell for a moment whether your pain comes from falling or from being pierced by a bone needle.");
         add("advancements.pasterdream.story.dyedream_world.title", "Gothenburg Lullaby");
         add("advancements.pasterdream.story.dyedream_world.description", "Visit the Dyedream World");
         add("advancements.pasterdream.story.dyedream_crack.title", "Dyedream Crack");
@@ -1352,6 +1374,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.dyedream_dust.description", "Seek its traces from this world");
         add("advancements.pasterdream.story.melt_dream_crystal_fragment.title", "Melted in Dream");
         add("advancements.pasterdream.story.melt_dream_crystal_fragment.description", "Collect a Melt Dream Crystal Fragment");
+        add("advancements.pasterdream.story.glass_jar_of_dream_juice.title", "Where Lies the Sweet Dream");
+        add("advancements.pasterdream.story.glass_jar_of_dream_juice.description", "Craft and drink Dream Juice, then journey to the Dyedream World in your sleep");
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.title", "Mixed Emotions");
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.description", "Obtain a bucket of Melt Dream Spring");
         add("advancements.pasterdream.story.galaxy_jelly.title", "Star Gel");

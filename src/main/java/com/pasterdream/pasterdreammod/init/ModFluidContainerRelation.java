@@ -14,6 +14,7 @@ public final class ModFluidContainerRelation {
     public static void registerFluidContainerRelation() {
         FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), Fluids.WATER, 125, ModItems.GLASS_JAR_OF_WATER.get());
         FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), NeoForgeMod.MILK.get(), 125, ModItems.GLASS_JAR_OF_MILK.get());
+        FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), ModFluids.DREAM_JUICE.get(), 125, ModItems.GLASS_JAR_OF_DREAM_JUICE.get());
         FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), ModFluids.GUIDING_DRUG.get(), 125, ModItems.GLASS_JAR_OF_GUIDING_DRUG.get());
         FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), ModFluids.WIND_PLANT_EXTRACT.get(), 125, ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
         FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), ModFluids.YEAST.get(), 125, ModItems.GLASS_JAR_OF_YEAST.get());

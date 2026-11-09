@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 085：梦境果汁与骨针系列（2026-11-09，T07 / T17 部分）
+
+- 迁入 `glass_jar_of_dream_juice` 梦境果汁物品与 `dream_juice` 存储流体：保留堆叠 8、24 tick 饮用、返还玻璃罐、90 秒美梦祈愿效果与入睡 60 tick 后进入染梦世界的传送；补玻璃罐 125 mB 容器映射。
+- 迁入 `pale_boneneedle`、`roots_pale_boneneedle` 与 `pale_bone_needle_talisman`：骨针在梦境维度使用后回主世界重生点/标记点，骨针护符在梦境拦截致命伤并延迟送回重生点；新增 `DreamDimensionHelper`、`GameModeHelper`、`DreamWishEffect` 与 `use_boneneedle` 触发器。
+- 骨针坐标状态改用 `CUSTOM_DATA`（`switch` 整数、`x/y/z` double），清空坐标配方使用 `DataComponentIngredient` 部分匹配；补 5 条工作台配方与 3 个进度（哦，痛！/人类坠出梦境/好梦在何方）。
+- `runData` 写入 19 个文件，`build` 通过，`runGameTestServer` 167/167 通过。睡眠传送、护符拦截、客户端视觉与多人/死亡/重登行为待游戏内验收。
+
 ### 批次 084：修复秋麒麟茶效果未生效（2026-11-09）
 
 - 修复 `goldenrod_tea` 效果只有构造器、没有 tick 逻辑导致饮用秋麒麟茶后不移除饥饿与反胃的问题。

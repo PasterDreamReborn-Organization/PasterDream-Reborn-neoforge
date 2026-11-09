@@ -249,6 +249,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .predicate(ResourceLocation.withDefaultNamespace("firework"), 1.0F)
                 .model(shadowAlloyCrossbowFirework).end();
         basicItem(ModItems.NIGHTMARE_FUEL.get());
+        basicItem(ModItems.PALE_BONENEEDLE.get());
+        basicItem(ModItems.ROOTS_PALE_BONENEEDLE.get());
         basicItem(ModItems.RICE_CAKE.get());
         basicItem(ModItems.GLASS_JAR.get());
         basicItem(ModItems.GLASS_JAR_OF_WATER.get());
@@ -256,6 +258,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.GLASS_JAR_OF_YEAST.get());
         basicItem(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get());
         basicItem(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
+        basicItem(ModItems.GLASS_JAR_OF_DREAM_JUICE.get());
         basicItem(ModItems.GLASS_JAR_OF_INK.get());
         basicItem(ModItems.DOUGH.get());
         basicItem(ModItems.DOUGH_WITH_EGG.get());
@@ -546,6 +549,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TERRA_FLOATING_ISLAND.get());
         basicItem(ModItems.BLESSING_OF_CECILIA.get());
         basicItem(ModItems.FADED_BLESSING_OF_CECILIA.get());
+        basicItem(ModItems.PALE_BONE_NEEDLE_TALISMAN.get());
         basicItem(ModItems.STRAWBERRY_HEART.get());
         basicItem(ModItems.ANGEL_WING.get());
         basicItem(ModItems.FORSAKENS_WING.get());

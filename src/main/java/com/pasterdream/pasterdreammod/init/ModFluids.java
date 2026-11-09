@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.fluid.AppleJuiceFluid;
+import com.pasterdream.pasterdreammod.world.fluid.DreamJuiceFluid;
 import com.pasterdream.pasterdreammod.world.fluid.DyedreamFlowerTeaFluid;
 import com.pasterdream.pasterdreammod.world.fluid.DyedreamJuiceFluid;
 import com.pasterdream.pasterdreammod.world.fluid.GuidingDrugFluid;
@@ -17,6 +18,7 @@ import com.pasterdream.pasterdreammod.world.fluid.YeastFluid;
 import com.pasterdream.pasterdreammod.world.fluid.RageElixirFluid;
 import com.pasterdream.pasterdreammod.world.fluidtype.GuidingDrugFluidType;
 import com.pasterdream.pasterdreammod.world.fluidtype.AppleJuiceFluidType;
+import com.pasterdream.pasterdreammod.world.fluidtype.DreamJuiceFluidType;
 import com.pasterdream.pasterdreammod.world.fluidtype.DyedreamFlowerTeaFluidType;
 import com.pasterdream.pasterdreammod.world.fluidtype.DyedreamJuiceFluidType;
 import com.pasterdream.pasterdreammod.world.fluidtype.HoneyJuiceFluidType;
@@ -56,6 +58,7 @@ public class ModFluids {
     public static final DeferredHolder<FluidType, FluidType> APPLE_JUICE_TYPE = FLUID_TYPES.register("apple_juice", () -> AppleJuiceFluidType.TYPE);
     public static final DeferredHolder<FluidType, FluidType> DYEDREAM_FLOWER_TEA_TYPE = FLUID_TYPES.register("dyedream_flower_tea", () -> DyedreamFlowerTeaFluidType.TYPE);
     public static final DeferredHolder<FluidType, FluidType> DYEDREAM_JUICE_TYPE = FLUID_TYPES.register("dyedream_juice", () -> DyedreamJuiceFluidType.TYPE);
+    public static final DeferredHolder<FluidType, FluidType> DREAM_JUICE_TYPE = FLUID_TYPES.register("dream_juice", () -> DreamJuiceFluidType.TYPE);
     public static final DeferredHolder<FluidType, FluidType> HONEY_JUICE_TYPE = FLUID_TYPES.register("honey_juice", () -> HoneyJuiceFluidType.TYPE);
     public static final DeferredHolder<FluidType, FluidType> UNCOOKED_DYEDREAM_FLOWER_TEA_TYPE = FLUID_TYPES.register("uncooked_dyedream_flower_tea", () -> UncookedDyedreamFlowerTeaFluidType.TYPE);
     public static final DeferredHolder<FluidType, FluidType> WATERMELON_JUICE_TYPE = FLUID_TYPES.register("watermelon_juice", () -> WatermelonJuiceFluidType.TYPE);
@@ -73,6 +76,7 @@ public class ModFluids {
     public static final DeferredHolder<Fluid, Fluid> APPLE_JUICE = FLUIDS.register("apple_juice", AppleJuiceFluid::new);
     public static final DeferredHolder<Fluid, Fluid> DYEDREAM_FLOWER_TEA = FLUIDS.register("dyedream_flower_tea", DyedreamFlowerTeaFluid::new);
     public static final DeferredHolder<Fluid, Fluid> DYEDREAM_JUICE = FLUIDS.register("dyedream_juice", DyedreamJuiceFluid::new);
+    public static final DeferredHolder<Fluid, Fluid> DREAM_JUICE = FLUIDS.register("dream_juice", DreamJuiceFluid::new);
     public static final DeferredHolder<Fluid, Fluid> HONEY_JUICE = FLUIDS.register("honey_juice", HoneyJuiceFluid::new);
     public static final DeferredHolder<Fluid, Fluid> UNCOOKED_DYEDREAM_FLOWER_TEA = FLUIDS.register("uncooked_dyedream_flower_tea", UncookedDyedreamFlowerTeaFluid::new);
     public static final DeferredHolder<Fluid, Fluid> WATERMELON_JUICE = FLUIDS.register("watermelon_juice", WatermelonJuiceFluid::new);

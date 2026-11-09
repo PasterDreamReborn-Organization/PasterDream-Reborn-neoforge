@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.world.effect.BindEffect;
+import com.pasterdream.pasterdreammod.world.effect.DreamWishEffect;
 import com.pasterdream.pasterdreammod.world.effect.BrokenWingEffect;
 import com.pasterdream.pasterdreammod.world.effect.BerserkEffect;
 import com.pasterdream.pasterdreammod.world.effect.FrozenEffect;
@@ -155,6 +156,9 @@ public class ModEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> EVASION_CLOAK =
             MOB_EFFECTS.register("evasion_cloak", EvasionCloakBuffEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> DREAM_WISH =
+            MOB_EFFECTS.register("dream_wish", DreamWishEffect::new);
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

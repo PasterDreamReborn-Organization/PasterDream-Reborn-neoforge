@@ -3,12 +3,14 @@ package com.pasterdream.pasterdreammod.event;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.helper.TeleportHelper;
 import com.pasterdream.pasterdreammod.mixin.LivingEntityAccessor;
 import com.pasterdream.pasterdreammod.world.effect.EvasionEffect;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
 import com.pasterdream.pasterdreammod.world.skill.EvasionEffectHandler;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -24,6 +26,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -47,6 +50,12 @@ public class PlayerEvents {
     private static final ResourceLocation DYEDREAM_WORLD_ADV =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_world");
     private static final String NOTE_DELAY_TAG = "pasterdream:dream_note_delay";
+    /** 风之旅途尚未迁入的维度键；睡觉传送分支在维度缺失时自然跳过。 */
+    private static final ResourceKey<Level> WIND_JOURNEY_WORLD =
+            ResourceKey.create(Registries.DIMENSION,
+                    ResourceLocation.fromNamespaceAndPath("pasterdream", "wind_journey_world"));
+    /** 入睡传送后使用的高空 Y 坐标，与迷梦进入时的高空高度一致。 */
+    private static final double WIND_JOURNEY_ENTRY_Y = 310;
 
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         EvasionEffectHandler.onPlayerTick(event.getEntity());
@@ -55,6 +64,7 @@ public class PlayerEvents {
 
         if (event.getEntity() instanceof ServerPlayer serverPlayer) {
             tickNoteDelay(serverPlayer);
+            tickDreamTeleport(serverPlayer);
         }
 
         // 检查玩家是否在染梦维度注视粉色羊（已获得成就则跳过）
@@ -136,6 +146,75 @@ public class PlayerEvents {
                 Component.translatable("message.pasterdream.sleep.dream_of_crack.4"), false);
     }
 
+    /** 入住梦境果汁/风行者后的延迟传送：只有真正躺下入睡才传送，起床则取消。 */
+    private static void tickDreamTeleport(ServerPlayer player) {
+        CompoundTag data = player.getPersistentData();
+        int dreamTeleportTicks = data.getInt("pasterdream:dream_teleport_ticks");
+        if (dreamTeleportTicks <= 0) {
+            return;
+        }
+        dreamTeleportTicks--;
+        if (dreamTeleportTicks <= 0) {
+            // 只有玩家真正在床上入睡时才传送；白天点床未入睡或中途起床则取消传送
+            if (player.isSleeping()) {
+                boolean toDyedream = data.getBoolean("pasterdream:dream_teleport_dyedream");
+                if (toDyedream && player.level().dimension().equals(Level.OVERWORLD)) {
+                    resetBedOccupied(player);
+                    ServerLevel dyedream = player.server.getLevel(DYEDREAM_WORLD);
+                    if (dyedream != null) {
+                        player.teleportTo(dyedream, 0.5, 108, 0.5,
+                                player.getYRot(), player.getXRot());
+                        TeleportHelper.resendActiveEffects(player);
+                    }
+                } else if (!toDyedream && player.level().dimension().equals(Level.OVERWORLD)) {
+                    // 风行者：主世界睡觉进入风之旅途，xz 不变，y 取迷梦进入时的高空高度
+                    resetBedOccupied(player);
+                    ServerLevel windJourney = player.server.getLevel(WIND_JOURNEY_WORLD);
+                    if (windJourney != null) {
+                        player.teleportTo(windJourney,
+                                player.getX(), WIND_JOURNEY_ENTRY_Y, player.getZ(),
+                                player.getYRot(), player.getXRot());
+                        // 高空传送后给予 20s 缓降，避免直接摔死
+                        player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING,
+                                400, 0, false, false));
+                        TeleportHelper.resendActiveEffects(player);
+                    }
+                }
+            }
+            data.remove("pasterdream:dream_teleport_ticks");
+            data.remove("pasterdream:dream_teleport_dyedream");
+            data.remove("pasterdream:dream_bed_x");
+            data.remove("pasterdream:dream_bed_y");
+            data.remove("pasterdream:dream_bed_z");
+        } else {
+            data.putInt("pasterdream:dream_teleport_ticks", dreamTeleportTicks);
+        }
+    }
+
+    /** 安排入睡后的延迟传送；dyedream=true 前往染梦世界，否则前往风之旅途。 */
+    private static void scheduleSleepTeleport(Player player, BlockPos pos, boolean dyedream) {
+        CompoundTag data = player.getPersistentData();
+        data.putInt("pasterdream:dream_teleport_ticks", 60);
+        data.putBoolean("pasterdream:dream_teleport_dyedream", dyedream);
+        data.putInt("pasterdream:dream_bed_x", pos.getX());
+        data.putInt("pasterdream:dream_bed_y", pos.getY());
+        data.putInt("pasterdream:dream_bed_z", pos.getZ());
+    }
+
+    /** 重置床的 OCCUPIED 状态，避免传送后床保持占用。 */
+    private static void resetBedOccupied(Player player) {
+        CompoundTag data = player.getPersistentData();
+        if (!data.contains("pasterdream:dream_bed_x")) return;
+        BlockPos bedPos = new BlockPos(
+                data.getInt("pasterdream:dream_bed_x"),
+                data.getInt("pasterdream:dream_bed_y"),
+                data.getInt("pasterdream:dream_bed_z"));
+        var bedState = player.level().getBlockState(bedPos);
+        if (bedState.hasProperty(BedBlock.OCCUPIED)) {
+            player.level().setBlock(bedPos, bedState.setValue(BedBlock.OCCUPIED, false), 3);
+        }
+    }
+
     public static void onLivingHurt(LivingIncomingDamageEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
         if (!player.hasEffect(ModEffects.EVASION)) return;
@@ -210,6 +289,17 @@ public class PlayerEvents {
                 && isAdvancementDone(serverPlayer, FIRST_CONTACT_DYEDREAM_CRACK_ADV)
                 && !isAdvancementDone(serverPlayer, DYEDREAM_CRACK_ADV)) {
             player.getPersistentData().putInt(NOTE_DELAY_TAG, 40);
+        }
+
+        if (player.hasEffect(ModEffects.DREAM_WISH)
+                && player.level().dimension().equals(Level.OVERWORLD)) {
+            scheduleSleepTeleport(player, event.getPos(), true);
+            return;
+        }
+
+        if (player.hasEffect(ModEffects.WIND_RUNNER)
+                && player.level().dimension().equals(Level.OVERWORLD)) {
+            scheduleSleepTeleport(player, event.getPos(), false);
         }
     }
 
