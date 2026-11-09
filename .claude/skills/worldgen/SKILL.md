@@ -73,3 +73,5 @@ description: 新增/修改世界生成（群系、维度类型、噪声设置、
 批次 031 增加灵魂沙峡谷的 soul_ore_patch：仅替换灵魂土，矿脉大小 16、每区块 8 次、Y=0～128，群系标签由 ModBiomeTagsProvider 生成，ModBiomeModifiers 在 vegetal_decoration 阶段挂载。GameTest 覆盖目标群系和放置规则；真实自然分布待游戏内验证。
 
 批次 003 增加下界 `molten_gold_ore_patch`：保留来源下界岩替换、矿脉大小 16、每区块 4 次、Y=0～64 均匀分布及 `vegetal_decoration` 阶段。GameTest 覆盖群系挂载和放置规则，不能替代真实世界自然分布与客户端视觉验收。
+
+批次 082 补全主世界内容：12 种植物/小石子 configured/placed 地物与群系标签注入；橡木/云杉渔夫小屋、露营地、沙漠小屋、沙漠要塞的 structure/structure_set/template_pool/NBT 与 4 条箱子战利品表。结构使用静态 JSON 放在 `data/pasterdream/worldgen/`，NBT 放在 `data/pasterdream/structure/`。搬运 1.20 结构 NBT 时须把物品栈改写为 1.21 组件格式（`count`/`components`），否则自定义组件（如 `dream_note_content`）会丢失并显示 `null - null`。

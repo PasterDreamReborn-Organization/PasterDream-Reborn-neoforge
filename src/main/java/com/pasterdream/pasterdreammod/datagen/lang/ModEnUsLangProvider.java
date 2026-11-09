@@ -384,6 +384,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.bind", "Bind");
         add("structure.pasterdream.the_lost_sword_tomb", "The Lost Sword Tomb");
         add("structure.pasterdream.dyedream_crack", "Dyedream Crack");
+        add("structure.pasterdream.oak_fisherman_hut", "Oak Fisherman Hut");
+        add("structure.pasterdream.spruce_fisherman_hut", "Spruce Fisherman Hut");
+        add("structure.pasterdream.campsite_overworld", "Campsite");
+        add("structure.pasterdream.desert_cottage", "Desert Cottage");
+        add("structure.pasterdream.desert_fortress", "Desert Fortress");
         add("itemGroup.pasterdream.pasterdream_items_tab", "Paster Dream | Items");
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "Dyedream World");
         add("pasterdream.configuration.title", "PasterDream: Reborn Configs");

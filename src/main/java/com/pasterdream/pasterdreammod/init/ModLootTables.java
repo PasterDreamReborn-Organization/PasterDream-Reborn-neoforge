@@ -5,8 +5,10 @@ import com.pasterdream.pasterdreammod.world.functions.ApplyEntityLootingFunction
 import com.pasterdream.pasterdreammod.world.conditions.RealPlayerCondition;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -19,6 +21,11 @@ import net.neoforged.neoforge.registries.DeferredHolder;
  * 搬运战利品表时在此定义常量，供世界生成 / 方块掉落引用。
  */
 public final class ModLootTables {
+    public static final ResourceKey<LootTable> PICNIC_BASKET_OVERWORLD_LOOT = create("chests/picnic_basket_overworld");
+    public static final ResourceKey<LootTable> FISHERMAN_HUT_CHEST_LOOT = create("chests/fisherman_hut_chest");
+    public static final ResourceKey<LootTable> DESERT_FORTRESS_CHEST_LOOT = create("chests/desert_fortress_chest");
+    public static final ResourceKey<LootTable> DESERT_COTTAGE_CHEST_LOOT = create("chests/desert_cottage_chest");
+
     public static final DeferredRegister<LootItemFunctionType<?>> LOOT_FUNCTION_TYPES =
             DeferredRegister.create(Registries.LOOT_FUNCTION_TYPE, PasterDreamMod.MOD_ID);
     public static final DeferredRegister<LootItemConditionType> LOOT_CONDITION_TYPES =
@@ -37,6 +44,11 @@ public final class ModLootTables {
         ResourceLocation key = BuiltInRegistries.BLOCK.getKey(block);
         return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                 PLIERS_CUTTING_PREFIX + key.getNamespace() + "/" + key.getPath());
+    }
+
+    private static ResourceKey<LootTable> create(String path) {
+        return ResourceKey.create(Registries.LOOT_TABLE,
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, path));
     }
 
     private ModLootTables() {

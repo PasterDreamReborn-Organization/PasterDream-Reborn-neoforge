@@ -51,6 +51,20 @@ public final class ModBiomeModifiers {
                 features.getOrThrow(ModPlacedFeatures.MOLTEN_GOLD_ORE_PATCH),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
+        // ===== 主世界地物 =====
+        addPatch(context, biomes, features, "pebble_patch", ModBiomeTags.CAN_PEBBLE_SPAWN_BIOME, ModPlacedFeatures.PEBBLE_PATCH, GenerationStep.Decoration.SURFACE_STRUCTURES);
+        addPatch(context, biomes, features, "goldenrod_patch", ModBiomeTags.CAN_GOLDENROD_SPAWN_BIOME, ModPlacedFeatures.GOLDENROD_PATCH, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addPatch(context, biomes, features, "fourleaf_clover_patch", ModBiomeTags.CAN_FOURLEAF_CLOVER_SPAWN_BIOME, ModPlacedFeatures.FOURLEAF_CLOVER_PATCH, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addPatch(context, biomes, features, "ferraria_crispa_patch", ModBiomeTags.CAN_FLOWER_FIELD_SPAWN_BIOME, ModPlacedFeatures.FERRARIA_CRISPA_PATCH, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addPatch(context, biomes, features, "malva_sinensis_cavan_patch", ModBiomeTags.CAN_FLOWER_FIELD_SPAWN_BIOME, ModPlacedFeatures.MALVA_SINENSIS_CAVAN_PATCH, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addPatch(context, biomes, features, "eustoma_patch", BiomeTags.IS_JUNGLE, ModPlacedFeatures.EUSTOMA_PATCH, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addPatch(context, biomes, features, "oats_patch", ModBiomeTags.CAN_OATS_SPAWN_BIOME, ModPlacedFeatures.OATS_PATCH, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addPatch(context, biomes, features, "rye_patch", ModBiomeTags.CAN_RYE_SPAWN_BIOME, ModPlacedFeatures.RYE_PATCH, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addPatch(context, biomes, features, "white_corolla_crop_patch", ModBiomeTags.CAN_WHITE_COROLLA_SPAWN_BIOME, ModPlacedFeatures.WHITE_COROLLA_CROP_PATCH, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addPatch(context, biomes, features, "cotton_crop_patch", ModBiomeTags.CAN_COTTON_SPAWN_BIOME, ModPlacedFeatures.COTTON_CROP_PATCH, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addPatch(context, biomes, features, "jungle_sporangium_patch", BiomeTags.IS_JUNGLE, ModPlacedFeatures.JUNGLE_SPORANGIUM_PATCH, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addPatch(context, biomes, features, "reed_patch", ModBiomeTags.CAN_REED_SPAWN_BIOME, ModPlacedFeatures.REED_PATCH, GenerationStep.Decoration.VEGETAL_DECORATION);
+
         // ===== 染梦维度通用：矿石 / 晶芽 / 晶洞 =====
         addPatch(context, biomes, features, "dyedream_titanium_ore", ModBiomeTags.DYEDREAM_WORLD_BIOME, ModPlacedFeatures.TITANIUM_ORE, GenerationStep.Decoration.UNDERGROUND_ORES);
         addPatch(context, biomes, features, "dyedream_amber_candy_ore", ModBiomeTags.DYEDREAM_WORLD_BIOME, ModPlacedFeatures.AMBER_CANDY_ORE, GenerationStep.Decoration.UNDERGROUND_ORES);

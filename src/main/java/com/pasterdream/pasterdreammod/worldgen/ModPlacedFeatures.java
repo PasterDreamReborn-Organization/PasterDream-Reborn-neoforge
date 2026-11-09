@@ -78,6 +78,20 @@ public final class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SINGULARITY_FERN_PATCH = key("singularity_fern_patch");
     public static final ResourceKey<PlacedFeature> LINHT_FLOWER_PATCH = key("linht_flower_patch");
     public static final ResourceKey<PlacedFeature> FLOWER_FIELD_FLOWERS = key("flower_field_flowers");
+
+    // ===== 主世界植被 / 小石子 =====
+    public static final ResourceKey<PlacedFeature> FOURLEAF_CLOVER_PATCH = key("fourleaf_clover_patch");
+    public static final ResourceKey<PlacedFeature> GOLDENROD_PATCH = key("goldenrod_patch");
+    public static final ResourceKey<PlacedFeature> FERRARIA_CRISPA_PATCH = key("ferraria_crispa_patch");
+    public static final ResourceKey<PlacedFeature> MALVA_SINENSIS_CAVAN_PATCH = key("malva_sinensis_cavan_patch");
+    public static final ResourceKey<PlacedFeature> EUSTOMA_PATCH = key("eustoma_patch");
+    public static final ResourceKey<PlacedFeature> OATS_PATCH = key("oats_patch");
+    public static final ResourceKey<PlacedFeature> RYE_PATCH = key("rye_patch");
+    public static final ResourceKey<PlacedFeature> WHITE_COROLLA_CROP_PATCH = key("white_corolla_crop_patch");
+    public static final ResourceKey<PlacedFeature> COTTON_CROP_PATCH = key("cotton_crop_patch");
+    public static final ResourceKey<PlacedFeature> JUNGLE_SPORANGIUM_PATCH = key("jungle_sporangium_patch");
+    public static final ResourceKey<PlacedFeature> REED_PATCH = key("reed_patch");
+    public static final ResourceKey<PlacedFeature> PEBBLE_PATCH = key("pebble_patch");
     public static final ResourceKey<PlacedFeature> CALCITE_STALICRIPE = key("calcite_stalicripe");
     public static final ResourceKey<PlacedFeature> SMALL_CALCITE_STALICRIPE = key("small_calcite_stalicripe");
     public static final ResourceKey<PlacedFeature> DYEDREAM_MOSS_PATCH = key("dyedream_moss_patch");
@@ -370,6 +384,68 @@ public final class ModPlacedFeatures {
                 List.of(CountPlacement.of(6), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         ON_DYEDREAM_GROUND)));
+
+        // ===== 主世界植被 / 小石子 =====
+        context.register(FOURLEAF_CLOVER_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.FOURLEAF_CLOVER_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        context.register(GOLDENROD_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.GOLDENROD_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        context.register(FERRARIA_CRISPA_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.FERRARIA_CRISPA_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        context.register(MALVA_SINENSIS_CAVAN_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.MALVA_SINENSIS_CAVAN_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        context.register(EUSTOMA_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.EUSTOMA_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        context.register(OATS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.OATS_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        context.register(RYE_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.RYE_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        context.register(WHITE_COROLLA_CROP_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WHITE_COROLLA_CROP_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        context.register(COTTON_CROP_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.COTTON_CROP_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        context.register(JUNGLE_SPORANGIUM_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.JUNGLE_SPORANGIUM_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        context.register(REED_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.REED_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        context.register(PEBBLE_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.PEBBLE_PATCH),
+                List.of(InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                        BiomeFilter.biome())));
 
         context.register(CALCITE_STALICRIPE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.CALCITE_STALICRIPE),
