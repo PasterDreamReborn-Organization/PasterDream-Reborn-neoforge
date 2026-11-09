@@ -1966,6 +1966,14 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.WHEAT_SEEDS), has(Items.WHEAT_SEEDS)),
                 pWriter, "flour_from_wheat_seeds");
 
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DREAM_FERTILIZER.get(), 9)
+                        .requires(ModItems.PINK_SLIMEBALL.get())
+                        .requires(Items.BONE_BLOCK)
+                        .requires(ModItems.MORTAR.get())
+                        .unlockedBy(getHasName(ModItems.PINK_SLIMEBALL.get()), has(ModItems.PINK_SLIMEBALL.get())),
+                pWriter, "dream_fertilizer_from_pink_slimeball_and_bone_block");
+
         TagKey<Item> wheat = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "crops/wheat"));
         TagKey<Item> seeds = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "seeds"));
         saveMortarRecipe(pWriter, "flour_from_wheat", List.of(ItemIngredient.of(wheat, 2)),
@@ -2839,6 +2847,17 @@ public class ModRecipesProvider extends RecipeProvider {
                         "weapon_workshop_crafting_table/strawberry_heart"),
                 new WeaponWorkshopCraftingTableRecipe(strawberryInputs, enhanceStone,
                         ItemIngredient.of(ModItems.STRAWBERRY_HEART.get(), 1)), null);
+
+        List<ItemIngredient> starWishRodInputs = List.of(
+                ItemIngredient.of(Items.FISHING_ROD, 1),
+                ItemIngredient.of(Items.POWDER_SNOW_BUCKET, 1),
+                ItemIngredient.of(Items.DIAMOND, 1),
+                ItemIngredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), 1),
+                ItemIngredient.of(ModItems.SNOW_VOW_HEAD.get(), 1));
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "weapon_workshop_crafting_table/star_wish_rod"),
+                new WeaponWorkshopCraftingTableRecipe(starWishRodInputs, enhanceStone,
+                        ItemIngredient.of(ModItems.STAR_WISH_ROD.get(), 1)), null);
     }
 
     // ===== 暗影合金工具配方（合成台 NBT 保留升级，耐久重置满） =====

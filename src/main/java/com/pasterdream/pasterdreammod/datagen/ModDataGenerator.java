@@ -36,12 +36,17 @@ public final class ModDataGenerator {
         generator.addProvider(event.includeServer(),
                 new ModItemTagsProvider(output, lookup, blockTags.contentsGetter(), existing));
         generator.addProvider(event.includeServer(), new ModRecipesProvider(output, lookup));
+        generator.addProvider(event.includeServer(), new ModAdvancementProvider(output, lookup, existing));
         generator.addProvider(event.includeServer(), new ModChannelingEnchantmentProvider(output));
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Set.of(),
                 List.of(new LootTableProvider.SubProviderEntry(
                         ModBlockLootTablesProvider::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(
                         ModEntityLootTablesProvider::new, LootContextParamSets.ENTITY), new LootTableProvider.SubProviderEntry(
-                        provider -> new ModPliersCuttingLootTablesProvider(), LootContextParamSets.CHEST)), lookup));
+                        provider -> new ModPliersCuttingLootTablesProvider(), LootContextParamSets.CHEST),
+                        new LootTableProvider.SubProviderEntry(
+                                ModDeepTreasureLootTablesProvider::new, LootContextParamSets.CHEST),
+                        new LootTableProvider.SubProviderEntry(
+                                ModFishingLootTablesProvider::new, LootContextParamSets.FISHING)), lookup));
 
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existing));
         generator.addProvider(event.includeClient(), new ModItemModelsProvider(output, existing));

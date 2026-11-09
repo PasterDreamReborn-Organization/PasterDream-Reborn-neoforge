@@ -373,6 +373,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_DUST.get(), "Dyedream Dust");
         add(ModItems.DYEDREAM_DUST_PIECE.get(), "Dyedream Dust Piece");
         add(ModItems.PINK_SLIMEBALL.get(), "Pink Slimeball");
+        add(ModItems.DREAM_FERTILIZER.get(), "Dream Fertilizer");
         add(ModItems.DYEDREAM_DYE.get(), "Dyedream Dye");
         add(ModBlocks.LOST_SWORD_TOMB.get(), "Lost Sword Tomb");
         add("tooltip.pasterdream.lost_sword_tomb", "§7If you can't pull it out, just use it with the stone!");
@@ -1285,5 +1286,49 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.FIREFLY_SPAWN_EGG.get(), "Firefly Spawn Egg");
         add(ModEntities.SMALL_STONE_SPIRIT.get(), "Small Stone Spirit");
         add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "Small Stone Spirit Spawn Egg");
+
+        // Fishing and deep sea treasure
+        add(ModItems.DEEP_SEA_TREASURE.get(), "Deep Sea Treasure");
+        add(ModItems.DYEDREAM_DEEP_SEA_TREASURE.get(), "Dyedream Deep Treasure");
+        add(ModItems.SHADOW_DEEP_SEA_TREASURE.get(), "Shadow Deep Sea Treasure");
+        add(ModItems.STAR_WISH_ROD.get(), "Star's Wish Rod");
+        add("tooltip.pasterdream.deep_treasure", "§7Splashing waves push us into the distance");
+        add("tooltip.pasterdream.shadow_deep_treasure", "§7Shadows still seem to flow across its surface");
+        add("tooltip.pasterdream.star_wish_rod", "§7§o--Fish as numerous as stars");
+        add("tooltip.pasterdream.star_wish_rod.desc", "§7▪ §9Grants an extra Super deep-sea treasure when fishing");
+        add("advancements.pasterdream.get_deep_sea_treasure.title", "Gift from the Sea");
+        add("advancements.pasterdream.get_deep_sea_treasure.description", "Get a treasure of the ocean, coming from the deep sea and the dyedream frozen ocean.");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.title", "To wish upon a satellite......");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.description", "To get higher-level marine treasures, you should find a more powerful fishing rod for it......");
+        add("advancements.pasterdream.get_star_wish_rod.title", "Fish are like Countless Stars in the Vast Sky");
+        add("advancements.pasterdream.get_star_wish_rod.description", "Get the Star Wish Rod. Look for more tempting treasures in the sea.");
+
+        // Advancements - Story (main world / dyedream)
+        add("advancements.pasterdream.story.root.title", "PasterDream");
+        add("advancements.pasterdream.story.root.description", "Begins with a wish from the heart");
+        add("advancements.pasterdream.story.pure_and_flawless.title", "Pure and Flawless");
+        add("advancements.pasterdream.story.pure_and_flawless.description", "Obtain a Pale Snow Lotus");
+        add("advancements.pasterdream.story.dyedream_world.title", "Gothenburg Lullaby");
+        add("advancements.pasterdream.story.dyedream_world.description", "Visit the Dyedream World");
+        add("advancements.pasterdream.story.dyedream_biomes.title", "Homelands in a Dream");
+        add("advancements.pasterdream.story.dyedream_biomes.description", "Discover every biome in the Dyedream World.");
+        add("advancements.pasterdream.story.misty_dreaming_lotus.title", "The Dream-Forging Lotus");
+        add("advancements.pasterdream.story.misty_dreaming_lotus.description", "Follow the dream seeker's hints and plant the flowers around the Dreaming Lotus to complete the garden decryption — the dream-forging lotus will transform into a Misty Dreaming Lotus.");
+        add("advancements.pasterdream.story.queer_soup.title", "Dreams Rise with the Wind");
+        add("advancements.pasterdream.story.queer_soup.description", "Craft the Queer Soup and let the misty dream linger in your heart. The wind will carry your dreams to the end of the sky.");
+        add("advancements.pasterdream.story.dream_fertilizer.title", "Inedible Jelly");
+        add("advancements.pasterdream.story.dream_fertilizer.description", "Craft and use Dream Fertilizer to spread on the dream land");
+        add("advancements.pasterdream.story.dyedream_dust.title", "Holding the Dream in Your Palm!");
+        add("advancements.pasterdream.story.dyedream_dust.description", "Seek its traces from this world");
+        add("advancements.pasterdream.story.melt_dream_crystal_fragment.title", "Melted in Dream");
+        add("advancements.pasterdream.story.melt_dream_crystal_fragment.description", "Collect a Melt Dream Crystal Fragment");
+        add("advancements.pasterdream.story.melt_dream_liquid_bucket.title", "Mixed Emotions");
+        add("advancements.pasterdream.story.melt_dream_liquid_bucket.description", "Obtain a bucket of Melt Dream Spring");
+        add("advancements.pasterdream.story.galaxy_jelly.title", "Star Gel");
+        add("advancements.pasterdream.story.galaxy_jelly.description", "Get the Galaxy Jelly, a jelly that can be found in the deep-sea treasures and chests in the dream, and it can make you soar to the clouds.");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "Space Professional Voice Actor");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "Eat the Galaxy Jelly at the building height limit...... Kaz finally has company now......");
+        add("advancements.pasterdream.story.look_at_pink_sheep.title", "Do Block People Dream of Pink Sheep?");
+        add("advancements.pasterdream.story.look_at_pink_sheep.description", "Block people only dream of block sheep, of course.");
     }
 }

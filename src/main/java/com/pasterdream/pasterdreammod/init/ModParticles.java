@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.client.particle.Buff0Particle;
 import com.pasterdream.pasterdreammod.client.particle.CrackParticle;
+import com.pasterdream.pasterdreammod.client.particle.DreamFertilizerParticle;
 import com.pasterdream.pasterdreammod.client.particle.Dust0Particle;
 import com.pasterdream.pasterdreammod.client.particle.FurySpellParticle;
 import com.pasterdream.pasterdreammod.client.particle.InfernoParticle;
@@ -49,6 +50,7 @@ public final class ModParticles {
         event.registerSpriteSet(ModParticleTypes.POISON_GAS_PARTICLE.get(), PoisonGasParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.BUFF_0_PARTICLE.get(), Buff0Particle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.SOUL_PARTICLE.get(), SoulParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.DREAMFERTILIZER_PARTICLE.get(), DreamFertilizerParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.CRACK_0_PARTICLE.get(), CrackParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.MELTDREAM_CRYSTAL_PARTICLE.get(), MeltdreamCrystalParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.REJUVENATION_PARTICLE.get(), RejuvenationParticle.Provider::new);

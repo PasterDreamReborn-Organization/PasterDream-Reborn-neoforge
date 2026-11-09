@@ -32,6 +32,8 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("buff", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SOUL_PARTICLE =
             PARTICLE_TYPES.register("soul", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DREAMFERTILIZER_PARTICLE =
+            PARTICLE_TYPES.register("dream_fertilizer", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> CRACK_0_PARTICLE =
             PARTICLE_TYPES.register("crack", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> MELTDREAM_CRYSTAL_PARTICLE =

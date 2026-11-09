@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.advancement.critereon.BreakWindCurtainTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.CaptureFireflyTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.bus.api.IEventBus;
@@ -33,6 +34,10 @@ public final class ModCriteriaTriggers {
     /** 用生态玻璃罐右键捕获一只萤火虫 */
     public static final DeferredHolder<CriterionTrigger<?>, CaptureFireflyTrigger> CAPTURE_FIREFLY =
             TRIGGERS.register("capture_firefly", CaptureFireflyTrigger::new);
+
+    /** 在染梦维度准星指向粉色羊 */
+    public static final DeferredHolder<CriterionTrigger<?>, LookAtPinkSheepTrigger> LOOK_AT_PINK_SHEEP =
+            TRIGGERS.register("look_at_pink_sheep", LookAtPinkSheepTrigger::new);
 
     public static void register(IEventBus eventBus) {
         TRIGGERS.register(eventBus);

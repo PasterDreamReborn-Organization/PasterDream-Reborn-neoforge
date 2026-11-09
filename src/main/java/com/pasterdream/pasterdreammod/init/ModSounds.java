@@ -86,6 +86,10 @@ public class ModSounds {
             SOUND_EVENTS.register("terrorbeak_roar", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "terrorbeak_roar")));
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHADOW_ROAR =
+            SOUND_EVENTS.register("shadow_roar", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_roar")));
+
     public static final DeferredHolder<SoundEvent, SoundEvent> ZIPPER =
             SOUND_EVENTS.register("zipper", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "zipper")));

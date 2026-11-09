@@ -1,15 +1,26 @@
 package com.pasterdream.pasterdreammod.event;
 
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.mixin.LivingEntityAccessor;
 import com.pasterdream.pasterdreammod.world.effect.EvasionEffect;
 import com.pasterdream.pasterdreammod.world.skill.EvasionEffectHandler;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.CanPlayerSleepEvent;
@@ -17,8 +28,42 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public class PlayerEvents {
+
+    private static final ResourceKey<Level> DYEDREAM_WORLD =
+            ResourceKey.create(Registries.DIMENSION,
+                    ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_world"));
+    private static final ResourceLocation LOOK_AT_PINK_SHEEP_ADV =
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/look_at_pink_sheep");
+
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         EvasionEffectHandler.onPlayerTick(event.getEntity());
+
+        if (event.getEntity().level().isClientSide()) return;
+
+        // 检查玩家是否在染梦维度注视粉色羊（已获得成就则跳过）
+        if (event.getEntity() instanceof ServerPlayer serverPlayer
+                && serverPlayer.level().dimension().equals(DYEDREAM_WORLD)
+                && serverPlayer.tickCount % 20 == 0
+                && !isAdvancementDone(serverPlayer, LOOK_AT_PINK_SHEEP_ADV)) {
+            Vec3 eyePos = serverPlayer.getEyePosition(1.0F);
+            Vec3 lookVec = serverPlayer.getViewVector(1.0F);
+            AABB nearby = serverPlayer.getBoundingBox().inflate(16.0);
+            var nearbySheep = serverPlayer.level().getEntitiesOfClass(
+                    Sheep.class, nearby,
+                    s -> s.getColor() == DyeColor.PINK);
+            for (Sheep sheep : nearbySheep) {
+                Vec3 toSheep = sheep.getEyePosition(1.0F).subtract(eyePos).normalize();
+                if (lookVec.dot(toSheep) > 0.95) {
+                    ModCriteriaTriggers.LOOK_AT_PINK_SHEEP.get().trigger(serverPlayer);
+                    break;
+                }
+            }
+        }
+    }
+
+    private static boolean isAdvancementDone(ServerPlayer player, ResourceLocation id) {
+        AdvancementHolder adv = player.server.getAdvancements().get(id);
+        return adv != null && player.getAdvancements().getOrStartProgress(adv).isDone();
     }
 
     public static void onLivingHurt(LivingIncomingDamageEvent event) {
