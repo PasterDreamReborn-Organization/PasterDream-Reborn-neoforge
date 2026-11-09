@@ -15,6 +15,9 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DyedreamContaminationRecipeSerializer implements RecipeSerializer<DyedreamContaminationRecipe> {
 
     private static final MapCodec<DyedreamContaminationRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
@@ -25,8 +28,34 @@ public class DyedreamContaminationRecipeSerializer implements RecipeSerializer<D
 
     private static final StreamCodec<RegistryFriendlyByteBuf, DyedreamContaminationRecipe> STREAM_CODEC =
             StreamCodec.of(
-                    (buffer, recipe) -> buffer.writeVarInt(Block.getId(recipe.getOutput())),
-                    buffer -> new DyedreamContaminationRecipe(null, null, Block.stateById(buffer.readVarInt()))
+                    (buffer, recipe) -> {
+                        // 在服务端把输入解析成具体方块列表再同步，避免客户端标签状态影响 JEI 展示。
+                        List<Block> inputs = new ArrayList<>();
+                        if (recipe.getInputBlock() != null) {
+                            inputs.add(recipe.getInputBlock());
+                        } else if (recipe.getInputTag() != null) {
+                            BuiltInRegistries.BLOCK.getTags()
+                                    .filter(entry -> entry.getFirst().equals(recipe.getInputTag()))
+                                    .forEach(entry -> entry.getSecond().forEach(holder -> inputs.add(holder.value())));
+                        }
+                        buffer.writeVarInt(inputs.size());
+                        for (Block block : inputs) {
+                            buffer.writeVarInt(BuiltInRegistries.BLOCK.getId(block));
+                        }
+                        buffer.writeVarInt(Block.getId(recipe.getOutput()));
+                    },
+                    buffer -> {
+                        int inputCount = buffer.readVarInt();
+                        List<Block> displayInputs = new ArrayList<>(inputCount);
+                        for (int i = 0; i < inputCount; i++) {
+                            Block block = BuiltInRegistries.BLOCK.byId(buffer.readVarInt());
+                            if (block != null) {
+                                displayInputs.add(block);
+                            }
+                        }
+                        BlockState output = Block.stateById(buffer.readVarInt());
+                        return new DyedreamContaminationRecipe(null, null, output, displayInputs);
+                    }
             );
 
     private static DyedreamContaminationRecipe create(String from, String to) {

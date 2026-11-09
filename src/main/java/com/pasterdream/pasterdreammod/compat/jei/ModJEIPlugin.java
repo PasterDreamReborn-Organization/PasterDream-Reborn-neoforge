@@ -9,8 +9,11 @@ import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldr
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldronJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe.DreamAccumulatorRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe.DreamAccumulatorJEIRecipe;
+import com.pasterdream.pasterdreammod.compat.jei.dyedreamcontamination.DyedreamContaminationJEIRecipe;
+import com.pasterdream.pasterdreammod.compat.jei.dyedreamcontamination.DyedreamContaminationRecipeCategory;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorRecipe;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorScreen;
+import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.ElixirBottleSubtypeInterpreter;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.CauldronBrewRecipeCatalog;
 import com.pasterdream.pasterdreammod.compat.jei.weaponworkshopcraftingtablerecipe.WeaponWorkshopCraftingTableRecipeCategory;
@@ -64,6 +67,7 @@ public class ModJEIPlugin implements IModPlugin
         registration.addRecipeCategories(new DreamCauldronRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new DreamAccumulatorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new ShadowBlastFurnaceRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new DyedreamContaminationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -135,6 +139,10 @@ public class ModJEIPlugin implements IModPlugin
                     .getAllRecipesFor(ModRecipes.SHADOW_BLAST_FURNACE.get()).stream().map(RecipeHolder::value).toList();
             registration.addRecipes(ShadowBlastFurnaceRecipeCategory.SHADOW_BLAST_FURNACE_RECIPE_TYPE,
                     shadowBlastFurnaceRecipes.stream().map(ShadowBlastFurnaceJEIRecipe::new).toList());
+            List<DyedreamContaminationRecipe> dyedreamContaminationRecipes = level.getRecipeManager()
+                    .getAllRecipesFor(ModRecipes.DYEDREAM_CONTAMINATION.get()).stream().map(RecipeHolder::value).toList();
+            registration.addRecipes(DyedreamContaminationRecipeCategory.RECIPE_TYPE,
+                    dyedreamContaminationRecipes.stream().map(DyedreamContaminationJEIRecipe::new).toList());
         }
     }
 
@@ -151,5 +159,7 @@ public class ModJEIPlugin implements IModPlugin
                 DreamAccumulatorRecipeCategory.DREAM_ACCUMULATOR_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.SHADOW_BLAST_FURNACE.get()),
                 ShadowBlastFurnaceRecipeCategory.SHADOW_BLAST_FURNACE_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.DYEDREAM_CRACK.get()),
+                DyedreamContaminationRecipeCategory.RECIPE_TYPE);
     }
 }

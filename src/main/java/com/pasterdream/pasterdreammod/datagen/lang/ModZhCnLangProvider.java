@@ -402,6 +402,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.bind", "束缚");
         add("structure.pasterdream.the_lost_sword_tomb", "失落剑冢");
         add("structure.pasterdream.dyedream_crack", "染梦裂隙");
+        add("jei.pasterdream.dyedream_contamination", "染梦侵染");
         add("structure.pasterdream.oak_fisherman_hut", "橡木渔夫小屋");
         add("structure.pasterdream.spruce_fisherman_hut", "云杉渔夫小屋");
         add("structure.pasterdream.campsite_overworld", "主世界营地");
