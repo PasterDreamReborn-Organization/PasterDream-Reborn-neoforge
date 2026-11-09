@@ -429,6 +429,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.attack_enhance_stone.effect", "§7▪ §9Attack Damage +1~+3");
         add("tooltip.pasterdream.luck_enhance_stone.effect", "§7▪ §9Luck +1~+3");
         add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "Weapon Workshop Crafting Table");
+        add(ModBlocks.WEAPON_WORKSHOP_ANVIL.get(), "Weapon Workshop Anvil");
+        add(ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get(), "Weapon Workshop Cooler Pot");
+        add(ModBlocks.WEAPON_WORKSHOP_HAMMER.get(), "Weapon Workshop Hammer");
+        add(ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get(), "Weapon Workshop Grind Stone");
+        add(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get(), "Weapon Workshop Blast Furnace");
         add(ModBlocks.CLAYPAN.get(), "Claypan");
         add(ModBlocks.DREAM_CAULDRON.get(), "Dream Cauldron");
         add(ModBlocks.DREAM_ACCUMULATOR.get(), "Dream Accumulator");

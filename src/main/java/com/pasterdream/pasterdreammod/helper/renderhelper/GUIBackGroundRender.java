@@ -20,6 +20,11 @@ public class GUIBackGroundRender
     public static ResourceLocation DREAM_ACCUMULATOR_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_accumulator.png");
     public static ResourceLocation EMPTY_FLUID_SLOT_BUCKET_SHAPE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/empty_fluid_slot_bucket_shape.png");
     public static ResourceLocation WEAPON_WORKSHOP_CRAFTING_TABLE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_crafting_table.png");
+    public static ResourceLocation WEAPON_WORKSHOP_ANVIL_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_anvil.png");
+    public static ResourceLocation WEAPON_WORKSHOP_BLAST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_blast_furnace.png");
+    public static ResourceLocation WEAPON_WORKSHOP_BLAST_LAVA_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_blast_furnace_lava_amount_bar.png");
+    public static ResourceLocation WEAPON_WORKSHOP_COOLER_POT_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_cooler_pot.png");
+    public static ResourceLocation WEAPON_WORKSHOP_GRIND_STONE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_grind_stone.png");
     public static ResourceLocation SHADOW_BLAST_FURNACE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/shadow_blast_furnace/shadow_blast_furnace.png");
     public static ResourceLocation SHADOW_BLAST_FURNACE_PROCESS_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/shadow_blast_furnace/shadow_blast_furnace_process.png");
     public static ResourceLocation SHADOW_BLAST_FURNACE_SHADOW_LIQUID_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/shadow_blast_furnace/shadow_blast_furnace_shadow_liquid_amount_bar.png");
@@ -154,6 +159,31 @@ public class GUIBackGroundRender
     public static void rendWeaponWorkshopCraftingTableGUI(GuiGraphics guiGraphics, int x, int y)
     {
         guiGraphics.blit(WEAPON_WORKSHOP_CRAFTING_TABLE_GUI, x, y, 0, 0, 174, 86, 174, 86);
+    }
+
+    public static void rendWeaponWorkshopAnvilGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(WEAPON_WORKSHOP_ANVIL_GUI, x, y, 0, 0, 154, 74, 154, 74);
+    }
+
+    public static void rendWeaponWorkshopBlastFurnaceGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(WEAPON_WORKSHOP_BLAST_GUI, x, y, 0, 0, 128, 105, 128, 105);
+    }
+
+    public static void rendWeaponWorkshopBlastFurnaceLavaAmountBar(GuiGraphics guiGraphics, int x, int y, double percent)
+    {
+        guiGraphics.blit(WEAPON_WORKSHOP_BLAST_LAVA_AMOUNT_BAR, x, y + (int)(0.5 + (24 * (1 - percent))), 0, (int)(0.5 + (24 * (1 - percent))), 7, (int)(0.49999999 + (24 * percent)), 7, 24);
+    }
+
+    public static void rendWeaponWorkshopCoolerPotGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(WEAPON_WORKSHOP_COOLER_POT_GUI, x, y, 0, 0, 82, 46, 82, 46);
+    }
+
+    public static void rendWeaponWorkshopGrindStoneGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(WEAPON_WORKSHOP_GRIND_STONE_GUI, x, y, 0, 0, 82, 46, 82, 46);
     }
 
     public static void rendShadowBlastFurnaceGUI(GuiGraphics guiGraphics, int x, int y)

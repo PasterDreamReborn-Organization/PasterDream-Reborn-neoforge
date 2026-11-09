@@ -570,6 +570,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SAND_OF_TIME.get());
                         output.accept(ModItems.DESERT_HERO_TOMB.get());
                         output.accept(ModItems.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_ANVIL.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_COOLER_POT.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_HAMMER.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_GRIND_STONE.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_BLAST_FURNACE.get());
                         output.accept(ModItems.MORTAR.get());
                         output.accept(ModItems.PLIERS.get());
                         output.accept(ModItems.DYEDREAM_DESK.get());

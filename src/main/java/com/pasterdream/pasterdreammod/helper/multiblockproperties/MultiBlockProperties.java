@@ -4,5 +4,6 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 
 public class MultiBlockProperties
 {
+    public static final EnumProperty<_2x4x2Part> _2x4x2PART = EnumProperty.create("part", _2x4x2Part.class);
     public static final EnumProperty<_3x3x3Part> _3x3x3PART = EnumProperty.create("part", _3x3x3Part.class);
 }
