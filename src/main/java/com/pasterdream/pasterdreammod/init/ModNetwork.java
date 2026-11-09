@@ -2,6 +2,9 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.network.debugsword.DebugBlockActionPacket;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
+import com.pasterdream.pasterdreammod.network.blueprint.BlueprintPlacePacket;
+import com.pasterdream.pasterdreammod.network.blueprint.StartBlueprintPlacementPacket;
+import com.pasterdream.pasterdreammod.network.blueprint.UpdateBlueprintPlacingPacket;
 import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.WeaponWorkshopCraftingTableCraftPacket;
@@ -77,6 +80,12 @@ public final class ModNetwork {
                 DebugBlockActionPacket::handle);
         registrar.playToClient(AnimationStateChangePacket.TYPE, AnimationStateChangePacket.STREAM_CODEC,
                 AnimationStateChangePacket::handle);
+        registrar.playToServer(StartBlueprintPlacementPacket.TYPE, StartBlueprintPlacementPacket.STREAM_CODEC,
+                StartBlueprintPlacementPacket::handle);
+        registrar.playToServer(BlueprintPlacePacket.TYPE, BlueprintPlacePacket.STREAM_CODEC,
+                BlueprintPlacePacket::handle);
+        registrar.playToServer(UpdateBlueprintPlacingPacket.TYPE, UpdateBlueprintPlacingPacket.STREAM_CODEC,
+                UpdateBlueprintPlacingPacket::handle);
     }
 
     /** 客户端 → 服务端。 */

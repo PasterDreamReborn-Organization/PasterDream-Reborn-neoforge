@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 080：蓝图物品与搭建系统（2026-11-09，T05-B 部分）
+
+- 迁入 `blue_print` 蓝图物品、`精铸工坊` / `暗影高炉` 内容注册、蓝图结构预览界面、材料清单校验、按玩家朝向旋转放置与材料消耗；蓝图数据改用 `BLUEPRINT_CONTENT` / `BLUEPRINT_PLACING` 数据组件，三个网络包改为 NeoForge payload。
+- 新增上下箭头翻层控件、蓝图 GUI 渲染、JEI 变体区分与 `pasterdream:dream_notes` 标签；复制 2 张界面/物品纹理和 4 个结构 NBT，结构内方块均已注册。
+- 大师级工具商按 `toolsmithBlueprintTradeChance`（默认 1.0）出售精铸工坊蓝图；暗影高炉蓝图的生存来源仍依赖未迁移的 `shadow_foundry` 结构箱。
+- `runData`、`build` 通过；`runGameTestServer` 163/163 通过。客户端 GUI/线框预览、实际放置与多人同步待游戏内验收。
+
 ### 批次 079：精铸工坊其余设备方块（2026-11-09，T15-A 部分）
 
 - 迁入精铸工坊剩余五类设备：铁砧、冷却锅、锻锤、砂轮与高炉的方块、方块实体、菜单/界面、冷却锅流体渲染、高炉放置物品与 `_2x4x2` 多结构；保留来源注册 ID、方块参数、槽位数量、流体容量与放置/破坏语义。

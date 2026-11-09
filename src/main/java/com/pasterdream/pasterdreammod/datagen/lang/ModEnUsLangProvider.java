@@ -438,6 +438,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DREAM_CAULDRON.get(), "Dream Cauldron");
         add(ModBlocks.DREAM_ACCUMULATOR.get(), "Dream Accumulator");
         add(ModItems.SORBENT.get(), "Sorbent");
+        add(ModItems.BLUE_PRINT.get(), "Blue Print");
+        add("tooltip.pasterdream.右键打开GUI以查看蓝图结构", "Right Mouse Click To Open GUI And View The Blue Print Structure.");
+        add("tooltip.pasterdream.蓝图搭建消耗规则", "§7Building In Creative Mode Does Not Consume Items, But In Survival Mode It Does. Right Click The First Time To Open The GUI And Click \"Place\". Right Click The Second Time To Place.");
+        add("message.pasterdream.已放置蓝图", "Blue Print Placed");
+        add("message.pasterdream.取消放置蓝图", "Blue Print Place Cancel");
+        add("message.pasterdream.蓝图放置失败", "Blue Print Place Failed");
+        add("message.pasterdream.材料不足", "Material Not Enough");
+        add("button.pasterdream.blue_print_button", "Place");
+        add("book.pasterdream.title.精铸工坊", "Weapon Workshop");
+        add("book.pasterdream.title.暗影高炉", "Shadow Blast Furnace");
         add("tooltip.pasterdream.dreamAccumulator", "§dDream Accumulator");
         add("biome_tag.pasterdream.dyedream_world_biome", "Dyedream World Biomes");
         add("jei.pasterdream.dream_accumulator.biome_count", "%s biomes");

@@ -47,6 +47,18 @@ public class ModDataComponents {
                     .networkSynchronized(ByteBufCodecs.STRING_UTF8)
                     .build());
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> BLUEPRINT_CONTENT =
+            DATA_COMPONENTS.register("blueprint_content", () -> DataComponentType.<String>builder()
+                    .persistent(com.mojang.serialization.Codec.STRING)
+                    .networkSynchronized(ByteBufCodecs.STRING_UTF8)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> BLUEPRINT_PLACING =
+            DATA_COMPONENTS.register("blueprint_placing", () -> DataComponentType.<Boolean>builder()
+                    .persistent(com.mojang.serialization.Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+
     public static void register(IEventBus eventBus) {
         DATA_COMPONENTS.register(eventBus);
     }

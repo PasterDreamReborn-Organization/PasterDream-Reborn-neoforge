@@ -36,6 +36,7 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.ingredients.subtypes.IIngredientSubtypeInterpreter;
 import mezz.jei.api.registration.ISubtypeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -84,6 +85,13 @@ public class ModJEIPlugin implements IModPlugin
         registration.registerSubtypeInterpreter(
                 ModItems.PROPHECY_CARD.get(),
                 (stack, context) -> ProphecyCardItem.getType(stack));
+
+        registration.registerSubtypeInterpreter(
+                ModItems.BLUE_PRINT.get(),
+                (stack, context) -> {
+                    String content = stack.get(com.pasterdream.pasterdreammod.init.ModDataComponents.BLUEPRINT_CONTENT.get());
+                    return content != null ? content : IIngredientSubtypeInterpreter.NONE;
+                });
     }
 
     @Override

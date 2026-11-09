@@ -281,6 +281,10 @@ public class Config {
             .comment("狐火力场的持续时间（秒），默认 15 秒")
             .defineInRange("FoxFireLifetimeSeconds", 15, 0, Integer.MAX_VALUE);
 
+    public static final ModConfigSpec.DoubleValue TOOLSMITH_BLUEPRINT_TRADE_CHANCE = BUILDER
+            .comment("工具商（5级）出售精铸工坊蓝图的概率，默认 1.0（100%）")
+            .defineInRange("toolsmithBlueprintTradeChance", 1.0, 0.0, 1.0);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     /** 查询指定实体类型是否在罪之预言卡秒杀列表中 */

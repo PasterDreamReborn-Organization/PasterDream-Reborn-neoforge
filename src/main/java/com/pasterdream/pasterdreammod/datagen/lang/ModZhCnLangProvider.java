@@ -438,6 +438,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DREAM_CAULDRON.get(), "梦之釜");
         add(ModBlocks.DREAM_ACCUMULATOR.get(), "蓄梦池");
         add(ModItems.SORBENT.get(), "吸附剂");
+        add(ModItems.BLUE_PRINT.get(), "蓝图");
+        add("tooltip.pasterdream.右键打开GUI以查看蓝图结构", "右键打开GUI以查看蓝图结构");
+        add("tooltip.pasterdream.蓝图搭建消耗规则", "§7创造模式搭建时不消耗物品，生存模式搭建时需要消耗，第一次右键打开GUI，在里面可以点击“放置”按钮，第二次右键即可放置");
+        add("message.pasterdream.已放置蓝图", "已放置蓝图");
+        add("message.pasterdream.取消放置蓝图", "取消放置蓝图");
+        add("message.pasterdream.蓝图放置失败", "蓝图放置失败");
+        add("message.pasterdream.材料不足", "材料不足");
+        add("button.pasterdream.blue_print_button", "放置");
+        add("book.pasterdream.title.精铸工坊", "精铸工坊");
+        add("book.pasterdream.title.暗影高炉", "暗影高炉");
         add("tooltip.pasterdream.dreamAccumulator", "§d蓄梦池");
         add("biome_tag.pasterdream.dyedream_world_biome", "染梦世界群系");
         add("jei.pasterdream.dream_accumulator.biome_count", "共 %s 个群系");

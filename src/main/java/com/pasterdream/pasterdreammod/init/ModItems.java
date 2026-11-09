@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemNameBlockItem;
 import com.pasterdream.pasterdreammod.world.item.debugsword.DebugSwordItem;
+import com.pasterdream.pasterdreammod.world.item.blueprints.BluePrintItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookItem;
 import com.pasterdream.pasterdreammod.world.item.lootgenerator.LootGeneratorItem;
 import com.pasterdream.pasterdreammod.world.item.modelbreakparticleproviderblockitem.ModelBreakParticleProviderBlockItem;
@@ -1685,6 +1686,8 @@ public class ModItems {
                 }
             });
 
+    public static final DeferredItem<Item> BLUE_PRINT = ITEMS.register("blue_print",
+            () -> new BluePrintItem(new Item.Properties()));
     public static final DeferredItem<Item> DREAM_NOTES_BOOK = ITEMS.register("dream_notes_book",
             () -> new DreamNotesBookItem(new Item.Properties()));
 
