@@ -1340,6 +1340,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_super_deep_sea_treasure.description", "To get higher-level marine treasures, you should find a more powerful fishing rod for it......");
         add("advancements.pasterdream.get_star_wish_rod.title", "Fish are like Countless Stars in the Vast Sky");
         add("advancements.pasterdream.get_star_wish_rod.description", "Get the Star Wish Rod. Look for more tempting treasures in the sea.");
+        add("advancements.pasterdream.get_blue_dew.title", "Tears of the Ocean");
+        add("advancements.pasterdream.get_blue_dew.description", "Get the blue dew, it comes from that enchanting ocean treasure glowing with magic light.");
+        add("advancements.pasterdream.get_blue_heart_of_the_sea.title", "Heart of Deep Blue");
+        add("advancements.pasterdream.get_blue_heart_of_the_sea.description", "Once you get the Blue Heart of the Sea, you'll know which weapon needs it......");
+        add("advancements.pasterdream.get_beihairuo_tide_sword.title", "God of Tides");
+        add("advancements.pasterdream.get_beihairuo_tide_sword.description", "Get the BeiHairuo Tide Sword; it holds the power of surging waves and riptide......");
 
         // Advancements - Story (main world / dyedream)
         add("advancements.pasterdream.story.root.title", "PasterDream");
@@ -1354,6 +1360,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.dyedream_world.description", "Visit the Dyedream World");
         add("advancements.pasterdream.story.dyedream_crack.title", "Dyedream Crack");
         add("advancements.pasterdream.story.dyedream_crack.description", "Wake up in the next dream, the crack will resonate with your dream.");
+        add("advancements.pasterdream.story.create_pliers.title", "太陽とレインボ一");
+        add("advancements.pasterdream.story.create_pliers.description", "Make a pair of pliers");
+        add("advancements.pasterdream.story.dream_accumulator.title", "The Dust Has Settled");
+        add("advancements.pasterdream.story.dream_accumulator.description", "Use the Dream Accumulator to collect Dyedream Dust");
+        add("advancements.pasterdream.story.dyedream_broken_note.title", "Dyedream Fragment");
+        add("advancements.pasterdream.story.dyedream_broken_note.description", "Obtain a fragment of the notes from the Dyedream World");
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5Your body passes through this strange hole, but nothing happens.");
         add("message.pasterdream.dyedream_crack.first_contact.2", "§5You can feel that this crack-like thing interacts with this world and another place. The different environments nearby might have been born because of it.");
         add("message.pasterdream.dyedream_crack.first_contact.3", "§5Perhaps it's not the time yet. Let's leave the answer to the time that flows between day and night.");
@@ -1384,6 +1396,36 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "Eat the Galaxy Jelly at the building height limit...... Kaz finally has company now......");
         add("advancements.pasterdream.story.look_at_pink_sheep.title", "Do Block People Dream of Pink Sheep?");
         add("advancements.pasterdream.story.look_at_pink_sheep.description", "Block people only dream of block sheep, of course.");
+
+        // Advancements - Adventure expansion
+        add("advancements.pasterdream.adventure.forgotten_sword_tomb.title", "The Forgotten Sword Tomb");
+        add("advancements.pasterdream.adventure.forgotten_sword_tomb.description", "Discovered the lost sword tomb, a sword tomb hidden deep in the jungle.");
+        add("advancements.pasterdream.story.get_the_lost_sword.title", "Sword of Oblivion");
+        add("advancements.pasterdream.story.get_the_lost_sword.description", "Got the Sword Embryo, it seems to resonate with the power of the jungle......");
+        add("advancements.pasterdream.story.dig_up_a_tomb.title", "Sweet Sixteen, with the Strength of a Titan");
+        add("advancements.pasterdream.story.dig_up_a_tomb.description", "You...... what exactly did you dig up???");
+        add("advancements.pasterdream.new_standard_sword_drawing.title", "New Standard Sword Drawing");
+        add("advancements.pasterdream.new_standard_sword_drawing.description", "Because you couldn't pull out the sword, you ended up using your enemy as a tool to break stones!");
+        add("advancements.pasterdream.return_to_owner.title", "Returned to Its Rightful Owner...?");
+        add("advancements.pasterdream.return_to_owner.description", "Why do you want to do this?");
+        add("advancements.pasterdream.craft_kusanagi.title", "Power of the Jungle");
+        add("advancements.pasterdream.craft_kusanagi.description", "Craft Kusanagi, a sword imbued with the power of the jungle. It is hungrily seeking lost souls...");
+        add("advancements.pasterdream.get_murakumo_kusanagi.title", "Lost Souls Under the Sword");
+        add("advancements.pasterdream.get_murakumo_kusanagi.description", "Let Kusanagi further evolve by killing enemies.");
+        add("advancements.pasterdream.adventure.find_desert_fortress.title", "Desert Heroic Spirit");
+        add("advancements.pasterdream.adventure.find_desert_fortress.description", "Discover a desert fortress, where a heroic spirit who hasn't completed his aspiration. Maybe you should think about killing the nearby enemies first......");
+        add("advancements.pasterdream.adventure.get_desert_sword.title", "Sword of the Heroic Spirit");
+        add("advancements.pasterdream.adventure.get_desert_sword.description", "Get the Desert Sword from the hero and fulfill his last wish to let this weapon evolve.");
+        add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.title", "The wish has come true");
+        add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.description", "Fulfilling the heroic spirit's last wish allowed Desert Sword to evolve into ChenJingmen Desert Sword. The former hero can finally rest in peace......");
+
+        // Advancements - Nether expansion
+        add("advancements.pasterdream.get_molten_gold_ingot.title", "Real Gold Does Not Fear Fire");
+        add("advancements.pasterdream.get_molten_gold_ingot.description", "Obtain Molten Gold Ingot, smelted from a kind of hot gold ore from the Nether.");
+        add("advancements.pasterdream.craft_hellfire_sword.title", "Blazing Sword");
+        add("advancements.pasterdream.craft_hellfire_sword.description", "Craft a Hellfire Sword, it resonates with the drop of a terrifying undead creature.");
+        add("advancements.pasterdream.craft_inferno_sword.title", "Inferno Fire");
+        add("advancements.pasterdream.craft_inferno_sword.description", "Inlay a Nether Star into the Hellfire Sword to let it reach its final evolution.");
         // Dreamseeker Notes Book
         add("item.pasterdream.dream_notes_book", "Dreamseeker Notes Book");
         add("itemGroup.pasterdream.pasterdream_dream_notes_tab", "Paster Dream | Dream Notes");

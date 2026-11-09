@@ -4,7 +4,12 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.advancement.critereon.BreakWindCurtainTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.CaptureFireflyTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.FoundDesertFortressTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.FoundTombTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.HasAdvancementTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDrawingTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.OpenDreamAccumulatorTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
 import net.minecraft.advancements.CriterionTrigger;
@@ -48,6 +53,26 @@ public final class ModCriteriaTriggers {
     /** 在梦境维度使用苍白骨针 */
     public static final DeferredHolder<CriterionTrigger<?>, UseBoneNeedleTrigger> USE_BONE_NEEDLE =
             TRIGGERS.register("use_boneneedle", UseBoneNeedleTrigger::new);
+
+    /** 发现失落剑冢结构 */
+    public static final DeferredHolder<CriterionTrigger<?>, FoundTombTrigger> FOUND_TOMB =
+            TRIGGERS.register("found_tomb", FoundTombTrigger::new);
+
+    /** 发现沙漠遗迹结构 */
+    public static final DeferredHolder<CriterionTrigger<?>, FoundDesertFortressTrigger> FOUND_DESERT_FORTRESS =
+            TRIGGERS.register("found_desert_fortress", FoundDesertFortressTrigger::new);
+
+    /** 新概念拔剑（剑冢击碎） */
+    public static final DeferredHolder<CriterionTrigger<?>, NewStandardSwordDrawingTrigger> NEW_STANDARD_SWORD_DRAWING =
+            TRIGGERS.register("new_standard_sword_drawing", NewStandardSwordDrawingTrigger::new);
+
+    /** 持有指定前置进度 */
+    public static final DeferredHolder<CriterionTrigger<?>, HasAdvancementTrigger> HAS_ADVANCEMENT =
+            TRIGGERS.register("has_advancement", HasAdvancementTrigger::new);
+
+    /** 首次打开蓄梦池 */
+    public static final DeferredHolder<CriterionTrigger<?>, OpenDreamAccumulatorTrigger> OPEN_DREAM_ACCUMULATOR =
+            TRIGGERS.register("open_dream_accumulator", OpenDreamAccumulatorTrigger::new);
 
     public static void register(IEventBus eventBus) {
         TRIGGERS.register(eventBus);

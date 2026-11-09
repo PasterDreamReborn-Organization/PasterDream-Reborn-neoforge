@@ -1,7 +1,9 @@
 package com.pasterdream.pasterdreammod.world.block.lostswordtomb;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -56,5 +58,9 @@ public class LostSwordTombHandler {
         // 播放破碎音效
         level.playSound(null, target.getX(), target.getY(), target.getZ(),
                 SoundEvents.ANVIL_FALL, SoundSource.PLAYERS, 1.0f, 1.0f);
+
+        if (player instanceof ServerPlayer serverPlayer) {
+            ModCriteriaTriggers.NEW_STANDARD_SWORD_DRAWING.get().trigger(serverPlayer);
+        }
     }
 }
