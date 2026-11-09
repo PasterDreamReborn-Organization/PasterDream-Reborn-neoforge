@@ -14,6 +14,7 @@ import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.TamableAnimal;
@@ -38,7 +39,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class FoxFireEntity extends PathfinderMob implements GeoEntity {
+public class FoxFireEntity extends PathfinderMob implements GeoEntity, OwnableEntity {
 
     private int lifeTicks = 0;
     @Nullable
@@ -221,6 +222,12 @@ public class FoxFireEntity extends PathfinderMob implements GeoEntity {
     public void setOwner(Player player) {
         this.owner = player;
         this.ownerUUID = player.getUUID();
+    }
+
+    @Override
+    @Nullable
+    public UUID getOwnerUUID() {
+        return this.ownerUUID;
     }
 
     @Nullable

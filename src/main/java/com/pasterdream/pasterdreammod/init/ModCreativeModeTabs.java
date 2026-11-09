@@ -575,6 +575,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_DUNGEON_WALL_KEY.get());
                         output.accept(ModItems.SHADOW_DUNGEON_FLOOR_KEY.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE_CORE.get());
+                        output.accept(ModItems.SHADOW_HAND_TRAP.get());
                         output.accept(ModItems.ECOLOGY_GLASS_JAR.get());
                         output.accept(ModItems.FIREFLY_GLASS_JAR.get());
                         output.accept(ModItems.FIREFLY_NEST.get());

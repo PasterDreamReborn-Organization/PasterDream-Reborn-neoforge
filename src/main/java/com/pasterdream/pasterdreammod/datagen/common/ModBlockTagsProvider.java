@@ -154,6 +154,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_DIRT.get())
                 .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get());
 
+        // 源对原版方解石的额外标签：可作为染梦晶芽生成基底
+        tag(ModBlockTags.DYEDREAM_BUD_CAN_SPAWN_ON)
+                .add(ModBlocks.DYEDREAM_DIRT.get())
+                .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get())
+                .add(Blocks.CALCITE)
+                .add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get());
+
         tag(ModBlockTags.SHADOW_EROSION_TOOL_CAN_BOOST)
                 .add(ModBlocks.SHADOW.get())
                 .add(ModBlocks.THICK_SHADOW.get())
@@ -183,7 +190,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(Blocks.CALIBRATED_SCULK_SENSOR)
                 .add(Blocks.SCULK_SHRIEKER)
                 .add(Blocks.SCULK_CATALYST)
-                .add(Blocks.SCULK_VEIN);
+                .add(Blocks.SCULK_VEIN)
+                .add(ModBlocks.SHADOW_HAND_TRAP.get());
         // 可以用镐来挖掘
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
@@ -464,7 +472,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         // ===== 灯影之下 =====
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.SHADOW_SHROOMLIGHT.get())
-                .add(ModBlocks.SHADOW_WART_BLOCK.get());
+                .add(ModBlocks.SHADOW_WART_BLOCK.get())
+                .add(ModBlocks.SHADOW_HAND_TRAP.get());
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.SHADOW_STEM.get())

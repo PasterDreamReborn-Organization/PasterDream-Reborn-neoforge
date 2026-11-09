@@ -87,6 +87,7 @@ import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceItem;
+import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapItem;
 import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarItem;
 import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarItem;
 import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestItem;
@@ -1275,6 +1276,8 @@ public class ModItems {
     public static final DeferredItem<BlockItem> PICNIC_BASKET = ITEMS.registerSimpleBlockItem(ModBlocks.PICNIC_BASKET);
     public static final DeferredItem<Item> SHADOW_CHEST = ITEMS.register("shadow_chest",
             () -> new ShadowChestItem(ModBlocks.SHADOW_CHEST.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_HAND_TRAP = ITEMS.register("shadow_hand_trap",
+            () -> new ShadowHandTrapItem(ModBlocks.SHADOW_HAND_TRAP.get(), new Item.Properties()));
     public static final DeferredItem<BlockItem> WIND_MOOR_CRATE = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_CRATE);
     public static final DeferredItem<Item> THE_ENDLESS_BOOK_OF_DREAM_SEEKERS = ITEMS.register("the_endless_book_of_dream_seekers",
             () -> new TheEndlessBookOfDreamSeekersItem(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), new Item.Properties()));

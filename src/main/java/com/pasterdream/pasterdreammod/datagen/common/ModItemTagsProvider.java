@@ -186,6 +186,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get())
                 .add(ModItems.SHADOW_EROSION_HOE.get())
                 .add(ModItems.SHADOW_ALLOY_HOE.get());
+
+        // 源对原版方解石的额外标签：可作为石制工具合成材料
+        tag(ItemTags.STONE_TOOL_MATERIALS)
+                .add(Items.CALCITE);
+        tag(ItemTags.STONE_CRAFTING_MATERIALS)
+                .add(Items.CALCITE);
         // 『北海若』引潮沿用来源可在附魔台获得三叉戟专属附魔；1.21 由物品标签驱动。
         tag(ItemTags.TRIDENT_ENCHANTABLE)
                 .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get())

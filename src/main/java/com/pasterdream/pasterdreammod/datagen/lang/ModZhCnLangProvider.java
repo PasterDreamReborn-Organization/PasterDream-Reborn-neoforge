@@ -1279,6 +1279,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.FIREFLY_NEST.get(), "萤火虫巢");
         add(ModBlocks.BIRDS_NEST.get(), "鸟巢");
         add("block.pasterdream.shadow_blast_furnace_core", "暗影高炉核心");
+        add(ModBlocks.SHADOW_HAND_TRAP.get(), "暗影之手陷阱");
+        add("tooltip.pasterdream.shadow_hand_trap", "§7§o--你挖下来这个做什么？");
         add(ModEntities.FIREFLY.get(), "萤火虫");
         add(ModItems.FIREFLY_SPAWN_EGG.get(), "萤火虫刷怪蛋");
         add(ModEntities.SMALL_STONE_SPIRIT.get(), "小石精");

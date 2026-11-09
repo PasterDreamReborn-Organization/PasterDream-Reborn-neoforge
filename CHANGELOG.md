@@ -5,6 +5,17 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 075：暗影之手陷阱与狐火免伤修复（2026-11-09，T18 部分）
+
+- 迁入 `shadow_hand_trap` 方块、方块实体、放置物品与来源 `shadow_trap` 音效：踩踏触发 5 点魔法伤害、-5 SAN、黑暗 80t/缓慢 20t，攻击动画后自毁；非创造、非精准采集破坏时生成 `shadow_hand` 并 -1 SAN。
+- 1.21 适配：`BaseEntityBlock` 补 `codec()`，魔法伤害改用 `damageSources().magic()`，精准采集改注册表 `Holder` 查询，GeckoLib 4.x 使用 `software.bernie.geckolib.animation.*` 与 `createGeoRenderer`，方块实体存档改 `HolderLookup.Provider`。
+- 数据与资源：掉落表（精准采集自身，否则阴影 + 10% 噩梦燃料）、熔炉配方、`mineable_with_hoe`/`shadow_erosion_tool_can_boost` 标签、方块状态、物品模型与双语名称由 Provider 生成；逐字节复制 geo/动画/`models/custom`/`displaysettings`/纹理/音效。
+- 补齐来源对原版方解石的额外标签：`pasterdream:dyedream_bud_can_spawn_on` 加入方解石，`minecraft:stone_tool_materials` 与 `minecraft:stone_crafting_materials` 加入方解石。
+- 修复陷阱攻击动画未播完即自毁：以触发时的 `gameTime` 计算 25 tick 延迟，常规 20 tick 调度不再提前销毁。
+- 补 `rust_black_metal_bars`、`congeal_wind_iron_bars` 与手写 `congeal_wind_iron_chain` 模型的 `cutout` 渲染类型，恢复 alpha 通道镂空渲染。
+- 修复 `fox_fire` 被玩家泰拉剑气伤害：`FoxFireEntity` 实现 `OwnableEntity` 并暴露 `getOwnerUUID()`，使其被 `MinionFilterHelper` 识别为施放者召唤物。
+- `runData` 写入 24 个文件；`build` 通过；`runGameTestServer` 159/159 通过。陷阱客户端动画/音效与结构实际生成待游戏内验收。
+
 ### 批次 074：暗影地牢钥匙、高炉核心与生态方块及生物（2026-11-09，T14/T18 部分）
 
 - 迁入 `shadow_dungeon_wall_key`、`shadow_dungeon_floor_key`、`shadow_blast_furnace_core`、`ecology_glass_jar`、`firefly_glass_jar`、`firefly_nest`、`birds_nest`、`christmas_lights`、`small_stone_spirit_block`，以及 `firefly`、`small_stone_spirit` 生物、刷怪蛋与 `capture_firefly` 触发器。

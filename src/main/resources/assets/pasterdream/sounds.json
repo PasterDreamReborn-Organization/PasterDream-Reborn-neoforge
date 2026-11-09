@@ -204,6 +204,14 @@
       }
     ]
   },
+  "shadow_trap": {
+    "sounds": [
+      {
+        "name": "pasterdream:shadow_trap",
+        "stream": false
+      }
+    ]
+  },
   "dream_accumulator": {
     "sounds": [
       {
