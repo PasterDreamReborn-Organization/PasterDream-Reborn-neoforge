@@ -332,6 +332,19 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.DREAM_CAULDRON.get());
         dropSelf(ModBlocks.DREAM_ACCUMULATOR.get());
         dropSelf(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
+        // 暗影之手陷阱：精准采集掉落自身，否则 100% 阴影 + 10% 噩梦燃料
+        add(ModBlocks.SHADOW_HAND_TRAP.get(), block -> LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(ModBlocks.SHADOW_HAND_TRAP.get())
+                                .when(hasSilkTouch()))
+                        .add(LootItem.lootTableItem(ModItems.SHADOW.get())
+                                .when(hasSilkTouch().invert())))
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
+                                .when(LootItemRandomChanceCondition.randomChance(0.1F))
+                                .when(hasSilkTouch().invert()))));
         dropOther(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), ModItems.SHADOW_DUNGEON_KEY.get());
         dropOther(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), ModItems.SHADOW_DUNGEON_KEY.get());
         dropSelf(ModBlocks.ECOLOGY_GLASS_JAR.get());

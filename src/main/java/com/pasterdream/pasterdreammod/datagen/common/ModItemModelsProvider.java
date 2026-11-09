@@ -314,6 +314,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         getBuilder(ModItems.DESERT_HERO_TOMB.getId().getPath())
                 .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
                         modLoc("displaysettings/desert_hero_tomb.item")));
+        getBuilder(ModItems.SHADOW_HAND_TRAP.getId().getPath())
+                .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
+                        modLoc("displaysettings/shadow_hand_trap.item")));
         basicItem(ModItems.CONGEAL_WIND.get());
         basicItem(ModItems.WIND_RUNNER_CRYSTAL.get());
         basicItem(ModItems.CONGEAL_WIND_IRON_INGOT.get());

@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntityRenderer;
@@ -26,6 +27,7 @@ public final class ModBlockEntityRenderer {
         event.registerBlockEntityRenderer(ModBlockEntities.UUZ_DOLL.get(), UUZDollBlockEntityRenderer::new);
 
         event.registerBlockEntityRenderer(ModBlockEntities.DESERT_HERO_TOMB.get(), DesertHeroTombBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_HAND_TRAP.get(), ShadowHandTrapTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.LIFE_CRYSTAL.get(), LifeCrystalBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.CLAYPAN.get(), ClaypanBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.DREAM_CAULDRON.get(), DreamCauldronBlockEntityRenderer::new);

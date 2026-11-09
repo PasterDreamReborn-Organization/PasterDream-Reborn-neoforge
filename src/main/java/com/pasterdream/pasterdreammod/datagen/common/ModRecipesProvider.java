@@ -3095,6 +3095,12 @@ public class ModRecipesProvider extends RecipeProvider {
         SingleItemRecipeBuilder.stonecutting(shadowStonesTag, RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_SHADOW_STONE_BRICK.get())
                 .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_shadow_stone_brick_from_stonecutting");
+
+        // ===== 你把暗影之手扔熔炉有什么意义吗？=====
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.SHADOW_HAND_TRAP.get()),
+                        RecipeCategory.MISC, ModItems.SHADOW.get(), 0.35F, 200)
+                .unlockedBy(getHasName(ModBlocks.SHADOW_HAND_TRAP.get()), has(ModBlocks.SHADOW_HAND_TRAP.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_from_shadow_hand_trap");
     }
 
     private void shadowBookshelfRecipes(RecipeOutput pWriter) {

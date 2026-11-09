@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlockEntit
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollBlockEntity;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
@@ -52,6 +53,11 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DesertHeroTombBlockEntity>> DESERT_HERO_TOMB =
             BLOCK_ENTITIES.register("desert_hero_tomb",
                     () -> BlockEntityType.Builder.of(DesertHeroTombBlockEntity::new, ModBlocks.DESERT_HERO_TOMB.get())
+                            .build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShadowHandTrapBlockEntity>> SHADOW_HAND_TRAP =
+            BLOCK_ENTITIES.register("shadow_hand_trap",
+                    () -> BlockEntityType.Builder.of(ShadowHandTrapBlockEntity::new, ModBlocks.SHADOW_HAND_TRAP.get())
                             .build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<QYMDollBlockEntity>> QYM_DOLL = BLOCK_ENTITIES.register("qym_doll", () -> BlockEntityType.Builder.of(QYMDollBlockEntity::new, ModBlocks.QYM_DOLL.get()).build(null));

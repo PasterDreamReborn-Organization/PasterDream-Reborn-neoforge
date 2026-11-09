@@ -1279,6 +1279,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.FIREFLY_NEST.get(), "Firefly Nest");
         add(ModBlocks.BIRDS_NEST.get(), "Birds Nest");
         add("block.pasterdream.shadow_blast_furnace_core", "Shadow Blast Furnace Core");
+        add(ModBlocks.SHADOW_HAND_TRAP.get(), "Shadow Hand Trap");
+        add("tooltip.pasterdream.shadow_hand_trap", "§7§o--Why would you dig this up?");
         add(ModEntities.FIREFLY.get(), "Firefly");
         add(ModItems.FIREFLY_SPAWN_EGG.get(), "Firefly Spawn Egg");
         add(ModEntities.SMALL_STONE_SPIRIT.get(), "Small Stone Spirit");

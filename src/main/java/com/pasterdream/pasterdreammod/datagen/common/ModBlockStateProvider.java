@@ -483,7 +483,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var rustMetalTex = blockTexture(ModBlocks.RUST_BLACK_METAL_BLOCK.get());
         wallBlock((WallBlock) ModBlocks.RUST_BLACK_METAL_WALL.get(), rustMetalTex);
         var barsTex = modLoc("block/rust_black_metal_bars");
-        paneBlock((IronBarsBlock) ModBlocks.RUST_BLACK_METAL_BARS.get(), barsTex, barsTex);
+        paneBlockWithRenderType((IronBarsBlock) ModBlocks.RUST_BLACK_METAL_BARS.get(), barsTex, barsTex, "cutout");
 
         var clayPotModel = models().getExistingFile(modLoc("block/clay_pot"));
         horizontalBlock(ModBlocks.SHADOW_CLAY_POT.get(), clayPotModel);
@@ -652,6 +652,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ModBlocks.DESERT_HERO_TOMB.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/desert_hero_tomb_particle")));
 
+        getVariantBuilder(ModBlocks.SHADOW_HAND_TRAP.get()).forAllStates(state ->
+                ConfiguredModel.builder()
+                        .modelFile(new ModelFile.UncheckedModelFile(modLoc("custom/shadow_hand_trap_particle")))
+                        .build());
+
         // ===== 鐩嗘牻妞嶇墿 =====
         for (var entry : ModBlocks.POTTED_PLANTS.entrySet()) {
             var plant = entry.getKey();
@@ -760,7 +765,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         pressurePlateBlock((PressurePlateBlock) ModBlocks.EJECTION_PRESSURE_PLATE.get(), blockTexture(ModBlocks.EJECTION_PRESSURE_PLATE.get()));
         blockItem(ModBlocks.EJECTION_PRESSURE_PLATE);
         var congealWindIronBarsTex = modLoc("block/congeal_wind_iron_bars");
-        paneBlock((IronBarsBlock) ModBlocks.CONGEAL_WIND_IRON_BARS.get(), congealWindIronBarsTex, congealWindIronBarsTex);
+        paneBlockWithRenderType((IronBarsBlock) ModBlocks.CONGEAL_WIND_IRON_BARS.get(), congealWindIronBarsTex, congealWindIronBarsTex, "cutout");
         var congealWindIronLanternStanding = models().withExistingParent("congeal_wind_iron_lantern", mcLoc("block/template_lantern"))
                 .texture("lantern", modLoc("block/congeal_wind_iron_lantern")).renderType("cutout");
         var congealWindIronLanternHanging = models().withExistingParent("congeal_wind_iron_lantern_hanging", mcLoc("block/template_hanging_lantern"))

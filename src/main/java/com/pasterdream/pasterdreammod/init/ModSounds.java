@@ -70,6 +70,9 @@ public class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> FOX_FIRE =
             SOUND_EVENTS.register("fox_fire", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fox_fire")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHADOW_TRAP =
+            SOUND_EVENTS.register("shadow_trap", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_trap")));
 
     public static final DeferredHolder<SoundEvent, SoundEvent> LIFE_CRYSTAL =
             SOUND_EVENTS.register("life_crystal", () -> SoundEvent.createVariableRangeEvent(
