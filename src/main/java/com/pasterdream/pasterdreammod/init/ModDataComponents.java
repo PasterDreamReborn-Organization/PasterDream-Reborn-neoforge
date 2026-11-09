@@ -35,6 +35,12 @@ public class ModDataComponents {
                     .networkSynchronized(SimpleFluidContent.STREAM_CODEC)
                     .build());
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> DEEP_TREASURE_SUPER =
+            DATA_COMPONENTS.register("deep_treasure_super", () -> DataComponentType.<Boolean>builder()
+                    .persistent(com.mojang.serialization.Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+
     public static void register(IEventBus eventBus) {
         DATA_COMPONENTS.register(eventBus);
     }

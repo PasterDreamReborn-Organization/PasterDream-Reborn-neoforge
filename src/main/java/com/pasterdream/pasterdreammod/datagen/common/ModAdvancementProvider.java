@@ -4,21 +4,25 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
+import com.pasterdream.pasterdreammod.init.ModDataComponents;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomes;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
+import net.minecraft.core.component.DataComponentPredicate;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
@@ -38,7 +42,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
     public ModAdvancementProvider(PackOutput output,
                                   CompletableFuture<HolderLookup.Provider> registries,
                                   ExistingFileHelper existingFileHelper) {
-        super(output, registries, existingFileHelper, List.of(new StoryAdvancements()));
+        super(output, registries, existingFileHelper, List.of(new StoryAdvancements(), new FishingAdvancements()));
     }
 
     public static class StoryAdvancements implements AdvancementProvider.AdvancementGenerator {
@@ -314,6 +318,86 @@ public class ModAdvancementProvider extends AdvancementProvider {
                             ModItems.WHITE_COROLLA_CROP_AGE_1.get()))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/pure_and_flawless"), existingFileHelper);
+        }
+    }
+
+    public static class FishingAdvancements implements AdvancementProvider.AdvancementGenerator {
+
+        @Override
+        public void generate(HolderLookup.@NotNull Provider registries,
+                             @NotNull Consumer<AdvancementHolder> saver,
+                             @NotNull ExistingFileHelper existingFileHelper) {
+
+            // ========== 海之馈赠 ==========
+            AdvancementHolder getDeepSeaTreasure = Advancement.Builder.advancement()
+                    .parent(ResourceLocation.fromNamespaceAndPath("minecraft", "husbandry/fishy_business"))
+                    .display(
+                            ModItems.DEEP_SEA_TREASURE.get(),
+                            Component.translatable("advancements.pasterdream.get_deep_sea_treasure.title"),
+                            Component.translatable("advancements.pasterdream.get_deep_sea_treasure.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("has_deep_sea_treasure", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.DEEP_SEA_TREASURE.get()))
+                    .addCriterion("has_dyedream_deep_sea_treasure", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.DYEDREAM_DEEP_SEA_TREASURE.get()))
+                    .addCriterion("has_shadow_deep_sea_treasure", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.SHADOW_DEEP_SEA_TREASURE.get()))
+                    .requirements(AdvancementRequirements.Strategy.OR)
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "husbandry/get_deep_sea_treasure"), existingFileHelper);
+
+            // ========== To wish upon a satellite...... ==========
+            DataComponentPredicate superPredicate = DataComponentPredicate.builder()
+                    .expect(ModDataComponents.DEEP_TREASURE_SUPER.get(), true)
+                    .build();
+
+            Advancement.Builder.advancement()
+                    .parent(getDeepSeaTreasure)
+                    .display(
+                            ModItems.DEEP_SEA_TREASURE.get(),
+                            Component.translatable("advancements.pasterdream.get_super_deep_sea_treasure.title"),
+                            Component.translatable("advancements.pasterdream.get_super_deep_sea_treasure.description"),
+                            null,
+                            AdvancementType.GOAL,
+                            true, true, false
+                    )
+                    .addCriterion("has_super_deep_sea_treasure", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ItemPredicate.Builder.item()
+                                    .of(ModItems.DEEP_SEA_TREASURE.get())
+                                    .hasComponents(superPredicate)
+                                    .build()))
+                    .addCriterion("has_super_dyedream_deep_sea_treasure", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ItemPredicate.Builder.item()
+                                    .of(ModItems.DYEDREAM_DEEP_SEA_TREASURE.get())
+                                    .hasComponents(superPredicate)
+                                    .build()))
+                    .addCriterion("has_super_shadow_deep_sea_treasure", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ItemPredicate.Builder.item()
+                                    .of(ModItems.SHADOW_DEEP_SEA_TREASURE.get())
+                                    .hasComponents(superPredicate)
+                                    .build()))
+                    .requirements(AdvancementRequirements.Strategy.OR)
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "husbandry/get_super_deep_sea_treasure"), existingFileHelper);
+
+            // ========== 鱼儿如浩空繁星 ==========
+            Advancement.Builder.advancement()
+                    .parent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/root"))
+                    .display(
+                            ModItems.STAR_WISH_ROD.get(),
+                            Component.translatable("advancements.pasterdream.get_star_wish_rod.title"),
+                            Component.translatable("advancements.pasterdream.get_star_wish_rod.description"),
+                            null,
+                            AdvancementType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("get_star_wish_rod", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.STAR_WISH_ROD.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_star_wish_rod"), existingFileHelper);
         }
     }
 }

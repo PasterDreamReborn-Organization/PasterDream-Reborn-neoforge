@@ -50,6 +50,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(Items.PHANTOM_MEMBRANE)
                 .add(Items.TURTLE_HELMET)
                 .add(Items.FERMENTED_SPIDER_EYE);
+        // 占星者的祈愿钓竿标签 —— 手持此类钓竿时深海秘宝必出 super 变体
+        tag(ModItemTags.STAR_FISHING_RODS)
+                .add(ModItems.STAR_WISH_ROD.get());
         tag(ModItemTags.SKILL_COOLDOWN)
                 .add(ModItems.SHARP_MELT_DREAM_SWORD.get())
                 .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get())

@@ -27,6 +27,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.SHADOW_LIQUID_BUCKET.getId().getPath(), "neoforge:item/bucket_drip")
                 .customLoader(DynamicFluidContainerModelBuilder::begin).fluid(ModFluids.SHADOW_LIQUID.get()).end();
 
+        basicItem(ModItems.DEEP_SEA_TREASURE.get());
+        basicItem(ModItems.DYEDREAM_DEEP_SEA_TREASURE.get());
+        basicItem(ModItems.SHADOW_DEEP_SEA_TREASURE.get());
         basicItem(ModItems.TITANIUM_INGOT.get());
         basicItem(ModItems.TITANIUM_NUGGET.get());
         basicItem(ModItems.RAW_TITANIUM.get());

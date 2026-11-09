@@ -212,6 +212,14 @@
       }
     ]
   },
+  "shadow_roar": {
+    "sounds": [
+      {
+        "name": "pasterdream:shadow_roar",
+        "stream": false
+      }
+    ]
+  },
   "dream_accumulator": {
     "sounds": [
       {

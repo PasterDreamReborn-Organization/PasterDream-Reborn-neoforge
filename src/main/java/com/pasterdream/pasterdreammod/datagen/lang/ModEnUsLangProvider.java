@@ -1287,6 +1287,22 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModEntities.SMALL_STONE_SPIRIT.get(), "Small Stone Spirit");
         add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "Small Stone Spirit Spawn Egg");
 
+        // Fishing and deep sea treasure
+        add(ModItems.DEEP_SEA_TREASURE.get(), "Deep Sea Treasure");
+        add(ModItems.DYEDREAM_DEEP_SEA_TREASURE.get(), "Dyedream Deep Treasure");
+        add(ModItems.SHADOW_DEEP_SEA_TREASURE.get(), "Shadow Deep Sea Treasure");
+        add(ModItems.STAR_WISH_ROD.get(), "Star's Wish Rod");
+        add("tooltip.pasterdream.deep_treasure", "§7Splashing waves push us into the distance");
+        add("tooltip.pasterdream.shadow_deep_treasure", "§7Shadows still seem to flow across its surface");
+        add("tooltip.pasterdream.star_wish_rod", "§7§o--Fish as numerous as stars");
+        add("tooltip.pasterdream.star_wish_rod.desc", "§7▪ §9Grants an extra Super deep-sea treasure when fishing");
+        add("advancements.pasterdream.get_deep_sea_treasure.title", "Gift from the Sea");
+        add("advancements.pasterdream.get_deep_sea_treasure.description", "Get a treasure of the ocean, coming from the deep sea and the dyedream frozen ocean.");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.title", "To wish upon a satellite......");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.description", "To get higher-level marine treasures, you should find a more powerful fishing rod for it......");
+        add("advancements.pasterdream.get_star_wish_rod.title", "Fish are like Countless Stars in the Vast Sky");
+        add("advancements.pasterdream.get_star_wish_rod.description", "Get the Star Wish Rod. Look for more tempting treasures in the sea.");
+
         // Advancements - Story (main world / dyedream)
         add("advancements.pasterdream.story.root.title", "PasterDream");
         add("advancements.pasterdream.story.root.description", "Begins with a wish from the heart");

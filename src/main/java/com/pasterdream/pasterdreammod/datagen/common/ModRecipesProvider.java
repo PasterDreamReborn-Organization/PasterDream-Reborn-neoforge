@@ -2847,6 +2847,17 @@ public class ModRecipesProvider extends RecipeProvider {
                         "weapon_workshop_crafting_table/strawberry_heart"),
                 new WeaponWorkshopCraftingTableRecipe(strawberryInputs, enhanceStone,
                         ItemIngredient.of(ModItems.STRAWBERRY_HEART.get(), 1)), null);
+
+        List<ItemIngredient> starWishRodInputs = List.of(
+                ItemIngredient.of(Items.FISHING_ROD, 1),
+                ItemIngredient.of(Items.POWDER_SNOW_BUCKET, 1),
+                ItemIngredient.of(Items.DIAMOND, 1),
+                ItemIngredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), 1),
+                ItemIngredient.of(ModItems.SNOW_VOW_HEAD.get(), 1));
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "weapon_workshop_crafting_table/star_wish_rod"),
+                new WeaponWorkshopCraftingTableRecipe(starWishRodInputs, enhanceStone,
+                        ItemIngredient.of(ModItems.STAR_WISH_ROD.get(), 1)), null);
     }
 
     // ===== 暗影合金工具配方（合成台 NBT 保留升级，耐久重置满） =====

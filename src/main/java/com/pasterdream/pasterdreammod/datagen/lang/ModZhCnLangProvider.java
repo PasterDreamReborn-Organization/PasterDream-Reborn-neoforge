@@ -1287,6 +1287,22 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModEntities.SMALL_STONE_SPIRIT.get(), "小石精");
         add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "小石精刷怪蛋");
 
+        // 钓鱼与深海秘宝
+        add(ModItems.DEEP_SEA_TREASURE.get(), "深海秘宝");
+        add(ModItems.DYEDREAM_DEEP_SEA_TREASURE.get(), "染梦深海秘宝");
+        add(ModItems.SHADOW_DEEP_SEA_TREASURE.get(), "浸影深海秘宝");
+        add(ModItems.STAR_WISH_ROD.get(), "占星者的祈愿");
+        add("tooltip.pasterdream.deep_treasure", "§7飞溅的浪花将我们推向远方");
+        add("tooltip.pasterdream.shadow_deep_treasure", "§7表面似乎还流淌着阴影");
+        add("tooltip.pasterdream.star_wish_rod", "§7§o--鱼儿如浩空繁星");
+        add("tooltip.pasterdream.star_wish_rod.desc", "§7▪ §9手持钓鱼时深海秘宝额外必出超级变体");
+        add("advancements.pasterdream.get_deep_sea_treasure.title", "海之馈赠");
+        add("advancements.pasterdream.get_deep_sea_treasure.description", "获得一份海洋的秘宝，它来自于深海和染梦冻洋");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.title", "To wish upon a satellite......");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.description", "获得更高级的海洋秘宝，你应该为此找到一个更强大的钓竿......");
+        add("advancements.pasterdream.get_star_wish_rod.title", "鱼儿如浩空繁星");
+        add("advancements.pasterdream.get_star_wish_rod.description", "获得占星者的祈愿，去寻求海中更诱人的宝藏吧。");
+
         // 进度 - 主线（主世界 / 染梦世界）
         add("advancements.pasterdream.story.root.title", "帕斯特之梦");
         add("advancements.pasterdream.story.root.description", "以心之祈愿为始");

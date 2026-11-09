@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
 import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
+import com.pasterdream.pasterdreammod.world.item.DeepTreasureItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
@@ -56,6 +57,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
                         output.accept(ModItems.SOUL_DUST.get());
+                        output.accept(ModItems.DEEP_SEA_TREASURE.get());
+                        output.accept(DeepTreasureItem.createSuper(ModItems.DEEP_SEA_TREASURE.get()));
+                        output.accept(ModItems.DYEDREAM_DEEP_SEA_TREASURE.get());
+                        output.accept(DeepTreasureItem.createSuper(ModItems.DYEDREAM_DEEP_SEA_TREASURE.get()));
+                        output.accept(ModItems.SHADOW_DEEP_SEA_TREASURE.get());
+                        output.accept(DeepTreasureItem.createSuper(ModItems.SHADOW_DEEP_SEA_TREASURE.get()));
                         output.accept(ModItems.SOUL_ESSENCE.get());
                         output.accept(ModItems.MAGIC_STONE.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
@@ -473,6 +480,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MELT_DREAM_CHESTPLATE.get());
                         output.accept(ModItems.MELT_DREAM_LEGGINGS.get());
                         output.accept(ModItems.MELT_DREAM_BOOTS.get());
+                        // 钓竿
+                        output.accept(ModItems.STAR_WISH_ROD.get());
                         // 回响装备
                         output.accept(ModItems.SCULK_HELMET.get());
                         output.accept(ModItems.SCULK_CHESTPLATE.get());

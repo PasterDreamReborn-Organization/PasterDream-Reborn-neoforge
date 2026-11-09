@@ -13,6 +13,8 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.BlueDewItem;
+import com.pasterdream.pasterdreammod.world.item.DeepTreasureItem;
+import com.pasterdream.pasterdreammod.world.item.StarWishRodItem;
 import com.pasterdream.pasterdreammod.world.item.DreamFertilizerItem;
 import com.pasterdream.pasterdreammod.world.item.DyedreamHammerItem;
 import com.pasterdream.pasterdreammod.world.item.MeltDreamCoinItem;
@@ -258,6 +260,25 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RED_DEW = ITEMS.register("red_dew", RedDewItem::new);
     public static final DeferredItem<Item> BLUE_DEW = ITEMS.register("blue_dew", BlueDewItem::new);
+
+    // ===== 深海秘宝 =====
+    public static final DeferredItem<Item> DEEP_SEA_TREASURE = ITEMS.register("deep_sea_treasure",
+            () -> new DeepTreasureItem(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON),
+                    "pasterdream:chests/deep_sea_treasure",
+                    "pasterdream:chests/deep_sea_treasure_super"));
+    public static final DeferredItem<Item> DYEDREAM_DEEP_SEA_TREASURE = ITEMS.register("dyedream_deep_sea_treasure",
+            () -> new DeepTreasureItem(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON),
+                    "pasterdream:chests/dyedream_deep_sea_treasure",
+                    "pasterdream:chests/dyedream_deep_sea_treasure_super"));
+    public static final DeferredItem<Item> SHADOW_DEEP_SEA_TREASURE = ITEMS.register("shadow_deep_sea_treasure",
+            () -> new DeepTreasureItem(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON),
+                    "pasterdream:chests/shadow_deep_sea_treasure",
+                    "pasterdream:chests/shadow_deep_sea_treasure_super",
+                    "tooltip.pasterdream.shadow_deep_treasure"));
+
+    // ===== 占星者的祈愿 =====
+    public static final DeferredItem<Item> STAR_WISH_ROD = ITEMS.register("star_wish_rod",
+            StarWishRodItem::new);
 
     public static final DeferredItem<BlockItem> TITANIUM_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.TITANIUM_ORE);
     public static final DeferredItem<BlockItem> DEEPSLATE_TITANIUM_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.DEEPSLATE_TITANIUM_ORE);
