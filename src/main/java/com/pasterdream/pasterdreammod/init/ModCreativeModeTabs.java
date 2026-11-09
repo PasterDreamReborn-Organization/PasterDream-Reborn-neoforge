@@ -59,6 +59,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SOUL_ESSENCE.get());
                         output.accept(ModItems.MAGIC_STONE.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
+                        output.accept(ModItems.DREAM_FERTILIZER.get());
                         output.accept(ModItems.LIGHT_BALL.get());
                         output.accept(ModItems.DYEDREAM_COROLLA.get());
                         output.accept(ModItems.WHITE_COROLLA.get());

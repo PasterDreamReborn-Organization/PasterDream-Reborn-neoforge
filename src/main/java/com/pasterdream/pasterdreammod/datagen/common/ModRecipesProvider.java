@@ -1966,6 +1966,14 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.WHEAT_SEEDS), has(Items.WHEAT_SEEDS)),
                 pWriter, "flour_from_wheat_seeds");
 
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DREAM_FERTILIZER.get(), 9)
+                        .requires(ModItems.PINK_SLIMEBALL.get())
+                        .requires(Items.BONE_BLOCK)
+                        .requires(ModItems.MORTAR.get())
+                        .unlockedBy(getHasName(ModItems.PINK_SLIMEBALL.get()), has(ModItems.PINK_SLIMEBALL.get())),
+                pWriter, "dream_fertilizer_from_pink_slimeball_and_bone_block");
+
         TagKey<Item> wheat = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "crops/wheat"));
         TagKey<Item> seeds = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "seeds"));
         saveMortarRecipe(pWriter, "flour_from_wheat", List.of(ItemIngredient.of(wheat, 2)),

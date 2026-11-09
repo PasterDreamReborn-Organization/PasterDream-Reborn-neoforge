@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 076：主线与染梦世界进度、衍梦肥泥与染梦粉红羊（2026-11-09，T05/T16 部分）
+
+- 新增 `ModAdvancementProvider`，接入主线根→染梦世界的 14 个可完成进度：`story/root`、`first_contact_dyedream_crack`、`dyedream_world`、`dyedream_biomes`、`misty_dreaming_lotus`、`queer_soup`、`look_at_pink_sheep`、`dream_fertilizer`、`dyedream_dust`、`melt_dream_crystal_fragment`、`melt_dream_liquid_bucket`、`galaxy_jelly`、`eat_galaxy_jelly_on_high_height`、`pure_and_flawless`；1.21 适配 `AdvancementHolder`/`AdvancementType`、`Criterion`、`setBiomes(HolderSet)` 与注册表 lookup。
+- 迁入衍梦肥泥 `dream_fertilizer` 物品、粒子与研钵配方：右键优先把短茎草变为高茎草，否则走骨粉生长，仅成功时消耗并生成粒子；`粉红粘液球 + 骨块 + 研钵 → 9`。
+- 染梦粉红羊：加入时位于 `pasterdream:dyedream_world_biome` 的羊设为粉色；玩家在染梦维度注视 16 格内粉色羊时触发 `look_at_pink_sheep`。
+- 暂缓 `dyedream_crack`、`create_pliers`、`glass_jar_of_dream_juice`、`dream_accumulator`、`use_pale_boneneedle`、`human_falls_out_of_dream`、`dyedream_broken_note` 与三条笔记链，待裂隙方块、笔记/骨针触发器、玻璃罐与园艺钳父链迁入；`dyedream_world` 父节点暂指向 `root`。
+- `runData` 生成 14 个进度 JSON、物品模型、研钵配方与双语语言；`build` 通过；`runGameTestServer` 161/161 通过。客户端界面、粒子、真实染梦生成与进度授予待游戏内验收。
+
 ### 批次 075：暗影之手陷阱与狐火免伤修复（2026-11-09，T18 部分）
 
 - 迁入 `shadow_hand_trap` 方块、方块实体、放置物品与来源 `shadow_trap` 音效：踩踏触发 5 点魔法伤害、-5 SAN、黑暗 80t/缓慢 20t，攻击动画后自毁；非创造、非精准采集破坏时生成 `shadow_hand` 并 -1 SAN。

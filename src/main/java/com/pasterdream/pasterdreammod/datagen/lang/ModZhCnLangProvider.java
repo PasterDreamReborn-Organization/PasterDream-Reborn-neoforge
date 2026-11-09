@@ -373,6 +373,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_DUST.get(), "染梦粉尘");
         add(ModItems.DYEDREAM_DUST_PIECE.get(), "小撮染梦粉尘");
         add(ModItems.PINK_SLIMEBALL.get(), "粉红粘液球");
+        add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.DYEDREAM_DYE.get(), "染梦染料");
         add(ModBlocks.LOST_SWORD_TOMB.get(), "失落剑冢");
         add("tooltip.pasterdream.lost_sword_tomb", "§7既然拔不出来，那就带着石头用吧！");
@@ -1285,5 +1286,33 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FIREFLY_SPAWN_EGG.get(), "萤火虫刷怪蛋");
         add(ModEntities.SMALL_STONE_SPIRIT.get(), "小石精");
         add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "小石精刷怪蛋");
+
+        // 进度 - 主线（主世界 / 染梦世界）
+        add("advancements.pasterdream.story.root.title", "帕斯特之梦");
+        add("advancements.pasterdream.story.root.description", "以心之祈愿为始");
+        add("advancements.pasterdream.story.pure_and_flawless.title", "纯洁无瑕");
+        add("advancements.pasterdream.story.pure_and_flawless.description", "获得一朵苍白雪莲");
+        add("advancements.pasterdream.story.dyedream_world.title", "哥德堡安眠曲");
+        add("advancements.pasterdream.story.dyedream_world.description", "访问染梦之境");
+        add("advancements.pasterdream.story.dyedream_biomes.title", "山河入梦");
+        add("advancements.pasterdream.story.dyedream_biomes.description", "踏遍染梦世界的每一处群系。");
+        add("advancements.pasterdream.story.misty_dreaming_lotus.title", "冶梦花莲");
+        add("advancements.pasterdream.story.misty_dreaming_lotus.description", "依照寻梦者的提示，在冶梦莲四周种下花草完成花园解密，冶梦的花莲将化作迷梦冶梦莲。");
+        add("advancements.pasterdream.story.queer_soup.title", "梦随风起");
+        add("advancements.pasterdream.story.queer_soup.description", "合成奇异炖菜，迷梦萦绕于心。风将带着你的梦，飞向天空的尽头。");
+        add("advancements.pasterdream.story.dream_fertilizer.title", "不可食用果冻");
+        add("advancements.pasterdream.story.dream_fertilizer.description", "制作并使用衍梦肥泥挥洒梦境的土地");
+        add("advancements.pasterdream.story.dyedream_dust.title", "把梦捧在手心里!");
+        add("advancements.pasterdream.story.dyedream_dust.description", "从这个世界探寻它的踪迹");
+        add("advancements.pasterdream.story.melt_dream_crystal_fragment.title", "熔融于梦");
+        add("advancements.pasterdream.story.melt_dream_crystal_fragment.description", "收集到一颗融梦水晶碎片");
+        add("advancements.pasterdream.story.melt_dream_liquid_bucket.title", "百味杂陈");
+        add("advancements.pasterdream.story.melt_dream_liquid_bucket.description", "获得一桶融梦涌泉");
+        add("advancements.pasterdream.story.galaxy_jelly.title", "星辰凝胶");
+        add("advancements.pasterdream.story.galaxy_jelly.description", "获得星河果冻，一种能在梦境中的深海秘宝和箱子中找到的果冻，它能让你飞至云霄。");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "太空专业配音员");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "在建筑高度上限吃下星河果冻......卡兹这下有伴了......");
+        add("advancements.pasterdream.story.look_at_pink_sheep.title", "方块人会梦见粉红羊吗");
+        add("advancements.pasterdream.story.look_at_pink_sheep.description", "方块人当然只会梦见方块羊");
     }
 }
