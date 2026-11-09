@@ -456,8 +456,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.title.精铸工坊", "精铸工坊");
         add("book.pasterdream.title.暗影高炉", "暗影高炉");
         add("tooltip.pasterdream.dreamAccumulator", "§d蓄梦池");
-        add("biome_tag.pasterdream.dyedream_world_biome", "染梦世界群系");
-        add("jei.pasterdream.dream_accumulator.biome_count", "共 %s 个群系");
         add("biome.pasterdream.dyedream_frozen_ocean", "染梦冻洋");
         add("biome.pasterdream.dyedream_cold_ocean", "染梦冷海");
         add("biome.pasterdream.dyedream_ocean", "染梦海洋");
