@@ -2,6 +2,8 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.renderhelper.CustomRendererBakedModel;
+import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookModel;
+import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookRegistry;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
@@ -29,6 +31,21 @@ public final class ModItemModels {
         {
             elixirBottleModel = original;
             event.getModels().put(modelLocation, new CustomRendererBakedModel(original));
+        }
+
+        ModelResourceLocation dreamNotesBookLocation = new ModelResourceLocation(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_notes_book"), "inventory");
+        BakedModel dreamNotesBookModel = event.getModels().get(dreamNotesBookLocation);
+        if (dreamNotesBookModel != null && !(dreamNotesBookModel instanceof DreamNotesBookModel))
+        {
+            event.getModels().put(dreamNotesBookLocation, new DreamNotesBookModel(dreamNotesBookModel));
+        }
+    }
+
+    @SubscribeEvent
+    public static void registerAdditionalModels(ModelEvent.RegisterAdditional event) {
+        for (ResourceLocation resourceLocation : DreamNotesBookRegistry.getModelLocations())
+        {
+            event.register(ModelResourceLocation.standalone(resourceLocation.withPrefix("item/")));
         }
     }
 

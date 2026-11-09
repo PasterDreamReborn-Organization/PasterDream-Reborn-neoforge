@@ -22,6 +22,7 @@ import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModCropRelation;
 import com.pasterdream.pasterdreammod.init.ModDataComponents;
 import com.pasterdream.pasterdreammod.init.ModDreamNotesBookContentRelation;
+import com.pasterdream.pasterdreammod.init.ModDreamNotesBookProgressRelation;
 import com.pasterdream.pasterdreammod.init.ModDreamNotesContentRelation;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEnhanceStoneAttributeRelation;
@@ -151,6 +152,7 @@ public class PasterDreamMod {
             ModFluidPropertiesRelation.register();
             ModDreamNotesContentRelation.registerDreamNotesContentRelation();
             ModDreamNotesBookContentRelation.registerDreamNotesBookContentRelation();
+            ModDreamNotesBookProgressRelation.registerDreamNotesBookProgressRelation();
             ModBluePrintsContentRelation.registerBluePrintsContentRelation();
             ModCropRelation.registerCropRelation();
             ModEnhanceStoneAttributeRelation.registerModEnhanceStoneAttributeRelation();

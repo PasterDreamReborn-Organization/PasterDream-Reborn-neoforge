@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemNameBlockItem;
 import com.pasterdream.pasterdreammod.world.item.debugsword.DebugSwordItem;
+import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookItem;
 import com.pasterdream.pasterdreammod.world.item.lootgenerator.LootGeneratorItem;
 import com.pasterdream.pasterdreammod.world.item.modelbreakparticleproviderblockitem.ModelBreakParticleProviderBlockItem;
 import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
@@ -1677,6 +1678,9 @@ public class ModItems {
                     tooltip.add(Component.translatable("tooltip.pasterdream.sliver_bell"));
                 }
             });
+
+    public static final DeferredItem<Item> DREAM_NOTES_BOOK = ITEMS.register("dream_notes_book",
+            () -> new DreamNotesBookItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

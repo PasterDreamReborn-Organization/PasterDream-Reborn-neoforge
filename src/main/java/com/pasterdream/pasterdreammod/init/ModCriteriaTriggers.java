@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.BreakWindCurtainTrig
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.CaptureFireflyTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.bus.api.IEventBus;
@@ -38,6 +39,10 @@ public final class ModCriteriaTriggers {
     /** 在染梦维度准星指向粉色羊 */
     public static final DeferredHolder<CriterionTrigger<?>, LookAtPinkSheepTrigger> LOOK_AT_PINK_SHEEP =
             TRIGGERS.register("look_at_pink_sheep", LookAtPinkSheepTrigger::new);
+
+    /** 阅读寻梦者笔记（书） */
+    public static final DeferredHolder<CriterionTrigger<?>, ReadDreamNoteTrigger> READ_DREAM_NOTE =
+            TRIGGERS.register("read_dream_note", ReadDreamNoteTrigger::new);
 
     public static void register(IEventBus eventBus) {
         TRIGGERS.register(eventBus);

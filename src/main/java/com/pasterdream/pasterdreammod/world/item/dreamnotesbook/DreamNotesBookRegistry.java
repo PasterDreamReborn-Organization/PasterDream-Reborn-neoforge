@@ -1,0 +1,40 @@
+package com.pasterdream.pasterdreammod.world.item.dreamnotesbook;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class DreamNotesBookRegistry
+{
+    private static Map<String, DreamNotesBookInfo> NOTES = new ConcurrentHashMap<>();
+    private static List<ResourceLocation> MODEL_LOCATIONS = new ArrayList<>();
+    private static List<String> CONTENT_ORDER = new ArrayList<>();
+
+    public static void register(String contentName, Component title, String author, Component content, ResourceLocation GUI, int GUI_X, int GUI_Y, int contentStartX, int contentStartY, int contentFinalX, int contentFinalY, ResourceLocation itemTexture, int color)
+    {
+        if (NOTES.containsKey(contentName))
+        {
+            throw new IllegalArgumentException("重复的寻梦者笔记（书）内容：" + contentName);
+        }
+        NOTES.put(contentName, new DreamNotesBookInfo(title, author, content, GUI, GUI_X, GUI_Y, contentStartX, contentStartY, contentFinalX, contentFinalY, itemTexture, color));
+        MODEL_LOCATIONS.add(itemTexture);
+        CONTENT_ORDER.add(contentName);
+    }
+
+    public static DreamNotesBookInfo getInfo(String contentName)
+    {
+        return NOTES.get(contentName);
+    }
+
+    public static List<ResourceLocation> getModelLocations()
+    {
+        return Collections.unmodifiableList(MODEL_LOCATIONS);
+    }
+
+    public static List<String> getAllContentNames()
+    {
+        return Collections.unmodifiableList(CONTENT_ORDER);
+    }
+}
