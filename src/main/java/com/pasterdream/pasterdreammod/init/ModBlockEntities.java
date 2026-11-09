@@ -8,6 +8,11 @@ import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapB
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceAddonBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.NippyEdelweissBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskBlockEntity;
@@ -66,6 +71,31 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WeaponWorkshopCraftingTableBlockEntity>> WEAPON_WORKSHOP_CRAFTING_TABLE =
             BLOCK_ENTITIES.register("weapon_workshop_crafting_table",
                     () -> BlockEntityType.Builder.of(WeaponWorkshopCraftingTableBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get())
+                            .build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WeaponWorkshopAnvilBlockEntity>> WEAPON_WORKSHOP_ANVIL =
+            BLOCK_ENTITIES.register("weapon_workshop_anvil",
+                    () -> BlockEntityType.Builder.of(WeaponWorkshopAnvilBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_ANVIL.get())
+                            .build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WeaponWorkshopCoolerPotBlockEntity>> WEAPON_WORKSHOP_COOLER_POT =
+            BLOCK_ENTITIES.register("weapon_workshop_cooler_pot",
+                    () -> BlockEntityType.Builder.of(WeaponWorkshopCoolerPotBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get())
+                            .build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WeaponWorkshopGrindStoneBlockEntity>> WEAPON_WORKSHOP_GRIND_STONE =
+            BLOCK_ENTITIES.register("weapon_workshop_grind_stone",
+                    () -> BlockEntityType.Builder.of(WeaponWorkshopGrindStoneBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get())
+                            .build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WeaponWorkshopBlastFurnaceBlockEntity>> WEAPON_WORKSHOP_BLAST_FURNACE =
+            BLOCK_ENTITIES.register("weapon_workshop_blast_furnace",
+                    () -> BlockEntityType.Builder.of(WeaponWorkshopBlastFurnaceBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get())
+                            .build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WeaponWorkshopBlastFurnaceAddonBlockEntity>> WEAPON_WORKSHOP_BLAST_FURNACE_ADDON =
+            BLOCK_ENTITIES.register("weapon_workshop_blast_furnace_addon",
+                    () -> BlockEntityType.Builder.of(WeaponWorkshopBlastFurnaceAddonBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get())
                             .build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DyedreamDeskBlockEntity>> DYEDREAM_DESK =

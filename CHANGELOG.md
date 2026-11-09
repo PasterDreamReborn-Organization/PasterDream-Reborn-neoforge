@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 079：精铸工坊其余设备方块（2026-11-09，T15-A 部分）
+
+- 迁入精铸工坊剩余五类设备：铁砧、冷却锅、锻锤、砂轮与高炉的方块、方块实体、菜单/界面、冷却锅流体渲染、高炉放置物品与 `_2x4x2` 多结构；保留来源注册 ID、方块参数、槽位数量、流体容量与放置/破坏语义。
+- 1.21 适配：补 `codec()`、`use`→`useWithoutItem`/`useItemOn`、`ServerPlayer#openMenu`，能力改用 `RegisterCapabilitiesEvent` 集中登记，流体/物品存档改用 `HolderLookup.Provider` 重载，冷却锅渲染改用 1.21 顶点接口。来源空的高炉配方类保留空实现，高炉仍只提供存储与界面。
+- 掉落表、`mineable_with_pickaxe` 标签与双语名称由 Provider 生成；砂轮来源漏标镐挖掘，本批按原版砂轮属性补入。蓝图内容注册与工坊结构 NBT 仍未迁入。
+- `runData` 生成 5 个掉落表并更新方块标签与双语语言；`build` 通过；`runGameTestServer` 163/163 通过。客户端 GUI、流体渲染与多人同步待游戏内验收。
+
 ### 批次 078：寻梦者笔记书系统（2026-11-09，T05-A 部分）
 
 - 迁入 62 本寻梦者笔记书：`dream_notes_book` 物品、内容/作者/正文注册表、按宽度自动换行与按高度分页的阅读界面、左右箭头与滚轮翻页，以及 `dream_notes_book_*` 物品材质覆写。

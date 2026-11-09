@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.helper.enhancestoneattributerelation.Enhan
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.gametest.framework.GameTest;
@@ -109,6 +110,39 @@ public class WeaponWorkshopGameTests {
         }
         helper.assertTrue(blockEntity.getItemHandler().getStackInSlot(5).isEmpty(),
                 "雷矛配方应消耗强化石");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void remainingBlocksDropSelf(GameTestHelper helper) {
+        Block[] blocks = new Block[] {
+                ModBlocks.WEAPON_WORKSHOP_ANVIL.get(),
+                ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get(),
+                ModBlocks.WEAPON_WORKSHOP_HAMMER.get(),
+                ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get(),
+                ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get()
+        };
+        for (Block block : blocks) {
+            BlockPos pos = new BlockPos(1, 1, 1);
+            helper.setBlock(pos, block);
+            var drops = Block.getDrops(helper.getBlockState(pos), helper.getLevel(), helper.absolutePos(pos),
+                    null, null, new ItemStack(Items.IRON_PICKAXE));
+            helper.assertTrue(drops.size() == 1 && drops.getFirst().is(block.asItem()),
+                    "精铸工坊设备应掉落自身: " + block);
+        }
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void coolerPotFluidTank(GameTestHelper helper) {
+        BlockPos pos = new BlockPos(1, 1, 1);
+        helper.setBlock(pos, ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get());
+
+        WeaponWorkshopCoolerPotBlockEntity blockEntity = helper.getBlockEntity(pos);
+        helper.assertTrue(blockEntity.getFluidTank(0).getCapacity() == 1000,
+                "冷却锅流体容量应为 1000 mB");
+        helper.assertTrue(blockEntity.getItemHandler().getSlots() == 2,
+                "冷却锅应有两个物品槽");
         helper.succeed();
     }
 }

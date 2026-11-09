@@ -3,6 +3,14 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableMenu;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilMenu;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotMenu;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneMenu;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceMenu;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskMenu;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskBlockEntity;
@@ -49,6 +57,34 @@ public class ModMenus {
             {
                 BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
                 return new WeaponWorkshopCraftingTableMenu(windowId, inv, (WeaponWorkshopCraftingTableBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<WeaponWorkshopAnvilMenu>> WEAPON_WORKSHOP_ANVIL =
+            MENUS.register("weapon_workshop_anvil", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new WeaponWorkshopAnvilMenu(windowId, inv, (WeaponWorkshopAnvilBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<WeaponWorkshopCoolerPotMenu>> WEAPON_WORKSHOP_COOLER_POT =
+            MENUS.register("weapon_workshop_cooler_pot", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new WeaponWorkshopCoolerPotMenu(windowId, inv, (WeaponWorkshopCoolerPotBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<WeaponWorkshopGrindStoneMenu>> WEAPON_WORKSHOP_GRIND_STONE =
+            MENUS.register("weapon_workshop_grind_stone", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new WeaponWorkshopGrindStoneMenu(windowId, inv, (WeaponWorkshopGrindStoneBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<WeaponWorkshopBlastFurnaceMenu>> WEAPON_WORKSHOP_BLAST_FURNACE =
+            MENUS.register("weapon_workshop_blast_furnace", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new WeaponWorkshopBlastFurnaceMenu(windowId, inv, (WeaponWorkshopBlastFurnaceBlockEntity) blockEntity);
             }));
 
     public static final DeferredHolder<MenuType<?>, MenuType<DyedreamDeskMenu>> DYEDREAM_DESK =

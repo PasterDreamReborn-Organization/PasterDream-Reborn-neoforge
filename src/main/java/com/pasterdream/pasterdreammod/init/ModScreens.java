@@ -2,6 +2,10 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableScreen;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilScreen;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotScreen;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneScreen;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceScreen;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskScreen;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskScreen;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.windmoordesk.WindMoorDeskScreen;
@@ -34,6 +38,10 @@ public final class ModScreens {
     @SubscribeEvent
     public static void register(RegisterMenuScreensEvent event) {
         event.register(ModMenus.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), WeaponWorkshopCraftingTableScreen::new);
+        event.register(ModMenus.WEAPON_WORKSHOP_ANVIL.get(), WeaponWorkshopAnvilScreen::new);
+        event.register(ModMenus.WEAPON_WORKSHOP_COOLER_POT.get(), WeaponWorkshopCoolerPotScreen::new);
+        event.register(ModMenus.WEAPON_WORKSHOP_GRIND_STONE.get(), WeaponWorkshopGrindStoneScreen::new);
+        event.register(ModMenus.WEAPON_WORKSHOP_BLAST_FURNACE.get(), WeaponWorkshopBlastFurnaceScreen::new);
         event.register(ModMenus.DYEDREAM_DESK.get(), DyedreamDeskScreen::new);
         event.register(ModMenus.SHADOW_DESK.get(), ShadowDeskScreen::new);
         event.register(ModMenus.WIND_MOOR_DESK.get(), WindMoorDeskScreen::new);

@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombB
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestBlockEntityRenderer;
@@ -30,6 +31,7 @@ public final class ModBlockEntityRenderer {
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_HAND_TRAP.get(), ShadowHandTrapTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.LIFE_CRYSTAL.get(), LifeCrystalBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.CLAYPAN.get(), ClaypanBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.WEAPON_WORKSHOP_COOLER_POT.get(), WeaponWorkshopCoolerPotBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.DREAM_CAULDRON.get(), DreamCauldronBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.DREAM_ACCUMULATOR.get(), DreamAccumulatorBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_CHEST.get(), ShadowChestBlockEntityRenderer::new);

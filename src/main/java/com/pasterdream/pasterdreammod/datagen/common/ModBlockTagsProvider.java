@@ -228,6 +228,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.LOST_SWORD_TOMB.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.LIFE_CRYSTAL.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_ANVIL.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_HAMMER.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.DREAM_CAULDRON.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.DREAM_ACCUMULATOR.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.SHADOW_BLAST_FURNACE.get());

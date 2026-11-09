@@ -24,6 +24,11 @@ import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapB
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.hammer.WeaponWorkshopHammerBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlock;
 import com.pasterdream.pasterdreammod.world.block.PottedCropBlock;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskBlock;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskBlock;
@@ -352,6 +357,11 @@ public class ModBlocks {
                     .isRedstoneConductor((bs, br, bp) -> false)));
 
     public static final DeferredBlock<Block> WEAPON_WORKSHOP_CRAFTING_TABLE = BLOCKS.register("weapon_workshop_crafting_table", () -> new WeaponWorkshopCraftingTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.ANVIL).strength(2f, 10f).requiresCorrectToolForDrops().noOcclusion()));
+    public static final DeferredBlock<Block> WEAPON_WORKSHOP_ANVIL = BLOCKS.register("weapon_workshop_anvil", () -> new WeaponWorkshopAnvilBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)));
+    public static final DeferredBlock<Block> WEAPON_WORKSHOP_COOLER_POT = BLOCKS.register("weapon_workshop_cooler_pot", () -> new WeaponWorkshopCoolerPotBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)));
+    public static final DeferredBlock<Block> WEAPON_WORKSHOP_HAMMER = BLOCKS.register("weapon_workshop_hammer", () -> new WeaponWorkshopHammerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)));
+    public static final DeferredBlock<Block> WEAPON_WORKSHOP_GRIND_STONE = BLOCKS.register("weapon_workshop_grind_stone", () -> new WeaponWorkshopGrindStoneBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GRINDSTONE).noOcclusion()));
+    public static final DeferredBlock<Block> WEAPON_WORKSHOP_BLAST_FURNACE = BLOCKS.register("weapon_workshop_blast_furnace", () -> new WeaponWorkshopBlastFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).noOcclusion()));
     public static final DeferredBlock<Block> DYEDREAM_DESK = BLOCKS.register("dyedream_desk", () -> new DyedreamDeskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1F).requiresCorrectToolForDrops().noOcclusion()));
     public static final DeferredBlock<Block> SHADOW_DESK = BLOCKS.register("shadow_desk", () -> new ShadowDeskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1F).requiresCorrectToolForDrops().noOcclusion()));
     public static final DeferredBlock<Block> WIND_MOOR_DESK = BLOCKS.register("wind_moor_desk", () -> new WindMoorDeskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1F).requiresCorrectToolForDrops().noOcclusion()));

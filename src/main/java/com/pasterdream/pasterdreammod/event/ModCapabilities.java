@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagInventoryCapability;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlockEntity;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarDataHandler;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarInventory;
 import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.GenericContainerFluidHandler;
@@ -32,6 +33,34 @@ public final class ModCapabilities
                 ModItems.ELIXIR_BOTTLE.get());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_CRAFTING_TABLE.get(),
                 (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_ANVIL.get(),
+                (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_GRIND_STONE.get(),
+                (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_COOLER_POT.get(),
+                (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_COOLER_POT.get(),
+                (blockEntity, direction) -> blockEntity.getFluidTank(0));
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_BLAST_FURNACE.get(),
+                (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_BLAST_FURNACE.get(),
+                (blockEntity, direction) -> blockEntity.getFluidTank(0));
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_BLAST_FURNACE_ADDON.get(),
+                (blockEntity, direction) ->
+                {
+                    WeaponWorkshopBlastFurnaceBlockEntity main = blockEntity.getMainBlockEntity();
+                    if (main == null)
+                    {
+                        return null;
+                    }
+                    return direction == null ? main.getItemHandler() : main.getExternalHandler();
+                });
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.WEAPON_WORKSHOP_BLAST_FURNACE_ADDON.get(),
+                (blockEntity, direction) ->
+                {
+                    WeaponWorkshopBlastFurnaceBlockEntity main = blockEntity.getMainBlockEntity();
+                    return main == null ? null : main.getFluidTank(0);
+                });
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.DYEDREAM_DESK.get(),
                 (blockEntity, direction) -> blockEntity.getItemHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.SHADOW_DESK.get(),
