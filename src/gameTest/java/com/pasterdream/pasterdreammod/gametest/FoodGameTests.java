@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
@@ -63,5 +64,19 @@ public class FoodGameTests {
         ModItems.GALAXY_JELLY.get().finishUsingItem(new ItemStack(ModItems.GALAXY_JELLY.get()), helper.getLevel(), player);
         helper.assertTrue(player.hasEffect(MobEffects.SLOW_FALLING), "风行者强化弹射同样应给予缓降");
         helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void goldenrodTeaRemovesHungerAndNausea(GameTestHelper helper) {
+        Zombie zombie = helper.spawn(EntityType.ZOMBIE, new BlockPos(1, 1, 1));
+        zombie.addEffect(new MobEffectInstance(ModEffects.GOLDENROD_TEA, 200, 0));
+        zombie.addEffect(new MobEffectInstance(MobEffects.HUNGER, 200, 0));
+        zombie.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
+
+        helper.runAfterDelay(15, () -> {
+            helper.assertFalse(zombie.hasEffect(MobEffects.HUNGER), "秋麒麟茶效果应移除饥饿");
+            helper.assertFalse(zombie.hasEffect(MobEffects.CONFUSION), "秋麒麟茶效果应移除反胃");
+            helper.succeed();
+        });
     }
 }

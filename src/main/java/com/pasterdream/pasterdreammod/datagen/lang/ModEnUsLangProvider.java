@@ -456,8 +456,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.精铸工坊", "Weapon Workshop");
         add("book.pasterdream.title.暗影高炉", "Shadow Blast Furnace");
         add("tooltip.pasterdream.dreamAccumulator", "§dDream Accumulator");
-        add("biome_tag.pasterdream.dyedream_world_biome", "Dyedream World Biomes");
-        add("jei.pasterdream.dream_accumulator.biome_count", "%s biomes");
         add("biome.pasterdream.dyedream_frozen_ocean", "Dyedream Frozen Ocean");
         add("biome.pasterdream.dyedream_cold_ocean", "Dyedream Cold Ocean");
         add("biome.pasterdream.dyedream_ocean", "Dyedream Ocean");

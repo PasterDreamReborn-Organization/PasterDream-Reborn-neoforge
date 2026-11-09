@@ -5,6 +5,19 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 084：修复秋麒麟茶效果未生效（2026-11-09）
+
+- 修复 `goldenrod_tea` 效果只有构造器、没有 tick 逻辑导致饮用秋麒麟茶后不移除饥饿与反胃的问题。
+- 按上游行为在 `GoldenrodTeaEffect` 覆写 `shouldApplyEffectTickThisTick` 与 `applyEffectTick`：每 10 tick 移除饥饿与反胃；1.21.1 已将该钩子暴露为可覆写方法，未引入 `MobEffect` 全局 Mixin。
+- 新增 GameTest `goldenrodTeaRemovesHungerAndNausea`；`build` 通过，`runGameTestServer` 167/167 通过。
+
+### 批次 083：定向同步 #1293 蓄梦池 JEI 群系滚动显示（2026-11-09）
+
+- 同步上游 #1293：新增无阴影文本纵向滚动绘制，蓄梦池 JEI 将群系条件从「标签名 + 群系数量」恢复为逐群系列表，并在固定视口内自动上下滚动显示。
+- 纵向滚动为 #1293 新增方法，按来源方法体复制到现有 `NonShadowCenteredString`；#1293 对 #1292 横向滚动方法的重命名及未迁移界面调用点不适用，本次未改动。
+- 复用批次 073 已补的 16 个 `biome.pasterdream.dyedream_*` 名称，移除不再使用的 `biome_tag.pasterdream.dyedream_world_biome` 与 `jei.pasterdream.dream_accumulator.biome_count` 语言键。
+- `runData` 写入 2 个语言文件，`build` 通过；JEI 滚动视觉待客户端游戏内验收。
+
 ### 批次 082：主世界地物与结构补全（2026-11-09，T16 部分）
 
 - 补全主世界 12 种地物：四叶草、秋麒麟、魔星兰、锦葵、洋桔梗、燕麦、黑麦、苍白雪莲、棉花、丛林孢子囊、芦苇与小石子，保留来源随机簇参数与稀有度；按群系标签注入 `neoforge:add_features`。
