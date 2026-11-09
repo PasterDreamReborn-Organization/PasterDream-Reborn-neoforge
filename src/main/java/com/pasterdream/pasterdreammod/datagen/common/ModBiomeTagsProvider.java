@@ -21,6 +21,75 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         tag(ModBiomeTags.CAN_SOUL_ORE_SPAWN_BIOME).add(Biomes.SOUL_SAND_VALLEY);
 
+        // ===== 主世界地物群系标签 =====
+        tag(ModBiomeTags.CAN_WHITE_COROLLA_SPAWN_BIOME)
+                .add(Biomes.SNOWY_SLOPES)
+                .add(Biomes.JAGGED_PEAKS)
+                .add(Biomes.FROZEN_PEAKS);
+        tag(ModBiomeTags.CAN_FLOWER_FIELD_SPAWN_BIOME)
+                .add(Biomes.FLOWER_FOREST)
+                .add(Biomes.PLAINS)
+                .add(Biomes.JUNGLE);
+        tag(ModBiomeTags.CAN_REED_SPAWN_BIOME)
+                .add(Biomes.SWAMP)
+                .add(Biomes.MANGROVE_SWAMP);
+        tag(ModBiomeTags.CAN_RYE_SPAWN_BIOME)
+                .add(Biomes.WINDSWEPT_HILLS)
+                .add(Biomes.PLAINS)
+                .add(Biomes.WINDSWEPT_FOREST)
+                .add(Biomes.MEADOW);
+        tag(ModBiomeTags.CAN_COTTON_SPAWN_BIOME)
+                .add(Biomes.WINDSWEPT_HILLS)
+                .add(Biomes.PLAINS)
+                .add(Biomes.WINDSWEPT_FOREST)
+                .add(Biomes.MEADOW)
+                .add(Biomes.TAIGA)
+                .add(Biomes.DARK_FOREST);
+        tag(ModBiomeTags.CAN_GOLDENROD_SPAWN_BIOME)
+                .add(Biomes.PLAINS)
+                .add(Biomes.JUNGLE)
+                .add(Biomes.FLOWER_FOREST)
+                .add(Biomes.BIRCH_FOREST);
+        tag(ModBiomeTags.CAN_FOURLEAF_CLOVER_SPAWN_BIOME)
+                .add(Biomes.PLAINS);
+        tag(ModBiomeTags.CAN_OATS_SPAWN_BIOME)
+                .add(Biomes.WINDSWEPT_HILLS)
+                .add(Biomes.PLAINS)
+                .add(Biomes.WINDSWEPT_FOREST)
+                .add(Biomes.MEADOW);
+        tag(ModBiomeTags.CAN_PEBBLE_SPAWN_BIOME)
+                .add(Biomes.PLAINS)
+                .add(Biomes.JUNGLE)
+                .add(Biomes.DESERT)
+                .add(Biomes.TAIGA)
+                .add(Biomes.SAVANNA)
+                .add(Biomes.BEACH)
+                .add(Biomes.BADLANDS)
+                .add(Biomes.WINDSWEPT_HILLS)
+                .add(Biomes.FOREST);
+
+        // ===== 主世界结构群系标签 =====
+        tag(ModBiomeTags.CAN_FISHERMAN_HUT_SPAWN_BIOME)
+                .add(Biomes.RIVER)
+                .add(Biomes.BEACH)
+                .add(Biomes.SWAMP)
+                .add(Biomes.MANGROVE_SWAMP)
+                .add(Biomes.PLAINS)
+                .add(Biomes.FOREST);
+        tag(ModBiomeTags.CAN_CAMPSITE_SPAWN_BIOME)
+                .add(Biomes.PLAINS)
+                .add(Biomes.FOREST)
+                .add(Biomes.TAIGA)
+                .add(Biomes.CHERRY_GROVE)
+                .add(Biomes.SAVANNA)
+                .add(Biomes.MEADOW)
+                .add(Biomes.FLOWER_FOREST)
+                .add(Biomes.JUNGLE)
+                .add(Biomes.SPARSE_JUNGLE)
+                .add(Biomes.DARK_FOREST);
+        tag(ModBiomeTags.CAN_DESERT_FORTRESS_SPAWN_BIOME)
+                .add(Biomes.DESERT);
+
         tag(ModBiomeTags.DYEDREAM_FISHING_BIOMES)
                 .add(ModBiomes.DYEDREAM_FROZEN_OCEAN)
                 .add(ModBiomes.DYEDREAM_COLD_OCEAN)

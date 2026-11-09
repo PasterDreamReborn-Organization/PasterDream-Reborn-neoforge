@@ -134,6 +134,20 @@ public final class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> LINHT_FLOWER_PATCH = key("linht_flower_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWER_FIELD_FLOWERS = key("flower_field_flowers");
 
+    // ===== 主世界植被 / 小石子 =====
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FOURLEAF_CLOVER_PATCH = key("fourleaf_clover_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GOLDENROD_PATCH = key("goldenrod_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FERRARIA_CRISPA_PATCH = key("ferraria_crispa_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MALVA_SINENSIS_CAVAN_PATCH = key("malva_sinensis_cavan_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> EUSTOMA_PATCH = key("eustoma_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OATS_PATCH = key("oats_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RYE_PATCH = key("rye_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WHITE_COROLLA_CROP_PATCH = key("white_corolla_crop_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> COTTON_CROP_PATCH = key("cotton_crop_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> JUNGLE_SPORANGIUM_PATCH = key("jungle_sporangium_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> REED_PATCH = key("reed_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PEBBLE_PATCH = key("pebble_patch");
+
     // ===== 方解石笋 =====
     public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_STALICRIPE = key("calcite_stalicripe");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_CALCITE_STALICRIPE = key("small_calcite_stalicripe");
@@ -417,6 +431,51 @@ public final class ModConfiguredFeatures {
                                                         ModBlocks.CLOUD_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1),
                                                         ModBlocks.LINHT_FLOWER.get().defaultBlockState(),
                                                         ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get().defaultBlockState())))))));
+
+        // ===== 主世界植被 / 小石子 =====
+        context.register(FOURLEAF_CLOVER_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(24, 8, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.FOURLEAF_CLOVER.get())))));
+        context.register(GOLDENROD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(12, 6, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.GOLDENROD.get())))));
+        context.register(FERRARIA_CRISPA_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(12, 6, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.FERRARIA_CRISPA.get())))));
+        context.register(MALVA_SINENSIS_CAVAN_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(12, 6, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.MALVA_SINENSIS_CAVAN.get())))));
+        context.register(EUSTOMA_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(12, 6, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.EUSTOMA.get())))));
+        context.register(OATS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(12, 6, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.OATS.get())))));
+        context.register(RYE_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(12, 6, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.RYE.get())))));
+        context.register(WHITE_COROLLA_CROP_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(8, 4, 1,
+                        simpleBlockInAir(BlockStateProvider.simple(
+                                ModBlocks.WHITE_COROLLA_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1))))));
+        context.register(COTTON_CROP_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(12, 6, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(
+                                ModBlocks.COTTON_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1))))));
+        context.register(JUNGLE_SPORANGIUM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(12, 6, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.JUNGLE_SPORANGIUM.get())))));
+        context.register(REED_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(24, 6, 5,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.REED.get())))));
+        context.register(PEBBLE_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(6, 7, 3,
+                        PlacementUtils.inlinePlaced(
+                                Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PEBBLE.get())),
+                                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                                        BlockPredicate.matchesBlocks(Blocks.AIR),
+                                        BlockPredicate.solid(Direction.DOWN.getNormal())))))));
 
         // ========= 灯影之下 =========
         // 阴影真菌树 — 骨粉催熟+自然生成，诡异菌形态

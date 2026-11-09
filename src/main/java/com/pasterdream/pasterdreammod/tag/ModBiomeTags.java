@@ -9,6 +9,20 @@ import net.minecraft.world.level.biome.Biome;
 public final class ModBiomeTags {
     public static final TagKey<Biome> CAN_SOUL_ORE_SPAWN_BIOME = create("can_soul_ore_spawn_biome");
 
+    // ===== 主世界地物 / 结构群系标签 =====
+    public static final TagKey<Biome> CAN_WHITE_COROLLA_SPAWN_BIOME = create("can_white_corolla_spawn_biome");
+    public static final TagKey<Biome> CAN_FLOWER_FIELD_SPAWN_BIOME = create("can_flower_field_spawn_biome");
+    public static final TagKey<Biome> CAN_REED_SPAWN_BIOME = create("can_reed_spawn_biome");
+    public static final TagKey<Biome> CAN_RYE_SPAWN_BIOME = create("can_rye_spawn_biome");
+    public static final TagKey<Biome> CAN_COTTON_SPAWN_BIOME = create("can_cotton_spawn_biome");
+    public static final TagKey<Biome> CAN_GOLDENROD_SPAWN_BIOME = create("can_goldenrod_spawn_biome");
+    public static final TagKey<Biome> CAN_FOURLEAF_CLOVER_SPAWN_BIOME = create("can_fourleaf_clover_spawn_biome");
+    public static final TagKey<Biome> CAN_OATS_SPAWN_BIOME = create("can_oats_spawn_biome");
+    public static final TagKey<Biome> CAN_PEBBLE_SPAWN_BIOME = create("can_pebble_spawn_biome");
+    public static final TagKey<Biome> CAN_FISHERMAN_HUT_SPAWN_BIOME = create("can_fisherman_hut_spawn_biome");
+    public static final TagKey<Biome> CAN_CAMPSITE_SPAWN_BIOME = create("can_campsite_spawn_biome");
+    public static final TagKey<Biome> CAN_DESERT_FORTRESS_SPAWN_BIOME = create("can_desert_fortress_spawn_biome");
+
     public static final TagKey<Biome> DYEDREAM_FISHING_BIOMES = create("dyedream_fishing_biomes");
 
     public static final TagKey<Biome> DYEDREAM_WORLD_BIOME = create("dyedream_world_biome");

@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 082：主世界地物与结构补全（2026-11-09，T16 部分）
+
+- 补全主世界 12 种地物：四叶草、秋麒麟、魔星兰、锦葵、洋桔梗、燕麦、黑麦、苍白雪莲、棉花、丛林孢子囊、芦苇与小石子，保留来源随机簇参数与稀有度；按群系标签注入 `neoforge:add_features`。
+- 补全主世界结构：橡木/云杉渔夫小屋、露营地、沙漠小屋与沙漠要塞，含 structure/structure_set/template_pool、6 个 NBT 模板与来源 spacing/separation/salt；结构箱子接入 4 条来源权重的战利品表。
+- 新增 12 个主世界群系标签；1.21 适配 `EnchantWithLevelsFunction`、`TURTLE_SCUTE`，并把沙漠要塞模板中的 `grass` 对齐为 `short_grass`。
+- 结构 NBT 物品栈改为 1.21 组件格式：沙漠小屋《探求秘辛》笔记写入 `dream_note_content` 组件（修复 `null - null`），渔夫村民交易与要塞弩的 `Count`/`tag` 同步为 `count`/`components`；补 5 个结构的中英翻译键。
+- 修复失落剑冢不生成：模板 NBT 从复数 `data/pasterdream/structures/` 移到 1.21 单数 `data/pasterdream/structure/`；GameTest 增加其结构、结构集与模板加载断言。
+- `runData` 写入 54 个文件（含补结构翻译键的 2 个语言文件），`build` 通过，`runGameTestServer` 166/166 通过（新增地物注册、结构注册、模板加载与 4 张结构战利品表加载断言）。真实世界分布与结构视觉待游戏内验收。
+
 ### 批次 081：染梦裂隙与维度进入流程（2026-11-09，T17 部分）
 
 - 迁入 `dyedream_crack` 染梦裂隙方块与物品：保留可朝向形状、发光 15、随机 tick、粒子/音效和不可破坏属性；补主世界裂隙空岛结构模板、structure/structure_set/template_pool 与双语结构名。
@@ -130,7 +139,7 @@
 - 三本书桌与野餐篮、浸影宝盒、风泊板条筐 GUI 显式启用透明混合，补齐遗漏的风泊板条筐 GUI 纹理，避免半透明边缘渲染成黑色。
 - 迁入来源 `BlockElementMixin`，放宽 1.21 方块模型旋转角/坐标限制，修复野餐篮等 Blockbench 模型因任意角度导致的模型加载失败。
 - 园艺钳生成已迁移树叶的剪取战利品表，眠椰树叶与风泊鹦鹉生成池因前置未迁移暂缺；时之沙跳过融梦水晶箱冷却的交互待水晶箱迁移，昼夜切换与冷却完整保留。
-- `runData` 写入 52 个文件，`build` 通过，`runGameTestServer` 151/151 通过（新增 2 项设备容器与园艺钳测试）；客户端 GUI/渲染/音效、实际昼夜切换与多人行为待游戏内验收。
+- `runData` 写入 54 个文件（含补结构翻译键的 2 个语言文件），`build` 通过，`runGameTestServer` 151/151 通过（新增 2 项设备容器与园艺钳测试）；客户端 GUI/渲染/音效、实际昼夜切换与多人行为待游戏内验收。
 
 ### 批次 066：笔记碎片与音乐唱片搬运（2026-11-08，T05/T21 部分）
 
