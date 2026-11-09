@@ -34,6 +34,25 @@ public class GUIBackGroundRender
     public static ResourceLocation SAN_CHANGE_UP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/san/san_change_up.png");
     public static ResourceLocation SAN_CHANGE_DOWN = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/san/san_change_down.png");
 
+    public static ResourceLocation LEFT_BUTTON = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/arrow_button/left_button.png");
+    public static ResourceLocation LEFT_BUTTON_HOVERED = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/arrow_button/left_button_hover.png");
+    public static ResourceLocation RIGHT_BUTTON = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/arrow_button/right_button.png");
+    public static ResourceLocation RIGHT_BUTTON_HOVERED = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/arrow_button/right_button_hover.png");
+
+    public static ResourceLocation EMPTY_NOTES = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/empty_notes.png");
+    public static ResourceLocation DREAM_NOTES_BOOK_DYEDREAM_WORLD_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book_dyedream_world.png");
+    public static ResourceLocation DREAM_NOTES_BOOK_OVERWORLD_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book_overworld.png");
+    public static ResourceLocation DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book_lamp_shadow_world.png");
+    public static ResourceLocation SHADOW_DYED_DREAM_NOTES_BOOK_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/shadow_dyed_dream_notes_book.png");
+    public static ResourceLocation DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book_wind_journey_world.png");
+
+    public static ResourceLocation USE_GUIDE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "use_guide");
+    public static ResourceLocation DREAM_NOTES_BOOK_OVERWORLD = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_notes_book_overworld");
+    public static ResourceLocation DREAM_NOTES_BOOK_DYEDREAM_WORLD = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_notes_book_dyedream_world");
+    public static ResourceLocation DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_notes_book_lamp_shadow_world");
+    public static ResourceLocation SHADOW_DYED_DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dyed_dream_notes_book_lamp_shadow_world");
+    public static ResourceLocation DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_notes_book_wind_journey_world");
+
     public static final ResourceLocation MINECRAFT_GUI_LEFT_TOP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/left_top.png");
     public static final ResourceLocation MINECRAFT_GUI_TOP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_top.png");
     public static final ResourceLocation MINECRAFT_GUI_RIGHT_TOP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/right_top.png");
@@ -215,6 +234,26 @@ public class GUIBackGroundRender
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+    }
+
+    public static void rendLeftButton(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(LEFT_BUTTON, x, y, 0, 0, 22, 15, 22, 15);
+    }
+
+    public static void rendLeftButtonHovered(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(LEFT_BUTTON_HOVERED, x, y, 0, 0, 22, 15, 22, 15);
+    }
+
+    public static void rendRightButton(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(RIGHT_BUTTON, x, y, 0, 0, 22, 15, 22, 15);
+    }
+
+    public static void rendRightButtonHovered(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(RIGHT_BUTTON_HOVERED, x, y, 0, 0, 22, 15, 22, 15);
     }
 
 }

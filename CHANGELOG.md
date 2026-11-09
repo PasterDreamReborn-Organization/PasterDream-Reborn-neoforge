@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 078：寻梦者笔记书系统（2026-11-09，T05-A 部分）
+
+- 迁入 62 本寻梦者笔记书：`dream_notes_book` 物品、内容/作者/正文注册表、按宽度自动换行与按高度分页的阅读界面、左右箭头与滚轮翻页，以及 `dream_notes_book_*` 物品材质覆写。
+- 新增 `DREAM_NOTE_CONTENT` 字符串组件承载笔记内容，替代来源 NBT `content`；新增 `read_dream_note` 进度触发器与维度阅读进度记录。
+- 创造模式物品栏新增 `pasterdream_dream_notes_tab`，按来源顺序列出全部笔记书；双语标题与正文随 Provider 生成。
+- 修复 1.21 中 `Screen#render` 自动调用 `renderBackground` 导致的二次背景模糊：阅读界面改为手动渲染控件，书页与文字保持清晰。
+- 维度任务系统、暮影之灯提示、剧情引导物品与蓝图尚未迁入，相关入口按最小适配略去；客户端阅读与模型切换待游戏内验收。
+- `runData` 更新物品模型与双语语言；`build` 通过；`runGameTestServer` 161/161 通过。
+
 ### 批次 077：钓鱼系统、深海秘宝与占星者的祈愿（2026-11-09，T17 部分）
 
 - 迁入 `deep_sea_treasure`、`dyedream_deep_sea_treasure`、`shadow_deep_sea_treasure` 与 `star_wish_rod`：右键展开对应宝箱战利品表，super 变体改用 `deep_treasure_super` 数据组件并显示附魔光效；创造模式使用深海秘宝不消耗物品。

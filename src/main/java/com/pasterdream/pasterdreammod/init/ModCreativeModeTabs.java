@@ -9,6 +9,8 @@ import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleWithFluidNBTBuilder;
+import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookRegistry;
+import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -782,6 +784,19 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TURNBACK_CLOAK.get());
                         output.accept(ModItems.EVASION_CLOAK.get());
                         output.accept(ModItems.SLIVER_BELL.get());
+                    })
+                    .build());
+
+    // ===== 笔记 =====
+    // 来源: pasterdream_dream_notes_tab（当前只迁入寻梦者笔记书；剧情引导物品与蓝图尚未迁入）
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_DREAM_NOTES_TAB =
+            CREATIVE_MODE_TABS.register("pasterdream_dream_notes_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_dream_notes_tab"))
+                    .icon(() -> DreamNotesBookWithNBTToCreativeModeTab.buildNBT("花园解密:迷梦冶梦莲"))
+                    .displayItems((parameters, output) -> {
+                        for (String content : DreamNotesBookRegistry.getAllContentNames()) {
+                            output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT(content));
+                        }
                     })
                     .build());
 
