@@ -144,6 +144,20 @@ public class DreamAccumulatorBlockEntity extends BlockEntity implements MenuProv
 
         if (maxProgress > 0)
         {
+            DreamAccumulatorRecipeMatchedData currentRecipe = DreamAccumulatorRecipeMatch.matches(new DreamAccumulatorRecipeMatchedData(level.getBiome(worldPosition), 0, itemHandler.getStackInSlot(1), 0, itemHandler.getStackInSlot(0)), level.getRecipeManager().getAllRecipesFor(ModRecipes.DREAM_ACCUMULATOR.get()).stream().map(RecipeHolder::value).toList());
+            if (currentRecipe == null || currentRecipe.time() != maxProgress
+                    || !ItemStack.isSameItemSameComponents(currentRecipe.output(), output)
+                    || currentRecipe.output().getCount() != output.getCount())
+            {
+                progress = 0;
+                maxProgress = 0;
+                output = ItemStack.EMPTY;
+                catalyst = ItemStack.EMPTY;
+                catalystMultiplier = 0;
+                setChanged();
+                return;
+            }
+
             if(!ItemStack.isSameItem(itemHandler.getStackInSlot(1), legacyCatalyst))
             {
                 DreamAccumulatorRecipeMatchedData matchedRecipe = DreamAccumulatorRecipeMatch.matches(new DreamAccumulatorRecipeMatchedData(level.getBiome(worldPosition), 0, itemHandler.getStackInSlot(1), 0, itemHandler.getStackInSlot(0)), level.getRecipeManager().getAllRecipesFor(ModRecipes.DREAM_ACCUMULATOR.get()).stream().map(RecipeHolder::value).toList());

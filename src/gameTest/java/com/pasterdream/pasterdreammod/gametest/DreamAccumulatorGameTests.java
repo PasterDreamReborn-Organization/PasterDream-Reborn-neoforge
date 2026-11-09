@@ -5,12 +5,16 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.recipe.dreamaccumulatorrecipe.DreamAccumulatorRecipeProcessor;
+import com.pasterdream.pasterdreammod.tag.ModBiomeTags;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorRecipe;
+import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -86,22 +90,67 @@ public class DreamAccumulatorGameTests
     }
 
     @GameTest(template = "empty")
-    public static void catalystDurabilityConsumed(GameTestHelper helper)
+    public static void outsideRecipeBiomeDoesNotProduce(GameTestHelper helper)
     {
         BlockPos pos = new BlockPos(1, 1, 1);
         helper.setBlock(pos, ModBlocks.DREAM_ACCUMULATOR.get());
         DreamAccumulatorBlockEntity accumulator = helper.getBlockEntity(pos);
         ItemStack sorbent = new ItemStack(ModItems.SORBENT.get());
         accumulator.getItemHandler().setStackInSlot(1, sorbent);
+        helper.assertTrue(!helper.getLevel().getBiome(helper.absolutePos(pos)).is(ModBiomeTags.DYEDREAM_WORLD_BIOME),
+                "测试方块必须位于配方不允许的群系");
 
         for (int i = 0; i < 10; i++)
         {
             accumulator.tick();
         }
 
-        helper.assertTrue(accumulator.getMaxProgress() == 6000, "蓄梦池应匹配无群系限制的测试配方");
+        helper.assertTrue(accumulator.getMaxProgress() == 0 && accumulator.getProgress() == 0,
+                "群系不符合配方时不得开始蓄梦");
+        helper.assertTrue(accumulator.getItemHandler().getStackInSlot(0).isEmpty(),
+                "群系不符合配方时不得产出");
+        helper.assertTrue(sorbent.getDamageValue() == 0,
+                "群系不符合配方时不得消耗吸附剂耐久");
+
+        CompoundTag saved = accumulator.getUpdateTag(helper.getLevel().registryAccess());
+        saved.putDouble("Progress", 5999);
+        saved.putInt("MaxProgress", 6000);
+        saved.put("Output", new ItemStack(ModItems.DYEDREAM_DUST_PIECE.get()).save(
+                helper.getLevel().registryAccess(), new CompoundTag()));
+        accumulator.handleUpdateTag(saved, helper.getLevel().registryAccess());
+        accumulator.tick();
+        helper.assertTrue(accumulator.getMaxProgress() == 0 && accumulator.getProgress() == 0
+                        && accumulator.getItemHandler().getStackInSlot(0).isEmpty(),
+                "已缓存的蓄梦进度不得在不符合配方的群系中完成产出");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void catalystDurabilityConsumedInRecipeBiome(GameTestHelper helper)
+    {
+        BlockPos pos = new BlockPos(1, 1, 1);
+        BlockPos worldPos = helper.absolutePos(pos);
+        var level = helper.getLevel();
+        var originalBiome = level.getBiome(worldPos);
+        var dyedreamBiome = level.registryAccess().lookupOrThrow(Registries.BIOME).getOrThrow(ModBiomes.DYEDREAM_PLAINS);
+        var section = level.getChunkAt(worldPos).getSection(level.getSectionIndex(worldPos.getY()));
+        section.fillBiomesFromNoise((x, y, z, sampler) -> dyedreamBiome,
+                level.getChunkSource().randomState().sampler(), 0, 0, 0);
+
+        helper.setBlock(pos, ModBlocks.DREAM_ACCUMULATOR.get());
+        DreamAccumulatorBlockEntity accumulator = helper.getBlockEntity(pos);
+        ItemStack sorbent = new ItemStack(ModItems.SORBENT.get());
+        accumulator.getItemHandler().setStackInSlot(1, sorbent);
+        for (int i = 0; i < 10; i++)
+        {
+            accumulator.tick();
+        }
+
+        helper.assertTrue(accumulator.getMaxProgress() == 6000, "染梦群系中蓄梦池应匹配正式配方");
         helper.assertTrue(sorbent.getDamageValue() == 10,
                 "吸附剂每 tick 应消耗 1 点耐久，实际 " + sorbent.getDamageValue());
+        section.fillBiomesFromNoise((x, y, z, sampler) -> originalBiome,
+                level.getChunkSource().randomState().sampler(), 0, 0, 0);
         helper.succeed();
     }
 }

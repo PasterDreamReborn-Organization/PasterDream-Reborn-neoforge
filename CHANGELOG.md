@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 087：修复蓄梦池跨群系产出（2026-11-10）
+
+- 移除开发运行时会加载的无群系限制 GameTest 配方，避免它与正式染梦粉尘碎片配方产生相同产物并绕过群系条件。
+- 蓄梦池处理已缓存进度时重新匹配当前群系与配方；原配方失效时清除进度，不再继续消耗催化剂或产出。
+- GameTest 验证错误群系无法启动加工、消耗吸附剂，以及无法利用已缓存进度完成产出；保留允许群系中吸附剂每 tick 扣耐久的测试。`runData` 写入 0 个文件，`build` 通过，`runGameTestServer` 168/168 通过；真实染梦群系与客户端行为待游戏内验收。
+
 ### 批次 086：补全染梦世界与原版进度页可搬运进度（2026-11-09）
 
 - 补全染梦世界标签页缺口的可搬运进度：`story/create_pliers`（太陽とレインボ一）、`story/dream_accumulator`（尘埃落定）、`story/dyedream_broken_note`（染梦残页）与三条纯逻辑笔记进度 `research_on_sweet_dream_world`、`essence_of_dream_world`、`pale_snow_lotus_and_boneneeedle`。
