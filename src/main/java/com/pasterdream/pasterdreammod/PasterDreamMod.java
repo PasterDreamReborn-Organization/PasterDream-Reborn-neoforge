@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateMan
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import com.mojang.logging.LogUtils;
 import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
+import com.pasterdream.pasterdreammod.event.ModVillagerTrades;
 import com.pasterdream.pasterdreammod.event.ModMobDrops;
 import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
 import com.pasterdream.pasterdreammod.init.ModAttachments;
@@ -122,6 +123,7 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(VanillaFoodSanHandler::onItemTooltip);
         NeoForge.EVENT_BUS.addListener(AddToolTip::addTooltip);
         NeoForge.EVENT_BUS.addListener(ModMobDrops::onLivingDrops);
+        NeoForge.EVENT_BUS.addListener(ModVillagerTrades::onVillagerTrades);
         NeoForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerTick);

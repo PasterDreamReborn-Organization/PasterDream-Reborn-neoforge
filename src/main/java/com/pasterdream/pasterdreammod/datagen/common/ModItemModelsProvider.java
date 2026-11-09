@@ -52,6 +52,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.LAMP_SHADOW_BROKEN_NOTE.get());
         basicItem(ModItems.DYEDREAM_BROKEN_NOTE.get());
         basicItem(ModItems.DREAM_NOTES_BOOK.get());
+        basicItem(ModItems.BLUE_PRINT.get());
         basicItem(ModItems.TITANIUM_UPGRADE.get());
         basicItem(ModItems.SCULK_UPGRADE.get());
         basicItem(ModItems.DYEDREAM_UPGRADE.get());

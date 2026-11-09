@@ -339,5 +339,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModBlockTags.STORAGE_BLOCKS_CONGEAL_WIND, ModItemTags.STORAGE_BLOCKS_CONGEAL_WIND);
         copy(ModBlockTags.STORAGE_BLOCKS_WIND_RUNNER_CRYSTAL, ModItemTags.STORAGE_BLOCKS_WIND_RUNNER_CRYSTAL);
 
+        tag(TagKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dream_notes")))
+                .add(ModItems.BLUE_PRINT.get());
+
     }
 }
