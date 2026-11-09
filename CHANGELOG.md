@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 088：补全染梦侵染 JEI 信息页（2026-11-10）
+
+- 迁入上游染梦侵染 JEI 分类：10 条方块转换配方展示原料、裂隙图标与产物，染梦裂隙作为分类催化剂，并补中英双语分类名称。
+- 配方网络同步时把标签原料解析为具体方块列表传给客户端，避免联机 JEI 页面原料槽为空；不改动服务端侵染匹配、转换目标与数值。
+- `runData` 写入 2 个语言文件，`build` 通过，`runGameTestServer` 168/168 通过；JEI 实际界面与联机展示待客户端验收。
+
 ### 批次 087：修复蓄梦池跨群系产出（2026-11-10）
 
 - 移除开发运行时会加载的无群系限制 GameTest 配方，避免它与正式染梦粉尘碎片配方产生相同产物并绕过群系条件。

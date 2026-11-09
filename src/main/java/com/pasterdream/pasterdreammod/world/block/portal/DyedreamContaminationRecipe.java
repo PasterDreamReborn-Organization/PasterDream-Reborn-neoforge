@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.SnowyDirtBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 /**
  * 染梦污染配方：染梦传送门/裂隙方块周期 tick 时，把 {@code from}（方块或方块标签）转换为 {@code to} 方块状态。
@@ -36,12 +37,22 @@ public class DyedreamContaminationRecipe implements Recipe<RecipeInput> {
     @Nullable
     private final Block inputBlock;
     private final BlockState output;
+    /** 客户端 JEI 展示用：服务端同步时已把标签解析为具体方块列表。 */
+    @Nullable
+    private final List<Block> displayInputs;
 
     public DyedreamContaminationRecipe(@Nullable TagKey<Block> inputTag,
                                        @Nullable Block inputBlock, BlockState output) {
+        this(inputTag, inputBlock, output, null);
+    }
+
+    public DyedreamContaminationRecipe(@Nullable TagKey<Block> inputTag,
+                                       @Nullable Block inputBlock, BlockState output,
+                                       @Nullable List<Block> displayInputs) {
         this.inputTag = inputTag;
         this.inputBlock = inputBlock;
         this.output = output;
+        this.displayInputs = displayInputs;
     }
 
     @Nullable
@@ -52,6 +63,11 @@ public class DyedreamContaminationRecipe implements Recipe<RecipeInput> {
     @Nullable
     public Block getInputBlock() {
         return inputBlock;
+    }
+
+    @Nullable
+    public List<Block> getDisplayInputs() {
+        return displayInputs;
     }
 
     public BlockState getOutput() {
