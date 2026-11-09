@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 086：补全染梦世界与原版进度页可搬运进度（2026-11-09）
+
+- 补全染梦世界标签页缺口的可搬运进度：`story/create_pliers`（太陽とレインボ一）、`story/dream_accumulator`（尘埃落定）、`story/dyedream_broken_note`（染梦残页）与三条纯逻辑笔记进度 `research_on_sweet_dream_world`、`essence_of_dream_world`、`pale_snow_lotus_and_boneneeedle`。
+- `dream_accumulator` 按实际玩法改为首次打开蓄梦池即授予（新增 `open_dream_accumulator` 触发器），不再沿用来源已失效的读旧笔记条件；`dyedream_broken_note` 使用 `inventory_changed` + 新增 `has_advancement` 组合条件，保留 10 点经验与解锁 `dyedream_unknown_note` 配方奖励。
+- 补全原版页签进度：冒险页 10 条（被遗忘的剑冢、遗忘之剑、丛林之力、刀下亡魂、邻家有女初长成、新概念拔剑、物归原主、沙漠英灵、英灵之剑、遗志已成）、农牧业页 3 条（海洋之泪、深蓝之心、潮汐之神）、下界页 3 条（真金不怕火炼、炙热之剑、炼狱之火）。
+- 新增 `found_tomb`、`found_desert_fortress`、`new_standard_sword_drawing` 三个触发器及对应结构探测处理器；剑冢击碎时补触发「新概念拔剑」。
+- 未搬运：灯影/风之旅途/暗影分支（维度、`TWILIGHT_LANTERN` 或相关触发器未迁入）；`dyedream_unknown_note` 物品与配方本身仍未迁入，残页进度奖励会保留指向该配方。
+- `runData` 新增 22 个进度 JSON 并更新双语，`build` 通过，`runGameTestServer` 167/167 通过；结构探测与笔记触发待实际地形/客户端验收。
+
 ### 批次 085：梦境果汁与骨针系列（2026-11-09，T07 / T17 部分）
 
 - 迁入 `glass_jar_of_dream_juice` 梦境果汁物品与 `dream_juice` 存储流体：保留堆叠 8、24 tick 饮用、返还玻璃罐、90 秒美梦祈愿效果与入睡 60 tick 后进入染梦世界的传送；补玻璃罐 125 mB 容器映射。

@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.block.dreamaccumulator;
 
 import com.mojang.serialization.MapCodec;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -79,7 +80,11 @@ public class DreamAccumulatorBlock extends BaseEntityBlock
             BlockEntity blockEntity = level.getBlockEntity(blockPosition);
             if (blockEntity instanceof DreamAccumulatorBlockEntity dreamAccumulator)
             {
-                ((ServerPlayer) player).openMenu(dreamAccumulator, buf -> buf.writeBlockPos(blockPosition));
+                if (player instanceof ServerPlayer serverPlayer)
+                {
+                    serverPlayer.openMenu(dreamAccumulator, buf -> buf.writeBlockPos(blockPosition));
+                    ModCriteriaTriggers.OPEN_DREAM_ACCUMULATOR.get().trigger(serverPlayer);
+                }
                 level.playSound(null, blockPosition, ModSounds.DREAM_ACCUMULATOR.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             }
         }

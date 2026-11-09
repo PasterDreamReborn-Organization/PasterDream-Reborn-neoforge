@@ -1340,6 +1340,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_super_deep_sea_treasure.description", "获得更高级的海洋秘宝，你应该为此找到一个更强大的钓竿......");
         add("advancements.pasterdream.get_star_wish_rod.title", "鱼儿如浩空繁星");
         add("advancements.pasterdream.get_star_wish_rod.description", "获得占星者的祈愿，去寻求海中更诱人的宝藏吧。");
+        add("advancements.pasterdream.get_blue_dew.title", "海洋之泪");
+        add("advancements.pasterdream.get_blue_dew.description", "获得湛蓝露滴，它来自于深海的海洋秘宝");
+        add("advancements.pasterdream.get_blue_heart_of_the_sea.title", "深蓝之心");
+        add("advancements.pasterdream.get_blue_heart_of_the_sea.description", "获得蔚蓝海洋之心，你会知道什么武器需要用上它的......");
+        add("advancements.pasterdream.get_beihairuo_tide_sword.title", "潮汐之神");
+        add("advancements.pasterdream.get_beihairuo_tide_sword.description", "获得『北海若』引潮，它掌握着潮涌和激流的力量......");
 
         // 进度 - 主线（主世界 / 染梦世界）
         add("advancements.pasterdream.story.root.title", "帕斯特之梦");
@@ -1354,6 +1360,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.dyedream_world.description", "访问染梦之境");
         add("advancements.pasterdream.story.dyedream_crack.title", "染梦裂隙");
         add("advancements.pasterdream.story.dyedream_crack.description", "在下一次的梦中醒来，裂隙会与你的梦境共鸣。");
+        add("advancements.pasterdream.story.create_pliers.title", "太陽とレインボ一");
+        add("advancements.pasterdream.story.create_pliers.description", "制作一把园艺钳");
+        add("advancements.pasterdream.story.dream_accumulator.title", "尘埃落定");
+        add("advancements.pasterdream.story.dream_accumulator.description", "使用蓄梦池收集染梦粉尘");
+        add("advancements.pasterdream.story.dyedream_broken_note.title", "染梦残页");
+        add("advancements.pasterdream.story.dyedream_broken_note.description", "获得一张染梦世界的笔记碎片");
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5身体从这个奇怪的洞穴中穿过，但并没有什么反应。");
         add("message.pasterdream.dyedream_crack.first_contact.2", "§5你能感觉到这个类似裂隙一样的东西在与这个世界和另外一处地方交互，附近不同的环境可能正是因为此而诞生。");
         add("message.pasterdream.dyedream_crack.first_contact.3", "§5现在可能还不是时候，让我们交给在日夜轮转之间的时光中给予答案。");
@@ -1384,6 +1396,37 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "在建筑高度上限吃下星河果冻......卡兹这下有伴了......");
         add("advancements.pasterdream.story.look_at_pink_sheep.title", "方块人会梦见粉红羊吗");
         add("advancements.pasterdream.story.look_at_pink_sheep.description", "方块人当然只会梦见方块羊");
+
+        // 进度 - 冒险拓展
+        add("advancements.pasterdream.adventure.forgotten_sword_tomb.title", "被遗忘的剑冢");
+        add("advancements.pasterdream.adventure.forgotten_sword_tomb.description", "发现失落剑冢，深藏于丛林深处的剑冢");
+        add("advancements.pasterdream.story.get_the_lost_sword.title", "遗忘之剑");
+        add("advancements.pasterdream.story.get_the_lost_sword.description", "获得失落之剑，它与丛林的力量似乎共鸣......");
+        add("advancements.pasterdream.story.dig_up_a_tomb.title", "邻家有女初长成，力拔山兮气盖世");
+        add("advancements.pasterdream.story.dig_up_a_tomb.description", "你......你把什么东西挖下来了？？？");
+        add("advancements.pasterdream.new_standard_sword_drawing.title", "新概念拔剑");
+        add("advancements.pasterdream.new_standard_sword_drawing.description", "因为你拔不出这把剑，气急败坏之下，索性你把你的敌人当作了开石头的工具！");
+        add("advancements.pasterdream.return_to_owner.title", "物归原主……？");
+        add("advancements.pasterdream.return_to_owner.description", "你为什么要这么做？");
+        add("advancements.pasterdream.craft_kusanagi.title", "丛林之力");
+        add("advancements.pasterdream.craft_kusanagi.description", "做出草雍，一把蕴含了丛林力量的剑，它饥渴地寻求着亡魂……");
+        add("advancements.pasterdream.get_murakumo_kusanagi.title", "刀下亡魂");
+        add("advancements.pasterdream.get_murakumo_kusanagi.description", "通过杀戮，让草雍得到进一步进化");
+        add("advancements.pasterdream.adventure.find_desert_fortress.title", "沙漠英灵");
+        add("advancements.pasterdream.adventure.find_desert_fortress.description", "发现沙漠遗迹，里面住着一个还没完成遗愿的英灵，或许你应当考虑先杀死附近的敌人......");
+        add("advancements.pasterdream.adventure.get_desert_sword.title", "英灵之剑");
+        add("advancements.pasterdream.adventure.get_desert_sword.description", "从英灵的手中得到朔漠大剑，完成他的遗愿让这把武器得以进化");
+        add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.title", "遗志已成");
+        add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.description", "完成英灵的遗愿让朔漠大剑得以进化为『沉荆门』朔漠，看来那位曾经的英雄最终得以安息了......");
+
+        // 进度 - 下界拓展
+        add("advancements.pasterdream.get_molten_gold_ingot.title", "真金不怕火炼");
+        add("advancements.pasterdream.get_molten_gold_ingot.description", "获得炙焰金锭，熔炼自下界的一种烫手的金矿石");
+        add("advancements.pasterdream.craft_hellfire_sword.title", "炙热之剑");
+        add("advancements.pasterdream.craft_hellfire_sword.description", "制作一把狱炎剑，它与一种极为可怕的亡灵生物掉落物有所共鸣");
+        add("advancements.pasterdream.craft_inferno_sword.title", "炼狱之火");
+        add("advancements.pasterdream.craft_inferno_sword.description", "为狱炎剑镶嵌一个下界之星来让它完成最终进化");
+
         // 寻梦者笔记书
         add("item.pasterdream.dream_notes_book", "寻梦者笔记书");
         add("itemGroup.pasterdream.pasterdream_dream_notes_tab", "帕斯特之梦 | 笔记");

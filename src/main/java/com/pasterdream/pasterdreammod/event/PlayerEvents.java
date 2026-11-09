@@ -49,6 +49,8 @@ public class PlayerEvents {
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_crack");
     private static final ResourceLocation DYEDREAM_WORLD_ADV =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_world");
+    private static final ResourceLocation DYEDREAM_BROKEN_NOTE_ADV =
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_broken_note");
     private static final String NOTE_DELAY_TAG = "pasterdream:dream_note_delay";
     /** 风之旅途尚未迁入的维度键；睡觉传送分支在维度缺失时自然跳过。 */
     private static final ResourceKey<Level> WIND_JOURNEY_WORLD =
@@ -85,6 +87,15 @@ public class PlayerEvents {
                     break;
                 }
             }
+        }
+
+        // 染梦残页：已进入染梦世界且背包持有残页时，补触发「持有前置进度」条件
+        if (event.getEntity() instanceof ServerPlayer serverPlayer
+                && serverPlayer.tickCount % 20 == 0
+                && isAdvancementDone(serverPlayer, DYEDREAM_WORLD_ADV)
+                && !isAdvancementDone(serverPlayer, DYEDREAM_BROKEN_NOTE_ADV)
+                && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.DYEDREAM_BROKEN_NOTE.get()))) {
+            ModCriteriaTriggers.HAS_ADVANCEMENT.get().trigger(serverPlayer);
         }
     }
 
