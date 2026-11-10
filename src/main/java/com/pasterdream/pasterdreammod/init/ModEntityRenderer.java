@@ -15,6 +15,8 @@ import com.pasterdream.pasterdreammod.client.renderer.GoldenFoxFireballRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.TerraswordWaveRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.FireflyRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.SmallStoneSpiritRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.PinkChickenRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.PinkSlimeRenderer;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -51,5 +53,8 @@ public final class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.TERRASWORD_WAVE.get(), TerraswordWaveRenderer::new);
         event.registerEntityRenderer(ModEntities.FIREFLY.get(), FireflyRenderer::new);
         event.registerEntityRenderer(ModEntities.SMALL_STONE_SPIRIT.get(), SmallStoneSpiritRenderer::new);
+        event.registerEntityRenderer(ModEntities.PINK_CHICKEN.get(), PinkChickenRenderer::new);
+        event.registerEntityRenderer(ModEntities.PINK_SLIME.get(), PinkSlimeRenderer::new);
+        event.registerEntityRenderer(ModEntities.THROWN_PINK_EGG.get(), ThrownItemRenderer::new);
     }
 }

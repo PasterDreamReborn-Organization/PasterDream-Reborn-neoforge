@@ -28,6 +28,7 @@ import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.world.item.PulseWindRunnerCrystalItem;
 import com.pasterdream.pasterdreammod.world.item.RedDewItem;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
+import com.pasterdream.pasterdreammod.world.item.PinkEggItem;
 import com.pasterdream.pasterdreammod.world.item.PliersItem;
 import com.pasterdream.pasterdreammod.world.item.SandofTimeItem;
 import com.pasterdream.pasterdreammod.world.item.dreamtrainticket.DreamTrainTicketItem;
@@ -345,6 +346,8 @@ public class ModItems {
     public static final DeferredItem<Item> DYEDREAM_DUST = ITEMS.registerSimpleItem("dyedream_dust");
     public static final DeferredItem<Item> DYEDREAM_DUST_PIECE = ITEMS.registerSimpleItem("dyedream_dust_piece");
     public static final DeferredItem<Item> PINK_SLIMEBALL = ITEMS.registerSimpleItem("pink_slimeball");
+    public static final DeferredItem<Item> PINK_EGG = ITEMS.register("pink_egg",
+            () -> new PinkEggItem(new Item.Properties().stacksTo(16)));
     public static final DeferredItem<Item> DREAM_FERTILIZER = ITEMS.register("dream_fertilizer",
             DreamFertilizerItem::new);
     public static final DeferredItem<Item> DYEDREAM_DYE = ITEMS.registerSimpleItem("dyedream_dye");
@@ -1676,6 +1679,10 @@ public class ModItems {
             () -> new ModelBreakParticleProviderBlockItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), new Item.Properties()));
 
     // ===== 刷怪蛋 =====
+    public static final DeferredItem<Item> PINK_CHICKEN_SPAWN_EGG = ITEMS.register("pink_chicken_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.PINK_CHICKEN.get(), 0xf3e3f2, 0xbf038f, new Item.Properties()));
+    public static final DeferredItem<Item> PINK_SLIME_SPAWN_EGG = ITEMS.register("pink_slime_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.PINK_SLIME.get(), 0xe4a8d9, 0xd46daf, new Item.Properties()));
     public static final DeferredItem<Item> TERRORBEAK_SPAWN_EGG = ITEMS.register("terrorbeak_spawn_egg",
             () -> new SpawnEggItem(ModEntities.TERRORBEAK.get(), 0x1c1c1c, 0x3d3d3d, new Item.Properties()));
     public static final DeferredItem<Item> CRAZY_TERRORBEAK_SPAWN_EGG = ITEMS.register("crazy_terrorbeak_spawn_egg",

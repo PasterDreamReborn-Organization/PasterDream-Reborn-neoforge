@@ -70,6 +70,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SOUL_ESSENCE.get());
                         output.accept(ModItems.MAGIC_STONE.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
+                        output.accept(ModItems.PINK_EGG.get());
                         output.accept(ModItems.DREAM_FERTILIZER.get());
                         output.accept(ModItems.LIGHT_BALL.get());
                         output.accept(ModItems.DYEDREAM_COROLLA.get());
@@ -776,6 +777,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get());
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get());
+                        output.accept(ModItems.PINK_CHICKEN_SPAWN_EGG.get());
+                        output.accept(ModItems.PINK_SLIME_SPAWN_EGG.get());
                         output.accept(ModItems.TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get());

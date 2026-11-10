@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.tag.ModBiomeTags;
 import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.data.tags.BiomeTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -113,6 +114,11 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
                 .add(ModBiomes.DYEDREAM_SNOWY_PLAINS)
                 .add(ModBiomes.DYEDREAM_SNOWY_PEAKS)
                 .add(ModBiomes.DYEDREAM_CHERRY_GROVE);
+
+        tag(BiomeTags.SPAWNS_SNOW_FOXES)
+                .add(ModBiomes.DYEDREAM_SNOWY_PLAINS)
+                .add(ModBiomes.DYEDREAM_CHERRY_GROVE)
+                .add(ModBiomes.DYEDREAM_SNOWY_PEAKS);
 
         // ===== 染梦维度地物分组标签（16 群系） =====
         tag(ModBiomeTags.DYEDREAM_WORLD_BIOME)
