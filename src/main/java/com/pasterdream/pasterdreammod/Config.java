@@ -306,7 +306,32 @@ public class Config {
             .comment("染梦裂隙的污染半径（格），默认 5")
             .defineInRange("dyedreamCrackContaminationRadius", 5, 1, 32);
 
+    // === 逐梦列车车票 ===
+    public static final ModConfigSpec.BooleanValue TRAIN_TICKET_ONE_PER_DIMENSION = BUILDER
+            .comment("逐梦列车车票每个维度只能一人使用（全服共享），默认 false")
+            .define("trainTicketOnePerDimension", false);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> TRAIN_TICKET_DIMENSION_WHITELIST = BUILDER
+            .comment("逐梦列车车票允许停靠的维度白名单（格式：modid:dimension_id），"
+                    + "\n不在白名单中的维度使用时会提示「逐梦列车并没有在这里设立站点，无法停靠」"
+                    + "\n默认包含原版三维度与模组的染梦世界、灯影之下、风之旅途")
+            .defineListAllowEmpty("trainTicketDimensionWhitelist",
+                    List.of("minecraft:overworld", "minecraft:the_nether", "minecraft:the_end",
+                            "pasterdream:dyedream_world", "pasterdream:lamp_shadow_world",
+                            "pasterdream:wind_journey_world"),
+                    obj -> obj instanceof String);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
+
+    public static boolean isTrainTicketDimensionAllowed(ResourceLocation dimension) {
+        for (String idStr : TRAIN_TICKET_DIMENSION_WHITELIST.get()) {
+            ResourceLocation id = ResourceLocation.tryParse(idStr);
+            if (dimension.equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /** 查询指定实体类型是否在罪之预言卡秒杀列表中 */
     public static boolean isSinInstakillTarget(EntityType<?> type) {

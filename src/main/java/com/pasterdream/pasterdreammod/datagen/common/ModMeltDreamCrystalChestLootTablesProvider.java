@@ -727,7 +727,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                         // ===== 逐梦列车车票，独立抽取5% =====
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
-                                .add(EmptyLootItem.emptyItem()
+                                .add(LootItem.lootTableItem(ModItems.DREAM_TRAIN_TICKET.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))

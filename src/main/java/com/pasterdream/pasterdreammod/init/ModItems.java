@@ -30,6 +30,7 @@ import com.pasterdream.pasterdreammod.world.item.RedDewItem;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
 import com.pasterdream.pasterdreammod.world.item.PliersItem;
 import com.pasterdream.pasterdreammod.world.item.SandofTimeItem;
+import com.pasterdream.pasterdreammod.world.item.dreamtrainticket.DreamTrainTicketItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.EmptyProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
@@ -312,6 +313,11 @@ public class ModItems {
             });
     public static final DeferredItem<Item> PERGAMYN = ITEMS.register("pergamyn",
             () -> new Item(new Item.Properties()));
+
+    // ===== 逐梦列车车票 =====
+    public static final DeferredItem<Item> DREAM_TRAIN_TICKET = ITEMS.register("dream_train_ticket",
+            DreamTrainTicketItem::new);
+
     public static final DeferredItem<Item> RYE_SEED = ITEMS.register("rye_seed",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> MORTAR = ITEMS.register("mortar", () -> new MortarItem(new Item.Properties()));

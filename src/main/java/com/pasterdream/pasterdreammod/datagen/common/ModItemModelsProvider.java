@@ -101,6 +101,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.CHARGED_AMETHYST.get());
         basicItem(ModItems.REED_ROD.get());
         basicItem(ModItems.PERGAMYN.get());
+        basicItem(ModItems.DREAM_TRAIN_TICKET.get());
         basicItem(ModItems.RYE_SEED.get());
         basicItem(ModItems.FLOUR.get());
         basicItem(ModItems.MORTAR.get());

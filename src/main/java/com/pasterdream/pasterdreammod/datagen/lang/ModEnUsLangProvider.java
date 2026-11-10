@@ -24,6 +24,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.sand_of_time.6", "§7If Melt Dream Crystal Chest reset is cooling down, use to skip the cooldown");
         add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past......");
         add("message.pasterdream.dream_train.location_info", "The train revealed a location...... §aX：%s §aZ：%s");
+        add(ModItems.DREAM_TRAIN_TICKET.get(), "Dream Train Ticket");
+        add("tooltip.pasterdream.dream_train_ticket", "§7A voucher stamped with a train number and dreams");
+        add("tooltip.pasterdream.dream_train_ticket.usage", "§7Summons a Dream Train above your head, once per dimension (including the Dyedream World)");
+        add("message.pasterdream.dream_train_ticket.already_used", "The Dream Train has already rumbled past in this dimension......");
+        add("message.pasterdream.dream_train_ticket.dimension_used", "A Dream Train has already been summoned in this dimension......");
+        add("message.pasterdream.dream_train_ticket.no_station", "The Dream Train has set up no station here, so it cannot stop.");
         add("message.pasterdream.sand_of_time.reset_cooldown_skipped", "The Sand of Time skipped the Melt Dream Crystal Chest reset cooldown");
         add(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), "Melt Dream Crystal Chest");
         add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), "Opened Melt Dream Crystal Chest");

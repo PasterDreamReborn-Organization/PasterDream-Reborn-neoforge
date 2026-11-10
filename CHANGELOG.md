@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 092：逐梦列车车票（2026-11-10）
+
+- 迁入 `dream_train_ticket` 逐梦列车车票：堆叠上限 1，使用后在玩家上方 145 格高度放置 `dream_train` 结构，按玩家朝向旋转并向全服广播列车位置、播放风铃；默认每名玩家在每个维度只能使用一次，`trainTicketOnePerDimension` 开启时改为全服每维度一次（存档 `SavedData`）。
+- 新增 `trainTicketDimensionWhitelist` 与 `trainTicketOnePerDimension` 配置，默认允许原版三维度及染梦世界、灯影之下、风之旅途。
+- 补物品模型、中英名称与 tooltip、创造模式物品栏条目，并在染梦世界传奇融梦水晶箱中恢复来源 5% 车票奖池（替换批次 090 的空奖占位）。
+- `runData`、`build` 通过，`runGameTestServer` 173/173 通过；列车实际放置、客户端视觉、配置热重载与多人维度唯一性仍待游戏内验收。
+
 ### 批次 091：染梦结构箱战利品与逐梦列车广播方块（2026-11-10）
 
 - 迁入染梦野餐篮、染梦遗物箱普通/稀有及生态气泡箱共 4 张来源战利品表，保留奖池、抽取次数、条目顺序与权重；1.21 红露戒指等级改写为自定义数据组件，海龟鳞甲使用新物品 ID。
