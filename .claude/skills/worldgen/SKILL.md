@@ -57,7 +57,7 @@ python scripts/convert_structure_item_nbt.py --check src/main/resources/data/pas
 
 - 脚本只写入显式指定的目标仓库 `structure/*.nbt`，不会修改 Forge 来源。将旧物品栈 `Count` 转为 `count`（Int），保留 `id`、`Slot` 和其他方块实体字段。
 - 寻梦者笔记 `pasterdream:dream_notes_book` 的旧 `tag.content` 必须转为 `components."pasterdream:dream_note_content"`；`minecraft:custom_data` 不能代替该专用组件。转换后核对内容 key 已在 `ModDreamNotesBookContentRelation` 注册，笔记可正常显示。
-- 遇到其他非空旧 `tag` 时脚本报错；先逐项确认 1.21 对应组件并扩展映射，再重跑。不要丢弃旧 NBT，也不要把未知字段一概塞进自定义数据。
+- 已映射的通用旧字段：`Damage`→`minecraft:damage`、`RepairCost`→`minecraft:repair_cost`、`display.Name`→`minecraft:custom_name`。遇到其他非空旧 `tag` 时脚本报错；先逐项确认 1.21 对应组件并扩展映射，再重跑。不要丢弃旧 NBT，也不要把未知字段一概塞进自定义数据。
 - 提交前用 `--check` 验证每份新模板没有旧 `Count`/`tag` 物品栈；再运行 `runData`、`build`、`runGameTestServer`，并在游戏内检查容器中的笔记内容。模板“能加载”不等于其中物品已正确解码。
 
 ---
@@ -92,4 +92,4 @@ python scripts/convert_structure_item_nbt.py --check src/main/resources/data/pas
 
 批次 003 增加下界 `molten_gold_ore_patch`：保留来源下界岩替换、矿脉大小 16、每区块 4 次、Y=0～64 均匀分布及 `vegetal_decoration` 阶段。GameTest 覆盖群系挂载和放置规则，不能替代真实世界自然分布与客户端视觉验收。
 
-批次 082 补全主世界内容：12 种植物/小石子 configured/placed 地物与群系标签注入；橡木/云杉渔夫小屋、露营地、沙漠小屋、沙漠要塞的 structure/structure_set/template_pool/NBT 与 4 条箱子战利品表。结构使用静态 JSON 放在 `data/pasterdream/worldgen/`，NBT 放在 `data/pasterdream/structure/`。批次 091 的逐梦列车模板已按上面的脚本转换 3 个旧物品栈，其中 2 本寻梦者笔记使用专用内容组件。
+批次 082 补全主世界内容：12 种植物/小石子 configured/placed 地物与群系标签注入；橡木/云杉渔夫小屋、露营地、沙漠小屋、沙漠要塞的 structure/structure_set/template_pool/NBT 与 4 条箱子战利品表。批次 096 迁入 `ModStructureConfig` 与 `ModStructureProvider` / `ModStructureSetProvider` / `ModTemplatePoolProvider`，主世界与染梦世界可生成结构改由 `runData` 输出到 `src/generated/resources/data/pasterdream/worldgen/`；仅固定区块世界树、沙漠要塞、大气泡及多部件手工结构保留 `src/main/resources/data/pasterdream/worldgen/` 静态 JSON。NBT 放在 `data/pasterdream/structure/`。批次 091 的逐梦列车模板已按上面的脚本转换 3 个旧物品栈，其中 2 本寻梦者笔记使用专用内容组件。

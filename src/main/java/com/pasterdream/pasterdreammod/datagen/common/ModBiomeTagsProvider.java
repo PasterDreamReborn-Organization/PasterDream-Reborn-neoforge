@@ -91,6 +91,22 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
         tag(ModBiomeTags.CAN_DESERT_FORTRESS_SPAWN_BIOME)
                 .add(Biomes.DESERT);
 
+        tag(ModBiomeTags.CAN_GARDEN_DECRYPTION_NIPPY_EDELWEISS_SPAWN_BIOME)
+                .add(ModBiomes.DYEDREAM_SNOWY_PLAINS)
+                .add(ModBiomes.DYEDREAM_SNOWY_PEAKS)
+                .add(ModBiomes.DYEDREAM_CHERRY_GROVE);
+
+        tag(ModBiomeTags.CAN_DYEDREAM_PAVILION_SNOWY_SPAWN_BIOME)
+                .add(ModBiomes.DYEDREAM_SNOWY_PLAINS)
+                .add(ModBiomes.DYEDREAM_SNOWY_PEAKS)
+                .add(ModBiomes.DYEDREAM_CHERRY_GROVE);
+
+        tag(ModBiomeTags.CAN_ECOSYSTEM_BUBBLE_SPAWN_BIOME)
+                .add(ModBiomes.DYEDREAM_FROZEN_OCEAN);
+
+        tag(ModBiomeTags.CAN_PINKAGARIC_HOUSE_SPAWN_BIOME)
+                .add(ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS);
+
         tag(ModBiomeTags.DYEDREAM_FISHING_BIOMES)
                 .add(ModBiomes.DYEDREAM_FROZEN_OCEAN)
                 .add(ModBiomes.DYEDREAM_COLD_OCEAN)

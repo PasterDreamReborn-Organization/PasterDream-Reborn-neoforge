@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 096：染梦世界结构生成（2026-11-10）
+
+- 迁入染梦世界 30 个结构及其 34 个模板池：染梦教堂、侵染教堂、水晶球、祈愿树、萦风教堂、花园解密三座、旅者小屋、生命水晶洞穴、染梦凉亭、浮空神庙、客栈、营地、穿云塔、空岛、世界树、实验室、逐梦列车、融梦涌泉井、粉顶蘑菇屋、月亮小屋、染梦/普通生态气泡与三个大气泡。
+- 补 `dyedream_structures`、`dyedream_bubbles`、`moon_house`、`dyedream_worldtree_fixed` 四个结构集，保留来源间距、分离、盐、权重、高度、地形适应、排除区与世界树固定区块；新增 1.21 `pasterdream:fixed_chunk` 结构放置类型。
+- 迁入来源 `ModStructureConfig`、`StructureGenerationConfig` 与 structure/structure_set/template_pool 三个 DataProvider；28 个结构的 JSON 改由 `runData` 生成，删除主资源中的同名静态副本，仅多部件与固定结构保留静态 JSON。
+- 复制 33 个 NBT 模板，并用 `scripts/convert_structure_item_nbt.py` 转换 37 个物品栈：笔记内容组件、`minecraft:damage`、`minecraft:repair_cost`、`minecraft:custom_name`；`--check` 确认无遗留 1.20 字段。
+- 补 4 个结构群系标签与 30 个结构中英名称；`runData`、`build` 通过，`runGameTestServer` 177/177 通过。真实世界结构抽检、固定世界树位置、地形贴合与客户端视觉待游戏内验收；`fluffy_wind_church` 的风之旅途战利品表仍待相关物品迁入。
+
 ### 批次 095：同步两本寻梦者笔记与英文翻译（2026-11-10）
 
 - 同步上游 #1294/#1295/#1300：注册 `世界树调查记录`（染梦世界，作者绫苒）与 `关于风旅生物的研究笔记`（风之旅途，作者叶锦），补内容登记、维度绑定与创造模式笔记栏收录，并更新设计文档《新剧情书》。
