@@ -564,6 +564,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("biome.pasterdream.dyedream_caves", "Dyedream Caves");
         add("biome.pasterdream.dyedream_lush_caves", "Dyedream Lush Caves");
         add("biome.pasterdream.dyedream_dripstone_caves", "Dyedream Dripstone Caves");
+        add("biome.pasterdream.shadow_nylium_wastes", "Shadow Nylium Wastes");
+        add("biome.pasterdream.shadow_forest", "Shadow Forest");
+        add("biome.pasterdream.shadow_ruins", "Shadow Ruins");
+        add("biome.pasterdream.shadow_ocean", "Shadow Ocean");
         add(ModBlocks.SHADOW_BLAST_FURNACE.get(), "Shadow Blast Furnace");
         add("pasterdream.cauldron.brew", "§dBrewed %s ml potion");
         add("pasterdream.cauldron.fuse", "§dFused effects! Got %s ml potion");

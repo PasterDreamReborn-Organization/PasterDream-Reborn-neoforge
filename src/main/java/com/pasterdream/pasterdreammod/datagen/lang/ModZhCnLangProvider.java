@@ -564,6 +564,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("biome.pasterdream.dyedream_caves", "染梦洞穴");
         add("biome.pasterdream.dyedream_lush_caves", "染梦繁茂洞穴");
         add("biome.pasterdream.dyedream_dripstone_caves", "染梦滴水洞穴");
+        add("biome.pasterdream.shadow_nylium_wastes", "菌索荒原");
+        add("biome.pasterdream.shadow_forest", "阴影森林");
+        add("biome.pasterdream.shadow_ruins", "阴影古迹");
+        add("biome.pasterdream.shadow_ocean", "阴影之海");
         add(ModBlocks.SHADOW_BLAST_FURNACE.get(), "暗影高炉");
         add("pasterdream.cauldron.brew", "§d酿造完成！得到 %s ml 药水");
         add("pasterdream.cauldron.fuse", "§d效果融合成功！得到 %s ml 药水");

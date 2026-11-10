@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 099：灯影之下维度与自然生成（2026-11-10，T18-B 部分）
+
+- 迁入灯影之下维度类型、噪声设置与 LevelStem：固定午夜、无天光、环境光照 0.15、海平面 63，默认方块阴影石与默认流体影液，保留含水层并禁用地表熔岩湖/矿脉；通过多噪声源生成 `shadow_nylium_wastes`、`shadow_forest`、`shadow_ruins`、`shadow_ocean` 四个群系。
+- 迁入群系地表规则与共享环境音/背景音乐 `shadow_biome`；按群系接入影芽、影蕨、矮菌索、菌索、影茎蕨、影菌、白厄花、阴影真菌树、残垣断壁、锁链柱（地表/海底）与古墓。
+- 迁入 11 个 configured feature、13 个 placed feature、4 个自定义 Feature 类，以及 `shadow_hand`、`shadow_tomb_0/1`、`shadow_light_lantern` 四份地物 NBT 模板。
+- 迁入群系标签与生物生成 biome modifier：菌索荒原的恐喙兽/暗影之手、阴影森林的厚翅甲虫双条目/友善怨魂、阴影古迹的怨魂三变体/阴影傀儡/暗影之手，保留来源权重与数量；Forge `forge:add_spawns` 改为 NeoForge `add_spawns` 数据。
+- 迁入 `WorldGenRegionMixin`，在世界生成阶段禁止 `Block.dropResources` 生成掉落物，避免阴影森林蘑菇树替换两格高植物时触发线程异常；补齐 4 个灯影群系的中英翻译键。
+- `runData` 写入 47 个文件并重新生成双语语言文件，`build` 通过，`runGameTestServer` 180/180 通过。阴影地牢等结构生成、客户端维度特效/黑色降雨与真实世界地形/刷怪分布仍待后续或游戏内验收。
+
 ### 批次 098：灯影之下生物（2026-11-10，T18-B 部分）
 
 - 迁入灯影之下 7 种生物：阴影傀儡、怨魂、尖啸怨魂、悲泣尖啸怨魂、友善怨魂、厚翅甲虫与厚翅甲虫之母，以及怨魂远程攻击使用的尖啸波射弹、8 个刷怪蛋、实体战利品表、暗影生物标签、中英名称与调试物品栏条目。

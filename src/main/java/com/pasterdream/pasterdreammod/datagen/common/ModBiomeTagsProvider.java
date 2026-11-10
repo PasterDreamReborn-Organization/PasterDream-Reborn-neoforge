@@ -246,5 +246,18 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
 
         tag(ModBiomeTags.DYEDREAM_WORLD_DRIPSTONE_BIOME)
                 .add(ModBiomes.DYEDREAM_DRIPSTONE_CAVES);
+
+        // ===== 灯影之下生成群系标签 =====
+        tag(ModBiomeTags.SHADOW_NYLIUM_WASTES_SPAWN_BIOME)
+                .add(ModBiomes.SHADOW_NYLIUM_WASTES);
+
+        tag(ModBiomeTags.SHADOW_FOREST_SPAWN_BIOME)
+                .add(ModBiomes.SHADOW_FOREST);
+
+        tag(ModBiomeTags.SHADOW_GHOST_SPAWN_BIOME)
+                .add(ModBiomes.SHADOW_RUINS);
+
+        tag(ModBiomeTags.SHADOW_RUINS_SPAWN_BIOME)
+                .add(ModBiomes.SHADOW_RUINS);
     }
 }

@@ -62,6 +62,34 @@ public final class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_ICEBERG_BLUE = key("dyedream_iceberg_blue");
     public static final ResourceKey<PlacedFeature> DYEDREAM_KELP_PATCH = key("dyedream_kelp_patch");
 
+    // ===== 阴影维度植物 =====
+    // 阴影真菌树 — 自然生成 + 骨粉催熟
+    public static final ResourceKey<PlacedFeature> SHADOW_FUNGUS_TREE = key("shadow_fungus_tree");
+    // 影芽 — 分散地表植被
+    public static final ResourceKey<PlacedFeature> SHADOW_SPROUTS_PATCH = key("shadow_sprouts_patch");
+    // 影蕨 — 分散地表植被
+    public static final ResourceKey<PlacedFeature> SHADOW_FERN_PATCH = key("shadow_fern_patch");
+    // 影短根 — 分散地表植被
+    public static final ResourceKey<PlacedFeature> SHADOW_SHORT_ROOTS_PATCH = key("shadow_short_roots_patch");
+    // 影根须 — 分散地表植被
+    public static final ResourceKey<PlacedFeature> SHADOW_ROOTS_PATCH = key("shadow_roots_patch");
+    // 影茎蕨 — 分散地表植被
+    public static final ResourceKey<PlacedFeature> SHADOW_STEM_FERN_PATCH = key("shadow_stem_fern_patch");
+    // 影菌 — 分散地表植被
+    public static final ResourceKey<PlacedFeature> SHADOW_FUNGUS_PATCH = key("shadow_fungus_patch");
+    // 白厄花 — 分散地表植被
+    public static final ResourceKey<PlacedFeature> WHITE_ORCHID_FLOWER_PATCH = key("white_orchid_flower_patch");
+    // 阴影残垣断壁 — 散落的破败墙体
+    public static final ResourceKey<PlacedFeature> SHADOW_RUIN_WALL = key("shadow_ruin_wall");
+    // 阴影锁链柱 — 交替朝向镂空矩形单元堆叠
+    public static final ResourceKey<PlacedFeature> SHADOW_CHAIN_PILLAR = key("shadow_chain_pillar");
+    /** 阴影锁链柱（海底变体）— 向下搜索至海底固体方块 */
+    public static final ResourceKey<PlacedFeature> SHADOW_CHAIN_PILLAR_OCEAN = key("shadow_chain_pillar_ocean");
+    // 暗影之手 — NBT 结构地物
+    public static final ResourceKey<PlacedFeature> SHADOW_HAND = key("shadow_hand");
+    // 阴影古墓 — NBT 结构地物（shadow_tomb_0/1 随机变体，下陷2格）
+    public static final ResourceKey<PlacedFeature> SHADOW_TOMB = key("shadow_tomb");
+
     // ===== 地表植被 =====
     public static final ResourceKey<PlacedFeature> STEM_GRASS_PATCH = key("stem_grass_patch");
     public static final ResourceKey<PlacedFeature> TALL_STEM_GRASS_PATCH = key("tall_stem_grass_patch");
@@ -173,6 +201,13 @@ public final class ModPlacedFeatures {
                     Direction.DOWN.getNormal(),
                     ModBlocks.DYEDREAM_GRASS_BLOCK.get(),
                     ModBlocks.DYEDREAM_DIRT.get()));
+
+    /** 限制植物/地物只能生成在灯影地表方块（阴影菌岩/影之石）上 */
+    private static final PlacementModifier ON_SHADOW_GROUND = BlockPredicateFilter.forPredicate(
+            BlockPredicate.matchesBlocks(
+                    Direction.DOWN.getNormal(),
+                    ModBlocks.SHADOW_NYLIUM.get(),
+                    ModBlocks.SHADOW_STONE.get()));
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> cf = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -294,6 +329,110 @@ public final class ModPlacedFeatures {
                 cf.getOrThrow(VANILLA_KELP_CF),
                 List.of(CountPlacement.of(8), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
+
+        // ===== 阴影维度植物 =====
+        // 阴影真菌树
+        context.register(SHADOW_FUNGUS_TREE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_FUNGUS_TREE),
+                List.of(CountPlacement.of(8), InSquarePlacement.spread(),
+                        SurfaceWaterDepthFilter.forMaxDepth(0),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+
+        // 阴影残垣断壁 — 每 3 区块 1 个，仅灯影地表
+        context.register(SHADOW_RUIN_WALL, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_RUIN_WALL),
+                List.of(RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(),
+                        SurfaceWaterDepthFilter.forMaxDepth(0),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+
+        // 阴影锁链柱 — 地表结构，平均每 16 区块 1 个，仅灯影地表
+        context.register(SHADOW_CHAIN_PILLAR, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_CHAIN_PILLAR),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
+                        SurfaceWaterDepthFilter.forMaxDepth(0),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+
+        // 阴影锁链柱（海底变体）— 使用 OCEAN_FLOOR_WG 定位海底
+        context.register(SHADOW_CHAIN_PILLAR_OCEAN, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_CHAIN_PILLAR),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+
+        // 暗影之手 — 原作 shadow_hand_0 结构
+        context.register(SHADOW_HAND, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_HAND),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
+                        SurfaceWaterDepthFilter.forMaxDepth(0),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+
+        // 阴影古墓 — shadow_tomb_0/1 随机变体，下陷2格，仅阴影古迹
+        context.register(SHADOW_TOMB, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_TOMB),
+                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
+                        SurfaceWaterDepthFilter.forMaxDepth(0),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+
+        // 影芽 — WORLD_SURFACE_WG，比染梦茎草更稀疏
+        context.register(SHADOW_SPROUTS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_SPROUTS_PATCH),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+        // 影蕨 — WORLD_SURFACE_WG，比染梦茎草更稀疏
+        context.register(SHADOW_FERN_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_FERN_PATCH),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+        // 阴影矮菌索 — WORLD_SURFACE_WG
+        context.register(SHADOW_SHORT_ROOTS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_SHORT_ROOTS_PATCH),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+        // 阴影菌索 — WORLD_SURFACE_WG
+        context.register(SHADOW_ROOTS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_ROOTS_PATCH),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+        // 影茎蕨 — WORLD_SURFACE_WG
+        context.register(SHADOW_STEM_FERN_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_STEM_FERN_PATCH),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+        // 影菌 — WORLD_SURFACE_WG
+        context.register(SHADOW_FUNGUS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_FUNGUS_PATCH),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
+        // 白厄花 — WORLD_SURFACE_WG
+        context.register(WHITE_ORCHID_FLOWER_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WHITE_ORCHID_FLOWER_PATCH),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_SHADOW_GROUND,
+                        BiomeFilter.biome())));
 
         // ===== 地表植被 =====
         context.register(STEM_GRASS_PATCH, new PlacedFeature(

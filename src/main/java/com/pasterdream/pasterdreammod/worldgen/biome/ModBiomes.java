@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.worldgen.biome;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
+import com.pasterdream.pasterdreammod.worldgen.ModPlacedFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -71,12 +72,29 @@ public class ModBiomes {
             ResourceKey.create(Registries.BIOME,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_dripstone_caves"));
 
+    // ===== 灯影之下维度群系 =====
+    public static final ResourceKey<Biome> SHADOW_NYLIUM_WASTES =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_nylium_wastes"));
+    public static final ResourceKey<Biome> SHADOW_FOREST =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_forest"));
+    public static final ResourceKey<Biome> SHADOW_RUINS =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_ruins"));
+    public static final ResourceKey<Biome> SHADOW_OCEAN =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_ocean"));
+
     private static final ResourceKey<SoundEvent> SWEET_DREAM_MUSIC_KEY =
             ResourceKey.create(Registries.SOUND_EVENT,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sweet_dream_music"));
     private static final ResourceKey<SoundEvent> SNOWFALL_DREAM_MUSIC_KEY =
             ResourceKey.create(Registries.SOUND_EVENT,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "snowfall_dream_music"));
+    private static final ResourceKey<SoundEvent> SHADOW_BIOME_KEY =
+            ResourceKey.create(Registries.SOUND_EVENT,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_biome"));
     private static final int MUSIC_MIN_DELAY = 12000;
     private static final int MUSIC_MAX_DELAY = 24000;
 
@@ -110,6 +128,12 @@ public class ModBiomes {
         context.register(DYEDREAM_CAVES, dyedreamCaves(placedFeatures, carvers));
         context.register(DYEDREAM_LUSH_CAVES, dyedreamLushCaves(placedFeatures, carvers));
         context.register(DYEDREAM_DRIPSTONE_CAVES, dyedreamDripstoneCaves(placedFeatures, carvers));
+
+        // 灯影之下占位群系（待后续细化）
+        context.register(SHADOW_NYLIUM_WASTES, shadowNyliumWastes(placedFeatures, carvers));
+        context.register(SHADOW_FOREST, shadowForest(placedFeatures, carvers));
+        context.register(SHADOW_RUINS, shadowRuins(placedFeatures, carvers));
+        context.register(SHADOW_OCEAN, shadowOcean(placedFeatures, carvers));
     }
 
     // ==================== 共享辅助方法 ====================
@@ -563,6 +587,134 @@ public class ModBiomes {
                 .downfall(0.4f)
                 .temperatureAdjustment(Biome.TemperatureModifier.NONE)
                 .specialEffects(effects.build())
+                .mobSpawnSettings(MobSpawnSettings.EMPTY)
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    // ==================== 灯影之下 ====================
+
+    /** 灯影群系共享的环境音（暗影低语，原作 shadow_biome_0，tick_chance 0.0111） */
+    private static AmbientAdditionsSettings shadowAmbient() {
+        return new AmbientAdditionsSettings(
+                BuiltInRegistries.SOUND_EVENT.getHolderOrThrow(SHADOW_BIOME_KEY), 0.0111);
+    }
+
+    /** 灯影群系背景音乐（原作 shadow_biome_0，replace_current_music = true） */
+    private static Music shadowBiomeMusic() {
+        return new Music(BuiltInRegistries.SOUND_EVENT.getHolderOrThrow(SHADOW_BIOME_KEY),
+                MUSIC_MIN_DELAY, MUSIC_MAX_DELAY, true);
+    }
+
+    private static BiomeSpecialEffects.Builder shadowEffects() {
+        return new BiomeSpecialEffects.Builder()
+                .skyColor(0x000000)
+                .fogColor(0x000000)
+                .waterColor(0x404040)
+                .waterFogColor(0x202020)
+                .ambientAdditionsSound(shadowAmbient())
+                .backgroundMusic(shadowBiomeMusic());
+    }
+
+    /** 灯影群系共享：洞穴 + 峡谷 + 锁链柱 */
+    private static void addShadowLandFeatures(BiomeGenerationSettings.Builder builder) {
+        builder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE)
+                .addCarver(GenerationStep.Carving.AIR, Carvers.CANYON)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.SHADOW_CHAIN_PILLAR);
+    }
+
+    /** 全部灯影群系共享的地表植被（影芽、影蕨） */
+    private static void addShadowVegetation(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_SPROUTS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_FERN_PATCH);
+    }
+
+    /** 菌索荒原特有（植被） */
+    private static void addShadowNyliumWastesVegetation(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_SHORT_ROOTS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_ROOTS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_FUNGUS_PATCH);
+    }
+
+    /** 阴影森林特有植被（四种 + 巨型蘑菇树） */
+    private static void addShadowForestVegetation(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_SHORT_ROOTS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_ROOTS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_FUNGUS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WHITE_ORCHID_FLOWER_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_FUNGUS_TREE);
+    }
+
+    /** 阴影古迹特有植被（影茎蕨、白厄花）+ 残垣断壁 + 古墓 */
+    private static void addShadowRuinsVegetation(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.SHADOW_RUIN_WALL)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.SHADOW_TOMB)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_STEM_FERN_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WHITE_ORCHID_FLOWER_PATCH);
+    }
+
+    private static Biome shadowNyliumWastes(HolderGetter<PlacedFeature> placedFeatures,
+                                       HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        addShadowLandFeatures(gen);
+        addShadowVegetation(gen);
+        addShadowNyliumWastesVegetation(gen);
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.5f)
+                .downfall(0.5f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(shadowEffects().build())
+                .mobSpawnSettings(MobSpawnSettings.EMPTY)
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome shadowForest(HolderGetter<PlacedFeature> placedFeatures,
+                                       HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        addShadowLandFeatures(gen);
+        addShadowVegetation(gen);
+        addShadowForestVegetation(gen);
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.5f)
+                .downfall(0.3f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(shadowEffects().build())
+                .mobSpawnSettings(MobSpawnSettings.EMPTY)
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome shadowRuins(HolderGetter<PlacedFeature> placedFeatures,
+                                       HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        addShadowLandFeatures(gen);
+        addShadowVegetation(gen);
+        addShadowRuinsVegetation(gen);
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.5f)
+                .downfall(0.4f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(shadowEffects().build())
+                .mobSpawnSettings(MobSpawnSettings.EMPTY)
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome shadowOcean(HolderGetter<PlacedFeature> placedFeatures,
+                                      HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        addShadowLandFeatures(gen);
+        gen.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.SHADOW_CHAIN_PILLAR_OCEAN);
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.5f)
+                .downfall(0.5f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(shadowEffects().build())
                 .mobSpawnSettings(MobSpawnSettings.EMPTY)
                 .generationSettings(gen.build())
                 .build();

@@ -9,6 +9,10 @@ import com.pasterdream.pasterdreammod.worldgen.feature.FloatingLightBallFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.LushCaveMushroomFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.PinkHugeMushroomFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.PinkMushroomCurtainFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.ShadowChainPillarFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.ShadowHandFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.ShadowRuinWallFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.ShadowTombFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.SmallPinkMushroomFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.StonePillarFeature;
 import net.minecraft.core.registries.Registries;
@@ -59,6 +63,18 @@ public class ModFeatures {
 
     public static final DeferredHolder<Feature<?>, Feature<LakeFeature.Configuration>> DYEDREAM_WATER_POOL =
             FEATURES.register("dyedream_water_pool", () -> new DyedreamWaterPoolFeature(LakeFeature.Configuration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> SHADOW_CHAIN_PILLAR =
+            FEATURES.register("shadow_chain_pillar", () -> new ShadowChainPillarFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> SHADOW_RUIN_WALL =
+            FEATURES.register("shadow_ruin_wall", () -> new ShadowRuinWallFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> SHADOW_HAND =
+            FEATURES.register("shadow_hand", () -> new ShadowHandFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> SHADOW_TOMB =
+            FEATURES.register("shadow_tomb", () -> new ShadowTombFeature(NoneFeatureConfiguration.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);

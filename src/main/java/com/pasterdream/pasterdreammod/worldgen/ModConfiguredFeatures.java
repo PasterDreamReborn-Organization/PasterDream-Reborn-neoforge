@@ -71,6 +71,28 @@ public final class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_TREE = key("dyedream_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_TREE_COLD_SPRUCE = key("dyedream_tree_cold_spruce");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_FUNGUS_TREE = key("shadow_fungus_tree");
+    // 影芽 — 分散地表植被
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_SPROUTS_PATCH = key("shadow_sprouts_patch");
+    // 影蕨 — 分散地表植被
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_FERN_PATCH = key("shadow_fern_patch");
+    // 阴影矮菌索 — 分散地表植被
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_SHORT_ROOTS_PATCH = key("shadow_short_roots_patch");
+    // 阴影菌索 — 分散地表植被
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_ROOTS_PATCH = key("shadow_roots_patch");
+    // 影茎蕨 — 分散地表植被
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_STEM_FERN_PATCH = key("shadow_stem_fern_patch");
+    // 影菌 — 分散地表植被
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_FUNGUS_PATCH = key("shadow_fungus_patch");
+    // 白厄花 — 分散地表植被
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WHITE_ORCHID_FLOWER_PATCH = key("white_orchid_flower_patch");
+    // 阴影残垣断壁 — 散落的破败墙体
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_RUIN_WALL = key("shadow_ruin_wall");
+    // 阴影锁链柱 — 交替朝向的镂空矩形单元堆叠
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_CHAIN_PILLAR = key("shadow_chain_pillar");
+    // 暗影之手 — NBT 结构物 Feature
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_HAND = key("shadow_hand");
+    // 阴影古墓 — NBT 结构物 Feature（shadow_tomb_0/1 随机变体）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_TOMB = key("shadow_tomb");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_WIND_MOOR_TREE = key("small_wind_moor_tree");
 
     // ===== 染梦冰晶 =====
@@ -488,7 +510,51 @@ public final class ModConfiguredFeatures {
                         BlockPredicate.matchesBlocks(ModBlocks.SHADOW_NYLIUM.get()),
                         true)));
 
-        // 阴影残垣断壁/锁链柱/暗影之手/古墓不在地物范围内。
+        // 影芽 — 分散地表植被，比染梦茎草更稀疏
+        context.register(SHADOW_SPROUTS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(16, 8, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.SHADOW_SPROUTS.get())))));
+        // 影蕨 — 分散地表植被，比染梦茎草更稀疏
+        context.register(SHADOW_FERN_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(12, 8, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.SHADOW_FERN.get())))));
+        // 阴影矮菌索 — 分散地表植被
+        context.register(SHADOW_SHORT_ROOTS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(16, 8, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.SHADOW_SHORT_ROOTS.get())))));
+        // 阴影菌索 — 分散地表植被
+        context.register(SHADOW_ROOTS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(12, 8, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.SHADOW_ROOTS.get())))));
+        // 影茎蕨 — 分散地表植被
+        context.register(SHADOW_STEM_FERN_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(8, 8, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.SHADOW_STEM_FERN.get())))));
+        // 影菌 — 分散地表植被
+        context.register(SHADOW_FUNGUS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(8, 4, 2,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.SHADOW_FUNGUS.get())))));
+        // 白厄花 — 分散地表植被
+        context.register(WHITE_ORCHID_FLOWER_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(8, 4, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.WHITE_ORCHID_FLOWER.get())))));
+
+        // 阴影残垣断壁 — 散落的破败墙体
+        context.register(SHADOW_RUIN_WALL, new ConfiguredFeature<>(ModFeatures.SHADOW_RUIN_WALL.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
+        // 阴影锁链柱 — 交替朝向镂空矩形单元堆叠，3-8 单元随机高度
+        context.register(SHADOW_CHAIN_PILLAR, new ConfiguredFeature<>(ModFeatures.SHADOW_CHAIN_PILLAR.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
+        // 暗影之手 — NBT 结构地物
+        context.register(SHADOW_HAND, new ConfiguredFeature<>(ModFeatures.SHADOW_HAND.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
+        // 阴影古墓 — NBT 结构地物（shadow_tomb_0/1 随机变体，下陷2格）
+        context.register(SHADOW_TOMB, new ConfiguredFeature<>(ModFeatures.SHADOW_TOMB.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
 
         context.register(CALCITE_STALICRIPE, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(48, 8, 8,

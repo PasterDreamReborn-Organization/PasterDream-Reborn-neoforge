@@ -60,6 +60,12 @@ public final class ModBiomeTags {
     public static final TagKey<Biome> DYEDREAM_WORLD_OCEAN_BIOME = create("dyedream_world_ocean_biome");
     public static final TagKey<Biome> DYEDREAM_WORLD_SNOWY_BIOME = create("dyedream_world_snowy_biome");
 
+    // ===== 灯影之下群系标签 =====
+    public static final TagKey<Biome> SHADOW_NYLIUM_WASTES_SPAWN_BIOME = create("shadow_nylium_wastes_spawn_biome");
+    public static final TagKey<Biome> SHADOW_FOREST_SPAWN_BIOME = create("shadow_forest_spawn_biome");
+    public static final TagKey<Biome> SHADOW_GHOST_SPAWN_BIOME = create("shadow_ghost_spawn_biome");
+    public static final TagKey<Biome> SHADOW_RUINS_SPAWN_BIOME = create("shadow_ruins_spawn_biome");
+
     private static TagKey<Biome> create(String path) {
         return TagKey.create(Registries.BIOME,
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, path));
