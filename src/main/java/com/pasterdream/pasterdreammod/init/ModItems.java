@@ -73,6 +73,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.DukeCoinCurioItem;
 import com.pasterdream.pasterdreammod.world.item.curio.HiyoriButterflyHairpinItem;
 import com.pasterdream.pasterdreammod.world.item.curio.AllkindsRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.KaichuOmamoriItem;
+import com.pasterdream.pasterdreammod.world.item.curio.SoulGemOfAkizukiAyaneItem;
 import com.pasterdream.pasterdreammod.world.item.curio.TerraFloatingIslandItem;
 import com.pasterdream.pasterdreammod.world.item.curio.BlessingOfCeciliaItem;
 import com.pasterdream.pasterdreammod.world.item.curio.FadedBlessingOfCeciliaItem;
@@ -258,6 +259,10 @@ public class ModItems {
     public static final DeferredItem<Item> TRAVELER_BELT = ITEMS.register("traveler_belt", TravelerBeltItem::new);
     public static final DeferredItem<Item> DREAM_TRAVELER_BELT = ITEMS.register("dream_traveler_belt",
             DreamTravelerBeltItem::new);
+
+    // ===== 饰品（身体） =====
+    public static final DeferredItem<Item> SOUL_GEM_OF_AKIZUKI_AYANE = ITEMS.register("soul_gem_of_akizuki_ayane",
+            SoulGemOfAkizukiAyaneItem::new);
 
     // ===== 露滴 =====
     public static final DeferredItem<Item> BLUE_HEART_OF_THE_SEA = ITEMS.register("blue_heart_of_the_sea",
@@ -1664,6 +1669,10 @@ public class ModItems {
             () -> new SpawnEggItem(ModEntities.FIREFLY.get(), -12570340, -5382814, new Item.Properties()));
     public static final DeferredItem<Item> SMALL_STONE_SPIRIT_SPAWN_EGG = ITEMS.register("small_stone_spirit_spawn_egg",
             () -> new SpawnEggItem(ModEntities.SMALL_STONE_SPIRIT.get(), -3937560, -9340294, new Item.Properties()));
+
+    // ===== 追忆 =====
+    public static final DeferredItem<Item> MEMORY_GEM = ITEMS.register("memory_gem",
+            () -> new Item(new Item.Properties()));
 
     // ===== 拓展栏物品 =====
     public static final DeferredItem<Item> MELT_DREAM_AURORIAN_STEEL_INGOT = ITEMS.register("melt_dream_aurorian_steel_ingot",

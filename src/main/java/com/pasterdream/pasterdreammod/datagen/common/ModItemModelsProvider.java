@@ -558,6 +558,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.EVASION_CLOAK.get());
         basicItem(ModItems.SLIVER_BELL.get());
 
+        basicItem(ModItems.MEMORY_GEM.get());
+        basicItem(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get());
+
         basicItem(ModItems.DEBUG_SWORD.get());
         basicItem(ModItems.LOOT_GENERATOR.get());
         spawnEggItem(ModItems.TERRORBEAK_SPAWN_EGG.get());

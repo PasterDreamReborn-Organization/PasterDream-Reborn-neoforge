@@ -1,0 +1,190 @@
+package com.pasterdream.pasterdreammod.world.item.curio;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.init.ModAttributes;
+import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
+
+import java.util.List;
+
+public class SoulGemOfAkizukiAyaneItem extends Item implements ICurioItem {
+
+    private static final double ENERGY_PER_MIN = 90.0;
+    private static final double FRAGILE_ENERGY_THRESHOLD = 30.0;
+    private static final int NO_CONSUME_TICKS = 2400; // 2 分钟
+    private static final int ACTIVATION_COOLDOWN_TICKS = 5400; // 4 分半钟
+
+    private static final ResourceLocation MELT_DREAM_VARIABILITY_ID = ResourceLocation.fromNamespaceAndPath(
+            PasterDreamMod.MOD_ID, "soul_gem_of_akizuki_ayane_melt_dream_variability");
+    private static final ResourceLocation SKILL_DAMAGE_ID = ResourceLocation.fromNamespaceAndPath(
+            PasterDreamMod.MOD_ID, "soul_gem_of_akizuki_ayane_skill_damage");
+    private static final ResourceLocation MAGIC_DAMAGE_ID = ResourceLocation.fromNamespaceAndPath(
+            PasterDreamMod.MOD_ID, "soul_gem_of_akizuki_ayane_magic_damage");
+    private static final ResourceLocation ACTIVATION_SKILL_DAMAGE_ID = ResourceLocation.fromNamespaceAndPath(
+            PasterDreamMod.MOD_ID, "soul_gem_of_akizuki_ayane_activation_skill_damage");
+    private static final ResourceLocation ACTIVATION_MAGIC_DAMAGE_ID = ResourceLocation.fromNamespaceAndPath(
+            PasterDreamMod.MOD_ID, "soul_gem_of_akizuki_ayane_activation_magic_damage");
+
+    public SoulGemOfAkizukiAyaneItem() {
+        super(new Item.Properties().stacksTo(1).rarity(ModRarities.miracle()));
+    }
+
+    @Override
+    public boolean isFoil(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext,
+                                                                                ResourceLocation id, ItemStack stack) {
+        Multimap<Holder<Attribute>, AttributeModifier> modifiers = HashMultimap.create();
+        modifiers.put(ModAttributes.MELT_DREAM_VARIABILITY,
+                new AttributeModifier(MELT_DREAM_VARIABILITY_ID,
+                        ENERGY_PER_MIN, AttributeModifier.Operation.ADD_VALUE));
+        return modifiers;
+    }
+
+    @Override
+    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
+        LivingEntity entity = slotContext.entity();
+        if (entity == null || entity.level().isClientSide()) return;
+
+        AttributeInstance skillDmg = entity.getAttribute(ModAttributes.SKILL_DAMAGE_RATE);
+        if (skillDmg != null && skillDmg.getModifier(SKILL_DAMAGE_ID) == null) {
+            skillDmg.addPermanentModifier(new AttributeModifier(SKILL_DAMAGE_ID,
+                    0.4, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        }
+        AttributeInstance magicDmg = entity.getAttribute(ModAttributes.MAGIC_DAMAGE_RATE);
+        if (magicDmg != null && magicDmg.getModifier(MAGIC_DAMAGE_ID) == null) {
+            magicDmg.addPermanentModifier(new AttributeModifier(MAGIC_DAMAGE_ID,
+                    0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        }
+        if (entity instanceof ServerPlayer sp) {
+            MeltDreamEnergyHelper.setPlayerMeltDreamEnergyConsumeDoubled(sp, true);
+        }
+    }
+
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        LivingEntity entity = slotContext.entity();
+        if (entity == null || entity.level().isClientSide()) return;
+
+        AttributeInstance skillDmg = entity.getAttribute(ModAttributes.SKILL_DAMAGE_RATE);
+        if (skillDmg != null) {
+            skillDmg.removeModifier(SKILL_DAMAGE_ID);
+        }
+        AttributeInstance magicDmg = entity.getAttribute(ModAttributes.MAGIC_DAMAGE_RATE);
+        if (magicDmg != null) {
+            magicDmg.removeModifier(MAGIC_DAMAGE_ID);
+        }
+        if (entity instanceof ServerPlayer sp) {
+            MeltDreamEnergyHelper.setPlayerMeltDreamEnergyConsumeDoubled(sp, false);
+            removeActivationBuff(sp);
+        }
+    }
+
+    @Override
+    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+        if (slotContext.entity() != null) {
+            return CuriosApi.getCuriosInventory(slotContext.entity()).map(handler ->
+                            handler.findFirstCurio(stack.getItem()).isEmpty())
+                    .orElse(true);
+        }
+        return true;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+
+        if (hand != InteractionHand.MAIN_HAND || !player.isShiftKeyDown()) {
+            return InteractionResultHolder.pass(stack);
+        }
+
+        if (!level.isClientSide() && player instanceof ServerPlayer sp) {
+            if (player.getCooldowns().isOnCooldown(this)) {
+                player.displayClientMessage(
+                        Component.translatable("tooltip.pasterdream.soul_gem_of_akizuki_ayane.cooldown"), true);
+                return InteractionResultHolder.fail(stack);
+            }
+
+            MeltDreamEnergyHelper.setPlayerMeltDreamEnergyAndSync(sp,
+                    MeltDreamEnergyHelper.getPlayerMaxMeltDreamEnergyEffective(sp));
+            MeltDreamEnergyHelper.setPlayerMeltDreamEnergyIsNeed(sp, false);
+            applyActivationBuff(sp);
+            sp.getPersistentData().putInt("pasterdream.soul_gem_no_consume_ticks", NO_CONSUME_TICKS);
+            player.getCooldowns().addCooldown(this, ACTIVATION_COOLDOWN_TICKS);
+        }
+
+        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+    }
+
+    public static void applyActivationBuff(ServerPlayer player) {
+        AttributeInstance skillDmg = player.getAttribute(ModAttributes.SKILL_DAMAGE_RATE);
+        if (skillDmg != null && skillDmg.getModifier(ACTIVATION_SKILL_DAMAGE_ID) == null) {
+            skillDmg.addPermanentModifier(new AttributeModifier(ACTIVATION_SKILL_DAMAGE_ID,
+                    0.6, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        }
+        AttributeInstance magicDmg = player.getAttribute(ModAttributes.MAGIC_DAMAGE_RATE);
+        if (magicDmg != null && magicDmg.getModifier(ACTIVATION_MAGIC_DAMAGE_ID) == null) {
+            magicDmg.addPermanentModifier(new AttributeModifier(ACTIVATION_MAGIC_DAMAGE_ID,
+                    0.6, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        }
+    }
+
+    public static void removeActivationBuff(ServerPlayer player) {
+        AttributeInstance skillDmg = player.getAttribute(ModAttributes.SKILL_DAMAGE_RATE);
+        if (skillDmg != null) {
+            skillDmg.removeModifier(ACTIVATION_SKILL_DAMAGE_ID);
+        }
+        AttributeInstance magicDmg = player.getAttribute(ModAttributes.MAGIC_DAMAGE_RATE);
+        if (magicDmg != null) {
+            magicDmg.removeModifier(ACTIVATION_MAGIC_DAMAGE_ID);
+        }
+    }
+
+    public static boolean isWearing(Player player) {
+        return CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get()).isPresent())
+                .orElse(false);
+    }
+
+    public static boolean isFragile(ServerPlayer player) {
+        return MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(player) < FRAGILE_ENERGY_THRESHOLD;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+        list.add(Component.translatable("tooltip.pasterdream.soul_gem_of_akizuki_ayane.1"));
+        list.add(Component.translatable("tooltip.pasterdream.soul_gem_of_akizuki_ayane.2"));
+        list.add(Component.translatable("tooltip.pasterdream.soul_gem_of_akizuki_ayane.3"));
+        list.add(Component.translatable("tooltip.pasterdream.soul_gem_of_akizuki_ayane.4"));
+        list.add(Component.translatable("tooltip.pasterdream.soul_gem_of_akizuki_ayane.5"));
+        list.add(Component.translatable("tooltip.pasterdream.soul_gem_of_akizuki_ayane.6"));
+        list.add(Component.translatable("tooltip.pasterdream.soul_gem_of_akizuki_ayane.7"));
+        list.add(Component.translatable("tooltip.pasterdream.soul_gem_of_akizuki_ayane.8"));
+        list.add(Component.translatable("tooltip.pasterdream.soul_gem_of_akizuki_ayane.9"));
+        list.add(Component.translatable("tooltip.pasterdream.soul_gem_of_akizuki_ayane.10"));
+    }
+}
