@@ -240,6 +240,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LOST_SWORD_TOMB.get());
         dropSelf(ModBlocks.DYEDREAM_CRACK.get());
         dropSelf(ModBlocks.LIFE_CRYSTAL.get());
+        dropSelf(ModBlocks.GOLDEN_FOX_SCULPTURE.get());
+        dropSelf(ModBlocks.FOX_SCULPTURE.get());
         dropSelf(ModBlocks.SHADOW.get());
         dropSelf(ModBlocks.THICK_SHADOW.get());
 

@@ -113,6 +113,8 @@ import com.pasterdream.pasterdreammod.world.item.hellfiretool.*;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombItem;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombItem;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalItem;
+import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureItem;
+import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureItem;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestItem;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersItem;
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.*;
@@ -1221,6 +1223,10 @@ public class ModItems {
             () -> new LostSwordTombItem(ModBlocks.LOST_SWORD_TOMB.get(), new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> LIFE_CRYSTAL = ITEMS.register("life_crystal",
             () -> new LifeCrystalItem(ModBlocks.LIFE_CRYSTAL.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> GOLDEN_FOX_SCULPTURE = ITEMS.register("golden_fox_sculpture",
+            () -> new GoldenFoxSculptureItem(ModBlocks.GOLDEN_FOX_SCULPTURE.get(), new Item.Properties()));
+    public static final DeferredItem<Item> FOX_SCULPTURE = ITEMS.register("fox_sculpture",
+            () -> new FoxSculptureItem(ModBlocks.FOX_SCULPTURE.get(), new Item.Properties()));
     public static final DeferredItem<Item> DESERT_HERO_TOMB = ITEMS.register("desert_hero_tomb",
             () -> new DesertHeroTombItem(ModBlocks.DESERT_HERO_TOMB.get(), new Item.Properties()));
 
@@ -1682,6 +1688,8 @@ public class ModItems {
             () -> new SpawnEggItem(ModEntities.FIREFLY.get(), -12570340, -5382814, new Item.Properties()));
     public static final DeferredItem<Item> SMALL_STONE_SPIRIT_SPAWN_EGG = ITEMS.register("small_stone_spirit_spawn_egg",
             () -> new SpawnEggItem(ModEntities.SMALL_STONE_SPIRIT.get(), -3937560, -9340294, new Item.Properties()));
+    public static final DeferredItem<Item> GOLDEN_FOX_SPAWN_EGG = ITEMS.register("golden_fox_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.GOLDEN_FOX.get(), 0xe8c13a, 0x8b6914, new Item.Properties()));
 
     // ===== 追忆 =====
     public static final DeferredItem<Item> MEMORY_GEM = ITEMS.register("memory_gem",

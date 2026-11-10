@@ -18,6 +18,8 @@ import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlast
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceRecipeSerializer;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipe;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipeSerializer;
+import com.pasterdream.pasterdreammod.recipe.GoldenFoxTradeRecipe;
+import com.pasterdream.pasterdreammod.recipe.GoldenFoxTradeRecipeSerializer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -87,6 +89,12 @@ public class ModRecipes {
 
     public static final DeferredHolder<RecipeSerializer<?>, DyedreamContaminationRecipeSerializer> DYEDREAM_CONTAMINATION_SERIALIZER =
             RECIPE_SERIALIZERS.register("dyedream_contamination", DyedreamContaminationRecipeSerializer::new);
+
+    public static final DeferredHolder<RecipeType<?>, RecipeType<GoldenFoxTradeRecipe>> GOLDEN_FOX_TRADE =
+            RECIPE_TYPES.register("golden_fox_trade", () -> new RecipeType<>() {});
+
+    public static final DeferredHolder<RecipeSerializer<?>, GoldenFoxTradeRecipeSerializer> GOLDEN_FOX_TRADE_SERIALIZER =
+            RECIPE_SERIALIZERS.register("golden_fox_trade", GoldenFoxTradeRecipeSerializer::new);
 
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZERS.register(eventBus);

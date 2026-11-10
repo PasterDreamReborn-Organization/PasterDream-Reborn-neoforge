@@ -8,6 +8,9 @@ import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import com.pasterdream.pasterdreammod.world.entity.FluffyWindArrowEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowAlloyArrowEntity;
 import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
+import com.pasterdream.pasterdreammod.world.entity.GoldenFoxEntity;
+import com.pasterdream.pasterdreammod.world.entity.GoldenFoxFireballEntity;
+import com.pasterdream.pasterdreammod.world.entity.GoldenFoxPetEntity;
 import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
@@ -186,6 +189,32 @@ public class ModEntities {
                             .fireImmune()
                             .sized(1f, 1f));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<GoldenFoxEntity>> GOLDEN_FOX =
+            register("golden_fox",
+                    EntityType.Builder.<GoldenFoxEntity>of(GoldenFoxEntity::new, MobCategory.CREATURE)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .sized(0.6f, 0.6f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<GoldenFoxPetEntity>> GOLDEN_FOX_PET =
+            register("golden_fox_pet",
+                    EntityType.Builder.<GoldenFoxPetEntity>of(GoldenFoxPetEntity::new, MobCategory.CREATURE)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .fireImmune()
+                            .sized(0.6f, 0.6f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<GoldenFoxFireballEntity>> GOLDEN_FOX_FIREBALL =
+            register("golden_fox_fireball",
+                    EntityType.Builder.<GoldenFoxFireballEntity>of(GoldenFoxFireballEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(false)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(2)
+                            .fireImmune()
+                            .sized(0.5f, 0.5f));
+
     private static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> register(String name, EntityType.Builder<T> builder) {
         return ENTITY_TYPES.register(name, () -> builder.build(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name).toString()));
@@ -206,6 +235,8 @@ public class ModEntities {
         event.put(SHADOW_HAND.get(), ShadowHandEntity.createAttributes().build());
         event.put(TERRASWORD_WAVE.get(), TerraswordWaveEntity.createAttributes().build());
         event.put(FOX_FIRE.get(), FoxFireEntity.createAttributes().build());
+        event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());
+        event.put(GOLDEN_FOX_PET.get(), GoldenFoxPetEntity.createAttributes().build());
         event.put(MELT_DREAM_CRYSTAL_ENTITY.get(), MeltDreamCrystalEntityEntity.createAttributes().build());
         event.put(FIREFLY.get(), FireflyEntity.createAttributes().build());
         event.put(SMALL_STONE_SPIRIT.get(), SmallStoneSpiritEntity.createAttributes().build());

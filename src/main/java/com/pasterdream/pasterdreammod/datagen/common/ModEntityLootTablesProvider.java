@@ -77,5 +77,10 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                 ModEntities.SHADOW_HAND.get().getDefaultLootTable(),
                 LootTable.lootTable()
         );
+
+        consumer.accept(
+                ModEntities.GOLDEN_FOX.get().getDefaultLootTable(),
+                LootTable.lootTable()
+        );
     }
 }

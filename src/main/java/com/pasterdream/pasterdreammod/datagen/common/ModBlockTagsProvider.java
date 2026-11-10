@@ -227,6 +227,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.MOLTEN_GOLD_BLOCK.get())
                 .add(ModBlocks.LOST_SWORD_TOMB.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.LIFE_CRYSTAL.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.GOLDEN_FOX_SCULPTURE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.FOX_SCULPTURE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_ANVIL.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get());

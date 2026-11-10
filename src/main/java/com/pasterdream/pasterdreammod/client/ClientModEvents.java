@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.client;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.client.model.KusanagiVenomStingerModel;
+import com.pasterdream.pasterdreammod.client.model.FireballProjectileModel;
 import com.pasterdream.pasterdreammod.client.renderer.AngelWingRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.ForsakensWingRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.MachineLightWingRenderer;
@@ -116,6 +117,7 @@ public final class ClientModEvents {
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(KusanagiVenomStingerModel.LAYER_LOCATION, KusanagiVenomStingerModel::createBodyLayer);
+        event.registerLayerDefinition(FireballProjectileModel.LAYER_LOCATION, FireballProjectileModel::createBodyLayer);
     }
 
     /** HUD 层（融梦能量 / SAN / 失智 / BOSS 血条 等）。 */

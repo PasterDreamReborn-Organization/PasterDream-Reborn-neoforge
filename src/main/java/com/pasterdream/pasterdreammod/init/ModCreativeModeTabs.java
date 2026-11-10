@@ -117,6 +117,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.EMBRYO_NECKLACE.get());
                         output.accept(ModItems.EMBRYO_RING.get());
                         output.accept(ModItems.EMBRYO_BELT.get());
+                        output.accept(ModItems.FOX_SCULPTURE.get());
                         // 音乐唱片
                         output.accept(ModItems.SWEET_DREAM_MUSIC_DISC.get());
                         output.accept(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get());
@@ -339,6 +340,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_BLOCK.get());
                         output.accept(ModItems.MOLTEN_GOLD_BLOCK.get());
                         output.accept(ModItems.CHARGED_AMETHYST_BLOCK.get());
+                        output.accept(ModItems.GOLDEN_FOX_SCULPTURE.get());
                     }).build());
 
     // ===== 灯影之下 =====
@@ -780,6 +782,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_HAND_SPAWN_EGG.get());
                         output.accept(ModItems.FIREFLY_SPAWN_EGG.get());
                         output.accept(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
+                        output.accept(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
                     })
                     .build());
 
