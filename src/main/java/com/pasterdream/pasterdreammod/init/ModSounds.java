@@ -18,6 +18,9 @@ public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(Registries.SOUND_EVENT, PasterDreamMod.MOD_ID);
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> WIND_CHIME =
+            SOUND_EVENTS.register("wind_chime", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_chime")));
     public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_SLASH =
             SOUND_EVENTS.register("sword_slash", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sword_slash")));

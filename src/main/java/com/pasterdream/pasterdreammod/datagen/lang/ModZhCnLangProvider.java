@@ -18,9 +18,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.PLIERS.get(), "园艺钳");
         add(ModItems.FEATHER_PEN.get(), "羽毛笔");
         add(ModItems.SAND_OF_TIME.get(), "时之沙");
+        add("subtitles.pasterdream.wind_chime", "逐梦列车：风铃响起");
         add("subtitles.pasterdream.melt_dream_crystal_chest_open_rare", "融梦水晶箱：稀有宝藏开启");
         add("subtitles.pasterdream.melt_dream_crystal_chest_open_legend", "融梦水晶箱：传奇宝藏开启");
         add("tooltip.pasterdream.sand_of_time.6", "§7若融梦水晶箱重置冷却中，使用时会直接跳过该冷却");
+        add("message.pasterdream.dream_train.train_pass", "一辆逐梦列车呼啸而过......");
+        add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息...... §aX：%s §aZ：%s");
         add("message.pasterdream.sand_of_time.reset_cooldown_skipped", "时之沙的力量直接跳过了融梦水晶箱的重置冷却");
         add(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), "融梦水晶箱");
         add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), "打开的融梦水晶箱");
@@ -700,6 +703,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DREAM_TRAVELER_BELT.get(), "迷梦旅者腰带");
         add("tooltip.pasterdream.dream_traveler_belt.effect1", "§7▪ §9+3% 移动速度");
         add("tooltip.pasterdream.dream_traveler_belt.effect2", "§7▪ §9+10% 瞬身术冷却缩减");
+        add(ModBlocks.DREAM_TRAIN_STRUCTURE.get(), "逐梦列车结构");
         add(ModItems.RED_DEW_RING.get(), "红露滴戒指");
         add("tooltip.pasterdream.red_dew_ring.effect", "§7▪ §9+%s最大生命值");
         add(ModItems.STRIKE_RING.get(), "强击戒指");

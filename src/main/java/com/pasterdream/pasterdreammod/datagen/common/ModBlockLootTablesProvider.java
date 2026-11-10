@@ -395,6 +395,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         }
         windJourneyLoot();
 
+        add(ModBlocks.DREAM_TRAIN_STRUCTURE.get(), LootTable.lootTable());
         dropSelf(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get());
         dropSelf(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());
         dropSelf(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get());

@@ -18,9 +18,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.PLIERS.get(), "Pliers");
         add(ModItems.FEATHER_PEN.get(), "Feather Pen");
         add(ModItems.SAND_OF_TIME.get(), "Sand of Time");
+        add("subtitles.pasterdream.wind_chime", "Dream Train: wind chime rings");
         add("subtitles.pasterdream.melt_dream_crystal_chest_open_rare", "Melt Dream Crystal Chest opens with rare treasure");
         add("subtitles.pasterdream.melt_dream_crystal_chest_open_legend", "Melt Dream Crystal Chest opens with legendary treasure");
         add("tooltip.pasterdream.sand_of_time.6", "§7If Melt Dream Crystal Chest reset is cooling down, use to skip the cooldown");
+        add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past......");
+        add("message.pasterdream.dream_train.location_info", "The train revealed a location...... §aX：%s §aZ：%s");
         add("message.pasterdream.sand_of_time.reset_cooldown_skipped", "The Sand of Time skipped the Melt Dream Crystal Chest reset cooldown");
         add(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), "Melt Dream Crystal Chest");
         add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), "Opened Melt Dream Crystal Chest");
@@ -700,6 +703,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DREAM_TRAVELER_BELT.get(), "Dream Traveler Belt");
         add("tooltip.pasterdream.dream_traveler_belt.effect1", "§7▪ §9+3% Movement Speed");
         add("tooltip.pasterdream.dream_traveler_belt.effect2", "§7▪ §9+10% Blink Cooldown Reduction");
+        add(ModBlocks.DREAM_TRAIN_STRUCTURE.get(), "Dream Train Structure");
         add(ModItems.RED_DEW_RING.get(), "Red Dew Ring");
         add("tooltip.pasterdream.red_dew_ring.effect", "§7▪ §9+%sMax Health");
         add(ModItems.STRIKE_RING.get(), "Strike Ring");

@@ -45,6 +45,23 @@ description: 新增/修改世界生成（群系、维度类型、噪声设置、
 
 ---
 
+## 结构 NBT 中的物品栈转换（Forge 1.20.1 → NeoForge 1.21.1）
+
+结构模板放在 `src/main/resources/data/pasterdream/structure/`（1.21 使用单数 `structure`）。复制来源 `.nbt` 后、运行 GameTest 前，先转换模板内所有方块实体的物品栈；物品可能藏在 `Inventory.Items` 等嵌套容器里，不能只检查顶层 `Items`。
+
+```powershell
+python -m pip install nbtlib
+python scripts/convert_structure_item_nbt.py src/main/resources/data/pasterdream/structure/dream_train.nbt
+python scripts/convert_structure_item_nbt.py --check src/main/resources/data/pasterdream/structure/dream_train.nbt
+```
+
+- 脚本只写入显式指定的目标仓库 `structure/*.nbt`，不会修改 Forge 来源。将旧物品栈 `Count` 转为 `count`（Int），保留 `id`、`Slot` 和其他方块实体字段。
+- 寻梦者笔记 `pasterdream:dream_notes_book` 的旧 `tag.content` 必须转为 `components."pasterdream:dream_note_content"`；`minecraft:custom_data` 不能代替该专用组件。转换后核对内容 key 已在 `ModDreamNotesBookContentRelation` 注册，笔记可正常显示。
+- 遇到其他非空旧 `tag` 时脚本报错；先逐项确认 1.21 对应组件并扩展映射，再重跑。不要丢弃旧 NBT，也不要把未知字段一概塞进自定义数据。
+- 提交前用 `--check` 验证每份新模板没有旧 `Count`/`tag` 物品栈；再运行 `runData`、`build`、`runGameTestServer`，并在游戏内检查容器中的笔记内容。模板“能加载”不等于其中物品已正确解码。
+
+---
+
 ## 文件速查
 
 | 用途 | 路径 |
@@ -58,6 +75,7 @@ description: 新增/修改世界生成（群系、维度类型、噪声设置、
 | 世界生成 datagen | `datagen/common/ModWorldGenProvider.java` |
 | 结构生成辅助 | `helper/structuregenerate/` |
 | 结构生成事件 | `event/ModWorldGenEvents.java` |
+| 结构物品 NBT 转换 | `scripts/convert_structure_item_nbt.py` |
 
 ---
 
@@ -74,4 +92,4 @@ description: 新增/修改世界生成（群系、维度类型、噪声设置、
 
 批次 003 增加下界 `molten_gold_ore_patch`：保留来源下界岩替换、矿脉大小 16、每区块 4 次、Y=0～64 均匀分布及 `vegetal_decoration` 阶段。GameTest 覆盖群系挂载和放置规则，不能替代真实世界自然分布与客户端视觉验收。
 
-批次 082 补全主世界内容：12 种植物/小石子 configured/placed 地物与群系标签注入；橡木/云杉渔夫小屋、露营地、沙漠小屋、沙漠要塞的 structure/structure_set/template_pool/NBT 与 4 条箱子战利品表。结构使用静态 JSON 放在 `data/pasterdream/worldgen/`，NBT 放在 `data/pasterdream/structure/`。搬运 1.20 结构 NBT 时须把物品栈改写为 1.21 组件格式（`count`/`components`），否则自定义组件（如 `dream_note_content`）会丢失并显示 `null - null`。
+批次 082 补全主世界内容：12 种植物/小石子 configured/placed 地物与群系标签注入；橡木/云杉渔夫小屋、露营地、沙漠小屋、沙漠要塞的 structure/structure_set/template_pool/NBT 与 4 条箱子战利品表。结构使用静态 JSON 放在 `data/pasterdream/worldgen/`，NBT 放在 `data/pasterdream/structure/`。批次 091 的逐梦列车模板已按上面的脚本转换 3 个旧物品栈，其中 2 本寻梦者笔记使用专用内容组件。

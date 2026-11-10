@@ -597,6 +597,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CLAYPAN.get());
                         output.accept(ModItems.DREAM_CAULDRON.get());
                         output.accept(ModItems.DREAM_ACCUMULATOR.get());
+                        output.accept(ModItems.DREAM_TRAIN_STRUCTURE.get());
                         output.accept(ModItems.SORBENT.get());
                         output.accept(ModItems.SHADOW_DUNGEON_WALL_KEY.get());
                         output.accept(ModItems.SHADOW_DUNGEON_FLOOR_KEY.get());
