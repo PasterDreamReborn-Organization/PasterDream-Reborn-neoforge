@@ -401,6 +401,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.BOBOJI_CURIO.get());
         basicItem(ModItems.SHADOW_BREATH.get());
         basicItem(ModItems.WAR_FLAG.get());
+        basicItem(ModItems.ICE_SHADOW_CURIO.get());
+        basicItem(ModItems.CALAIS_SPICE_BOTTLE.get());
+        basicItem(ModItems.GHOST_FACE.get());
         basicItem(ModItems.WIND_SPIRIT.get());
         basicItem(ModItems.STORAGE_BAG.get());
         basicItem(ModItems.LARGE_STORAGE_BAG.get());

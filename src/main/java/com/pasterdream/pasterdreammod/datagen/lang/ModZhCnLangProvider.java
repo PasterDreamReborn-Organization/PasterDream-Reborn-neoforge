@@ -739,6 +739,18 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9该效果可以共享给周围玩家");
         add("tooltip.pasterdream.war_flag.description", "§7§o--这面旗帜上流淌的暗影似乎在述说遥远的过往......");
         add("effect.pasterdream.war_flag", "战意");
+        add(ModItems.ICE_SHADOW_CURIO.get(), "冰影水晶");
+        add("tooltip.pasterdream.ice_shadow_curio.0", "§7▪ §9冰影战锤的战技将额外释放2个撼地水晶");
+        add("tooltip.pasterdream.ice_shadow_curio.1", "§7▪ §9释放的撼地水晶间隔受释放距离影响");
+        add(ModItems.CALAIS_SPICE_BOTTLE.get(), "卡莱的调料瓶");
+        add("tooltip.pasterdream.calais_spice_bottle.effect1", "§7▪ §9食用速度+40%");
+        add("tooltip.pasterdream.calais_spice_bottle.effect2", "§7▪ §9装备时获得卡莱料理X增益，攻击命中消耗层数，层数耗尽后需要进食补充，进食积累层数（每3饥饿度+1，上限X级）");
+        add("tooltip.pasterdream.calais_spice_bottle.effect3", "§7▪ §9每消耗1层会获得随机效果");
+        add("effect.pasterdream.calais_spice_bottle", "卡莱料理");
+        add(ModItems.GHOST_FACE.get(), "鬼魂之面");
+        add("tooltip.pasterdream.ghost_face.effect.1", "§7▪ §9使用远程武器时，额外发射一发射弹，20%再发射一发");
+        add("tooltip.pasterdream.ghost_face.effect.2", "§7▪ §9远程武器射弹无视无敌帧");
+        add("tooltip.pasterdream.ghost_face.cooldown", "§7▪ §9复制弹幕效果有%s秒冷却");
         add(ModItems.WIND_SPIRIT.get(), "风精灵");
         add("tooltip.pasterdream.wind_spirit.effect1", "§7▪ §9增加50%箭矢速度");
         add("tooltip.pasterdream.wind_spirit.effect2", "§7▪ §9拉弓与装填时间缩减25%");

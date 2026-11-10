@@ -739,6 +739,18 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9This effect can be shared with nearby players.");
         add("tooltip.pasterdream.war_flag.description", "§7§o--The shadows flowing on this flag seem to be telling stories of a distant past......");
         add("effect.pasterdream.war_flag", "Battle Intention");
+        add(ModItems.ICE_SHADOW_CURIO.get(), "Ice Shadow Curio");
+        add("tooltip.pasterdream.ice_shadow_curio.0", "§7▪ §9Ice Shadow Hammer's skill spawns 2 extra Shaking Crystals");
+        add("tooltip.pasterdream.ice_shadow_curio.1", "§7▪ §9Crystal spacing is affected by cast distance");
+        add(ModItems.CALAIS_SPICE_BOTTLE.get(), "Calais Spice Bottle");
+        add("tooltip.pasterdream.calais_spice_bottle.effect1", "§7▪ §9+40% eating speed");
+        add("tooltip.pasterdream.calais_spice_bottle.effect2", "§7▪ §9Gain Calais Spice X buff when equipped. Each attack consumes a stack, and after chopping until it disappears, you need to eat to restore it. Eating accumulates stacks (1 stack per 3 hunger, up to level X).");
+        add("tooltip.pasterdream.calais_spice_bottle.effect3", "§7▪ §9Each stack consumed grants a random effect");
+        add("effect.pasterdream.calais_spice_bottle", "Calais Spice");
+        add(ModItems.GHOST_FACE.get(), "Ghost Face");
+        add("tooltip.pasterdream.ghost_face.effect.1", "§7▪ §9When using ranged weapons, fire an extra shot, with a 20% chance to fire another one.");
+        add("tooltip.pasterdream.ghost_face.effect.2", "§7▪ §9Ranged weapon projectiles ignore invincibility frames.");
+        add("tooltip.pasterdream.ghost_face.cooldown", "§7▪ §9Cooldown: %s seconds");
         add(ModItems.WIND_SPIRIT.get(), "Wind Spirit");
         add("tooltip.pasterdream.wind_spirit.effect1", "§7▪ §9Increases arrow velocity by 50%");
         add("tooltip.pasterdream.wind_spirit.effect2", "§7▪ §9-25% bow draw and crossbow load time");

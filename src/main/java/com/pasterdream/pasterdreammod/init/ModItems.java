@@ -92,6 +92,9 @@ import com.pasterdream.pasterdreammod.world.item.curio.MeltDreamEnergyRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.BobojiCurioItem;
 import com.pasterdream.pasterdreammod.world.item.curio.ShadowBreathItem;
 import com.pasterdream.pasterdreammod.world.item.curio.WarFlagItem;
+import com.pasterdream.pasterdreammod.world.item.curio.CalaisSpiceBottleItem;
+import com.pasterdream.pasterdreammod.world.item.curio.GhostFaceItem;
+import com.pasterdream.pasterdreammod.world.item.curio.IceShadowCurioItem;
 import com.pasterdream.pasterdreammod.world.item.curio.WindSpiritItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
@@ -247,6 +250,10 @@ public class ModItems {
     public static final DeferredItem<Item> BOBOJI_CURIO = ITEMS.register("boboji_curio", BobojiCurioItem::new);
     public static final DeferredItem<Item> SHADOW_BREATH = ITEMS.register("shadow_breath", ShadowBreathItem::new);
     public static final DeferredItem<Item> WAR_FLAG = ITEMS.register("war_flag", WarFlagItem::new);
+    public static final DeferredItem<Item> ICE_SHADOW_CURIO = ITEMS.register("ice_shadow_curio", IceShadowCurioItem::new);
+    public static final DeferredItem<Item> CALAIS_SPICE_BOTTLE = ITEMS.register("calais_spice_bottle",
+            CalaisSpiceBottleItem::new);
+    public static final DeferredItem<Item> GHOST_FACE = ITEMS.register("ghost_face", GhostFaceItem::new);
     public static final DeferredItem<Item> WIND_SPIRIT = ITEMS.register("wind_spirit", WindSpiritItem::new);
 
     // ===== 便携储物袋 =====
