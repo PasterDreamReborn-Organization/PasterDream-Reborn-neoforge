@@ -118,7 +118,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.EMBRYO_NECKLACE.get());
                         output.accept(ModItems.EMBRYO_RING.get());
                         output.accept(ModItems.EMBRYO_BELT.get());
-                        output.accept(ModItems.FOX_SCULPTURE.get());
                         // 音乐唱片
                         output.accept(ModItems.SWEET_DREAM_MUSIC_DISC.get());
                         output.accept(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get());
@@ -341,7 +340,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_BLOCK.get());
                         output.accept(ModItems.MOLTEN_GOLD_BLOCK.get());
                         output.accept(ModItems.CHARGED_AMETHYST_BLOCK.get());
-                        output.accept(ModItems.GOLDEN_FOX_SCULPTURE.get());
+                        output.accept(ModItems.FOX_SCULPTURE.get());
                     }).build());
 
     // ===== 灯影之下 =====
@@ -485,6 +484,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MELT_DREAM_AXE.get());
                         output.accept(ModItems.MELT_DREAM_SHOVEL.get());
                         output.accept(ModItems.MELT_DREAM_HOE.get());
+                        output.accept(ModItems.MELT_DREAM_BOW.get());
                         // 融梦水晶装备
                         output.accept(ModItems.MELT_DREAM_HELMET.get());
                         output.accept(ModItems.MELT_DREAM_CHESTPLATE.get());
@@ -562,6 +562,16 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BOBOJI_CURIO.get());
                         output.accept(ModItems.WIND_SPIRIT.get());
                         output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
+                        // 特殊箭矢
+                        output.accept(ModItems.BLACKSTONE_ARROW.get());
+                        output.accept(ModItems.TOXIC_SPORE_ARROW.get());
+                        output.accept(ModItems.FRAGDREAM_ARROW.get());
+                        output.accept(ModItems.MAGICAL_ARROW.get());
+                        output.accept(ModItems.CHARGED_ARROW.get());
+                        output.accept(ModItems.CHAOTIC_ARROW.get());
+                        output.accept(ModItems.BLAST_ARROW.get());
+                        output.accept(ModItems.CONGEAL_WIND_ARROW.get());
+                        output.accept(ModItems.DEW_ARROW.get());
                     }).build());
 
     // ===== 设备 =====
@@ -576,6 +586,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.UUZ_DOLL.get());
                         output.accept(ModItems.DYEDREAM_CRACK.get());
                         output.accept(ModItems.LIFE_CRYSTAL.get());
+                        output.accept(ModItems.GOLDEN_FOX_SCULPTURE.get());
                         output.accept(ModItems.LOST_SWORD_TOMB.get());
                         output.accept(ModItems.SAND_OF_TIME.get());
                         output.accept(ModItems.DESERT_HERO_TOMB.get());

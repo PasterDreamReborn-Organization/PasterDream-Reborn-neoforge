@@ -31,7 +31,7 @@ public class ShadowBlastFurnaceGameTests
     public static void recipesLoadAndCraft(GameTestHelper helper)
     {
         var recipes = helper.getLevel().getRecipeManager().getAllRecipesFor(ModRecipes.SHADOW_BLAST_FURNACE.get());
-        helper.assertTrue(recipes.size() == 6, "暗影高炉来源配方应加载 6 条，实际 " + recipes.size());
+        helper.assertTrue(recipes.size() == 7, "暗影高炉来源配方应加载 7 条，实际 " + recipes.size());
 
         var holder = helper.getLevel().getRecipeManager().byKey(ResourceLocation.fromNamespaceAndPath(
                 PasterDreamMod.MOD_ID, "shadow_blast_furnace/shadow_stone")).orElseThrow();

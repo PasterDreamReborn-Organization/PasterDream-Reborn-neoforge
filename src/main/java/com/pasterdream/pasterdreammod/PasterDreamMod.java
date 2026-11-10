@@ -164,6 +164,7 @@ public class PasterDreamMod {
             ModShadowDungeonStructureSet.register();
             PotionBottleRegistry.registerDispenserBehavior();
             PotionBottleRegistry.registerAllEffects();
+            com.pasterdream.pasterdreammod.world.item.arrows.ArrowDispenserBehaviors.register();
             ProphecyCardItem.registerAllCardEffects();
         });
     }

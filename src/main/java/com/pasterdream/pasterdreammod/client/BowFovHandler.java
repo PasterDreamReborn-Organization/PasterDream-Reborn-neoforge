@@ -25,7 +25,7 @@ public final class BowFovHandler {
         }
 
         ItemStack stack = player.getUseItem();
-        if (!stack.is(ModItems.FLUFFY_WIND_BOW.get())) {
+        if (!stack.is(ModItems.MELT_DREAM_BOW.get()) && !stack.is(ModItems.FLUFFY_WIND_BOW.get())) {
             return;
         }
 

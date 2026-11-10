@@ -60,6 +60,12 @@ public final class ClientModEvents {
             ItemProperties.register(ModItems.FLUFFY_WIND_BOW.get(), ResourceLocation.withDefaultNamespace("pull"),
                     (stack, level, entity, seed) -> entity == null || entity.getUseItem() != stack ? 0.0F
                             : (float) (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F);
+            ItemProperties.register(ModItems.MELT_DREAM_BOW.get(), ResourceLocation.withDefaultNamespace("pulling"),
+                    (stack, level, entity, seed) -> entity != null && entity.isUsingItem()
+                            && entity.getUseItem() == stack ? 1.0F : 0.0F);
+            ItemProperties.register(ModItems.MELT_DREAM_BOW.get(), ResourceLocation.withDefaultNamespace("pull"),
+                    (stack, level, entity, seed) -> entity == null || entity.getUseItem() != stack ? 0.0F
+                            : (float) (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F);
             ItemProperties.register(ModItems.RED_DEW_RING.get(),
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lv"),
                     (stack, level, entity, seed) -> RedDewRingItem.getPredicateValue(RedDewRingItem.getLv(stack)));

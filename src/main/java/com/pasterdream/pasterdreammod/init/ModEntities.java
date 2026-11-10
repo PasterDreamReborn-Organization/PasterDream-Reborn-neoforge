@@ -13,7 +13,17 @@ import com.pasterdream.pasterdreammod.world.entity.SmallStoneSpiritEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import com.pasterdream.pasterdreammod.world.entity.FluffyWindArrowEntity;
+import com.pasterdream.pasterdreammod.world.entity.MeltDreamArrowEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowAlloyArrowEntity;
+import com.pasterdream.pasterdreammod.world.entity.arrows.BlackstoneArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.BlastArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.ChaoticArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.ChargedArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.CongealWindArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.DewArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.FragdreamArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.MagicalArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.ToxicSporeArrow;
 import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
 import com.pasterdream.pasterdreammod.world.entity.GoldenFoxEntity;
 import com.pasterdream.pasterdreammod.world.entity.GoldenFoxFireballEntity;
@@ -127,6 +137,86 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<ShadowAlloyArrowEntity>> SHADOW_ALLOY_ARROW =
             register("shadow_alloy_arrow",
                     EntityType.Builder.<ShadowAlloyArrowEntity>of(ShadowAlloyArrowEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<MeltDreamArrowEntity>> MELT_DREAM_ARROW =
+            register("melt_dream_arrow",
+                    EntityType.Builder.<MeltDreamArrowEntity>of(MeltDreamArrowEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ToxicSporeArrow>> TOXIC_SPORE_ARROW =
+            register("toxic_spore_arrow",
+                    EntityType.Builder.<ToxicSporeArrow>of(ToxicSporeArrow::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<FragdreamArrow>> FRAGDREAM_ARROW =
+            register("fragdream_arrow",
+                    EntityType.Builder.<FragdreamArrow>of(FragdreamArrow::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<MagicalArrow>> MAGICAL_ARROW =
+            register("magical_arrow",
+                    EntityType.Builder.<MagicalArrow>of(MagicalArrow::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ChargedArrow>> CHARGED_ARROW =
+            register("charged_arrow",
+                    EntityType.Builder.<ChargedArrow>of(ChargedArrow::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BlackstoneArrow>> BLACKSTONE_ARROW =
+            register("blackstone_arrow",
+                    EntityType.Builder.<BlackstoneArrow>of(BlackstoneArrow::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ChaoticArrow>> CHAOTIC_ARROW =
+            register("chaotic_arrow",
+                    EntityType.Builder.<ChaoticArrow>of(ChaoticArrow::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BlastArrow>> BLAST_ARROW =
+            register("blast_arrow",
+                    EntityType.Builder.<BlastArrow>of(BlastArrow::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<CongealWindArrow>> CONGEAL_WIND_ARROW =
+            register("congeal_wind_arrow",
+                    EntityType.Builder.<CongealWindArrow>of(CongealWindArrow::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<DewArrow>> DEW_ARROW =
+            register("dew_arrow",
+                    EntityType.Builder.<DewArrow>of(DewArrow::new, MobCategory.MISC)
                             .setShouldReceiveVelocityUpdates(true)
                             .setTrackingRange(64)
                             .setUpdateInterval(1)

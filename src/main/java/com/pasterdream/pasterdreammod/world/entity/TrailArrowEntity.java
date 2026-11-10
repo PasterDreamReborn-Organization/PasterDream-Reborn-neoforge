@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
+import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehavior;
+import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviors;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -12,8 +14,11 @@ import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +57,15 @@ public abstract class TrailArrowEntity extends Arrow {
         super(type, level);
     }
 
+    protected TrailArrowEntity(EntityType<? extends TrailArrowEntity> type, LivingEntity owner, Level level,
+                               ItemStack pickupItemStack, @Nullable ItemStack firedFromWeapon) {
+        super(type, level);
+        this.setPos(owner.getX(), owner.getEyeY() - 0.1, owner.getZ());
+        this.setOwner(owner);
+        this.setPickupItemStack(pickupItemStack.copy());
+        ArrowBehaviors.applyFiredFromWeapon(this, firedFromWeapon);
+    }
+
     /** 拖尾头端颜色（ARGB） */
     public abstract int trailHeadColor();
 
@@ -80,6 +94,34 @@ public abstract class TrailArrowEntity extends Arrow {
         if (!this.level().isClientSide && this.getAmmoItem().is(Items.SPECTRAL_ARROW)) {
             target.addEffect(new MobEffectInstance(MobEffects.GLOWING, SPECTRAL_GLOW_DURATION, 0));
         }
+        ArrowBehaviors.get(this.getAmmoItem()).doPostHurtEffects(this, target);
+    }
+
+    /** 拾取时返还实际弹药，避免武器强化把自制箭矢变成普通箭。 */
+    @Override
+    protected ItemStack getPickupItem() {
+        ItemStack ammo = this.getAmmoItem();
+        return ammo.isEmpty() ? super.getPickupItem() : ammo.copy();
+    }
+
+    @Override
+    public void shoot(double x, double y, double z, float velocity, float inaccuracy) {
+        ArrowBehaviors.get(this.getAmmoItem()).onShoot(this, velocity);
+        super.shoot(x, y, z, velocity, inaccuracy);
+    }
+
+    @Override
+    protected void onHitEntity(EntityHitResult result) {
+        ArrowBehavior behavior = ArrowBehaviors.get(this.getAmmoItem());
+        behavior.onHitEntityPre(this, result);
+        super.onHitEntity(result);
+        behavior.onHitEntityPost(this, result);
+    }
+
+    @Override
+    protected void onHitBlock(BlockHitResult result) {
+        super.onHitBlock(result);
+        ArrowBehaviors.get(this.getAmmoItem()).onHitBlock(this, result);
     }
 
     @Override
@@ -90,6 +132,7 @@ public abstract class TrailArrowEntity extends Arrow {
             this.updateClientTrail();
         }
         super.tick();
+        ArrowBehaviors.get(this.getAmmoItem()).onTick(this, this.inGround);
     }
 
     /** 每 tick 采样：落地后停止增长并延时清空，飞行中按点数上限保留 */

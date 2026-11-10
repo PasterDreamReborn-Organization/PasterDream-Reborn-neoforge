@@ -1673,5 +1673,39 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.content.风铃笼", "They say the illness I have is really troublesome. I still remember the pained expressions on my mom and dad's faces when I was diagnosed with leukemia.\nChemotherapy and recuperation came and went in turns; not only did all my hair fall out, but my body ached quite a bit too.\nWhat made me happy, though, was that not only my parents and the doctor kept vigil by my bedside — my classmates and teachers all came to visit me, and they gave me a super pretty wind chime, saying it had the power to grant blessings!\nFor some reason, every time I sleep I dream of a blue-green world with clouds and balloons floating in the sky, and in my dreams I fly around freely and carefree.\nAnd not only does it have clouds — there are statues of the characters I love, and even the knight of my fantasies appears in this world!\nJust as I was flying around sightseeing, the wind suddenly shifted direction, accompanied by a crisp chime. Following the sound, I found a strange building held up aloft.\nWhat makes it strange, you ask... it looks like a super-sized version of the wind chime my classmates gave me — so big you could even live in it!\nThe sound of the wind chime is so lovely~\nWhen I opened my eyes again and saw the hospital room ceiling, it was already noon the next day. My parents said I rarely slept that long.\nOutside the window, the wind chime was stirred by the breeze, making exactly the same sound as in my dream. It was so reassuring.\nBy Vivian");
         add("book.pasterdream.title.关于风旅生物的研究笔记", "Search Notes About Wind Journey World's Mob");
         add("book.pasterdream.content.关于风旅生物的研究笔记", "This is a world of wind — a gentle breeze blows here at every moment. This world also has many peculiar creatures, some of which I have studied. I will continue researching and summarizing until the end of my life.\nThunderclouds — these hostile fellows are quite strong in combat. Ordinary Thunderclouds are manageable, but those fully charged with electricity are much tougher than normal ones and hit harder too.\nI managed to capture a few for experiments and found that these creatures are dark clouds that have stored up the power of lightning; killing them turns them back into ordinary dark clouds.\nBonewings — they look like Phantom Membranes with only a skeleton... but these fellows are completely different from Phantom Membranes. Their main method of attack is breathing fire? Those that look more charred and are larger deal more damage.\nDuring my research I found these creatures should belong to the undead, yet they don't burn in daylight. Is it because they're already burning? Killing them drops gunpowder and bones.\nJellyfish — hmm... these strange little things can only be described as drifting with nothing to rely on. They wander through this sea of clouds. I managed to take some samples from them; this slime-like substance is edible, and after eating it you can avoid the wind's effects.\nHowever, unless necessary, don't eat raw Jellyfish Mud — for one, it tastes bad; for another, it doesn't reach its full potential. If you combine Jellyfish Mud with juice extracted from this world's plants, sugar, and figs, you can maximize its potential and avoid the wind's influence for about half a day.\nIf you mix Jellfish Jello with crystals from the sky islands' rock layers and condensed wind from the clouds, then add sugar and Wind Plant Extract, its nature changes too. After eating it, it's as if you've temporarily grown wings; though temporary and only able to glide like an Elytra, it's already enough to aid exploration in this world.\nBy Yejin");
+        add(ModItems.MELT_DREAM_BOW.get(), "Melt Dream Bow");
+        add("tooltip.pasterdreammod.melt_dream_bow.1", "Passive: §bCondensed Dream Arrow");
+        add("tooltip.pasterdreammod.melt_dream_bow.2", "§7▪ §9Consumes 0.2 Melt Dream Energy to deal +30% arrow damage as magic damage");
+        add("tooltip.pasterdreammod.melt_dream_bow.3", "§7▪ §9Fires normally when Melt Dream Energy is insufficient, without the bonus");
+        add("tooltip.pasterdreammod.melt_dream_bow.4", "§7▪ §9In the Dyedream World, normal arrows consume no arrow/durability/energy when fired");
+        add("tooltip.pasterdreammod.melt_dream_bow.5", "Traits:");
+        add("tooltip.pasterdreammod.melt_dream_bow.6", "§7▪ §9Can be enchanted with Looting");
+
+        add(ModItems.TOXIC_SPORE_ARROW.get(), "Toxic Spore Arrow");
+        add("tooltip.pasterdream.toxic_spore_arrow.tooltip1", "§9Make the target hit get poisoned.");
+        add("tooltip.pasterdream.toxic_spore_arrow.tooltip2", "§7§o--More poisonous than 100 poisonous potatoes.");
+        add(ModItems.FRAGDREAM_ARROW.get(), "Fragdream Arrow");
+        add("tooltip.pasterdream.fragdream_arrow.tooltip1", "§9Deals area damage when hitting a block or entity.");
+        add("tooltip.pasterdream.fragdream_arrow.tooltip2", "§cCannot be recycled.");
+        add(ModItems.MAGICAL_ARROW.get(), "Magical Arrow");
+        add("tooltip.pasterdream.magical_arrow.tooltip1", "§9Trace the target.");
+        add(ModItems.CHARGED_ARROW.get(), "Charged Arrow");
+        add("tooltip.pasterdream.charged_arrow.tooltip1", "§9Deals damage twice, one of which is magic damage.");
+        add("tooltip.pasterdream.charged_arrow.tooltip2", "§7§o--1 = 2");
+        add(ModItems.BLACKSTONE_ARROW.get(), "Blackstone Arrow");
+        add(ModItems.CHAOTIC_ARROW.get(), "Chaotic Arrow");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip1", "§9Causes confusion on hit, has a chance to restore sanity, and deals extra damage to shadow mobs.");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip2", "§9Enchant the bow with a damage-to-spirit enchantment so that it can be used infinitely.");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip3", "§7§o--Darkness! Obedience! Madness!");
+        add(ModItems.BLAST_ARROW.get(), "Blast Arrow");
+        add("tooltip.pasterdream.blast_arrow.tooltip1", "§9Hits blocks or entities to cause an explosion and destroy blocks, watch out for blowing yourself up!");
+        add("tooltip.pasterdream.blast_arrow.tooltip2", "§cCannot be recycled.");
+        add("tooltip.pasterdream.blast_arrow.tooltip3", "§7§o--Let's make something 'explosive'.");
+        add(ModItems.CONGEAL_WIND_ARROW.get(), "Congeal Wind Arrow");
+        add("tooltip.pasterdream.congeal_wind_arrow.tooltip1", "§9Faster than regular arrows and can knock back enemies even more.");
+        add("tooltip.pasterdream.congeal_wind_arrow.tooltip2", "§9The arrow can pierce through the target.");
+        add(ModItems.DEW_ARROW.get(), "Dew Arrow");
+        add("tooltip.pasterdream.dew_arrow.tooltip1", "§9Ignore water resistance and deal extra damage if the target is in water.");
+        add("tooltip.pasterdream.dew_arrow.tooltip2", "§9Restore 1 oxygen when hitting a target.");
     }
 }

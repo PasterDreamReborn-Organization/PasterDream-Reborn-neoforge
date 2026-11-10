@@ -200,7 +200,17 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.TRIDENT_ENCHANTABLE)
                 .add(ModItems.BEIHAI_RUO_TIDE_SWORD.get())
                 .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
-        tag(ItemTags.BOW_ENCHANTABLE).add(ModItems.FLUFFY_WIND_BOW.get());
+        tag(ItemTags.BOW_ENCHANTABLE).add(ModItems.FLUFFY_WIND_BOW.get()).add(ModItems.MELT_DREAM_BOW.get());
+        tag(ItemTags.ARROWS)
+                .add(ModItems.TOXIC_SPORE_ARROW.get())
+                .add(ModItems.FRAGDREAM_ARROW.get())
+                .add(ModItems.MAGICAL_ARROW.get())
+                .add(ModItems.CHARGED_ARROW.get())
+                .add(ModItems.BLACKSTONE_ARROW.get())
+                .add(ModItems.CHAOTIC_ARROW.get())
+                .add(ModItems.BLAST_ARROW.get())
+                .add(ModItems.CONGEAL_WIND_ARROW.get())
+                .add(ModItems.DEW_ARROW.get());
         // 暗影合金弩：1.21 由物品标签驱动附魔可应用范围；加入弩标签获得多重射击/穿透/快速装填，
         // 加入耐久标签获得耐久/经验修补/消失诅咒；力量与无限由物品类覆写放行。
         tag(ItemTags.CROSSBOW_ENCHANTABLE).add(ModItems.SHADOW_ALLOY_CROSSBOW.get());
