@@ -81,6 +81,17 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModEntities.CRAZY_TERRORBEAK.get(), "Crazy Terrorbeak");
         add(ModEntities.WEAKENESS_TERRORBEAK.get(), "Weakness Terrorbeak");
         add(ModEntities.SHADOW_HAND.get(), "Shadow Hand");
+        add(ModEntities.SHADOW_GOLEM.get(), "Shadow Golem");
+        add(ModEntities.SHADOW_GHOST.get(), "Shadow Ghost");
+        add(ModEntities.SHADOW_SQUEAL_GHOST.get(), "Squeal Shadow Ghost");
+        add(ModEntities.WAILING_SHADOW_GHOST.get(), "Wailing Shadow Ghost");
+        add(ModEntities.FRIENDLY_SHADOW_GHOST.get(), "Friendly Shadow Ghost");
+        add(ModEntities.BLACK_BEETLE.get(), "Black Beetle");
+        add(ModEntities.BLACK_BEETLE_MOTHER.get(), "Black Beetle Mother");
+        add("message.pasterdream.black_beetle.easter_egg_1", "Come on, Xiao Liang, show us what you got!");
+        add("message.pasterdream.black_beetle.easter_egg_2", "Grass, walk, ignore! ጿ ኈ ቼ ዽ ጿ");
+        add("message.pasterdream.friendly_shadow_ghost.sit", "Friendly Shadow Ghost is now staying");
+        add("message.pasterdream.friendly_shadow_ghost.follow", "Friendly Shadow Ghost is now following you");
         add(ModEntities.PINK_CHICKEN.get(), "Pink Chicken");
         add(ModItems.PINK_CHICKEN_SPAWN_EGG.get(), "Pink Chicken Spawn Egg");
         add(ModEntities.PINK_SLIME.get(), "Pink Slime");
@@ -1383,6 +1394,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get(), "Crazy Terrorbeak Spawn Egg");
         add(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get(), "Weakness Terrorbeak Spawn Egg");
         add(ModItems.SHADOW_HAND_SPAWN_EGG.get(), "Shadow Hand Spawn Egg");
+        add(ModItems.SHADOW_GOLEM_SPAWN_EGG.get(), "Shadow Golem Spawn Egg");
+        add(ModItems.SHADOW_GHOST_SPAWN_EGG.get(), "Shadow Ghost Spawn Egg");
+        add(ModItems.SHADOW_SQUEAL_GHOST_SPAWN_EGG.get(), "Squeal Shadow Ghost Spawn Egg");
+        add(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG.get(), "Wailing Shadow Ghost Spawn Egg");
+        add(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG.get(), "Friendly Shadow Ghost Spawn Egg");
+        add(ModItems.BLACK_BEETLE_SPAWN_EGG.get(), "Black Beetle Spawn Egg");
+        add(ModItems.BLACK_BEETLE_MOTHER_SPAWN_EGG.get(), "Black Beetle Mother Spawn Egg");
 
         add("tooltip.pasterdream.左键实体：直接删除此实体", "§7Left Button Press Entity: Delete This Entity");
         add("tooltip.pasterdream.左键方块：模拟破坏此方块", "§7Left Button Press Block: Simulate Destroy This Block");

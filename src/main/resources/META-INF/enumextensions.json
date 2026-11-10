@@ -71,6 +71,15 @@
         "class": "com/pasterdream/pasterdreammod/world/item/ModRarities",
         "field": "MIRACLE_PROXY"
       }
+    },
+    {
+      "enum": "net/minecraft/world/entity/MobCategory",
+      "name": "PASTERDREAM_SHADOW_GHOST",
+      "constructor": "(Ljava/lang/String;IZZI)V",
+      "parameters": {
+        "class": "com/pasterdream/pasterdreammod/init/ModMobCategories",
+        "field": "SHADOW_GHOST_PROXY"
+      }
     }
   ]
 }

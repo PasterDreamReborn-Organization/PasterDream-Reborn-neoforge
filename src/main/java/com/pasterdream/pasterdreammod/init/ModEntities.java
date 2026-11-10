@@ -1,6 +1,13 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
+import com.pasterdream.pasterdreammod.world.entity.ShadowGolemEntity;
+import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleEntity;
+import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleMotherEntity;
+import com.pasterdream.pasterdreammod.world.entity.ghost.FriendlyShadowGhostEntity;
+import com.pasterdream.pasterdreammod.world.entity.ghost.ShadowGhostEntity;
+import com.pasterdream.pasterdreammod.world.entity.ghost.SquealWaveProjectileEntity;
+import com.pasterdream.pasterdreammod.world.entity.ghost.WailingShadowGhostEntity;
 import com.pasterdream.pasterdreammod.world.entity.FireflyEntity;
 import com.pasterdream.pasterdreammod.world.entity.SmallStoneSpiritEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
@@ -153,6 +160,13 @@ public class ModEntities {
                     .setUpdateInterval(1)
                     .sized(0.5f, 0.5f));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<ShadowGolemEntity>> SHADOW_GOLEM = register("shadow_golem",
+            EntityType.Builder.<ShadowGolemEntity>of(ShadowGolemEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .sized(2.2f, 3.5f));
+
     public static final DeferredHolder<EntityType<?>, EntityType<TerrorbeakEntity>> TERRORBEAK = register("terrorbeak",
             EntityType.Builder.<TerrorbeakEntity>of(TerrorbeakEntity::new, MobCategory.MONSTER)
                     .setShouldReceiveVelocityUpdates(true)
@@ -183,6 +197,59 @@ public class ModEntities {
                     .setUpdateInterval(3)
                     .fireImmune()
                     .sized(0.6f, 0.8f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ShadowGhostEntity>> SHADOW_GHOST = register("shadow_ghost",
+            EntityType.Builder.<ShadowGhostEntity>of(ShadowGhostEntity::new, ModMobCategories.shadowGhost())
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .fireImmune()
+                    .sized(0.7f, 1.2f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ShadowGhostEntity>> SHADOW_SQUEAL_GHOST = register("shadow_squeal_ghost",
+            EntityType.Builder.<ShadowGhostEntity>of(ShadowGhostEntity::new, ModMobCategories.shadowGhost())
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .fireImmune()
+                    .sized(0.7f, 1.2f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<WailingShadowGhostEntity>> WAILING_SHADOW_GHOST = register("wailing_shadow_ghost",
+            EntityType.Builder.<WailingShadowGhostEntity>of(WailingShadowGhostEntity::new, ModMobCategories.shadowGhost())
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .fireImmune()
+                    .sized(0.8f, 1.3f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<FriendlyShadowGhostEntity>> FRIENDLY_SHADOW_GHOST = register("friendly_shadow_ghost",
+            EntityType.Builder.<FriendlyShadowGhostEntity>of(FriendlyShadowGhostEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .fireImmune()
+                    .sized(0.7f, 1.2f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<SquealWaveProjectileEntity>> SQUEAL_WAVE_PROJECTILE = register("squeal_wave_projectile",
+            EntityType.Builder.<SquealWaveProjectileEntity>of(SquealWaveProjectileEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BlackBeetleEntity>> BLACK_BEETLE = register("black_beetle",
+            EntityType.Builder.<BlackBeetleEntity>of(BlackBeetleEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(48)
+                    .setUpdateInterval(3)
+                    .sized(0.6f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BlackBeetleMotherEntity>> BLACK_BEETLE_MOTHER = register("black_beetle_mother",
+            EntityType.Builder.<BlackBeetleMotherEntity>of(BlackBeetleMotherEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(48)
+                    .setUpdateInterval(3)
+                    .sized(2f, 1f));
 
     public static final DeferredHolder<EntityType<?>, EntityType<FireflyEntity>> FIREFLY = register("firefly",
             EntityType.Builder.<FireflyEntity>of(FireflyEntity::new, MobCategory.CREATURE)
@@ -251,6 +318,11 @@ public class ModEntities {
         ENTITY_TYPES.register(eventBus);
         eventBus.addListener(TerrorbeakEntity::init);
         eventBus.addListener(ShadowHandEntity::init);
+        eventBus.addListener(ShadowGolemEntity::init);
+        eventBus.addListener(ShadowGhostEntity::init);
+        eventBus.addListener(WailingShadowGhostEntity::init);
+        eventBus.addListener(FriendlyShadowGhostEntity::init);
+        eventBus.addListener(BlackBeetleEntity::init);
         eventBus.addListener(FireflyEntity::init);
         eventBus.addListener(SmallStoneSpiritEntity::init);
         eventBus.addListener(PinkChickenEntity::init);
@@ -262,6 +334,13 @@ public class ModEntities {
         event.put(CRAZY_TERRORBEAK.get(), TerrorbeakEntity.createCrazyTerrorbeakAttributes().build());
         event.put(WEAKENESS_TERRORBEAK.get(), TerrorbeakEntity.createWeakenessTerrorbeakAttributes().build());
         event.put(SHADOW_HAND.get(), ShadowHandEntity.createAttributes().build());
+        event.put(SHADOW_GOLEM.get(), ShadowGolemEntity.createAttributes().build());
+        event.put(SHADOW_GHOST.get(), ShadowGhostEntity.createShadowGhostAttributes().build());
+        event.put(SHADOW_SQUEAL_GHOST.get(), ShadowGhostEntity.createShadowSquealGhostAttributes().build());
+        event.put(WAILING_SHADOW_GHOST.get(), WailingShadowGhostEntity.createAttributes().build());
+        event.put(FRIENDLY_SHADOW_GHOST.get(), FriendlyShadowGhostEntity.createAttributes().build());
+        event.put(BLACK_BEETLE.get(), BlackBeetleEntity.createAttributes().build());
+        event.put(BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherEntity.createAttributes().build());
         event.put(TERRASWORD_WAVE.get(), TerraswordWaveEntity.createAttributes().build());
         event.put(FOX_FIRE.get(), FoxFireEntity.createAttributes().build());
         event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());

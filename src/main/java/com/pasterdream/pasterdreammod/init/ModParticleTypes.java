@@ -70,6 +70,10 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("light_firefly_glass_jar", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FIREFLY_PARTICLE =
             PARTICLE_TYPES.register("firefly", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SHADOW_STONE_PARTICLE =
+            PARTICLE_TYPES.register("shadow_stone", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SQUEAL_WAVE_PARTICLE =
+            PARTICLE_TYPES.register("squeal_wave", () -> new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

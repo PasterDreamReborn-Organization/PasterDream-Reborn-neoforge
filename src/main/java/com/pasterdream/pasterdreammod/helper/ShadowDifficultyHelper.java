@@ -106,6 +106,10 @@ public final class ShadowDifficultyHelper {
         return getValue(Config.SHADOW_ATTACK_MULTIPLIERS.get(), getDifficulty(player), 1.0);
     }
 
+    public static float getGolemSkillDamage(Player player) {
+        return (float) (Config.SHADOW_GOLEM_SKILL_DAMAGE.get() * getAttackMultiplier(player));
+    }
+
     public static float getShadowHandSanDrain(Player player) {
         return (float) (Config.SHADOW_HAND_SAN_DRAIN.get() * getAttackMultiplier(player));
     }
@@ -132,6 +136,10 @@ public final class ShadowDifficultyHelper {
         var skills = Config.SHADOW_SPECIAL_SKILLS_ENABLED.get();
         if (skills == null || t >= skills.size()) return t > 0;
         return Boolean.parseBoolean(skills.get(t));
+    }
+
+    public static float getGolemSkillDamage(int tier) {
+        return (float) (Config.SHADOW_GOLEM_SKILL_DAMAGE.get() * getAttackMultiplier(tier));
     }
 
     /**

@@ -26,6 +26,8 @@ import com.pasterdream.pasterdreammod.client.particle.TerraswordWaveParticle;
 import com.pasterdream.pasterdreammod.client.particle.FireflyParticle;
 import com.pasterdream.pasterdreammod.client.particle.FireflyGlassJarParticle;
 import com.pasterdream.pasterdreammod.client.particle.LightFireflyGlassJarParticle;
+import com.pasterdream.pasterdreammod.client.particle.ShadowStoneParticle;
+import com.pasterdream.pasterdreammod.client.particle.SquealWaveParticle;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -70,5 +72,7 @@ public final class ModParticles {
         event.registerSpriteSet(ModParticleTypes.FIREFLY_GLASS_JAR_PARTICLE.get(), FireflyGlassJarParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.LIGHT_FIREFLY_GLASS_JAR_PARTICLE.get(), LightFireflyGlassJarParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.FIREFLY_PARTICLE.get(), FireflyParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), ShadowStoneParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.SQUEAL_WAVE_PARTICLE.get(), SquealWaveParticle.Provider::new);
     }
 }

@@ -240,6 +240,38 @@
       }
     ]
   },
+  "ghost_wail": {
+    "sounds": [
+      {
+        "name": "pasterdream:ghost_wail",
+        "stream": false
+      }
+    ]
+  },
+  "squeal_wave": {
+    "sounds": [
+      {
+        "name": "pasterdream:squeal_wave",
+        "stream": false
+      }
+    ]
+  },
+  "beetle_attack": {
+    "sounds": [
+      {
+        "name": "pasterdream:beetle_attack",
+        "stream": false
+      }
+    ]
+  },
+  "beetle_skill": {
+    "sounds": [
+      {
+        "name": "pasterdream:beetle_skill",
+        "stream": false
+      }
+    ]
+  },
   "dream_accumulator": {
     "sounds": [
       {

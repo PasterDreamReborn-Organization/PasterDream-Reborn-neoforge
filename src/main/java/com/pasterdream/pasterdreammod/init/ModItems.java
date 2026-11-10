@@ -1691,6 +1691,20 @@ public class ModItems {
             () -> new SpawnEggItem(ModEntities.WEAKENESS_TERRORBEAK.get(), -16777216, -13421773, new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_HAND_SPAWN_EGG = ITEMS.register("shadow_hand_spawn_egg",
             () -> new SpawnEggItem(ModEntities.SHADOW_HAND.get(), -12763843, -16316665, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_GOLEM_SPAWN_EGG = ITEMS.register("shadow_golem_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.SHADOW_GOLEM.get(), 0x191926, 0xA7A5B1, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_GHOST_SPAWN_EGG = ITEMS.register("shadow_ghost_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.SHADOW_GHOST.get(), -591623, -9012613, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_SQUEAL_GHOST_SPAWN_EGG = ITEMS.register("shadow_squeal_ghost_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.SHADOW_SQUEAL_GHOST.get(), -722951, -5317392, new Item.Properties()));
+    public static final DeferredItem<Item> WAILING_SHADOW_GHOST_SPAWN_EGG = ITEMS.register("wailing_shadow_ghost_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.WAILING_SHADOW_GHOST.get(), -985609, -9851188, new Item.Properties()));
+    public static final DeferredItem<Item> FRIENDLY_SHADOW_GHOST_SPAWN_EGG = ITEMS.register("friendly_shadow_ghost_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.FRIENDLY_SHADOW_GHOST.get(), -985866, -4334102, new Item.Properties()));
+    public static final DeferredItem<Item> BLACK_BEETLE_SPAWN_EGG = ITEMS.register("black_beetle_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.BLACK_BEETLE.get(), -2698583, -11316914, new Item.Properties()));
+    public static final DeferredItem<Item> BLACK_BEETLE_MOTHER_SPAWN_EGG = ITEMS.register("black_beetle_mother_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.BLACK_BEETLE_MOTHER.get(), -2436181, -9876718, new Item.Properties()));
     public static final DeferredItem<Item> FIREFLY_SPAWN_EGG = ITEMS.register("firefly_spawn_egg",
             () -> new SpawnEggItem(ModEntities.FIREFLY.get(), -12570340, -5382814, new Item.Properties()));
     public static final DeferredItem<Item> SMALL_STONE_SPIRIT_SPAWN_EGG = ITEMS.register("small_stone_spirit_spawn_egg",
