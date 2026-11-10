@@ -23,6 +23,10 @@ import net.neoforged.neoforge.registries.DeferredHolder;
  */
 public final class ModLootTables {
     public static final ResourceKey<LootTable> PICNIC_BASKET_OVERWORLD_LOOT = create("chests/picnic_basket_overworld");
+    public static final ResourceKey<LootTable> PICNIC_BASKET_DYEDREAM_WORLD_LOOT = create("chests/picnic_basket_dyedream_world");
+    public static final ResourceKey<LootTable> DYEDREAM_RELIC_CHEST_LOOT_COMMON = create("chests/dyedream_relic_chest_loot_common");
+    public static final ResourceKey<LootTable> DYEDREAM_RELIC_CHEST_LOOT_RARE = create("chests/dyedream_relic_chest_loot_rare");
+    public static final ResourceKey<LootTable> ECOSYSTEM_BUBBLE_CHEST_LOOT = create("chests/ecosystem_bubble_chest");
     public static final ResourceKey<LootTable> FISHERMAN_HUT_CHEST_LOOT = create("chests/fisherman_hut_chest");
     public static final ResourceKey<LootTable> DESERT_FORTRESS_CHEST_LOOT = create("chests/desert_fortress_chest");
     public static final ResourceKey<LootTable> DESERT_COTTAGE_CHEST_LOOT = create("chests/desert_cottage_chest");

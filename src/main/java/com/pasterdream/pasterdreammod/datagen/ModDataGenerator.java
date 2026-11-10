@@ -48,6 +48,8 @@ public final class ModDataGenerator {
                         new LootTableProvider.SubProviderEntry(
                                 ModOverworldStructureLootTablesProvider::new, LootContextParamSets.CHEST),
                         new LootTableProvider.SubProviderEntry(
+                                ModDyedreamStructureLootTablesProvider::new, LootContextParamSets.CHEST),
+                        new LootTableProvider.SubProviderEntry(
                                 ModMeltDreamCrystalChestLootTablesProvider::new, LootContextParamSets.CHEST),
                         new LootTableProvider.SubProviderEntry(
                                 ModFishingLootTablesProvider::new, LootContextParamSets.FISHING)), lookup));

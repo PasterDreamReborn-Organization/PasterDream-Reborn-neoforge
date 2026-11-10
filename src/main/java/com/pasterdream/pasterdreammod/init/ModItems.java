@@ -1334,6 +1334,7 @@ public class ModItems {
     public static final DeferredItem<BlockItem> PICNIC_BASKET = ITEMS.registerSimpleBlockItem(ModBlocks.PICNIC_BASKET);
     public static final DeferredItem<Item> SHADOW_CHEST = ITEMS.register("shadow_chest",
             () -> new ShadowChestItem(ModBlocks.SHADOW_CHEST.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> DREAM_TRAIN_STRUCTURE = ITEMS.register("dream_train_structure", () -> new BlockItem(ModBlocks.DREAM_TRAIN_STRUCTURE.get(), new Item.Properties()));
     public static final DeferredItem<Item> MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("melt_dream_crystal_chest",
             () -> new com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestItem(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), new Item.Properties()));
     public static final DeferredItem<Item> OPENED_MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("opened_melt_dream_crystal_chest",

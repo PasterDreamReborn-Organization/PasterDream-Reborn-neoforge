@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 091：染梦结构箱战利品与逐梦列车广播方块（2026-11-10）
+
+- 迁入染梦野餐篮、染梦遗物箱普通/稀有及生态气泡箱共 4 张来源战利品表，保留奖池、抽取次数、条目顺序与权重；1.21 红露戒指等级改写为自定义数据组件，海龟鳞甲使用新物品 ID。
+- 迁入 `dream_train_structure` 隐形标记方块及 `dream_train_broadcast` 方块实体、列车与标记 NBT、风铃音效和双语提示；非旁观玩家进入 200 格范围时按来源放置列车、全服播报并移除标记。染梦结构的 placement、template pool 与 structure set 留待后续批次。
+- 列车 NBT 的 3 个旧格式物品栈已用 `scripts/convert_structure_item_nbt.py` 转换；两本寻梦者笔记的 `tag.content` 写入专用 `pasterdream:dream_note_content` 组件。转换流程与校验写入 worldgen skill。
+- `runData`、`build` 通过，`runGameTestServer` 172/172 通过（含两本笔记的物品组件解析）；真实世界生成、客户端视觉/音效与多人广播仍待实机验收。
+
 ### 批次 090：融梦水晶箱与染梦世界战利品（2026-11-10）
 
 - 迁入未开启/已开启融梦水晶箱、开箱品质抽取和动画、九格容器、重置工具及玩家冷却同步；时之沙恢复跳过重置冷却的来源交互。

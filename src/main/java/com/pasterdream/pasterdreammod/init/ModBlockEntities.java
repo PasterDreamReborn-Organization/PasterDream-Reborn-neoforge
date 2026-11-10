@@ -47,6 +47,9 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, PasterDreamMod.MOD_ID);
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<com.pasterdream.pasterdreammod.world.block.dreamtrain.DreamTrainBroadcastBlockEntity>> DREAM_TRAIN_BROADCAST =
+            BLOCK_ENTITIES.register("dream_train_broadcast", () -> BlockEntityType.Builder.of(com.pasterdream.pasterdreammod.world.block.dreamtrain.DreamTrainBroadcastBlockEntity::new, ModBlocks.DREAM_TRAIN_STRUCTURE.get()).build(null));
+
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LostSwordTombBlockEntity>> LOST_SWORD_TOMB =
             BLOCK_ENTITIES.register("lost_sword_tomb",
                     () -> BlockEntityType.Builder.of(LostSwordTombBlockEntity::new, ModBlocks.LOST_SWORD_TOMB.get())
