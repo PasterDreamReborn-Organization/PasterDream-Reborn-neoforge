@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 102：灯影之下阴影古迹结构生成（2026-11-10，T18-B 部分）
+
+- 接入共享结构集 `pasterdream:shadow_structures`：迁入 `shadownote_ruin_0/1/2`、`shadow_shelter`、`shadow_nest`、`shadow_fungus_house`、`shadow_foundry` 与 `shadow_underground_workroom`；按本次范围不迁入暗影地牢 `shadow_dungeon` 与亚伦克斯竞技场传送门 `aaroncos_arena_portal` 的生成。
+- 复制 9 份结构 NBT（含地下工坊上/下层）与地下工坊静态 `structure`/`template_pool` JSON；新增 `can_shadownote_ruin_spawn_biome` 群系标签（`shadow_ruins`）。结构集沿用来源 `spacing=12`/`separation=6`，权重依次为 2/2/2/2/7/6/2/2，生成高度、地形适应与 salt 保持来源值。
+- 使用 `scripts/convert_structure_item_nbt.py` 将模板内 11 处 1.20 物品栈转为 1.21 组件（笔记/蓝图 `content`、`Count`、`display.Name`），并补脚本对 `blue_print` 内容的映射。
+- 普通结构由 `ModStructureProvider`/`ModStructureSetProvider`/`ModTemplatePoolProvider` 生成到 `worldgen/structure`、`worldgen/structure_set` 与 `worldgen/template_pool`；`shadow_underground_workroom` 使用静态 JSON，仅加入结构集并保留双向 jigsaw 连接。
+- 结构模板引用的 `pasterdream:clay_pot` 与 `pasterdream:research_table` 尚未迁入，生成时相关位置留空；箱体引用的 `pasterdream:chests/shadow_relic_chest_loot_common` 战利品表也尚未迁入，当前箱体为空。上述内容待对应批次补齐。
+- `runData` 写入 16 个文件，`build` 通过，`runGameTestServer` 183/183 通过；真实世界生成、结构与群系落点、地形贴合与多人环境表现待游戏内验收。
+
 ### 批次 101：暮影之笼、暮影长床与灯影之下入门进度（2026-11-10，T18-B / T05 部分）
 
 - 迁入暮影之笼（`twilight_lantern`）方块、方块实体、GeckoLib 模型/动画/显示物品、交互/tick/波次事件与 `LampShadowWorldTeleporter`；迁入暮影长床（`shadow_bed`）主/附属方块、方块实体与入梦交互。
