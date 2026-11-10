@@ -24,6 +24,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.sand_of_time.6", "§7若融梦水晶箱重置冷却中，使用时会直接跳过该冷却");
         add("message.pasterdream.dream_train.train_pass", "一辆逐梦列车呼啸而过......");
         add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息...... §aX：%s §aZ：%s");
+        add(ModItems.DREAM_TRAIN_TICKET.get(), "逐梦列车车票");
+        add("tooltip.pasterdream.dream_train_ticket", "§7印有车次与梦境的凭证");
+        add("tooltip.pasterdream.dream_train_ticket.usage", "§7在头顶召唤一辆逐梦列车，每个维度只能使用一次");
+        add("message.pasterdream.dream_train_ticket.already_used", "这个维度的逐梦列车已经呼啸而过了......");
+        add("message.pasterdream.dream_train_ticket.dimension_used", "这个维度的逐梦列车已经被召唤过了......");
+        add("message.pasterdream.dream_train_ticket.no_station", "逐梦列车并没有在这里设立站点，无法停靠");
         add("message.pasterdream.sand_of_time.reset_cooldown_skipped", "时之沙的力量直接跳过了融梦水晶箱的重置冷却");
         add(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), "融梦水晶箱");
         add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), "打开的融梦水晶箱");

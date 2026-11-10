@@ -47,6 +47,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_QUARTZ.get());
                         output.accept(ModItems.MELT_DREAM_COIN.get());
                         output.accept(ModItems.MELT_DREAM_COIN_PILE.get());
+                        output.accept(ModItems.DREAM_TRAIN_TICKET.get());
                         output.accept(ModItems.RAW_TITANIUM.get());
                         output.accept(ModItems.RAW_MOLTEN_GOLD.get());
                         output.accept(ModItems.TITANIUM_INGOT.get());
