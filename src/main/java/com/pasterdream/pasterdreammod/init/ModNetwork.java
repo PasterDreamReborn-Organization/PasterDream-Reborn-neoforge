@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.network.debugsword.DebugBlockActionPacket;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
+import com.pasterdream.pasterdreammod.network.meltdreamcrystalchest.MeltDreamCrystalChestResetCooldownSyncPacket;
 import com.pasterdream.pasterdreammod.network.blueprint.BlueprintPlacePacket;
 import com.pasterdream.pasterdreammod.network.blueprint.StartBlueprintPlacementPacket;
 import com.pasterdream.pasterdreammod.network.blueprint.UpdateBlueprintPlacingPacket;
@@ -80,6 +81,8 @@ public final class ModNetwork {
                 DebugBlockActionPacket::handle);
         registrar.playToClient(AnimationStateChangePacket.TYPE, AnimationStateChangePacket.STREAM_CODEC,
                 AnimationStateChangePacket::handle);
+        registrar.playToClient(MeltDreamCrystalChestResetCooldownSyncPacket.TYPE, MeltDreamCrystalChestResetCooldownSyncPacket.STREAM_CODEC,
+                MeltDreamCrystalChestResetCooldownSyncPacket::handle);
         registrar.playToServer(StartBlueprintPlacementPacket.TYPE, StartBlueprintPlacementPacket.STREAM_CODEC,
                 StartBlueprintPlacementPacket::handle);
         registrar.playToServer(BlueprintPlacePacket.TYPE, BlueprintPlacePacket.STREAM_CODEC,

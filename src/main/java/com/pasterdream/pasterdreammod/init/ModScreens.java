@@ -11,6 +11,7 @@ import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.windmoordesk.WindMoorDeskScreen;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbasket.PicnicBasketScreen;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestScreen;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateScreen;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagScreen;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagScreen;
@@ -47,6 +48,7 @@ public final class ModScreens {
         event.register(ModMenus.WIND_MOOR_DESK.get(), WindMoorDeskScreen::new);
         event.register(ModMenus.PICNIC_BASKET.get(), PicnicBasketScreen::new);
         event.register(ModMenus.SHADOW_CHEST.get(), ShadowChestScreen::new);
+        event.register(ModMenus.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), OpenedMeltDreamCrystalChestScreen::new);
         event.register(ModMenus.WIND_MOOR_CRATE.get(), WindMoorCrateScreen::new);
         event.register(ModMenus.STORAGE_BAG.get(), StorageBagScreen::new);
         event.register(ModMenus.MORTAR.get(), MortarScreen::new);

@@ -38,6 +38,8 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("crack", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> MELTDREAM_CRYSTAL_PARTICLE =
             PARTICLE_TYPES.register("melt_dream_crystal", () -> new SimpleParticleType(true));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> MELTDREAM_CRYSTAL_BIG_PARTICLE =
+            PARTICLE_TYPES.register("melt_dream_crystal_big", () -> new SimpleParticleType(true));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> REJUVENATION_PARTICLE =
             PARTICLE_TYPES.register("rejuvenation", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> YELLOW_SMOKE_PARTICLE =

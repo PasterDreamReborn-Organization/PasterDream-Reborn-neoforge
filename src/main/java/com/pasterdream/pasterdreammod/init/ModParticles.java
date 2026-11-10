@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.client.particle.FurySpellParticle;
 import com.pasterdream.pasterdreammod.client.particle.InfernoParticle;
 import com.pasterdream.pasterdreammod.client.particle.LeavesParticle;
 import com.pasterdream.pasterdreammod.client.particle.MeltdreamCrystalParticle;
+import com.pasterdream.pasterdreammod.client.particle.MeltdreamCrystalBigParticle;
 import com.pasterdream.pasterdreammod.client.particle.PoisonGasParticle;
 import com.pasterdream.pasterdreammod.client.particle.RejuvenationParticle;
 import com.pasterdream.pasterdreammod.client.particle.SnowflakeParticle;
@@ -53,6 +54,7 @@ public final class ModParticles {
         event.registerSpriteSet(ModParticleTypes.DREAMFERTILIZER_PARTICLE.get(), DreamFertilizerParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.CRACK_0_PARTICLE.get(), CrackParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.MELTDREAM_CRYSTAL_PARTICLE.get(), MeltdreamCrystalParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.MELTDREAM_CRYSTAL_BIG_PARTICLE.get(), MeltdreamCrystalBigParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.REJUVENATION_PARTICLE.get(), RejuvenationParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.YELLOW_SMOKE_PARTICLE.get(), YellowSmokeParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.BERSERK_PARTICLE.get(), FurySpellParticle.Provider::new);

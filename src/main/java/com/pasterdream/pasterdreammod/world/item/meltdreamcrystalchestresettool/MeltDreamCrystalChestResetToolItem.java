@@ -1,0 +1,144 @@
+package com.pasterdream.pasterdreammod.world.item.meltdreamcrystalchestresettool;
+
+import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.client.MeltDreamCrystalChestResetCooldownClient;
+import com.pasterdream.pasterdreammod.helper.meltdreamenergycostcalculator.MeltDreamEnergyCostCalculator;
+import com.pasterdream.pasterdreammod.init.ModBlocks;
+import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlock;
+import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlockEntity;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+
+public class MeltDreamCrystalChestResetToolItem extends Item
+{
+    public MeltDreamCrystalChestResetToolItem(Properties properties)
+    {
+        super(properties);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag)
+    {
+        super.appendHoverText(itemStack, context, tooltip, flag);
+        Level level = context.level();
+
+        tooltip.add(Component.translatable("tooltip.pasterdream.按住Shift+右键点击打开的融梦水晶箱可复位（写入此物品NBT中包含的战利品列表）"));
+        CompoundTag tag = itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        if(tag != null && tag.contains("LootTables"))
+        {
+            ListTag listTag = tag.getList("LootTables", Tag.TAG_COMPOUND);
+            CompoundTag normalLootTable = !listTag.isEmpty() ? listTag.getCompound(0) : null;
+            CompoundTag rareLootTable = listTag.size() > 1 ? listTag.getCompound(1) : null;
+            CompoundTag legendLootTable = listTag.size() > 2 ? listTag.getCompound(2) : null;
+
+            if(normalLootTable != null)
+            {
+                tooltip.add(Component.translatable("tooltip.pasterdream.normal_loot_table", normalLootTable.getString("LootTable"), normalLootTable.getInt("weight"), normalLootTable.getDouble("luck_multiplier_increase")));
+                if(rareLootTable != null)
+                {
+                    tooltip.add(Component.translatable("tooltip.pasterdream.rare_loot_table", rareLootTable.getString("LootTable"), rareLootTable.getInt("weight"), rareLootTable.getDouble("luck_multiplier_increase")));
+                    if(legendLootTable != null)
+                    {
+                        tooltip.add(Component.translatable("tooltip.pasterdream.legend_loot_table", legendLootTable.getString("LootTable"), legendLootTable.getInt("weight"), legendLootTable.getDouble("luck_multiplier_increase")));
+                    }
+                }
+                tooltip.add(Component.translatable("tooltip.pasterdream.reset_cost_melt_dream_energy", MeltDreamEnergyCostCalculator.calculate(itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getList("LootTables", Tag.TAG_COMPOUND))));
+            }
+        }
+            else
+            {
+                tooltip.add(Component.translatable("tooltip.pasterdream.not_have_loot_table"));
+            }
+
+        if (level != null && level.isClientSide)
+        {
+            long remainingTicks = MeltDreamCrystalChestResetCooldownClient.getRemainingTicks();
+            if (remainingTicks > 0L)
+            {
+                tooltip.add(Component.translatable("tooltip.pasterdream.melt_dream_crystal_chest.reset_cooldown", MeltDreamCrystalChestResetCooldown.formatRemainingTicks(remainingTicks)).withStyle(ChatFormatting.GOLD));
+            }
+        }
+    }
+
+    @Override
+    public InteractionResult useOn(UseOnContext context)
+    {
+        Level level = context.getLevel();
+        BlockPos pos = context.getClickedPos();
+        Player player = context.getPlayer();
+        ItemStack meltDreamCrystalChestResetTool = context.getItemInHand();
+        BlockState state = level.getBlockState(pos);
+
+        if (!state.is(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get()))
+        {
+            player.displayClientMessage(Component.translatable("message.pasterdream.融梦水晶箱重置工具只能重置打开的融梦水晶箱"), true);
+            return InteractionResult.PASS;
+        }
+
+        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
+        {
+            CompoundTag itemTag = meltDreamCrystalChestResetTool.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+            if (itemTag != null && itemTag.contains("LootTables", Tag.TAG_LIST))
+            {
+                ListTag lootTableListTag = itemTag.getList("LootTables", Tag.TAG_COMPOUND);
+
+                if(player != null && !player.isCreative())
+                {
+                    long remainingTicks = MeltDreamCrystalChestResetCooldown.getRemainingTicks(serverPlayer);
+                    if(remainingTicks > 0L)
+                    {
+                        player.displayClientMessage(Component.translatable("message.pasterdream.melt_dream_crystal_chest.reset_cooldown", MeltDreamCrystalChestResetCooldown.formatRemainingTicks(remainingTicks)), true);
+                        return InteractionResult.PASS;
+                    }
+
+                    double meltDreamEnergyCost = MeltDreamEnergyCostCalculator.calculate(lootTableListTag);
+                    if(MeltDreamEnergyHelper.getPlayerMeltDreamEnergyIsNeed(serverPlayer) && MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(serverPlayer) < meltDreamEnergyCost)
+                    {
+                        player.displayClientMessage(Component.translatable("message.pasterdream.融梦能量不足"), true);
+                        return InteractionResult.PASS;
+                    }
+                    MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -meltDreamEnergyCost);
+                    meltDreamCrystalChestResetTool.shrink(1);
+                }
+
+                Direction facing = state.getValue(MeltDreamCrystalChestBlock.FACING);
+
+                BlockState blockState = ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get().defaultBlockState().setValue(MeltDreamCrystalChestBlock.FACING, facing);
+                level.setBlock(pos, blockState, 3);
+
+                BlockEntity blockEntity = level.getBlockEntity(pos);
+                if (blockEntity instanceof MeltDreamCrystalChestBlockEntity meltDreamCrystalChest)
+                {
+                    meltDreamCrystalChest.setLootTablesNbt(lootTableListTag);
+                }
+
+                if(player != null && !player.isCreative())
+                {
+                    MeltDreamCrystalChestResetCooldown.markReset(serverPlayer);
+                }
+            }
+        }
+
+        return InteractionResult.SUCCESS;
+    }
+}

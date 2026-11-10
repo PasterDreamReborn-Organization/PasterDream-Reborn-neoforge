@@ -373,6 +373,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 new ModelFile.UncheckedModelFile(modLoc("block/picnic_basket")));
         horizontalBlock(ModBlocks.SHADOW_CHEST.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/shadow_chest_particle")));
+        horizontalBlock(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(),
+                new ModelFile.UncheckedModelFile(modLoc("custom/melt_dream_crystal_chest_particle")));
+        horizontalBlock(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(),
+                new ModelFile.UncheckedModelFile(modLoc("custom/opened_melt_dream_crystal_chest_particle")));
         horizontalBlock(ModBlocks.WIND_MOOR_CRATE.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/wind_moor_crate")));
         horizontalBlock(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(),
