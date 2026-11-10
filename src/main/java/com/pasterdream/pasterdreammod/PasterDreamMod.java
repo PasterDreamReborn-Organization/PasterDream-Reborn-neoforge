@@ -41,6 +41,7 @@ import com.pasterdream.pasterdreammod.init.ModPotions;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.init.ModShadowDungeonStructureSet;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.init.ModStructurePlacementTypes;
 import com.pasterdream.pasterdreammod.init.ModTreeDecoratorTypes;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
@@ -103,6 +104,7 @@ public class PasterDreamMod {
         ModFeatures.register(modEventBus);         // 自定义 Feature
         ModFoliagePlacerTypes.register(modEventBus); // 树叶放置器类型
         ModTreeDecoratorTypes.register(modEventBus); // 树木装饰器类型
+        ModStructurePlacementTypes.register(modEventBus); // 结构放置类型
         ModDataComponents.register(modEventBus);   // DataComponents
         ModAttachments.register(modEventBus);      // AttachmentType（取代 Forge Capability）
         ModCriteriaTriggers.register(modEventBus); // 自定义进度触发器

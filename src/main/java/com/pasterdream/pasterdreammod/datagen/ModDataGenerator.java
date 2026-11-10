@@ -4,6 +4,10 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.datagen.common.*;
 import com.pasterdream.pasterdreammod.datagen.lang.ModEnUsLangProvider;
 import com.pasterdream.pasterdreammod.datagen.lang.ModZhCnLangProvider;
+import com.pasterdream.pasterdreammod.worldgen.structures.ModStructureConfig;
+import com.pasterdream.pasterdreammod.worldgen.structures.ModStructureProvider;
+import com.pasterdream.pasterdreammod.worldgen.structures.ModStructureSetProvider;
+import com.pasterdream.pasterdreammod.worldgen.structures.ModTemplatePoolProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -27,6 +31,11 @@ public final class ModDataGenerator {
         var worldgen = generator.addProvider(event.includeServer(),
                 new ModWorldGenProvider(output, event.getLookupProvider()));
         var lookup = worldgen.getRegistryProvider();
+
+        var structures = ModStructureConfig.getStructureConfig();
+        generator.addProvider(event.includeServer(), new ModStructureProvider(output, structures));
+        generator.addProvider(event.includeServer(), new ModStructureSetProvider(output, structures));
+        generator.addProvider(event.includeServer(), new ModTemplatePoolProvider(output, structures));
 
         generator.addProvider(event.includeServer(), new ModFluidTagsProvider(output, lookup, existing));
         generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(output, lookup, existing));

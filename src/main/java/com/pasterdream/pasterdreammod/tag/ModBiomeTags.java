@@ -22,6 +22,12 @@ public final class ModBiomeTags {
     public static final TagKey<Biome> CAN_FISHERMAN_HUT_SPAWN_BIOME = create("can_fisherman_hut_spawn_biome");
     public static final TagKey<Biome> CAN_CAMPSITE_SPAWN_BIOME = create("can_campsite_spawn_biome");
     public static final TagKey<Biome> CAN_DESERT_FORTRESS_SPAWN_BIOME = create("can_desert_fortress_spawn_biome");
+    public static final TagKey<Biome> CAN_GARDEN_DECRYPTION_NIPPY_EDELWEISS_SPAWN_BIOME =
+            create("can_garden_decryption_nippy_edelweiss_spawn_biome");
+    public static final TagKey<Biome> CAN_DYEDREAM_PAVILION_SNOWY_SPAWN_BIOME =
+            create("can_dyedream_pavilion_snowy_spawn_biome");
+    public static final TagKey<Biome> CAN_ECOSYSTEM_BUBBLE_SPAWN_BIOME = create("can_ecosystem_bubble_spawn_biome");
+    public static final TagKey<Biome> CAN_PINKAGARIC_HOUSE_SPAWN_BIOME = create("can_pinkagaric_house_spawn_biome");
 
     public static final TagKey<Biome> DYEDREAM_FISHING_BIOMES = create("dyedream_fishing_biomes");
 

@@ -16,6 +16,10 @@ from nbtlib import Compound, Int, List, String
 ROOT = Path(__file__).resolve().parents[1] / "src/main/resources/data/pasterdream/structure"
 NOTE_ID = "pasterdream:dream_notes_book"
 NOTE_COMPONENT = "pasterdream:dream_note_content"
+LEGACY_COMPONENTS = {
+    "Damage": "minecraft:damage",
+    "RepairCost": "minecraft:repair_cost",
+}
 
 
 def convert_stack(stack: Compound, where: str) -> tuple[bool, bool]:
@@ -34,12 +38,22 @@ def convert_stack(stack: Compound, where: str) -> tuple[bool, bool]:
 
     legacy_tag = stack.get("tag")
     if legacy_tag:
-        if item_id != NOTE_ID or set(legacy_tag) != {"content"}:
-            raise ValueError(f"{where}: unmapped legacy item tag: {item_id}, {list(legacy_tag)}")
         components = stack.setdefault("components", Compound())
-        if NOTE_COMPONENT in components:
-            raise ValueError(f"{where}: duplicate note component")
-        components[NOTE_COMPONENT] = String(str(legacy_tag["content"]))
+        for key, value in legacy_tag.items():
+            if key == "content" and item_id == NOTE_ID:
+                if NOTE_COMPONENT in components:
+                    raise ValueError(f"{where}: duplicate note component")
+                components[NOTE_COMPONENT] = String(str(value))
+            elif key in LEGACY_COMPONENTS:
+                if LEGACY_COMPONENTS[key] in components:
+                    raise ValueError(f"{where}: duplicate {LEGACY_COMPONENTS[key]} component")
+                components[LEGACY_COMPONENTS[key]] = value
+            elif key == "display" and set(value) == {"Name"}:
+                if "minecraft:custom_name" in components:
+                    raise ValueError(f"{where}: duplicate custom name component")
+                components["minecraft:custom_name"] = String(str(value["Name"]))
+            else:
+                raise ValueError(f"{where}: unmapped legacy item tag: {item_id}, {key}")
 
     stack["count"] = Int(int(stack.pop("Count")))
     stack.pop("tag", None)
