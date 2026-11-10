@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 098：灯影之下生物（2026-11-10，T18-B 部分）
+
+- 迁入灯影之下 7 种生物：阴影傀儡、怨魂、尖啸怨魂、悲泣尖啸怨魂、友善怨魂、厚翅甲虫与厚翅甲虫之母，以及怨魂远程攻击使用的尖啸波射弹、8 个刷怪蛋、实体战利品表、暗影生物标签、中英名称与调试物品栏条目。
+- 保留来源行为：怨魂飞行接近与尖啸远程攻击、悲泣尖啸怨魂受击召唤同类且受暗影难度技能开关门控、友善怨魂用灵魂精华驯服与驻留/跟随切换、厚翅甲虫用白兰花驯服并掉落甲壳、厚翅甲虫之母浮空减伤与召唤虫群/强化虫群、阴影傀儡每 200 tick 触发范围冲击波并按难度缩放伤害；新增 `shadowGolemSkillDamage` 配置与 `ShadowDifficultyHelper` 查询方法。
+- 迁入 GeckoLib 模型/动画/纹理、4 个自定义音效与 2 个粒子（阴影石、尖啸波）及其注册；怨魂系通过 `enumextensions.json` 注册独立 `MobCategory`（上限 30，避免占用原版怪物配额）。
+- 1.21 适配移除 `PlayMessages`/`NetworkHooks`/`MobType`，`defineSynchedData` 改用 `SynchedEntityData.Builder`（怨魂纹理默认值改由 `getDefaultTexture()` 写入，修复悲泣尖啸怨魂刷怪蛋无法生成），`FollowOwnerGoal` 与 `finalizeSpawn` 参数更新，驯服事件改用 `EventHooks.onAnimalTame`，`FoodProperties#nutrition`、`AbstractArrow#getDefaultPickupItem` 与实体尺寸/乘客挂点按 1.21 API 重写。
+- 灯影维度、群系与自然生成尚未迁入，本批未添加群系生成项；震晶与冰影锤技能链不在本批。`runData` 写入 32 个文件，`build` 通过，`runGameTestServer` 178/178 通过；客户端模型/动画/音效与实战 AI、多人同步待游戏内验收。
+
 ### 批次 097：染梦与风之旅途情景音乐（2026-11-10）
 
 - 迁入上游客户端音乐注入：`SituationalMusicMixin` 在染梦世界与风之旅途覆盖 `Minecraft#getSituationalMusic`，优先使用当前群系背景音乐；`MusicManagerMixin` 将两个维度的下一曲间隔上限压到 1200 tick，并保留 35% 概率不干预。

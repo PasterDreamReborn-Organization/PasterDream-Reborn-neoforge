@@ -81,6 +81,17 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModEntities.CRAZY_TERRORBEAK.get(), "疯狂恐怖尖喙");
         add(ModEntities.WEAKENESS_TERRORBEAK.get(), "虚弱恐怖尖喙");
         add(ModEntities.SHADOW_HAND.get(), "暗影之手");
+        add(ModEntities.SHADOW_GOLEM.get(), "阴影傀儡");
+        add(ModEntities.SHADOW_GHOST.get(), "怨魂");
+        add(ModEntities.SHADOW_SQUEAL_GHOST.get(), "尖啸怨魂");
+        add(ModEntities.WAILING_SHADOW_GHOST.get(), "悲泣尖啸怨魂");
+        add(ModEntities.FRIENDLY_SHADOW_GHOST.get(), "友善怨魂");
+        add(ModEntities.BLACK_BEETLE.get(), "厚翅甲虫");
+        add(ModEntities.BLACK_BEETLE_MOTHER.get(), "厚翅甲虫之母");
+        add("message.pasterdream.black_beetle.easter_egg_1", "来,小亮给大家整个活！");
+        add("message.pasterdream.black_beetle.easter_egg_2", "草,走,忽略!ጿ ኈ ቼ ዽ ጿ");
+        add("message.pasterdream.friendly_shadow_ghost.sit", "友善怨魂进入待命状态");
+        add("message.pasterdream.friendly_shadow_ghost.follow", "友善怨魂开始跟随你");
         add(ModEntities.PINK_CHICKEN.get(), "粉红鸡");
         add(ModItems.PINK_CHICKEN_SPAWN_EGG.get(), "粉红鸡刷怪蛋");
         add(ModEntities.PINK_SLIME.get(), "粉红史莱姆");
@@ -1383,6 +1394,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get(), "疯狂恐怖尖喙刷怪蛋");
         add(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get(), "虚弱恐怖尖喙刷怪蛋");
         add(ModItems.SHADOW_HAND_SPAWN_EGG.get(), "暗影之手刷怪蛋");
+        add(ModItems.SHADOW_GOLEM_SPAWN_EGG.get(), "阴影傀儡刷怪蛋");
+        add(ModItems.SHADOW_GHOST_SPAWN_EGG.get(), "怨魂刷怪蛋");
+        add(ModItems.SHADOW_SQUEAL_GHOST_SPAWN_EGG.get(), "尖啸怨魂刷怪蛋");
+        add(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG.get(), "悲泣尖啸怨魂刷怪蛋");
+        add(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG.get(), "友善怨魂刷怪蛋");
+        add(ModItems.BLACK_BEETLE_SPAWN_EGG.get(), "厚翅甲虫刷怪蛋");
+        add(ModItems.BLACK_BEETLE_MOTHER_SPAWN_EGG.get(), "厚翅甲虫之母刷怪蛋");
 
         add("tooltip.pasterdream.左键实体：直接删除此实体", "§7左键实体：直接删除此实体");
         add("tooltip.pasterdream.左键方块：模拟破坏此方块", "§7左键方块：模拟破坏此方块");

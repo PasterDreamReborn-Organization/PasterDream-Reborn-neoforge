@@ -110,8 +110,88 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
         );
 
         consumer.accept(
+                ModEntities.SHADOW_GOLEM.get().getDefaultLootTable(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_STONE_TILES.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 3)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_LIGHT.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.RUST_BLACK_METAL_GRAIN.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+        );
+
+        consumer.accept(
+                ModEntities.SHADOW_GHOST.get().getDefaultLootTable(),
+                ghostLoot(looting)
+        );
+
+        consumer.accept(
+                ModEntities.SHADOW_SQUEAL_GHOST.get().getDefaultLootTable(),
+                ghostLoot(looting)
+        );
+
+        consumer.accept(
+                ModEntities.WAILING_SHADOW_GHOST.get().getDefaultLootTable(),
+                ghostLoot(looting)
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+        );
+
+        consumer.accept(
+                ModEntities.FRIENDLY_SHADOW_GHOST.get().getDefaultLootTable(),
+                ghostLoot(looting)
+        );
+
+        consumer.accept(
+                ModEntities.BLACK_BEETLE_MOTHER.get().getDefaultLootTable(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_DUNGEON_KEY.get())
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.BLACK_BEETLE_CARAPACE.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 5)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.BLACK_BEETLE_VOCALCORD.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+        );
+
+        consumer.accept(
                 ModEntities.GOLDEN_FOX.get().getDefaultLootTable(),
                 LootTable.lootTable()
         );
+    }
+
+    private LootTable.Builder ghostLoot(net.minecraft.core.Holder<net.minecraft.world.item.enchantment.Enchantment> looting) {
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ModItems.SOUL_DUST.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
+                                .apply(new ApplyEntityLootingFunction.Builder(looting, 1))));
     }
 }

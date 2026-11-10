@@ -20,10 +20,17 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
         tag(ModEntityTypeTags.SHADOW_MOB)
+                .add(ModEntities.SHADOW_GOLEM.get())
                 .add(ModEntities.TERRORBEAK.get())
                 .add(ModEntities.CRAZY_TERRORBEAK.get())
                 .add(ModEntities.WEAKENESS_TERRORBEAK.get())
                 .add(ModEntities.SHADOW_HAND.get())
+                .add(ModEntities.SHADOW_GHOST.get())
+                .add(ModEntities.SHADOW_SQUEAL_GHOST.get())
+                .add(ModEntities.WAILING_SHADOW_GHOST.get())
+                .add(ModEntities.FRIENDLY_SHADOW_GHOST.get())
+                .add(ModEntities.BLACK_BEETLE.get())
+                .add(ModEntities.BLACK_BEETLE_MOTHER.get())
                 .add(EntityType.SILVERFISH);
     }
 }

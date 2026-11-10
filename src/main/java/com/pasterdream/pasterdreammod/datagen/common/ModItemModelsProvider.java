@@ -582,6 +582,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());
         spawnEggItem(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get());
         spawnEggItem(ModItems.SHADOW_HAND_SPAWN_EGG.get());
+        spawnEggItem(ModItems.SHADOW_GOLEM_SPAWN_EGG.get());
+        spawnEggItem(ModItems.SHADOW_GHOST_SPAWN_EGG.get());
+        spawnEggItem(ModItems.SHADOW_SQUEAL_GHOST_SPAWN_EGG.get());
+        spawnEggItem(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG.get());
+        spawnEggItem(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG.get());
+        spawnEggItem(ModItems.BLACK_BEETLE_SPAWN_EGG.get());
+        spawnEggItem(ModItems.BLACK_BEETLE_MOTHER_SPAWN_EGG.get());
         spawnEggItem(ModItems.FIREFLY_SPAWN_EGG.get());
         spawnEggItem(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
         spawnEggItem(ModItems.PINK_CHICKEN_SPAWN_EGG.get());

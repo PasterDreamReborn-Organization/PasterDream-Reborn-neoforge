@@ -176,6 +176,10 @@ public class Config {
             .defineListAllowEmpty("shadowSpeedMultipliers", List.of(0.7, 1.0, 1.1, 1.25),
                     value -> value instanceof Double number && Double.isFinite(number));
 
+    public static final ModConfigSpec.DoubleValue SHADOW_GOLEM_SKILL_DAMAGE = BUILDER
+            .comment("阴影傀儡 AoE 技能基础伤害，默认 15")
+            .defineInRange("shadowGolemSkillDamage", 15.0, 0.0, 1000.0);
+
     public static final ModConfigSpec.DoubleValue SHADOW_HAND_SAN_DRAIN = BUILDER
             .comment("暗影之手每次命中扣除的 SAN 基础值，默认 0.02")
             .defineInRange("shadowHandSanDrain", 0.02, 0.0, 100.0);

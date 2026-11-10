@@ -783,6 +783,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_HAND_SPAWN_EGG.get());
+                        output.accept(ModItems.SHADOW_GOLEM_SPAWN_EGG.get());
+                        output.accept(ModItems.SHADOW_GHOST_SPAWN_EGG.get());
+                        output.accept(ModItems.SHADOW_SQUEAL_GHOST_SPAWN_EGG.get());
+                        output.accept(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG.get());
+                        output.accept(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG.get());
+                        output.accept(ModItems.BLACK_BEETLE_SPAWN_EGG.get());
+                        output.accept(ModItems.BLACK_BEETLE_MOTHER_SPAWN_EGG.get());
                         output.accept(ModItems.FIREFLY_SPAWN_EGG.get());
                         output.accept(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
                         output.accept(ModItems.GOLDEN_FOX_SPAWN_EGG.get());

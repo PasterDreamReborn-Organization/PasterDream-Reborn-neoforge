@@ -97,6 +97,22 @@ public class ModSounds {
             SOUND_EVENTS.register("shadow_roar", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_roar")));
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> GHOST_WAIL =
+            SOUND_EVENTS.register("ghost_wail", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ghost_wail")));
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> SQUEAL_WAVE =
+            SOUND_EVENTS.register("squeal_wave", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "squeal_wave")));
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> BEETLE_ATTACK =
+            SOUND_EVENTS.register("beetle_attack", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "beetle_attack")));
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> BEETLE_SKILL =
+            SOUND_EVENTS.register("beetle_skill", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "beetle_skill")));
+
     public static final DeferredHolder<SoundEvent, SoundEvent> ZIPPER =
             SOUND_EVENTS.register("zipper", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "zipper")));
