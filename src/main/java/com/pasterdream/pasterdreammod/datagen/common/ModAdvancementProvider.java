@@ -592,6 +592,22 @@ public class ModAdvancementProvider extends AdvancementProvider {
                             ModItems.STAR_WISH_ROD.get()))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "treasure/get_star_wish_rod"), existingFileHelper);
+
+            // ========== 金狐的愿望 ==========
+            Advancement.Builder.advancement()
+                    .parent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/root"))
+                    .display(
+                            ModItems.KAICHU_OMAMORI.get(),
+                            Component.translatable("advancements.pasterdream.get_kaichu_omamori.title"),
+                            Component.translatable("advancements.pasterdream.get_kaichu_omamori.description"),
+                            null,
+                            AdvancementType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("get_kaichu_omamori", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.KAICHU_OMAMORI.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_kaichu_omamori"), existingFileHelper);
         }
     }
 

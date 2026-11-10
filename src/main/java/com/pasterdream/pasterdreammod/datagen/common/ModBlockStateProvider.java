@@ -383,6 +383,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 new ModelFile.UncheckedModelFile(modLoc("custom/the_endless_book_of_dream_seekers_particle")));
         horizontalBlock(ModBlocks.LIFE_CRYSTAL.get(),
                 new ModelFile.UncheckedModelFile(modLoc("custom/life_crystal_particle")));
+        horizontalBlock(ModBlocks.GOLDEN_FOX_SCULPTURE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("custom/golden_fox_sculpture_particle")));
+        horizontalBlock(ModBlocks.FOX_SCULPTURE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("custom/fox_sculpture_particle")));
         blockItem(ModBlocks.LOST_SWORD_TOMB);
 
         // ===== 染梦裂隙 =====

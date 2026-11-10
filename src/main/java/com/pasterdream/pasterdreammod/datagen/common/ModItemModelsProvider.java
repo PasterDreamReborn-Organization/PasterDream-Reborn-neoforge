@@ -205,6 +205,12 @@ public class ModItemModelsProvider extends ItemModelProvider {
         getBuilder(ModItems.LIFE_CRYSTAL.getId().getPath())
                 .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
                         modLoc("displaysettings/life_crystal.item")));
+        getBuilder(ModItems.GOLDEN_FOX_SCULPTURE.getId().getPath())
+                .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
+                        modLoc("displaysettings/golden_fox_sculpture.item")));
+        getBuilder(ModItems.FOX_SCULPTURE.getId().getPath())
+                .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
+                        modLoc("displaysettings/fox_sculpture.item")));
         getBuilder(ModItems.MELT_DREAM_CRYSTAL_CHEST.getId().getPath())
                 .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
                         modLoc("displaysettings/melt_dream_crystal_chest.item")));
@@ -577,6 +583,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.SHADOW_HAND_SPAWN_EGG.get());
         spawnEggItem(ModItems.FIREFLY_SPAWN_EGG.get());
         spawnEggItem(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
+        spawnEggItem(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
 
         registerProphecyCardModels();
         registerPotionBottleModels();

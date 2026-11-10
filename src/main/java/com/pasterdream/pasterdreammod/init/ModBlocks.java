@@ -24,6 +24,8 @@ import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapB
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamCrackBlock;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
+import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlock;
+import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlock;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlock;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlock;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlock;
@@ -267,6 +269,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> LOST_SWORD_TOMB = BLOCKS.register("lost_sword_tomb", () -> new LostSwordTombBlock());
     public static final DeferredBlock<Block> LIFE_CRYSTAL = BLOCKS.register("life_crystal", () -> new LifeCrystalBlock());
+    public static final DeferredBlock<Block> GOLDEN_FOX_SCULPTURE = BLOCKS.register("golden_fox_sculpture", () -> new GoldenFoxSculptureBlock());
+    public static final DeferredBlock<Block> FOX_SCULPTURE = BLOCKS.register("fox_sculpture", () -> new FoxSculptureBlock());
     public static final DeferredBlock<Block> DESERT_HERO_TOMB = BLOCKS.register("desert_hero_tomb", () -> new DesertHeroTombBlock());
 
     public static final DeferredBlock<Block> QYM_DOLL = BLOCKS.register("qym_doll", () -> new QYMDollBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.WOOD).strength(0F, 2147483647F).noOcclusion()));

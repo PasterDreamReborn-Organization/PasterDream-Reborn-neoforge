@@ -247,5 +247,13 @@
         "stream": false
       }
     ]
+  },
+  "ding": {
+    "sounds": [
+      {
+        "name": "pasterdream:ding",
+        "stream": false
+      }
+    ]
   }
 }

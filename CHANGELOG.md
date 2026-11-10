@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 093：金狐交易与宠物（2026-11-10）
+
+- 按完整引用组迁入金狐交易/宠物：5 条数据驱动交易配方（金苹果、空桶、融梦钱堆、融梦水晶碎片、熔金苹果）、金狐交易实体、可驯服金狐宠物与狐火球、两座雕像方块/物品、`FireballProjectileModel`、刷怪蛋、`ding` 音效与「金狐的愿望」进度。
+- 保留来源注册 ID、交易产物（融梦钱堆换取 3 个带超级组件的染梦深海秘宝）、雕像仪式条件（四角迷雾梦莲 + 发光浆果 + 0–6000 tick + 每玩家 600 tick 冷却）、实体数值与驯服/交易/雕像变回行为；1.21 配方改为 `MapCodec`/`StreamCodec`，GeckoLib 4.9 与同步数据接口按平台重写。
+- `runData` 生成交易配方、雕像方块状态/模型/战利品表、金狐实体空战利品表、进度与双语条目；`build` 通过；`runGameTestServer` 175/175 通过。客户端动画/半透明渲染、实体 AI/保存读取/多人同步与雕像仪式实机仍待验收；染梦花园结构与 Patchouli 条目未迁入。
+
 ### 批次 092：逐梦列车车票（2026-11-10）
 
 - 迁入 `dream_train_ticket` 逐梦列车车票：堆叠上限 1，使用后在玩家上方 145 格高度放置 `dream_train` 结构，按玩家朝向旋转并向全服广播列车位置、播放风铃；默认每名玩家在每个维度只能使用一次，`trainTicketOnePerDimension` 开启时改为全服每维度一次（存档 `SavedData`）。

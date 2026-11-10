@@ -8,6 +8,8 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapedRecipe;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapelessRecipe;
+import com.pasterdream.pasterdreammod.recipe.GoldenFoxTradeRecipe;
+import com.pasterdream.pasterdreammod.world.item.DeepTreasureItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarCraftingRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipe;
@@ -58,6 +60,7 @@ public class ModRecipesProvider extends RecipeProvider {
         dustRecipes(output);
         soulRecipes(output);
         curioRecipes(output);
+        goldenFoxTradeRecipes(output);
         quartzRecipes(output);
         calciteRecipes(output);
         calciteOreCookingRecipes(output);
@@ -368,6 +371,25 @@ public class ModRecipesProvider extends RecipeProvider {
                 .requires(ModItems.SOUL_ESSENCE.get())
                 .unlockedBy(getHasName(ModItems.LIGHT_BUTTERFLY_CURIO.get()), has(ModItems.LIGHT_BUTTERFLY_CURIO.get()))
                 .save(pWriter);
+    }
+
+    private void goldenFoxTradeRecipes(RecipeOutput output) {
+        saveGoldenFoxTrade(output, Ingredient.of(Items.GOLDEN_APPLE),
+                new ItemStack(Items.ENCHANTED_GOLDEN_APPLE), "golden_fox_trade_golden_apple");
+        saveGoldenFoxTrade(output, Ingredient.of(Items.BUCKET),
+                new ItemStack(ModItems.MELT_DREAM_LIQUID_BUCKET.get()), "golden_fox_trade_bucket");
+        saveGoldenFoxTrade(output, Ingredient.of(ModItems.MELT_DREAM_COIN_PILE.get()),
+                DeepTreasureItem.createSuper(ModItems.DYEDREAM_DEEP_SEA_TREASURE.get(), 3),
+                "golden_fox_trade_coin_pile");
+        saveGoldenFoxTrade(output, Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                new ItemStack(ModItems.KAICHU_OMAMORI.get()), "golden_fox_trade_crystal_fragment");
+        saveGoldenFoxTrade(output, Ingredient.of(ModItems.MOLTEN_GOLD_APPLE.get()),
+                new ItemStack(ModItems.ENCHANTED_MOLTEN_GOLD_APPLE.get()), "golden_fox_trade_molten_gold_apple");
+    }
+
+    private void saveGoldenFoxTrade(RecipeOutput output, Ingredient ingredient, ItemStack result, String name) {
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name),
+                new GoldenFoxTradeRecipe(ingredient, result), null);
     }
 
     // ===== 铜工具配方 =====
