@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.worldgen.biome;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.tag.ModBiomeTags;
 import com.pasterdream.pasterdreammod.worldgen.ModPlacedFeatures;
 import net.minecraft.core.HolderGetter;
@@ -11,12 +12,16 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
+
+import java.util.List;
 
 public final class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> DEEPSLATE_TITANIUM_ORE_PATCH =
@@ -191,6 +196,30 @@ public final class ModBiomeModifiers {
         // ===== 方解石尖锥 =====
         addPatch(context, biomes, features, "calcite_spike", ModBiomeTags.DYEDREAM_WORLD_LAND_BIOME, ModPlacedFeatures.CALCITE_SPIKE, GenerationStep.Decoration.SURFACE_STRUCTURES);
         addPatch(context, biomes, features, "stone_pillar_ocean", ModBiomeTags.DYEDREAM_WORLD_OCEAN_BIOME, ModPlacedFeatures.STONE_PILLAR_OCEAN, GenerationStep.Decoration.SURFACE_STRUCTURES);
+
+        // ===== 灯影之下维度实体生成（对照原作 NOT_MODIFY 中的 biome_modifier + 群系 JSON） =====
+        // biome_shadow_0（菌索荒原）: terrorbeak(10,1-2), shadow_hand(15,1-3)
+        addSpawns(context, biomes, "terrorbeak_biome_modifier", ModEntities.TERRORBEAK.get(), ModBiomeTags.SHADOW_NYLIUM_WASTES_SPAWN_BIOME, 10, 1, 2);
+        addSpawns(context, biomes, "shadow_hand_biome_modifier", ModEntities.SHADOW_HAND.get(), ModBiomeTags.SHADOW_NYLIUM_WASTES_SPAWN_BIOME, 15, 1, 3);
+
+        // ===== 灯影之下维度地物（对照原作 NOT_MODIFY 中的 structure/structure_set） =====
+        // 暗影之手 — 原作 shadow_hand_0 结构: biome_shadow_0, surface_structures step
+        addPatch(context, biomes, features, "shadow_hand_feature", ModBiomeTags.SHADOW_NYLIUM_WASTES_SPAWN_BIOME, ModPlacedFeatures.SHADOW_HAND, GenerationStep.Decoration.SURFACE_STRUCTURES);
+
+        // biome_shadow_1（阴影森林）: black_beetle(20,5-7 + 20,2-4) + friendly_shadow_ghost(10,1,3)
+        //   原作有两处 black_beetle 生成 — 群系 JSON monster spawn + biome_modifier add_spawns
+        addSpawns(context, biomes, "black_beetle_biome_spawn", ModEntities.BLACK_BEETLE.get(), ModBiomeTags.SHADOW_FOREST_SPAWN_BIOME, 20, 5, 7);
+        addSpawns(context, biomes, "black_beetle_biome_modifier", ModEntities.BLACK_BEETLE.get(), ModBiomeTags.SHADOW_FOREST_SPAWN_BIOME, 20, 2, 4);
+        addSpawns(context, biomes, "friendly_shadow_ghost_biome_modifier", ModEntities.FRIENDLY_SHADOW_GHOST.get(), ModBiomeTags.SHADOW_FOREST_SPAWN_BIOME, 10, 1, 3);
+
+        // biome_shadow_1（阴影古迹）: 幽灵系三变体（降低密度：总权重 12，单次最多 4 只）
+        addSpawns(context, biomes, "shadow_ghost_biome_modifier", ModEntities.SHADOW_GHOST.get(), ModBiomeTags.SHADOW_GHOST_SPAWN_BIOME, 6, 1, 2);
+        addSpawns(context, biomes, "shadow_squeal_ghost_biome_modifier", ModEntities.SHADOW_SQUEAL_GHOST.get(), ModBiomeTags.SHADOW_GHOST_SPAWN_BIOME, 4, 1, 1);
+        addSpawns(context, biomes, "wailing_shadow_ghost_biome_modifier", ModEntities.WAILING_SHADOW_GHOST.get(), ModBiomeTags.SHADOW_GHOST_SPAWN_BIOME, 2, 1, 1);
+
+        // biome_shadow_2（阴影古迹）: shadow_golem(4,1-1) + shadow_hand(10,1-2)，后者稀释精英怪比例
+        addSpawns(context, biomes, "shadow_golem_biome_modifier", ModEntities.SHADOW_GOLEM.get(), ModBiomeTags.SHADOW_RUINS_SPAWN_BIOME, 4, 1, 1);
+        addSpawns(context, biomes, "shadow_hand_ruins_biome_modifier", ModEntities.SHADOW_HAND.get(), ModBiomeTags.SHADOW_RUINS_SPAWN_BIOME, 10, 1, 2);
     }
 
     private static void addPatch(BootstrapContext<BiomeModifier> context, HolderGetter<Biome> biomes,
@@ -202,6 +231,14 @@ public final class ModBiomeModifiers {
     private static BiomeModifier addFeatures(HolderSet<Biome> biomes, net.minecraft.core.Holder<PlacedFeature> feature,
                                              GenerationStep.Decoration step) {
         return new BiomeModifiers.AddFeaturesBiomeModifier(biomes, HolderSet.direct(feature), step);
+    }
+
+    private static void addSpawns(BootstrapContext<BiomeModifier> context, HolderGetter<Biome> biomes,
+                                  String name, EntityType<?> entityType, TagKey<Biome> biomeTag,
+                                  int weight, int minCount, int maxCount) {
+        context.register(key(name), new BiomeModifiers.AddSpawnsBiomeModifier(
+                biomes.getOrThrow(biomeTag),
+                List.of(new MobSpawnSettings.SpawnerData(entityType, weight, minCount, maxCount))));
     }
 
     private static ResourceKey<BiomeModifier> key(String path) {
