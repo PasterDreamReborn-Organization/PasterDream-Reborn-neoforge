@@ -798,6 +798,18 @@ public class ModCreativeModeTabs {
                     })
                     .build());
 
+    // ===== 追忆 =====
+    // 来源: 旧 paster_tab_7（当前迁入追忆宝石与魔法使的灵魂石；其余遗物尚未迁入）
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_MEMENTO_TAB =
+            CREATIVE_MODE_TABS.register("pasterdream_memento_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_memento_tab"))
+                    .icon(() -> new ItemStack(ModItems.MEMORY_GEM.get()))
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.MEMORY_GEM.get());
+                        output.accept(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get());
+                    })
+                    .build());
+
     // ===== 笔记 =====
     // 来源: pasterdream_dream_notes_tab（当前迁入寻梦者笔记书与蓝图；剧情引导物品尚未迁入）
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_DREAM_NOTES_TAB =

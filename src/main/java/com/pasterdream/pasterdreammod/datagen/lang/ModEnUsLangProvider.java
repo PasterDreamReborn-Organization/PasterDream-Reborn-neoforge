@@ -1208,6 +1208,23 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.TURNBACK_CLOAK.get(), "Turnback Cloak");
         add(ModItems.EVASION_CLOAK.get(), "Evasion Cloak");
         add(ModItems.SLIVER_BELL.get(), "Sliver Bell");
+
+        // ===== Memento =====
+        add("itemGroup.pasterdream.pasterdream_memento_tab", "Paster Dream | Memento");
+        add(ModItems.MEMORY_GEM.get(), "Memory Gem");
+        add(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get(), "Soul Gem of Akizuki Ayane");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.1", "§7\"I bestow upon you my legacy magic, to walk beside you and witness the dreams you see\"");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.2", "§7An experimental creation by a great mage to protect her shattered soul. Once her soul was restored, this materialized soul lost its meaning.");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.3", "§7▪ §9Restores 1.5 Melt Dream Energy per second");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.4", "§7▪ §9+40% Skill Damage");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.5", "§7▪ §9+50% Magic Damage");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.6", "§7▪ §4Melt Dream Energy consumption doubled");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.7", "§7▪ §4Damage taken is doubled when Melt Dream Energy is below 30");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.8", "§7Exclusive memento of Ayane.");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.9", "§7Shift right-click in main hand to fully restore Melt Dream Energy, disable its consumption and gain +60% Skill Damage and Magic Damage for 2 minutes (4.5 min cooldown)");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.10", "§6PasterDream: Reborn Copywriter");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.cooldown", "§cThe soul gem's power is still cooling down");
+
         add("tooltip.pasterdreammod.melt_dream_aurorian_steel", "§7§o--Kids, did you ask?");
         add("tooltip.pasterdream.duke_coin_curio.effect.luck", "§7▪ §9+7 Luck");
         add("tooltip.pasterdream.duke_coin_curio.effect.blink_cd", "§7▪ §cBlink Cooldown +700%");

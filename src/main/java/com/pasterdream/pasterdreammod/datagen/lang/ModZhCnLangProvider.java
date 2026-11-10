@@ -1208,6 +1208,23 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TURNBACK_CLOAK.get(), "转身衣装");
         add(ModItems.EVASION_CLOAK.get(), "回避衣装");
         add(ModItems.SLIVER_BELL.get(), "银色铃铛");
+
+        // ===== 追忆 =====
+        add("itemGroup.pasterdream.pasterdream_memento_tab", "帕斯特之梦 | 追忆");
+        add(ModItems.MEMORY_GEM.get(), "追忆宝石");
+        add(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get(), "魔法使的灵魂石");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.1", "§7\"我将我遗留的魔法赠予你，让它替我与你同行，见证你所见的梦幻\"");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.2", "§7一位大魔法使为了保护自己残破的灵魂而制作的实验品，当她的灵魂重归完整后，这份物质化的灵魂也失去了意义。");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.3", "§7▪ §9每秒恢复 1.5 融梦能量");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.4", "§7▪ §9战技伤害 +40%");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.5", "§7▪ §9魔法伤害 +50%");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.6", "§7▪ §4融梦能量消耗翻倍");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.7", "§7▪ §4融梦能量低于 30 时，受到的伤害翻倍");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.8", "§7绫苒的专属遗物。");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.9", "§7主手shift右键恢复全部融梦能量，2 分钟内不消耗融梦能量且战技伤害与魔法伤害 +60%（冷却 4 分半钟）");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.10", "§6PasterDream: Reborn 文案");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.cooldown", "§c灵魂石的力量仍在冷却中");
+
         add("tooltip.pasterdreammod.melt_dream_aurorian_steel", "§7§o--孩子们，问了吗？");
         add("tooltip.pasterdream.duke_coin_curio.effect.luck", "§7▪ §9+7 幸运值");
         add("tooltip.pasterdream.duke_coin_curio.effect.blink_cd", "§7▪ §c瞬身术冷却时间 +700%");
