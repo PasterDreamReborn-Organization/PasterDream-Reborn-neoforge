@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 097：染梦与风之旅途情景音乐（2026-11-10）
+
+- 迁入上游客户端音乐注入：`SituationalMusicMixin` 在染梦世界与风之旅途覆盖 `Minecraft#getSituationalMusic`，优先使用当前群系背景音乐；`MusicManagerMixin` 将两个维度的下一曲间隔上限压到 1200 tick，并保留 35% 概率不干预。
+- 按 1.21.1 平台差异用 `@Shadow` 读取 `MusicManager` 私有 `minecraft` 与 `nextSongDelay` 字段；群系音乐继续使用批次 069 已迁入的 `sweet_dream_music` / `snowfall_dream_music`。
+- `build` 通过；客户端混入注入、曲目切换与实机听感待游戏内验收。
+
 ### 批次 096：染梦世界结构生成（2026-11-10）
 
 - 迁入染梦世界 30 个结构及其 34 个模板池：染梦教堂、侵染教堂、水晶球、祈愿树、萦风教堂、花园解密三座、旅者小屋、生命水晶洞穴、染梦凉亭、浮空神庙、客栈、营地、穿云塔、空岛、世界树、实验室、逐梦列车、融梦涌泉井、粉顶蘑菇屋、月亮小屋、染梦/普通生态气泡与三个大气泡。

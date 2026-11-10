@@ -3,7 +3,7 @@
   "package": "com.pasterdream.pasterdreammod.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": ["CampfireBlockEntityMixin", "FlowerPotBlockMixin", "PlayerCanEatMixin", "LivingEntityAccessor", "AbstractArrowAccessor", "LootPoolAccessor", "FishingHookMixin", "ProtectedEffectApplicableMixin", "ProtectedEffectRemovalMixin", "SculkArmorWardenImmunityMixin", "WardenTargetMixin", "UsingItemSpeedMixin", "BrightButterflyCurioMixin", "ItemElytraMixin", "BrokenWingFallDamageMixin", "FoxTargetMixin"],
-  "client": ["CapeLayerMixin", "LightTextureGammaMixin", "BlockElementMixin"],
+  "client": ["CapeLayerMixin", "LightTextureGammaMixin", "BlockElementMixin", "MusicManagerMixin", "SituationalMusicMixin"],
   "injectors": {
     "defaultRequire": 1
   },
