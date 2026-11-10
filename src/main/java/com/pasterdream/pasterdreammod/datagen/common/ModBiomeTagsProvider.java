@@ -259,5 +259,8 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
 
         tag(ModBiomeTags.SHADOW_RUINS_SPAWN_BIOME)
                 .add(ModBiomes.SHADOW_RUINS);
+
+        tag(ModBiomeTags.CAN_SHADOWNOTE_RUIN_SPAWN_BIOME)
+                .add(ModBiomes.SHADOW_RUINS);
     }
 }

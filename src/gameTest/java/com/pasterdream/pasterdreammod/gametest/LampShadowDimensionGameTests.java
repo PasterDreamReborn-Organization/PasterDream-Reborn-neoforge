@@ -98,4 +98,43 @@ public class LampShadowDimensionGameTests {
 
         helper.succeed();
     }
+
+    @GameTest(template = "empty")
+    public static void shadowStructuresAndTemplatesLoad(GameTestHelper helper) {
+        var structureLookup = helper.getLevel().registryAccess().lookupOrThrow(Registries.STRUCTURE);
+        var setLookup = helper.getLevel().registryAccess().lookupOrThrow(Registries.STRUCTURE_SET);
+        List<String> structures = List.of(
+                "shadownote_ruin_0",
+                "shadownote_ruin_1",
+                "shadownote_ruin_2",
+                "shadow_shelter",
+                "shadow_nest",
+                "shadow_fungus_house",
+                "shadow_foundry",
+                "shadow_underground_workroom");
+        for (String name : structures) {
+            var id = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name);
+            helper.assertTrue(structureLookup.get(ResourceKey.create(Registries.STRUCTURE, id)).isPresent(),
+                    "灯影之下结构应已注册: " + id);
+        }
+        var setId = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_structures");
+        helper.assertTrue(setLookup.get(ResourceKey.create(Registries.STRUCTURE_SET, setId)).isPresent(),
+                "灯影之下结构集应已注册: " + setId);
+
+        var manager = helper.getLevel().getStructureManager();
+        for (String name : List.of(
+                "shadownote_ruin_0",
+                "shadownote_ruin_1",
+                "shadownote_ruin_2",
+                "shadow_shelter",
+                "shadow_nest",
+                "shadow_fungus_house",
+                "shadow_foundry",
+                "shadow_underground_workroom_bottom",
+                "shadow_underground_workroom_top")) {
+            var id = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name);
+            helper.assertTrue(manager.get(id).isPresent(), "灯影之下结构模板应可加载: " + id);
+        }
+        helper.succeed();
+    }
 }

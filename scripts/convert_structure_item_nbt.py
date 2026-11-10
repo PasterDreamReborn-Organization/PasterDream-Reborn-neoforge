@@ -16,6 +16,8 @@ from nbtlib import Compound, Int, List, String
 ROOT = Path(__file__).resolve().parents[1] / "src/main/resources/data/pasterdream/structure"
 NOTE_ID = "pasterdream:dream_notes_book"
 NOTE_COMPONENT = "pasterdream:dream_note_content"
+BLUEPRINT_ID = "pasterdream:blue_print"
+BLUEPRINT_COMPONENT = "pasterdream:blueprint_content"
 LEGACY_COMPONENTS = {
     "Damage": "minecraft:damage",
     "RepairCost": "minecraft:repair_cost",
@@ -44,6 +46,10 @@ def convert_stack(stack: Compound, where: str) -> tuple[bool, bool]:
                 if NOTE_COMPONENT in components:
                     raise ValueError(f"{where}: duplicate note component")
                 components[NOTE_COMPONENT] = String(str(value))
+            elif key == "content" and item_id == BLUEPRINT_ID:
+                if BLUEPRINT_COMPONENT in components:
+                    raise ValueError(f"{where}: duplicate blueprint component")
+                components[BLUEPRINT_COMPONENT] = String(str(value))
             elif key in LEGACY_COMPONENTS:
                 if LEGACY_COMPONENTS[key] in components:
                     raise ValueError(f"{where}: duplicate {LEGACY_COMPONENTS[key]} component")
