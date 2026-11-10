@@ -36,6 +36,10 @@ public class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> COIN_EXCHANGE =
             SOUND_EVENTS.register("coin_exchange", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coin_exchange")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> MELT_DREAM_CRYSTAL_CHEST_OPEN_RARE =
+            SOUND_EVENTS.register("melt_dream_crystal_chest_open_rare", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_crystal_chest_open_rare")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> MELT_DREAM_CRYSTAL_CHEST_OPEN_LEGEND =
+            SOUND_EVENTS.register("melt_dream_crystal_chest_open_legend", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_crystal_chest_open_legend")));
     public static final DeferredHolder<SoundEvent, SoundEvent> SKILL_HIT_HEAVY =
             SOUND_EVENTS.register("skill_hit_heavy", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "skill_hit_heavy")));

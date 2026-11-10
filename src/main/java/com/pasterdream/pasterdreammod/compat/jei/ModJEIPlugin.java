@@ -43,8 +43,14 @@ import mezz.jei.api.ingredients.subtypes.IIngredientSubtypeInterpreter;
 import mezz.jei.api.registration.ISubtypeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.util.List;
@@ -96,6 +102,23 @@ public class ModJEIPlugin implements IModPlugin
                     String content = stack.get(com.pasterdream.pasterdreammod.init.ModDataComponents.BLUEPRINT_CONTENT.get());
                     return content != null ? content : IIngredientSubtypeInterpreter.NONE;
                 });
+
+        for (Item item : List.of(ModItems.MELT_DREAM_CRYSTAL_CHEST.get(),
+                ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get())) {
+            registration.registerSubtypeInterpreter(item, (stack, context) -> {
+                CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+                if (!tag.contains("LootTables", Tag.TAG_LIST)) {
+                    return IIngredientSubtypeInterpreter.NONE;
+                }
+                ListTag lootTables = tag.getList("LootTables", Tag.TAG_COMPOUND);
+                StringBuilder key = new StringBuilder();
+                for (int i = 0; i < lootTables.size(); i++) {
+                    if (i > 0) key.append(',');
+                    key.append(lootTables.getCompound(i).getString("LootTable"));
+                }
+                return key.toString();
+            });
+        }
     }
 
     @Override

@@ -10,6 +10,8 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.Weapo
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarBlockEntityRenderer;
@@ -35,6 +37,8 @@ public final class ModBlockEntityRenderer {
         event.registerBlockEntityRenderer(ModBlockEntities.DREAM_CAULDRON.get(), DreamCauldronBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.DREAM_ACCUMULATOR.get(), DreamAccumulatorBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_CHEST.get(), ShadowChestBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.MELT_DREAM_CRYSTAL_CHEST.get(), MeltDreamCrystalChestBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), OpenedMeltDreamCrystalChestBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), TheEndlessBookOfDreamSeekersBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.ECOLOGY_GLASS_JAR.get(), EcologyGlassJarBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.FIREFLY_GLASS_JAR.get(), FireflyGlassJarBlockEntityRenderer::new);

@@ -332,6 +332,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.WIND_MOOR_DESK.get());
         dropSelf(ModBlocks.PICNIC_BASKET.get());
         dropSelf(ModBlocks.SHADOW_CHEST.get());
+        dropSelf(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get());
+        dropSelf(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get());
         dropSelf(ModBlocks.WIND_MOOR_CRATE.get());
         dropSelf(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get());
         dropSelf(ModBlocks.CLAYPAN.get());

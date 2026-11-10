@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.functions.ApplyEntityLootingFunction;
+import com.pasterdream.pasterdreammod.world.functions.SpawnEntityFunction;
 import com.pasterdream.pasterdreammod.world.conditions.RealPlayerCondition;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -36,6 +37,8 @@ public final class ModLootTables {
     public static final DeferredHolder<LootItemFunctionType<?>, LootItemFunctionType<ApplyEntityLootingFunction>> APPLY_ENTITY_LOOTING_FUNCTION =
             LOOT_FUNCTION_TYPES.register("apply_entity_looting",
                     () -> new LootItemFunctionType<>(ApplyEntityLootingFunction.CODEC));
+    public static final DeferredHolder<LootItemFunctionType<?>, LootItemFunctionType<SpawnEntityFunction>> SPAWN_ENTITY_FUNCTION_TYPE =
+            LOOT_FUNCTION_TYPES.register("spawn_entity", () -> new LootItemFunctionType<>(SpawnEntityFunction.CODEC));
 
     /** 园艺钳剪树叶走自定义战利品表：pliers_cutting/<命名空间>/<方块注册名>，与 datagen 路径一致。 */
     public static final String PLIERS_CUTTING_PREFIX = "pliers_cutting/";

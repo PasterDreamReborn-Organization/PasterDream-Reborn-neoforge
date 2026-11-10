@@ -19,6 +19,8 @@ import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.windmoordesk.WindMoorDeskBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbasket.PicnicBasketBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntity;
@@ -117,6 +119,10 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShadowChestBlockEntity>> SHADOW_CHEST =
             BLOCK_ENTITIES.register("shadow_chest",
                     () -> BlockEntityType.Builder.of(ShadowChestBlockEntity::new, ModBlocks.SHADOW_CHEST.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MeltDreamCrystalChestBlockEntity>> MELT_DREAM_CRYSTAL_CHEST =
+            BLOCK_ENTITIES.register("melt_dream_crystal_chest", () -> BlockEntityType.Builder.of(MeltDreamCrystalChestBlockEntity::new, ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OpenedMeltDreamCrystalChestBlockEntity>> OPENED_MELT_DREAM_CRYSTAL_CHEST =
+            BLOCK_ENTITIES.register("opened_melt_dream_crystal_chest", () -> BlockEntityType.Builder.of(OpenedMeltDreamCrystalChestBlockEntity::new, ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get()).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WindMoorCrateBlockEntity>> WIND_MOOR_CRATE =
             BLOCK_ENTITIES.register("wind_moor_crate",

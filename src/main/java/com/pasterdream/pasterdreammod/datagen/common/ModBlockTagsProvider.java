@@ -244,6 +244,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.WIND_MOOR_CRATE.get())
                 .add(ModBlocks.DREAM_ACCUMULATOR.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.SHADOW_CHEST.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.SOUL_ORE.get());
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.SALT_BLOCK.get());

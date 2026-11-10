@@ -1334,6 +1334,12 @@ public class ModItems {
     public static final DeferredItem<BlockItem> PICNIC_BASKET = ITEMS.registerSimpleBlockItem(ModBlocks.PICNIC_BASKET);
     public static final DeferredItem<Item> SHADOW_CHEST = ITEMS.register("shadow_chest",
             () -> new ShadowChestItem(ModBlocks.SHADOW_CHEST.get(), new Item.Properties()));
+    public static final DeferredItem<Item> MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("melt_dream_crystal_chest",
+            () -> new com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestItem(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), new Item.Properties()));
+    public static final DeferredItem<Item> OPENED_MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("opened_melt_dream_crystal_chest",
+            () -> new com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestItem(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), new Item.Properties()));
+    public static final DeferredItem<Item> MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL = ITEMS.register("melt_dream_crystal_chest_reset_tool",
+            () -> new com.pasterdream.pasterdreammod.world.item.meltdreamcrystalchestresettool.MeltDreamCrystalChestResetToolItem(new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_HAND_TRAP = ITEMS.register("shadow_hand_trap",
             () -> new ShadowHandTrapItem(ModBlocks.SHADOW_HAND_TRAP.get(), new Item.Properties()));
     public static final DeferredItem<BlockItem> WIND_MOOR_CRATE = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_MOOR_CRATE);

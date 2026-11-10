@@ -21,6 +21,8 @@ import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbask
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbasket.PicnicBasketMenu;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateMenu;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntity;
@@ -120,6 +122,12 @@ public class ModMenus {
             {
                 BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
                 return new ShadowChestMenu(windowId, inv, (ShadowChestBlockEntity) blockEntity);
+            }));
+    public static final DeferredHolder<MenuType<?>, MenuType<OpenedMeltDreamCrystalChestMenu>> OPENED_MELT_DREAM_CRYSTAL_CHEST =
+            MENUS.register("opened_melt_dream_crystal_chest", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new OpenedMeltDreamCrystalChestMenu(windowId, inv, (OpenedMeltDreamCrystalChestBlockEntity) blockEntity);
             }));
 
     public static final DeferredHolder<MenuType<?>, MenuType<WindMoorCrateMenu>> WIND_MOOR_CRATE =

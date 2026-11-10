@@ -204,6 +204,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         getBuilder(ModItems.LIFE_CRYSTAL.getId().getPath())
                 .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
                         modLoc("displaysettings/life_crystal.item")));
+        getBuilder(ModItems.MELT_DREAM_CRYSTAL_CHEST.getId().getPath())
+                .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
+                        modLoc("displaysettings/melt_dream_crystal_chest.item")));
+        getBuilder(ModItems.OPENED_MELT_DREAM_CRYSTAL_CHEST.getId().getPath())
+                .parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(
+                        modLoc("displaysettings/opened_melt_dream_crystal_chest.item")));
+        basicItem(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get());
         handheldItem(ModItems.DESERT_SWORD.get());
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD.get());
         handheldItem(ModItems.BROKEN_HERO_SWORD.get());

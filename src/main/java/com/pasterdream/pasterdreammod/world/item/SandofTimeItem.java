@@ -2,11 +2,13 @@ package com.pasterdream.pasterdreammod.world.item;
 
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.item.meltdreamcrystalchestresettool.MeltDreamCrystalChestResetCooldown;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -46,6 +48,12 @@ public class SandofTimeItem extends Item {
 
             CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putLong(TAG_COOLDOWN, now));
 
+            if (player instanceof ServerPlayer serverPlayer && MeltDreamCrystalChestResetCooldown.getRemainingTicks(serverPlayer) > 0L)
+            {
+                MeltDreamCrystalChestResetCooldown.clear(serverPlayer);
+                player.displayClientMessage(Component.translatable("message.pasterdream.sand_of_time.reset_cooldown_skipped"), true);
+            }
+
             boolean isDay = level.isDay();
             long newTime = isDay ? 18000 : 1000;
             // DerivedLevelData.setDayTime() 是空方法，必须遍历所有维度（与 /time set 行为一致）
@@ -65,6 +73,7 @@ public class SandofTimeItem extends Item {
         tooltip.add(Component.translatable("tooltip.pasterdream.sand_of_time.1"));
         tooltip.add(Component.translatable("tooltip.pasterdream.sand_of_time.2", cooldownTime).withStyle(ChatFormatting.BLUE));
         tooltip.add(Component.translatable("tooltip.pasterdream.sand_of_time.3"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.sand_of_time.6"));
 
         // 显示剩余冷却时间
         Level level = context.level();
