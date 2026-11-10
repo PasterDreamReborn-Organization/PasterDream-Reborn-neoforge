@@ -90,6 +90,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ModItemTags.FLOUR_WHEAT).add(ModItems.FLOUR.get());
         tag(Tags.Items.FOODS_DOUGH).add(ModItems.DOUGH.get());
         tag(ModItemTags.COOKED_EGGS).add(ModItems.FRIED_EGG.get());
+        tag(Tags.Items.EGGS).add(ModItems.PINK_EGG.get());
         tag(ModItemTags.GALAXY_JELLY_BOOST).add(Items.ELYTRA);
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
         copy(Tags.Blocks.ORES_COAL, Tags.Items.ORES_COAL);

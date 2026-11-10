@@ -107,6 +107,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.MORTAR.get());
         basicItem(ModItems.COARSE_SALT.get());
         basicItem(ModItems.SALT.get());
+        basicItem(ModItems.PINK_EGG.get());
         basicItem(ModItems.EMBRYO_CHARM.get());
         basicItem(ModItems.EMBRYO_NECKLACE.get());
         basicItem(ModItems.EMBRYO_RING.get());
@@ -583,6 +584,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.SHADOW_HAND_SPAWN_EGG.get());
         spawnEggItem(ModItems.FIREFLY_SPAWN_EGG.get());
         spawnEggItem(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
+        spawnEggItem(ModItems.PINK_CHICKEN_SPAWN_EGG.get());
+        spawnEggItem(ModItems.PINK_SLIME_SPAWN_EGG.get());
         spawnEggItem(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
 
         registerProphecyCardModels();

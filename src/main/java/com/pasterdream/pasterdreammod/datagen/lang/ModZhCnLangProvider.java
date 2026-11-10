@@ -81,6 +81,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModEntities.CRAZY_TERRORBEAK.get(), "疯狂恐怖尖喙");
         add(ModEntities.WEAKENESS_TERRORBEAK.get(), "虚弱恐怖尖喙");
         add(ModEntities.SHADOW_HAND.get(), "暗影之手");
+        add(ModEntities.PINK_CHICKEN.get(), "粉红鸡");
+        add(ModItems.PINK_CHICKEN_SPAWN_EGG.get(), "粉红鸡刷怪蛋");
+        add(ModEntities.PINK_SLIME.get(), "粉红史莱姆");
+        add(ModItems.PINK_SLIME_SPAWN_EGG.get(), "粉红史莱姆刷怪蛋");
         add(ModItems.BLACK_METAL_INGOT.get(), "黑金属锭");
         add(ModItems.BLACK_METAL_NUGGET.get(), "黑金属粒");
         add(ModItems.RUST_BLACK_METAL_GRAIN.get(), "锈蚀金属碎屑");
@@ -379,6 +383,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FLOUR.get(), "面粉");
         add(ModItems.COARSE_SALT.get(), "粗盐");
         add(ModItems.SALT.get(), "盐");
+        add(ModItems.PINK_EGG.get(), "粉红蛋");
         add(ModItems.GLASS_JAR.get(), "玻璃罐");
         add(ModItems.GLASS_JAR_OF_WATER.get(), "水罐");
         add(ModItems.GLASS_JAR_OF_MILK.get(), "牛奶罐");

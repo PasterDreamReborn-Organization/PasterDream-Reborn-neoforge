@@ -17,8 +17,11 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.KusanagiVenomStingerEntity;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
 import com.pasterdream.pasterdreammod.world.entity.PebbleProjectile;
+import com.pasterdream.pasterdreammod.world.entity.PinkChickenEntity;
+import com.pasterdream.pasterdreammod.world.entity.PinkSlimeEntity;
 import com.pasterdream.pasterdreammod.world.entity.PotionBottleEffectEntity;
 import com.pasterdream.pasterdreammod.world.entity.RejuvenationBottleEntity;
+import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
 import com.pasterdream.pasterdreammod.world.entity.TideSwordProjectileEntity;
 import net.minecraft.core.registries.Registries;
@@ -49,6 +52,30 @@ public class ModEntities {
                             .setUpdateInterval(3)
                             .fireImmune()
                             .sized(0.6f, 1f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<PinkChickenEntity>> PINK_CHICKEN =
+            register("pink_chicken",
+                    EntityType.Builder.<PinkChickenEntity>of(PinkChickenEntity::new, MobCategory.CREATURE)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .sized(0.4f, 0.7f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<PinkSlimeEntity>> PINK_SLIME =
+            register("pink_slime",
+                    EntityType.Builder.<PinkSlimeEntity>of(PinkSlimeEntity::new, MobCategory.CREATURE)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ThrownPinkEgg>> THROWN_PINK_EGG =
+            register("thrown_pink_egg",
+                    EntityType.Builder.<ThrownPinkEgg>of(ThrownPinkEgg::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .sized(0.25f, 0.25f));
 
     public static final DeferredHolder<EntityType<?>, EntityType<TideSwordProjectileEntity>> TIDE_SWORD_PROJECTILE =
             register("tide_sword_projectile",
@@ -226,6 +253,8 @@ public class ModEntities {
         eventBus.addListener(ShadowHandEntity::init);
         eventBus.addListener(FireflyEntity::init);
         eventBus.addListener(SmallStoneSpiritEntity::init);
+        eventBus.addListener(PinkChickenEntity::init);
+        eventBus.addListener(PinkSlimeEntity::init);
     }
 
     public static void registerAttributes(EntityAttributeCreationEvent event) {
@@ -240,6 +269,8 @@ public class ModEntities {
         event.put(MELT_DREAM_CRYSTAL_ENTITY.get(), MeltDreamCrystalEntityEntity.createAttributes().build());
         event.put(FIREFLY.get(), FireflyEntity.createAttributes().build());
         event.put(SMALL_STONE_SPIRIT.get(), SmallStoneSpiritEntity.createAttributes().build());
+        event.put(PINK_CHICKEN.get(), PinkChickenEntity.createAttributes().build());
+        event.put(PINK_SLIME.get(), PinkSlimeEntity.createAttributes().build());
     }
 
     private ModEntities() {

@@ -8,9 +8,11 @@ import com.pasterdream.pasterdreammod.world.functions.ApplyEntityLootingFunction
 import net.minecraft.data.loot.LootTableSubProvider;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -28,6 +30,35 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
     @Override
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
         var looting = lookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.LOOTING);
+        consumer.accept(
+                ModEntities.PINK_CHICKEN.get().getDefaultLootTable(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(Items.CHICKEN)
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(EmptyLootItem.emptyItem().setWeight(2))
+                                .add(LootItem.lootTableItem(Items.FEATHER)
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
+                                .add(LootItem.lootTableItem(Items.FEATHER)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
+        );
+
+        consumer.accept(
+                ModEntities.PINK_SLIME.get().getDefaultLootTable(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.PINK_SLIMEBALL.get())
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
+                                .add(EmptyLootItem.emptyItem().setWeight(2)))
+        );
+
         consumer.accept(
                 ModEntities.TERRORBEAK.get().getDefaultLootTable(),
                 LootTable.lootTable()

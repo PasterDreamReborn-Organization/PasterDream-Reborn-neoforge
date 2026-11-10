@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.worldgen.biome;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -152,6 +153,10 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 20, 1, 2))
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 12, 4, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 40, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_CHICKEN.get(), 10, 1, 1))
                         .build())
                 .generationSettings(gen.build())
                 .build();
@@ -177,6 +182,10 @@ public class ModBiomes {
                 .mobSpawnSettings(new MobSpawnSettings.Builder()
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 10, 4, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_CHICKEN.get(), 40, 4, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 20, 4, 4))
                         .build())
                 .generationSettings(gen.build())
                 .build();
@@ -203,6 +212,8 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 20, 1, 3))
                         .build())
                 .generationSettings(gen.build())
                 .build();
@@ -322,6 +333,8 @@ public class ModBiomes {
                 .mobSpawnSettings(new MobSpawnSettings.Builder()
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 20, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 10, 1, 2))
                         .build())
                 .generationSettings(gen.build())
                 .build();
@@ -401,6 +414,8 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 10, 1, 3))
                         .build())
                 .generationSettings(gen.build())
                 .build();
@@ -427,6 +442,8 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 10, 1, 3))
                         .build())
                 .generationSettings(gen.build())
                 .build();
@@ -454,6 +471,10 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 10, 4, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 20, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_CHICKEN.get(), 10, 1, 1))
                         .build())
                 .generationSettings(gen.build())
                 .build();
@@ -481,6 +502,10 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 20, 1, 2))
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 12, 4, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_SLIME.get(), 40, 2, 4))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.PINK_CHICKEN.get(), 10, 1, 1))
                         .build())
                 .generationSettings(gen.build())
                 .build();

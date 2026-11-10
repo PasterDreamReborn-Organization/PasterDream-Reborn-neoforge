@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 094：染梦世界粉红鸡、粉红史莱姆与自然生成（2026-11-10）
+
+- 迁入染梦世界原生生物 `pink_chicken`、`pink_slime` 及 `pink_egg` 物品与 `thrown_pink_egg` 投掷物：粉红鸡保留飞行移动、染梦果繁殖/吸引、6000–12000 tick 产蛋与摔落免疫；粉红史莱姆保留跳跃随机位移、摔落免疫与无分裂行为。
+- 按来源权重和数量在 8 个染梦群系接通自然生成（平原、蘑菇山地、雪原、海滩、雪峰、樱花树林、森林、花田），并补齐 `animals_spawnable_on` 所需的染梦草方块既有标签、刷怪蛋、实体/物品中英名称、物品模型、创造栏、实体战利品表与 `c:eggs` 物品标签。雪原、雪峰与樱花树林同时加入 `minecraft:spawns_snow_foxes`，使自然生成的狐狸为雪狐。
+- 迁入 `FoxTargetMixin`，狐狸在设置目标时追加对粉红鸡的主动攻击目标；染梦果继续通过既有 `minecraft:fox_food` 标签作为狐狸食物。
+- 粉红蛋可用于来源煎蛋熔炉/烟熏/篝火配方；投掷后 1/5 概率生成幼年粉红鸡。1.21 适配移除 `PlayMessages`/`NetworkHooks`/`MobType` 与 5 参数 `finalizeSpawn`，出生点改用 `RegisterSpawnPlacementsEvent`，模型 `renderToBuffer` 改用颜色整数。
+- `runData` 写入实体战利品表、物品/刷怪蛋模型、群系生成与双语条目；`build` 通过；`runGameTestServer` 175/175 通过。自然生成的实际世界抽检、客户端飞行动画与多人同步仍待游戏内验收。
+
 ### 批次 093：金狐交易与宠物（2026-11-10）
 
 - 按完整引用组迁入金狐交易/宠物：5 条数据驱动交易配方（金苹果、空桶、融梦钱堆、融梦水晶碎片、熔金苹果）、金狐交易实体、可驯服金狐宠物与狐火球、两座雕像方块/物品、`FireballProjectileModel`、刷怪蛋、`ding` 音效与「金狐的愿望」进度。

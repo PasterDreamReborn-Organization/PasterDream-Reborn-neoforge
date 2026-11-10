@@ -81,6 +81,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModEntities.CRAZY_TERRORBEAK.get(), "Crazy Terrorbeak");
         add(ModEntities.WEAKENESS_TERRORBEAK.get(), "Weakness Terrorbeak");
         add(ModEntities.SHADOW_HAND.get(), "Shadow Hand");
+        add(ModEntities.PINK_CHICKEN.get(), "Pink Chicken");
+        add(ModItems.PINK_CHICKEN_SPAWN_EGG.get(), "Pink Chicken Spawn Egg");
+        add(ModEntities.PINK_SLIME.get(), "Pink Slime");
+        add(ModItems.PINK_SLIME_SPAWN_EGG.get(), "Pink Slime Spawn Egg");
         add(ModItems.BLACK_METAL_INGOT.get(), "Black Metal Ingot");
         add(ModItems.BLACK_METAL_NUGGET.get(), "Black Metal Grain");
         add(ModItems.RUST_BLACK_METAL_GRAIN.get(), "Rust Black Metal Grain");
@@ -379,6 +383,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.FLOUR.get(), "Flour");
         add(ModItems.COARSE_SALT.get(), "Coarse Salt");
         add(ModItems.SALT.get(), "Salt");
+        add(ModItems.PINK_EGG.get(), "Pink Egg");
         add(ModItems.GLASS_JAR.get(), "Glass Jar");
         add(ModItems.GLASS_JAR_OF_WATER.get(), "Water Jar");
         add(ModItems.GLASS_JAR_OF_MILK.get(), "Milk Jar");
