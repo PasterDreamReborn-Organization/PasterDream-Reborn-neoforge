@@ -34,6 +34,8 @@ import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJa
 import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.fireflynest.FireflyNestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -184,6 +186,14 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FoxSculptureBlockEntity>> FOX_SCULPTURE =
             BLOCK_ENTITIES.register("fox_sculpture",
                     () -> BlockEntityType.Builder.of(FoxSculptureBlockEntity::new, ModBlocks.FOX_SCULPTURE.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TwilightLanternBlockEntity>> TWILIGHT_LANTERN =
+            BLOCK_ENTITIES.register("twilight_lantern",
+                    () -> BlockEntityType.Builder.of(TwilightLanternBlockEntity::new, ModBlocks.TWILIGHT_LANTERN.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShadowBedBlockEntity>> SHADOW_BED =
+            BLOCK_ENTITIES.register("shadow_bed",
+                    () -> BlockEntityType.Builder.of(ShadowBedBlockEntity::new, ModBlocks.SHADOW_BED.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

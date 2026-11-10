@@ -22,6 +22,8 @@ import com.pasterdream.pasterdreammod.world.behavior.ModTreeGrowers;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapBlock;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlock;
+import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlock;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamCrackBlock;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlock;
@@ -392,6 +394,10 @@ public class ModBlocks {
     public static final DeferredBlock<Block> BIRDS_NEST = BLOCKS.register("birds_nest", BirdsNestBlock::new);
     public static final DeferredBlock<Block> CHRISTMAS_LIGHTS = BLOCKS.register("christmas_lights", ChristmasLightsBlock::new);
     public static final DeferredBlock<Block> SMALL_STONE_SPIRIT_BLOCK = BLOCKS.register("small_stone_spirit_block", SmallStoneSpiritBlock::new);
+
+    // 暮影之笼 / 暮影长床
+    public static final DeferredBlock<Block> TWILIGHT_LANTERN = BLOCKS.register("twilight_lantern", TwilightLanternBlock::new);
+    public static final DeferredBlock<Block> SHADOW_BED = BLOCKS.register("shadow_bed", ShadowBedBlock::new);
 
     public static final DeferredBlock<Block> DYEDREAM_SAPLING = BLOCKS.register("dyedream_sapling", () -> new SaplingBlock(ModTreeGrowers.DYEDREAM, BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).noCollission().instabreak().randomTicks().sound(SoundType.GRASS)));
 

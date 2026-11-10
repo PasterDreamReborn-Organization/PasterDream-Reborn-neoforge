@@ -1,10 +1,13 @@
 package com.pasterdream.pasterdreammod.world.item.dreamnotesbook;
 
+import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
+import com.pasterdream.pasterdreammod.event.ModWorldGenEvents.TwilightLanternPlacedData;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModDataComponents;
 import com.pasterdream.pasterdreammod.world.item.StoryProgressItem;
 import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.playerdata.PasterDreamPlayerDreamNoteProgressData;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -57,6 +60,21 @@ public class DreamNotesBookItem extends Item
 
                     // 剧情笔记书：打开时授予剧情进度（同时由进度解锁帕秋莉对应词条）
                     StoryProgressItem.grantProgressOnNoteOpened(serverPlayer, contentName);
+
+                    if ("侵染教堂-黑面".equals(contentName))
+                    {
+                        ServerLevel nether = serverPlayer.server.getLevel(Level.NETHER);
+                        if (nether != null)
+                        {
+                            TwilightLanternPlacedData data = TwilightLanternPlacedData.get(nether);
+                            if (data.isPlaced())
+                            {
+                                serverPlayer.sendSystemMessage(Component.translatable(
+                                        "message.pasterdream.twilight_lantern_location",
+                                        data.getPosX(), data.getPosZ()));
+                            }
+                        }
+                    }
                 }
             }
         return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide);

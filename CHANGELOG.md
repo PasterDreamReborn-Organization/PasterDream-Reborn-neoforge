@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 101：暮影之笼、暮影长床与灯影之下入门进度（2026-11-10，T18-B / T05 部分）
+
+- 迁入暮影之笼（`twilight_lantern`）方块、方块实体、GeckoLib 模型/动画/显示物品、交互/tick/波次事件与 `LampShadowWorldTeleporter`；迁入暮影长床（`shadow_bed`）主/附属方块、方块实体与入梦交互。
+- 迁入 `twilight_lantern` 与 `shadow_world_spawn` 结构 NBT、一次性世界放置逻辑与 `/locate` 混入：下界基岩层上方随机放置暮影之笼并阻止结构内自然刷怪，灯影之下按高度放置出生点结构。
+- 补「阅读侵染教堂-黑面 → 侵染教堂」「完成据点守卫 → 据点守卫」「进入灯影之下 → 灯影之下（挑战根进度，100 经验）」三条进度；阅读笔记时同时显示已放置暮影之笼坐标。
+- 迁入 `shadow_ominous`、`shadow_music` 音效与 `bastionGuardGrantRadius` 配置；按来源顺序整理设备物品栏并补入暮影之笼/暮影长床。
+- 1.21 适配方块 `codec()`、拆分后的 `useItemOn`/`useWithoutItem`、方块实体 Provider 重载、`SavedData.Factory`、`MobSpawnEvent.PositionCheck.Result.FAIL`、`ServerTickEvent.Post`、`LevelData#getSpawnPos()` 与 GeckoLib 4.9.2 显示物品接口；结构 NBT 笔记物品栈转换为组件。
+- `runData` 写入 9 个文件，`build` 通过；`runGameTestServer` 182/182 通过，新增 2 项注册/配方/进度/结构模板断言。暮影长床第二段对话与影/光选择界面、`于影共眠` 进度留待后续批次；实际波次、客户端视觉、真实放置与多人同步待游戏内验收。
+
 ### 批次 100：融梦弓与自定义箭矢系列（2026-11-10，T14-B / T15-C 部分）
 
 - 迁入箭矢行为体系 `world/entity/arrows/behavior/`：`ArrowBehavior`/`ArrowBehaviorProvider`/`ArrowBehaviors`，覆盖黑石、毒孢、碎梦、魔法、充能、混沌、爆破、凝风、露滴 9 种箭矢的伤害、粒子、追踪、范围伤害、爆炸、剧毒、氧气恢复与 SAN 结算。

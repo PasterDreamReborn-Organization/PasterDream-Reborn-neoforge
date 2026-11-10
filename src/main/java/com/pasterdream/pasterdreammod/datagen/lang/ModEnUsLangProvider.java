@@ -1707,5 +1707,28 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DEW_ARROW.get(), "Dew Arrow");
         add("tooltip.pasterdream.dew_arrow.tooltip1", "§9Ignore water resistance and deal extra damage if the target is in water.");
         add("tooltip.pasterdream.dew_arrow.tooltip2", "§9Restore 1 oxygen when hitting a target.");
+
+        add(ModBlocks.TWILIGHT_LANTERN.get(), "Twilight Lantern");
+        add(ModBlocks.SHADOW_BED.get(), "Shadow Bed");
+        add("structure.pasterdream.twilight_lantern", "Twilight Lantern");
+        add("advancements.pasterdream.story.lamp_shadow_root.title", "Infested Church");
+        add("advancements.pasterdream.story.lamp_shadow_root.description", "Read the Dream Seeker's Notes \"Infested Church - Black Face\"");
+        add("advancements.pasterdream.story.bastion_guard.title", "Bastion Guard");
+        add("advancements.pasterdream.story.bastion_guard.description", "Complete the Twilight Lantern bastion guard event");
+        add("advancements.pasterdream.story.enter_lamp_shadow_world.title", "Lamp Shadow World");
+        add("advancements.pasterdream.story.enter_lamp_shadow_world.description", "Delve into the darkest side of the world");
+        add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "You do not yet know how to activate the shadow lantern");
+        add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "You need to light the shadow lantern with a Melt Dream Crystal Fragment");
+        add("message.pasterdream.twilight_lantern.event_start", "§8The eerie lantern suddenly shakes violently, black shadows flow out from the wick.");
+        add("message.pasterdream.twilight_lantern.event_mid", "§8The shadows materialize into physical form, hollow echoes resound from all around, followed by a shriek loud enough to tear eardrums.");
+        add("message.pasterdream.twilight_lantern.event_voice", "§8You seem to hear a strange voice.");
+        add("message.pasterdream.twilight_lantern.event_end", "§8Shadows no longer surge outward, the Twilight Lantern gradually returns to calm, a rift slowly appears in the sky above.");
+        add("message.pasterdream.twilight_lantern.event_end_3", "§5\"Do not resist, surrender to your heart, together in eternal life\"");
+        add("message.pasterdream.twilight_lantern.event_end_4", "§5\"Submit! Submit!! Submit!!!\"");
+        add("message.pasterdream.twilight_lantern.event_end_5", "§5\"Come, come~ Come! ......Embrace us, sleep with us, merge with us, here is your only home\"");
+        add("message.pasterdream.twilight_lantern.event_end_2", "§8The voices grow clearer, the repetitive words begin to irritate you.");
+        add("message.pasterdream.twilight_lantern.event_ready", "§5You can now resonate with the Twilight Lantern, interact with the True Shadow Bed");
+        add("message.pasterdream.twilight_lantern.data_reset", "Block data reset");
+        add("message.pasterdream.twilight_lantern_location", "The end of the note records coordinates in the upper Nether: X: %s Z: %s");
     }
 }

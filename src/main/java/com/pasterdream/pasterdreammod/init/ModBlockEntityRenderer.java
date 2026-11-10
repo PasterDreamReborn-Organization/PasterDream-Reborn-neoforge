@@ -18,6 +18,7 @@ import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.T
 import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternTileRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 /**
@@ -47,5 +48,6 @@ public final class ModBlockEntityRenderer {
         event.registerBlockEntityRenderer(ModBlockEntities.ECOLOGY_GLASS_JAR.get(), EcologyGlassJarBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.FIREFLY_GLASS_JAR.get(), FireflyGlassJarBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.BIRDS_NEST.get(), BirdsNestBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.TWILIGHT_LANTERN.get(), TwilightLanternTileRenderer::new);
     }
 }

@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModLootTables;
 import com.pasterdream.pasterdreammod.event.ModMobSpawnEvents;
 import com.pasterdream.pasterdreammod.event.CookOverflowHandler;
 import com.pasterdream.pasterdreammod.event.VanillaFoodSanHandler;
+import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
 import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import com.mojang.logging.LogUtils;
@@ -127,6 +128,9 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(ModMobDrops::onLivingDrops);
         NeoForge.EVENT_BUS.addListener(ModVillagerTrades::onVillagerTrades);
         NeoForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
+        NeoForge.EVENT_BUS.addListener(ModWorldGenEvents::onLevelLoad);
+        NeoForge.EVENT_BUS.addListener(ModWorldGenEvents::onServerTick);
+        NeoForge.EVENT_BUS.addListener(ModWorldGenEvents::onCheckSpawn);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerChangedDimension);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerTick);
