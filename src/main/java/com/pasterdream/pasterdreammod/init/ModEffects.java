@@ -40,6 +40,7 @@ import com.pasterdream.pasterdreammod.world.effect.MeltDreamCrystalArmorEffect;
 import com.pasterdream.pasterdreammod.world.effect.SnowVowEffect;
 import com.pasterdream.pasterdreammod.world.effect.TitaniumArmorEffect;
 import com.pasterdream.pasterdreammod.world.effect.WarFlagEffect;
+import com.pasterdream.pasterdreammod.world.effect.CalaisSpiceBottleEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.neoforged.bus.api.IEventBus;
@@ -84,6 +85,9 @@ public class ModEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> WAR_FLAG =
             MOB_EFFECTS.register("war_flag", WarFlagEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> CALAIS_SPICE_BOTTLE =
+            MOB_EFFECTS.register("calais_spice_bottle", CalaisSpiceBottleEffect::new);
 
     public static final DeferredHolder<MobEffect, MobEffect> REST =
             MOB_EFFECTS.register("rest", RestEffect::new);

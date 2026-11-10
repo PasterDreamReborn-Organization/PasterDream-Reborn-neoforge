@@ -559,6 +559,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.LARGE_STORAGE_BAG.get());
                         output.accept(ModItems.SHADOW_BREATH.get());
                         output.accept(ModItems.WAR_FLAG.get());
+                        output.accept(ModItems.ICE_SHADOW_CURIO.get());
+                        output.accept(ModItems.CALAIS_SPICE_BOTTLE.get());
+                        output.accept(ModItems.GHOST_FACE.get());
                         output.accept(ModItems.BOBOJI_CURIO.get());
                         output.accept(ModItems.WIND_SPIRIT.get());
                         output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());

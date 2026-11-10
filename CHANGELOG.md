@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 103：灯影之下箱子战利品中的未移植饰品（2026-11-10，T13-B / T18-B 部分）
+
+- 核对来源 `chests/shadow_relic_chest_loot_common`、`chests/shadow_dungeon_repository_common/core/supply`：其中尚未移植的饰品类为 `ice_shadow_curio`（冰影水晶）、`calais_spice_bottle`（卡莱的调料瓶）与 `ghost_face`（鬼魂之面）；`war_flag`、`shadow_breath` 此前已迁入。
+- 迁入三个饰品原类与 `calais_spice_bottle` 状态效果：卡莱的调料瓶支持装备时维持卡莱料理、进食加速 40%、按饥饿值叠层、攻击消耗层数并随机触发正面效果/SAN 恢复/治疗/目标负面/闪避/doll 反馈；鬼魂之面复制远程射弹、20% 额外一发、弹射物无视无敌帧并带冷却；冰影水晶沿用来源饰品位与 tooltip。
+- 接入 `CurioPassiveHandler` 的料理进食/攻击/完成事件与鬼魂之面 `ArrowLooseEvent`、`EntityJoinLevelEvent`、`LivingIncomingDamageEvent`、延迟生成逻辑；1.21 以 `ItemStack.parseOptional`/`ItemStack#save(Provider)` 处理弹药 NBT，以 `igniteForSeconds` 替代 `setSecondsOnFire`。鬼魂之面不再引用未移植的彩虹仙玉。
+- 新增 `Config` 的卡莱调料瓶效果/权重/SAN/治疗/负面/闪避配置与鬼魂之面投掷物黑名单/复制冷却；注册物品与效果、创造模式饰品页、双语名称与 tooltip、`curios:curio`/`curios:head` 标签、物品模型和来源纹理。
+- 冰影水晶的实际战技效果依赖冰影战锤与撼地水晶实体链，该链仍未迁入；`shadow_relic_chest_loot_common` 与 `shadow_dungeon_repository_*` 箱子战利品表本身也仍未迁入，因此当前饰品只在创造模式与后续战利品表补齐后自然获取。
+- `runData` 与 `build` 通过，`runGameTestServer` 183/183 通过（首次运行因既有 `catalystdurabilityconsumedinrecipebiome` 间歇失败，重跑通过）；三个饰品与被动的事件内表现、鬼魂之面射弹复制、调料瓶层数与随机效果、`curios` 槽位实装待游戏内验收。
+
 ### 批次 102：灯影之下阴影古迹结构生成（2026-11-10，T18-B 部分）
 
 - 接入共享结构集 `pasterdream:shadow_structures`：迁入 `shadownote_ruin_0/1/2`、`shadow_shelter`、`shadow_nest`、`shadow_fungus_house`、`shadow_foundry` 与 `shadow_underground_workroom`；按本次范围不迁入暗影地牢 `shadow_dungeon` 与亚伦克斯竞技场传送门 `aaroncos_arena_portal` 的生成。

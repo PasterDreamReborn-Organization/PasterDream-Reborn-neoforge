@@ -212,6 +212,54 @@ public class Config {
                             "minecraft:salmon", "minecraft:cod", "minecraft:wolf", "minecraft:parrot"),
                     obj -> obj instanceof String);
 
+    // === 卡莱的调料瓶 ===
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> CALAIS_SPICE_BOTTLE_BUFFS = BUILDER
+            .comment("卡莱的调料瓶触发料理时可能获得的正面效果 ID 列表，格式：modid:effect_id",
+                    "\n例如 minecraft:regeneration 为生命恢复，minecraft:speed 为速度",
+                    "\n支持模组药水效果")
+            .defineListAllowEmpty("calaisSpiceBottleBuffs",
+                    List.of("minecraft:speed", "minecraft:haste", "minecraft:strength",
+                            "minecraft:regeneration", "minecraft:resistance", "minecraft:fire_resistance",
+                            "minecraft:absorption", "pasterdream:rest", "pasterdream:cook"),
+                    obj -> obj instanceof String);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends Double>> CALAIS_SPICE_BOTTLE_WEIGHTS = BUILDER
+            .comment("卡莱的调料瓶触发料理时六类结果的抽取权重，依次为：正面效果、san恢复、生命恢复、目标负面、闪避效果、doll效果",
+                    "\n设为 0 可禁用该类结果")
+            .defineListAllowEmpty("calaisSpiceBottleWeights", List.of(4.0, 4.0, 2.0, 3.0, 1.0, 1.0),
+                    value -> value instanceof Double number && Double.isFinite(number));
+
+    public static final ModConfigSpec.DoubleValue CALAIS_SPICE_BOTTLE_HEAL_MIN = BUILDER
+            .comment("卡莱的调料瓶生命恢复最小值（点），默认 1.0")
+            .defineInRange("calaisSpiceBottleHealMin", 1.0, 0.5, 20.0);
+    public static final ModConfigSpec.DoubleValue CALAIS_SPICE_BOTTLE_HEAL_MAX = BUILDER
+            .comment("卡莱的调料瓶生命恢复最大值（点），默认 2.0")
+            .defineInRange("calaisSpiceBottleHealMax", 2.0, 0.5, 20.0);
+
+    public static final ModConfigSpec.DoubleValue CALAIS_SPICE_BOTTLE_SAN_MIN = BUILDER
+            .comment("卡莱的调料瓶 SAN 恢复最小值，默认 0.5")
+            .defineInRange("calaisSpiceBottleSanMin", 0.5, 0.0, 100.0);
+    public static final ModConfigSpec.DoubleValue CALAIS_SPICE_BOTTLE_SAN_MAX = BUILDER
+            .comment("卡莱的调料瓶 SAN 恢复最大值，默认 3.0")
+            .defineInRange("calaisSpiceBottleSanMax", 3.0, 0.0, 100.0);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> CALAIS_SPICE_BOTTLE_DEBUFFS = BUILDER
+            .comment("卡莱的调料瓶触发料理时施加给目标的负面效果 ID 列表，格式：modid:effect_id",
+                    "\n例如 minecraft:slowness 为缓慢，minecraft:weakness 为虚弱")
+            .defineListAllowEmpty("calaisSpiceBottleDebuffs",
+                    List.of("pasterdream:confusion"),
+                    obj -> obj instanceof String);
+    public static final ModConfigSpec.IntValue CALAIS_SPICE_BOTTLE_DEBUFF_DURATION = BUILDER
+            .comment("卡莱的调料瓶负面效果的持续时间（tick），默认 100（5 秒）")
+            .defineInRange("calaisSpiceBottleDebuffDuration", 100, 0, 6000);
+    public static final ModConfigSpec.IntValue CALAIS_SPICE_BOTTLE_DEBUFF_AMPLIFIER = BUILDER
+            .comment("卡莱的调料瓶负面效果的等级（0=I, 1=II, ...），默认 0")
+            .defineInRange("calaisSpiceBottleDebuffAmplifier", 0, 0, 255);
+
+    public static final ModConfigSpec.IntValue CALAIS_SPICE_BOTTLE_EVASION_DURATION = BUILDER
+            .comment("卡莱的调料瓶闪避效果的持续时间（tick），默认 20（1 秒）")
+            .defineInRange("calaisSpiceBottleEvasionDuration", 20, 0, 200);
+
     // === 暗影合金弩 ===
     public static final ModConfigSpec.ConfigValue<List<? extends String>> SHADOW_ALLOY_CROSSBOW_DEBUFFS = BUILDER
             .comment("暗影合金弩命中生物时随机施加的负面效果 ID 列表，格式：modid:effect_id",
@@ -229,6 +277,22 @@ public class Config {
     public static final ModConfigSpec.IntValue SHADOW_ALLOY_CROSSBOW_DEBUFF_AMPLIFIER = BUILDER
             .comment("暗影合金弩随机负面效果的等级（0=I, 1=II, ...），默认 0")
             .defineInRange("shadowAlloyCrossbowDebuffAmplifier", 0, 0, 255);
+
+    // === 鬼魂之面 ===
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> GHOST_FACE_PROJECTILE_BLACKLIST = BUILDER
+            .comment("鬼魂之面不生效的投掷物实体 ID 列表，格式：modid:entity_id",
+                    "\n例如 supplementaries:slingshot_projectile 为 Supplementary 模组的弹弓弹射物",
+                    "\n支持模组投掷物，默认忽略钓鱼浮标以避免与弹射物复制冲突")
+            .defineListAllowEmpty("ghostFaceProjectileBlacklist",
+                    List.of(
+                        "supplementaries:slingshot_projectile",
+                        "tide:fishing_bobber"
+                    ),
+                    obj -> obj instanceof String);
+
+    public static final ModConfigSpec.IntValue GHOST_FACE_CLONE_COOLDOWN = BUILDER
+            .comment("鬼魂之面复制弹幕的冷却时间（秒），默认 3 秒，设为 0 可关闭冷却")
+            .defineInRange("ghostFaceCloneCooldownSeconds", 3, 0, Integer.MAX_VALUE);
 
     // === 预言卡 · 平衡 ===
     public static final ModConfigSpec.IntValue MIN_TAKE_EFFECT_DURATION = BUILDER
@@ -351,6 +415,11 @@ public class Config {
         return isEntityTypeListed(CONFLICT_MARK_BLACKLIST.get(), type);
     }
 
+    /** 查询指定投掷物类型是否被鬼魂之面忽略 */
+    public static boolean isGhostFaceProjectileBlacklisted(EntityType<?> type) {
+        return isEntityTypeListed(GHOST_FACE_PROJECTILE_BLACKLIST.get(), type);
+    }
+
     private static boolean isEntityTypeListed(List<? extends String> ids, EntityType<?> type) {
         for (String idStr : ids) {
             ResourceLocation id = ResourceLocation.tryParse(idStr);
@@ -362,6 +431,28 @@ public class Config {
             }
         }
         return false;
+    }
+
+    /** 卡莱的调料瓶正面效果池（按配置即时解析） */
+    public static List<Holder<MobEffect>> getCalaisSpiceBottleEffects() {
+        return resolveEffects(CALAIS_SPICE_BOTTLE_BUFFS.get());
+    }
+
+    /** 卡莱的调料瓶负面效果池（按配置即时解析） */
+    public static List<Holder<MobEffect>> getCalaisSpiceBottleDebuffs() {
+        return resolveEffects(CALAIS_SPICE_BOTTLE_DEBUFFS.get());
+    }
+
+    private static List<Holder<MobEffect>> resolveEffects(List<? extends String> ids) {
+        List<Holder<MobEffect>> list = new ArrayList<>();
+        for (String idStr : ids) {
+            ResourceLocation id = ResourceLocation.tryParse(idStr);
+            if (id == null) {
+                continue;
+            }
+            BuiltInRegistries.MOB_EFFECT.getHolder(id).ifPresent(list::add);
+        }
+        return list;
     }
 
     /** 暗影合金弩随机负面效果缓存（按配置即时解析） */
