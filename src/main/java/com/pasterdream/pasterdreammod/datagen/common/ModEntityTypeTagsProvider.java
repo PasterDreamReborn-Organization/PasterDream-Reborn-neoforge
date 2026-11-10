@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -32,5 +33,19 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.BLACK_BEETLE.get())
                 .add(ModEntities.BLACK_BEETLE_MOTHER.get())
                 .add(EntityType.SILVERFISH);
+
+        // 自定义箭矢加入原版箭矢实体标签，使力量 / 冲击 / 火矢等附魔按 1.21 数据驱动结算。
+        tag(EntityTypeTags.ARROWS)
+                .add(ModEntities.MELT_DREAM_ARROW.get())
+                .add(ModEntities.FLUFFY_WIND_ARROW.get())
+                .add(ModEntities.TOXIC_SPORE_ARROW.get())
+                .add(ModEntities.FRAGDREAM_ARROW.get())
+                .add(ModEntities.MAGICAL_ARROW.get())
+                .add(ModEntities.CHARGED_ARROW.get())
+                .add(ModEntities.BLACKSTONE_ARROW.get())
+                .add(ModEntities.CHAOTIC_ARROW.get())
+                .add(ModEntities.BLAST_ARROW.get())
+                .add(ModEntities.CONGEAL_WIND_ARROW.get())
+                .add(ModEntities.DEW_ARROW.get());
     }
 }

@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 100：融梦弓与自定义箭矢系列（2026-11-10，T14-B / T15-C 部分）
+
+- 迁入箭矢行为体系 `world/entity/arrows/behavior/`：`ArrowBehavior`/`ArrowBehaviorProvider`/`ArrowBehaviors`，覆盖黑石、毒孢、碎梦、魔法、充能、混沌、爆破、凝风、露滴 9 种箭矢的伤害、粒子、追踪、范围伤害、爆炸、剧毒、氧气恢复与 SAN 结算。
+- 迁入 9 种自定义箭实体与物品、5 种箭体纹理映射、10 个箭矢渲染器与实体/物品纹理；拖尾箭 `TrailArrowEntity` 接入行为钩子，武器强化后仍保留弹药特性与拾取物；补 `DispenserBlock.registerProjectileBehavior` 发射器支持。
+- 迁入融梦弓 `MeltDreamBowItem` 与 `MeltDreamArrowEntity`：0.2 融梦能量换 +30% 魔法伤害、染梦世界普通箭矢免箭矢/耐久/能量、抢夺附魔、融梦修补；粉色三棱柱拖尾复用 `ArrowTrailRenderer`。
+- 1.21 适配：`setKnockback` 移除后通过 `#minecraft:arrows` 实体标签与 `AbstractArrowAccessor` 的 `firedFromWeapon` 接入力量/冲击/火矢数据驱动附魔，凝风箭自带冲击由行为钩子补齐；`ArrowItem#createArrow` 补武器参数，发射器改用 `ProjectileItem#asProjectile`，`MobEffectInstance` 改收 `Holder`。
+- 补齐配方与获取：融梦弓合成、黑石箭/凝风箭/毒孢箭/露滴箭合成、爆破/充能/碎梦/魔法箭工坊配方，以及此前暂缓的混沌箭暗影高炉配方；箭矢加入 `minecraft:arrows` 物品/实体标签与 `enchantable/bow`。
+- `runData` 写入 36 个文件，`build` 通过，`runGameTestServer` 180/180 通过。客户端拖尾/箭体视觉、强化射击魔法伤害、各箭矢命中和发射器实机表现待游戏内验收。
+
 ### 批次 099：灯影之下维度与自然生成（2026-11-10，T18-B 部分）
 
 - 迁入灯影之下维度类型、噪声设置与 LevelStem：固定午夜、无天光、环境光照 0.15、海平面 63，默认方块阴影石与默认流体影液，保留含水层并禁用地表熔岩湖/矿脉；通过多噪声源生成 `shadow_nylium_wastes`、`shadow_forest`、`shadow_ruins`、`shadow_ocean` 四个群系。

@@ -123,6 +123,7 @@ import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import com.pasterdream.pasterdreammod.world.item.shadowerosiontool.*;
 import com.pasterdream.pasterdreammod.world.item.shadowalloytool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
+import com.pasterdream.pasterdreammod.world.item.arrows.*;
 import com.pasterdream.pasterdreammod.world.item.tidetool.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.particles.ParticleTypes;
@@ -1063,6 +1064,8 @@ public class ModItems {
             () -> new MeltDreamShovelItem(ModToolTiers.MELT_DREAM, 1.5f, -3.0f, new Item.Properties().fireResistant().rarity(Rarity.RARE)));
     public static final DeferredItem<Item> MELT_DREAM_HOE = ITEMS.register("melt_dream_hoe",
             () -> new MeltDreamHoeItem(ModToolTiers.MELT_DREAM, -3, 0.5f, new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final DeferredItem<Item> MELT_DREAM_BOW = ITEMS.register("melt_dream_bow",
+            () -> new MeltDreamBowItem(new Item.Properties().fireResistant().durability(1024).rarity(Rarity.RARE)));
     public static final DeferredItem<Item> SHARP_MELT_DREAM_SWORD = ITEMS.register("sharp_melt_dream_sword",
             () -> new SharpMeltDreamSwordItem(ModToolTiers.MELT_DREAM, new Item.Properties().rarity(Rarity.RARE)));
 
@@ -1402,6 +1405,26 @@ public class ModItems {
             () -> new ShadowAlloyHoeItem(ModToolTiers.SHADOW_ALLOY, -2, 0.0f, new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_ALLOY_CROSSBOW = ITEMS.register("shadow_alloy_crossbow",
             () -> new ShadowAlloyCrossbowItem(new Item.Properties().stacksTo(1).durability(842)));
+
+    // ===== 特殊箭矢 =====
+    public static final DeferredItem<Item> TOXIC_SPORE_ARROW = ITEMS.register("toxic_spore_arrow",
+            () -> new ToxicSporeArrowItem(new Item.Properties()));
+    public static final DeferredItem<Item> FRAGDREAM_ARROW = ITEMS.register("fragdream_arrow",
+            () -> new FragdreamArrowItem(new Item.Properties()));
+    public static final DeferredItem<Item> MAGICAL_ARROW = ITEMS.register("magical_arrow",
+            () -> new MagicalArrowItem(new Item.Properties()));
+    public static final DeferredItem<Item> CHARGED_ARROW = ITEMS.register("charged_arrow",
+            () -> new ChargedArrowItem(new Item.Properties()));
+    public static final DeferredItem<Item> BLACKSTONE_ARROW = ITEMS.register("blackstone_arrow",
+            () -> new BlackstoneArrowItem(new Item.Properties()));
+    public static final DeferredItem<Item> CHAOTIC_ARROW = ITEMS.register("chaotic_arrow",
+            () -> new ChaoticArrowItem(new Item.Properties()));
+    public static final DeferredItem<Item> BLAST_ARROW = ITEMS.register("blast_arrow",
+            () -> new BlastArrowItem(new Item.Properties()));
+    public static final DeferredItem<Item> CONGEAL_WIND_ARROW = ITEMS.register("congeal_wind_arrow",
+            () -> new CongealWindArrowItem(new Item.Properties()));
+    public static final DeferredItem<Item> DEW_ARROW = ITEMS.register("dew_arrow",
+            () -> new DewArrowItem(new Item.Properties()));
 
     public static final DeferredItem<Item> DYEDREAM_SAPLING = ITEMS.register("dyedream_sapling",
             () -> new BlockItem(ModBlocks.DYEDREAM_SAPLING.get(), new Item.Properties()));

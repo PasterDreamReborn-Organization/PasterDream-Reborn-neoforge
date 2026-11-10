@@ -1674,5 +1674,39 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.content.风铃笼", "他们说，我得的病超级麻烦，我现在还记得被确诊为白血病的时候，爸爸妈妈脸上痛苦的表情。\n化疗和休养反反复复交替着来，不仅头发都掉光了，身上也挺难受的。\n不过让我开心的是，守在我床边的不仅只有我的爸爸妈妈和医生，我的同学们和老师都来看望我了，还送给我一个超级好看的风铃，说是有祈福的效果！\n不知道为什么，我每次睡觉时都会梦见一个苍青色的，天上漂浮着云朵和气球的世界，并且我还会梦到我在里面自由自在地飞翔。\n而且，这里不仅是有着云彩，还有我喜欢的作品角色的雕像，以及我幻想的骑士也出现在这个世界里欸！\n正当我到处飞行着游览这个世界时，风向突然发生了变化，伴随着清脆的风铃声。顺着风铃声，我找到了一个被托举着的，奇奇怪怪的建筑。\n要说哪里奇怪呢......它长得就像同学们送我的风铃的超级放大版，甚至都可以住人！\n风铃的声音真好听啊~\n之后睁开眼，病房的天花板重新映入眼帘时，已经是第二天中午了，爸爸妈妈都说我很少睡这么久欸。\n窗外的风铃被风吹动，发出了和梦境中一模一样的声音，真安心啊。\nBy 薇薇安");
         add("book.pasterdream.title.关于风旅生物的研究笔记", "关于风旅生物的研究笔记");
         add("book.pasterdream.content.关于风旅生物的研究笔记", "这是个风的世界，无时无刻这里都在吹着清风。同时这个世界也有许多特别的生物，对此我对部分生物进行了研究。我会一直进行研究与总结，直至生命尽头。\n雷云，这些敌对我的家伙们战斗力还蛮强的。普通的雷云还好，那些蓄满了电的比一般的要结实不少，攻击的力度也比普通的厉害。\n我想办法抓来了几只进行实验，发现这些家伙是积蓄了雷电力量的乌云，如果杀死它们会让它们变回乌云。\n骨翼，看上去像是只有骨架的幻翼......但这些家伙和幻翼完全不一样，它们的攻击方法主要是喷火？那些看上去烤的更焦，体型更大的伤害也会更高。\n在研究中我发现这些家伙应当归属亡灵，但它们不会在白天燃烧。是因为它们本来就在燃烧吗？杀死它们会掉落火药和骨头。\n水母，嗯......这些奇怪的小家伙们只能说空游无所依了。这些小家伙们就这样在这片云海中游荡。我想办法从它们身上取了些许样本，这些像软泥一样的物质是可以吃的，而且吃掉后能避免风带来的影响。\n不过水母泥如果不是必要的话还是不要吃没有加工过的吧，味道不好是一方面，另一方面是没有发挥它全部的潜力。如果将水母泥配上从这个世界的植物中提取的汁液与糖和无花果，就能最大程度激发水母泥的潜力，在大概半天的时间里避免受到风向的影响。\n如果将水母果冻与浮空岛岩层中的水晶、云层中的凝结之风混合加入糖与凤植萃取液，其性质也会发生改变。吃掉它之后如同暂时长出了翅膀，虽然是暂时的而且只能如鞘翅一般滑翔，但也已经足够为在这个世界进行探索提供助力了。\nBy 叶锦");
+        add(ModItems.MELT_DREAM_BOW.get(), "融梦弓");
+        add("tooltip.pasterdreammod.melt_dream_bow.1", "被动：§b凝梦之箭");
+        add("tooltip.pasterdreammod.melt_dream_bow.2", "§7▪ §9消耗0.2融梦能量，本次箭矢伤害+30%并转为魔法伤害");
+        add("tooltip.pasterdreammod.melt_dream_bow.3", "§7▪ §9融梦能量不足时照常射出，但不触发强化");
+        add("tooltip.pasterdreammod.melt_dream_bow.4", "§7▪ §9在染梦世界发射普通箭矢时不消耗箭矢/耐久/融梦能量");
+        add("tooltip.pasterdreammod.melt_dream_bow.5", "特性：");
+        add("tooltip.pasterdreammod.melt_dream_bow.6", "§7▪ §9可附魔抢夺");
+
+        add(ModItems.TOXIC_SPORE_ARROW.get(), "毒孢箭");
+        add("tooltip.pasterdream.toxic_spore_arrow.tooltip1", "§9让被击中的目标染上剧毒");
+        add("tooltip.pasterdream.toxic_spore_arrow.tooltip2", "§7§o--比100个毒马铃薯更毒");
+        add(ModItems.FRAGDREAM_ARROW.get(), "碎梦箭");
+        add("tooltip.pasterdream.fragdream_arrow.tooltip1", "§9击中物块或实体时造成范围伤害");
+        add("tooltip.pasterdream.fragdream_arrow.tooltip2", "§c无法回收");
+        add(ModItems.MAGICAL_ARROW.get(), "魔法箭");
+        add("tooltip.pasterdream.magical_arrow.tooltip1", "§9追杀目标");
+        add(ModItems.CHARGED_ARROW.get(), "充能箭");
+        add("tooltip.pasterdream.charged_arrow.tooltip1", "§9造成两次伤害，其中一次为魔法伤害");
+        add("tooltip.pasterdream.charged_arrow.tooltip2", "§7§o--1 = 2");
+        add(ModItems.BLACKSTONE_ARROW.get(), "黑石箭");
+        add(ModItems.CHAOTIC_ARROW.get(), "混沌箭");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip1", "§9击中造成混乱，概率恢复理智，对暗影生物造成额外伤害");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip2", "§9让弓获得损害精神的附魔来让它可以无限使用");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip3", "§7§o--黑暗！服从！疯狂！");
+        add(ModItems.BLAST_ARROW.get(), "爆破箭");
+        add("tooltip.pasterdream.blast_arrow.tooltip1", "§9击中物块或实体造成一次爆炸并破坏方块，当心炸到自己！");
+        add("tooltip.pasterdream.blast_arrow.tooltip2", "§c无法回收");
+        add("tooltip.pasterdream.blast_arrow.tooltip3", "§7§o--让我们整点“爆破性”的东西");
+        add(ModItems.CONGEAL_WIND_ARROW.get(), "凝风箭");
+        add("tooltip.pasterdream.congeal_wind_arrow.tooltip1", "§9比一般箭速度更快，且可以更大程度击退敌人");
+        add("tooltip.pasterdream.congeal_wind_arrow.tooltip2", "§9箭矢可以穿透目标");
+        add(ModItems.DEW_ARROW.get(), "露滴箭");
+        add("tooltip.pasterdream.dew_arrow.tooltip1", "§9无视水阻，如果目标在水中，造成额外伤害");
+        add("tooltip.pasterdream.dew_arrow.tooltip2", "§9击中目标时恢复1氧气");
     }
 }

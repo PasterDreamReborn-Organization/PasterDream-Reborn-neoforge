@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModAttachments;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.mixin.AbstractArrowAccessor;
 import com.pasterdream.pasterdreammod.world.entity.ShadowAlloyArrowEntity;
+import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviors;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -312,6 +313,7 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
         AbstractArrow arrow;
         if (empowered) {
             arrow = new ShadowAlloyArrowEntity(level, shooter, projectile);
+            ArrowBehaviors.applyBaseStats(arrow, projectile);
         } else {
             ArrowItem arrowItem = (ArrowItem) (projectile.getItem() instanceof ArrowItem ? projectile.getItem() : Items.ARROW);
             arrow = arrowItem.createArrow(level, projectile, shooter, null);

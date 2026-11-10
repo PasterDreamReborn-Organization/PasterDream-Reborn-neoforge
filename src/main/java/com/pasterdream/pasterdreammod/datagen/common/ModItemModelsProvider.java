@@ -366,6 +366,22 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
                 .predicate(ResourceLocation.withDefaultNamespace("pull"), 0.9F)
                 .model(fluffyWindBowPulling2).end();
+        ItemModelBuilder meltDreamBow = withExistingParent(ModItems.MELT_DREAM_BOW.getId().getPath(), mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/melt_dream_bow"));
+        ItemModelBuilder meltDreamBowPulling0 = withExistingParent("melt_dream_bow_pulling_0", mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/melt_dream_bow_pulling_0"));
+        ItemModelBuilder meltDreamBowPulling1 = withExistingParent("melt_dream_bow_pulling_1", mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/melt_dream_bow_pulling_1"));
+        ItemModelBuilder meltDreamBowPulling2 = withExistingParent("melt_dream_bow_pulling_2", mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/melt_dream_bow_pulling_2"));
+        meltDreamBow.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
+                .model(meltDreamBowPulling0).end()
+                .override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), 0.65F)
+                .model(meltDreamBowPulling1).end()
+                .override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), 0.9F)
+                .model(meltDreamBowPulling2).end();
         basicItem(ModItems.FRACTURED_ANGEL_STATUE.get());
         basicItem(ModItems.GOLD_CHARM.get());
         basicItem(ModItems.ENDEYE_CHARM.get());
@@ -594,6 +610,17 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.PINK_CHICKEN_SPAWN_EGG.get());
         spawnEggItem(ModItems.PINK_SLIME_SPAWN_EGG.get());
         spawnEggItem(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
+
+        // 特殊箭矢
+        basicItem(ModItems.TOXIC_SPORE_ARROW.get());
+        basicItem(ModItems.FRAGDREAM_ARROW.get());
+        basicItem(ModItems.MAGICAL_ARROW.get());
+        basicItem(ModItems.CHARGED_ARROW.get());
+        basicItem(ModItems.BLACKSTONE_ARROW.get());
+        basicItem(ModItems.CHAOTIC_ARROW.get());
+        basicItem(ModItems.BLAST_ARROW.get());
+        basicItem(ModItems.CONGEAL_WIND_ARROW.get());
+        basicItem(ModItems.DEW_ARROW.get());
 
         registerProphecyCardModels();
         registerPotionBottleModels();

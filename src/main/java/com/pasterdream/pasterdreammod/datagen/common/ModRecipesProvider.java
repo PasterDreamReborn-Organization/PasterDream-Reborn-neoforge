@@ -123,6 +123,7 @@ public class ModRecipesProvider extends RecipeProvider {
         musicDiscRecipes(output);
         windwreathedThunderSpearRecipe(output);
         expansionWeaponWorkshopRecipes(output);
+        specialArrowRecipes(output);
         titaniumCooking(output, ModItems.TITANIUM_ORE.get(), "titanium_ore_");
         titaniumCooking(output, ModItems.DEEPSLATE_TITANIUM_ORE.get(), "deepslate_titanium_ore_");
         titaniumCooking(output, ModItems.RAW_TITANIUM.get(), "");
@@ -1571,6 +1572,17 @@ public class ModRecipesProvider extends RecipeProvider {
         meltDreamToolRecipe(pWriter, ModItems.DYEDREAM_AXE.get(), ModItems.MELT_DREAM_AXE.get(), "melt_dream_axe_smithing");
         meltDreamToolRecipe(pWriter, ModItems.DYEDREAM_SHOVEL.get(), ModItems.MELT_DREAM_SHOVEL.get(), "melt_dream_shovel_smithing");
         meltDreamToolRecipe(pWriter, ModItems.DYEDREAM_HOE.get(), ModItems.MELT_DREAM_HOE.get(), "melt_dream_hoe_smithing");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.MELT_DREAM_BOW.get())
+                .pattern("abb")
+                .pattern("bcd")
+                .pattern("bd ")
+                .define('a', ModItems.BLACK_STICK.get())
+                .define('b', ModItems.DYEDREAM_ALLOY_INGOT.get())
+                .define('c', ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())
+                .define('d', Items.STRING)
+                .unlockedBy(getHasName(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()), has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter);
     }
 
     private void meltDreamToolRecipe(RecipeOutput pWriter, ItemLike base, ItemLike result, String id) {
@@ -2939,6 +2951,77 @@ public class ModRecipesProvider extends RecipeProvider {
                         "weapon_workshop_crafting_table/star_wish_rod"),
                 new WeaponWorkshopCraftingTableRecipe(starWishRodInputs, enhanceStone,
                         ItemIngredient.of(ModItems.STAR_WISH_ROD.get(), 1)), null);
+
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "weapon_workshop_crafting_table/blast_arrow"),
+                new WeaponWorkshopCraftingTableRecipe(List.of(
+                        ItemIngredient.of(ModItems.BLACKSTONE_ARROW.get(), 8),
+                        ItemIngredient.of(ModItems.MOLTEN_GOLD_INGOT.get(), 1),
+                        ItemIngredient.of(Items.GUNPOWDER, 4)),
+                        ItemIngredient.of(Items.AIR, 1),
+                        ItemIngredient.of(ModItems.BLAST_ARROW.get(), 8)), null);
+
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "weapon_workshop_crafting_table/charged_arrow"),
+                new WeaponWorkshopCraftingTableRecipe(List.of(
+                        ItemIngredient.of(ModItems.BLACKSTONE_ARROW.get(), 16),
+                        ItemIngredient.of(ModItems.CHARGED_AMETHYST.get(), 1)),
+                        ItemIngredient.of(Items.AIR, 1),
+                        ItemIngredient.of(ModItems.CHARGED_ARROW.get(), 16)), null);
+
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "weapon_workshop_crafting_table/fragdream_arrow"),
+                new WeaponWorkshopCraftingTableRecipe(List.of(
+                        ItemIngredient.of(ModItems.BLACKSTONE_ARROW.get(), 16),
+                        ItemIngredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), 1)),
+                        ItemIngredient.of(Items.AIR, 1),
+                        ItemIngredient.of(ModItems.FRAGDREAM_ARROW.get(), 16)), null);
+
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "weapon_workshop_crafting_table/magical_arrow"),
+                new WeaponWorkshopCraftingTableRecipe(List.of(
+                        ItemIngredient.of(ModItems.BLACKSTONE_ARROW.get(), 2),
+                        ItemIngredient.of(ModItems.MAGIC_STONE.get(), 1)),
+                        ItemIngredient.of(Items.AIR, 1),
+                        ItemIngredient.of(ModItems.MAGICAL_ARROW.get(), 2)), null);
+    }
+
+    // ===== 基础箭矢配方（合成台） =====
+
+    private void specialArrowRecipes(RecipeOutput pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLACKSTONE_ARROW.get(), 4)
+                .pattern(" a ")
+                .pattern(" b ")
+                .pattern(" c ")
+                .define('a', ModItems.TITANIUM_NUGGET.get())
+                .define('b', ModItems.BLACK_STICK.get())
+                .define('c', Items.FEATHER)
+                .unlockedBy(getHasName(ModItems.BLACK_STICK.get()),
+                        has(ModItems.BLACK_STICK.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CONGEAL_WIND_ARROW.get(), 4)
+                .pattern(" a ")
+                .pattern(" b ")
+                .pattern(" c ")
+                .define('a', ModItems.CONGEAL_WIND.get())
+                .define('b', Items.STICK)
+                .define('c', ModItems.WIND_FEATHER_GRASS.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND.get()),
+                        has(ModItems.CONGEAL_WIND.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TOXIC_SPORE_ARROW.get(), 8)
+                .requires(ModItems.JUNGLE_SPORE.get())
+                .requires(Items.ARROW, 8)
+                .unlockedBy(getHasName(ModItems.JUNGLE_SPORE.get()), has(ModItems.JUNGLE_SPORE.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DEW_ARROW.get(), 8)
+                .requires(ModItems.BLUE_DEW.get())
+                .requires(Items.ARROW, 8)
+                .unlockedBy(getHasName(ModItems.BLUE_DEW.get()), has(ModItems.BLUE_DEW.get()))
+                .save(pWriter);
     }
 
     // ===== 暗影合金工具配方（合成台 NBT 保留升级，耐久重置满） =====
