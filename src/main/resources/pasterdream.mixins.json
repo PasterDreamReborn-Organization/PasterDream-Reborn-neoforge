@@ -18,7 +18,8 @@
     "ItemElytraMixin",
     "BrokenWingFallDamageMixin",
     "FoxTargetMixin",
-    "WorldGenRegionMixin"
+    "WorldGenRegionMixin",
+    "LocateCommandMixin"
   ],
   "client": ["CapeLayerMixin",
     "LightTextureGammaMixin",

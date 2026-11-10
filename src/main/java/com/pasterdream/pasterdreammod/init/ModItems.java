@@ -103,6 +103,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapI
 import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarItem;
 import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarItem;
 import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestItem;
+import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternDisplayItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
@@ -1381,6 +1382,8 @@ public class ModItems {
     public static final DeferredItem<Item> BIRDS_NEST = ITEMS.register("birds_nest", () -> new BirdsNestItem(ModBlocks.BIRDS_NEST.get(), new Item.Properties()));
     public static final DeferredItem<BlockItem> CHRISTMAS_LIGHTS = ITEMS.registerSimpleBlockItem(ModBlocks.CHRISTMAS_LIGHTS);
     public static final DeferredItem<BlockItem> SMALL_STONE_SPIRIT_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.SMALL_STONE_SPIRIT_BLOCK);
+    public static final DeferredItem<Item> TWILIGHT_LANTERN = ITEMS.register("twilight_lantern", () -> new TwilightLanternDisplayItem(ModBlocks.TWILIGHT_LANTERN.get(), new Item.Properties().rarity(Rarity.EPIC)));
+    public static final DeferredItem<BlockItem> SHADOW_BED = ITEMS.register("shadow_bed", () -> new BlockItem(ModBlocks.SHADOW_BED.get(), new Item.Properties().rarity(Rarity.EPIC)));
 
     // ===== 影蚀系列 =====
     public static final DeferredItem<Item> SHADOW_EROSION_DAGGER = ITEMS.register("shadow_erosion_dagger",

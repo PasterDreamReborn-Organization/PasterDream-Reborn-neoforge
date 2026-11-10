@@ -2897,6 +2897,18 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.WIND_MOOR_PLANKS.get()), has(ModBlocks.WIND_MOOR_PLANKS.get()))
                 .save(pWriter);
 
+        // ===== 暮影长床配方 =====
+        // 惊梦燃料 + 黑床 + 阴影石瓦 + 阴影木台阶
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_BED.get(), 1)
+                .pattern("aba")
+                .pattern("cdc")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', Items.BLACK_BED)
+                .define('c', ModItems.SHADOW_STONE_TILES.get())
+                .define('d', ModItems.SHADOW_SLAB.get())
+                .unlockedBy(getHasName(ModItems.NIGHTMARE_FUEL.get()), has(ModItems.NIGHTMARE_FUEL.get()))
+                .save(pWriter);
+
         // 阴影石瓦 → 浸影宝盒 (切石机)
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.SHADOW_STONE_TILES.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_CHEST.get())
                 .unlockedBy(getHasName(ModBlocks.SHADOW_STONE_TILES.get()), has(ModBlocks.SHADOW_STONE_TILES.get()))

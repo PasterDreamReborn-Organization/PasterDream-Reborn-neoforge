@@ -248,6 +248,22 @@
       }
     ]
   },
+  "shadow_ominous": {
+    "sounds": [
+      {
+        "name": "pasterdream:shadow_ominous",
+        "stream": false
+      }
+    ]
+  },
+  "shadow_music": {
+    "sounds": [
+      {
+        "name": "pasterdream:shadow_music",
+        "stream": true
+      }
+    ]
+  },
   "ghost_wail": {
     "sounds": [
       {

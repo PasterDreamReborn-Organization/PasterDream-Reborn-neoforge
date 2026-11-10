@@ -100,6 +100,14 @@ public class ModSounds {
             SOUND_EVENTS.register("shadow_roar", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_roar")));
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHADOW_OMINOUS =
+            SOUND_EVENTS.register("shadow_ominous", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_ominous")));
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHADOW_MUSIC =
+            SOUND_EVENTS.register("shadow_music", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_music")));
+
     public static final DeferredHolder<SoundEvent, SoundEvent> GHOST_WAIL =
             SOUND_EVENTS.register("ghost_wail", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ghost_wail")));

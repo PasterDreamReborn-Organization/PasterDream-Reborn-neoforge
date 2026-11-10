@@ -1708,5 +1708,28 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DEW_ARROW.get(), "露滴箭");
         add("tooltip.pasterdream.dew_arrow.tooltip1", "§9无视水阻，如果目标在水中，造成额外伤害");
         add("tooltip.pasterdream.dew_arrow.tooltip2", "§9击中目标时恢复1氧气");
+
+        add(ModBlocks.TWILIGHT_LANTERN.get(), "暮影之笼");
+        add(ModBlocks.SHADOW_BED.get(), "暮影长床");
+        add("structure.pasterdream.twilight_lantern", "暮影之笼");
+        add("advancements.pasterdream.story.lamp_shadow_root.title", "侵染教堂");
+        add("advancements.pasterdream.story.lamp_shadow_root.description", "阅读寻梦者笔记\"侵染教堂-黑面\"");
+        add("advancements.pasterdream.story.bastion_guard.title", "据点守卫");
+        add("advancements.pasterdream.story.bastion_guard.description", "完成暮影之笼的据点守卫事件");
+        add("advancements.pasterdream.story.enter_lamp_shadow_world.title", "灯影之下");
+        add("advancements.pasterdream.story.enter_lamp_shadow_world.description", "深入世界中最黑暗的一面");
+        add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "你尚未知晓如何激活影灯");
+        add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "需要用融梦水晶碎片点燃影灯");
+        add("message.pasterdream.twilight_lantern.event_start", "§8诡异的灯笼突然剧烈抖动，黑色的阴影从灯芯里流出");
+        add("message.pasterdream.twilight_lantern.event_mid", "§8阴影化为实物，四周传来空洞的回响，随后便是足以撕裂耳膜的嘶吼");
+        add("message.pasterdream.twilight_lantern.event_voice", "§8你似乎从听到了怪异的声音");
+        add("message.pasterdream.twilight_lantern.event_end", "§8阴影不再从四周向外涌出，暮影之笼也逐渐归为平静，上空逐渐出现一道裂缝");
+        add("message.pasterdream.twilight_lantern.event_end_3", "§5不要抗拒，顺从内心，一同永生");
+        add("message.pasterdream.twilight_lantern.event_end_4", "§5顺从！顺从！！顺从！！！");
+        add("message.pasterdream.twilight_lantern.event_end_5", "§5来吧，来吧~ 来吧！......与我们拥抱，与我们共眠，与我们融为一体，这里是你唯一的归属");
+        add("message.pasterdream.twilight_lantern.event_end_2", "§8声音逐渐清晰，不断重复的语言让你似乎有一些烦躁");
+        add("message.pasterdream.twilight_lantern.event_ready", "§5可以与暮影之笼发生共鸣，与暗影长床互动");
+        add("message.pasterdream.twilight_lantern.data_reset", "方块数据已重置");
+        add("message.pasterdream.twilight_lantern_location", "笔记末尾记载着炼狱上层的坐标：§aX：%s §aZ：%s");
     }
 }
