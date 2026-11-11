@@ -526,6 +526,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DESERT_SWORD.get());
                         output.accept(ModItems.CHENJINGMEN_DESERT_SWORD.get());
                         output.accept(ModItems.BROKEN_HERO_SWORD.get());
+                        output.accept(ModItems.ICE_SHADOW_HAMMER.get());
                         // 饰品
                         output.accept(ModItems.PALE_BONE_NEEDLE_TALISMAN.get());
                         output.accept(ModItems.GOLD_CHARM.get());

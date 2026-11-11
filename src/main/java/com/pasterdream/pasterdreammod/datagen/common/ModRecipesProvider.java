@@ -2931,6 +2931,17 @@ public class ModRecipesProvider extends RecipeProvider {
 
     private void expansionWeaponWorkshopRecipes(RecipeOutput output) {
         ItemIngredient enhanceStone = ItemIngredient.of(ModItemTags.ENHANCE_STONE, 1);
+        List<ItemIngredient> iceShadowHammerInputs = List.of(
+                ItemIngredient.of(Items.DIAMOND, 8),
+                ItemIngredient.of(Items.BLUE_ICE, 1),
+                ItemIngredient.of(ModItems.BLACK_METAL_INGOT.get(), 2),
+                ItemIngredient.of(ModItems.BLACK_STICK.get(), 1),
+                ItemIngredient.of(ModItems.PURE_HORROR.get(), 1));
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "weapon_workshop_crafting_table/ice_shadow_hammer"),
+                new WeaponWorkshopCraftingTableRecipe(iceShadowHammerInputs, enhanceStone,
+                        ItemIngredient.of(ModItems.ICE_SHADOW_HAMMER.get(), 1)), null);
+
         List<ItemIngredient> terraInputs = List.of(
                 ItemIngredient.of(ModItems.INFERNO_SWORD.get(), 1),
                 ItemIngredient.of(ModItems.MURAKUMO_KUSANAGI.get(), 1),

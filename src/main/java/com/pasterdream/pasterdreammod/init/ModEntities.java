@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowGolemEntity;
+import com.pasterdream.pasterdreammod.world.entity.shakingcrystal.ShakingCrystalEntity;
 import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleEntity;
 import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleMotherEntity;
 import com.pasterdream.pasterdreammod.world.entity.ghost.FriendlyShadowGhostEntity;
@@ -373,6 +374,15 @@ public class ModEntities {
                             .fireImmune()
                             .sized(1f, 1f));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<ShakingCrystalEntity>> SHAKING_CRYSTAL =
+            register("shaking_crystal",
+                    EntityType.Builder.<ShakingCrystalEntity>of(ShakingCrystalEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .fireImmune()
+                            .sized(0.6f, 0.8f));
+
     public static final DeferredHolder<EntityType<?>, EntityType<GoldenFoxEntity>> GOLDEN_FOX =
             register("golden_fox",
                     EntityType.Builder.<GoldenFoxEntity>of(GoldenFoxEntity::new, MobCategory.CREATURE)
@@ -433,6 +443,7 @@ public class ModEntities {
         event.put(BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherEntity.createAttributes().build());
         event.put(TERRASWORD_WAVE.get(), TerraswordWaveEntity.createAttributes().build());
         event.put(FOX_FIRE.get(), FoxFireEntity.createAttributes().build());
+        event.put(SHAKING_CRYSTAL.get(), ShakingCrystalEntity.createAttributes().build());
         event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());
         event.put(GOLDEN_FOX_PET.get(), GoldenFoxPetEntity.createAttributes().build());
         event.put(MELT_DREAM_CRYSTAL_ENTITY.get(), MeltDreamCrystalEntityEntity.createAttributes().build());

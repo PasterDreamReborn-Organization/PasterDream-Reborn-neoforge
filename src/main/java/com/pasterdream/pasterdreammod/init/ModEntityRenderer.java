@@ -27,6 +27,7 @@ import com.pasterdream.pasterdreammod.client.renderer.GoldenFoxRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.GoldenFoxPetRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.GoldenFoxFireballRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.TerraswordWaveRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.ShakingCrystalRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.FireflyRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.SmallStoneSpiritRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.PinkChickenRenderer;
@@ -83,6 +84,7 @@ public final class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.GOLDEN_FOX_PET.get(), GoldenFoxPetRenderer::new);
         event.registerEntityRenderer(ModEntities.GOLDEN_FOX_FIREBALL.get(), GoldenFoxFireballRenderer::new);
         event.registerEntityRenderer(ModEntities.TERRASWORD_WAVE.get(), TerraswordWaveRenderer::new);
+        event.registerEntityRenderer(ModEntities.SHAKING_CRYSTAL.get(), ShakingCrystalRenderer::new);
         event.registerEntityRenderer(ModEntities.FIREFLY.get(), FireflyRenderer::new);
         event.registerEntityRenderer(ModEntities.SMALL_STONE_SPIRIT.get(), SmallStoneSpiritRenderer::new);
         event.registerEntityRenderer(ModEntities.PINK_CHICKEN.get(), PinkChickenRenderer::new);

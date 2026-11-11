@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 104：冰影战锤与撼地水晶链（2026-11-11，T18-B 部分）
+
+- 迁入 `ice_shadow_hammer` 武器与 `shaking_crystal` 撼地水晶实体：保留来源 ID、835 耐久、4.0 攻速、9.0 攻击加成、防火、EPIC 品质、0.5 融梦能量消耗、80 tick 冷却、撼地水晶三段伤害与混乱/冻结/伤害吸收 I 行为。
+- 接回批次 103 的 `ice_shadow_curio`：佩戴后战技额外释放两枚水晶，普通释放沿朝向前后排列，潜行释放则左右分布，延迟 10/20 tick 保持来源数值。
+- 补齐实体注册/属性/渲染器、GeckoLib geo/animation/实体纹理、物品模型与纹理、创造装备栏、`minecraft:swords` 与技能冷却/灯影武器标签、`special_entity_tag`、双语 lang 和工坊配方。
+- 1.21 适配：`SwordItem` 属性移入 `Item.Properties#attributes`，tooltip 使用 `Item.TooltipContext`，`SoundEvents.GENERIC_EXPLODE` 取 `.value()`；实体移除 Forge 生成包/自定义客户端工厂，改 `SynchedEntityData.Builder` 与 GeckoLib 4.9.2 包名，亡灵/节肢判定改用 `EntityTypeTags`，火焰附加改用 `igniteForSeconds`。
+- `runData` 写入 8 个文件，`build` 通过，`runGameTestServer` 183/183 通过。客户端动画/渲染、战技伤害与饰品额外水晶、工坊实机合成待游戏内验收；箱子战利品表仍未迁入，暂无生存获取来源。
+
 ### 批次 103：灯影之下箱子战利品中的未移植饰品（2026-11-10，T13-B / T18-B 部分）
 
 - 核对来源 `chests/shadow_relic_chest_loot_common`、`chests/shadow_dungeon_repository_common/core/supply`：其中尚未移植的饰品类为 `ice_shadow_curio`（冰影水晶）、`calais_spice_bottle`（卡莱的调料瓶）与 `ghost_face`（鬼魂之面）；`war_flag`、`shadow_breath` 此前已迁入。

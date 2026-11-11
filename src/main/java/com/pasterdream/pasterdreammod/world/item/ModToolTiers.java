@@ -50,6 +50,8 @@ public enum ModToolTiers implements Tier {
             () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get())),
     TERRA_SWORD(2011, 4.0F, 8.0F, BlockTags.INCORRECT_FOR_STONE_TOOL, 2,
             Ingredient::of),
+    ICE_SHADOW_HAMMER(835, 4.0F, 9.0F, BlockTags.INCORRECT_FOR_STONE_TOOL, 2,
+            Ingredient::of),
     THERMAL_DAGGER(1721, 1.0F, 2.5F, BlockTags.INCORRECT_FOR_WOODEN_TOOL, 2,
             () -> Ingredient.of(ModItems.TITANIUM_NUGGET.get()));
 
