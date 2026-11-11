@@ -25,7 +25,7 @@ public class ModStructureConfig
     // 其余结构权重 = round(258 / 原spacing)
     // structureSetWeight 为真实生成权重，直接写入结构集 JSON
     //
-    // 本仓库当前只登记已移植的主世界与染梦世界结构；阴影、风之旅途等结构
+    // 本仓库当前只登记已移植的主世界、染梦世界与灯影之下结构；风之旅途等结构
     // 待对应 NBT、模板与功能方块迁入后，按来源 ModStructureConfig 补回。
 
     public static List<StructureGenerationConfig> getStructureConfig()
@@ -94,6 +94,7 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadow_fungus_house", "pasterdream:shadow_forest_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 42, 25, 486700517, 6, "shadow_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadow_foundry", "pasterdream:shadow_ruins_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 58, 32, 768368124, 2, "shadow_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadow_underground_workroom", "pasterdream:shadow_forest_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 87623412, 2, "shadow_structures", false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadow_dungeon", "pasterdream:can_shadow_dungeon_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 286649857, 2, "shadow_structures"));
 
         return STRUCTURES;
     }

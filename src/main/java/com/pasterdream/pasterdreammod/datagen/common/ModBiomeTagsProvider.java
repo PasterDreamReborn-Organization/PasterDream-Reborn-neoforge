@@ -262,5 +262,9 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
 
         tag(ModBiomeTags.CAN_SHADOWNOTE_RUIN_SPAWN_BIOME)
                 .add(ModBiomes.SHADOW_RUINS);
+
+        tag(ModBiomeTags.CAN_SHADOW_DUNGEON_SPAWN_BIOME)
+                .add(ModBiomes.SHADOW_NYLIUM_WASTES)
+                .add(ModBiomes.SHADOW_RUINS);
     }
 }

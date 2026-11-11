@@ -1262,7 +1262,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.BLACK_METAL_BLOCK.get(), "Black Metal Block");
         add(ModBlocks.RUST_BLACK_METAL_WALL.get(), "Rust Black Metal Wall");
         add(ModBlocks.RUST_BLACK_METAL_BARS.get(), "Rust Black Metal Bars");
+        add(ModBlocks.CLAY_POT.get(), "Clay Pot");
         add(ModBlocks.SHADOW_CLAY_POT.get(), "Shadow Clay Pot");
+        add(ModBlocks.SHADOW_BRAZIER.get(), "Shadow Brazier");
         add(ModItems.FIG.get(), "Fig");
         add(ModBlocks.CONGEAL_WIND_ORE.get(), "Congeal Wind Ore");
         add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(), "Windrunner Crystal Ore");
@@ -1834,6 +1836,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.broken_portal.已传送出或清除暗影地牢内的其他生物", "Teleported out or Discarded the Living Entities in the Shadow Dungeon.");
         add("message.pasterdream.需要在本层寻找暗影地牢钥匙以打开大门", "Need to find Shadow Dungeon Key in this floor to open the gate");
         add("message.pasterdream.大门紧闭不开", "The gate is tightly closed");
+        add("message.pasterdream.shadow_brazier.need_candle", "You need a Shadow Candle to light the brazier");
+        add("message.pasterdream.shadow_brazier.lit", "The brazier ignites, but brings no light......");
+        add("message.pasterdream.shadow_brazier.shadow_spread", "Shadow spreads from all around");
+        add("message.pasterdream.shadow_brazier.extinguished", "The brazier burns out and shatters on the ground");
+        add("message.pasterdream.shadow_brazier.key_dropped", "A key drops from the crevice of the brazier");
         add("advancements.pasterdream.story.lamp_shadow_root.title", "Infested Church");
         add("advancements.pasterdream.story.lamp_shadow_root.description", "Read the Dream Seeker's Notes \"Infested Church - Black Face\"");
         add("advancements.pasterdream.story.bastion_guard.title", "Bastion Guard");

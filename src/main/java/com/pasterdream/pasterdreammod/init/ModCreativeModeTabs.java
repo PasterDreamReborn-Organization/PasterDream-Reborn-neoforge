@@ -597,6 +597,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.UUZ_DOLL.get());
                         output.accept(ModItems.DYEDREAM_CRACK.get());
                         output.accept(ModItems.CLAYPAN.get());
+                        output.accept(ModItems.CLAY_POT.get());
                         output.accept(ModItems.DREAM_CAULDRON.get());
                         output.accept(ModItems.MORTAR.get());
                         output.accept(ModItems.PLIERS.get());
@@ -808,6 +809,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get());
                         output.accept(ModItems.DREAM_SPAWNER.get());
                         output.accept(ModItems.FADED_DREAM_SPAWNER.get());
+                        output.accept(ModItems.SHADOW_BRAZIER.get());
                         output.accept(ModItems.PINK_CHICKEN_SPAWN_EGG.get());
                         output.accept(ModItems.PINK_SLIME_SPAWN_EGG.get());
                         output.accept(ModItems.TERRORBEAK_SPAWN_EGG.get());

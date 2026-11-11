@@ -186,6 +186,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/rust_black_metal_bars"));
         withExistingParent(ModItems.SHADOW_CANDLE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/shadow_candle"));
+        withExistingParent(ModItems.CLAY_POT.getId().getPath(), modLoc("block/clay_pot"));
         withExistingParent(ModItems.SHADOW_CLAY_POT.getId().getPath(), modLoc("block/clay_pot"));
         wallItem(ModItems.POLISHED_CALCITE_WALL.getId().getPath(), ModItems.POLISHED_CALCITE.getId().getPath());
         wallItem(ModItems.CALCITE_TILES_WALL.getId().getPath(), ModItems.CALCITE_TILES.getId().getPath());

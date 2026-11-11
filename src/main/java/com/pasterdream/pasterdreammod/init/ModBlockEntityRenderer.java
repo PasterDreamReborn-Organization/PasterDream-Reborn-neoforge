@@ -19,6 +19,7 @@ import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJa
 import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternTileRenderer;
+import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlockRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalTileRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -51,6 +52,7 @@ public final class ModBlockEntityRenderer {
         event.registerBlockEntityRenderer(ModBlockEntities.FIREFLY_GLASS_JAR.get(), FireflyGlassJarBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.BIRDS_NEST.get(), BirdsNestBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.TWILIGHT_LANTERN.get(), TwilightLanternTileRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_BRAZIER.get(), ShadowBrazierBlockRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.BROKEN_SHADOW_DUNGEON_PORTAL.get(), BrokenShadowDungeonPortalTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_DUNGEON_PORTAL.get(), ShadowDungeonPortalTileRenderer::new);
     }

@@ -503,6 +503,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         paneBlockWithRenderType((IronBarsBlock) ModBlocks.RUST_BLACK_METAL_BARS.get(), barsTex, barsTex, "cutout");
 
         var clayPotModel = models().getExistingFile(modLoc("block/clay_pot"));
+        horizontalBlock(ModBlocks.CLAY_POT.get(), clayPotModel);
         horizontalBlock(ModBlocks.SHADOW_CLAY_POT.get(), clayPotModel);
 
         simpleBlock(ModBlocks.DYEDREAM_SAPLING.get(),

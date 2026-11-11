@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookIt
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.DreamNotesItem;
 import com.pasterdream.pasterdreammod.world.item.StoryProgressItem;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableItem;
+import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierDisplayItem;
 import com.pasterdream.pasterdreammod.world.item.lootgenerator.LootGeneratorItem;
 import com.pasterdream.pasterdreammod.world.item.modelbreakparticleproviderblockitem.ModelBreakParticleProviderBlockItem;
 import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
@@ -1376,6 +1377,7 @@ public class ModItems {
     public static final DeferredItem<BlockItem> RUST_BLACK_METAL_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.RUST_BLACK_METAL_BLOCK);
     public static final DeferredItem<BlockItem> RUST_BLACK_METAL_WALL = ITEMS.registerSimpleBlockItem(ModBlocks.RUST_BLACK_METAL_WALL);
     public static final DeferredItem<BlockItem> RUST_BLACK_METAL_BARS = ITEMS.registerSimpleBlockItem(ModBlocks.RUST_BLACK_METAL_BARS);
+    public static final DeferredItem<BlockItem> CLAY_POT = ITEMS.registerSimpleBlockItem(ModBlocks.CLAY_POT);
     public static final DeferredItem<BlockItem> SHADOW_CLAY_POT = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_CLAY_POT);
     public static final DeferredItem<BlockItem> WEAPON_WORKSHOP_CRAFTING_TABLE = ITEMS.registerSimpleBlockItem(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE);
     public static final DeferredItem<BlockItem> WEAPON_WORKSHOP_ANVIL = ITEMS.registerSimpleBlockItem(ModBlocks.WEAPON_WORKSHOP_ANVIL);
@@ -1421,6 +1423,8 @@ public class ModItems {
             () -> new BrokenShadowDungeonPortalDisplayItem(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(), new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_DUNGEON_PORTAL = ITEMS.register("shadow_dungeon_portal",
             () -> new ShadowDungeonPortalDisplayItem(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_BRAZIER = ITEMS.register("shadow_brazier",
+            () -> new ShadowBrazierDisplayItem(ModBlocks.SHADOW_BRAZIER.get(), new Item.Properties()));
     public static final DeferredItem<BlockItem> DREAM_SPAWNER = ITEMS.registerSimpleBlockItem(ModBlocks.DREAM_SPAWNER);
     public static final DeferredItem<BlockItem> FADED_DREAM_SPAWNER = ITEMS.registerSimpleBlockItem(ModBlocks.FADED_DREAM_SPAWNER);
     public static final DeferredItem<Item> ECOLOGY_GLASS_JAR = ITEMS.register("ecology_glass_jar", () -> new EcologyGlassJarItem(ModBlocks.ECOLOGY_GLASS_JAR.get(), new Item.Properties()));

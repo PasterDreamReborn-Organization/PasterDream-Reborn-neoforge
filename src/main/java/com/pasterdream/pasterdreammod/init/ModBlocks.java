@@ -26,6 +26,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlock;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamspawner.DreamSpawnerBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamspawner.FadedDreamSpawnerBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.barrier.ShadowDungeonBarrierBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowDungeonGateBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalBlock;
@@ -327,6 +328,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SHADOW_DUNGEON_BARRIER = BLOCKS.register("shadow_dungeon_barrier", () -> new ShadowDungeonBarrierBlock());
     public static final DeferredBlock<Block> BROKEN_SHADOW_DUNGEON_PORTAL = BLOCKS.register("broken_shadow_dungeon_portal", BrokenShadowDungeonPortalBlock::new);
     public static final DeferredBlock<Block> SHADOW_DUNGEON_PORTAL = BLOCKS.register("shadow_dungeon_portal", ShadowDungeonPortalBlock::new);
+    public static final DeferredBlock<Block> SHADOW_BRAZIER = BLOCKS.register("shadow_brazier", ShadowBrazierBlock::new);
     public static final DeferredBlock<Block> DREAM_SPAWNER = BLOCKS.register("dream_spawner", DreamSpawnerBlock::new);
     public static final DeferredBlock<Block> FADED_DREAM_SPAWNER = BLOCKS.register("faded_dream_spawner", FadedDreamSpawnerBlock::new);
     // ===== 灯影竞技场 / 裂隙方块 =====
@@ -369,6 +371,14 @@ public class ModBlocks {
     public static final DeferredBlock<Block> RUST_BLACK_METAL_BLOCK = BLOCKS.register("rust_black_metal_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.COPPER).strength(8f, 5f).requiresCorrectToolForDrops()));
     public static final DeferredBlock<Block> RUST_BLACK_METAL_WALL = BLOCKS.register("rust_black_metal_wall", () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.COPPER).strength(8f, 5f).requiresCorrectToolForDrops().noOcclusion().dynamicShape().forceSolidOn()));
     public static final DeferredBlock<Block> RUST_BLACK_METAL_BARS = BLOCKS.register("rust_black_metal_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.COPPER).strength(7f, 5f).requiresCorrectToolForDrops().noOcclusion()));
+    // ===== 陶罐 =====
+    public static final DeferredBlock<Block> CLAY_POT = BLOCKS.register("clay_pot",
+            () -> new ClayPotBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BROWN)
+                    .sound(SoundType.BONE_BLOCK)
+                    .strength(0.5f, 0.1f)
+                    .noOcclusion()
+                    .isRedstoneConductor((bs, br, bp) -> false)));
     // ===== 阴影陶罐 =====
     public static final DeferredBlock<Block> SHADOW_CLAY_POT = BLOCKS.register("shadow_clay_pot",
             () -> new ClayPotBlock(BlockBehaviour.Properties.of()
