@@ -5,6 +5,18 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 109：无名实体、暗影入侵与灯与影的选择（2026-11-11，T18-B / T21 部分）
+
+- 迁入 `nameless` 无名实体、GeckoLib 模型/动画/纹理、刷怪蛋与对话状态机；保留两段对话行数、40 tick 行间隔、首次对话结束传送回主世界并施加暗影窥视，第二次对话后解锁灯与影选择。
+- 迁入 `shadow_spyon` 暗影窥视效果与暗影入侵处理器：主世界夜晚低亮度按概率触发，附近生成虚弱恐惧喙与暗影之手；清空或天亮后结束、授予 `story/shadow_intrude_complete` 并授权移除效果。
+- 迁入灯与影选择：暮影长床在灯影之下按第二次对话/选择进度打开 `shadow_select_end` 界面；选影授予 `story/talent_shadow` 与凝影剑柄，选灯授予 `story/talent_light` 与白厄水晶，并播放来源分支对话。
+- 补 `story/shadow_choice`、`story/talent_light`、`story/talent_shadow` 进度、无名/天赋物品/效果/界面双语文本与 `talent_light`、`talent_shadow`、无名刷怪蛋模型及创造栏条目；复制来源界面、按钮、效果图标、实体/物品纹理和 Geo/动画资源。
+- 1.21.1 适配：实体改用 `SynchedEntityData.Builder`、`getDefaultDimensions` 与 NeoForge 实体注册；效果改用 `shouldApplyEffectTickThisTick`/`fillEffectCures`；`ImageButton` 的旧图集构造改为自绘两帧按钮；网络包改为 `CustomPacketPayload`/`StreamCodec`；菜单打开改用 `SimpleMenuProvider`。
+- 新增 `NamelessShadowStoryGameTests` 覆盖实体/效果/菜单/物品/刷怪蛋与进度加载。`runData` 写入 8 个文件，`build` 通过，`runGameTestServer` 192/192 通过（首轮既有 `catalystdurabilityconsumedinrecipebiome` 波动失败，重跑通过）。
+- 无名实际对话、暗影入侵刷怪、灯与影界面按钮与分支对话、GeckoLib 客户端表现及多人同步仍待游戏内验收；暗影地牢结构生成与无名在结构中的放置留待后续批次。
+
+- **建议提交信息：** `feat(entity): 搬运无名实体、暗影入侵与灯与影的选择`
+
 ### 批次 108：暗影地牢门扉/屏障/传送门核心与构梦刷怪笼（2026-11-11，T18-B 部分）
 
 - 迁入 `broken_shadow_dungeon_portal`、`shadow_dungeon_portal`（GeckoLib 方块实体/动画/显示物品）、`shadow_dungeon_gate`、`shadow_dungeon_barrier`（3×3 多方块）、`dream_spawner`、`faded_dream_spawner`；补齐 `_3x3Part` 多方块属性与横/纵部件定位 helper、`shadow_door` 音效。

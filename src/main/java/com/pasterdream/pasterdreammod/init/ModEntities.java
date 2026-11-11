@@ -35,6 +35,7 @@ import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.KusanagiVenomStingerEntity;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
+import com.pasterdream.pasterdreammod.world.entity.NamelessEntity;
 import com.pasterdream.pasterdreammod.world.entity.PebbleProjectile;
 import com.pasterdream.pasterdreammod.world.entity.PinkChickenEntity;
 import com.pasterdream.pasterdreammod.world.entity.PinkSlimeEntity;
@@ -71,6 +72,15 @@ public class ModEntities {
                             .setUpdateInterval(3)
                             .fireImmune()
                             .sized(0.6f, 1f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<NamelessEntity>> NAMELESS =
+            register("nameless",
+                    EntityType.Builder.<NamelessEntity>of(NamelessEntity::new, MobCategory.CREATURE)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .fireImmune()
+                            .sized(0.6f, 1.8f));
 
     public static final DeferredHolder<EntityType<?>, EntityType<PinkChickenEntity>> PINK_CHICKEN =
             register("pink_chicken",
@@ -456,6 +466,7 @@ public class ModEntities {
         event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());
         event.put(GOLDEN_FOX_PET.get(), GoldenFoxPetEntity.createAttributes().build());
         event.put(MELT_DREAM_CRYSTAL_ENTITY.get(), MeltDreamCrystalEntityEntity.createAttributes().build());
+        event.put(NAMELESS.get(), NamelessEntity.createAttributes().build());
         event.put(FIREFLY.get(), FireflyEntity.createAttributes().build());
         event.put(SMALL_STONE_SPIRIT.get(), SmallStoneSpiritEntity.createAttributes().build());
         event.put(PINK_CHICKEN.get(), PinkChickenEntity.createAttributes().build());

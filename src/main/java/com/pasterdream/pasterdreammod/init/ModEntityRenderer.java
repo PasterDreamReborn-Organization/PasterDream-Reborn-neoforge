@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.client.renderer.BlackBeetleRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.BlackBeetleMotherRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.KusanagiVenomStingerRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.MeltDreamCrystalEntityRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.NamelessRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.TideSwordProjectileRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.WindThunderSpearRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.FluffyWindArrowRenderer;
@@ -59,6 +60,7 @@ public final class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherRenderer::new);
         event.registerEntityRenderer(ModEntities.SQUEAL_WAVE_PROJECTILE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), MeltDreamCrystalEntityRenderer::new);
+        event.registerEntityRenderer(ModEntities.NAMELESS.get(), NamelessRenderer::new);
         event.registerEntityRenderer(ModEntities.TIDE_SWORD_PROJECTILE.get(), TideSwordProjectileRenderer::new);
         event.registerEntityRenderer(ModEntities.KUSANAGI_VENOM_STINGER.get(), KusanagiVenomStingerRenderer::new);
         event.registerEntityRenderer(ModEntities.WIND_ALLOY_LIGHTNING.get(), NoopRenderer::new);

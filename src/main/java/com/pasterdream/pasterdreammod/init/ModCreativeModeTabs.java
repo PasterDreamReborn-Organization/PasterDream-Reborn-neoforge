@@ -824,6 +824,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FIREFLY_SPAWN_EGG.get());
                         output.accept(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
                         output.accept(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
+                        output.accept(ModItems.NAMELESS_SPAWN_EGG.get());
                     })
                     .build());
 

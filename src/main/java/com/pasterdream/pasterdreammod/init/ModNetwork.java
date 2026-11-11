@@ -18,6 +18,7 @@ import com.pasterdream.pasterdreammod.network.DreamCauldronCraftPacket;
 import com.pasterdream.pasterdreammod.network.DreamCauldronMessagePacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindAlloyMiningSpeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.shadowerosion.ShadowErosionMiningSpeedSyncPacket;
+import com.pasterdream.pasterdreammod.network.shadowselect.ShadowSelectEndButtonPacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindHoverInputPacket;
 import com.pasterdream.pasterdreammod.network.skill.KusanagiVenomStingerPacket;
 import com.pasterdream.pasterdreammod.network.skill.BlinkPacket;
@@ -83,6 +84,8 @@ public final class ModNetwork {
                 WindAlloyMiningSpeedSyncPacket::handle);
         registrar.playToClient(ShadowErosionMiningSpeedSyncPacket.TYPE, ShadowErosionMiningSpeedSyncPacket.STREAM_CODEC,
                 ShadowErosionMiningSpeedSyncPacket::handle);
+        registrar.playToServer(ShadowSelectEndButtonPacket.TYPE, ShadowSelectEndButtonPacket.STREAM_CODEC,
+                ShadowSelectEndButtonPacket::handle);
         registrar.playToServer(DebugBlockActionPacket.TYPE, DebugBlockActionPacket.STREAM_CODEC,
                 DebugBlockActionPacket::handle);
         registrar.playToClient(AnimationStateChangePacket.TYPE, AnimationStateChangePacket.STREAM_CODEC,

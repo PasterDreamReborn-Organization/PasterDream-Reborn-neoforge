@@ -1629,6 +1629,12 @@ public class ModItems {
     public static final DeferredItem<Item> SHADOW_HILT = ITEMS.register("shadow_hilt",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
 
+    public static final DeferredItem<Item> TALENT_LIGHT = ITEMS.register("talent_light",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
+
+    public static final DeferredItem<Item> TALENT_SHADOW = ITEMS.register("talent_shadow",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
+
     // ===== 小石子 =====
     public static final DeferredItem<Item> PEBBLE = ITEMS.register("pebble",
             () -> new PebbleItem(ModBlocks.PEBBLE.get(), new Item.Properties()));
@@ -1784,6 +1790,8 @@ public class ModItems {
             () -> new SpawnEggItem(ModEntities.SMALL_STONE_SPIRIT.get(), -3937560, -9340294, new Item.Properties()));
     public static final DeferredItem<Item> GOLDEN_FOX_SPAWN_EGG = ITEMS.register("golden_fox_spawn_egg",
             () -> new SpawnEggItem(ModEntities.GOLDEN_FOX.get(), 0xe8c13a, 0x8b6914, new Item.Properties()));
+    public static final DeferredItem<Item> NAMELESS_SPAWN_EGG = ITEMS.register("nameless_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.NAMELESS.get(), -15592942, -11776948, new Item.Properties()));
 
     // ===== 追忆 =====
     public static final DeferredItem<Item> MEMORY_GEM = ITEMS.register("memory_gem",

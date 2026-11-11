@@ -79,6 +79,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.confusion", "Confusion");
         add("effect.pasterdream.cook.description", "While active, you can eat any food even with a full hunger bar. Overflowed hunger or saturation is converted into health, and if health is full, into yellow absorption hearts. Each level raises the yellow-heart cap by 10 (I=20 / II=30 / III=40).");
         add("effect.pasterdream.shadow_silence", "Shadow Silence");
+        add("effect.pasterdream.shadow_spyon", "Shadow Gaze");
+        add(ModEntities.NAMELESS.get(), "Nameless");
+        add(ModItems.NAMELESS_SPAWN_EGG.get(), "Nameless Spawn Egg");
         add(ModEntities.TERRORBEAK.get(), "Terrorbeak");
         add(ModEntities.CRAZY_TERRORBEAK.get(), "Crazy Terrorbeak");
         add(ModEntities.WEAKENESS_TERRORBEAK.get(), "Weakness Terrorbeak");
@@ -108,6 +111,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.white_crystal", "§7Core material for crafting the White Calamity Sword");
         add(ModItems.SHADOW_HILT.get(), "Condensed Shadow Hilt");
         add("tooltip.pasterdream.shadow_hilt", "§7A core material for crafting shadow blades");
+        add(ModItems.TALENT_LIGHT.get(), "Faith in Light");
+        add(ModItems.TALENT_SHADOW.get(), "Shadow Servant");
         add(ModItems.WHITE_SWORD.get(), "White Sword");
         add(ModItems.SHADOW_SWORD.get(), "Shadow Sword");
         add(ModItems.BROOCH_OF_WHITE_ORCHID.get(), "Brooch of White Orchid");
@@ -1848,5 +1853,64 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.twilight_lantern.event_ready", "§5You can now resonate with the Twilight Lantern, interact with the True Shadow Bed");
         add("message.pasterdream.twilight_lantern.data_reset", "Block data reset");
         add("message.pasterdream.twilight_lantern_location", "The end of the note records coordinates in the upper Nether: X: %s Z: %s");
+
+        // Shadow intrusion event
+        add("message.pasterdream.shadow_intrude.start_1", "§5You feel a chill, your vision veiled by a layer of black fog");
+        add("message.pasterdream.shadow_intrude.start_2", "§5The nearby shadows begin to stir");
+        add("message.pasterdream.shadow_intrude.end", "§5The shadows fall silent......");
+        add("message.pasterdream.shadow_intrude.end_1", "§7You feel puzzled that these shadow creatures have come here");
+        add("message.pasterdream.shadow_intrude.end_2", "§7Perhaps we should go find Nameless again......");
+
+        // Shadow choice screen
+        add("gui.pasterdream.shadow_select_end.label_choose", "Follow your first instinct to make your choice");
+        add("gui.pasterdream.shadow_select_end.label_outcome", "This will lead your exploration to a different future");
+
+        // Nameless dialogue: first dialogue
+        add("dialogue.pasterdream.nameless.first_1", "???: Hmm...?");
+        add("dialogue.pasterdream.nameless.first_2", "???: ...How did you get here?");
+        add("dialogue.pasterdream.nameless.first_3", "???: It has been a long time since anyone came here...");
+        add("dialogue.pasterdream.nameless.first_4", "???: You may be curious about my past, but...... I have been through too much, and I would rather not recall it.");
+        add("dialogue.pasterdream.nameless.first_5", "???: As for my name... too much time has passed, and I have lost my former \"self.\" Just call me \"Nameless.\"");
+        add("dialogue.pasterdream.nameless.first_6", "Nameless: It is dangerous here. Every time you enter this shadow dungeon, it changes — more threats or more treasure...... I cannot tell.");
+        add("dialogue.pasterdream.nameless.first_7", "Nameless: Please do not risk your life exploring here. Leave as soon as you can.");
+        add("dialogue.pasterdream.nameless.first_8", "Nameless: Why am I still here? Because I cannot escape, and I no longer want to try. Go back while you still can.");
+        add("dialogue.pasterdream.nameless.first_9", "Nameless: ......");
+        add("dialogue.pasterdream.nameless.first_10", "Nameless: Why are you still here...");
+        add("dialogue.pasterdream.nameless.first_11", "Nameless: Staying here will only erode your mind... I cannot let you go deeper. This thirst for the unknown will only make it easier for the shadows to control you... It is for your own good.");
+        add("dialogue.pasterdream.nameless.first_12", "Nameless: I cannot let you stay here any longer... Please leave.");
+
+        // Nameless dialogue: second dialogue
+        add("dialogue.pasterdream.nameless.second_1", "Nameless: You have seen them appear in your world?");
+        add("dialogue.pasterdream.nameless.second_2", "Nameless: Why would they appear in a world beyond the lamp shadow...");
+        add("dialogue.pasterdream.nameless.second_3", "Nameless: ...Sorry, I drifted off. You asked why I stopped you?");
+        add("dialogue.pasterdream.nameless.second_4", "Nameless: As far as I have seen, few people survive facing those monsters. You seem different from the ordinary.");
+        add("dialogue.pasterdream.nameless.second_5", "Nameless: I can feel your extraordinary mental strength... You came into this shadow of your own will, did you not? In that case, you truly have the 'aptitude' to wield that power.");
+        add("dialogue.pasterdream.nameless.second_6", "Nameless: Indeed, you do have the 'aptitude.'");
+        add("dialogue.pasterdream.nameless.second_7", "Nameless: Beneath this floor lies the grave of someone long departed. I exist here to keep a promise — the promise to 'guard his grave.'");
+        add("dialogue.pasterdream.nameless.second_8", "Nameless: If it is you, perhaps you can earn his approval.");
+        add("dialogue.pasterdream.nameless.second_9", "Nameless: If you insist on fighting... then touch the door below once more. If you are truly acknowledged, the door will open.");
+        add("dialogue.pasterdream.nameless.second_10", "Nameless: Go touch the Twilight Long Bed. Do not worry about the outcome — just follow your first instinct.");
+
+        // Nameless dialogue: choice aftermath (light)
+        add("dialogue.pasterdream.nameless.light_1", "Nameless: It seems you have chosen to embrace the light, to become a ray of light here.");
+        add("dialogue.pasterdream.nameless.light_2", "Nameless: As one of the 'lamp,' you now have the strength to stop Him, to defeat Him.");
+        add("dialogue.pasterdream.nameless.light_3", "Nameless: Then set out and search — search for the eyes of Aaroncos.");
+        add("dialogue.pasterdream.nameless.light_4", "Nameless: May fortune favor you, and may you remain a lamp that lights the dark even after this battle.");
+
+        // Nameless dialogue: choice aftermath (shadow)
+        add("dialogue.pasterdream.nameless.shadow_1", "Nameless: It seems you have chosen to melt into the darkness, to become a wisp of shadow here.");
+        add("dialogue.pasterdream.nameless.shadow_2", "Nameless: As one of the 'shadow,' you now seem qualified to accept Him, to merge with Him.");
+        add("dialogue.pasterdream.nameless.shadow_3", "Nameless: Then set out and search — search for the eyes of Aaroncos.");
+        add("dialogue.pasterdream.nameless.shadow_4", "Nameless: May fortune favor you, and may you keep your human clarity even after this battle.");
+
+        // Nameless dialogue: waiting state
+        add("dialogue.pasterdream.nameless.wait", "Nameless: ......");
+        add("dialogue.pasterdream.nameless.busy", "Nameless: ...... (He is focused on a conversation with someone else)");
+        add("advancements.pasterdream.story.shadow_choice.title", "Light and Shadow");
+        add("advancements.pasterdream.story.shadow_choice.description", "Make your choice between light and shadow");
+        add("advancements.pasterdream.story.talent_light.title", "Faith in Light");
+        add("advancements.pasterdream.story.talent_light.description", "Choose the light in the choice between light and shadow");
+        add("advancements.pasterdream.story.talent_shadow.title", "Shadow Servant");
+        add("advancements.pasterdream.story.talent_shadow.description", "Choose the shadow in the choice between light and shadow");
     }
 }

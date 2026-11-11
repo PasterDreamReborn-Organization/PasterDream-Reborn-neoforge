@@ -610,6 +610,51 @@ public class ModAdvancementProvider extends AdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/shadow_npc_second_dialogue"), existingFileHelper);
 
+            // 灯与影 —— 做出选择（原作 achievement_shadow_d_0，parent 原作 shadow_c_0，现挂到暗影入侵 shadow_intrude_complete 之下）
+            AdvancementHolder shadowChoice = Advancement.Builder.advancement()
+                    .parent(shadowIntrudeComplete)
+                    .display(
+                            ModBlocks.SHADOW_CANDLE.get(),
+                            Component.translatable("advancements.pasterdream.story.shadow_choice.title"),
+                            Component.translatable("advancements.pasterdream.story.shadow_choice.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, true
+                    )
+                    .addCriterion("make_choice", new Criterion<>(CriteriaTriggers.IMPOSSIBLE, new ImpossibleTrigger.TriggerInstance()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_choice"), existingFileHelper);
+
+            // 信仰光明 —— 选灯
+            AdvancementHolder talentLight = Advancement.Builder.advancement()
+                    .parent(shadowChoice)
+                    .display(
+                            ModItems.TALENT_LIGHT.get(),
+                            Component.translatable("advancements.pasterdream.story.talent_light.title"),
+                            Component.translatable("advancements.pasterdream.story.talent_light.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("choose_light", new Criterion<>(CriteriaTriggers.IMPOSSIBLE, new ImpossibleTrigger.TriggerInstance()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/talent_light"), existingFileHelper);
+
+            // 暗影仆从 —— 选影
+            AdvancementHolder talentShadow = Advancement.Builder.advancement()
+                    .parent(shadowChoice)
+                    .display(
+                            ModItems.TALENT_SHADOW.get(),
+                            Component.translatable("advancements.pasterdream.story.talent_shadow.title"),
+                            Component.translatable("advancements.pasterdream.story.talent_shadow.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("choose_shadow", new Criterion<>(CriteriaTriggers.IMPOSSIBLE, new ImpossibleTrigger.TriggerInstance()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/talent_shadow"), existingFileHelper);
+
             // 吹影镂尘 —— 击败亚伦柯斯之触（原作 achievement_shadow_e_0），挂暗影入侵之后
             AdvancementHolder defeatAaroncos = Advancement.Builder.advancement()
                     .parent(shadowIntrudeComplete)

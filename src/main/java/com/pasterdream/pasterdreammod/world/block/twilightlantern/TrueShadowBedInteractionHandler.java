@@ -5,9 +5,11 @@ import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
 import com.pasterdream.pasterdreammod.world.dimension.LampShadowDimension;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
@@ -15,6 +17,18 @@ public class TrueShadowBedInteractionHandler {
 
     private static final ResourceLocation BASTION_GUARD_ADV =
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/bastion_guard");
+
+    private static final ResourceLocation SECOND_DIALOGUE_ADV =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_npc_second_dialogue");
+
+    private static final ResourceLocation SHADOW_CHOICE_ADV =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_choice");
+
+    private static final ResourceLocation ENTER_LAMP_SHADOW_WORLD_ADV =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/enter_lamp_shadow_world");
+
+    private static final ResourceLocation SLEEP_WITH_SHADOW_ADV =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/sleep_with_shadow");
 
     public static void execute(Level world, BlockPos pos, Player entity) {
         if (entity == null) return;
@@ -25,20 +39,42 @@ public class TrueShadowBedInteractionHandler {
 
         if (!(entity instanceof ServerPlayer sp)) return;
 
-        // 灯影之下：返回主世界。第二段对话与影/光选择界面属于后续剧情批次，尚未迁入。
+        // 灯影之下：第二次对话已完成且尚未做出选择 → 打开灯与影选择界面；否则返回主世界
         if (world.dimension() == LampShadowDimension.LAMP_SHADOW_WORLD) {
-            LampShadowWorldTeleporter.teleportToOverworld(sp, pos);
+            if (shouldOpenChoice(sp)) {
+                openChoiceScreen(sp, pos);
+            } else {
+                LampShadowWorldTeleporter.teleportToOverworld(sp, pos);
+            }
             return;
         }
 
-        // 主世界/下界：需完成据点守卫事件后才可入梦
-        if (!AdvancementHelper.isDone(sp, BASTION_GUARD_ADV)) {
+        // 主世界/下界：完成据点守卫事件后才能入眠
+        if (!hasBastionGuard(sp)) {
             return;
         }
 
         // Drain 10 San and teleport to lamp_shadow_world
         SanHelper.addPlayerSanAndSync(sp, -10);
-        // 于影共眠进度属于后续剧情批次，尚未迁入。
+        // 于影共眠 —— 拥有灯影之下根进度且在暮影长床入眠时授予
+        if (AdvancementHelper.isDone(sp, ENTER_LAMP_SHADOW_WORLD_ADV)) {
+            AdvancementHelper.grant(sp, SLEEP_WITH_SHADOW_ADV, "sleep_with_shadow");
+        }
         sp.server.execute(() -> LampShadowWorldTeleporter.execute(sp.level(), sp));
+    }
+
+    private static boolean shouldOpenChoice(ServerPlayer player) {
+        return AdvancementHelper.isDone(player, SECOND_DIALOGUE_ADV)
+                && !AdvancementHelper.isDone(player, SHADOW_CHOICE_ADV);
+    }
+
+    private static void openChoiceScreen(ServerPlayer player, BlockPos pos) {
+        player.openMenu(new SimpleMenuProvider(
+                (id, inventory, p) -> new ShadowSelectEndMenu(id, inventory),
+                Component.literal("ShadowSelectEnd")));
+    }
+
+    private static boolean hasBastionGuard(ServerPlayer player) {
+        return AdvancementHelper.isDone(player, BASTION_GUARD_ADV);
     }
 }
