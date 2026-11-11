@@ -61,6 +61,8 @@ public final class ModDataGenerator {
                         new LootTableProvider.SubProviderEntry(
                                 ModMeltDreamCrystalChestLootTablesProvider::new, LootContextParamSets.CHEST),
                         new LootTableProvider.SubProviderEntry(
+                                ModLampShadowChestLootTablesProvider::new, LootContextParamSets.CHEST),
+                        new LootTableProvider.SubProviderEntry(
                                 ModFishingLootTablesProvider::new, LootContextParamSets.FISHING)), lookup));
 
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existing));

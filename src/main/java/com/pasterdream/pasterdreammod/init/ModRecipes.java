@@ -10,6 +10,10 @@ import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipeSerializer;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipe;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipeSerializer;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableCopyRecipe;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableCopyRecipeSerializer;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableResearchRecipe;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableResearchRecipeSerializer;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipe;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipeSerializer;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorRecipe;
@@ -65,6 +69,18 @@ public class ModRecipes {
 
     public static final DeferredHolder<RecipeSerializer<?>, ClaypanRecipeSerializer> CLAYPAN_SERIALIZER =
             RECIPE_SERIALIZERS.register("claypan", ClaypanRecipeSerializer::new);
+
+    public static final DeferredHolder<RecipeType<?>, RecipeType<ResearchTableCopyRecipe>> RESEARCH_TABLE_COPY =
+            RECIPE_TYPES.register("research_table_copy", () -> new RecipeType<>() {});
+
+    public static final DeferredHolder<RecipeType<?>, RecipeType<ResearchTableResearchRecipe>> RESEARCH_TABLE_RESEARCH =
+            RECIPE_TYPES.register("research_table_research", () -> new RecipeType<>() {});
+
+    public static final DeferredHolder<RecipeSerializer<?>, ResearchTableCopyRecipeSerializer> RESEARCH_TABLE_COPY_SERIALIZER =
+            RECIPE_SERIALIZERS.register("research_table_copy", ResearchTableCopyRecipeSerializer::new);
+
+    public static final DeferredHolder<RecipeSerializer<?>, ResearchTableResearchRecipeSerializer> RESEARCH_TABLE_RESEARCH_SERIALIZER =
+            RECIPE_SERIALIZERS.register("research_table_research", ResearchTableResearchRecipeSerializer::new);
 
     public static final DeferredHolder<RecipeType<?>, RecipeType<DreamCauldronRecipe>> DREAM_CAULDRON =
             RECIPE_TYPES.register("dream_cauldron", () -> new RecipeType<>() {});

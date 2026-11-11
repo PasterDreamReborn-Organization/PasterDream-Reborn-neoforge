@@ -27,6 +27,8 @@ import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcr
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateMenu;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanMenu;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableMenu;
 import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
@@ -149,6 +151,13 @@ public class ModMenus {
             {
                 BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
                 return new ClaypanMenu(windowId, inv, (ClaypanBlockEntity) blockEntity);
+            }));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<ResearchTableMenu>> RESEARCH_TABLE =
+            MENUS.register("research_table", () -> IMenuTypeExtension.create((windowId, inv, data) ->
+            {
+                BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+                return new ResearchTableMenu(windowId, inv, (ResearchTableBlockEntity) blockEntity);
             }));
 
     public static final DeferredHolder<MenuType<?>, MenuType<DreamCauldronMenu>> DREAM_CAULDRON =

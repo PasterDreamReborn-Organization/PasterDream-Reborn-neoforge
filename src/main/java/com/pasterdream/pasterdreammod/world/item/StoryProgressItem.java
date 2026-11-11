@@ -134,7 +134,10 @@ public class StoryProgressItem extends Item {
         level.playSound(null, player.blockPosition(),
                 SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1.0f, 1.0f);
 
-        stack.shrink(1);
+        if (!player.isCreative())
+        {
+            stack.shrink(1);
+        }
         return InteractionResultHolder.consume(stack);
     }
 

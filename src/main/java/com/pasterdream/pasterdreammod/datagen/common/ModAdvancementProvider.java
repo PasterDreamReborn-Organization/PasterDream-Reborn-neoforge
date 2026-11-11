@@ -27,6 +27,7 @@ import net.minecraft.advancements.critereon.ConsumeItemTrigger;
 import net.minecraft.advancements.critereon.ChangeDimensionTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.LocationPredicate;
+import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.advancements.critereon.RecipeCraftedTrigger;
 import net.minecraft.core.HolderGetter;
@@ -506,7 +507,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
 
             // ========== 灯影之下 Tab 页根进度（独立 tab，CHALLENGE）==========
             // 原作 achievement_shadow_start，首次进入 lamp_shadow_world 时触发
-            Advancement.Builder.advancement()
+            AdvancementHolder enterLampShadowWorld = Advancement.Builder.advancement()
                     .display(
                             ModBlocks.TWILIGHT_LANTERN.get(),
                             Component.translatable("advancements.pasterdream.story.enter_lamp_shadow_world.title"),
@@ -521,6 +522,90 @@ public class ModAdvancementProvider extends AdvancementProvider {
                     .rewards(AdvancementRewards.Builder.experience(100))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/enter_lamp_shadow_world"), existingFileHelper);
+
+            // 浸影回忆 — 获得笔记残页（原作 achievement_shadow_a_0，+10 XP，解锁解析配方）
+            AdvancementHolder shadowBrokenNote = Advancement.Builder.advancement()
+                    .parent(enterLampShadowWorld)
+                    .display(
+                            ModItems.LAMP_SHADOW_BROKEN_NOTE.get(),
+                            Component.translatable("advancements.pasterdream.story.broken_note.title"),
+                            Component.translatable("advancements.pasterdream.story.broken_note.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("obtain_broken_note", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ItemPredicate.Builder.item().of(ModItems.LAMP_SHADOW_BROKEN_NOTE.get())
+                                    .withCount(MinMaxBounds.Ints.exactly(1)).build()))
+                    .addCriterion("has_lamp_shadow_root",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/enter_lamp_shadow_world")))
+                    .rewards(AdvancementRewards.Builder.experience(10)
+                            .addRecipe(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_unknown_note")))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/broken_note"), existingFileHelper);
+
+            // 于影研读 — 获得研究台（原作 achievement_shadow_a_1 位置，+10 XP）
+            AdvancementHolder shadowResearchTable = Advancement.Builder.advancement()
+                    .parent(shadowBrokenNote)
+                    .display(
+                            ModItems.RESEARCH_TABLE.get(),
+                            Component.translatable("advancements.pasterdream.story.research_table.title"),
+                            Component.translatable("advancements.pasterdream.story.research_table.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("obtain_research_table", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.RESEARCH_TABLE.get()))
+                    .addCriterion("has_lamp_shadow_root",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/enter_lamp_shadow_world")))
+                    .rewards(AdvancementRewards.Builder.experience(10))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/research_table"), existingFileHelper);
+
+            // ========== 灯影世界剧情线（纯逻辑进度，不在进度界面显示）==========
+            AdvancementHolder depositionShadow = Advancement.Builder.advancement()
+                    .parent(enterLampShadowWorld)
+                    .addCriterion("story_progress", new Criterion<>(CriteriaTriggers.IMPOSSIBLE, new ImpossibleTrigger.TriggerInstance()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/deposition_shadow"), existingFileHelper);
+
+            AdvancementHolder lampShadowTravelogue1 = Advancement.Builder.advancement()
+                    .parent(depositionShadow)
+                    .addCriterion("story_progress", new Criterion<>(CriteriaTriggers.IMPOSSIBLE, new ImpossibleTrigger.TriggerInstance()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/lamp_shadow_travelogue_1"), existingFileHelper);
+
+            AdvancementHolder shadowDungeon = Advancement.Builder.advancement()
+                    .parent(lampShadowTravelogue1)
+                    .addCriterion("story_progress", new Criterion<>(CriteriaTriggers.IMPOSSIBLE, new ImpossibleTrigger.TriggerInstance()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_dungeon"), existingFileHelper);
+
+            AdvancementHolder deception = Advancement.Builder.advancement()
+                    .parent(shadowDungeon)
+                    .addCriterion("read_deception_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("欺诈"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/deception"), existingFileHelper);
+
+            AdvancementHolder bargain = Advancement.Builder.advancement()
+                    .parent(deception)
+                    .addCriterion("read_bargain_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("交易"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/bargain"), existingFileHelper);
+
+            Advancement.Builder.advancement()
+                    .parent(bargain)
+                    .addCriterion("read_shattered_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("破碎"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shattered"), existingFileHelper);
         }
     }
 
