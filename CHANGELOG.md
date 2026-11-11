@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 105：同步泰拉剑气命中/纹理渲染与 lastHurt 访问变换（2026-11-11）
+
+- 同步上游 #1301/#1302：泰拉剑气按本 tick 位移做扫掠 OBB 命中判定，候选 AABB 覆盖整段路径；侧轴统一由飞行方向与高度轴计算；仅在 `hurt()` 成功后记录命中并扣减穿透伤害，火焰附加改为命中后结算。
+- 剑气刀光由程序化几何改为双面加亮纹理渲染，新增 `swordWave` RenderType 与 `terrasword_wave.png`；服务端拖尾粒子改为按 96 格内玩家逐个强制发送，避免 32 格发送限制与客户端粒子设置过滤导致远端消失。
+- 同步 #1291：移除 `LivingEntityAccessor` Mixin，改用访问变换器暴露 `LivingEntity.lastHurt`；剧毒效果与本仓库既有回避结算同步改用该字段。
+- 1.21.1 适配：纹理 RenderType 使用 `DefaultVertexFormat.POSITION_TEX_COLOR` 与 `position_tex_color` shader，顶点改为 `addVertex(...).setColor(...).setUv(...)`；粒子发送使用 `ServerLevel.sendParticles(player, particle, true, ...)`。
+- `runData` 写入 0 个文件，`build` 通过，`runGameTestServer` 183/183 通过。客户端纹理方向/透明度、双面加亮、远端拖尾与高速边缘命中待游戏内验收。
+
 ### 批次 104：冰影战锤与撼地水晶链（2026-11-11，T18-B 部分）
 
 - 迁入 `ice_shadow_hammer` 武器与 `shaking_crystal` 撼地水晶实体：保留来源 ID、835 耐久、4.0 攻速、9.0 攻击加成、防火、EPIC 品质、0.5 融梦能量消耗、80 tick 冷却、撼地水晶三段伤害与混乱/冻结/伤害吸收 I 行为。
