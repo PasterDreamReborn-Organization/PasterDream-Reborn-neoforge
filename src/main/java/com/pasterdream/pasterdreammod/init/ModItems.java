@@ -134,6 +134,10 @@ import com.pasterdream.pasterdreammod.world.item.shadowalloytool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.*;
 import com.pasterdream.pasterdreammod.world.item.arrows.*;
 import com.pasterdream.pasterdreammod.world.item.tidetool.*;
+import com.pasterdream.pasterdreammod.world.item.whiteswordtool.WhiteSwordItem;
+import com.pasterdream.pasterdreammod.world.item.shadowswordtool.ShadowSwordItem;
+import com.pasterdream.pasterdreammod.world.item.curio.BroochOfWhiteOrchidItem;
+import com.pasterdream.pasterdreammod.world.item.curio.SealOfTheCorruptedItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
@@ -1182,6 +1186,14 @@ public class ModItems {
             () -> new SwordItem(ModToolTiers.BROKEN_HERO_SWORD, new Item.Properties().fireResistant()
                     .attributes(SwordItem.createAttributes(ModToolTiers.BROKEN_HERO_SWORD, 3, -2.4f))));
 
+    // 白厄
+    public static final DeferredItem<Item> WHITE_SWORD = ITEMS.register("white_sword",
+            () -> new WhiteSwordItem(ModToolTiers.WHITE_SWORD, 3, -2.4f));
+
+    // 影刃
+    public static final DeferredItem<Item> SHADOW_SWORD = ITEMS.register("shadow_sword",
+            () -> new ShadowSwordItem(ModToolTiers.SHADOW_SWORD, 3, -2.4f));
+
     // ===== 钛金装备 =====
     public static final DeferredItem<Item> TITANIUM_HELMET = ITEMS.register("titanium_helmet",
             () -> new TitaniumArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.HELMET,
@@ -1780,6 +1792,10 @@ public class ModItems {
             AllkindsRingItem::new);
     public static final DeferredItem<Item> KAICHU_OMAMORI = ITEMS.register("kaichu_omamori",
             KaichuOmamoriItem::new);
+    public static final DeferredItem<Item> BROOCH_OF_WHITE_ORCHID = ITEMS.register("brooch_of_white_orchid",
+            BroochOfWhiteOrchidItem::new);
+    public static final DeferredItem<Item> SEAL_OF_THE_CORRUPTED = ITEMS.register("seal_of_the_corrupted",
+            SealOfTheCorruptedItem::new);
     public static final DeferredItem<Item> TERRA_FLOATING_ISLAND = ITEMS.register("terra_floating_island",
             TerraFloatingIslandItem::new);
     public static final DeferredItem<Item> BLESSING_OF_CECILIA = ITEMS.register("blessing_of_cecilia",
