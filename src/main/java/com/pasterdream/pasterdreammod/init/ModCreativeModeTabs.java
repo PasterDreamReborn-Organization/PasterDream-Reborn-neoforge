@@ -629,6 +629,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_BED.get());
                         output.accept(ModItems.SHADOW_DUNGEON_WALL_KEY.get());
                         output.accept(ModItems.SHADOW_DUNGEON_FLOOR_KEY.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_PORTAL.get());
+                        output.accept(ModItems.BROKEN_SHADOW_DUNGEON_PORTAL.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_GATE.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_BARRIER.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE_CORE.get());
                         output.accept(ModItems.SHADOW_HAND_TRAP.get());
@@ -802,6 +806,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get());
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get());
+                        output.accept(ModItems.DREAM_SPAWNER.get());
+                        output.accept(ModItems.FADED_DREAM_SPAWNER.get());
                         output.accept(ModItems.PINK_CHICKEN_SPAWN_EGG.get());
                         output.accept(ModItems.PINK_SLIME_SPAWN_EGG.get());
                         output.accept(ModItems.TERRORBEAK_SPAWN_EGG.get());

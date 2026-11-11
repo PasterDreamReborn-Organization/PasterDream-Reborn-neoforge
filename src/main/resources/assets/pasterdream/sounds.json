@@ -317,5 +317,8 @@
   },
   "shadow_sword": {
     "sounds": [{ "name": "pasterdream:shadow_sword", "stream": true, "volume": 0.5 }]
+  },
+  "shadow_door": {
+    "sounds": [{ "name": "pasterdream:shadow_door", "stream": false }]
   }
 }

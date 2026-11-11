@@ -567,6 +567,64 @@ public class ModAdvancementProvider extends AdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/research_table"), existingFileHelper);
 
+            // 困顿囚徒 —— 首次进入暗影地牢（原作 achievement_shadow_c_0，程序授予，+10 XP）
+            AdvancementHolder shadowPrisoner = Advancement.Builder.advancement()
+                    .parent(shadowResearchTable)
+                    .display(
+                            ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(),
+                            Component.translatable("advancements.pasterdream.story.shadow_prisoner.title"),
+                            Component.translatable("advancements.pasterdream.story.shadow_prisoner.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("enter_shadow_dungeon", new Criterion<>(CriteriaTriggers.IMPOSSIBLE, new ImpossibleTrigger.TriggerInstance()))
+                    .rewards(AdvancementRewards.Builder.experience(10))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_prisoner"), existingFileHelper);
+
+            // 第一次对话完成（程序授予，触发暗影窥视）
+            AdvancementHolder shadowNpcFirstDialogue = Advancement.Builder.advancement()
+                    .addCriterion("first_dialogue", new Criterion<>(CriteriaTriggers.IMPOSSIBLE, new ImpossibleTrigger.TriggerInstance()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_npc_first_dialogue"), existingFileHelper);
+
+            // 暗影入侵事件完成（解锁第二次对话）—— 可见目标进度，挂困顿囚徒之后
+            AdvancementHolder shadowIntrudeComplete = Advancement.Builder.advancement()
+                    .parent(shadowPrisoner)
+                    .display(
+                            ModItems.NIGHTMARE_FUEL.get(),
+                            Component.translatable("advancements.pasterdream.story.shadow_intrude_complete.title"),
+                            Component.translatable("advancements.pasterdream.story.shadow_intrude_complete.description"),
+                            null,
+                            AdvancementType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("intrude_complete", new Criterion<>(CriteriaTriggers.IMPOSSIBLE, new ImpossibleTrigger.TriggerInstance()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_intrude_complete"), existingFileHelper);
+
+            // 第二次对话完成（解锁灯影选择）
+            AdvancementHolder shadowNpcSecondDialogue = Advancement.Builder.advancement()
+                    .addCriterion("second_dialogue", new Criterion<>(CriteriaTriggers.IMPOSSIBLE, new ImpossibleTrigger.TriggerInstance()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_npc_second_dialogue"), existingFileHelper);
+
+            // 吹影镂尘 —— 击败亚伦柯斯之触（原作 achievement_shadow_e_0），挂暗影入侵之后
+            AdvancementHolder defeatAaroncos = Advancement.Builder.advancement()
+                    .parent(shadowIntrudeComplete)
+                    .display(
+                            ModItems.PURE_HORROR.get(),
+                            Component.translatable("advancements.pasterdream.story.defeat_aaroncos.title"),
+                            Component.translatable("advancements.pasterdream.story.defeat_aaroncos.description"),
+                            null,
+                            AdvancementType.GOAL,
+                            true, true, false
+                    )
+                    .addCriterion("defeat_aaroncos", new Criterion<>(CriteriaTriggers.IMPOSSIBLE, new ImpossibleTrigger.TriggerInstance()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/defeat_aaroncos"), existingFileHelper);
+
             // ========== 灯影世界剧情线（纯逻辑进度，不在进度界面显示）==========
             AdvancementHolder depositionShadow = Advancement.Builder.advancement()
                     .parent(enterLampShadowWorld)

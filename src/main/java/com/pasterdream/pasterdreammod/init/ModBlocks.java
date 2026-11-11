@@ -24,6 +24,12 @@ import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapB
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlock;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlock;
+import com.pasterdream.pasterdreammod.world.block.dreamspawner.DreamSpawnerBlock;
+import com.pasterdream.pasterdreammod.world.block.dreamspawner.FadedDreamSpawnerBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.barrier.ShadowDungeonBarrierBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowDungeonGateBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalBlock;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamCrackBlock;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlock;
@@ -317,6 +323,12 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SHATTERED_SHADOW_DUNGEON_BRICKS = BLOCKS.register("shattered_shadow_dungeon_bricks", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(10.0F).requiresCorrectToolForDrops()));
     public static final DeferredBlock<Block> SHADOW_DUNGEON_WALL_KEY = BLOCKS.register("shadow_dungeon_wall_key", ShadowDungeonWallKeyBlock::new);
     public static final DeferredBlock<Block> SHADOW_DUNGEON_FLOOR_KEY = BLOCKS.register("shadow_dungeon_floor_key", ShadowDungeonFloorKeyBlock::new);
+    public static final DeferredBlock<Block> SHADOW_DUNGEON_GATE = BLOCKS.register("shadow_dungeon_gate", ShadowDungeonGateBlock::new);
+    public static final DeferredBlock<Block> SHADOW_DUNGEON_BARRIER = BLOCKS.register("shadow_dungeon_barrier", () -> new ShadowDungeonBarrierBlock());
+    public static final DeferredBlock<Block> BROKEN_SHADOW_DUNGEON_PORTAL = BLOCKS.register("broken_shadow_dungeon_portal", BrokenShadowDungeonPortalBlock::new);
+    public static final DeferredBlock<Block> SHADOW_DUNGEON_PORTAL = BLOCKS.register("shadow_dungeon_portal", ShadowDungeonPortalBlock::new);
+    public static final DeferredBlock<Block> DREAM_SPAWNER = BLOCKS.register("dream_spawner", DreamSpawnerBlock::new);
+    public static final DeferredBlock<Block> FADED_DREAM_SPAWNER = BLOCKS.register("faded_dream_spawner", FadedDreamSpawnerBlock::new);
     // ===== 灯影竞技场 / 裂隙方块 =====
     public static final DeferredBlock<Block> SHADOW_ARENA_BLOCK = BLOCKS.register("shadow_arena_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(-1.0F, 3600000.0F)));
     public static final DeferredBlock<Block> SHADOW_FISSURE_0 = BLOCKS.register("shadow_fissure_0", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
