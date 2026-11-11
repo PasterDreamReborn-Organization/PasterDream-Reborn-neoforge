@@ -2027,6 +2027,13 @@ public class ModRecipesProvider extends RecipeProvider {
         saveMortarRecipe(pWriter, "dyedream_dye_from_dyedream_dust_piece_and_bone_meal",
                 List.of(ItemIngredient.of(ModItems.DYEDREAM_DUST_PIECE.get(), 1), ItemIngredient.of(Items.BONE_MEAL, 1)),
                 List.of(ItemIngredient.of(ModItems.DYEDREAM_DYE.get(), 9)));
+        saveMortarRecipe(pWriter, "shadow_jelly",
+                List.of(ItemIngredient.of(ModItems.NIGHTMARE_FUEL.get(), 2),
+                        ItemIngredient.of(Items.SLIME_BALL, 1),
+                        ItemIngredient.of(Items.SUGAR, 2),
+                        ItemIngredient.of(ModItems.SHADOW_FUNGUS.get(), 1),
+                        ItemIngredient.of(ModItems.WHITE_ORCHID_FLOWER.get(), 1)),
+                List.of(ItemIngredient.of(ModItems.SHADOW_JELLY.get(), 1)));
     }
 
     private void pebbleRecipes(RecipeOutput pWriter) {
@@ -2520,6 +2527,19 @@ public class ModRecipesProvider extends RecipeProvider {
                         .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get()),
                                 has(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get())),
                 pWriter, "wind_runner_jelly");
+
+        // 暗影果冻（梦魇燃料 + 粘液球 + 糖 + 暗影蘑菇 + 白兰花，研钵为工具不消耗）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SHADOW_JELLY.get(), 1)
+                        .requires(ModItems.MORTAR.get())
+                        .requires(ModItems.NIGHTMARE_FUEL.get(), 2)
+                        .requires(Items.SLIME_BALL)
+                        .requires(Items.SUGAR, 2)
+                        .requires(ModItems.SHADOW_FUNGUS.get())
+                        .requires(ModItems.WHITE_ORCHID_FLOWER.get())
+                        .unlockedBy(getHasName(ModItems.NIGHTMARE_FUEL.get()),
+                                has(ModItems.NIGHTMARE_FUEL.get())),
+                pWriter, "shadow_jelly");
     }
 
     private void saveMortarRecipe(RecipeOutput output, String name, List<ItemIngredient> inputs, List<ItemIngredient> outputs) {
@@ -2864,6 +2884,32 @@ public class ModRecipesProvider extends RecipeProvider {
                 .requires(Items.FEATHER)
                 .requires(Items.IRON_NUGGET)
                 .unlockedBy(getHasName(Items.FEATHER), has(Items.FEATHER))
+                .save(pWriter);
+
+        // 4x 灯影之下笔记残页 -> 未解读的笔记（灯影之下）
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get(), 1)
+                .requires(ModItems.LAMP_SHADOW_BROKEN_NOTE.get(), 4)
+                .unlockedBy(getHasName(ModItems.LAMP_SHADOW_BROKEN_NOTE.get()), has(ModItems.LAMP_SHADOW_BROKEN_NOTE.get()))
+                .save(pWriter);
+
+        // 4x 染梦世界笔记残页 -> 未解读的笔记（染梦世界）
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_UNKNOWN_NOTE.get(), 1)
+                .requires(ModItems.DYEDREAM_BROKEN_NOTE.get(), 4)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_BROKEN_NOTE.get()), has(ModItems.DYEDREAM_BROKEN_NOTE.get()))
+                .save(pWriter);
+
+        // 研究台
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RESEARCH_TABLE.get(), 1)
+                .pattern("abc")
+                .pattern("ddd")
+                .pattern("e f")
+                .define('a', Tags.Items.BOOKSHELVES)
+                .define('b', ItemTags.WOOL_CARPETS)
+                .define('c', ModItems.PERGAMYN.get())
+                .define('d', ItemTags.LOGS)
+                .define('e', Tags.Items.CHESTS)
+                .define('f', Items.CARTOGRAPHY_TABLE)
+                .unlockedBy(getHasName(ModItems.DREAM_NOTES_BOOK.get()), has(ModItems.DREAM_NOTES_BOOK.get()))
                 .save(pWriter);
 
         // 风泊书桌

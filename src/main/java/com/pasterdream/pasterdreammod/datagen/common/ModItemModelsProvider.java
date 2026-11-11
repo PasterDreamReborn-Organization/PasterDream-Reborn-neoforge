@@ -50,8 +50,17 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.PROTECT_DECK.get());
         basicItem(ModItems.BLACK_STICK.get());
         basicItem(ModItems.LAMP_SHADOW_BROKEN_NOTE.get());
+        basicItem(ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get());
         basicItem(ModItems.DYEDREAM_BROKEN_NOTE.get());
+        basicItem(ModItems.DYEDREAM_UNKNOWN_NOTE.get());
         basicItem(ModItems.DREAM_NOTES_BOOK.get());
+        basicItem(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get());
+        basicItem(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get());
+        basicItem(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get());
+        withExistingParent(ModItems.LAMP_SHADOW_STORY_GUIDE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/dream_notes_lamp_shadow_world"));
+        withExistingParent(ModItems.DYEDREAM_STORY_GUIDE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/dream_notes_dyedream_world"));
         basicItem(ModItems.BLUE_PRINT.get());
         basicItem(ModItems.TITANIUM_UPGRADE.get());
         basicItem(ModItems.SCULK_UPGRADE.get());
@@ -313,6 +322,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("item/galaxy_jelly"));
         basicItem(ModItems.FORTUNE_JELLY.get());
         basicItem(ModItems.WIND_RUNNER_JELLY.get());
+        basicItem(ModItems.SHADOW_JELLY.get());
         basicItem(ModItems.MELT_DREAM_COTTON_CANDY.get());
         basicItem(ModItems.YINHUL_COTTON_CANDY.get());
         basicItem(ModItems.JELLYFISH_MUD.get());

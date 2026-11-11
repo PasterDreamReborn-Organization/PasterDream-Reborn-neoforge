@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 106：研究台、灯影之下战利品与剧情笔记道具（2026-11-11，T12-C / T18-B 部分）
+
+- 迁入 `research_table` 方块、主/附属方块实体、菜单/屏幕、方块物品与双格放置逻辑；保留来源物品栏 6 格、250 mB 墨水槽、复制/研究按钮位置与快捷转移顺序。
+- 迁入研究台复制/研究两类配方及序列化器：以 `c:ink` 墨水、`forge:pen` 羽毛笔、来源笔记/残页和羊皮纸为输入；复制消耗 2 倍源笔记数量并扣羽毛笔耐久，解析把未解析笔记转为剧情指南。
+- 迁入剧情道具：`lamp_shadow_unknown_note`、`dyedream_unknown_note`、`lamp_shadow_story_guide`、`dyedream_story_guide`、三种 `dream_notes_*` 与寻梦者笔记阅读界面/内容注册；补齐 4 残页合成未解析笔记、研究台合成与墨水研究配方；已解析剧情指南在创造模式使用时不消耗；补灯影残页/研究台的玩家 tick 周期进度补触发。
+- 迁入灯影之下战利品表：`chests/shadow_relic_chest_loot_common`、`chests/shadow_dungeon_repository_common/core/supply`，并补齐战利品依赖的 `shadow_jelly` 食物、研钵配方与贴图；结构模板中的 `research_table` 现可正常放置。
+- 1.21.1 适配：配方改为 `RecipeInput` + `MapCodec`/`StreamCodec`，NBT 菜单数据改用 `HolderLookup.Provider`，方块交互改为 `useWithoutItem`/`useItemOn`，能力注册集中到 `ModCapabilities`；羽毛笔耐久改用 `setDamageValue`，来源 `forge:ink` 标签改为 `c:ink`。
+- 新增 `ResearchTableGameTests`：复制/解析处理器、6 条配方加载、羽毛笔消耗与 4 张灯影战利品表加载断言。`runData` 写入 34 个文件后复跑写入 0，`build` 通过，`runGameTestServer` 187/187 通过；客户端 GUI/阅读界面、结构内实际放置、战利品箱实测与 JEI 分类仍待验收。
+
 ### 批次 105：同步泰拉剑气命中/纹理渲染与 lastHurt 访问变换（2026-11-11）
 
 - 同步上游 #1301/#1302：泰拉剑气按本 tick 位移做扫掠 OBB 命中判定，候选 AABB 覆盖整段路径；侧轴统一由飞行方向与高度轴计算；仅在 `hurt()` 成功后记录命中并扣减穿透伤害，火焰附加改为命中后结算。

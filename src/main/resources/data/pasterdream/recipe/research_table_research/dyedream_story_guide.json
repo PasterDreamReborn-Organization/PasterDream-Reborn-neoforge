@@ -1,0 +1,32 @@
+{
+  "type": "pasterdream:research_table_research",
+  "fluidInputs":
+  [
+    {
+      "fluidTag": "c:ink",
+      "amount": 25
+    }
+  ],
+  "pen":
+  [
+    {
+      "tag": "forge:pen",
+      "count": 1,
+      "nbt":"{Damage:1}"
+    }
+  ],
+  "unresolvedNote":
+  [
+    {
+      "item": "pasterdream:dyedream_unknown_note",
+      "count": 1
+    }
+  ],
+  "output":
+  [
+    {
+      "item": "pasterdream:dyedream_story_guide",
+      "count": 1
+    }
+  ]
+}

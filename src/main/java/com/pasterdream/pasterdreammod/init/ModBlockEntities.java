@@ -24,6 +24,8 @@ import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowches
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableAddonBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntity;
@@ -194,6 +196,14 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShadowBedBlockEntity>> SHADOW_BED =
             BLOCK_ENTITIES.register("shadow_bed",
                     () -> BlockEntityType.Builder.of(ShadowBedBlockEntity::new, ModBlocks.SHADOW_BED.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ResearchTableBlockEntity>> RESEARCH_TABLE =
+            BLOCK_ENTITIES.register("research_table",
+                    () -> BlockEntityType.Builder.of(ResearchTableBlockEntity::new, ModBlocks.RESEARCH_TABLE.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ResearchTableAddonBlockEntity>> RESEARCH_TABLE_ADDON =
+            BLOCK_ENTITIES.register("research_table_addon",
+                    () -> BlockEntityType.Builder.of(ResearchTableAddonBlockEntity::new, ModBlocks.RESEARCH_TABLE.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

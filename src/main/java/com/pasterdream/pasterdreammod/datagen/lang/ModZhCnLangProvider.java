@@ -48,6 +48,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("gui.pasterdream.mortar", "研钵");
         add("gui.pasterdream.fluid_slot.hint", "用流体容器交互该槽位时，左键取液，右键注液");
         add("button.pasterdream.mortarbutton", "研磨");
+        add("button.pasterdream.copy_button", "复制");
+        add("button.pasterdream.research_button", "研究");
         add("tooltip.pasterdream.右键打开GUI", "§7右键打开GUI");
         add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "融梦涌泉桶");
         add(ModItems.SHADOW_LIQUID_BUCKET.get(), "熔融阴影桶");
@@ -183,7 +185,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.PROTECT_DECK.get(), "护甲板");
         add(ModItems.BLACK_STICK.get(), "黑石棍");
         add(ModItems.LAMP_SHADOW_BROKEN_NOTE.get(), "灯影之下笔记碎片");
+        add(ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get(), "灯影之下未解析的笔记");
         add(ModItems.DYEDREAM_BROKEN_NOTE.get(), "染梦世界笔记碎片");
+        add(ModItems.DYEDREAM_UNKNOWN_NOTE.get(), "染梦世界未解析的笔记");
         add("tooltip.pasterdream.broken_note", "§7我们还需要了解更多......");
         add(ModItems.TITANIUM_UPGRADE.get(), "钛金升级套件");
         add(ModItems.DYEDREAM_UPGRADE.get(), "染梦升级套件");
@@ -569,6 +573,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("biome.pasterdream.shadow_ruins", "阴影古迹");
         add("biome.pasterdream.shadow_ocean", "阴影之海");
         add(ModBlocks.SHADOW_BLAST_FURNACE.get(), "暗影高炉");
+        add(ModBlocks.RESEARCH_TABLE.get(), "研究台");
         add("pasterdream.cauldron.brew", "§d酿造完成！得到 %s ml 药水");
         add("pasterdream.cauldron.fuse", "§d效果融合成功！得到 %s ml 药水");
         add("pasterdream.cauldron.blend", "§d勾兑成功！得到 %s ml 药水");
@@ -887,6 +892,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.MILKY_WAY_JELLY.get(), "银河果冻");
         add(ModItems.FORTUNE_JELLY.get(), "福灵果冻");
         add(ModItems.WIND_RUNNER_JELLY.get(), "风行者果冻");
+        add(ModItems.SHADOW_JELLY.get(), "暗影果冻");
+        add("tooltip.pasterdreammod.shadow_jelly", "§9食用后会使自身的暗影难度升高或降低1级");
+        add("tooltip.pasterdreammod.shadow_jelly.flavor", "§7§o--傻子和疯子才会吃的令人难以下咽的果冻");
+        add("message.pasterdream.shadow_jelly.up", "§5你的暗影难度提升了！当前难度：%s 级（%s）");
+        add("message.pasterdream.shadow_jelly.down", "§7你的暗影难度降低了！当前难度：%s 级（%s）");
+        add("message.pasterdream.shadow_jelly.unchanged", "§7你的暗影难度没有变化（当前：%s 级）");
+        add("message.pasterdream.shadow_difficulty.tier.0", "极简单");
+        add("message.pasterdream.shadow_difficulty.tier.1", "简单");
+        add("message.pasterdream.shadow_difficulty.tier.2", "普通");
+        add("message.pasterdream.shadow_difficulty.tier.3", "困难");
         add(ModItems.MELT_DREAM_COTTON_CANDY.get(), "融梦棉花糖");
         add(ModItems.YINHUL_COTTON_CANDY.get(), "银狐棉花糖");
         add(ModItems.JELLYFISH_MUD.get(), "水母泥");
@@ -1565,6 +1580,29 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 寻梦者笔记书
         add("item.pasterdream.dream_notes_book", "寻梦者笔记书");
+        add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "寻梦者笔记-染梦世界");
+        add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "寻梦者笔记-灯影之下");
+        add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "寻梦者笔记-风之旅途");
+        add(ModItems.LAMP_SHADOW_STORY_GUIDE.get(), "灯影之下已解析的笔记");
+        add(ModItems.DYEDREAM_STORY_GUIDE.get(), "染梦世界已解析的笔记");
+        add("tooltip.pasterdream.developerNameList", "§d开发者名单");
+        add("tooltip.pasterdream.dyedreamCreak", "§d染梦裂隙");
+        add("tooltip.pasterdream.dyedreamWorld", "§d染梦世界");
+        add("tooltip.pasterdream.pinkSlime", "§d粉红史莱姆");
+        add("tooltip.pasterdream.whiteCorolla", "§d苍白雪莲");
+        add("tooltip.pasterdream.paleBoneNeedle", "§d苍白骨针");
+        add("tooltip.pasterdream.dreamFertilizer", "§d衍梦肥泥");
+        add("tooltip.pasterdream.theLurkersInTheShadow", "§8阴影中的潜藏者");
+        add("tooltip.pasterdream.infestedChurch", "§8侵染教堂");
+        add("tooltip.pasterdream.depositionShadow", "§8沉淀阴影");
+        add("tooltip.pasterdream.lampShadowTravelogue1", "§8灯影游记 其一");
+        add("tooltip.pasterdream.shadowDungeon", "§8暗影地牢");
+        add("tooltip.pasterdream.scare", "§8恐惧");
+        add("tooltip.pasterdream.notHaveWingsBirdHaveSpreadWingsDreamToo", "§a无翼鸟也有展翅的梦");
+        add("message.pasterdream.story_guide.not_entered_lamp_shadow", "你尚未踏足灯影之下");
+        add("message.pasterdream.story_guide.all_done", "灯影之下的所有笔记都已解析完毕");
+        add("message.pasterdream.story_guide.not_entered_dyedream", "你尚未踏足染梦世界");
+        add("message.pasterdream.story_guide.all_done_dyedream", "染梦世界的所有笔记都已解析完毕");
         add("itemGroup.pasterdream.pasterdream_dream_notes_tab", "帕斯特之梦 | 笔记");
         add("book.pasterdream.title.使用说明", "使用说明");
         add("book.pasterdream.content.使用说明", "    本文为此类型笔记书的相关使用说明。\n    笔记书旨在于修复原版使用MC原版written_book的相关问题，原版帕斯特之梦的书直接硬编码内容进去而没有使用翻译键，这导致没有办法使用中文以外的语种，written_book本身支持翻译键，但是还有两个问题，首先是其中的内容按页分开，这个已经按照MC原版的字分好了，在安装现代化UI等模组修改字体的时候，就会因为字体的问题（大小略微有些不同），显示到外面或者最后一行显示完后还空几个字的空间才到这一页结束，而且还需要手动处理每一页的内容，维护相当的不方便，而且再怎么说，文字换页这种东西也不应该是手动处理的，其次是中英文文字内容表达密度不一样的问题，比如相同的内容用中文写5页就写完了，但是用英文可能要写7页，这样相关的翻译就很难处理了，而且中文的最后几页会完全空白，所以此笔记书应运而生，可支持翻译键和自动文字换页，维护难度将大幅下降。\n    以下内容为代码层面上的使用方法，如果您是附属模组或整合包制作者，以下内容可能会帮助到您，添加新的内容时，需要准备好以下内容：\n    书名\n    作者名称\n    文本内容\n    书的材质及其尺寸（如果和本模组使用相同的可不用准备这个）\n    在FMLCommonSetupEvent中调用DreamNotesBookRegistry.register(String contentName, Component title, String author, Component content, ResourceLocation GUI, int GUI_X, int GUI_Y, int contentStartX, int contentStartY, int contentFinalX, int contentFinalY, ModelResourceLocation itemTexture, int color)，如果此书为剧情需要，需额外使用DreamNotesBookProgressRegistry.notesDimensionRegister(String contentName, String dimension);进行注册（也是在FMLCommonSetupEvent阶段调用），其中：\n    contentName表示此内容的名称，随后添加创造模式物品栏的时候会用到，需要注意的是这个不能与其他笔记书的contentName相同，否则游戏启动会报错，contentName支持中文，例如您的附属模组ModId为pasterdreamaddon，那么contentName可以写成\"PasterDreamAddon:笔记内容名称\"以和其他可能重名的区别开（甚至前面的PasterDreamAddon也可以写成中文名，例如写成\"帕斯特之梦附属模组:笔记内容名称\"）。\n    title是此笔记书的标题，为了可以翻译，请使用Component.translatable()，当然如果是纯数字/纯符号等确实不需要翻译的可以使用Component.literal()，这里面推荐填写\"book.pasterdreamaddon.title.书名\"，随后在Datagen中编写相关的翻译代码，例如add(\"book.pasterdreamaddon.title.书名\", \"标题名\");\n    author是作者名称，正常填写String类型进去就可以了，例如\"琴雨梦\"等。\n    content是书的内容，和title类似，在Component.translatable()中填写翻译键即可，推荐写成\"book.pasterdreamaddon.content.书名\"，然后在Datagen中填写add(\"book.pasterdreamaddon.title.书名\", \"书的内容\");\n    GUI是书打开后GUI的纹理文件，是一个ResourceLocation，如果需要自定义的请自备这个文件，注意文件名不要带大写字母，如果使用本模组的，那么这里填写GUIBackGroundRender.DREAM_NOTES_BOOK。\n    GUI_X和GUI_Y是这个GUI的宽度和高度，如果自备文件请根据实际值填写即可，如果使用本模组的，那么这两个值分别是140和180。\n    contentStartX和contentStartY是在这个GUI中显示文字的起始坐标，纹理中边框部分有装饰等不适合显示文字的地方，确认显示范围后，填写对应的这两个值即可，如果使用本模组的，那么这两个值分别是20和20。\n    contentFinalX和contentFinalY是在这个GUI中文字显示的终止位置，同理，如果使用自己的GUI则根据显示范围填写这两个值，如果使用本模组的，那么这两个值分别是120和170。\n    itemTexture是这个物品的图标，是一个ModelResourceLocation，可以使用本模组的或自定义，如果使用本模组的，可以通过GUIBackGroundRender.DREAM_NOTES_BOOK_DYEDREAM_WORLD来调用（还有其他几个材质的，分别是DREAM_NOTES_BOOK_OVERWORLD，DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD和DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD），如果需要自定义，那么应自备物品图标png文件，并放入textures\\item中，同时在models\\item中填写模型文件，假设这个名为\"pasterdream_addon_dream_notes_book_texture\"，和一般的物品类似，新建pasterdream_addon_dream_notes_book_texture.json并填写以下内容即可：\n{\n  \"parent\": \"item/generated\",\n  \"textures\":\n  {\n    \"layer0\": \"pasterdreamaddon:item/pasterdream_addon_dream_notes_book_texture\"\n  }\n}\n    在registerDreamNotesBookContentRelation中绑定时，ModelResourceLocation这一项填写new ModelResourceLocation(PasterDreamMod.MOD_ID, \"dream_notes_book_wind_journey_world\", \"inventory\")或者将其声明为ModelResourceLocation变量并调用即可。\n    color是文字颜色，是ARGB8888格式，一般写成16进制格式，写成0xXXXXXXXX，这8个X按照每2个分成4部分，分别表示：不透明度、红、绿、蓝，根据纹理背景决定即可。\n    在notesDimensionRegister中，String contentName和前面的DreamNotesBookRegistry相同，表示笔记书的内容，String dimension表示需要绑定的维度，填写String即可，帕斯特之梦有4个预设值，\"overworld\"，\"dyedream_world\"，\"lamp_shadow_world\"和\"wind_journey_world\"，根据需要进行填写即可，如果需要添加新的维度，则需要使用DreamNotesBookProgressRegistry.dimensionListRegister(String dimension);和DreamNotesBookProgressRegistry.dimensionGUIRegister(String dimension, ResourceLocation gui)，dimensionListRegister中填写对应维度id即可，例如\"pasterdreamaddon_addon_dream_dimension\"，dimensionGUIRegister中需要填写GUI纹理，和对应维度的书使用相同GUI即可，不过要注意的是，由于屏幕尺寸的原因，这个GUI的尺寸需要限制为140*180。\n    推荐添加至创造模式物品栏，方便调试也方便玩家阅览内容，在添加创造模式物品栏的代码中（例如ModCreativeModeTabs）添加output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT(\"PasterDreamAddon:笔记内容名称\"));\n    总结一下，在FMLCommonSetupEvent中调用DreamNotesBookRegistry.register(\"内容名称\", Component.translatable(\"标题翻译键\"), \"作者名称\", Component.translatable(\"内容翻译键\"), GUI纹理路径, GUI宽度, GUI高度, 文字显示起始X坐标, 文字显示起始Y坐标, 文字显示终止X坐标, 文字显示终止Y坐标, 物品模型, 颜色);，根据需要调用notesDimensionRegister，dimensionListRegister和dimensionGUIRegister，在Datagen中编写标题和内容的翻译，最后在创造模式物品栏中添加即可，祝您开发顺利。");
@@ -1732,6 +1770,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.TWILIGHT_LANTERN.get(), "暮影之笼");
         add(ModBlocks.SHADOW_BED.get(), "暮影长床");
         add("structure.pasterdream.twilight_lantern", "暮影之笼");
+        add("advancements.pasterdream.story.broken_note.title", "浸影回忆");
+        add("advancements.pasterdream.story.broken_note.description", "获得一张灯影之下梦境的笔记残片");
+        add("advancements.pasterdream.story.research_table.title", "于影研读");
+        add("advancements.pasterdream.story.research_table.description", "制作研究台以解析笔记");
         add("advancements.pasterdream.story.lamp_shadow_root.title", "侵染教堂");
         add("advancements.pasterdream.story.lamp_shadow_root.description", "阅读寻梦者笔记\"侵染教堂-黑面\"");
         add("advancements.pasterdream.story.bastion_guard.title", "据点守卫");

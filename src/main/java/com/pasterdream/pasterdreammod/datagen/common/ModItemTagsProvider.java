@@ -353,7 +353,16 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModBlockTags.STORAGE_BLOCKS_WIND_RUNNER_CRYSTAL, ModItemTags.STORAGE_BLOCKS_WIND_RUNNER_CRYSTAL);
 
         tag(TagKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dream_notes")))
+                .add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get())
+                .add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get())
+                .add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get())
                 .add(ModItems.BLUE_PRINT.get());
+
+        tag(ItemTags.BOOKSHELF_BOOKS)
+                .add(ModItems.DREAM_NOTES_BOOK.get())
+                .add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get())
+                .add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get())
+                .add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get());
 
     }
 }

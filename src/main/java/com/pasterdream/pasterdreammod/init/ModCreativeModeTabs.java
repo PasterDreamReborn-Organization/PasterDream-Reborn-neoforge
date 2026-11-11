@@ -100,7 +100,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCULK_HEART.get());
                         output.accept(ModItems.BLACK_STICK.get());
                         output.accept(ModItems.LAMP_SHADOW_BROKEN_NOTE.get());
+                        output.accept(ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get());
                         output.accept(ModItems.DYEDREAM_BROKEN_NOTE.get());
+                        output.accept(ModItems.DYEDREAM_UNKNOWN_NOTE.get());
                         output.accept(ModItems.BLACK_METAL_INGOT.get());
                         output.accept(ModItems.BLACK_METAL_NUGGET.get());
                         output.accept(ModItems.RUST_BLACK_METAL_GRAIN.get());
@@ -191,6 +193,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MILKY_WAY_JELLY.get());
                         output.accept(ModItems.FORTUNE_JELLY.get());
                         output.accept(ModItems.WIND_RUNNER_JELLY.get());
+                        output.accept(ModItems.SHADOW_JELLY.get());
                         output.accept(ModItems.MELT_DREAM_COTTON_CANDY.get());
                         output.accept(ModItems.YINHUL_COTTON_CANDY.get());
                         output.accept(ModItems.JELLYFISH_MUD.get());
@@ -601,6 +604,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WIND_MOOR_CRATE.get());
                         output.accept(ModItems.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get());
                         output.accept(ModItems.FEATHER_PEN.get());
+                        output.accept(ModItems.RESEARCH_TABLE.get());
                         output.accept(ModItems.LOST_SWORD_TOMB.get());
                         output.accept(ModItems.SAND_OF_TIME.get());
                         output.accept(ModItems.LIFE_CRYSTAL.get());
@@ -859,6 +863,8 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_dream_notes_tab"))
                     .icon(() -> DreamNotesBookWithNBTToCreativeModeTab.buildNBT("花园解密:迷梦冶梦莲"))
                     .displayItems((parameters, output) -> {
+                        output.accept(ModItems.LAMP_SHADOW_STORY_GUIDE.get());
+                        output.accept(ModItems.DYEDREAM_STORY_GUIDE.get());
                         output.accept(BluePrintWithNBTToCreativeModeTab.buildNBT("精铸工坊"));
                         output.accept(BluePrintWithNBTToCreativeModeTab.buildNBT("暗影高炉"));
 

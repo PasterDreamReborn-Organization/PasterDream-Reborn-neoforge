@@ -13,6 +13,7 @@ public class GUIBackGroundRender
     public static ResourceLocation CLAYPAN_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/claypan/claypan.png");
     public static ResourceLocation ARROW = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/claypan/arrow.png");
     public static ResourceLocation MORTAR_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/mortar/mortar.png");
+    public static ResourceLocation RESEARCH_TABLE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/research_table.png");
     public static ResourceLocation DREAM_CAULDRON_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron.png");
     public static ResourceLocation DREAM_CAULDRON_BUTTON_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_button.png");
     public static ResourceLocation DREAM_CAULDRON_BUTTON_HOVERED_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_button_hovered.png");
@@ -57,6 +58,26 @@ public class GUIBackGroundRender
     public static ResourceLocation SHADOW_DYED_DREAM_NOTES_BOOK_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/shadow_dyed_dream_notes_book.png");
     public static ResourceLocation DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book_wind_journey_world.png");
 
+    public static ResourceLocation DEVELOPER_NAME_LIST = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/developer_name_list.png");
+    public static ResourceLocation DYEDREAM_CRACK = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/dyedream_crack.png");
+    public static ResourceLocation DYEDREAM_WORLD = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/dyedream_world.png");
+    public static ResourceLocation PINK_SLIME = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/pink_slime.png");
+    public static ResourceLocation WHITE_COROLLA = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/white_corolla.png");
+    public static ResourceLocation PALE_BONE_NEEDLE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/pale_bone_needle.png");
+    public static ResourceLocation DREAM_FERTILIZER = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/dream_fertilizer.png");
+    public static ResourceLocation DREAM_ACCUMULATOR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/dream_accumulator.png");
+
+    public static ResourceLocation THE_LURKERS_IN_THE_SHADOW = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/the_lurkers_in_the_shadow.png");
+    public static ResourceLocation INFESTED_CHURCH = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/infested_church.png");
+    public static ResourceLocation DEPOSITION_SHADOW = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/deposition_shadow.png");
+    public static ResourceLocation LAMP_SHADOW_TRAVELOGUE_1 = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/lamp_shadow_travelogue_1.png");
+    public static ResourceLocation SHADOW_DUNGEON = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/shadow_dungeon.png");
+    public static ResourceLocation SCARE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/scare.png");
+
+    public static ResourceLocation NOT_HAVE_WINGS_BIRD_HAVE_SPREAD_WINGS_DREAM_TOO = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/not_have_wings_bird_has_spread_wings_dream_too.png");
+
+    public static ResourceLocation DREAM_NOTES_TEST = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/dream_notes_test.png");
+
     public static ResourceLocation USE_GUIDE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "use_guide");
     public static ResourceLocation DREAM_NOTES_BOOK_OVERWORLD = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_notes_book_overworld");
     public static ResourceLocation DREAM_NOTES_BOOK_DYEDREAM_WORLD = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_notes_book_dyedream_world");
@@ -99,6 +120,22 @@ public class GUIBackGroundRender
         RenderSystem.defaultBlendFunc();
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         guiGraphics.blit(PASTERDREAM_INVENTORY_GUI, x, y, 0, 0, 170, 84, 170, 84);
+    }
+
+    public static void rendResearchTableGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(RESEARCH_TABLE_GUI, x, y, 0, 0, 197, 115, 197, 115);
+    }
+
+    public static void rendDreamNotes(GuiGraphics guiGraphics, ResourceLocation dreamNotesResourceLocation, int x, int y, int width, int height, float scale)
+    {
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+        guiGraphics.pose().pushPose();
+        guiGraphics.pose().scale(scale, scale, 1);
+        guiGraphics.blit(dreamNotesResourceLocation, (int)(x / scale), (int)(y / scale), 0, 0, width, height, width, height);
+        guiGraphics.pose().popPose();
+        RenderSystem.disableBlend();
     }
 
     public static void rendStorageBagGUI(GuiGraphics guiGraphics, int x, int y)

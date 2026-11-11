@@ -5,6 +5,9 @@ import net.minecraft.world.item.ItemNameBlockItem;
 import com.pasterdream.pasterdreammod.world.item.debugsword.DebugSwordItem;
 import com.pasterdream.pasterdreammod.world.item.blueprints.BluePrintItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookItem;
+import com.pasterdream.pasterdreammod.world.item.dreamnotes.DreamNotesItem;
+import com.pasterdream.pasterdreammod.world.item.StoryProgressItem;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableItem;
 import com.pasterdream.pasterdreammod.world.item.lootgenerator.LootGeneratorItem;
 import com.pasterdream.pasterdreammod.world.item.modelbreakparticleproviderblockitem.ModelBreakParticleProviderBlockItem;
 import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
@@ -31,6 +34,7 @@ import com.pasterdream.pasterdreammod.world.item.PebbleItem;
 import com.pasterdream.pasterdreammod.world.item.PinkEggItem;
 import com.pasterdream.pasterdreammod.world.item.PliersItem;
 import com.pasterdream.pasterdreammod.world.item.SandofTimeItem;
+import com.pasterdream.pasterdreammod.world.item.ShadowJellyItem;
 import com.pasterdream.pasterdreammod.world.item.dreamtrainticket.DreamTrainTicketItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.EmptyProphecyCardItem;
@@ -796,6 +800,10 @@ public class ModItems {
                             .build()).useDuration(25)
             ));
 
+    public static final DeferredItem<Item> SHADOW_JELLY = ITEMS.register("shadow_jelly",
+            () -> new ShadowJellyItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-10)
+                    .food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).alwaysEdible().build()).useDuration(25)));
+
     public static final DeferredItem<Item> LIGHT_ORGAN = ITEMS.register("light_organ",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.GLOWING, 100, 0), 1.0f)
@@ -992,7 +1000,11 @@ public class ModItems {
     public static final DeferredItem<Item> BLACK_STICK = ITEMS.registerSimpleItem("black_stick");
     public static final DeferredItem<Item> LAMP_SHADOW_BROKEN_NOTE = ITEMS.register("lamp_shadow_broken_note",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
+    public static final DeferredItem<Item> LAMP_SHADOW_UNKNOWN_NOTE = ITEMS.register("lamp_shadow_unknown_note",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
     public static final DeferredItem<Item> DYEDREAM_BROKEN_NOTE = ITEMS.register("dyedream_broken_note",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
+    public static final DeferredItem<Item> DYEDREAM_UNKNOWN_NOTE = ITEMS.register("dyedream_unknown_note",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
     public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> SCULK_UPGRADE = ITEMS.registerSimpleItem("sculk_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
@@ -1375,6 +1387,7 @@ public class ModItems {
             () -> new TheEndlessBookOfDreamSeekersItem(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), new Item.Properties()));
     public static final DeferredItem<Item> PLIERS = ITEMS.register("pliers", () -> new PliersItem(new Item.Properties()));
     public static final DeferredItem<Item> FEATHER_PEN = ITEMS.register("feather_pen", () -> new Item(new Item.Properties().durability(8)));
+    public static final DeferredItem<Item> RESEARCH_TABLE = ITEMS.register("research_table", () -> new ResearchTableItem(ModBlocks.RESEARCH_TABLE.get(), new Item.Properties()));
     public static final DeferredItem<Item> SAND_OF_TIME = ITEMS.register("sand_of_time", SandofTimeItem::new);
     public static final DeferredItem<BlockItem> CLAYPAN = ITEMS.registerSimpleBlockItem(ModBlocks.CLAYPAN);
     public static final DeferredItem<Item> DREAM_CAULDRON = ITEMS.register("dream_cauldron", () -> new com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem(ModBlocks.DREAM_CAULDRON.get(), new Item.Properties()));
@@ -1798,6 +1811,16 @@ public class ModItems {
 
     public static final DeferredItem<Item> BLUE_PRINT = ITEMS.register("blue_print",
             () -> new BluePrintItem(new Item.Properties()));
+    public static final DeferredItem<Item> DREAM_NOTES_DYEDREAM_WORLD = ITEMS.register("dream_notes_dyedream_world",
+            () -> new DreamNotesItem(new Item.Properties()));
+    public static final DeferredItem<Item> DREAM_NOTES_LAMP_SHADOW_WORLD = ITEMS.register("dream_notes_lamp_shadow_world",
+            () -> new DreamNotesItem(new Item.Properties()));
+    public static final DeferredItem<Item> DREAM_NOTES_WIND_JOURNEY_WORLD = ITEMS.register("dream_notes_wind_journey_world",
+            () -> new DreamNotesItem(new Item.Properties()));
+    public static final DeferredItem<Item> LAMP_SHADOW_STORY_GUIDE = ITEMS.register("lamp_shadow_story_guide",
+            () -> new StoryProgressItem(new Item.Properties().stacksTo(64), StoryProgressItem.LAMP_SHADOW));
+    public static final DeferredItem<Item> DYEDREAM_STORY_GUIDE = ITEMS.register("dyedream_story_guide",
+            () -> new StoryProgressItem(new Item.Properties().stacksTo(64), StoryProgressItem.DYEDREAM));
     public static final DeferredItem<Item> DREAM_NOTES_BOOK = ITEMS.register("dream_notes_book",
             () -> new DreamNotesBookItem(new Item.Properties()));
 

@@ -8,6 +8,8 @@ import com.pasterdream.pasterdreammod.world.item.storagebag.LargeStorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagInventoryCapability;
 import com.pasterdream.pasterdreammod.world.item.storagebag.StorageBagItem;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableAddonBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlockEntity;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarDataHandler;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarInventory;
@@ -79,6 +81,26 @@ public final class ModCapabilities
                 (blockEntity, direction) -> blockEntity.getItemHandler());
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.CLAYPAN.get(),
                 (blockEntity, direction) -> blockEntity.getFluidTank(0));
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.RESEARCH_TABLE.get(),
+                (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.RESEARCH_TABLE.get(),
+                (blockEntity, direction) -> blockEntity.getFluidTank(0));
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.RESEARCH_TABLE_ADDON.get(),
+                (blockEntity, direction) ->
+                {
+                    ResearchTableBlockEntity main = blockEntity.getMainBlockEntity();
+                    if (main == null)
+                    {
+                        return null;
+                    }
+                    return direction == null ? main.getItemHandler() : main.getExternalHandler();
+                });
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.RESEARCH_TABLE_ADDON.get(),
+                (blockEntity, direction) ->
+                {
+                    ResearchTableBlockEntity main = blockEntity.getMainBlockEntity();
+                    return main == null ? null : main.getFluidTank(0);
+                });
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.DREAM_CAULDRON.get(),
                 (blockEntity, direction) -> direction == null ? blockEntity.getItemHandler() : blockEntity.getExternalHandler());
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.DREAM_CAULDRON.get(),

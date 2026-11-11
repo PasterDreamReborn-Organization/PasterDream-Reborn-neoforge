@@ -26,6 +26,10 @@ public final class ModLootTables {
     public static final ResourceKey<LootTable> PICNIC_BASKET_DYEDREAM_WORLD_LOOT = create("chests/picnic_basket_dyedream_world");
     public static final ResourceKey<LootTable> DYEDREAM_RELIC_CHEST_LOOT_COMMON = create("chests/dyedream_relic_chest_loot_common");
     public static final ResourceKey<LootTable> DYEDREAM_RELIC_CHEST_LOOT_RARE = create("chests/dyedream_relic_chest_loot_rare");
+    public static final ResourceKey<LootTable> SHADOW_RELIC_CHEST_LOOT_COMMON = create("chests/shadow_relic_chest_loot_common");
+    public static final ResourceKey<LootTable> SHADOW_DUNGEON_REPOSITORY_CORE = create("chests/shadow_dungeon_repository_core");
+    public static final ResourceKey<LootTable> SHADOW_DUNGEON_REPOSITORY_COMMON = create("chests/shadow_dungeon_repository_common");
+    public static final ResourceKey<LootTable> SHADOW_DUNGEON_REPOSITORY_SUPPLY = create("chests/shadow_dungeon_repository_supply");
     public static final ResourceKey<LootTable> ECOSYSTEM_BUBBLE_CHEST_LOOT = create("chests/ecosystem_bubble_chest");
     public static final ResourceKey<LootTable> FISHERMAN_HUT_CHEST_LOOT = create("chests/fisherman_hut_chest");
     public static final ResourceKey<LootTable> DESERT_FORTRESS_CHEST_LOOT = create("chests/desert_fortress_chest");
