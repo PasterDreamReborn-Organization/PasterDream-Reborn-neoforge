@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.world.effect.BrokenWingEffect;
 import com.pasterdream.pasterdreammod.world.effect.BerserkEffect;
 import com.pasterdream.pasterdreammod.world.effect.FrozenEffect;
 import com.pasterdream.pasterdreammod.world.effect.ShadowSilenceEffect;
+import com.pasterdream.pasterdreammod.world.effect.ShadowSpyonEffect;
 import com.pasterdream.pasterdreammod.world.effect.VulnerabilityEffect;
 import com.pasterdream.pasterdreammod.world.effect.WindThunderBoonEffect;
 import com.pasterdream.pasterdreammod.world.effect.DyedreamPerfumeEffect;
@@ -127,6 +128,9 @@ public class ModEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> SHADOW_SILENCE =
             MOB_EFFECTS.register("shadow_silence", ShadowSilenceEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> SHADOW_SPYON =
+            MOB_EFFECTS.register("shadow_spyon", ShadowSpyonEffect::new);
 
     public static final DeferredHolder<MobEffect, MobEffect> BIND =
             MOB_EFFECTS.register("bind", BindEffect::new);

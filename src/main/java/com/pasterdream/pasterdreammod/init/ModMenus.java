@@ -38,6 +38,7 @@ import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumula
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorMenu;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceMenu;
+import com.pasterdream.pasterdreammod.world.block.twilightlantern.ShadowSelectEndMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -184,6 +185,10 @@ public class ModMenus {
     public static final DeferredHolder<MenuType<?>, MenuType<LargeStorageBagMenu>> LARGE_STORAGE_BAG =
             MENUS.register("large_storage_bag", () -> IMenuTypeExtension.create(
                     (windowId, inv, data) -> new LargeStorageBagMenu(windowId, inv, data)));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<ShadowSelectEndMenu>> SHADOW_SELECT_END =
+            MENUS.register("shadow_select_end", () -> IMenuTypeExtension.create(
+                    (windowId, inv, data) -> new ShadowSelectEndMenu(windowId, inv)));
 
     public static void register(IEventBus eventBus) {
         MENUS.register(eventBus);

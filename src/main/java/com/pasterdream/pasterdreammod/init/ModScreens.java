@@ -21,6 +21,7 @@ import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableScr
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronScreen;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorScreen;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceScreen;
+import com.pasterdream.pasterdreammod.world.block.twilightlantern.ShadowSelectEndScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -59,5 +60,6 @@ public final class ModScreens {
         event.register(ModMenus.DREAM_CAULDRON.get(), DreamCauldronScreen::new);
         event.register(ModMenus.DREAM_ACCUMULATOR.get(), DreamAccumulatorScreen::new);
         event.register(ModMenus.SHADOW_BLAST_FURNACE.get(), ShadowBlastFurnaceScreen::new);
+        event.register(ModMenus.SHADOW_SELECT_END.get(), ShadowSelectEndScreen::new);
     }
 }

@@ -539,6 +539,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.WHITE_COROLLA.get());
         basicItem(ModItems.WHITE_CRYSTAL.get());
         basicItem(ModItems.SHADOW_HILT.get());
+        basicItem(ModItems.TALENT_LIGHT.get());
+        basicItem(ModItems.TALENT_SHADOW.get());
         basicItem(ModItems.PEBBLE.get());
         withExistingParent(ModItems.SNOWBALL_PEBBLE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", mcLoc("item/snowball"));
@@ -628,6 +630,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.PINK_CHICKEN_SPAWN_EGG.get());
         spawnEggItem(ModItems.PINK_SLIME_SPAWN_EGG.get());
         spawnEggItem(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
+        spawnEggItem(ModItems.NAMELESS_SPAWN_EGG.get());
 
         // 特殊箭矢
         basicItem(ModItems.TOXIC_SPORE_ARROW.get());
