@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 107：白厄剑、白厄花胸针、影刃与堕落者之印（2026-11-11，T13-B / T18-B 部分）
+
+- 迁入 `white_sword` 与 `shadow_sword`：保留来源注册 ID、1771 耐久、剑雨波次/追踪/反弹/沉默/束缚、影刃 SAN 波动与噩梦斩数值；主动战技分别消耗融梦能量或 SAN/生命并共用战技冷却。
+- 迁入 `brooch_of_white_orchid` 与 `seal_of_the_corrupted`：胸针拦截环境负向 SAN 并强化白厄剑雨；封印免疫低 SAN 负面效果、使暗影生物中立，并让低 SAN 刷怪协助玩家。两者使用 `body` 槽与不可摧毁掉落物。
+- 补入两把剑的武器工坊配方、剑/战技冷却/暮影武器/纯粹恐惧原料标签、白厄剑雨实体与粒子、两条音效和四张物品纹理。
+- 1.21.1 适配：动态 SAN 攻速改用 `getDefaultAttributeModifiers(ItemStack)`；自定义数据改 `DataComponents.CUSTOM_DATA`；伤害事件改 `LivingIncomingDamageEvent`；实体移除 Forge 生成包构造器；Curios 改用 `Holder<Attribute>` 与 `ResourceLocation`。
+- 新增 `WhiteShadowGearGameTests` 覆盖物品属性/标签/槽位/配方/实体；`runData` 写入 12 个文件，`build` 通过，`runGameTestServer` 190/190 通过。
+- 进度锁（`story/talent_light`、`story/talent_shadow`）与亚伦柯斯战利品仍待后续批次；当前两把剑保留来源门禁，胸针与堕落者之印暂仅创造模式获取。客户端粒子/音效、战技命中与饰品实战效果待游戏内验收。
+
 ### 批次 106：研究台、灯影之下战利品与剧情笔记道具（2026-11-11，T12-C / T18-B 部分）
 
 - 迁入 `research_table` 方块、主/附属方块实体、菜单/屏幕、方块物品与双格放置逻辑；保留来源物品栏 6 格、250 mB 墨水槽、复制/研究按钮位置与快捷转移顺序。

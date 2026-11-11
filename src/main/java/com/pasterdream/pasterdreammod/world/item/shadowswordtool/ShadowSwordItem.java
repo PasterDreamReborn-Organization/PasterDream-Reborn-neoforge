@@ -1,0 +1,300 @@
+package com.pasterdream.pasterdreammod.world.item.shadowswordtool;
+
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.capability.san.SanHelper;
+import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
+import com.pasterdream.pasterdreammod.helper.MagicDamageHelper;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
+import com.pasterdream.pasterdreammod.init.ModAttributes;
+import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
+import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+
+import javax.annotation.Nullable;
+import java.util.List;
+
+public class ShadowSwordItem extends SwordItem {
+
+    private static final ResourceLocation SAN_MODIFIER_ID =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadowsword.san_variability");
+    private static final ResourceLocation ATTACK_SPEED_MODIFIER_ID =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadowsword.attack_speed");
+    private static final String NIGHTMARE_SLASH_TAG = "pasterdream:nightmare_slash";
+    private static final double SKILL_SAN_COST = 5.0; // 技能SAN消耗
+    private static final float SKILL_HP_COST = 5.0F; // 技能血量消耗(无SAN时)
+    private static final int SKILL_COOLDOWN_TICKS = 40; // 技能冷却时间(tick)
+    private static final float SKILL_MIN_HP = 1.0F; // 技能扣血后最低血量
+    private static final double SAN_VARIABILITY_MODIFIER = -3.6; // SAN波动属性修正
+    private static final double SAN_ATTACK_SPEED_FACTOR = 0.5; // SAN-攻速转换系数
+    private static final double SAN_ATTACK_DAMAGE_FACTOR = 0.75; // SAN-最终伤害加成系数
+    private static final int SAN_RATIO_REFRESH_TICKS = 20; // sanRatio 刷新冷却(tick)，避免手持模型频繁刷新
+    private static final float CRIT_DETECTION_THRESHOLD = 1.3f; // 暴击判定阈值
+    private static final float CRIT_DAMAGE_MULTIPLIER = 1.5f; // 暴击伤害倍率
+    private static final double MAGIC_DAMAGE_BASE = 2.5; // 噩梦斩基础魔法伤害系数
+    private static final double SWEEP_AABB_XZ = 1.5; // 横扫范围(XZ)
+    private static final double SWEEP_AABB_Y = 0.5; // 横扫范围(Y)
+    private static final ResourceLocation TALENT_SHADOW_ADV =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/talent_shadow");
+
+    private final ItemAttributeModifiers baseAttributes;
+
+    public ShadowSwordItem(Tier tier, int damage, float speed) {
+        super(tier, new Properties().fireResistant().rarity(ModRarities.legendary()));
+        this.baseAttributes = SwordItem.createAttributes(tier, damage, speed)
+                .withModifierAdded(ModAttributes.SAN_VARIABILITY,
+                        new AttributeModifier(SAN_MODIFIER_ID, SAN_VARIABILITY_MODIFIER,
+                                AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+    }
+
+    private static CompoundTag customTag(ItemStack stack) {
+        return stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if (hand == InteractionHand.OFF_HAND) {
+            return InteractionResultHolder.fail(player.getItemInHand(hand));
+        }
+        ItemStack stack = player.getItemInHand(hand);
+        if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
+        if (!level.isClientSide() && player instanceof ServerPlayer sp) {
+            if (!player.isCreative() && !SanHelper.getIsSanEnabled(sp)) {
+                player.displayClientMessage(Component.translatable("message.pasterdream.shadow_sword.san_disabled"), false);
+                dropSword(sp, stack);
+                return InteractionResultHolder.fail(stack);
+            }
+            if (!player.isCreative() && !AdvancementHelper.isDone(sp, TALENT_SHADOW_ADV)) {
+                player.displayClientMessage(Component.translatable("message.pasterdream.shadow_sword.no_talent"), false);
+                player.hurt(player.level().damageSources().fellOutOfWorld(), player.getHealth() - 1);
+                player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
+                return InteractionResultHolder.fail(stack);
+            }
+            if (player.getCooldowns().isOnCooldown(stack.getItem())) {
+                return InteractionResultHolder.fail(stack);
+            }
+            // 已蓄势（噩梦斩待命中）时不再重复开启：避免重复扣 SAN/HP（与尘境门漠剑 / 北海若引潮剑一致）
+            if (player.getPersistentData().getBoolean(NIGHTMARE_SLASH_TAG)) {
+                return InteractionResultHolder.fail(stack);
+            }
+            if (!player.isCreative()) {
+                double currentSan = SanHelper.getPlayerSan(sp);
+                if (currentSan >= SKILL_SAN_COST) {
+                    SanHelper.addPlayerSanAndSync(sp, -SKILL_SAN_COST);
+                } else {
+                    float newHealth = Math.max(SKILL_MIN_HP, player.getHealth() - SKILL_HP_COST);
+                    player.setHealth(newHealth);
+                }
+            }
+            player.getPersistentData().putBoolean(NIGHTMARE_SLASH_TAG, true);
+            SkillCooldownHelper.applySharedCooldown(player, SKILL_COOLDOWN_TICKS);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 0.7f, 1.2f);
+            player.invulnerableTime = 10;
+        }
+        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+    }
+
+    @Override
+    public ItemAttributeModifiers getDefaultAttributeModifiers() {
+        return baseAttributes;
+    }
+
+    @Override
+    public ItemAttributeModifiers getDefaultAttributeModifiers(ItemStack stack) {
+        CompoundTag tag = customTag(stack);
+        if (tag.contains("sanRatio")) {
+            double sanRatio = tag.getDouble("sanRatio");
+            return baseAttributes.withModifierAdded(Attributes.ATTACK_SPEED,
+                    new AttributeModifier(ATTACK_SPEED_MODIFIER_ID,
+                            SAN_ATTACK_SPEED_FACTOR * (1.0 - sanRatio),
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                    EquipmentSlotGroup.MAINHAND);
+        }
+        return baseAttributes;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, context, tooltip, flag);
+        tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.skill_name"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.skill_desc1"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.skill_desc2"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.skill_desc3"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.passive_name"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.desc1"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.desc2"));
+    }
+
+    @Override
+    public boolean onEntitySwing(ItemStack itemstack, LivingEntity entity) {
+        boolean retval = super.onEntitySwing(itemstack, entity);
+        if (entity instanceof ServerPlayer sp) {
+            if (!sp.isCreative() && !SanHelper.getIsSanEnabled(sp)) {
+                sp.displayClientMessage(
+                        Component.translatable("message.pasterdream.shadow_sword.san_disabled"), false);
+                sp.hurt(sp.level().damageSources().fellOutOfWorld(), (float) (sp.getHealth() - 1));
+                sp.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
+                dropSword(sp, itemstack);
+                return retval;
+            }
+            if (!sp.isCreative() && SanHelper.getPlayerSan(sp) <= 0) {
+                sp.hurt(sp.level().damageSources().magic(), Math.max(0, sp.getHealth() - 1));
+            }
+        }
+        return retval;
+    }
+
+    @Override
+    public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
+        super.inventoryTick(itemstack, world, entity, slot, selected);
+        if (!world.isClientSide && entity instanceof ServerPlayer sp) {
+            if (SanHelper.getIsSanEnabled(sp)) {
+                if (selected) {
+                    CompoundTag tag = customTag(itemstack);
+                    boolean hasKey = tag.contains("sanRatio");
+                    if (!hasKey || sp.tickCount % SAN_RATIO_REFRESH_TICKS == 0) {
+                        double maxSan = SanHelper.getPlayerMaxSan(sp);
+                        double newRatio = maxSan > 0.0 ? SanHelper.getPlayerSan(sp) / maxSan : 1.0;
+                        newRatio = Math.max(0.0, Math.min(1.0, newRatio));
+                        if (!hasKey || tag.getDouble("sanRatio") != newRatio) {
+                            double finalRatio = newRatio;
+                            CustomData.update(DataComponents.CUSTOM_DATA, itemstack,
+                                    data -> data.putDouble("sanRatio", finalRatio));
+                        }
+                    }
+                }
+            } else {
+                CustomData.update(DataComponents.CUSTOM_DATA, itemstack, data -> data.remove("sanRatio"));
+            }
+        }
+    }
+
+    private static void dropSword(ServerPlayer player, ItemStack stack) {
+        if (stack.isEmpty()) return;
+        ItemStack dropped = stack.copy();
+        stack.setCount(0);
+        player.drop(dropped, false, true);
+    }
+
+    @Override
+    public boolean hasCustomEntity(ItemStack stack) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public Entity createEntity(Level level, Entity location, ItemStack stack) {
+        var entity = new IndestructibleItemEntity(level, location.getX(), location.getY(), location.getZ(), stack);
+        entity.setDefaultPickUpDelay();
+        entity.setDeltaMovement(location.getDeltaMovement());
+        return entity;
+    }
+
+    private static int enchantLevel(Level level, ItemStack stack, ResourceKey<Enchantment> key) {
+        Holder<Enchantment> holder = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(key);
+        return stack.getEnchantmentLevel(holder);
+    }
+
+    @EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
+    public static class NightmareSlashHandler {
+        private static final String APPLYING_TAG = "pasterdream:nightmare_slash_applying";
+
+        @SubscribeEvent
+        public static void onLivingHurt(LivingIncomingDamageEvent event) {
+            if (!(event.getSource().getEntity() instanceof Player player)) return;
+            if (!(player.getMainHandItem().getItem() instanceof ShadowSwordItem)) return;
+            if (event.getSource().getDirectEntity() != player) return;
+            if (player.getPersistentData().getBoolean(APPLYING_TAG)) return;
+
+            Level level = player.level();
+            level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    ModSounds.SHADOW_SWORD.get(), SoundSource.MASTER, 1.0f, 1.0f);
+
+            ItemStack sword = player.getMainHandItem();
+            CompoundTag tag = customTag(sword);
+            double sanRatio = tag.contains("sanRatio") ? tag.getDouble("sanRatio") : 1.0;
+            float passiveMultiplier = 1.0f + (float) (SAN_ATTACK_DAMAGE_FACTOR * (1.0 - sanRatio));
+
+            if (!player.getPersistentData().getBoolean(NIGHTMARE_SLASH_TAG)) {
+                event.setAmount(event.getAmount() * passiveMultiplier);
+                return;
+            }
+
+            player.getPersistentData().remove(NIGHTMARE_SLASH_TAG);
+            player.getPersistentData().putBoolean(APPLYING_TAG, true);
+
+            float baseDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
+            float enchantBonus = 0.0f;
+            if (level instanceof ServerLevel serverLevel) {
+                enchantBonus = EnchantmentHelper.modifyDamage(serverLevel, sword, event.getEntity(),
+                        event.getSource(), 0.0f);
+            }
+            float effectiveAttack = baseDamage + enchantBonus;
+            float critMultiplier = effectiveAttack > 0 ? event.getAmount() / effectiveAttack : 1.0f;
+            if (critMultiplier < CRIT_DETECTION_THRESHOLD) critMultiplier = 1.0f;
+            else critMultiplier = CRIT_DAMAGE_MULTIPLIER;
+            float magicDamage = effectiveAttack * (float) (MAGIC_DAMAGE_BASE - sanRatio) * critMultiplier
+                    * SkillCooldownHelper.getSkillDamageMultiplier(player)
+                    * MagicDamageHelper.getMagicDamageMultiplier(player)
+                    * passiveMultiplier;
+
+            event.setCanceled(true);
+            event.getEntity().invulnerableTime = 0;
+            event.getEntity().hurt(level.damageSources().indirectMagic(player, player), magicDamage);
+
+            int sweepingLevel = enchantLevel(level, sword, Enchantments.SWEEPING_EDGE);
+            if (sweepingLevel > 0) {
+                float sweepRatio = 1.0F - 1.0F / (float) (sweepingLevel + 1);
+                float sweepDamage = magicDamage * sweepRatio;
+                AABB area = event.getEntity().getBoundingBox().inflate(SWEEP_AABB_XZ, SWEEP_AABB_Y, SWEEP_AABB_XZ);
+                List<LivingEntity> nearby = level.getEntitiesOfClass(LivingEntity.class, area,
+                        e -> e != player && e != event.getEntity() && e.isAlive()
+                                && !(e instanceof TamableAnimal ta && ta.isOwnedBy(player)));
+                for (LivingEntity target : nearby) {
+                    target.invulnerableTime = 0;
+                    target.hurt(level.damageSources().indirectMagic(player, player), sweepDamage);
+                }
+            }
+
+            player.getPersistentData().remove(APPLYING_TAG);
+        }
+    }
+}

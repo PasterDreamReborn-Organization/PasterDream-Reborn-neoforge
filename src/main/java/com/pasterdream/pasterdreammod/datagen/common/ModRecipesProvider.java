@@ -2999,6 +2999,28 @@ public class ModRecipesProvider extends RecipeProvider {
                 new WeaponWorkshopCraftingTableRecipe(terraInputs, enhanceStone,
                         ItemIngredient.of(ModItems.TERRA_BLADE.get(), 1)), null);
 
+        List<ItemIngredient> whiteSwordInputs = List.of(
+                ItemIngredient.of(ModItems.TITANIUM_SWORD.get(), 1),
+                ItemIngredient.of(ModItems.SHADOW_LIGHT.get(), 9),
+                ItemIngredient.of(ModItems.WHITE_CRYSTAL.get(), 1),
+                ItemIngredient.of(Items.NETHER_STAR, 1),
+                ItemIngredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), 1));
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "weapon_workshop_crafting_table/white_sword"),
+                new WeaponWorkshopCraftingTableRecipe(whiteSwordInputs, enhanceStone,
+                        ItemIngredient.of(ModItems.WHITE_SWORD.get(), 1)), null);
+
+        List<ItemIngredient> shadowSwordInputs = List.of(
+                ItemIngredient.of(ModItems.SHADOW_EROSION_DAGGER.get(), 1),
+                ItemIngredient.of(ModItems.NIGHTMARE_FUEL.get(), 17),
+                ItemIngredient.of(ModItems.SHADOW_HILT.get(), 1),
+                ItemIngredient.of(ModItems.BLACK_METAL_INGOT.get(), 1),
+                ItemIngredient.of(ModItems.PERGAMYN.get(), 3));
+        output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                        "weapon_workshop_crafting_table/shadow_sword"),
+                new WeaponWorkshopCraftingTableRecipe(shadowSwordInputs, enhanceStone,
+                        ItemIngredient.of(ModItems.SHADOW_SWORD.get(), 1)), null);
+
         List<ItemIngredient> strawberryInputs = List.of(
                 ItemIngredient.of(ModItems.SLIVER_BELL.get(), 1),
                 ItemIngredient.of(ModItems.DYEDREAM_ALLOY_INGOT.get(), 1),

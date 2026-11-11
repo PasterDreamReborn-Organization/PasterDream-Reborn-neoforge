@@ -529,6 +529,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DESERT_SWORD.get());
                         output.accept(ModItems.CHENJINGMEN_DESERT_SWORD.get());
                         output.accept(ModItems.BROKEN_HERO_SWORD.get());
+                        output.accept(ModItems.WHITE_SWORD.get());
+                        output.accept(ModItems.SHADOW_SWORD.get());
                         output.accept(ModItems.ICE_SHADOW_HAMMER.get());
                         // 饰品
                         output.accept(ModItems.PALE_BONE_NEEDLE_TALISMAN.get());
@@ -569,6 +571,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BOBOJI_CURIO.get());
                         output.accept(ModItems.WIND_SPIRIT.get());
                         output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
+                        output.accept(ModItems.BROOCH_OF_WHITE_ORCHID.get());
+                        output.accept(ModItems.SEAL_OF_THE_CORRUPTED.get());
                         // 特殊箭矢
                         output.accept(ModItems.BLACKSTONE_ARROW.get());
                         output.accept(ModItems.TOXIC_SPORE_ARROW.get());

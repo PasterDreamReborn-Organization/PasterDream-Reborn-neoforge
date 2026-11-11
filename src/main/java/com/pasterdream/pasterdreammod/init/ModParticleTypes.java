@@ -74,6 +74,8 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("shadow_stone", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SQUEAL_WAVE_PARTICLE =
             PARTICLE_TYPES.register("squeal_wave", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> WHITE_SWORD_SPARK_PARTICLE =
+            PARTICLE_TYPES.register("white_sword_spark", () -> new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

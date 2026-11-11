@@ -231,6 +231,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.DESERT_SWORD.get());
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD.get());
         handheldItem(ModItems.BROKEN_HERO_SWORD.get());
+        handheldItem(ModItems.WHITE_SWORD.get());
+        handheldItem(ModItems.SHADOW_SWORD.get());
         handheldItem(ModItems.ICE_SHADOW_HAMMER.get());
         basicItem(ModItems.BLACK_METAL_INGOT.get());
         basicItem(ModItems.BLACK_METAL_NUGGET.get());
@@ -416,6 +418,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.CALAIS_SPICE_BOTTLE.get());
         basicItem(ModItems.GHOST_FACE.get());
         basicItem(ModItems.WIND_SPIRIT.get());
+        basicItem(ModItems.BROOCH_OF_WHITE_ORCHID.get());
+        basicItem(ModItems.SEAL_OF_THE_CORRUPTED.get());
         basicItem(ModItems.STORAGE_BAG.get());
         basicItem(ModItems.LARGE_STORAGE_BAG.get());
         basicItem(ModItems.NATURE_BELT.get());

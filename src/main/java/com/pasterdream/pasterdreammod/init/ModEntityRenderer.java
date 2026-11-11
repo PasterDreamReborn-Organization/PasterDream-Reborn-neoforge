@@ -84,6 +84,7 @@ public final class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.GOLDEN_FOX_PET.get(), GoldenFoxPetRenderer::new);
         event.registerEntityRenderer(ModEntities.GOLDEN_FOX_FIREBALL.get(), GoldenFoxFireballRenderer::new);
         event.registerEntityRenderer(ModEntities.TERRASWORD_WAVE.get(), TerraswordWaveRenderer::new);
+        event.registerEntityRenderer(ModEntities.WHITE_SWORD_RAIN_PROJECTILE.get(), NoopRenderer::new);
         event.registerEntityRenderer(ModEntities.SHAKING_CRYSTAL.get(), ShakingCrystalRenderer::new);
         event.registerEntityRenderer(ModEntities.FIREFLY.get(), FireflyRenderer::new);
         event.registerEntityRenderer(ModEntities.SMALL_STONE_SPIRIT.get(), SmallStoneSpiritRenderer::new);

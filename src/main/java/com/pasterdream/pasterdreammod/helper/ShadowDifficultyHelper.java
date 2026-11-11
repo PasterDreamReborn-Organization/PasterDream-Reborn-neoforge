@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.helper;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.ModGameRules;
+import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.core.registries.BuiltInRegistries;
+import top.theillusivec4.curios.api.CuriosApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -261,8 +263,15 @@ public final class ShadowDifficultyHelper {
             if (!level.getBlockState(spawnPos.above()).is(Blocks.AIR)) continue;
 
             // 入场事件按源玩家缩放属性，因此必须在实体加入世界之前标记。
-            Entity e = type.spawn(level, entity -> entity.getPersistentData().putUUID("ShadowSourcePlayer", player.getUUID()),
-                    spawnPos, MobSpawnType.MOB_SUMMONED, false, false);
+            Entity e = type.spawn(level, entity -> {
+                entity.getPersistentData().putUUID("ShadowSourcePlayer", player.getUUID());
+                // 堕落者之印：源玩家佩戴封印时，暗影生物协助作战
+                if (CuriosApi.getCuriosInventory(player)
+                        .map(h -> h.findFirstCurio(ModItems.SEAL_OF_THE_CORRUPTED.get()).isPresent())
+                        .orElse(false)) {
+                    entity.getPersistentData().putBoolean("pasterdream:seal_friendly", true);
+                }
+            }, spawnPos, MobSpawnType.MOB_SUMMONED, false, false);
             if (e != null) {
                 e.setYRot(random.nextFloat() * 360F);
                 return;

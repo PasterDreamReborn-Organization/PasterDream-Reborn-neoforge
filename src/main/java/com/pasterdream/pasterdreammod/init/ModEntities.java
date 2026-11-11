@@ -30,6 +30,7 @@ import com.pasterdream.pasterdreammod.world.entity.GoldenFoxEntity;
 import com.pasterdream.pasterdreammod.world.entity.GoldenFoxFireballEntity;
 import com.pasterdream.pasterdreammod.world.entity.GoldenFoxPetEntity;
 import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
+import com.pasterdream.pasterdreammod.world.entity.WhiteSwordRainProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.KusanagiVenomStingerEntity;
@@ -364,6 +365,14 @@ public class ModEntities {
                             .setUpdateInterval(1)
                             .fireImmune()
                             .sized(0.1f, 0.1f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<WhiteSwordRainProjectileEntity>> WHITE_SWORD_RAIN_PROJECTILE =
+            register("white_sword_rain_projectile",
+                    EntityType.Builder.<WhiteSwordRainProjectileEntity>of(WhiteSwordRainProjectileEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .sized(0.25f, 0.25f));
 
     public static final DeferredHolder<EntityType<?>, EntityType<FoxFireEntity>> FOX_FIRE =
             register("fox_fire",

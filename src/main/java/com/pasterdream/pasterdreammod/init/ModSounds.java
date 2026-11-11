@@ -153,6 +153,14 @@ public class ModSounds {
             SOUND_EVENTS.register("ding", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ding")));
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITE_SWORD_RAIN =
+            SOUND_EVENTS.register("white_sword_rain", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "white_sword_rain")));
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHADOW_SWORD =
+            SOUND_EVENTS.register("shadow_sword", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_sword")));
+
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }

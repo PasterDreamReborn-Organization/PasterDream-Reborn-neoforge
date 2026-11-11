@@ -311,5 +311,11 @@
         "stream": false
       }
     ]
+  },
+  "white_sword_rain": {
+    "sounds": [{ "name": "pasterdream:white_sword_rain", "stream": false, "volume": 0.4 }]
+  },
+  "shadow_sword": {
+    "sounds": [{ "name": "pasterdream:shadow_sword", "stream": true, "volume": 0.5 }]
   }
 }
