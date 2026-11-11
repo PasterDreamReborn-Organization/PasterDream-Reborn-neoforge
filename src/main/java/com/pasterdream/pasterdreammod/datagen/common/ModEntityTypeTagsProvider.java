@@ -4,9 +4,12 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -33,6 +36,10 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.BLACK_BEETLE.get())
                 .add(ModEntities.BLACK_BEETLE_MOTHER.get())
                 .add(EntityType.SILVERFISH);
+
+        tag(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_mob")))
+            .addTag(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob")))
+            .add(EntityType.SILVERFISH);
 
         // 自定义箭矢加入原版箭矢实体标签，使力量 / 冲击 / 火矢等附魔按 1.21 数据驱动结算。
         tag(EntityTypeTags.ARROWS)

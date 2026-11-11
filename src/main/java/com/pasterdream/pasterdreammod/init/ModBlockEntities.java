@@ -38,6 +38,9 @@ import com.pasterdream.pasterdreammod.world.block.fireflynest.FireflyNestBlockEn
 import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.dreamspawner.DreamSpawnerBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalTileEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalTileEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -196,6 +199,18 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShadowBedBlockEntity>> SHADOW_BED =
             BLOCK_ENTITIES.register("shadow_bed",
                     () -> BlockEntityType.Builder.of(ShadowBedBlockEntity::new, ModBlocks.SHADOW_BED.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DreamSpawnerBlockEntity>> DREAM_SPAWNER =
+            BLOCK_ENTITIES.register("dream_spawner",
+                    () -> BlockEntityType.Builder.of(DreamSpawnerBlockEntity::new, ModBlocks.DREAM_SPAWNER.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BrokenShadowDungeonPortalTileEntity>> BROKEN_SHADOW_DUNGEON_PORTAL =
+            BLOCK_ENTITIES.register("broken_shadow_dungeon_portal",
+                    () -> BlockEntityType.Builder.of(BrokenShadowDungeonPortalTileEntity::new, ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShadowDungeonPortalTileEntity>> SHADOW_DUNGEON_PORTAL =
+            BLOCK_ENTITIES.register("shadow_dungeon_portal",
+                    () -> BlockEntityType.Builder.of(ShadowDungeonPortalTileEntity::new, ModBlocks.SHADOW_DUNGEON_PORTAL.get()).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ResearchTableBlockEntity>> RESEARCH_TABLE =
             BLOCK_ENTITIES.register("research_table",

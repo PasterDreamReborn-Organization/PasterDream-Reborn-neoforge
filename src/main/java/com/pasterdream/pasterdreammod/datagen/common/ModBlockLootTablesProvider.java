@@ -360,6 +360,12 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                                 .when(hasSilkTouch().invert()))));
         dropOther(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), ModItems.SHADOW_DUNGEON_KEY.get());
         dropOther(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), ModItems.SHADOW_DUNGEON_KEY.get());
+        dropSelf(ModBlocks.SHADOW_DUNGEON_GATE.get());
+        dropSelf(ModBlocks.SHADOW_DUNGEON_BARRIER.get());
+        dropSelf(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get());
+        dropSelf(ModBlocks.SHADOW_DUNGEON_PORTAL.get());
+        add(ModBlocks.DREAM_SPAWNER.get(), LootTable.lootTable());
+        add(ModBlocks.FADED_DREAM_SPAWNER.get(), LootTable.lootTable());
         dropSelf(ModBlocks.ECOLOGY_GLASS_JAR.get());
         dropSelf(ModBlocks.FIREFLY_GLASS_JAR.get());
         dropSelf(ModBlocks.FIREFLY_NEST.get());

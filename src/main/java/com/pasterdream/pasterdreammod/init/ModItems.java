@@ -112,6 +112,10 @@ import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJa
 import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarItem;
 import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestItem;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.barrier.ShadowDungeonBarrierItem;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowDungeonGateItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
@@ -1409,6 +1413,16 @@ public class ModItems {
     public static final DeferredItem<BlockItem> SHADOW_BLAST_FURNACE_CORE = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_BLAST_FURNACE_CORE);
     public static final DeferredItem<BlockItem> SHADOW_DUNGEON_WALL_KEY = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_DUNGEON_WALL_KEY);
     public static final DeferredItem<BlockItem> SHADOW_DUNGEON_FLOOR_KEY = ITEMS.registerSimpleBlockItem(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY);
+    public static final DeferredItem<Item> SHADOW_DUNGEON_GATE = ITEMS.register("shadow_dungeon_gate",
+            () -> new ShadowDungeonGateItem(ModBlocks.SHADOW_DUNGEON_GATE.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_DUNGEON_BARRIER = ITEMS.register("shadow_dungeon_barrier",
+            () -> new ShadowDungeonBarrierItem(ModBlocks.SHADOW_DUNGEON_BARRIER.get(), new Item.Properties()));
+    public static final DeferredItem<Item> BROKEN_SHADOW_DUNGEON_PORTAL = ITEMS.register("broken_shadow_dungeon_portal",
+            () -> new BrokenShadowDungeonPortalDisplayItem(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_DUNGEON_PORTAL = ITEMS.register("shadow_dungeon_portal",
+            () -> new ShadowDungeonPortalDisplayItem(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), new Item.Properties()));
+    public static final DeferredItem<BlockItem> DREAM_SPAWNER = ITEMS.registerSimpleBlockItem(ModBlocks.DREAM_SPAWNER);
+    public static final DeferredItem<BlockItem> FADED_DREAM_SPAWNER = ITEMS.registerSimpleBlockItem(ModBlocks.FADED_DREAM_SPAWNER);
     public static final DeferredItem<Item> ECOLOGY_GLASS_JAR = ITEMS.register("ecology_glass_jar", () -> new EcologyGlassJarItem(ModBlocks.ECOLOGY_GLASS_JAR.get(), new Item.Properties()));
     public static final DeferredItem<Item> FIREFLY_GLASS_JAR = ITEMS.register("firefly_glass_jar", () -> new FireflyGlassJarItem(ModBlocks.FIREFLY_GLASS_JAR.get(), new Item.Properties()));
     public static final DeferredItem<BlockItem> FIREFLY_NEST = ITEMS.registerSimpleBlockItem(ModBlocks.FIREFLY_NEST);

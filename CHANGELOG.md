@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 108：暗影地牢门扉/屏障/传送门核心与构梦刷怪笼（2026-11-11，T18-B 部分）
+
+- 迁入 `broken_shadow_dungeon_portal`、`shadow_dungeon_portal`（GeckoLib 方块实体/动画/显示物品）、`shadow_dungeon_gate`、`shadow_dungeon_barrier`（3×3 多方块）、`dream_spawner`、`faded_dream_spawner`；补齐 `_3x3Part` 多方块属性与横/纵部件定位 helper、`shadow_door` 音效。
+- 传送门按来源恢复修复（影灯+黑金属+知识进度）、创造模式修复、传送倒计时、暗影地牢结构生成/传送与 `story/shadow_prisoner` 授予；接入 `ModShadowDungeonStructureSet` 结构清单与 `shadow_dungeon_mob` 实体标签。
+- 补齐进度定义 `story/shadow_prisoner`、`story/shadow_intrude_complete`、`story/shadow_npc_first_dialogue`、`story/shadow_npc_second_dialogue`、`story/defeat_aaroncos`；其中无名对话/暗影入侵/亚伦柯斯相关获取方式依赖后续批次，先保留读取与定义。
+- 1.21.1 适配：`BaseEntityBlock#codec`、`DirectionalBlock#codec`、`useItemOn`/`useWithoutItem` 拆分、`AdvancementHolder` 替代 `Advancement`、`SpawnEggItem#getType(ItemStack)`、方块实体 `loadAdditional/saveAdditional` 与 `HolderLookup.Provider`、GeckoLib `createGeoRenderer`、`PacketDistributor#sendToPlayersTrackingChunk`。
+- `runData` 写入 14 个文件；`build` 通过；`runGameTestServer` 190/190 通过。暗影地牢结构 NBT 模板、地牢实际生成、门钥匙生存获取与客户端视觉待后续批次与游戏内验收。
+- **建议提交信息：** `feat(block): 迁入暗影地牢传送门与构梦刷怪笼`
+
 ### 批次 107：白厄剑、白厄花胸针、影刃与堕落者之印（2026-11-11，T13-B / T18-B 部分）
 
 - 迁入 `white_sword` 与 `shadow_sword`：保留来源注册 ID、1771 耐久、剑雨波次/追踪/反弹/沉默/束缚、影刃 SAN 波动与噩梦斩数值；主动战技分别消耗融梦能量或 SAN/生命并共用战技冷却。
