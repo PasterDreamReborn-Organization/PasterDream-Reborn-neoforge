@@ -4,12 +4,14 @@ import com.mojang.logging.LogUtils;
 import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -53,6 +55,7 @@ public class TerraswordWaveEntity extends PathfinderMob {
     private static final double PARTICLE_SPREAD_BASE = 0.3;
     private static final double PARTICLE_SPREAD_SWEEPING_BONUS = 0.3;
     private static final double PARTICLE_VELOCITY = 0.1;
+    private static final double TRAIL_PARTICLE_VIEW_DISTANCE = 96.0; // 覆盖远端剑气，避免向整张地图广播
     private static final double BASE_DAMAGE_OFFSET = 2.0;
     private static final float SMITE_BANE_MULTIPLIER = 2.5f;
     private static final double PENETRATION_DECAY = 0.75;
@@ -196,8 +199,8 @@ public class TerraswordWaveEntity extends PathfinderMob {
             Vec3 center = new Vec3(this.getX(), this.getY(), this.getZ());
 
             Vec3 moveDir = getMoveDirection(1.0f);
-            Vec3 side = getWaveSide(moveDir);
             Vec3 heightAxis = getWaveHeightAxis(moveDir);
+            Vec3 side = moveDir.cross(heightAxis).normalize();
             final Vec3 finalSide = side;
             final Vec3 finalHeightAxis = heightAxis;
             final Vec3 finalMoveDir = moveDir;
@@ -217,11 +220,26 @@ public class TerraswordWaveEntity extends PathfinderMob {
             double halfHeight = COLLISION_HEIGHT / 2;
             double halfDepth = radius;
             double searchRange = Math.max(halfWidth, Math.max(halfHeight, halfDepth));
-            AABB attackBox = new AABB(center, center).inflate(searchRange);
+            Vec3 movement = this.getDeltaMovement();
+            Vec3 nextCenter = center.add(movement);
+            double extentX = Math.abs(side.x) * halfWidth + Math.abs(heightAxis.x) * halfHeight
+                    + Math.abs(moveDir.x) * halfDepth;
+            double extentY = Math.abs(side.y) * halfWidth + Math.abs(heightAxis.y) * halfHeight
+                    + Math.abs(moveDir.y) * halfDepth;
+            double extentZ = Math.abs(side.z) * halfWidth + Math.abs(heightAxis.z) * halfHeight
+                    + Math.abs(moveDir.z) * halfDepth;
+            AABB attackBox = new AABB(
+                    Math.min(center.x, nextCenter.x) - extentX,
+                    Math.min(center.y, nextCenter.y) - extentY,
+                    Math.min(center.z, nextCenter.z) - extentZ,
+                    Math.max(center.x, nextCenter.x) + extentX,
+                    Math.max(center.y, nextCenter.y) + extentY,
+                    Math.max(center.z, nextCenter.z) + extentZ).inflate(1.0E-6);
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class,
                     attackBox, e -> true)
                     .stream()
-                    .filter(e -> isInsideOBB(e.getBoundingBox().getCenter(), center, finalSide, finalHeightAxis, finalMoveDir,
+                    .filter(e -> intersectsSweptOBB(e.getBoundingBox(), center, movement,
+                            finalSide, finalHeightAxis, finalMoveDir,
                             halfWidth, halfHeight, halfDepth))
                     .sorted(Comparator.comparingDouble(e -> e.distanceToSqr(center)))
                     .toList();
@@ -230,7 +248,6 @@ public class TerraswordWaveEntity extends PathfinderMob {
                 if (target != owner && !(target instanceof TerraswordWaveEntity)
                         && !MinionFilterHelper.isOwnedMinion(target, owner)
                         && !hitEntities.contains(target.getUUID())) {
-                    hitEntities.add(target.getUUID());
                     float damage = (float) (BASE_DAMAGE_OFFSET + pasterAtk);
                     if (smite > 0 && target.getType().is(EntityTypeTags.UNDEAD)) {
                         damage += smite * SMITE_BANE_MULTIPLIER;
@@ -242,12 +259,11 @@ public class TerraswordWaveEntity extends PathfinderMob {
                         target.invulnerableTime = 0;
                     }
                     float finalDamage = (float) (damage * Math.pow(PENETRATION_DECAY, penetrationCount));
-                    if (fireAspect > 0 && !target.isOnFire()) {
-                        target.igniteForSeconds(1);
+                    if (owner == null || !target.hurt(
+                            new DamageSource(this.damageSources().playerAttack(owner).typeHolder(), this, owner), finalDamage)) {
+                        continue;
                     }
-                    if (owner != null) {
-                        target.hurt(new DamageSource(this.damageSources().playerAttack(owner).typeHolder(), this, owner), finalDamage);
-                    }
+                    hitEntities.add(target.getUUID());
                     penetrationCount++;
                     if (fireAspect > 0) {
                         target.igniteForSeconds(fireAspect * FIRE_ASPECT_TICK_MULTIPLIER);
@@ -277,7 +293,8 @@ public class TerraswordWaveEntity extends PathfinderMob {
                     attackBox, e -> true)
                     .stream()
                     .filter(p -> !reflectedProjectiles.contains(p.getUUID())
-                            && isInsideOBB(p.getBoundingBox().getCenter(), center, finalSide, finalHeightAxis, finalMoveDir,
+                            && intersectsSweptOBB(p.getBoundingBox(), center, movement,
+                                    finalSide, finalHeightAxis, finalMoveDir,
                                     halfWidth, halfHeight, halfDepth))
                     .toList();
             for (Projectile projectile : projectiles) {
@@ -455,12 +472,53 @@ public class TerraswordWaveEntity extends PathfinderMob {
         return new Vec3(x, y, z);
     }
 
-    private boolean isInsideOBB(Vec3 point, Vec3 center, Vec3 side, Vec3 heightAxis, Vec3 moveDir,
-                                double halfWidth, double halfHeight, double halfDepth) {
-        Vec3 rel = point.subtract(center);
-        return Math.abs(rel.dot(side)) <= halfWidth
-                && Math.abs(rel.dot(heightAxis)) <= halfHeight
-                && Math.abs(rel.dot(moveDir)) <= halfDepth;
+    /** Check the entire tick's blade sweep against a target AABB using separating axes. */
+    private static boolean intersectsSweptOBB(AABB box, Vec3 center, Vec3 movement,
+                                               Vec3 side, Vec3 heightAxis, Vec3 moveDir,
+                                               double halfWidth, double halfHeight, double halfDepth) {
+        Vec3[] worldAxes = {new Vec3(1, 0, 0), new Vec3(0, 1, 0), new Vec3(0, 0, 1)};
+        Vec3[] bladeAxes = {side, heightAxis, moveDir};
+        Vec3[] axes = new Vec3[15];
+        System.arraycopy(worldAxes, 0, axes, 0, 3);
+        System.arraycopy(bladeAxes, 0, axes, 3, 3);
+        int index = 6;
+        for (Vec3 worldAxis : worldAxes) {
+            for (Vec3 bladeAxis : bladeAxes) {
+                axes[index++] = worldAxis.cross(bladeAxis);
+            }
+        }
+
+        Vec3 boxOffset = box.getCenter().subtract(center);
+        double boxHalfX = box.getXsize() / 2.0;
+        double boxHalfY = box.getYsize() / 2.0;
+        double boxHalfZ = box.getZsize() / 2.0;
+        double enter = 0.0;
+        double exit = 1.0;
+        for (Vec3 axis : axes) {
+            if (axis.lengthSqr() < 1.0E-12) {
+                continue;
+            }
+            double separation = boxOffset.dot(axis);
+            double reach = Math.abs(side.dot(axis)) * halfWidth
+                    + Math.abs(heightAxis.dot(axis)) * halfHeight
+                    + Math.abs(moveDir.dot(axis)) * halfDepth
+                    + Math.abs(axis.x) * boxHalfX + Math.abs(axis.y) * boxHalfY + Math.abs(axis.z) * boxHalfZ;
+            double speed = movement.dot(axis);
+            if (Math.abs(speed) < 1.0E-12) {
+                if (Math.abs(separation) > reach + 1.0E-9) {
+                    return false;
+                }
+                continue;
+            }
+            double first = (separation - reach) / speed;
+            double last = (separation + reach) / speed;
+            enter = Math.max(enter, Math.min(first, last));
+            exit = Math.min(exit, Math.max(first, last));
+            if (enter > exit) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void spawnOrientedParticles(ServerLevel serverLevel, Vec3 center, Vec3 side, Vec3 heightAxis, Vec3 moveDir,
@@ -474,11 +532,21 @@ public class TerraswordWaveEntity extends PathfinderMob {
                     .add(heightAxis.scale(v * verticalSpread))
                     .add(moveDir.scale(-w * trailLength));
             Vec3 pos = center.add(offset);
-            serverLevel.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
-                    pos.x, pos.y, pos.z, 1, 0, 0, 0, PARTICLE_VELOCITY);
-            serverLevel.sendParticles(ModParticleTypes.TERRASWORD_WAVE_PARTICLE.get(),
-                    pos.x, pos.y, pos.z, 1, 0, 0, 0, PARTICLE_VELOCITY);
+            for (ServerPlayer player : serverLevel.players()) {
+                if (player.distanceToSqr(pos) > TRAIL_PARTICLE_VIEW_DISTANCE * TRAIL_PARTICLE_VIEW_DISTANCE) {
+                    continue;
+                }
+                sendForcedTrailParticle(serverLevel, player, ModParticleTypes.SPORE_PARTICLE.get(), pos);
+                sendForcedTrailParticle(serverLevel, player, ModParticleTypes.TERRASWORD_WAVE_PARTICLE.get(), pos);
+            }
         }
+    }
+
+    private static void sendForcedTrailParticle(ServerLevel level, ServerPlayer player,
+                                                ParticleOptions particle, Vec3 pos) {
+        // true 同时放宽原版 32 格发送限制，并让客户端绕过“最少粒子”过滤
+        level.sendParticles(player, particle, true,
+                pos.x, pos.y, pos.z, 1, 0, 0, 0, PARTICLE_VELOCITY);
     }
 
     @Nullable

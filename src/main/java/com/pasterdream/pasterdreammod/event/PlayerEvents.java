@@ -4,7 +4,6 @@ import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.helper.TeleportHelper;
-import com.pasterdream.pasterdreammod.mixin.LivingEntityAccessor;
 import com.pasterdream.pasterdreammod.world.effect.EvasionEffect;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
 import com.pasterdream.pasterdreammod.world.skill.EvasionEffectHandler;
@@ -229,9 +228,8 @@ public class PlayerEvents {
     public static void onLivingHurt(LivingIncomingDamageEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
         if (!player.hasEffect(ModEffects.EVASION)) return;
-        LivingEntityAccessor accessor = (LivingEntityAccessor) player;
         if (player.invulnerableTime > 10 && !event.getSource().is(DamageTypeTags.BYPASSES_COOLDOWN)
-                && event.getAmount() <= accessor.pasterdream$getLastHurt()) return;
+                && event.getAmount() <= player.lastHurt) return;
 
         var effect = player.getEffect(ModEffects.EVASION);
         if (effect == null) return;
@@ -256,7 +254,7 @@ public class PlayerEvents {
         // 1.21 的 IncomingDamage 在原版受击无敌时间设置前触发；取消后需补回计时与上次受击量，
         // 避免贴身碰撞在回避效果消耗后紧接着再次造成伤害。
         player.invulnerableTime = Math.max(player.invulnerableTime, 20);
-        accessor.pasterdream$setLastHurt(incomingDamage);
+        player.lastHurt = incomingDamage;
 
         // 反击戒指 / 转身衣装 / 回避衣装成功闪避时获得反击 buff
         if (CuriosApi.getCuriosInventory(player)
