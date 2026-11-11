@@ -62,7 +62,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get())
                 .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get())
                 .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get())
-                .add(ModItems.TERRA_BLADE.get());
+                .add(ModItems.TERRA_BLADE.get())
+                .add(ModItems.ICE_SHADOW_HAMMER.get());
         tag(ModItemTags.ENHANCE_STONE)
                 .add(Items.AIR)
                 .add(ModItems.ATTACK_ENHANCE_STONE.get())
@@ -228,6 +229,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.SHADOW_HILT.get());
 
         tag(ModItemTags.LAMP_SHADOW_WEAPON)
+                .add(ModItems.ICE_SHADOW_HAMMER.get())
                 .add(ModItems.SHADOW_EROSION_DAGGER.get())
                 .add(ModItems.SHADOW_EROSION_PICKAXE.get())
                 .add(ModItems.SHADOW_EROSION_AXE.get())

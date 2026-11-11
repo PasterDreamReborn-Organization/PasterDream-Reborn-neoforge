@@ -1288,6 +1288,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.THERMAL_DAGGER.get(), "Thermal Dagger");
         add(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get(), "Melt Dream Aurorian Steel");
         add(ModItems.TERRA_BLADE.get(), "Terra Blade");
+        add(ModItems.ICE_SHADOW_HAMMER.get(), "Ice Shadow Hammer");
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "Terra Floating Island");
         add(ModItems.FADED_BLESSING_OF_CECILIA.get(), "Faded Blessing of Cecilia");
         add(ModItems.BLESSING_OF_CECILIA.get(), "Blessing of Cecilia");
@@ -1361,6 +1362,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.terra_blade.skill_on", "§aSword Wave: ON");
         add("tooltip.pasterdream.terra_blade.skill_off", "§7Sword Wave: OFF");
         add("tooltip.pasterdream.terra_blade.no_energy", "Not enough Melt Dream Energy, sword wave deactivated");
+        add("tooltip.pasterdream.ice_shadow_hammer.skill_name", "Combat Art: §3Crystal Earthshaker");
+        add("tooltip.pasterdream.ice_shadow_hammer.0", "§7▪ §9Releases a Shaking Crystal at the target location");
+        add("tooltip.pasterdream.ice_shadow_hammer.1", "§7▪ §9The crystal deals 3 waves of increasing damage and inflicts §4Confusion and Freeze §9on nearby enemies");
+        add("tooltip.pasterdream.ice_shadow_hammer.2", "§7▪ §9Then grants §eAbsorption I §9to the caster");
+        add("tooltip.pasterdream.ice_shadow_hammer.3", "§7▪ §9Cooldown: 4s");
+        add("tooltip.pasterdream.ice_shadow_hammer.4", "§7▪ §9Melt Dream Energy Cost: §c0.5");
+        add("message.pasterdream.ice_shadow_hammer.no_energy", "§cNot enough Melt Dream Energy");
         add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9Terra Sword wave cost reduced to §c0.4");
         add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9Terra Sword damage +30% (including waves)");
         add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9Terra Blade melee attacks and sword waves ignore invulnerability frames");

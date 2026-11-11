@@ -1288,6 +1288,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.THERMAL_DAGGER.get(), "热能匕首");
         add(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get(), "融梦极光钢锭");
         add(ModItems.TERRA_BLADE.get(), "大地之刃");
+        add(ModItems.ICE_SHADOW_HAMMER.get(), "冰影战锤");
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "泰拉浮岛模型");
         add(ModItems.FADED_BLESSING_OF_CECILIA.get(), "失色塞西莉亚的加护");
         add(ModItems.BLESSING_OF_CECILIA.get(), "塞西莉亚的加护");
@@ -1361,6 +1362,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.terra_blade.skill_on", "§a剑气状态：开启");
         add("tooltip.pasterdream.terra_blade.skill_off", "§7剑气状态：关闭");
         add("tooltip.pasterdream.terra_blade.no_energy", "融梦能量不足，剑气状态已关闭");
+        add("tooltip.pasterdream.ice_shadow_hammer.skill_name", "战技：§3水晶撼地");
+        add("tooltip.pasterdream.ice_shadow_hammer.0", "§7▪ §9在目标地点释放撼地水晶");
+        add("tooltip.pasterdream.ice_shadow_hammer.1", "§7▪ §9撼地水晶造成三段依次增高的伤害，并对周围敌人施加§4混乱与冻结");
+        add("tooltip.pasterdream.ice_shadow_hammer.2", "§7▪ §9随后为释放者施加§e伤害吸收I");
+        add("tooltip.pasterdream.ice_shadow_hammer.3", "§7▪ §9冷却:4秒");
+        add("tooltip.pasterdream.ice_shadow_hammer.4", "§7▪ §9融梦能量消耗：§c0.5");
+        add("message.pasterdream.ice_shadow_hammer.no_energy", "§c融梦能量不足");
         add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9泰拉剑气消耗减少至 §c0.4§9");
         add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9泰拉剑伤害 +30%（包含剑气）");
         add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9泰拉剑近战攻击与剑气无视无敌帧");

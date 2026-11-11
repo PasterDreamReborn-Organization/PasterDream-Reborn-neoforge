@@ -86,6 +86,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.TurnbackCloakItem;
 import com.pasterdream.pasterdreammod.world.item.curio.EvasionCloakItem;
 import com.pasterdream.pasterdreammod.world.item.ThermalDaggerItem;
 import com.pasterdream.pasterdreammod.world.item.TerraBladeItem;
+import com.pasterdream.pasterdreammod.world.item.iceshadowhammertool.IceShadowHammerItem;
 import com.pasterdream.pasterdreammod.world.item.StrawberryHeartItem;
 import com.pasterdream.pasterdreammod.world.item.curio.CounterRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.MeltDreamEnergyRingItem;
@@ -1756,6 +1757,8 @@ public class ModItems {
             () -> new ThermalDaggerItem(new Item.Properties()));
     public static final DeferredItem<Item> TERRA_BLADE = ITEMS.register("terra_blade",
             () -> new TerraBladeItem(ModToolTiers.TERRA_SWORD, 7, -2.4f));
+    public static final DeferredItem<Item> ICE_SHADOW_HAMMER = ITEMS.register("ice_shadow_hammer",
+            () -> new IceShadowHammerItem(ModToolTiers.ICE_SHADOW_HAMMER, new Item.Properties()));
     public static final DeferredItem<Item> DUKE_COIN_CURIO = ITEMS.register("duke_coin_curio",
             DukeCoinCurioItem::new);
     public static final DeferredItem<Item> HIYORI_BUTTERFLY_HAIRPIN = ITEMS.register("hiyori_butterfly_hairpin",

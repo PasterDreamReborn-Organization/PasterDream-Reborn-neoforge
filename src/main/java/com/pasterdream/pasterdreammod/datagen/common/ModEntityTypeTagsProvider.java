@@ -47,5 +47,15 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.BLAST_ARROW.get())
                 .add(ModEntities.CONGEAL_WIND_ARROW.get())
                 .add(ModEntities.DEW_ARROW.get());
+
+        tag(ModEntityTypeTags.SPECIAL_ENTITY)
+                .add(EntityType.ITEM)
+                .add(EntityType.EXPERIENCE_ORB)
+                .add(EntityType.ITEM_FRAME)
+                .add(EntityType.GLOW_ITEM_FRAME)
+                .add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get())
+                .add(ModEntities.TERRASWORD_WAVE.get())
+                .add(ModEntities.SHAKING_CRYSTAL.get())
+                .add(ModEntities.FOX_FIRE.get());
     }
 }

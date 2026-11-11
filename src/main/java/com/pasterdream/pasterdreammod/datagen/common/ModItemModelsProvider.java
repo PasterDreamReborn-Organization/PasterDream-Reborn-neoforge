@@ -222,6 +222,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.DESERT_SWORD.get());
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD.get());
         handheldItem(ModItems.BROKEN_HERO_SWORD.get());
+        handheldItem(ModItems.ICE_SHADOW_HAMMER.get());
         basicItem(ModItems.BLACK_METAL_INGOT.get());
         basicItem(ModItems.BLACK_METAL_NUGGET.get());
         basicItem(ModItems.RUST_BLACK_METAL_GRAIN.get());
