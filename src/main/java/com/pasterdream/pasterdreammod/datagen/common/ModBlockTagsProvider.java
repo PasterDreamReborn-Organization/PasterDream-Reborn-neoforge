@@ -545,7 +545,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.RUST_BLACK_METAL_WALL.get())
                 .add(ModBlocks.RUST_BLACK_METAL_BARS.get())
                 .add(ModBlocks.BLACK_METAL_BLOCK.get())
-                .add(ModBlocks.SHADOW_CLAY_POT.get());
+                .add(ModBlocks.CLAY_POT.get())
+                .add(ModBlocks.SHADOW_CLAY_POT.get())
+                .add(ModBlocks.SHADOW_BRAZIER.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.SHADOW_NYLIUM.get())
@@ -659,6 +661,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.RUST_BLACK_METAL_BLOCK.get())
                 .add(ModBlocks.RUST_BLACK_METAL_WALL.get())
                 .add(ModBlocks.RUST_BLACK_METAL_BARS.get())
+                .add(ModBlocks.CLAY_POT.get())
                 .add(ModBlocks.SHADOW_CLAY_POT.get())
                 .add(ModBlocks.SHADOW_DESK.get())
                 .add(ModBlocks.SHADOW_CHEST.get());
@@ -837,6 +840,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get())
                 .add(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get())
                 .add(ModBlocks.CHRISTMAS_LIGHTS.get())
+                .add(ModBlocks.SHADOW_BRAZIER.get())
                 .add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
         tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
         tag(ModBlockTags.SHADOW_EROSION_TOOL_CAN_BOOST).add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());

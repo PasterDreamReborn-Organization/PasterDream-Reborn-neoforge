@@ -1262,7 +1262,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.BLACK_METAL_BLOCK.get(), "黑金属块");
         add(ModBlocks.RUST_BLACK_METAL_WALL.get(), "锈蚀金属墙");
         add(ModBlocks.RUST_BLACK_METAL_BARS.get(), "锈蚀金属栏杆");
+        add(ModBlocks.CLAY_POT.get(), "陶罐");
         add(ModBlocks.SHADOW_CLAY_POT.get(), "阴影陶罐");
+        add(ModBlocks.SHADOW_BRAZIER.get(), "暗影火盆");
         add(ModItems.FIG.get(), "无花果");
         add(ModBlocks.CONGEAL_WIND_ORE.get(), "凝结之风云矿");
         add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(), "风行者水晶矿石");
@@ -1835,6 +1837,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.broken_portal.已传送出或清除暗影地牢内的其他生物", "已传送出或清除暗影地牢内的其他生物");
         add("message.pasterdream.需要在本层寻找暗影地牢钥匙以打开大门", "需要在本层寻找暗影地牢钥匙以打开大门");
         add("message.pasterdream.大门紧闭不开", "大门紧闭不开");
+        add("message.pasterdream.shadow_brazier.need_candle", "需要用阴影蜡烛点燃火盆");
+        add("message.pasterdream.shadow_brazier.lit", "火盆被点燃，但带来的并不是光明......");
+        add("message.pasterdream.shadow_brazier.shadow_spread", "阴影从四周蔓延开来");
+        add("message.pasterdream.shadow_brazier.extinguished", "火盆燃尽熄灭，坠落在地上破碎");
+        add("message.pasterdream.shadow_brazier.key_dropped", "在火盆的夹层里掉落出一把钥匙");
         add("advancements.pasterdream.story.lamp_shadow_root.title", "侵染教堂");
         add("advancements.pasterdream.story.lamp_shadow_root.description", "阅读寻梦者笔记\"侵染教堂-黑面\"");
         add("advancements.pasterdream.story.bastion_guard.title", "据点守卫");

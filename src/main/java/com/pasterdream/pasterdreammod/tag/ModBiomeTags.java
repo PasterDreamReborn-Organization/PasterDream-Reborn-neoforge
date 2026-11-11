@@ -66,6 +66,7 @@ public final class ModBiomeTags {
     public static final TagKey<Biome> SHADOW_GHOST_SPAWN_BIOME = create("shadow_ghost_spawn_biome");
     public static final TagKey<Biome> SHADOW_RUINS_SPAWN_BIOME = create("shadow_ruins_spawn_biome");
     public static final TagKey<Biome> CAN_SHADOWNOTE_RUIN_SPAWN_BIOME = create("can_shadownote_ruin_spawn_biome");
+    public static final TagKey<Biome> CAN_SHADOW_DUNGEON_SPAWN_BIOME = create("can_shadow_dungeon_spawn_biome");
 
     private static TagKey<Biome> create(String path) {
         return TagKey.create(Registries.BIOME,

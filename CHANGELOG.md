@@ -5,6 +5,17 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 110：暗影地牢结构与世界生成（2026-11-11，T18-B 部分）
+
+- 复制暗影地牢 22 个结构 NBT（入口、起始房、单层框架、床、火盆、甲虫、挖掘层、夹层、书库、无名、宝库），使用 `scripts/convert_structure_item_nbt.py` 转换 84 个物品栈（含 5 本笔记的内容组件），补齐 `shadow_dungeon` 入口 jigsaw、`can_shadow_dungeon_spawn_biome` 群系标签与 `shadow_structures` 共享结构集条目。
+- 迁入 `shadow_brazier` 方块/方块实体/GeckoLib 模型与动画/渲染/展示物品/资源：需阴影蜡烛点燃，按来源 20 tick 节奏完成 120 次仪式并生成恐惧喙、暗影之手与阴影傀儡，结束时掉落暗影地牢钥匙与黑金属粒。
+- 补注册地牢模板引用的 `clay_pot` 陶罐，保留精准采集掉自身、否则按来源战利品池抽取的掉落；补齐方块状态、物品模型、标签、创造栏与中英文本。
+- 1.21.1 适配：`BaseEntityBlock#codec`、`useWithoutItem`、方块实体 `HolderLookup.Provider` 存取、GeckoLib 4.9.2 包路径与 `createGeoRenderer`、`hasSilkTouch()` 战利品判断。
+- 新增 `ShadowDungeonGameTests` 覆盖方块/方块实体注册、火盆点燃与更新标签、入口结构/结构集/22 个模板、全部 NBT 物品组件（含入口与书库笔记内容）及宝库战利品表加载。`runData` 写入 12 个文件，`build` 通过，`runGameTestServer` 196/196 通过。
+- 暗影地牢实际生成与传送、火盆仪式刷怪/掉落、结构内无名与机关、客户端表现及多人行为仍待游戏内验收。
+
+- **建议提交信息：** `feat(block): 搬运暗影地牢结构与世界生成`
+
 ### 批次 109：无名实体、暗影入侵与灯与影的选择（2026-11-11，T18-B / T21 部分）
 
 - 迁入 `nameless` 无名实体、GeckoLib 模型/动画/纹理、刷怪蛋与对话状态机；保留两段对话行数、40 tick 行间隔、首次对话结束传送回主世界并施加暗影窥视，第二次对话后解锁灯与影选择。
