@@ -21,6 +21,7 @@ import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.world.behavior.ModTreeGrowers;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexBlock;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlock;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlock;
@@ -31,6 +32,8 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.barrier.Shad
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowDungeonGateBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalBlock;
+import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeBlock;
+import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestBlock;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamCrackBlock;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlock;
@@ -333,6 +336,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> FADED_DREAM_SPAWNER = BLOCKS.register("faded_dream_spawner", FadedDreamSpawnerBlock::new);
     // ===== 灯影竞技场 / 裂隙方块 =====
     public static final DeferredBlock<Block> SHADOW_ARENA_BLOCK = BLOCKS.register("shadow_arena_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(-1.0F, 3600000.0F)));
+    public static final DeferredBlock<Block> AARONCOS_EYE = BLOCKS.register("aaroncos_eye", AaroncosEyeBlock::new);
+    public static final DeferredBlock<Block> AARONCOS_HAND_CHEST = BLOCKS.register("aaroncos_hand_chest", AaroncosHandChestBlock::new);
+    public static final DeferredBlock<Block> AARONCOS_ARENA_PORTALS = BLOCKS.register("aaroncos_arena_portals", AaroncosArenaPortalsBlock::new);
     public static final DeferredBlock<Block> SHADOW_FISSURE_0 = BLOCKS.register("shadow_fissure_0", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
     public static final DeferredBlock<Block> SHADOW_FISSURE_1 = BLOCKS.register("shadow_fissure_1", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).noOcclusion()));
     public static final DeferredBlock<Block> SHADOW_FISSURE_2 = BLOCKS.register("shadow_fissure_2", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
@@ -412,6 +418,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SHADOW_BLAST_FURNACE = BLOCKS.register("shadow_blast_furnace", () -> new ShadowBlastFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.DEEPSLATE).strength(10f).requiresCorrectToolForDrops().noOcclusion()));
     public static final DeferredBlock<Block> SHADOW_BLAST_FURNACE_CORE = BLOCKS.register("shadow_blast_furnace_core", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.METAL).strength(3f, 1f).requiresCorrectToolForDrops()));
     public static final DeferredBlock<Block> SHADOW_HAND_TRAP = BLOCKS.register("shadow_hand_trap", () -> new ShadowHandTrapBlock());
+
+    public static final DeferredBlock<Block> SHADOW_VORTEX = BLOCKS.register("shadow_vortex", ShadowVortexBlock::new);
     public static final DeferredBlock<Block> ECOLOGY_GLASS_JAR = BLOCKS.register("ecology_glass_jar", EcologyGlassJarBlock::new);
     public static final DeferredBlock<Block> FIREFLY_GLASS_JAR = BLOCKS.register("firefly_glass_jar", FireflyGlassJarBlock::new);
     public static final DeferredBlock<Block> FIREFLY_NEST = BLOCKS.register("firefly_nest", FireflyNestBlock::new);

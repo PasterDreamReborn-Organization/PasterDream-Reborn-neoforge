@@ -363,4 +363,29 @@ public class GUIBackGroundRender
         guiGraphics.blit(RIGHT_BUTTON_HOVERED, x, y, 0, 0, 22, 15, 22, 15);
     }
 
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_LEFT_BACKGROUND = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_left_background.png");
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_LEFT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_left.png");
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_RIGHT_BACKGROUND = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_right_background.png");
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_RIGHT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_right.png");
+
+    public static void rendAaroncosHandBossBarLeftBackground(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(AARONCOS_HAND_BOSS_BAR_LEFT_BACKGROUND, x, y, 0, 0, 116, 21, 116, 21);
+    }
+
+    public static void rendAaroncosHandBossBarLeft(GuiGraphics guiGraphics, int x, int y, double percent)
+    {
+        guiGraphics.blit(AARONCOS_HAND_BOSS_BAR_LEFT, x, y, 0, 0, (int)(106 * percent), 5, 106, 5);
+    }
+
+    public static void rendAaroncosHandBossBarRightBackground(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(AARONCOS_HAND_BOSS_BAR_RIGHT_BACKGROUND, x, y, 0, 0, 116, 21, 116, 21);
+    }
+
+    public static void rendAaroncosHandBossBarRight(GuiGraphics guiGraphics, int x, int y, double percent)
+    {
+        guiGraphics.blit(AARONCOS_HAND_BOSS_BAR_RIGHT, x, y, 0, 0, (int)(106 * percent), 5, 106, 5);
+    }
+
 }

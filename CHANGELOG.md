@@ -5,6 +5,31 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 115：修复暗影符文塔与暗影魔法球死亡动画（2026-11-12，T20 修复）
+
+- 补回 `ShadowTuneTotemRenderer` 与 `ShadowMagicballRenderer` 遗漏的来源覆写 `getDeathMaxRotation(...) -> 0.0F`，避免 GeckoLib 默认 90° 死亡旋转干扰自定义 `death` 动画；同时恢复来源 `preRender` 的 `scaleWidth/scaleHeight = 1` 设置。
+- `build` 通过。死亡动画属客户端视觉，待游戏内击杀确认；未新增服务端 GameTest。
+- **建议提交信息：** `fix(entity): 修复暗影符文塔与暗影魔法球死亡动画`
+
+### 批次 114：亚伦柯斯竞技场维度与结构（2026-11-12，T20 部分）
+
+- 迁入 `aaroncos_arena_world` 维度类型、末地虚空噪声设置、单群系 `aaroncos_arena` 与 LevelStem；迁入 `AaroncosArenaWorldDimension` / `AaroncosArenaTeleporter`，保留眼方块判定、强制加载区块放置竞技场结构、战斗时间轴（恐惧喙波次、音乐循环、双手死亡奖励箱/进度/移除暗影窥视）、手箱开启后的 410 tick 离场倒计时与游戏模式恢复。
+- 迁入 `aaroncos_eye` / `aaroncos_hand_chest` / `aaroncos_arena_portals` 方块、方块实体、GeckoLib 模型/动画/渲染与展示物品，以及 `aaroncos_arena_create` 创造物品；补齐方块状态、模型、纹理、战利品、创造栏与中英文本。
+- 复制 `aaroncos_arena.nbt` 与 `aaroncos_arena_portal.nbt`，登记灯影之下菌索荒原的 `aaroncos_arena_portal` 结构、结构集与模板池；保留 `aaroncos_arena` 的 SAN 群系速率。
+- 1.21.1 适配：`BaseEntityBlock#codec`、`useWithoutItem`、`HolderLookup.Provider` 方块实体存取、GeckoLib 4.9.2 包路径；事件改为 `PasterDreamMod` 显式注册，维度特殊效果拆到客户端类；出生点改用 `getSpawnPos`。
+- `runData`、`build` 通过，`runGameTestServer` 196/196 通过。竞技场实际进入/结构放置/BOSS 战/离场/音乐/客户端雾效与多人行为待游戏内验收；帕秋莉手册未迁入。
+- **建议提交信息：** `feat(worldgen): 搬运亚伦柯斯竞技场维度与结构`
+
+### 批次 113：亚伦柯斯之触 BOSS 实体与技能依赖（2026-11-12，T20 部分）
+
+- 迁入亚伦柯斯之触左手/右手两个 GeckoLib BOSS 实体，保留来源阶段状态机、冲刺/重击/剑气与魔法球/漩涡/音图腾技能、姐妹协同、血锁召唤暗影之手和限伤接线；同步迁入 `shadow_magicball`、`shadow_tune_totem` 召唤物及刷怪蛋。
+- 迁入 `shadow_vortex` 方块/方块实体/展示物品、`restrainmove_block` 与 `oppression` 效果、`aaroncos_spawn` / `stone_crack` / `stone_shatter` / `shadow_vortex` 音效，以及 `BossDamageLimiter` / `BossLimitProfile` / `BossLimitValues` 与全局/亚伦柯斯限伤配置。
+- 迁入亚伦柯斯之触组合 BOSS 条：左右手血量分栏、共享纵向槽位布局，随原版 BOSS 条数量下移；新增 `BossHealthOverlay.events` 访问转换与 4 张 GUI 纹理。
+- 补齐实体标签（`shadow_mob`、`special_entity_tag`）、调试物品栏、刷怪蛋模型、`shadow_vortex` 战利品与中英文本；GeckoLib 模型、动画、纹理与音效资源按来源复制。
+- 1.21.1 适配：数据同步 Builder、四参数 `finalizeSpawn`、`canChangeDimensions(Level, Level)`、`getBaseExperienceReward`、`ResourceLocation` 属性修饰符、`Holder<MobEffect>`、`BaseEntityBlock#codec` 与 `HolderLookup.Provider` 方块实体存取；`MeleeAttackGoal` 攻击距离改由实体 `isWithinMeleeAttackRange` 保留。
+- `compileJava`、`runData` 与 `build` 通过。实体 AI/技能、客户端模型动画、音效、BOSS 条视觉与多人行为待游戏内验收；竞技场维度/结构/传送、眼方块/手箱/传送门、BOSS 音乐与 `defeat_aaroncos` 进度仍待后续批次。
+- **建议提交信息：** `feat(entity): 搬运亚伦柯斯之触双手 BOSS 实体与技能依赖`
+
 ### 批次 112：同步上游工具被动重构与存储袋包名修正（2026-11-12）
 
 - 同步上游 #1304（`c7032082`）：新增 `ItemSharedToolBehaviorMixin` 与 `ItemStackSharedToolBehaviorMixin`，按独立 `instanceof` 分支统一派发融梦水晶、炙焰金、暗影合金、影蚀、萦风合金系列的背包 tick 与公共词条；移除各工具类中重复的 `inventoryTick` / `appendHoverText` override。

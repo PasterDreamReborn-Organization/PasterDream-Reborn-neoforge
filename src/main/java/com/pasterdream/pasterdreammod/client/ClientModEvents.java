@@ -25,6 +25,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 
 /**
@@ -120,6 +121,11 @@ public final class ClientModEvents {
         ModBlockEntityRenderer.registerRenderers(event);
     }
 
+    @SubscribeEvent
+    public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
+        AaroncosArenaDimensionEffects.registerDimensionSpecialEffects(event);
+    }
+
     /** 实体模型层定义。 */
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -133,6 +139,7 @@ public final class ClientModEvents {
     public static void registerGuiLayers(RegisterGuiLayersEvent event) {
         event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_energy"), MeltDreamEnergyTank::render);
         event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "san"), SanTank::render);
+        event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_hand_boss_bar"), AaroncosHandBossBar::render);
         event.registerBelowAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lose_mind"), LoseMind::render);
     }
 }

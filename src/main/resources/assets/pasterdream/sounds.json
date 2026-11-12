@@ -320,5 +320,17 @@
   },
   "shadow_door": {
     "sounds": [{ "name": "pasterdream:shadow_door", "stream": false }]
+  },
+  "shadow_vortex": {
+    "sounds": [{ "name": "pasterdream:shadow_vortex", "stream": false }]
+  },
+  "aaroncos_spawn": {
+    "sounds": [{ "name": "pasterdream:aaroncos_spawn", "stream": false }]
+  },
+  "stone_shatter": {
+    "sounds": [{ "name": "pasterdream:stone_shatter", "stream": false }]
+  },
+  "stone_crack": {
+    "sounds": [{ "name": "pasterdream:stone_crack", "stream": false }]
   }
 }

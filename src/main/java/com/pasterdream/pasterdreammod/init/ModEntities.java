@@ -1,7 +1,11 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.world.entity.AaroncosLeftHandEntity;
+import com.pasterdream.pasterdreammod.world.entity.AaroncosRightHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowGolemEntity;
+import com.pasterdream.pasterdreammod.world.entity.ShadowMagicballEntity;
+import com.pasterdream.pasterdreammod.world.entity.ShadowTuneTotemEntity;
 import com.pasterdream.pasterdreammod.world.entity.shakingcrystal.ShakingCrystalEntity;
 import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleEntity;
 import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleMotherEntity;
@@ -300,6 +304,38 @@ public class ModEntities {
                     .fireImmune()
                     .sized(0.6f, 0.8f));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<ShadowMagicballEntity>> SHADOW_MAGICBALL = register("shadow_magicball",
+            EntityType.Builder.<ShadowMagicballEntity>of(ShadowMagicballEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .fireImmune()
+                    .sized(1f, 1.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ShadowTuneTotemEntity>> SHADOW_TUNE_TOTEM = register("shadow_tune_totem",
+            EntityType.Builder.<ShadowTuneTotemEntity>of(ShadowTuneTotemEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .fireImmune()
+                    .sized(2f, 8f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<AaroncosLeftHandEntity>> AARONCOS_LEFT_HAND = register("aaroncos_left_hand",
+            EntityType.Builder.<AaroncosLeftHandEntity>of(AaroncosLeftHandEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .fireImmune()
+                    .sized(3.5f, 3.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<AaroncosRightHandEntity>> AARONCOS_RIGHT_HAND = register("aaroncos_right_hand",
+            EntityType.Builder.<AaroncosRightHandEntity>of(AaroncosRightHandEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .fireImmune()
+                    .sized(3.5f, 3.5f));
+
     public static final DeferredHolder<EntityType<?>, EntityType<ShadowGhostEntity>> SHADOW_GHOST = register("shadow_ghost",
             EntityType.Builder.<ShadowGhostEntity>of(ShadowGhostEntity::new, ModMobCategories.shadowGhost())
                     .setShouldReceiveVelocityUpdates(true)
@@ -453,6 +489,10 @@ public class ModEntities {
         event.put(CRAZY_TERRORBEAK.get(), TerrorbeakEntity.createCrazyTerrorbeakAttributes().build());
         event.put(WEAKENESS_TERRORBEAK.get(), TerrorbeakEntity.createWeakenessTerrorbeakAttributes().build());
         event.put(SHADOW_HAND.get(), ShadowHandEntity.createAttributes().build());
+        event.put(SHADOW_MAGICBALL.get(), ShadowMagicballEntity.createAttributes().build());
+        event.put(SHADOW_TUNE_TOTEM.get(), ShadowTuneTotemEntity.createAttributes().build());
+        event.put(AARONCOS_LEFT_HAND.get(), AaroncosLeftHandEntity.createAttributes().build());
+        event.put(AARONCOS_RIGHT_HAND.get(), AaroncosRightHandEntity.createAttributes().build());
         event.put(SHADOW_GOLEM.get(), ShadowGolemEntity.createAttributes().build());
         event.put(SHADOW_GHOST.get(), ShadowGhostEntity.createShadowGhostAttributes().build());
         event.put(SHADOW_SQUEAL_GHOST.get(), ShadowGhostEntity.createShadowSquealGhostAttributes().build());

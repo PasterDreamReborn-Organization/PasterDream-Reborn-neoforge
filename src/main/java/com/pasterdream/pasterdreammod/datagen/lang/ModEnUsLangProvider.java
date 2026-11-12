@@ -486,6 +486,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.bind", "Bind");
         add("structure.pasterdream.the_lost_sword_tomb", "The Lost Sword Tomb");
         add("structure.pasterdream.dyedream_crack", "Dyedream Crack");
+        add("structure.pasterdream.aaroncos_arena_portal", "Aaroncos Arena Portal");
         add("jei.pasterdream.dyedream_contamination", "Dyedream Contamination");
         add("structure.pasterdream.oak_fisherman_hut", "Oak Fisherman Hut");
         add("structure.pasterdream.spruce_fisherman_hut", "Spruce Fisherman Hut");
@@ -609,6 +610,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("biome.pasterdream.shadow_forest", "Shadow Forest");
         add("biome.pasterdream.shadow_ruins", "Shadow Ruins");
         add("biome.pasterdream.shadow_ocean", "Shadow Ocean");
+        add("biome.pasterdream.aaroncos_arena", "Aaroncos Arena");
         add(ModBlocks.SHADOW_BLAST_FURNACE.get(), "Shadow Blast Furnace");
         add(ModBlocks.RESEARCH_TABLE.get(), "Research Table");
         add("pasterdream.cauldron.brew", "§dBrewed %s ml potion");
@@ -973,6 +975,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.WIND_JOURNEY_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - Wind Journey");
         add(ModItems.AARONCOS_MUSIC_DISC.get(), "Aaroncos Music Disc");
         add(ModItems.AARONCOS_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - Aaroncos's Touch");
+        add(ModItems.AARONCOS_ARENA_CREATE.get(), "Aaroncos Arena Create");
+        add("tooltip.pasterdream.aaroncos_arena_create", "§4Creative Mode Item");
         add("tooltip.pasterdreammod.glass_cup_of_honey_juice", "§dClears all negative effects upon drinking");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§eThe taste feels familiar, as if it came from Snow Tears Cold...... wait, what?");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7You have already tasted this ice cream flavor");
@@ -1222,6 +1226,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), "Shadow Dungeon Portal Core");
         add(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(), "Broken Shadow Dungeon Portal Core");
         add(ModBlocks.SHADOW_ARENA_BLOCK.get(), "Shadow Arena Block");
+        add(ModBlocks.AARONCOS_EYE.get(), "Aaroncos Eye");
+        add(ModBlocks.AARONCOS_HAND_CHEST.get(), "Aaroncos Hand Chest");
+        add(ModBlocks.AARONCOS_ARENA_PORTALS.get(), "Aaroncos Arena Portals");
         add(ModBlocks.SHADOW_FISSURE_0.get(), "Shadow Fissure");
         add(ModBlocks.SHADOW_FISSURE_1.get(), "Shadow Fissure");
         add(ModBlocks.SHADOW_FISSURE_2.get(), "Shadow Fissure");
@@ -1834,6 +1841,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_brazier.shadow_spread", "Shadow spreads from all around");
         add("message.pasterdream.shadow_brazier.extinguished", "The brazier burns out and shatters on the ground");
         add("message.pasterdream.shadow_brazier.key_dropped", "A key drops from the crevice of the brazier");
+        add("message.pasterdream.aaroncos_arena.need_progress", "You haven't completed the prerequisite progress yet");
+        add("message.pasterdream.aaroncos_arena.battle_in_progress", "A player is challenging Aaroncos, entry is not allowed for now");
+        add("message.pasterdream.aaroncos_arena.exit_countdown", "Leaving in %s seconds");
         add("advancements.pasterdream.story.lamp_shadow_root.title", "Infested Church");
         add("advancements.pasterdream.story.lamp_shadow_root.description", "Read the Dream Seeker's Notes \"Infested Church - Black Face\"");
         add("advancements.pasterdream.story.bastion_guard.title", "Bastion Guard");
@@ -1912,5 +1922,20 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.talent_light.description", "Choose the light in the choice between light and shadow");
         add("advancements.pasterdream.story.talent_shadow.title", "Shadow Servant");
         add("advancements.pasterdream.story.talent_shadow.description", "Choose the shadow in the choice between light and shadow");
+
+        // Aaroncos's Touch boss
+        add(ModEntities.SHADOW_MAGICBALL.get(), "Shadow Magicball");
+        add(ModEntities.SHADOW_TUNE_TOTEM.get(), "Shadow Tune Totem");
+        add(ModEntities.AARONCOS_LEFT_HAND.get(), "Aaroncos's Left Hand");
+        add(ModEntities.AARONCOS_RIGHT_HAND.get(), "Aaroncos's Right Hand");
+        add(ModItems.SHADOW_MAGICBALL_SPAWN_EGG.get(), "Shadow Magicball Spawn Egg");
+        add(ModItems.SHADOW_TUNE_TOTEM_SPAWN_EGG.get(), "Shadow Tune Totem Spawn Egg");
+        add(ModItems.AARONCOS_LEFT_HAND_SPAWN_EGG.get(), "Aaroncos's Left Hand Spawn Egg");
+        add(ModItems.AARONCOS_RIGHT_HAND_SPAWN_EGG.get(), "Aaroncos's Right Hand Spawn Egg");
+        add(ModBlocks.SHADOW_VORTEX.get(), "Shadow Vortex");
+        add("effect.pasterdream.restrainmove_block", "Movement Restraint");
+        add("effect.pasterdream.oppression", "Oppression");
+        add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");
+        add("message.pasterdream.shadow_tune_totem.about_to_explode", "The Shadow Tune Totem is about to explode");
     }
 }

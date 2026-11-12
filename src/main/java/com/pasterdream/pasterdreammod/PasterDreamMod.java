@@ -44,6 +44,8 @@ import com.pasterdream.pasterdreammod.init.ModShadowDungeonStructureSet;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.init.ModStructurePlacementTypes;
 import com.pasterdream.pasterdreammod.init.ModTreeDecoratorTypes;
+import com.pasterdream.pasterdreammod.world.dimension.AaroncosArenaTeleporter;
+import com.pasterdream.pasterdreammod.world.dimension.AaroncosArenaWorldDimension;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
@@ -133,6 +135,12 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(ModWorldGenEvents::onCheckSpawn);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerChangedDimension);
+        NeoForge.EVENT_BUS.addListener(AaroncosArenaWorldDimension::onArenaLevelTick);
+        NeoForge.EVENT_BUS.addListener(AaroncosArenaWorldDimension::onPlayerChangedDimension);
+        NeoForge.EVENT_BUS.addListener(AaroncosArenaWorldDimension::onPlayerRespawn);
+        NeoForge.EVENT_BUS.addListener(AaroncosArenaWorldDimension::onPlayerClone);
+        NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) ->
+                AaroncosArenaTeleporter.tickEntryCooldowns());
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onLivingHurt);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onLivingDamage);

@@ -2,6 +2,8 @@ package com.pasterdream.pasterdreammod;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.pasterdream.pasterdreammod.helper.BossLimitProfile;
+import com.pasterdream.pasterdreammod.helper.BossLimitValues;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -393,7 +395,99 @@ public class Config {
                             "pasterdream:wind_journey_world"),
                     obj -> obj instanceof String);
 
+    // === BOSS 限伤系统 · 全局配置 ===
+    public static final ModConfigSpec.BooleanValue BOSS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP = BUILDER
+            .comment("暗影难度是否影响 BOSS 限伤值（方案B：难度越高 damageCap 越低），默认 false")
+            .define("bossShadowDifficultyAffectsDamageCap", false);
+
+    public static final ModConfigSpec.BooleanValue BOSS_DAMAGE_CAP_ENABLED = BUILDER
+            .comment("是否启用 BOSS 单次伤害限制（单次受击伤害上限），默认 true。"
+                    + "\n设为 false 时，单发上限与 DPS 限制均不生效")
+            .define("bossDamageCapEnabled", true);
+
+    public static final ModConfigSpec.BooleanValue BOSS_DPS_CAP_ENABLED = BUILDER
+            .comment("是否启用 BOSS DPS 限制（每秒总伤害上限），默认 false。"
+                    + "\n仅在启用单次伤害限制（bossDamageCapEnabled=true）时生效")
+            .define("bossDpsCapEnabled", false);
+
+    public static final ModConfigSpec.BooleanValue BOSS_RANGE_CAP_ENABLED = BUILDER
+            .comment("是否启用 BOSS 远距离减伤（超出限伤距离后伤害线性衰减），默认 false")
+            .define("bossRangeCapEnabled", false);
+
+    public static final ModConfigSpec.DoubleValue BOSS_DAMAGE_CAP = BUILDER
+            .comment("BOSS 单次受击伤害上限（同时也是 DPS 桶容量），默认 40")
+            .defineInRange("bossDamageCap", 40.0, 1.0, 1_000_000.0);
+
+    public static final ModConfigSpec.DoubleValue BOSS_DPS_CAP = BUILDER
+            .comment("BOSS DPS 桶每秒恢复量，默认 200")
+            .defineInRange("bossDpsCap", 200.0, 1.0, 1_000_000.0);
+
+    public static final ModConfigSpec.DoubleValue BOSS_RANGE_CAP = BUILDER
+            .comment("BOSS 限伤距离衰减起始距离（格），超过此距离伤害线性衰减，默认 12")
+            .defineInRange("bossRangeCap", 12.0, 1.0, 256.0);
+
+    // === BOSS 限伤系统 · 亚伦柯斯之触独立配置 ===
+    public static final ModConfigSpec.BooleanValue AARONCOS_DAMAGE_CAP_INDEPENDENT = BUILDER
+            .comment("亚伦柯斯之触（左右手）是否使用独立限伤配置（否则沿用上方全局 BOSS 限伤配置），默认 true")
+            .define("aaroncosDamageCapIndependent", true);
+
+    public static final ModConfigSpec.BooleanValue AARONCOS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP = BUILDER
+            .comment("亚伦柯斯之触：暗影难度是否影响限伤值（难度越高 damageCap 越低），默认 false")
+            .define("aaroncosShadowDifficultyAffectsDamageCap", false);
+
+    public static final ModConfigSpec.BooleanValue AARONCOS_DAMAGE_CAP_ENABLED = BUILDER
+            .comment("亚伦柯斯之触：是否启用单次伤害限制（单次受击伤害上限），默认 true。"
+                    + "\n设为 false 时，单发上限与 DPS 限制均不生效")
+            .define("aaroncosDamageCapEnabled", true);
+
+    public static final ModConfigSpec.BooleanValue AARONCOS_DPS_CAP_ENABLED = BUILDER
+            .comment("亚伦柯斯之触：是否启用 DPS 限制（每秒总伤害上限），默认 true。"
+                    + "\n仅在启用单次伤害限制（aaroncosDamageCapEnabled=true）时生效")
+            .define("aaroncosDpsCapEnabled", true);
+
+    public static final ModConfigSpec.BooleanValue AARONCOS_RANGE_CAP_ENABLED = BUILDER
+            .comment("亚伦柯斯之触：是否启用远距离减伤（超出限伤距离后伤害线性衰减），默认 false")
+            .define("aaroncosRangeCapEnabled", false);
+
+    public static final ModConfigSpec.DoubleValue AARONCOS_DAMAGE_CAP = BUILDER
+            .comment("亚伦柯斯之触：单次受击伤害上限（同时也是 DPS 桶容量），默认 35")
+            .defineInRange("aaroncosDamageCap", 35.0, 1.0, 1_000_000.0);
+
+    public static final ModConfigSpec.DoubleValue AARONCOS_DPS_CAP = BUILDER
+            .comment("亚伦柯斯之触：DPS 桶每秒恢复量，默认 200")
+            .defineInRange("aaroncosDpsCap", 200.0, 1.0, 1_000_000.0);
+
+    public static final ModConfigSpec.DoubleValue AARONCOS_RANGE_CAP = BUILDER
+            .comment("亚伦柯斯之触：限伤距离衰减起始距离（格），默认 12")
+            .defineInRange("aaroncosRangeCap", 12.0, 1.0, 256.0);
+
+    public static final ModConfigSpec.BooleanValue AARONCOS_TOUCH_IMMUNE_TO_NEGATIVE_EFFECTS = BUILDER
+            .comment("亚伦柯斯之触是否免疫负面状态效果（有害类效果），默认 true")
+            .define("aaroncosTouchImmuneToNegativeEffects", true);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
+
+    public static boolean isAaroncosTouchImmuneToNegativeEffects() {
+        return AARONCOS_TOUCH_IMMUNE_TO_NEGATIVE_EFFECTS.get();
+    }
+
+    public static BossLimitValues getBossLimitValues(BossLimitProfile profile) {
+        return switch (profile) {
+            case AARONCOS -> AARONCOS_DAMAGE_CAP_INDEPENDENT.get()
+                    ? new BossLimitValues(
+                            AARONCOS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP.get(),
+                            AARONCOS_DAMAGE_CAP_ENABLED.get(), AARONCOS_DPS_CAP_ENABLED.get(),
+                            AARONCOS_RANGE_CAP_ENABLED.get(),
+                            AARONCOS_DAMAGE_CAP.get().floatValue(), AARONCOS_DPS_CAP.get().floatValue(),
+                            AARONCOS_RANGE_CAP.get())
+                    : getBossLimitValues(BossLimitProfile.GLOBAL);
+            case WIND_KNIGHT -> getBossLimitValues(BossLimitProfile.GLOBAL);
+            case GLOBAL -> new BossLimitValues(
+                    BOSS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP.get(),
+                    BOSS_DAMAGE_CAP_ENABLED.get(), BOSS_DPS_CAP_ENABLED.get(), BOSS_RANGE_CAP_ENABLED.get(),
+                    BOSS_DAMAGE_CAP.get().floatValue(), BOSS_DPS_CAP.get().floatValue(), BOSS_RANGE_CAP.get());
+        };
+    }
 
     public static boolean isTrainTicketDimensionAllowed(ResourceLocation dimension) {
         for (String idStr : TRAIN_TICKET_DIMENSION_WHITELIST.get()) {

@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlockEntit
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapTileRenderer;
+import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlockEntityRenderer;
@@ -22,6 +23,8 @@ import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanter
 import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlockRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalTileRenderer;
+import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeTileRenderer;
+import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestTileRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 /**
@@ -37,6 +40,7 @@ public final class ModBlockEntityRenderer {
 
         event.registerBlockEntityRenderer(ModBlockEntities.DESERT_HERO_TOMB.get(), DesertHeroTombBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_HAND_TRAP.get(), ShadowHandTrapTileRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_VORTEX.get(), ShadowVortexTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.LIFE_CRYSTAL.get(), LifeCrystalBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.GOLDEN_FOX_SCULPTURE.get(), GoldenFoxSculptureBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.FOX_SCULPTURE.get(), FoxSculptureBlockEntityRenderer::new);
@@ -55,5 +59,7 @@ public final class ModBlockEntityRenderer {
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_BRAZIER.get(), ShadowBrazierBlockRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.BROKEN_SHADOW_DUNGEON_PORTAL.get(), BrokenShadowDungeonPortalTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_DUNGEON_PORTAL.get(), ShadowDungeonPortalTileRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.AARONCOS_EYE.get(), AaroncosEyeTileRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.AARONCOS_HAND_CHEST.get(), AaroncosHandChestTileRenderer::new);
     }
 }

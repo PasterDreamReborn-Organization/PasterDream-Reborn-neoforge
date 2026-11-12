@@ -86,6 +86,11 @@ public class ModBiomes {
             ResourceKey.create(Registries.BIOME,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_ocean"));
 
+    // ===== 亚伦柯斯竞技场维度群系 =====
+    public static final ResourceKey<Biome> AARONCOS_ARENA =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_arena"));
+
     private static final ResourceKey<SoundEvent> SWEET_DREAM_MUSIC_KEY =
             ResourceKey.create(Registries.SOUND_EVENT,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sweet_dream_music"));
@@ -134,6 +139,7 @@ public class ModBiomes {
         context.register(SHADOW_FOREST, shadowForest(placedFeatures, carvers));
         context.register(SHADOW_RUINS, shadowRuins(placedFeatures, carvers));
         context.register(SHADOW_OCEAN, shadowOcean(placedFeatures, carvers));
+        context.register(AARONCOS_ARENA, aaroncosArenaBiome(placedFeatures, carvers));
     }
 
     // ==================== 共享辅助方法 ====================
@@ -717,6 +723,29 @@ public class ModBiomes {
                 .specialEffects(shadowEffects().build())
                 .mobSpawnSettings(MobSpawnSettings.EMPTY)
                 .generationSettings(gen.build())
+                .build();
+    }
+
+    // ==================== 亚伦柯斯竞技场 ====================
+
+    private static Biome aaroncosArenaBiome(HolderGetter<PlacedFeature> placedFeatures,
+                                            HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = new BiomeSpecialEffects.Builder()
+                .skyColor(0x79A6FF)
+                .fogColor(0xC0D8FF)
+                .waterColor(0x3F76E4)
+                .waterFogColor(0x050533)
+                .foliageColorOverride(0x9E814D)
+                .grassColorOverride(0x90814D);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(0.5f)
+                .downfall(0.0f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(MobSpawnSettings.EMPTY)
+                .generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, carvers).build())
                 .build();
     }
 }

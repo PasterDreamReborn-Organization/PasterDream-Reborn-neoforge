@@ -2,6 +2,8 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.world.effect.BindEffect;
 import com.pasterdream.pasterdreammod.world.effect.DreamWishEffect;
+import com.pasterdream.pasterdreammod.world.effect.OppressionEffect;
+import com.pasterdream.pasterdreammod.world.effect.RestrainmoveBlockEffect;
 import com.pasterdream.pasterdreammod.world.effect.BrokenWingEffect;
 import com.pasterdream.pasterdreammod.world.effect.BerserkEffect;
 import com.pasterdream.pasterdreammod.world.effect.FrozenEffect;
@@ -167,6 +169,12 @@ public class ModEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> DREAM_WISH =
             MOB_EFFECTS.register("dream_wish", DreamWishEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> RESTRAINMOVE_BLOCK =
+            MOB_EFFECTS.register("restrainmove_block", RestrainmoveBlockEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> OPPRESSION =
+            MOB_EFFECTS.register("oppression", OppressionEffect::new);
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);
