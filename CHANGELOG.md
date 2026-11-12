@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 116：暗影果冻核验与食物物品栏顺序对齐（2026-11-12，T20 修复）
+
+- 核验 `shadow_jelly` 已在批次 106 随灯影之下战利品表迁入：`ShadowJellyItem`（SAN -10、食用后暗影难度随机 ±1 并提示）、物品注册、研钵配方、模型/来源贴图、双语词条与创造栏条目均与来源一致，本批无需重复搬运。
+- 按来源重排饮食物品栏：`MOLTEN_GOLD_APPLE`、`ENCHANTED_MOLTEN_GOLD_APPLE` 前移至 `DYEDREAM_FRUIT` 之后，`FIG`、`GLASS_JAR_OF_DREAM_JUICE` 随后；来源中未迁入的眠椰/马天尼系列条目继续跳过。
+- `build` 通过。创造栏顺序属客户端展示，待游戏内确认。
+- **建议提交信息：** `feat(item): 核验暗影果冻并按源重排食物物品栏`
+
 ### 批次 115：修复暗影符文塔与暗影魔法球死亡动画（2026-11-12，T20 修复）
 
 - 补回 `ShadowTuneTotemRenderer` 与 `ShadowMagicballRenderer` 遗漏的来源覆写 `getDeathMaxRotation(...) -> 0.0F`，避免 GeckoLib 默认 90° 死亡旋转干扰自定义 `death` 动画；同时恢复来源 `preRender` 的 `scaleWidth/scaleHeight = 1` 设置。
