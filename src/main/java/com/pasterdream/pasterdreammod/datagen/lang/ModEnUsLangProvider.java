@@ -1585,6 +1585,19 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.FIREFLY_SPAWN_EGG.get(), "Firefly Spawn Egg");
         add(ModEntities.SMALL_STONE_SPIRIT.get(), "Small Stone Spirit");
         add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "Small Stone Spirit Spawn Egg");
+        add(ModEntities.THUNDERCLOUD.get(), "Thundercloud");
+        add(ModItems.THUNDERCLOUD_SPAWN_EGG.get(), "Thundercloud Spawn Egg");
+        add(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), "Highvoltage Thundercloud");
+        add(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get(), "Highvoltage Thundercloud Spawn Egg");
+        add(ModEntities.BONE_WING.get(), "Bone Wing");
+        add(ModItems.BONE_WING_SPAWN_EGG.get(), "Bone Wing Spawn Egg");
+        add(ModEntities.ASH_BONE_WING.get(), "Ash Bone Wing");
+        add(ModItems.ASH_BONE_WING_SPAWN_EGG.get(), "Ash Bone Wing Spawn Egg");
+        add(ModEntities.JELLYFISH.get(), "Jellyfish");
+        add(ModItems.JELLYFISH_SPAWN_EGG.get(), "Jellyfish Spawn Egg");
+        add(ModEntities.LIGHTNING_PROJECTILE.get(), "Thundercloud");
+        add(ModItems.WIND_TAILWIND_ICON.get(), "Tailwind Emblem");
+        add(ModItems.WIND_DEADWIND_ICON.get(), "Headwind Emblem");
 
         // Fishing and deep sea treasure
         add(ModItems.DEEP_SEA_TREASURE.get(), "Deep Sea Treasure");
@@ -2001,5 +2014,37 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.oppression", "Oppression");
         add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "The Shadow Tune Totem is about to explode");
+
+        // Wind Journey story advancements
+        add("advancements.pasterdream.story.enter_wind_journey.title", "Journey of Wind");
+        add("advancements.pasterdream.story.enter_wind_journey.description", "Enter the Journey of Wind dimension");
+        add("advancements.pasterdream.story.condense_wind_dew.title", "Condensing Wind into Dew");
+        add("advancements.pasterdream.story.condense_wind_dew.description", "Craft a Glass Jar of Wind Plant Extract");
+        add("advancements.pasterdream.story.crystal_wind_runner.title", "Crystal of the Wind Runner");
+        add("advancements.pasterdream.story.crystal_wind_runner.description", "Obtain a Wind Runner Crystal");
+        add("advancements.pasterdream.story.firefly_in_jar.title", "Firefly in a Jar");
+        add("advancements.pasterdream.story.firefly_in_jar.description", "Capture a firefly by right-clicking it with an Ecology Glass Jar");
+        add("advancements.pasterdream.story.sea_bloom.title", "Bloom of the Sea");
+        add("advancements.pasterdream.story.sea_bloom.description", "Breed a jellyfish using kelp");
+        add("advancements.pasterdream.story.congeal_wind.title", "Wind Takes Shape");
+        add("advancements.pasterdream.story.congeal_wind.description", "Obtain Congeal Wind");
+        add("advancements.pasterdream.story.congeal_wind_iron.title", "Forging Iron from Wind");
+        add("advancements.pasterdream.story.congeal_wind_iron.description", "Obtain a Congeal Wind Iron Ingot");
+        add("advancements.pasterdream.story.lightning_in_bottle.title", "Lightning in a Bottle");
+        add("advancements.pasterdream.story.lightning_in_bottle.description", "Craft a Lightning Potion Bottle");
+        add("advancements.pasterdream.story.wingless_bird.title", "The Wingless Bird Takes Flight");
+        add("advancements.pasterdream.story.wingless_bird.description", "Eat a Wind Runner Jelly");
+        add("advancements.pasterdream.story.break_wind_curtain.title", "Ride the Wind, Break the Curtain");
+        add("advancements.pasterdream.story.break_wind_curtain.description", "Pass through a Break Wind Curtain");
+        add("advancements.pasterdream.story.break_wind_curtain_hundred.title", "Hundred Veils");
+        add("advancements.pasterdream.story.break_wind_curtain_hundred.description", "Pass through Break Wind Curtains 100 times in total");
+        add("advancements.pasterdream.story.angel_beats.title", "Angel Beats!");
+        add("advancements.pasterdream.story.angel_beats.description", "Complete all three flight challenges to obtain the Angel Wing");
+        add("advancements.pasterdream.story.wind_follow.title", "Wind Accompanies You");
+        add("advancements.pasterdream.story.wind_follow.description", "Have experienced both the tailwind and headwind effects");
+        add("advancements.pasterdream.story.wind_deadwind_flight.title", "Advancing Against the Wind");
+        add("advancements.pasterdream.story.wind_deadwind_flight.description", "Fly a total of 10000 blocks with the headwind effect");
+        add("advancements.pasterdream.story.wind_tailwind_flight.title", "Riding the Wind");
+        add("advancements.pasterdream.story.wind_tailwind_flight.description", "Fly a total of 10000 blocks with the tailwind effect");
     }
 }

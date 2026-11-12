@@ -26,7 +26,9 @@
     "LightTextureGammaMixin",
     "BlockElementMixin",
     "MusicManagerMixin",
-    "SituationalMusicMixin"
+    "SituationalMusicMixin",
+    "LevelRendererMixin",
+    "FogRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -184,6 +184,66 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                 ModEntities.GOLDEN_FOX.get().getDefaultLootTable(),
                 LootTable.lootTable()
         );
+
+        consumer.accept(
+                ModEntities.BONE_WING.get().getDefaultLootTable(),
+                boneWingLoot(looting)
+        );
+
+        consumer.accept(
+                ModEntities.ASH_BONE_WING.get().getDefaultLootTable(),
+                boneWingLoot(looting)
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(Items.BLAZE_POWDER)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+        );
+
+        consumer.accept(
+                ModEntities.JELLYFISH.get().getDefaultLootTable(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.JELLYFISH_MUD.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 3)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1)))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+        );
+
+        //雷云
+        consumer.accept(
+                ModEntities.THUNDERCLOUD.get().getDefaultLootTable(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.DARK_CLOUD.get())
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+        );
+        consumer.accept(
+                ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get().getDefaultLootTable(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.DARK_CLOUD.get())
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+        );
+    }
+
+    private LootTable.Builder boneWingLoot(net.minecraft.core.Holder<net.minecraft.world.item.enchantment.Enchantment> looting) {
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(Items.BONE)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                                .apply(new ApplyEntityLootingFunction.Builder(looting, 1)))
+                        .add(LootItem.lootTableItem(Items.GUNPOWDER)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                                .apply(new ApplyEntityLootingFunction.Builder(looting, 1))));
     }
 
     private LootTable.Builder ghostLoot(net.minecraft.core.Holder<net.minecraft.world.item.enchantment.Enchantment> looting) {

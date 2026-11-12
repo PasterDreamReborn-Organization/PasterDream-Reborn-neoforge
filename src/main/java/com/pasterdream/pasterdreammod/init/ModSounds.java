@@ -24,6 +24,12 @@ public class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> BREEZE_WIND =
             SOUND_EVENTS.register("breeze_wind", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "breeze_wind")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> THUNDERCLOUD_ATTACK =
+            SOUND_EVENTS.register("thundercloud_attack", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "thundercloud_attack")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> BONE_WING_FIRE_BALL =
+            SOUND_EVENTS.register("bone_wing_fire_ball", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "bone_wing_fire_ball")));
     public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_SLASH =
             SOUND_EVENTS.register("sword_slash", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sword_slash")));

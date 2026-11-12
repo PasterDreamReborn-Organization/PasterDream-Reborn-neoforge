@@ -795,15 +795,28 @@ public class ModBiomes {
                 .specialEffects(effects.build())
                 .mobSpawnSettings(new MobSpawnSettings.Builder()
                         // 原作 monster: 骨翼 weight6(1~2)、灰骨翼 weight1(1~1)、萤火虫 weight10(3~4)、雷云 weight5(1~2)、高压雷云 weight1(1~1)；密度减半
-                        // 骨翼/灰骨翼/雷云/高压雷云尚未迁入，暂不登记对应生成项。
+                        .addSpawn(MobCategory.MONSTER,
+                                new MobSpawnSettings.SpawnerData(ModEntities.BONE_WING.get(), 3, 1, 2))
+                        .addSpawn(MobCategory.MONSTER,
+                                new MobSpawnSettings.SpawnerData(ModEntities.ASH_BONE_WING.get(), 1, 1, 1))
                         .addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(ModEntities.FIREFLY.get(), 5, 2, 3))
+                        .addSpawn(MobCategory.MONSTER,
+                                new MobSpawnSettings.SpawnerData(ModEntities.THUNDERCLOUD.get(), 2, 1, 1))
+                        .addSpawn(MobCategory.MONSTER,
+                                new MobSpawnSettings.SpawnerData(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), 1, 1, 1))
                         // 原作 creature: 水母 weight10(1~2)；小石精原作 creature weight12(1~2)，但实体为 Monster（暗处生成），按 monster 接入否则永不在群系生成；小石精密度减半
-                        // 水母尚未迁入，暂不登记对应生成项。
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.JELLYFISH.get(), 10, 1, 2))
                         .addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(ModEntities.SMALL_STONE_SPIRIT.get(), 6, 1, 2))
                         // addMobCharge 生成预算：每次生成尝试需 charge × Σ(已聚集charge/距离) ≤ energyBudget，直接限制这些怪在玩家周围的同时存在数量
+                        //（charge 越大越稀疏，energyBudget 越小越稀疏；骨翼/余烬骨翼能量预算提高至 3.0，允许同区域同时存在的数量约为原来的两倍（3/1.5））
+                        .addMobCharge(ModEntities.BONE_WING.get(), 2.0, 3.0)
+                        .addMobCharge(ModEntities.ASH_BONE_WING.get(), 2.0, 3.0)
                         .addMobCharge(ModEntities.FIREFLY.get(), 2.0, 2.0)
+                        .addMobCharge(ModEntities.THUNDERCLOUD.get(), 2.0, 2.0)
+                        .addMobCharge(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), 2.0, 2.0)
                         .addMobCharge(ModEntities.SMALL_STONE_SPIRIT.get(), 2.0, 3)
                         .build())
                 .generationSettings(gen.build())

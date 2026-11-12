@@ -46,6 +46,10 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
             .add(EntityType.SILVERFISH);
 
         // 自定义箭矢加入原版箭矢实体标签，使力量 / 冲击 / 火矢等附魔按 1.21 数据驱动结算。
+        tag(EntityTypeTags.UNDEAD)
+                .add(ModEntities.BONE_WING.get())
+                .add(ModEntities.ASH_BONE_WING.get());
+
         tag(EntityTypeTags.ARROWS)
                 .add(ModEntities.MELT_DREAM_ARROW.get())
                 .add(ModEntities.FLUFFY_WIND_ARROW.get())

@@ -125,6 +125,7 @@ public final class ClientModEvents {
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
         AaroncosArenaDimensionEffects.registerDimensionSpecialEffects(event);
         WindJourneyDimensionEffects.registerDimensionSpecialEffects(event);
+        LampShadowDimensionEffects.registerDimensionSpecialEffects(event);
     }
 
     /** 实体模型层定义。 */
@@ -142,5 +143,6 @@ public final class ClientModEvents {
         event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "san"), SanTank::render);
         event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_hand_boss_bar"), AaroncosHandBossBar::render);
         event.registerBelowAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lose_mind"), LoseMind::render);
+        event.registerBelowAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cloud_mist_hud"), CloudMistHud::render);
     }
 }

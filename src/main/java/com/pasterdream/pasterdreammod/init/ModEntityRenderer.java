@@ -37,6 +37,12 @@ import com.pasterdream.pasterdreammod.client.renderer.FireflyRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.SmallStoneSpiritRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.PinkChickenRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.PinkSlimeRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.BoneWingRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.AshBoneWingRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.BoneWingFireBallProjectileRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.ThundercloudRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.HighvoltageThundercloudRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.JellyfishRenderer;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -101,5 +107,12 @@ public final class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.PINK_CHICKEN.get(), PinkChickenRenderer::new);
         event.registerEntityRenderer(ModEntities.PINK_SLIME.get(), PinkSlimeRenderer::new);
         event.registerEntityRenderer(ModEntities.THROWN_PINK_EGG.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.BONE_WING.get(), BoneWingRenderer::new);
+        event.registerEntityRenderer(ModEntities.ASH_BONE_WING.get(), AshBoneWingRenderer::new);
+        event.registerEntityRenderer(ModEntities.BONE_WING_FIRE_BALL_PROJECTILE.get(), BoneWingFireBallProjectileRenderer::new);
+        event.registerEntityRenderer(ModEntities.THUNDERCLOUD.get(), ThundercloudRenderer::new);
+        event.registerEntityRenderer(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), HighvoltageThundercloudRenderer::new);
+        event.registerEntityRenderer(ModEntities.LIGHTNING_PROJECTILE.get(), NoopRenderer::new);
+        event.registerEntityRenderer(ModEntities.JELLYFISH.get(), JellyfishRenderer::new);
     }
 }

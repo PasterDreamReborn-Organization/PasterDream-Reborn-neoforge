@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.advancement.critereon.BreakWindCurtainTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.CaptureFireflyTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundDesertFortressTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundTombTrigger;
@@ -10,9 +12,13 @@ import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDraw
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenDreamAccumulatorTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.WindFlightTrigger;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModDataComponents;
+import com.pasterdream.pasterdreammod.init.ModEffects;
+import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomes;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
@@ -25,21 +31,28 @@ import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ConsumeItemTrigger;
 import net.minecraft.advancements.critereon.ChangeDimensionTrigger;
+import net.minecraft.advancements.critereon.BredAnimalsTrigger;
+import net.minecraft.advancements.critereon.EffectsChangedTrigger;
+import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
+import net.minecraft.advancements.critereon.MobEffectsPredicate;
 import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.advancements.critereon.RecipeCraftedTrigger;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponentPredicate;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
@@ -709,6 +722,288 @@ public class ModAdvancementProvider extends AdvancementProvider {
                             ReadDreamNoteTrigger.TriggerInstance.forContent("破碎"))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/shattered"), existingFileHelper);
+
+            // ========== 风之旅途 Tab 页根进度（独立 tab，CHALLENGE）==========
+            // 首次进入 wind_journey_world 维度时触发
+            ResourceKey<Level> windJourneyWorld = ResourceKey.create(Registries.DIMENSION,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world"));
+
+            AdvancementHolder enterWindJourney = Advancement.Builder.advancement()
+                    .display(
+                            ModBlocks.CYAN_MOSS_STONE.get(),
+                            Component.translatable("advancements.pasterdream.story.enter_wind_journey.title"),
+                            Component.translatable("advancements.pasterdream.story.enter_wind_journey.description"),
+                            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                    "textures/block/cyan_stone_bricks.png"),
+                            AdvancementType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("enter_wind_journey",
+                            ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(windJourneyWorld))
+                    .rewards(AdvancementRewards.Builder.experience(100))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/enter_wind_journey"), existingFileHelper);
+
+            // ========== 风之旅途子进度：凝风为露 ==========
+            // 合成风植萃取液
+            Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(),
+                            Component.translatable("advancements.pasterdream.story.condense_wind_dew.title"),
+                            Component.translatable("advancements.pasterdream.story.condense_wind_dew.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("craft_wind_plant_extract", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/condense_wind_dew"), existingFileHelper);
+
+            // ========== 风之旅途子进度：晶凝风行 ==========
+            // 获得风行者水晶
+            Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            ModItems.WIND_RUNNER_CRYSTAL.get(),
+                            Component.translatable("advancements.pasterdream.story.crystal_wind_runner.title"),
+                            Component.translatable("advancements.pasterdream.story.crystal_wind_runner.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("get_wind_runner_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.WIND_RUNNER_CRYSTAL.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/crystal_wind_runner"), existingFileHelper);
+
+            // ========== 风之旅途子进度：瓶中萤火 ==========
+            // 用生态玻璃罐右键捕获一只萤火虫
+            Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            ModItems.FIREFLY_GLASS_JAR.get(),
+                            Component.translatable("advancements.pasterdream.story.firefly_in_jar.title"),
+                            Component.translatable("advancements.pasterdream.story.firefly_in_jar.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("capture_firefly",
+                            CaptureFireflyTrigger.TriggerInstance.captured())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/firefly_in_jar"), existingFileHelper);
+
+            // ========== 风之旅途子进度：海的繁衍 ==========
+            // 用海带繁殖水母
+            Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            ModItems.JELLYFISH_MUD.get(),
+                            Component.translatable("advancements.pasterdream.story.sea_bloom.title"),
+                            Component.translatable("advancements.pasterdream.story.sea_bloom.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("breed_jellyfish",
+                            BredAnimalsTrigger.TriggerInstance.bredAnimals(
+                                    EntityPredicate.Builder.entity().of(ModEntities.JELLYFISH.get())))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/sea_bloom"), existingFileHelper);
+
+            // ========== 风之旅途子进度：风凝有形 ==========
+            // 获得凝结之风
+            AdvancementHolder congealWind = Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            ModItems.CONGEAL_WIND.get(),
+                            Component.translatable("advancements.pasterdream.story.congeal_wind.title"),
+                            Component.translatable("advancements.pasterdream.story.congeal_wind.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("get_congeal_wind", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.CONGEAL_WIND.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/congeal_wind"), existingFileHelper);
+
+            // ========== 风凝有形子进度：凝风锻铁 ==========
+            // 获得凝风铁锭
+            AdvancementHolder congealWindIron = Advancement.Builder.advancement()
+                    .parent(congealWind)
+                    .display(
+                            ModItems.CONGEAL_WIND_IRON_INGOT.get(),
+                            Component.translatable("advancements.pasterdream.story.congeal_wind_iron.title"),
+                            Component.translatable("advancements.pasterdream.story.congeal_wind_iron.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("get_congeal_wind_iron_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/congeal_wind_iron"), existingFileHelper);
+
+            // ========== 凝风锻铁子进度：瓶中闪电 ==========
+            // 用梦釜合成雷电药剂瓶
+            CompoundTag lightningBottleTag = new CompoundTag();
+            lightningBottleTag.putString(PotionBottleItem.TAG_POTION_TYPE, PotionBottleItem.TYPE_LIGHTNING);
+            DataComponentPredicate lightningBottlePredicate = DataComponentPredicate.builder()
+                    .expect(DataComponents.CUSTOM_DATA, CustomData.of(lightningBottleTag))
+                    .build();
+            // 破风的骑士及其子进度依赖尚未迁入的破风骑士祭坛/召唤触发器，留待 T19-C/T20。
+            Advancement.Builder.advancement()
+                    .parent(congealWindIron)
+                    .display(
+                            PotionBottleItem.createWithType(ModItems.POTION_BOTTLE.get(),
+                                    PotionBottleItem.TYPE_LIGHTNING),
+                            Component.translatable("advancements.pasterdream.story.lightning_in_bottle.title"),
+                            Component.translatable("advancements.pasterdream.story.lightning_in_bottle.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("get_lightning_potion_bottle", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ItemPredicate.Builder.item().of(ModItems.POTION_BOTTLE.get())
+                                    .hasComponents(lightningBottlePredicate).build()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/lightning_in_bottle"), existingFileHelper);
+
+            // ========== 风之旅途子进度：展翅的无翼鸟 ==========
+            // 食用风行者果冻（获得风行者效果）
+            AdvancementHolder winglessBird = Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            ModItems.WIND_RUNNER_JELLY.get(),
+                            Component.translatable("advancements.pasterdream.story.wingless_bird.title"),
+                            Component.translatable("advancements.pasterdream.story.wingless_bird.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("eat_wind_runner_jelly", ConsumeItemTrigger.TriggerInstance.usedItem(
+                            ModItems.WIND_RUNNER_JELLY.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/wingless_bird"), existingFileHelper);
+
+            // ========== 展翅的无翼鸟子进度：乘风破幕 ==========
+            // 飞行穿过破风幕帐
+            AdvancementHolder breakWindCurtain = Advancement.Builder.advancement()
+                    .parent(winglessBird)
+                    .display(
+                            ModItems.BREAK_WIND_CURTAIN.get(),
+                            Component.translatable("advancements.pasterdream.story.break_wind_curtain.title"),
+                            Component.translatable("advancements.pasterdream.story.break_wind_curtain.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("pass_break_wind_curtain",
+                            BreakWindCurtainTrigger.TriggerInstance.passed())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/break_wind_curtain"), existingFileHelper);
+
+            // ========== 乘风破幕子进度：百幕穿行（二级挑战） ==========
+            // 累计穿过破风幕帐 100 次
+            AdvancementHolder breakWindCurtainHundred = Advancement.Builder.advancement()
+                    .parent(breakWindCurtain)
+                    .display(
+                            ModItems.BREAK_WIND_CURTAIN.get(),
+                            Component.translatable("advancements.pasterdream.story.break_wind_curtain_hundred.title"),
+                            Component.translatable("advancements.pasterdream.story.break_wind_curtain_hundred.description"),
+                            null,
+                            AdvancementType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("pass_break_wind_curtain_100_times",
+                            BreakWindCurtainTrigger.TriggerInstance.passedTimes(100))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/break_wind_curtain_hundred"), existingFileHelper);
+
+            // ========== 百幕穿行子进度：Angel Beats! ==========
+            // 完成三项飞行挑战后获得天使之翼
+            Advancement.Builder.advancement()
+                    .parent(breakWindCurtainHundred)
+                    .display(
+                            ModItems.ANGEL_WING.get(),
+                            Component.translatable("advancements.pasterdream.story.angel_beats.title"),
+                            Component.translatable("advancements.pasterdream.story.angel_beats.description"),
+                            null,
+                            AdvancementType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("complete_wind_tailwind_flight",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/wind_tailwind_flight")))
+                    .addCriterion("complete_wind_deadwind_flight",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/wind_deadwind_flight")))
+                    .addCriterion("complete_break_wind_curtain_hundred",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/break_wind_curtain_hundred")))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/angel_beats"), existingFileHelper);
+
+            // ========== 风之旅途子进度：风伴你而行 ==========
+            // 获得过顺风与逆风效果（两者互斥，需两个 effects_changed 判定）
+            AdvancementHolder windFollow = Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            Items.FEATHER,
+                            Component.translatable("advancements.pasterdream.story.wind_follow.title"),
+                            Component.translatable("advancements.pasterdream.story.wind_follow.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("has_tailwind", EffectsChangedTrigger.TriggerInstance.hasEffects(
+                            MobEffectsPredicate.Builder.effects().and(ModEffects.TAILWIND)))
+                    .addCriterion("has_deadwind", EffectsChangedTrigger.TriggerInstance.hasEffects(
+                            MobEffectsPredicate.Builder.effects().and(ModEffects.DEADWIND)))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/wind_follow"), existingFileHelper);
+
+            // ========== 风伴你而行子进度：逆风而进 ==========
+            // 逆风效果下累计鞘翅飞行 10000 格
+            Advancement.Builder.advancement()
+                    .parent(windFollow)
+                    .display(
+                            ModItems.WIND_DEADWIND_ICON.get(),
+                            Component.translatable("advancements.pasterdream.story.wind_deadwind_flight.title"),
+                            Component.translatable("advancements.pasterdream.story.wind_deadwind_flight.description"),
+                            null,
+                            AdvancementType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("fly_10000_with_deadwind",
+                            WindFlightTrigger.TriggerInstance.flown(WindFlightTrigger.FlightType.DEADWIND,
+                                    MinMaxBounds.Doubles.atLeast(10000)))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/wind_deadwind_flight"), existingFileHelper);
+
+            // ========== 风伴你而行子进度：御风而行 ==========
+            // 顺风效果下累计鞘翅飞行 10000 格
+            Advancement.Builder.advancement()
+                    .parent(windFollow)
+                    .display(
+                            ModItems.WIND_TAILWIND_ICON.get(),
+                            Component.translatable("advancements.pasterdream.story.wind_tailwind_flight.title"),
+                            Component.translatable("advancements.pasterdream.story.wind_tailwind_flight.description"),
+                            null,
+                            AdvancementType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("fly_10000_with_tailwind",
+                            WindFlightTrigger.TriggerInstance.flown(WindFlightTrigger.FlightType.TAILWIND,
+                                    MinMaxBounds.Doubles.atLeast(10000)))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/wind_tailwind_flight"), existingFileHelper);
         }
     }
 

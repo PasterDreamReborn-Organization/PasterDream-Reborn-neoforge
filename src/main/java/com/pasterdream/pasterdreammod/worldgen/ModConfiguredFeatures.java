@@ -759,7 +759,9 @@ public final class ModConfiguredFeatures {
         context.register(WIND_JOURNEY_CLOUD_PATCH_LOW, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(4, 11, 4, windCloudSelector())));
         // 水池 — 原作 ground_feature_wind_journey_1: lake, 水 + cyan_stone 围边
-        context.register(WIND_JOURNEY_WATER_POOL, new ConfiguredFeature<>(Feature.LAKE,
+        // 1.21 原版 LakeFeature 的结冰查询会访问生成区域外的区块并导致风之旅途区块生成崩溃；
+        // 使用既有的 DyedreamWaterPoolFeature 封装（保留水体/围边算法，移除结冰查询）。
+        context.register(WIND_JOURNEY_WATER_POOL, new ConfiguredFeature<>(ModFeatures.DYEDREAM_WATER_POOL.get(),
                 new LakeFeature.Configuration(
                         BlockStateProvider.simple(Blocks.WATER),
                         BlockStateProvider.simple(ModBlocks.CYAN_STONE.get()))));

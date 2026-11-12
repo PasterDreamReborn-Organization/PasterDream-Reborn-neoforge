@@ -5,6 +5,19 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 119：风之旅途生物与 story 进度链（2026-11-12，T19-A/T19-B/T05 部分）
+
+- 迁入骨翼、余烬骨翼、雷云、高压雷云、水母五种风之旅途生物，以及骨翼火球与雷云落雷射弹；保留来源属性、AI、飞行盘旋、落雷概率、水母繁殖、死亡时长、战利品与群系生成权重/生成预算。骨翼与余烬骨翼改由 `#minecraft:undead` 实体标签承接亡灵语义，高压雷云死亡闪电复用雷电药剂瓶效果。
+- 迁入 `lightning` 粒子与 `thundercloud_attack`、`bone_wing_fire_ball` 音效；补齐五种刷怪蛋、创造栏条目、中英文本与 `fireball_projectile.png` 等来源纹理、GEO/动画资源。
+- 补齐风之旅途 story 进度链 15 个节点：进入维度、凝风为露、晶凝风行、瓶中萤火、海的繁衍、风凝有形 → 凝风锻铁 → 瓶中闪电、展翅的无翼鸟 → 乘风破幕 → 百幕穿行 → Angel Beats!、风伴你而行 → 逆风而进/御风而行；新增 `wind_tailwind_icon`、`wind_deadwind_icon` 隐藏图标物品。破风骑士召唤、风之旅途水晶箱与圣诞树岛笔记节点因前置未迁入而保留待办。
+- 1.21.1 适配：GeckoLib 4.9.2 包路径与 `int renderColor` 渲染签名、`SynchedEntityData.Builder`、`getDefaultDimensions`、`RegisterSpawnPlacementsEvent`、`AbstractArrow` 新构造器与 `igniteForSeconds`；1.21 移除 `setKnockback`/`setPierceLevel` 后保留基础伤害与命中逻辑；`AbstractThundercloudEntity` 的破风骑士引用暂改为通用 `Mob`。
+- 修复 `runClient` 进入风之旅途时的区块生成崩溃：原版 `Feature.LAKE` 的结冰查询会访问生成区域外区块，风之旅途水池改用既有 `DyedreamWaterPoolFeature`，保留水体/围边算法并移除跨区块查询。
+- 补灯影之下/风之旅途天空与雾色：迁入 `LevelRendererMixin`（灯影黑色雨、取消纯色天空与风之旅途云层）与 `FogRendererMixin`（灯影纯黑清屏/雾色、风之旅途青色清屏/雾色），新增 `LampShadowDimensionEffects` 并注册。
+- 补云雾效果表现：新增 `CloudMistHud` 全屏云雾叠加层并注册；`CloudMistEffect` 在 HUD 与物品栏状态效果列表中隐藏，避免与自定义云雾 GUI 重复显示。
+- 补小石堆破坏粒子纹理 `textures/block/cang_qing_yan_.png`，修复 `small_stone_spirit_block` 模型 `particle` 贴图缺失。
+- `compileJava`、`runData`、`build` 通过，`runGameTestServer` 207/207 通过；新增 `WindCreatureGameTests` 覆盖生物/射弹/刷怪蛋注册、亡灵标签、风泊群岛生成项与 15 条 story 进度，`WindJourneyDimensionGameTests` 增加水池 Feature 断言。客户端模型动画、粒子/音效、实际生成与多人同步待游戏内验收。
+- **建议提交信息：** `feat(entity): 搬运风之旅途生物与 story 进度链`
+
 ### 批次 118：暗影合金/琴雨梦护甲与漂泊旅者等装备（2026-11-12，T13/T15/T19 部分）
 
 - 迁入暗影合金四件套与 `ShadowAlloyArmorHandler`：单件 +4 最大生命 / +1 攻击力，满套挂「黑暗守望」，灯影武器 +30%、受击反击 10s（30s 冷却）、暗影生物攻击 50% 最终减伤；GeckoLib GEO 模型、动画、护甲纹理与效果图标按来源复制。

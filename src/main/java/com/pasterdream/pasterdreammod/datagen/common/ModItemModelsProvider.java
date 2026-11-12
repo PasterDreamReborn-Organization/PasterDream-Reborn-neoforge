@@ -625,6 +625,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.SLIVER_BELL.get());
 
         basicItem(ModItems.MEMORY_GEM.get());
+        basicItem(ModItems.WIND_TAILWIND_ICON.get());
+        basicItem(ModItems.WIND_DEADWIND_ICON.get());
         basicItem(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get());
 
         basicItem(ModItems.DEBUG_SWORD.get());
@@ -650,6 +652,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.PINK_SLIME_SPAWN_EGG.get());
         spawnEggItem(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
         spawnEggItem(ModItems.NAMELESS_SPAWN_EGG.get());
+        spawnEggItem(ModItems.THUNDERCLOUD_SPAWN_EGG.get());
+        spawnEggItem(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get());
+        spawnEggItem(ModItems.BONE_WING_SPAWN_EGG.get());
+        spawnEggItem(ModItems.ASH_BONE_WING_SPAWN_EGG.get());
+        spawnEggItem(ModItems.JELLYFISH_SPAWN_EGG.get());
 
         // 特殊箭矢
         basicItem(ModItems.TOXIC_SPORE_ARROW.get());
