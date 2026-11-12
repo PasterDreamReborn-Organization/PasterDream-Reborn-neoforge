@@ -1,6 +1,10 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.client.renderer.TerrorbeakRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.AaroncosLeftHandRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.AaroncosRightHandRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.ShadowMagicballRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.ShadowTuneTotemRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.ShadowHandRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.ShadowGolemRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.ShadowGhostRenderer;
@@ -51,6 +55,10 @@ public final class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.CRAZY_TERRORBEAK.get(), TerrorbeakRenderer::new);
         event.registerEntityRenderer(ModEntities.WEAKENESS_TERRORBEAK.get(), TerrorbeakRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_HAND.get(), ShadowHandRenderer::new);
+        event.registerEntityRenderer(ModEntities.SHADOW_MAGICBALL.get(), ShadowMagicballRenderer::new);
+        event.registerEntityRenderer(ModEntities.SHADOW_TUNE_TOTEM.get(), ShadowTuneTotemRenderer::new);
+        event.registerEntityRenderer(ModEntities.AARONCOS_LEFT_HAND.get(), AaroncosLeftHandRenderer::new);
+        event.registerEntityRenderer(ModEntities.AARONCOS_RIGHT_HAND.get(), AaroncosRightHandRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_GOLEM.get(), ShadowGolemRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_GHOST.get(), ShadowGhostRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_SQUEAL_GHOST.get(), ShadowGhostRenderer::new);

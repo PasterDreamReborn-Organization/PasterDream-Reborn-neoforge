@@ -1913,5 +1913,20 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.talent_light.description", "在灯与影的选择中选择光明");
         add("advancements.pasterdream.story.talent_shadow.title", "暗影仆从");
         add("advancements.pasterdream.story.talent_shadow.description", "在灯与影的抉择中选择暗影");
+
+        // 亚伦柯斯之触 BOSS
+        add(ModEntities.SHADOW_MAGICBALL.get(), "暗影魔法球");
+        add(ModEntities.SHADOW_TUNE_TOTEM.get(), "暗影符文塔");
+        add(ModEntities.AARONCOS_LEFT_HAND.get(), "亚伦柯斯之触-左手");
+        add(ModEntities.AARONCOS_RIGHT_HAND.get(), "亚伦柯斯之触-右手");
+        add(ModItems.SHADOW_MAGICBALL_SPAWN_EGG.get(), "暗影魔法球刷怪蛋");
+        add(ModItems.SHADOW_TUNE_TOTEM_SPAWN_EGG.get(), "暗影符文塔刷怪蛋");
+        add(ModItems.AARONCOS_LEFT_HAND_SPAWN_EGG.get(), "亚伦柯斯之触-左手刷怪蛋");
+        add(ModItems.AARONCOS_RIGHT_HAND_SPAWN_EGG.get(), "亚伦柯斯之触-右手刷怪蛋");
+        add(ModBlocks.SHADOW_VORTEX.get(), "暗影漩涡");
+        add("effect.pasterdream.restrainmove_block", "行动抑制");
+        add("effect.pasterdream.oppression", "压抑");
+        add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在积蓄能量");
+        add("message.pasterdream.shadow_tune_totem.about_to_explode", "暗影符文塔即将爆炸");
     }
 }

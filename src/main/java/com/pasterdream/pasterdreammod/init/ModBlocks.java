@@ -21,6 +21,7 @@ import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.world.behavior.ModTreeGrowers;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexBlock;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlock;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlock;
@@ -412,6 +413,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SHADOW_BLAST_FURNACE = BLOCKS.register("shadow_blast_furnace", () -> new ShadowBlastFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.DEEPSLATE).strength(10f).requiresCorrectToolForDrops().noOcclusion()));
     public static final DeferredBlock<Block> SHADOW_BLAST_FURNACE_CORE = BLOCKS.register("shadow_blast_furnace_core", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.METAL).strength(3f, 1f).requiresCorrectToolForDrops()));
     public static final DeferredBlock<Block> SHADOW_HAND_TRAP = BLOCKS.register("shadow_hand_trap", () -> new ShadowHandTrapBlock());
+
+    public static final DeferredBlock<Block> SHADOW_VORTEX = BLOCKS.register("shadow_vortex", ShadowVortexBlock::new);
     public static final DeferredBlock<Block> ECOLOGY_GLASS_JAR = BLOCKS.register("ecology_glass_jar", EcologyGlassJarBlock::new);
     public static final DeferredBlock<Block> FIREFLY_GLASS_JAR = BLOCKS.register("firefly_glass_jar", FireflyGlassJarBlock::new);
     public static final DeferredBlock<Block> FIREFLY_NEST = BLOCKS.register("firefly_nest", FireflyNestBlock::new);

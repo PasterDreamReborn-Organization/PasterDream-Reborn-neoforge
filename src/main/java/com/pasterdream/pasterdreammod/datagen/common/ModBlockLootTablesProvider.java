@@ -381,6 +381,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                         .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
                                 .when(LootItemRandomChanceCondition.randomChance(0.1F))
                                 .when(hasSilkTouch().invert()))));
+        dropSelf(ModBlocks.SHADOW_VORTEX.get());
         dropOther(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), ModItems.SHADOW_DUNGEON_KEY.get());
         dropOther(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), ModItems.SHADOW_DUNGEON_KEY.get());
         dropSelf(ModBlocks.SHADOW_DUNGEON_GATE.get());

@@ -164,6 +164,22 @@ public class ModSounds {
             SOUND_EVENTS.register("shadow_sword", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_sword")));
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHADOW_VORTEX =
+            SOUND_EVENTS.register("shadow_vortex", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_vortex")));
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> AARONCOS_SPAWN =
+            SOUND_EVENTS.register("aaroncos_spawn", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_spawn")));
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> STONE_SHATTER =
+            SOUND_EVENTS.register("stone_shatter", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stone_shatter")));
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> STONE_CRACK =
+            SOUND_EVENTS.register("stone_crack", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stone_crack")));
+
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }

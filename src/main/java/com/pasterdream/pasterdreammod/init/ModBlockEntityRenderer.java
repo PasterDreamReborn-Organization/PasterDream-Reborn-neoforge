@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlockEntit
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapTileRenderer;
+import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlockEntityRenderer;
@@ -37,6 +38,7 @@ public final class ModBlockEntityRenderer {
 
         event.registerBlockEntityRenderer(ModBlockEntities.DESERT_HERO_TOMB.get(), DesertHeroTombBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_HAND_TRAP.get(), ShadowHandTrapTileRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_VORTEX.get(), ShadowVortexTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.LIFE_CRYSTAL.get(), LifeCrystalBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.GOLDEN_FOX_SCULPTURE.get(), GoldenFoxSculptureBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.FOX_SCULPTURE.get(), FoxSculptureBlockEntityRenderer::new);

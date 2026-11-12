@@ -133,6 +133,7 @@ public final class ClientModEvents {
     public static void registerGuiLayers(RegisterGuiLayersEvent event) {
         event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_energy"), MeltDreamEnergyTank::render);
         event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "san"), SanTank::render);
+        event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_hand_boss_bar"), AaroncosHandBossBar::render);
         event.registerBelowAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lose_mind"), LoseMind::render);
     }
 }

@@ -1912,5 +1912,20 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.talent_light.description", "Choose the light in the choice between light and shadow");
         add("advancements.pasterdream.story.talent_shadow.title", "Shadow Servant");
         add("advancements.pasterdream.story.talent_shadow.description", "Choose the shadow in the choice between light and shadow");
+
+        // Aaroncos's Touch boss
+        add(ModEntities.SHADOW_MAGICBALL.get(), "Shadow Magicball");
+        add(ModEntities.SHADOW_TUNE_TOTEM.get(), "Shadow Tune Totem");
+        add(ModEntities.AARONCOS_LEFT_HAND.get(), "Aaroncos's Left Hand");
+        add(ModEntities.AARONCOS_RIGHT_HAND.get(), "Aaroncos's Right Hand");
+        add(ModItems.SHADOW_MAGICBALL_SPAWN_EGG.get(), "Shadow Magicball Spawn Egg");
+        add(ModItems.SHADOW_TUNE_TOTEM_SPAWN_EGG.get(), "Shadow Tune Totem Spawn Egg");
+        add(ModItems.AARONCOS_LEFT_HAND_SPAWN_EGG.get(), "Aaroncos's Left Hand Spawn Egg");
+        add(ModItems.AARONCOS_RIGHT_HAND_SPAWN_EGG.get(), "Aaroncos's Right Hand Spawn Egg");
+        add(ModBlocks.SHADOW_VORTEX.get(), "Shadow Vortex");
+        add("effect.pasterdream.restrainmove_block", "Movement Restraint");
+        add("effect.pasterdream.oppression", "Oppression");
+        add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");
+        add("message.pasterdream.shadow_tune_totem.about_to_explode", "The Shadow Tune Totem is about to explode");
     }
 }

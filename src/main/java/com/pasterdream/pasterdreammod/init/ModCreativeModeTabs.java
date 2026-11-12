@@ -816,6 +816,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_HAND_SPAWN_EGG.get());
+                        output.accept(ModItems.SHADOW_MAGICBALL_SPAWN_EGG.get());
+                        output.accept(ModItems.SHADOW_TUNE_TOTEM_SPAWN_EGG.get());
+                        output.accept(ModItems.AARONCOS_LEFT_HAND_SPAWN_EGG.get());
+                        output.accept(ModItems.AARONCOS_RIGHT_HAND_SPAWN_EGG.get());
+                        output.accept(ModItems.SHADOW_VORTEX.get());
                         output.accept(ModItems.SHADOW_GOLEM_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_GHOST_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_SQUEAL_GHOST_SPAWN_EGG.get());

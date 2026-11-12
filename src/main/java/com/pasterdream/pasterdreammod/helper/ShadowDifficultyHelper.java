@@ -120,6 +120,10 @@ public final class ShadowDifficultyHelper {
         return getValue(Config.SHADOW_LOOT_MULTIPLIERS.get(), getDifficulty(player), 1.0);
     }
 
+    public static double getLootMultiplier(int tier) {
+        return getValue(Config.SHADOW_LOOT_MULTIPLIERS.get(), clampTier(tier), 1.0);
+    }
+
     public static double getHealthMultiplier(int tier) {
         return getValue(Config.SHADOW_HEALTH_MULTIPLIERS.get(), clampTier(tier), 1.0);
     }

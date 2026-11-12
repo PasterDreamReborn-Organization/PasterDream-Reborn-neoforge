@@ -5,6 +5,16 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 113：亚伦柯斯之触 BOSS 实体与技能依赖（2026-11-12，T20 部分）
+
+- 迁入亚伦柯斯之触左手/右手两个 GeckoLib BOSS 实体，保留来源阶段状态机、冲刺/重击/剑气与魔法球/漩涡/音图腾技能、姐妹协同、血锁召唤暗影之手和限伤接线；同步迁入 `shadow_magicball`、`shadow_tune_totem` 召唤物及刷怪蛋。
+- 迁入 `shadow_vortex` 方块/方块实体/展示物品、`restrainmove_block` 与 `oppression` 效果、`aaroncos_spawn` / `stone_crack` / `stone_shatter` / `shadow_vortex` 音效，以及 `BossDamageLimiter` / `BossLimitProfile` / `BossLimitValues` 与全局/亚伦柯斯限伤配置。
+- 迁入亚伦柯斯之触组合 BOSS 条：左右手血量分栏、共享纵向槽位布局，随原版 BOSS 条数量下移；新增 `BossHealthOverlay.events` 访问转换与 4 张 GUI 纹理。
+- 补齐实体标签（`shadow_mob`、`special_entity_tag`）、调试物品栏、刷怪蛋模型、`shadow_vortex` 战利品与中英文本；GeckoLib 模型、动画、纹理与音效资源按来源复制。
+- 1.21.1 适配：数据同步 Builder、四参数 `finalizeSpawn`、`canChangeDimensions(Level, Level)`、`getBaseExperienceReward`、`ResourceLocation` 属性修饰符、`Holder<MobEffect>`、`BaseEntityBlock#codec` 与 `HolderLookup.Provider` 方块实体存取；`MeleeAttackGoal` 攻击距离改由实体 `isWithinMeleeAttackRange` 保留。
+- `compileJava`、`runData` 与 `build` 通过。实体 AI/技能、客户端模型动画、音效、BOSS 条视觉与多人行为待游戏内验收；竞技场维度/结构/传送、眼方块/手箱/传送门、BOSS 音乐与 `defeat_aaroncos` 进度仍待后续批次。
+- **建议提交信息：** `feat(entity): 搬运亚伦柯斯之触双手 BOSS 实体与技能依赖`
+
 ### 批次 112：同步上游工具被动重构与存储袋包名修正（2026-11-12）
 
 - 同步上游 #1304（`c7032082`）：新增 `ItemSharedToolBehaviorMixin` 与 `ItemStackSharedToolBehaviorMixin`，按独立 `instanceof` 分支统一派发融梦水晶、炙焰金、暗影合金、影蚀、萦风合金系列的背包 tick 与公共词条；移除各工具类中重复的 `inventoryTick` / `appendHoverText` override。

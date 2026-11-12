@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.world.item.dreamnotes.DreamNotesItem;
 import com.pasterdream.pasterdreammod.world.item.StoryProgressItem;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableItem;
 import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexDisplayItem;
 import com.pasterdream.pasterdreammod.world.item.lootgenerator.LootGeneratorItem;
 import com.pasterdream.pasterdreammod.world.item.modelbreakparticleproviderblockitem.ModelBreakParticleProviderBlockItem;
 import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
@@ -244,6 +245,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ModJukeboxSongs.WIND_JOURNEY)));
     public static final DeferredItem<Item> AARONCOS_MUSIC_DISC = ITEMS.register("aaroncos_music_disc",
             () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ModJukeboxSongs.AARONCOS_MUSIC)));
+    public static final DeferredItem<Item> SHADOW_VORTEX = ITEMS.register("shadow_vortex",
+            () -> new ShadowVortexDisplayItem(ModBlocks.SHADOW_VORTEX.get(), new Item.Properties()));
     public static final DeferredItem<Item> FRACTURED_ANGEL_STATUE = ITEMS.register("fractured_angel_statue",
             FracturedAngelStatueItem::new);
     public static final DeferredItem<Item> GOLD_CHARM = ITEMS.register("gold_charm", GoldCharmItem::new);
@@ -1774,6 +1777,14 @@ public class ModItems {
             () -> new SpawnEggItem(ModEntities.WEAKENESS_TERRORBEAK.get(), -16777216, -13421773, new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_HAND_SPAWN_EGG = ITEMS.register("shadow_hand_spawn_egg",
             () -> new SpawnEggItem(ModEntities.SHADOW_HAND.get(), -12763843, -16316665, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_MAGICBALL_SPAWN_EGG = ITEMS.register("shadow_magicball_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.SHADOW_MAGICBALL.get(), -16777216, -15658735, new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_TUNE_TOTEM_SPAWN_EGG = ITEMS.register("shadow_tune_totem_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.SHADOW_TUNE_TOTEM.get(), -15658735, -4473925, new Item.Properties()));
+    public static final DeferredItem<Item> AARONCOS_LEFT_HAND_SPAWN_EGG = ITEMS.register("aaroncos_left_hand_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.AARONCOS_LEFT_HAND.get(), -15987700, -11246213, new Item.Properties()));
+    public static final DeferredItem<Item> AARONCOS_RIGHT_HAND_SPAWN_EGG = ITEMS.register("aaroncos_right_hand_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.AARONCOS_RIGHT_HAND.get(), -15593198, -11189920, new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_GOLEM_SPAWN_EGG = ITEMS.register("shadow_golem_spawn_egg",
             () -> new SpawnEggItem(ModEntities.SHADOW_GOLEM.get(), 0x191926, 0xA7A5B1, new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_GHOST_SPAWN_EGG = ITEMS.register("shadow_ghost_spawn_egg",
