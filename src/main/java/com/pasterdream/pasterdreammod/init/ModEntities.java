@@ -15,6 +15,13 @@ import com.pasterdream.pasterdreammod.world.entity.ghost.SquealWaveProjectileEnt
 import com.pasterdream.pasterdreammod.world.entity.ghost.WailingShadowGhostEntity;
 import com.pasterdream.pasterdreammod.world.entity.FireflyEntity;
 import com.pasterdream.pasterdreammod.world.entity.SmallStoneSpiritEntity;
+import com.pasterdream.pasterdreammod.world.entity.BoneWingEntity;
+import com.pasterdream.pasterdreammod.world.entity.AshBoneWingEntity;
+import com.pasterdream.pasterdreammod.world.entity.BoneWingFireBallProjectileEntity;
+import com.pasterdream.pasterdreammod.world.entity.ThundercloudEntity;
+import com.pasterdream.pasterdreammod.world.entity.HighvoltageThundercloudEntity;
+import com.pasterdream.pasterdreammod.world.entity.JellyfishEntity;
+import com.pasterdream.pasterdreammod.world.entity.LightningProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import com.pasterdream.pasterdreammod.world.entity.FluffyWindArrowEntity;
@@ -403,6 +410,63 @@ public class ModEntities {
                     .setUpdateInterval(3)
                     .sized(0.7f, 1f));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<BoneWingEntity>> BONE_WING =
+            register("bone_wing",
+                    EntityType.Builder.<BoneWingEntity>of(BoneWingEntity::new, MobCategory.MONSTER)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .sized(1.7f, 0.8f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<AshBoneWingEntity>> ASH_BONE_WING =
+            register("ash_bone_wing",
+                    EntityType.Builder.<AshBoneWingEntity>of(AshBoneWingEntity::new, MobCategory.MONSTER)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .sized(1.7f, 0.8f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BoneWingFireBallProjectileEntity>> BONE_WING_FIRE_BALL_PROJECTILE =
+            register("projectile_bone_wing_fire_ball_projectile",
+                    EntityType.Builder.<BoneWingFireBallProjectileEntity>of(BoneWingFireBallProjectileEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .sized(0.5f, 0.5f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<JellyfishEntity>> JELLYFISH =
+            register("jellyfish",
+                    EntityType.Builder.<JellyfishEntity>of(JellyfishEntity::new, MobCategory.CREATURE)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .sized(0.7f, 1.4f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ThundercloudEntity>> THUNDERCLOUD =
+            register("thundercloud",
+                    EntityType.Builder.<ThundercloudEntity>of(ThundercloudEntity::new, MobCategory.MONSTER)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .sized(1f, 0.8f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<HighvoltageThundercloudEntity>> HIGHVOLTAGE_THUNDERCLOUD =
+            register("highvoltage_thundercloud",
+                    EntityType.Builder.<HighvoltageThundercloudEntity>of(HighvoltageThundercloudEntity::new, MobCategory.MONSTER)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .fireImmune()
+                            .sized(1.4f, 1.1f));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<LightningProjectileEntity>> LIGHTNING_PROJECTILE =
+            register("lightning_projectile",
+                    EntityType.Builder.<LightningProjectileEntity>of(LightningProjectileEntity::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(1)
+                            .sized(0.5f, 0.5f));
+
     public static final DeferredHolder<EntityType<?>, EntityType<TerraswordWaveEntity>> TERRASWORD_WAVE =
             register("terrasword_wave",
                     EntityType.Builder.<TerraswordWaveEntity>of(TerraswordWaveEntity::new, MobCategory.MISC)
@@ -482,6 +546,11 @@ public class ModEntities {
         eventBus.addListener(SmallStoneSpiritEntity::init);
         eventBus.addListener(PinkChickenEntity::init);
         eventBus.addListener(PinkSlimeEntity::init);
+        eventBus.addListener(BoneWingEntity::init);
+        eventBus.addListener(AshBoneWingEntity::init);
+        eventBus.addListener(JellyfishEntity::init);
+        eventBus.addListener(ThundercloudEntity::init);
+        eventBus.addListener(HighvoltageThundercloudEntity::init);
     }
 
     public static void registerAttributes(EntityAttributeCreationEvent event) {
@@ -511,6 +580,11 @@ public class ModEntities {
         event.put(SMALL_STONE_SPIRIT.get(), SmallStoneSpiritEntity.createAttributes().build());
         event.put(PINK_CHICKEN.get(), PinkChickenEntity.createAttributes().build());
         event.put(PINK_SLIME.get(), PinkSlimeEntity.createAttributes().build());
+        event.put(BONE_WING.get(), BoneWingEntity.createAttributes().build());
+        event.put(ASH_BONE_WING.get(), AshBoneWingEntity.createAttributes().build());
+        event.put(JELLYFISH.get(), JellyfishEntity.createAttributes().build());
+        event.put(THUNDERCLOUD.get(), ThundercloudEntity.createAttributes().build());
+        event.put(HIGHVOLTAGE_THUNDERCLOUD.get(), HighvoltageThundercloudEntity.createAttributes().build());
     }
 
     private ModEntities() {

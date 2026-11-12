@@ -1866,6 +1866,22 @@ public class ModItems {
             () -> new SpawnEggItem(ModEntities.GOLDEN_FOX.get(), 0xe8c13a, 0x8b6914, new Item.Properties()));
     public static final DeferredItem<Item> NAMELESS_SPAWN_EGG = ITEMS.register("nameless_spawn_egg",
             () -> new SpawnEggItem(ModEntities.NAMELESS.get(), -15592942, -11776948, new Item.Properties()));
+    public static final DeferredItem<Item> THUNDERCLOUD_SPAWN_EGG = ITEMS.register("thundercloud_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.THUNDERCLOUD.get(), -8155750, -14399334, new Item.Properties()));
+    public static final DeferredItem<Item> HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG = ITEMS.register("highvoltage_thundercloud_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), -8155750, -14339416, new Item.Properties()));
+    public static final DeferredItem<Item> BONE_WING_SPAWN_EGG = ITEMS.register("bone_wing_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.BONE_WING.get(), -1186636, -5296106, new Item.Properties()));
+    public static final DeferredItem<Item> ASH_BONE_WING_SPAWN_EGG = ITEMS.register("ash_bone_wing_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.ASH_BONE_WING.get(), -10527144, -5419498, new Item.Properties()));
+    public static final DeferredItem<Item> JELLYFISH_SPAWN_EGG = ITEMS.register("jellyfish_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.JELLYFISH.get(), -4134166, -8542261, new Item.Properties()));
+
+    // ===== 风之旅途飞行挑战进度图标（隐藏物品，仅作进度显示用） =====
+    public static final DeferredItem<Item> WIND_TAILWIND_ICON = ITEMS.register("wind_tailwind_icon",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WIND_DEADWIND_ICON = ITEMS.register("wind_deadwind_icon",
+            () -> new Item(new Item.Properties()));
 
     // ===== 追忆 =====
     public static final DeferredItem<Item> MEMORY_GEM = ITEMS.register("memory_gem",

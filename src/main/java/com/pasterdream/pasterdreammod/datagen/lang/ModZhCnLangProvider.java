@@ -1585,6 +1585,19 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FIREFLY_SPAWN_EGG.get(), "萤火虫刷怪蛋");
         add(ModEntities.SMALL_STONE_SPIRIT.get(), "小石精");
         add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "小石精刷怪蛋");
+        add(ModEntities.THUNDERCLOUD.get(), "雷云");
+        add(ModItems.THUNDERCLOUD_SPAWN_EGG.get(), "雷云刷怪蛋");
+        add(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), "高压雷云");
+        add(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get(), "高压雷云刷怪蛋");
+        add(ModEntities.BONE_WING.get(), "骨翼");
+        add(ModItems.BONE_WING_SPAWN_EGG.get(), "骨翼刷怪蛋");
+        add(ModEntities.ASH_BONE_WING.get(), "余烬骨翼");
+        add(ModItems.ASH_BONE_WING_SPAWN_EGG.get(), "余烬骨翼刷怪蛋");
+        add(ModEntities.JELLYFISH.get(), "水母");
+        add(ModItems.JELLYFISH_SPAWN_EGG.get(), "水母刷怪蛋");
+        add(ModEntities.LIGHTNING_PROJECTILE.get(), "雷云");
+        add(ModItems.WIND_TAILWIND_ICON.get(), "顺风印记");
+        add(ModItems.WIND_DEADWIND_ICON.get(), "逆风印记");
 
         // 钓鱼与深海秘宝
         add(ModItems.DEEP_SEA_TREASURE.get(), "深海秘宝");
@@ -2002,5 +2015,37 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.oppression", "压抑");
         add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在积蓄能量");
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "暗影符文塔即将爆炸");
+
+        // 风之旅途 story 进度
+        add("advancements.pasterdream.story.enter_wind_journey.title", "风之旅途");
+        add("advancements.pasterdream.story.enter_wind_journey.description", "进入风之旅途维度");
+        add("advancements.pasterdream.story.condense_wind_dew.title", "凝风为露");
+        add("advancements.pasterdream.story.condense_wind_dew.description", "合成风植萃取液");
+        add("advancements.pasterdream.story.crystal_wind_runner.title", "晶凝风行");
+        add("advancements.pasterdream.story.crystal_wind_runner.description", "获得风行者水晶");
+        add("advancements.pasterdream.story.firefly_in_jar.title", "瓶中萤火");
+        add("advancements.pasterdream.story.firefly_in_jar.description", "用生态玻璃罐右键捕获一只萤火虫");
+        add("advancements.pasterdream.story.sea_bloom.title", "海的繁衍");
+        add("advancements.pasterdream.story.sea_bloom.description", "用海带繁殖水母");
+        add("advancements.pasterdream.story.congeal_wind.title", "风凝有形");
+        add("advancements.pasterdream.story.congeal_wind.description", "获得凝结之风");
+        add("advancements.pasterdream.story.congeal_wind_iron.title", "凝风锻铁");
+        add("advancements.pasterdream.story.congeal_wind_iron.description", "获得凝风铁锭");
+        add("advancements.pasterdream.story.lightning_in_bottle.title", "瓶中闪电");
+        add("advancements.pasterdream.story.lightning_in_bottle.description", "合成雷电药剂瓶");
+        add("advancements.pasterdream.story.wingless_bird.title", "展翅的无翼鸟");
+        add("advancements.pasterdream.story.wingless_bird.description", "食用风行者果冻");
+        add("advancements.pasterdream.story.break_wind_curtain.title", "乘风破幕");
+        add("advancements.pasterdream.story.break_wind_curtain.description", "穿过破风幕帐");
+        add("advancements.pasterdream.story.break_wind_curtain_hundred.title", "百幕穿行");
+        add("advancements.pasterdream.story.break_wind_curtain_hundred.description", "累计穿过100次破风幕帐");
+        add("advancements.pasterdream.story.angel_beats.title", "Angel Beats!");
+        add("advancements.pasterdream.story.angel_beats.description", "完成三项飞行挑战，获得天使之翼");
+        add("advancements.pasterdream.story.wind_follow.title", "风伴你而行");
+        add("advancements.pasterdream.story.wind_follow.description", "获得过顺风与逆风效果");
+        add("advancements.pasterdream.story.wind_deadwind_flight.title", "逆风而进");
+        add("advancements.pasterdream.story.wind_deadwind_flight.description", "在逆风效果下累计飞行10000格");
+        add("advancements.pasterdream.story.wind_tailwind_flight.title", "御风而行");
+        add("advancements.pasterdream.story.wind_tailwind_flight.description", "在顺风效果下累计飞行10000格");
     }
 }

@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.effect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.neoforged.neoforge.client.extensions.common.IClientMobEffectExtensions;
 import net.neoforged.neoforge.common.EffectCure;
 
 import java.util.Set;
@@ -26,5 +27,20 @@ public class CloudMistEffect extends MobEffect {
     @Override
     public void fillEffectCures(Set<EffectCure> cures, MobEffectInstance effectInstance) {
         // 对应来源 getCurativeItems 返回空列表：不可被牛奶等治愈
+    }
+
+    @Override
+    public void initializeClient(java.util.function.Consumer<IClientMobEffectExtensions> consumer) {
+        consumer.accept(new IClientMobEffectExtensions() {
+            @Override
+            public boolean isVisibleInGui(MobEffectInstance effect) {
+                return false;
+            }
+
+            @Override
+            public boolean isVisibleInInventory(MobEffectInstance effect) {
+                return false;
+            }
+        });
     }
 }

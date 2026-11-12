@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.gametest;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEffects;
+import com.pasterdream.pasterdreammod.init.ModFeatures;
 import com.pasterdream.pasterdreammod.init.ModGameRules;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModBiomeTags;
@@ -56,6 +57,9 @@ public class WindJourneyDimensionGameTests {
         helper.assertTrue(configured.get(ModConfiguredFeatures.CONGEAL_WIND_ORE).isPresent(), "凝风矿 configured feature 应已注册");
         helper.assertTrue(configured.get(ModConfiguredFeatures.WIND_JOURNEY_CLOUD_PATCH).isPresent(), "风之旅途云团 configured feature 应已注册");
         helper.assertTrue(configured.get(ModConfiguredFeatures.WIND_JOURNEY_FIREFLY_NEST).isPresent(), "风之旅途萤火虫巢 configured feature 应已注册");
+        helper.assertTrue(configured.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_WATER_POOL).value().feature()
+                        == ModFeatures.DYEDREAM_WATER_POOL.get(),
+                "风之旅途水池应使用避免跨区块结冰查询的 DyedreamWaterPoolFeature");
         helper.assertTrue(placed.get(ModPlacedFeatures.WIND_RUNNER_CRYSTAL_ORE).isPresent(), "破风骑士水晶矿 placed feature 应已注册");
         helper.assertTrue(placed.get(ModPlacedFeatures.WIND_JOURNEY_REED_PATCH).isPresent(), "风岛芦苇 placed feature 应已注册");
 

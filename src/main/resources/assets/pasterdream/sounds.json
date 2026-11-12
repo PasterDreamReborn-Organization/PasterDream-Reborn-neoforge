@@ -338,5 +338,11 @@
   },
   "dream_harp_of_wanderer": {
     "sounds": [{ "name": "pasterdream:dream_harp_of_wanderer", "stream": false }]
+  },
+  "thundercloud_attack": {
+    "sounds": [{ "name": "pasterdream:thundercloud_attack", "stream": false }]
+  },
+  "bone_wing_fire_ball": {
+    "sounds": [{ "name": "pasterdream:bone_wing_fire_ball", "stream": false }]
   }
 }

@@ -862,6 +862,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
                         output.accept(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
                         output.accept(ModItems.NAMELESS_SPAWN_EGG.get());
+                        output.accept(ModItems.THUNDERCLOUD_SPAWN_EGG.get());
+                        output.accept(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get());
+                        output.accept(ModItems.BONE_WING_SPAWN_EGG.get());
+                        output.accept(ModItems.ASH_BONE_WING_SPAWN_EGG.get());
+                        output.accept(ModItems.JELLYFISH_SPAWN_EGG.get());
                     })
                     .build());
 
@@ -889,7 +894,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TURNBACK_CLOAK.get());
                         output.accept(ModItems.EVASION_CLOAK.get());
                         output.accept(ModItems.SLIVER_BELL.get());
-                        output.accept(ModItems.DREAM_HARP_OF_WANDERER.get());
                     })
                     .build());
 
