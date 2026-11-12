@@ -80,6 +80,30 @@ public class ModArmorMaterials {
                     List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sculk"))),
                     3.5F, 0.15F));
 
+    // 琴雨梦：来源防御 2/10/10/10、附魔值 99、韧性 10、击退抗性 1.0；耐久 0（不可损坏）
+    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> QYM = ARMOR_MATERIALS.register("qym",
+            () -> new ArmorMaterial(Map.of(
+                    ArmorItem.Type.HELMET, 2,
+                    ArmorItem.Type.CHESTPLATE, 10,
+                    ArmorItem.Type.LEGGINGS, 10,
+                    ArmorItem.Type.BOOTS, 10),
+                    99, Holder.direct(SoundEvents.EMPTY),
+                    () -> Ingredient.of(ModItems.MEMORY_GEM.get()),
+                    List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "qym"))),
+                    10.0F, 1.0F));
+
+    // 暗影合金：来源防御 4/10/8/4、附魔值 20、韧性 4、击退抗性 0.15，合金锭修复
+    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> SHADOW_ALLOY = ARMOR_MATERIALS.register("shadow_alloy",
+            () -> new ArmorMaterial(Map.of(
+                    ArmorItem.Type.HELMET, 4,
+                    ArmorItem.Type.CHESTPLATE, 10,
+                    ArmorItem.Type.LEGGINGS, 8,
+                    ArmorItem.Type.BOOTS, 4),
+                    20, SoundEvents.ARMOR_EQUIP_NETHERITE,
+                    () -> Ingredient.of(ModItems.SHADOW_ALLOY_INGOT.get()),
+                    List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_alloy"))),
+                    4.0F, 0.15F));
+
     public static final DeferredHolder<ArmorMaterial, ArmorMaterial> FLUFFY_WIND_ALLOY = ARMOR_MATERIALS.register("fluffy_wind_alloy",
             () -> new ArmorMaterial(Map.of(
                     ArmorItem.Type.HELMET, 4,

@@ -424,18 +424,20 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_gear_tab"))
                     .icon(() -> ModItems.SHARP_MELT_DREAM_SWORD.toStack())
                     .displayItems((parameters, output) -> {
+                        // 基础材料
                         output.accept(ModItems.TITANIUM_UPGRADE.get());
                         output.accept(ModItems.SCULK_UPGRADE.get());
                         output.accept(ModItems.DYEDREAM_UPGRADE.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get());
                         output.accept(ModItems.ATTACK_ENHANCE_STONE.get());
                         output.accept(ModItems.LUCK_ENHANCE_STONE.get());
-                        // 铜工具与装备
+                        // 铜工具
                         output.accept(ModItems.COPPER_SWORD.get());
                         output.accept(ModItems.COPPER_PICKAXE.get());
                         output.accept(ModItems.COPPER_AXE.get());
                         output.accept(ModItems.COPPER_SHOVEL.get());
                         output.accept(ModItems.COPPER_HOE.get());
+                        // 铜装备
                         output.accept(ModItems.COPPER_HELMET.get());
                         output.accept(ModItems.COPPER_CHESTPLATE.get());
                         output.accept(ModItems.COPPER_LEGGINGS.get());
@@ -446,19 +448,22 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CONGEAL_WIND_IRON_AXE.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_SHOVEL.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_HOE.get());
-                        // 萦风雷矛与萦风合金工具
                         output.accept(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
+                        // 萦风合金工具
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_SWORD.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_AXE.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_HOE.get());
                         output.accept(ModItems.FLUFFY_WIND_BOW.get());
+                        // 萦风合金装备
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
+                        // 风行者披风
                         output.accept(ModItems.WIND_RUNNER_CLOAK.get());
+                        // 钛金工具
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());
                         output.accept(ModItems.TITANIUM_AXE.get());
@@ -510,16 +515,23 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.HELLFIRE_SWORD.get());
                         output.accept(ModItems.HELLFIRE_PICKAXE.get());
                         output.accept(ModItems.INFERNO_SWORD.get());
+                        // 影蚀工具
                         output.accept(ModItems.SHADOW_EROSION_DAGGER.get());
                         output.accept(ModItems.SHADOW_EROSION_PICKAXE.get());
                         output.accept(ModItems.SHADOW_EROSION_AXE.get());
                         output.accept(ModItems.SHADOW_EROSION_SHOVEL.get());
                         output.accept(ModItems.SHADOW_EROSION_HOE.get());
+                        // 暗影合金工具
                         output.accept(ModItems.SHADOW_ALLOY_PICKAXE.get());
                         output.accept(ModItems.SHADOW_ALLOY_AXE.get());
                         output.accept(ModItems.SHADOW_ALLOY_SHOVEL.get());
                         output.accept(ModItems.SHADOW_ALLOY_HOE.get());
                         output.accept(ModItems.SHADOW_ALLOY_CROSSBOW.get());
+                        // 暗影合金装备
+                        output.accept(ModItems.SHADOW_ALLOY_HELMET.get());
+                        output.accept(ModItems.SHADOW_ALLOY_CHESTPLATE.get());
+                        output.accept(ModItems.SHADOW_ALLOY_LEGGINGS.get());
+                        output.accept(ModItems.SHADOW_ALLOY_BOOTS.get());
                         // 独立武器
                         output.accept(ModItems.TIDE_SWORD.get());
                         output.accept(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
@@ -532,6 +544,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WHITE_SWORD.get());
                         output.accept(ModItems.SHADOW_SWORD.get());
                         output.accept(ModItems.ICE_SHADOW_HAMMER.get());
+                        // 特殊装备
+                        output.accept(ModItems.DREAM_HARP_OF_WANDERER.get());
+                        output.accept(ModItems.QYM_CAT_EARS.get());
+                        output.accept(ModItems.QYM_WIND_SHIRT.get());
+                        output.accept(ModItems.QYM_SWAYING_SKIRT.get());
+                        output.accept(ModItems.QYM_CLOUD_BOOTS.get());
                         // 饰品
                         output.accept(ModItems.PALE_BONE_NEEDLE_TALISMAN.get());
                         output.accept(ModItems.GOLD_CHARM.get());
@@ -563,16 +581,23 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MELT_DREAM_ENERGY_RING.get());
                         output.accept(ModItems.STORAGE_BAG.get());
                         output.accept(ModItems.LARGE_STORAGE_BAG.get());
-                        output.accept(ModItems.SHADOW_BREATH.get());
-                        output.accept(ModItems.WAR_FLAG.get());
-                        output.accept(ModItems.ICE_SHADOW_CURIO.get());
-                        output.accept(ModItems.CALAIS_SPICE_BOTTLE.get());
-                        output.accept(ModItems.GHOST_FACE.get());
-                        output.accept(ModItems.BOBOJI_CURIO.get());
-                        output.accept(ModItems.WIND_SPIRIT.get());
-                        output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
+                        // 灯影之下饰品
                         output.accept(ModItems.BROOCH_OF_WHITE_ORCHID.get());
                         output.accept(ModItems.SEAL_OF_THE_CORRUPTED.get());
+                        output.accept(ModItems.SHADOW_BREATH.get());
+                        output.accept(ModItems.CALAIS_SPICE_BOTTLE.get());
+                        output.accept(ModItems.GHOST_FACE.get());
+                        output.accept(ModItems.WAR_FLAG.get());
+                        output.accept(ModItems.ICE_SHADOW_CURIO.get());
+                        // 风之旅途饰品
+                        output.accept(ModItems.BOBOJI_CURIO.get());
+                        output.accept(ModItems.MOSS_PHANTOM_MEMBRANE.get());
+                        output.accept(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get());
+                        output.accept(ModItems.WIND_KNIGHT_FLAG.get());
+                        output.accept(ModItems.PAPER_PLANE.get());
+                        output.accept(ModItems.WIND_VANE.get());
+                        output.accept(ModItems.WIND_SPIRIT.get());
+                        output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
                         // 特殊箭矢
                         output.accept(ModItems.BLACKSTONE_ARROW.get());
                         output.accept(ModItems.TOXIC_SPORE_ARROW.get());
@@ -864,6 +889,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TURNBACK_CLOAK.get());
                         output.accept(ModItems.EVASION_CLOAK.get());
                         output.accept(ModItems.SLIVER_BELL.get());
+                        output.accept(ModItems.DREAM_HARP_OF_WANDERER.get());
                     })
                     .build());
 

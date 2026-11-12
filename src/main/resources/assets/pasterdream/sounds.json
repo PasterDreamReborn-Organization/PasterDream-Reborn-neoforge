@@ -335,5 +335,8 @@
   },
   "stone_crack": {
     "sounds": [{ "name": "pasterdream:stone_crack", "stream": false }]
+  },
+  "dream_harp_of_wanderer": {
+    "sounds": [{ "name": "pasterdream:dream_harp_of_wanderer", "stream": false }]
   }
 }
