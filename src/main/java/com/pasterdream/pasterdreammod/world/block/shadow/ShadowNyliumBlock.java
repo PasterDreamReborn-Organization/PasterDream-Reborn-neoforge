@@ -93,6 +93,11 @@ public class ShadowNyliumBlock extends Block implements BonemealableBlock {
         }
     }
 
+    @Override
+    public BonemealableBlock.Type getType() {
+        return BonemealableBlock.Type.NEIGHBOR_SPREADER;
+    }
+
     /** 阴影菌岩可催生的灯影植物 */
     private static BlockState pickShadowPlant(RandomSource random) {
         return switch (random.nextInt(6)) {

@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.item;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -54,12 +55,12 @@ public class DreamFertilizerItem extends Item {
             ItemStack fakeBoneMeal = new ItemStack(Items.BONE_MEAL);
             if (BoneMealItem.growCrop(fakeBoneMeal, level, pos)) {
                 if (!level.isClientSide()) {
-                    level.levelEvent(2005, pos, 0);
+                    spawnGrowthParticles((ServerLevel) level, pos);
                 }
                 fertilized = true;
             } else if (BoneMealItem.growWaterPlant(fakeBoneMeal, level, pos.relative(context.getClickedFace()), context.getClickedFace())) {
                 if (!level.isClientSide()) {
-                    level.levelEvent(2005, pos.relative(context.getClickedFace()), 0);
+                    spawnGrowthParticles((ServerLevel) level, pos.relative(context.getClickedFace()));
                 }
                 fertilized = true;
             }
@@ -83,5 +84,11 @@ public class DreamFertilizerItem extends Item {
         }
 
         return InteractionResult.sidedSuccess(level.isClientSide());
+    }
+
+    private static void spawnGrowthParticles(ServerLevel level, BlockPos pos) {
+        level.sendParticles(ParticleTypes.HAPPY_VILLAGER,
+                pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                15, 1.5, 0.3, 1.5, 0.02);
     }
 }
