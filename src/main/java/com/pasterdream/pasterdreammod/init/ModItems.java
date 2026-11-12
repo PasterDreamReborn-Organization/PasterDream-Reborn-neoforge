@@ -9,6 +9,9 @@ import com.pasterdream.pasterdreammod.world.item.dreamnotes.DreamNotesItem;
 import com.pasterdream.pasterdreammod.world.item.StoryProgressItem;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableItem;
 import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestDisplayItem;
+import com.pasterdream.pasterdreammod.world.item.AaroncosArenaCreateItem;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexDisplayItem;
 import com.pasterdream.pasterdreammod.world.item.lootgenerator.LootGeneratorItem;
 import com.pasterdream.pasterdreammod.world.item.modelbreakparticleproviderblockitem.ModelBreakParticleProviderBlockItem;
@@ -1428,6 +1431,14 @@ public class ModItems {
             () -> new ShadowDungeonPortalDisplayItem(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_BRAZIER = ITEMS.register("shadow_brazier",
             () -> new ShadowBrazierDisplayItem(ModBlocks.SHADOW_BRAZIER.get(), new Item.Properties()));
+    public static final DeferredItem<Item> AARONCOS_EYE = ITEMS.register("aaroncos_eye",
+            () -> new AaroncosEyeDisplayItem(ModBlocks.AARONCOS_EYE.get(), new Item.Properties()));
+    public static final DeferredItem<Item> AARONCOS_HAND_CHEST = ITEMS.register("aaroncos_hand_chest",
+            () -> new AaroncosHandChestDisplayItem(ModBlocks.AARONCOS_HAND_CHEST.get(), new Item.Properties()));
+    public static final DeferredItem<Item> AARONCOS_ARENA_PORTALS = ITEMS.register("aaroncos_arena_portals",
+            () -> new BlockItem(ModBlocks.AARONCOS_ARENA_PORTALS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> AARONCOS_ARENA_CREATE = ITEMS.register("aaroncos_arena_create",
+            AaroncosArenaCreateItem::new);
     public static final DeferredItem<BlockItem> DREAM_SPAWNER = ITEMS.registerSimpleBlockItem(ModBlocks.DREAM_SPAWNER);
     public static final DeferredItem<BlockItem> FADED_DREAM_SPAWNER = ITEMS.registerSimpleBlockItem(ModBlocks.FADED_DREAM_SPAWNER);
     public static final DeferredItem<Item> ECOLOGY_GLASS_JAR = ITEMS.register("ecology_glass_jar", () -> new EcologyGlassJarItem(ModBlocks.ECOLOGY_GLASS_JAR.get(), new Item.Properties()));

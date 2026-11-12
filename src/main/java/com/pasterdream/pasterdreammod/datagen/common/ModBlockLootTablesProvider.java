@@ -274,6 +274,9 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get(), block -> createSlabItemTable(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get()));
         add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
         dropSelf(ModBlocks.SHADOW_ARENA_BLOCK.get());
+        dropSelf(ModBlocks.AARONCOS_EYE.get());
+        dropSelf(ModBlocks.AARONCOS_HAND_CHEST.get());
+        dropSelf(ModBlocks.AARONCOS_ARENA_PORTALS.get());
         dropSelf(ModBlocks.SHADOW_FISSURE_0.get());
         dropSelf(ModBlocks.SHADOW_FISSURE_1.get());
         dropSelf(ModBlocks.SHADOW_FISSURE_2.get());

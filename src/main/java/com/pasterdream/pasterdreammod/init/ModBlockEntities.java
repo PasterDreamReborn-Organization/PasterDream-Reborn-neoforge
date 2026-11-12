@@ -43,6 +43,8 @@ import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlo
 import com.pasterdream.pasterdreammod.world.block.dreamspawner.DreamSpawnerBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalTileEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalTileEntity;
+import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeTileEntity;
+import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestTileEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -230,6 +232,14 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ResearchTableAddonBlockEntity>> RESEARCH_TABLE_ADDON =
             BLOCK_ENTITIES.register("research_table_addon",
                     () -> BlockEntityType.Builder.of(ResearchTableAddonBlockEntity::new, ModBlocks.RESEARCH_TABLE.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AaroncosEyeTileEntity>> AARONCOS_EYE =
+            BLOCK_ENTITIES.register("aaroncos_eye",
+                    () -> BlockEntityType.Builder.of(AaroncosEyeTileEntity::new, ModBlocks.AARONCOS_EYE.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AaroncosHandChestTileEntity>> AARONCOS_HAND_CHEST =
+            BLOCK_ENTITIES.register("aaroncos_hand_chest",
+                    () -> BlockEntityType.Builder.of(AaroncosHandChestTileEntity::new, ModBlocks.AARONCOS_HAND_CHEST.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

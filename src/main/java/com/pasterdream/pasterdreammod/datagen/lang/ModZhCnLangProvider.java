@@ -486,6 +486,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.bind", "束缚");
         add("structure.pasterdream.the_lost_sword_tomb", "失落剑冢");
         add("structure.pasterdream.dyedream_crack", "染梦裂隙");
+        add("structure.pasterdream.aaroncos_arena_portal", "亚伦柯斯竞技场传送门");
         add("jei.pasterdream.dyedream_contamination", "染梦侵染");
         add("structure.pasterdream.oak_fisherman_hut", "橡木渔夫小屋");
         add("structure.pasterdream.spruce_fisherman_hut", "云杉渔夫小屋");
@@ -609,6 +610,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("biome.pasterdream.shadow_forest", "阴影森林");
         add("biome.pasterdream.shadow_ruins", "阴影古迹");
         add("biome.pasterdream.shadow_ocean", "阴影之海");
+        add("biome.pasterdream.aaroncos_arena", "亚伦柯斯竞技场");
         add(ModBlocks.SHADOW_BLAST_FURNACE.get(), "暗影高炉");
         add(ModBlocks.RESEARCH_TABLE.get(), "研究台");
         add("pasterdream.cauldron.brew", "§d酿造完成！得到 %s ml 药水");
@@ -973,6 +975,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.WIND_JOURNEY_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - 风之旅途");
         add(ModItems.AARONCOS_MUSIC_DISC.get(), "音乐唱片");
         add(ModItems.AARONCOS_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - 亚伦柯斯之触");
+        add(ModItems.AARONCOS_ARENA_CREATE.get(), "亚伦柯斯测试竞技场生成器");
+        add("tooltip.pasterdream.aaroncos_arena_create", "§4创造模式物品");
         add("tooltip.pasterdreammod.glass_cup_of_honey_juice", "§d饮用后清空所有负面效果");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§e味道有些熟悉，好像是来自雪泪寒......等等？");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7你已经品尝过这个冰淇淋的味道了");
@@ -1222,6 +1226,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), "暗影地牢传送门核心");
         add(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(), "破损暗影地牢传送门核心");
         add(ModBlocks.SHADOW_ARENA_BLOCK.get(), "灯影竞技场方块");
+        add(ModBlocks.AARONCOS_EYE.get(), "亚伦柯斯之眼");
+        add(ModBlocks.AARONCOS_HAND_CHEST.get(), "亚伦柯斯之手战利品箱");
+        add(ModBlocks.AARONCOS_ARENA_PORTALS.get(), "亚伦柯斯竞技场传送门");
         add(ModBlocks.SHADOW_FISSURE_0.get(), "阴影裂隙");
         add(ModBlocks.SHADOW_FISSURE_1.get(), "阴影裂隙");
         add(ModBlocks.SHADOW_FISSURE_2.get(), "阴影裂隙");
@@ -1835,6 +1842,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_brazier.shadow_spread", "阴影从四周蔓延开来");
         add("message.pasterdream.shadow_brazier.extinguished", "火盆燃尽熄灭，坠落在地上破碎");
         add("message.pasterdream.shadow_brazier.key_dropped", "在火盆的夹层里掉落出一把钥匙");
+        add("message.pasterdream.aaroncos_arena.need_progress", "尚未完成前置进度");
+        add("message.pasterdream.aaroncos_arena.battle_in_progress", "有玩家正在挑战亚伦柯斯，暂不允许进入");
+        add("message.pasterdream.aaroncos_arena.exit_countdown", "离开倒计时 %s秒");
         add("advancements.pasterdream.story.lamp_shadow_root.title", "侵染教堂");
         add("advancements.pasterdream.story.lamp_shadow_root.description", "阅读寻梦者笔记\"侵染教堂-黑面\"");
         add("advancements.pasterdream.story.bastion_guard.title", "据点守卫");

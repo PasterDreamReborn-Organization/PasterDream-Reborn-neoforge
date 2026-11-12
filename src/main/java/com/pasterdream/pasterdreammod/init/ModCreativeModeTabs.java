@@ -637,6 +637,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_BLAST_FURNACE.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE_CORE.get());
                         output.accept(ModItems.SHADOW_HAND_TRAP.get());
+                        output.accept(ModItems.AARONCOS_EYE.get());
+                        output.accept(ModItems.AARONCOS_HAND_CHEST.get());
+                        output.accept(ModItems.AARONCOS_ARENA_PORTALS.get());
+                        output.accept(ModItems.AARONCOS_ARENA_CREATE.get());
                         output.accept(ModItems.ECOLOGY_GLASS_JAR.get());
                         output.accept(ModItems.FIREFLY_GLASS_JAR.get());
                         output.accept(ModItems.FIREFLY_NEST.get());

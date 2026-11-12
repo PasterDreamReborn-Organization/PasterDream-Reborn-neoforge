@@ -96,6 +96,9 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadow_underground_workroom", "pasterdream:shadow_forest_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 87623412, 2, "shadow_structures", false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadow_dungeon", "pasterdream:can_shadow_dungeon_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 286649857, 2, "shadow_structures"));
 
+        // === 亚伦柯斯竞技场传送门（灯影之下菌索荒原，独立结构集） ===
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:aaroncos_arena_portal", "pasterdream:shadow_nylium_wastes_spawn_biome", "surface_structures", "beard_thin", -4, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 31, 16, 1674438385, 1));
+
         return STRUCTURES;
     }
 }
