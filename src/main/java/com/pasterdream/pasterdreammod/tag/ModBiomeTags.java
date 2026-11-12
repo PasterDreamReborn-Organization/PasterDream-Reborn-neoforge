@@ -68,6 +68,9 @@ public final class ModBiomeTags {
     public static final TagKey<Biome> CAN_SHADOWNOTE_RUIN_SPAWN_BIOME = create("can_shadownote_ruin_spawn_biome");
     public static final TagKey<Biome> CAN_SHADOW_DUNGEON_SPAWN_BIOME = create("can_shadow_dungeon_spawn_biome");
 
+    // ===== 风之旅途群系标签 =====
+    public static final TagKey<Biome> WIND_JOURNEY_WORLD_BIOME = create("wind_journey_world_biome");
+
     private static TagKey<Biome> create(String path) {
         return TagKey.create(Registries.BIOME,
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, path));

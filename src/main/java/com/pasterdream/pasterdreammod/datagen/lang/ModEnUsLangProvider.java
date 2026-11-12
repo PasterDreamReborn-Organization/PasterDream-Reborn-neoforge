@@ -459,6 +459,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.roots_pale_boneneedle.waypoint_set", "Waypoint recorded");
         add("message.pasterdream.roots_pale_boneneedle.overworld_only", "Waypoints can only be set in the Overworld");
         add("tooltip.pasterdream.pale_bone_needle_talisman", "§7Negates a fatal blow in dream dimensions and teleports you to your respawn point");
+        add(ModItems.WIND_KNIGHT_FLAG.get(), "Wind Knight Flag");
+        add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9Treats deadwind as tailwind");
         add(ModItems.EMBRYO_CHARM.get(), "Embryo Charm");
         add(ModItems.EMBRYO_NECKLACE.get(), "Embryo Necklace");
         add(ModItems.EMBRYO_RING.get(), "Embryo Ring");
@@ -996,8 +998,19 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.queer_soup.describe", "§7§o— This will make you hallucinate...");
         add("tooltip.pasterdreammod.wind_runner_jelly", "§9Enables Elytra flight");
         add("tooltip.pasterdreammod.wind_runner_jelly.flavor", "§7§o--One day, the wingless bird too will spread its wings and fly");
+        add("effect.pasterdream.tailwind", "Tailwind");
+        add("effect.pasterdream.deadwind", "Deadwind");
         add("effect.pasterdream.misty_dream", "Misty Dream");
+        add("effect.pasterdream.cloud_mist", "Cloud Mist");
         add("effect.pasterdream.windproof", "Windproof");
+        add("message.pasterdream.wind_direction.announce.0", "§7§oThe sun rises...... The howling wind blows toward §aSouth");
+        add("message.pasterdream.wind_direction.announce.1", "§7§oThe sun rises...... The howling wind blows toward §aSouthwest");
+        add("message.pasterdream.wind_direction.announce.2", "§7§oThe sun rises...... The howling wind blows toward §aWest");
+        add("message.pasterdream.wind_direction.announce.3", "§7§oThe sun rises...... The howling wind blows toward §aNorthwest");
+        add("message.pasterdream.wind_direction.announce.4", "§7§oThe sun rises...... The howling wind blows toward §aNorth");
+        add("message.pasterdream.wind_direction.announce.5", "§7§oThe sun rises...... The howling wind blows toward §aNortheast");
+        add("message.pasterdream.wind_direction.announce.6", "§7§oThe sun rises...... The howling wind blows toward §aEast");
+        add("message.pasterdream.wind_direction.announce.7", "§7§oThe sun rises...... The howling wind blows toward §aSoutheast");
         add("effect.pasterdream.wind_runner", "Wind Runner");
         add("effect.pasterdream.goldenrod_tea", "Goldenrod Tea");
         add("effect.pasterdream.dyedream_perfume", "Dyedream Perfume");

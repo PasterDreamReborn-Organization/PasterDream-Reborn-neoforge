@@ -266,5 +266,10 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
         tag(ModBiomeTags.CAN_SHADOW_DUNGEON_SPAWN_BIOME)
                 .add(ModBiomes.SHADOW_NYLIUM_WASTES)
                 .add(ModBiomes.SHADOW_RUINS);
+
+        // 风之旅途维度群系（结构与地物生成用）
+        tag(ModBiomeTags.WIND_JOURNEY_WORLD_BIOME)
+                .add(ModBiomes.WIND_MOOR_ARCHIPELAGO)
+                .add(ModBiomes.MISTY_DREAM_CLOUD_LAYER);
     }
 }

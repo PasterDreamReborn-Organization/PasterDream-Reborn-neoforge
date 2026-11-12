@@ -397,6 +397,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .predicate(ResourceLocation.withDefaultNamespace("pull"), 0.9F)
                 .model(meltDreamBowPulling2).end();
         basicItem(ModItems.FRACTURED_ANGEL_STATUE.get());
+        basicItem(ModItems.WIND_KNIGHT_FLAG.get());
         basicItem(ModItems.GOLD_CHARM.get());
         basicItem(ModItems.ENDEYE_CHARM.get());
         basicItem(ModItems.SEA_CHARM.get());

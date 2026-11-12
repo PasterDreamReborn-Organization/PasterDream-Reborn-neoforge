@@ -10,6 +10,7 @@ import com.pasterdream.pasterdreammod.worldgen.feature.WindMoorDroopingDecorator
 import com.pasterdream.pasterdreammod.worldgen.feature.foliageplacers.DreamFoliagePlacer;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -40,7 +41,9 @@ import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFea
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.ReplaceSphereConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
@@ -94,6 +97,34 @@ public final class ModConfiguredFeatures {
     // 阴影古墓 — NBT 结构物 Feature（shadow_tomb_0/1 随机变体）
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_TOMB = key("shadow_tomb");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_WIND_MOOR_TREE = key("small_wind_moor_tree");
+
+    // ===== 风之旅途 =====
+    // 凝风矿 — 原作 congeal_wind_ore，替换 thick_cloud
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CONGEAL_WIND_ORE = key("congeal_wind_ore");
+    // 破风骑士水晶矿 — 原作 windrunner_crystal_ore，替换 cyan_stone
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_RUNNER_CRYSTAL_ORE = key("wind_runner_crystal_ore");
+    // 风之旅途云团（高位）— 原作 ground_feature_wind_journey_0
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_CLOUD_PATCH = key("wind_journey_cloud_patch");
+    // 风之旅途云团（低位）— 原作 ground_feature_wind_journey_2
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_CLOUD_PATCH_LOW = key("wind_journey_cloud_patch_low");
+    // 风之旅途水池 — 原作 ground_feature_wind_journey_1
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_WATER_POOL = key("wind_journey_water_pool");
+    // 风之旅途小石子 — 原作 ground_feature_wind_journey_3
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_PEBBLE_PATCH = key("wind_journey_pebble_patch");
+    // 风之旅途萤火虫巢 — 原作 ground_feature_wind_journey_4
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_FIREFLY_NEST = key("wind_journey_firefly_nest");
+    // 风之旅途苍青苔石团块 — 原作 ground_feature_wind_journey_5（替换泥）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_CYAN_MOSS_STONE_BLOB = key("wind_journey_cyan_moss_stone_blob");
+    // 风之旅途小石堆 — 原作 ground_feature_wind_journey_6
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_SMALL_STONE_SPIRIT = key("wind_journey_small_stone_spirit");
+    // 风之旅途茸毛苔 — 原作 grass_13
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_HAIRY_MOSS_PATCH = key("wind_journey_hairy_moss_patch");
+    // 风之旅途斩风草 — 原作 grass_14
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_CLEAVING_GRASS_PATCH = key("wind_journey_cleaving_grass_patch");
+    // 风之旅途风羽草 — 原作 grass_15
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_FEATHER_GRASS_PATCH = key("wind_journey_feather_grass_patch");
+    // 风之旅途风岛芦苇 — 原作 flower_18
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_REED_PATCH = key("wind_journey_reed_patch");
 
     // ===== 染梦冰晶 =====
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_ICE_PILLAR = key("dyedream_ice_pillar");
@@ -220,6 +251,12 @@ public final class ModConfiguredFeatures {
             ModBlocks.DYEDREAM_GRASS_BLOCK.get(),
             ModBlocks.ICE_STONE.get(),
             Blocks.CALCITE
+    );
+
+    /** 风之旅途萤火虫巢/小石堆地面 — 仅苍青岩/苍青苔岩 */
+    private static final List<Block> WIND_JOURNEY_GROUND = List.of(
+            ModBlocks.CYAN_STONE.get(),
+            ModBlocks.CYAN_MOSS_STONE.get()
     );
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
@@ -705,6 +742,64 @@ public final class ModConfiguredFeatures {
         context.register(SOUL_ORE_PATCH, new ConfiguredFeature<>(Feature.ORE,
                 new OreConfiguration(new BlockMatchTest(Blocks.SOUL_SOIL),
                         ModBlocks.SOUL_ORE.get().defaultBlockState(), 16, 0f)));
+
+        // ===== 风之旅途 =====
+        // 凝风矿 — 原作 congeal_wind_ore: size=11, 替换 thick_cloud
+        context.register(CONGEAL_WIND_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CONGEAL_WIND_ORE.get(),
+                        List.of(new BlockMatchTest(ModBlocks.THICK_CLOUD.get()))), 11, 0f)));
+        // 破风骑士水晶矿 — 原作 windrunner_crystal_ore: size=6, 替换 cyan_stone
+        context.register(WIND_RUNNER_CRYSTAL_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(),
+                        List.of(new BlockMatchTest(ModBlocks.CYAN_STONE.get()))), 6, 0f)));
+        // 云团（高位）— 原作 ground_feature_wind_journey_0: tries=5, xz=11, y=4
+        context.register(WIND_JOURNEY_CLOUD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(5, 11, 4, windCloudSelector())));
+        // 云团（低位）— 原作 ground_feature_wind_journey_2: tries=4, xz=11, y=4
+        context.register(WIND_JOURNEY_CLOUD_PATCH_LOW, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(4, 11, 4, windCloudSelector())));
+        // 水池 — 原作 ground_feature_wind_journey_1: lake, 水 + cyan_stone 围边
+        context.register(WIND_JOURNEY_WATER_POOL, new ConfiguredFeature<>(Feature.LAKE,
+                new LakeFeature.Configuration(
+                        BlockStateProvider.simple(Blocks.WATER),
+                        BlockStateProvider.simple(ModBlocks.CYAN_STONE.get()))));
+        // 小石子 — 原作 ground_feature_wind_journey_3: tries=5（xz/y 默认 7/3）
+        context.register(WIND_JOURNEY_PEBBLE_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(5, 7, 3,
+                        simpleBlockOnSolidGround(BlockStateProvider.simple(ModBlocks.PEBBLE.get())))));
+        // 萤火虫巢 — 原作 ground_feature_wind_journey_4: tries=1, xz=2, y=1，底部仅限苍青岩/苍青苔岩
+        context.register(WIND_JOURNEY_FIREFLY_NEST, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(1, 2, 1,
+                        simpleBudInAir(BlockStateProvider.simple(ModBlocks.FIREFLY_NEST.get()),
+                                WIND_JOURNEY_GROUND))));
+        // 苍青苔石团块 — 原作 ground_feature_wind_journey_5: 替换泥为 cyan_moss_stone, radius 1~1
+        context.register(WIND_JOURNEY_CYAN_MOSS_STONE_BLOB, new ConfiguredFeature<>(Feature.REPLACE_BLOBS,
+                new ReplaceSphereConfiguration(
+                        Blocks.MUD.defaultBlockState(),
+                        ModBlocks.CYAN_MOSS_STONE.get().defaultBlockState(),
+                        UniformInt.of(1, 1))));
+        // 小石堆 — 原作 ground_feature_wind_journey_6: tries=2, xz=5, y=2，底部仅限苍青岩/苍青苔岩
+        context.register(WIND_JOURNEY_SMALL_STONE_SPIRIT, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(2, 5, 2,
+                        simpleBudInAir(BlockStateProvider.simple(
+                                ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get().defaultBlockState()),
+                                WIND_JOURNEY_GROUND))));
+        // 茸毛苔 — 原作 grass_13: tries=48（xz/y 走默认 7/3），仅替换空气
+        context.register(WIND_JOURNEY_HAIRY_MOSS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(48, 7, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.HAIRY_MOSS.get().defaultBlockState())))));
+        // 斩风草 — 原作 grass_14: tries=48
+        context.register(WIND_JOURNEY_CLEAVING_GRASS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(48, 7, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.WIND_CLEAVING_GRASS.get().defaultBlockState())))));
+        // 风羽草 — 原作 grass_15: tries=48
+        context.register(WIND_JOURNEY_FEATHER_GRASS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(48, 7, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.WIND_FEATHER_GRASS.get().defaultBlockState())))));
+        // 风岛芦苇 — 原作 flower_18: tries=64
+        context.register(WIND_JOURNEY_REED_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(64, 7, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.WIND_ISLAND_REED.get().defaultBlockState())))));
     }
 
     private static Holder<PlacedFeature> simpleBlockInAir(BlockStateProvider provider) {
@@ -773,6 +868,43 @@ public final class ModConfiguredFeatures {
                         ))
                 )
         );
+    }
+
+    /** 放置在固体方块上的简单方块（同时要求目标为空气） */
+    private static Holder<PlacedFeature> simpleBlockOnSolidGround(BlockStateProvider provider) {
+        return PlacementUtils.inlinePlaced(
+                Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(provider),
+                BlockPredicateFilter.forPredicate(
+                        BlockPredicate.allOf(List.of(
+                                BlockPredicate.matchesBlocks(Blocks.AIR),
+                                BlockPredicate.solid(Direction.DOWN.getNormal())
+                        ))
+                )
+        );
+    }
+
+    /** 风之旅途云团 — 变体 A（原作内层: tries=64, xz=4, y=2） */
+    private static Holder<PlacedFeature> windCloudBlobA() {
+        return PlacementUtils.inlinePlaced(
+                Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(64, 4, 2,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.CLOUD.get()))));
+    }
+
+    /** 风之旅途云团 — 变体 B（原作内层仅 xz=5，tries/y 走原版默认 128/3） */
+    private static Holder<PlacedFeature> windCloudBlobB() {
+        return PlacementUtils.inlinePlaced(
+                Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(128, 5, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.CLOUD.get()))));
+    }
+
+    /** 风之旅途云团选择器 — 两种云簇二选一 */
+    private static Holder<PlacedFeature> windCloudSelector() {
+        return PlacementUtils.inlinePlaced(
+                Feature.SIMPLE_RANDOM_SELECTOR,
+                new SimpleRandomFeatureConfiguration(HolderSet.direct(windCloudBlobA(), windCloudBlobB())));
     }
 
     private static List<OreConfiguration.TargetBlockState> oreTargets(Block oreBlock, List<RuleTest> ruleTests) {

@@ -55,6 +55,7 @@ import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.WindRunnerCloakItem;
 import com.pasterdream.pasterdreammod.world.item.curio.FracturedAngelStatueItem;
+import com.pasterdream.pasterdreammod.world.item.curio.WindKnightFlagItem;
 import com.pasterdream.pasterdreammod.world.item.curio.FourleafCloverCurioItem;
 import com.pasterdream.pasterdreammod.world.item.curio.EmbryoBeltItem;
 import com.pasterdream.pasterdreammod.world.item.curio.EmbryoCharmItem;
@@ -252,6 +253,8 @@ public class ModItems {
             () -> new ShadowVortexDisplayItem(ModBlocks.SHADOW_VORTEX.get(), new Item.Properties()));
     public static final DeferredItem<Item> FRACTURED_ANGEL_STATUE = ITEMS.register("fractured_angel_statue",
             FracturedAngelStatueItem::new);
+    public static final DeferredItem<Item> WIND_KNIGHT_FLAG = ITEMS.register("wind_knight_flag",
+            WindKnightFlagItem::new);
     public static final DeferredItem<Item> GOLD_CHARM = ITEMS.register("gold_charm", GoldCharmItem::new);
     public static final DeferredItem<Item> ENDEYE_CHARM = ITEMS.register("endeye_charm", EndeyeCharmItem::new);
     public static final DeferredItem<Item> SEA_CHARM = ITEMS.register("sea_charm", SeaCharmItem::new);

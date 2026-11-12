@@ -459,6 +459,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.roots_pale_boneneedle.waypoint_set", "已记录坐标点");
         add("message.pasterdream.roots_pale_boneneedle.overworld_only", "只能在主世界记录坐标点");
         add("tooltip.pasterdream.pale_bone_needle_talisman", "§7在梦境维度死亡时，抵消这次死亡并传送回重生点");
+        add(ModItems.WIND_KNIGHT_FLAG.get(), "风骑士旗帜");
+        add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9可以将逆风视为顺风");
         add(ModItems.EMBRYO_CHARM.get(), "护身符原胚");
         add(ModItems.EMBRYO_NECKLACE.get(), "项链原胚");
         add(ModItems.EMBRYO_RING.get(), "戒指原胚");
@@ -996,8 +998,19 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.queer_soup.describe", "§7§o——这会让人产生幻觉......");
         add("tooltip.pasterdreammod.wind_runner_jelly", "§9启用鞘翅飞行");
         add("tooltip.pasterdreammod.wind_runner_jelly.flavor", "§7§o--无翼鸟终有一日也能展翅飞翔");
+        add("effect.pasterdream.tailwind", "顺风");
+        add("effect.pasterdream.deadwind", "逆风");
         add("effect.pasterdream.misty_dream", "迷梦");
+        add("effect.pasterdream.cloud_mist", "云雾");
         add("effect.pasterdream.windproof", "防风");
+        add("message.pasterdream.wind_direction.announce.0", "§7§o朝阳升起...... 呼啸的风正吹往 §a南方");
+        add("message.pasterdream.wind_direction.announce.1", "§7§o朝阳升起...... 呼啸的风正吹往 §a西南方");
+        add("message.pasterdream.wind_direction.announce.2", "§7§o朝阳升起...... 呼啸的风正吹往 §a西方");
+        add("message.pasterdream.wind_direction.announce.3", "§7§o朝阳升起...... 呼啸的风正吹往 §a西北方");
+        add("message.pasterdream.wind_direction.announce.4", "§7§o朝阳升起...... 呼啸的风正吹往 §a北方");
+        add("message.pasterdream.wind_direction.announce.5", "§7§o朝阳升起...... 呼啸的风正吹往 §a东北方");
+        add("message.pasterdream.wind_direction.announce.6", "§7§o朝阳升起...... 呼啸的风正吹往 §a东方");
+        add("message.pasterdream.wind_direction.announce.7", "§7§o朝阳升起...... 呼啸的风正吹往 §a东南方");
         add("effect.pasterdream.wind_runner", "风行者");
         add("effect.pasterdream.goldenrod_tea", "秋麒麟茶");
         add("effect.pasterdream.dyedream_perfume", "染梦香水");

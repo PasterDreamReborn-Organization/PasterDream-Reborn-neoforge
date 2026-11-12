@@ -12,6 +12,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDraw
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenDreamAccumulatorTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.WindFlightTrigger;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.bus.api.IEventBus;
@@ -73,6 +74,10 @@ public final class ModCriteriaTriggers {
     /** 首次打开蓄梦池 */
     public static final DeferredHolder<CriterionTrigger<?>, OpenDreamAccumulatorTrigger> OPEN_DREAM_ACCUMULATOR =
             TRIGGERS.register("open_dream_accumulator", OpenDreamAccumulatorTrigger::new);
+
+    /** 风之旅途顺风/逆风累计飞行距离 */
+    public static final DeferredHolder<CriterionTrigger<?>, WindFlightTrigger> WIND_FLIGHT =
+            TRIGGERS.register("wind_flight", WindFlightTrigger::new);
 
     public static void register(IEventBus eventBus) {
         TRIGGERS.register(eventBus);

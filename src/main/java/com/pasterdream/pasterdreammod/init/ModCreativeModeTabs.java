@@ -787,6 +787,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CONGEAL_WIND_IRON_PRESSURE_PLATE.get());
                         output.accept(ModItems.EJECTION_PRESSURE_PLATE.get());
                         output.accept(ModItems.EJECTION_PRESSURE_BLOCK.get());
+                        output.accept(ModItems.WIND_KNIGHT_FLAG.get());
                     })
                     .build());
 
