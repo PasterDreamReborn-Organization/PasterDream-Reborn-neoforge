@@ -96,6 +96,11 @@ public class CyanMossStoneBlock extends Block implements BonemealableBlock {
         }
     }
 
+    @Override
+    public BonemealableBlock.Type getType() {
+        return BonemealableBlock.Type.NEIGHBOR_SPREADER;
+    }
+
     /** 苍青苔岩可催生的风之旅途植物 */
     private static BlockState pickWindPlant(RandomSource random) {
         return switch (random.nextInt(4)) {

@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 111：修复骨粉催生粒子过少（2026-11-11）
+
+- 1.21 的 `BoneMealItem#addGrowthParticles` 改为按 `BonemealableBlock#getType` 选择粒子：默认 `GROWER` 只在单个方块内生成 15 个粒子，而 1.20.1 会在半径 3 范围内生成同样数量。为 `DyedreamGrassBlock`、`CyanMossStoneBlock` 与 `ShadowNyliumBlock` 覆写 `getType()` 返回 `NEIGHBOR_SPREADER`，恢复扩散到 7×7 地表的粒子表现，与原版草方块一致。
+- 1.21 移除了 `2005`（`PARTICLES_BONE_MEAL`）事件，`DreamFertilizerItem` 与 `FluffyWindAlloyToolHelper#ripenCrops` 原来的 `levelEvent(2005, ...)` 已不再产生粒子。两者改用 `ServerLevel#sendParticles` 发送 15 个 `HAPPY_VILLAGER` 粒子：衍梦肥泥保留 1.20.1 的约 7×7 扩散与无音效行为，萦风合金锄则把粒子收束到每个被催熟方块内，整体只覆盖实际催熟的 3×3 区域。
+- `compileJava` 通过；粒子属客户端视觉，待游戏内验收。
+
+- **建议提交信息：** `fix(block): 修复骨粉催生粒子过少`
+
 ### 批次 110：暗影地牢结构与世界生成（2026-11-11，T18-B 部分）
 
 - 复制暗影地牢 22 个结构 NBT（入口、起始房、单层框架、床、火盆、甲虫、挖掘层、夹层、书库、无名、宝库），使用 `scripts/convert_structure_item_nbt.py` 转换 84 个物品栈（含 5 本笔记的内容组件），补齐 `shadow_dungeon` 入口 jigsaw、`can_shadow_dungeon_spawn_biome` 群系标签与 `shadow_structures` 共享结构集条目。

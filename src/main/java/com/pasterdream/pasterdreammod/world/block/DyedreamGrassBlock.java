@@ -135,6 +135,11 @@ public class DyedreamGrassBlock extends SnowyDirtBlock implements BonemealableBl
         }
     }
 
+    @Override
+    public BonemealableBlock.Type getType() {
+        return BonemealableBlock.Type.NEIGHBOR_SPREADER;
+    }
+
     /**
      * Gathers small-plant block states from the biome's VEGETAL_DECORATION
      * configured features, bypassing worldgen placement modifiers.

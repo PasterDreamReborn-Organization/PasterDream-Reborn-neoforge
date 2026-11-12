@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.fluffywindalloy;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -254,15 +255,21 @@ public final class FluffyWindAlloyToolHelper {
                 if (state.getBlock() instanceof BonemealableBlock bonemealable
                         && bonemealable.isValidBonemealTarget(level, pos, state)) {
                     bonemealable.performBonemeal((ServerLevel) level, level.random, pos, state);
-                    level.levelEvent(2005, pos, 0);
+                    spawnGrowthParticles((ServerLevel) level, pos);
                     ripened++;
                 } else if (isCrop(state) && advanceAge(level, pos, state)) {
-                    level.levelEvent(2005, pos, 0);
+                    spawnGrowthParticles((ServerLevel) level, pos);
                     ripened++;
                 }
             }
         }
         return ripened;
+    }
+
+    private static void spawnGrowthParticles(ServerLevel level, BlockPos pos) {
+        level.sendParticles(ParticleTypes.HAPPY_VILLAGER,
+                pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                15, 0.5, 0.3, 0.5, 0.02);
     }
 
     /** 对没有骨粉行为但带 age 属性的作物前进一级（来源 PasterDreamCropBlock.AGE 的通用适配）。 */
