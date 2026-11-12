@@ -5,6 +5,16 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 112：同步上游工具被动重构与存储袋包名修正（2026-11-12）
+
+- 同步上游 #1304（`c7032082`）：新增 `ItemSharedToolBehaviorMixin` 与 `ItemStackSharedToolBehaviorMixin`，按独立 `instanceof` 分支统一派发融梦水晶、炙焰金、暗影合金、影蚀、萦风合金系列的背包 tick 与公共词条；移除各工具类中重复的 `inventoryTick` / `appendHoverText` override。
+- 萦风合金被动统一为「疾风过境」：新增 `FluffyWindAlloyAttackHandler`，剑/斧/镐/锹/锄与萦风雷矛统一获得攻击附雷、移速加伤/挖掘、风卷掉落；雷矛保留激流突进自旋的 `applyDashOnTouch` 专属分支。炙焰金剑补齐右键急迫。
+- 同步上游 #1305（`5417a76`）：存储袋包名已为全小写 `world/item/storagebag/`，本批仅修正文档中的旧路径引用。
+- 1.21.1 适配：`appendHoverText` / `getTooltipLines` 使用 `Item.TooltipContext`；攻击被动改用 `LivingIncomingDamageEvent`；Helper 可见性与 mixin 注入签名按 NeoForge 调整。
+- 语言文件合并各工具单独被动描述为统一词条，删除 `tooltip.pasterdreammod.molten_gold_sword.1`、剑/斧/雷矛的独立被动词条。`compileJava` 与 `runData`（写入 2 个语言文件）通过，`build` 通过，`runGameTestServer` 196/196 通过；客户端词条顺序与多人表现待游戏内验收。
+
+- **建议提交信息：** `refactor(tools): 同步上游工具被动统一派发与存储袋包名修正`
+
 ### 批次 111：修复骨粉催生粒子过少（2026-11-11）
 
 - 1.21 的 `BoneMealItem#addGrowthParticles` 改为按 `BonemealableBlock#getType` 选择粒子：默认 `GROWER` 只在单个方块内生成 15 个粒子，而 1.20.1 会在半径 3 范围内生成同样数量。为 `DyedreamGrassBlock`、`CyanMossStoneBlock` 与 `ShadowNyliumBlock` 覆写 `getType()` 返回 `NEIGHBOR_SPREADER`，恢复扩散到 7×7 地表的粒子表现，与原版草方块一致。

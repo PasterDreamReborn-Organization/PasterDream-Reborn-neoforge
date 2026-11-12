@@ -6,9 +6,10 @@ import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
+import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyTool;
+import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyToolHelper;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -21,9 +22,6 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
@@ -62,14 +60,12 @@ import java.util.function.Consumer;
  * Shift+右键蓄力 · 投掷：蓄满投出「虚影」（本体始终留在手中），命中/落地触发连锁闪电后飞回；
  *                       投掷冷却并入共享战技冷却，虚影命中或冷却结束即解除（与其它战技武器互锁）。
  *
- * 被动 · 雷随疾风：移动速度越高伤害越高，并附带雷电伤害；掉落物被风卷至身边。
+ * 被动 · 疾风过境（与本系列工具统一，见 {@link FluffyWindAlloyAttackHandler}）：
+ *            攻击附带雷电伤害；移动速度越快攻击伤害越高；破坏方块或击杀生物时掉落物被风卷至身边。
  */
-public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
+public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem, FluffyWindAlloyTool {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-
-    /** 施加被动自算伤害期间置位，防止被动对自身伤害再次套用形成递归 */
-    private static final String APPLYING_TAG = "pasterdream:thunder_spear_applying";
 
     // ===== 蓄力 =====
     private static final int CHARGE_THRESHOLD = 10; // 蓄满所需 tick（原版三叉戟同为 10）
@@ -95,9 +91,6 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
     private static final float THROW_SPEED = 2.5F;            // 投掷速度（原版三叉戟同为 2.5）
     private static final double THROW_DAMAGE_FACTOR = 1.5;    // 投掷伤害 = (1+移速)×攻击力×1.5
     private static final int THROW_COOLDOWN_TICKS = 200;      // 虚影冷却 10s（虚影返回立即解除）
-
-    // ===== 被动 · 雷随疾风 =====
-    private static final double PASSIVE_LIGHTNING_RATIO = 0.1; // 附带攻击力×0.1 雷电伤害
 
     // ===== 附魔加成 =====
     private static final double SHARPNESS_DAMAGE_BONUS = 0.5;  // 锋利每级攻击力加成
@@ -241,7 +234,7 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
                 : powerLevel == 2 ? SoundEvents.TRIDENT_RIPTIDE_2.value() : SoundEvents.TRIDENT_RIPTIDE_1.value();
         level.playSound(null, player, sound, SoundSource.PLAYERS, 1.0F, 1.0F);
 
-        // 伤害不在此处结算：由自旋接触触发（ThunderSpearPassiveHandler），覆盖整条冲刺路径
+        // 伤害不在此处结算：由自旋接触触发（FluffyWindAlloyAttackHandler 的雷矛分支），覆盖整条冲刺路径
         // 接入战技共享冷却（随 SKILL_COOLDOWN_REDUCTION 缩放，并联动其它战技武器）
         // 激流每级延长冷却 1s（不封顶）
         int cooldownTicks = DASH_COOLDOWN_TICKS + riptide * DASH_COOLDOWN_PER_RIPTIDE_LEVEL;
@@ -295,51 +288,11 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         return THROW_COOLDOWN_TICKS;
     }
 
-    // ==================== 被动 · 雷随疾风 ====================
+    // ==================== 被动 · 疾风过境（突进分支） ====================
 
-    @net.neoforged.fml.common.EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
-    public static class ThunderSpearPassiveHandler {
-        @net.neoforged.bus.api.SubscribeEvent
-        public static void onLivingHurt(net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent event) {
-            if (!(event.getSource().getEntity() instanceof Player player)) return;
-            if (!(player.getMainHandItem().getItem() instanceof WindwreathedThunderSpearItem)) return;
-            if (player.getPersistentData().getBoolean(APPLYING_TAG)) return;
-            if (event.getSource().getDirectEntity() != player) return;
-
-            // 突进自旋接触：把原版自旋伤害替换为突进伤害（激流加成伤害、横扫之刃扩大溅射）
-            if (player.isAutoSpinAttack()) {
-                applyDashOnTouch(player, event);
-                return;
-            }
-
-            LivingEntity target = event.getEntity();
-            float atk = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
-            float critRatio = atk > 0 ? event.getAmount() / atk : 1.0f; // 保留暴击/附魔比例
-            double speed = Math.max(player.getAttributeValue(Attributes.MOVEMENT_SPEED),
-                    player.getDeltaMovement().horizontalDistance());
-            float mainDamage = (float) ((1 + speed) * atk) * critRatio;
-            float lightningDamage = atk * (float) PASSIVE_LIGHTNING_RATIO;
-
-            event.setCanceled(true);
-            player.getPersistentData().putBoolean(APPLYING_TAG, true);
-            target.invulnerableTime = 0;
-            target.hurt(target.level().damageSources().playerAttack(player), mainDamage);
-            target.invulnerableTime = 0;
-            target.hurt(lightningSource(target, player), lightningDamage);
-            player.getPersistentData().remove(APPLYING_TAG);
-        }
-
-        /** 以玩家为击杀归属的雷电伤害源，避免无来源伤害导致击杀/抢夺/统计丢失。 */
-        private static DamageSource lightningSource(LivingEntity target, Player player) {
-            Holder<DamageType> holder = target.level().registryAccess()
-                    .registryOrThrow(Registries.DAMAGE_TYPE)
-                    .getHolderOrThrow(DamageTypes.LIGHTNING_BOLT);
-            return new DamageSource(holder, player, player);
-        }
-    }
-
-    /** 突进自旋接触结算：把原版自旋伤害替换为突进伤害（激流加成伤害、横扫之刃扩大溅射范围）。 */
-    private static void applyDashOnTouch(Player player, net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent event) {
+    /** 突进自旋接触结算：把原版自旋伤害替换为突进伤害（激流加成伤害、横扫之刃扩大溅射范围）。
+     *  由 {@link FluffyWindAlloyAttackHandler} 在命中时对雷矛调用。 */
+    public static void applyDashOnTouch(Player player, net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent event) {
         LivingEntity target = event.getEntity();
         if (MinionFilterHelper.isOwnedMinion(target, player)) {
             event.setCanceled(true);
@@ -370,7 +323,7 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
                     target.getBoundingBox().inflate(radius),
                     e -> e != player && e != target && e.isAlive() && !MinionFilterHelper.isOwnedMinion(e, player));
             candidates.sort(Comparator.comparingDouble(e -> e.distanceToSqr(center)));
-            player.getPersistentData().putBoolean(APPLYING_TAG, true);
+            player.getPersistentData().putBoolean(FluffyWindAlloyToolHelper.APPLYING_TAG, true);
             int hit = 0;
             for (LivingEntity nearby : candidates) {
                 if (hit >= DASH_SWEEP_MAX_TARGETS) break;
@@ -380,7 +333,7 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
                 nearby.hurt(sl.damageSources().playerAttack(player), (float) (damage * ratio));
                 hit++;
             }
-            player.getPersistentData().remove(APPLYING_TAG);
+            player.getPersistentData().remove(FluffyWindAlloyToolHelper.APPLYING_TAG);
         }
     }
 
@@ -402,9 +355,6 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header"));
         tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.desc2"));
         tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_energy"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.passive_name"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.passive1"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.passive2"));
     }
 
     @Override
