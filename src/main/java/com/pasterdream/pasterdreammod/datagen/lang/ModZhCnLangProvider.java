@@ -277,7 +277,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.MOLTEN_GOLD_AXE.get(), "炙焰金斧");
         add(ModItems.MOLTEN_GOLD_SHOVEL.get(), "炙焰金锹");
         add(ModItems.MOLTEN_GOLD_HOE.get(), "炙焰金锄");
-        add("tooltip.pasterdreammod.molten_gold_sword.1", "镶嵌：§7无");
         add("tooltip.pasterdreammod.molten_gold_sword.2", "§7▪ §9攻击将使目标引燃3秒");
         add("tooltip.pasterdreammod.molten_gold_tool.1", "镶嵌：§7无");
         add("tooltip.pasterdreammod.molten_gold_tool.2", "§7▪ §9右键使用将消耗饱食度来获得短暂急迫效果");
@@ -848,13 +847,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), "萦风合金锄");
         add(ModItems.WINDWREATHED_THUNDER_SPEAR.get(), "萦风雷矛");
 
+        // 萦风合金工具（剑/斧/镐/锹/锄共用「疾风过境」被动）
         add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive_name", "被动：§b疾风过境");
-        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1", "§7▪ §9移动速度越快，挖掘速度越快");
-        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2", "§7▪ §9破坏方块时，掉落物会被风卷至身边");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1", "§7▪ §9攻击附带雷电伤害");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2", "§7▪ §9移动速度越快，挖掘速度越快，攻击伤害越高");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive3", "§7▪ §9破坏方块或击杀生物时，掉落物会被风卷至身边");
         add("tooltip.pasterdream.fluffy_wind_alloy_axe.skill_name", "战技：§b落叶秋风");
         add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc1", "§7▪ §9潜行挖掘原木时，连锁破坏周围原木与树叶");
-        add("tooltip.pasterdream.fluffy_wind_alloy_axe.passive1", "§7▪ §9移动速度越快，挖掘速度越快，攻击伤害越高");
-        add("tooltip.pasterdream.fluffy_wind_alloy_axe.passive2", "§7▪ §9破坏方块或击杀生物时，掉落物会被风卷至身边");
         add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.skill_name", "战技：§b风蚀共振");
         add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.desc1", "§7▪ §9潜行挖掘时，连锁破坏周围3×3×3的同类方块");
         add("tooltip.pasterdream.fluffy_wind_alloy_shovel.skill_name", "战技：§b沙尘漩涡");
@@ -873,9 +872,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4", "§7▪ §9朝指定位置落下5道落雷并造成范围雷电伤害");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc5", "§7▪ §9雷之消耗：§c1.0§9融梦能量");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc6", "§7▪ §9雷之冷却：5秒");
-        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name", "被动：§b雷随疾风");
-        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1", "§7▪ §9移动速度越高伤害越高，并附带雷电伤害");
-        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive2", "§7▪ §9破坏方块或击杀生物时，掉落物会被风卷至身边");
         add("message.pasterdream.fluffy_wind_alloy_sword.mode_thunder", "§e当前模式：落雷天罚");
         add("message.pasterdream.fluffy_wind_alloy_sword.mode_wind", "§f当前模式：疾风突进");
         add("message.pasterdream.fluffy_wind_alloy_sword.no_energy", "§c融梦能量不足");
@@ -888,9 +884,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header", "§e投掷·萦风投雷：");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9shift+右键蓄力投掷虚影，命中后触发连锁闪电并自动飞回；返回前无法再次投掷");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_energy", "§7▪ §9融梦能量消耗：§c1.0");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.passive_name", "被动：§b雷随疾风");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.passive1", "§7▪ §9移动速度越高伤害越高，并附带雷电伤害");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.passive2", "§7▪ §9破坏方块或击杀生物时，掉落物会被风卷至身边");
         add("message.pasterdream.windwreathed_thunder_spear.no_energy", "§c融梦能量不足");
         add("jei.pasterdream.pulse_wind_runner_crystal.info", "由破风骑士掉落。");
 

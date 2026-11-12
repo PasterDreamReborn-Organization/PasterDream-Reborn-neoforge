@@ -15,6 +15,8 @@
     "UsingItemSpeedMixin",
     "BrightButterflyCurioMixin",
     "ItemElytraMixin",
+    "ItemSharedToolBehaviorMixin",
+    "ItemStackSharedToolBehaviorMixin",
     "BrokenWingFallDamageMixin",
     "FoxTargetMixin",
     "WorldGenRegionMixin",

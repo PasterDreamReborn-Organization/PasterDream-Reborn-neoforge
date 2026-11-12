@@ -277,7 +277,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MOLTEN_GOLD_AXE.get(), "Molten Gold Axe");
         add(ModItems.MOLTEN_GOLD_SHOVEL.get(), "Molten Gold Shovel");
         add(ModItems.MOLTEN_GOLD_HOE.get(), "Molten Gold Hoe");
-        add("tooltip.pasterdreammod.molten_gold_sword.1", "Inlaid: §7None");
         add("tooltip.pasterdreammod.molten_gold_sword.2", "§7▪ §9Sets target on fire for 3 seconds");
         add("tooltip.pasterdreammod.molten_gold_tool.1", "Inlaid: §7None");
         add("tooltip.pasterdreammod.molten_gold_tool.2", "§7▪ §9Right-click to consume hunger for Haste");
@@ -848,13 +847,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), "Fluffy Wind Alloy Hoe");
         add(ModItems.WINDWREATHED_THUNDER_SPEAR.get(), "Windwreathed Thunder Spear");
 
+        // Fluffy Wind Alloy Tools (sword/axe/pickaxe/shovel/hoe share the "Gale Passage" passive)
         add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive_name", "Passive: §bGale Passage");
-        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1", "§7▪ §9The faster you move, the faster you mine");
-        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2", "§7▪ §9Drops are swept to you by the wind when breaking blocks");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1", "§7▪ §9Attacks deal additional lightning damage");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2", "§7▪ §9The faster you move, the faster you mine and the higher your attack damage");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive3", "§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");
         add("tooltip.pasterdream.fluffy_wind_alloy_axe.skill_name", "Tool Art: §bAutumn Wind");
         add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc1", "§7▪ §9When sneaking, mining logs chains surrounding logs and leaves");
-        add("tooltip.pasterdream.fluffy_wind_alloy_axe.passive1", "§7▪ §9The faster you move, the faster you mine and the more damage you deal");
-        add("tooltip.pasterdream.fluffy_wind_alloy_axe.passive2", "§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");
         add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.skill_name", "Tool Art: §bWind Erosion Resonance");
         add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.desc1", "§7▪ §9When sneaking, mining chains §c3×3×3 §9blocks of the same type around");
         add("tooltip.pasterdream.fluffy_wind_alloy_shovel.skill_name", "Tool Art: §bSand Whirlwind");
@@ -873,9 +872,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4", "§7▪ §9Call 5 lightning bolts at the aimed location, dealing AOE lightning damage");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc5", "§7▪ §9Thunder cost: §c1.0 §9Melt Dream Energy");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc6", "§7▪ §9Thunder cooldown: 5s");
-        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name", "Passive: §bThunder Follows the Wind");
-        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1", "§7▪ §9The faster you move, the more damage you deal, plus lightning damage");
-        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive2", "§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");
         add("message.pasterdream.fluffy_wind_alloy_sword.mode_thunder", "§eMode: Thunder Punishment");
         add("message.pasterdream.fluffy_wind_alloy_sword.mode_wind", "§fMode: Swift Wind Dash");
         add("message.pasterdream.fluffy_wind_alloy_sword.no_energy", "§cNot enough Melt Dream Energy");
@@ -888,9 +884,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header", "§eThrow·Windwreathed Thunder Throw:");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9Shift+Right-click to charge a phantom throw; on hit it chains lightning and returns automatically (cannot throw again until it returns)");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_energy", "§7▪ §9Melt Dream Energy cost: §c1.0");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.passive_name", "Passive: §bThunder Follows the Wind");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.passive1", "§7▪ §9The faster you move, the more damage you deal, plus lightning damage");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.passive2", "§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");
         add("message.pasterdream.windwreathed_thunder_spear.no_energy", "§cNot enough Melt Dream Energy");
         add("jei.pasterdream.pulse_wind_runner_crystal.info", "Dropped by the Wind Knight.");
 

@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 炙焰金工具的共享逻辑 —— 右键急迫 + Tooltip。
  */
-final class MoltenGoldToolHelper {
+public final class MoltenGoldToolHelper {
 
     static InteractionResultHolder<ItemStack> use(Item item, Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
@@ -29,7 +29,7 @@ final class MoltenGoldToolHelper {
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }
 
-    static void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+    public static void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.molten_gold_tool.1"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.molten_gold_tool.2"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.molten_gold_tool.3"));
