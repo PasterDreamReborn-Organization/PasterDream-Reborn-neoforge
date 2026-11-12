@@ -91,6 +91,14 @@ public class ModBiomes {
             ResourceKey.create(Registries.BIOME,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_arena"));
 
+    // ===== 风之旅途维度群系 =====
+    public static final ResourceKey<Biome> WIND_MOOR_ARCHIPELAGO =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_moor_archipelago"));
+    public static final ResourceKey<Biome> MISTY_DREAM_CLOUD_LAYER =
+            ResourceKey.create(Registries.BIOME,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "misty_dream_cloud_layer"));
+
     private static final ResourceKey<SoundEvent> SWEET_DREAM_MUSIC_KEY =
             ResourceKey.create(Registries.SOUND_EVENT,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sweet_dream_music"));
@@ -100,8 +108,17 @@ public class ModBiomes {
     private static final ResourceKey<SoundEvent> SHADOW_BIOME_KEY =
             ResourceKey.create(Registries.SOUND_EVENT,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_biome"));
+    private static final ResourceKey<SoundEvent> BREEZE_WIND_KEY =
+            ResourceKey.create(Registries.SOUND_EVENT,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "breeze_wind"));
+    private static final ResourceKey<SoundEvent> WIND_JOURNEY_MUSIC_KEY =
+            ResourceKey.create(Registries.SOUND_EVENT,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey"));
     private static final int MUSIC_MIN_DELAY = 12000;
     private static final int MUSIC_MAX_DELAY = 24000;
+    private static final ResourceKey<PlacedFeature> BAMBOO_LIGHT =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath("minecraft", "bamboo_light"));
 
     private static Music warmMusic() {
         return new Music(BuiltInRegistries.SOUND_EVENT.getHolderOrThrow(SWEET_DREAM_MUSIC_KEY),
@@ -111,6 +128,11 @@ public class ModBiomes {
     private static Music coldMusic() {
         return new Music(BuiltInRegistries.SOUND_EVENT.getHolderOrThrow(SNOWFALL_DREAM_MUSIC_KEY),
                 MUSIC_MIN_DELAY, MUSIC_MAX_DELAY, false);
+    }
+
+    private static Music windJourneyMusic() {
+        return new Music(BuiltInRegistries.SOUND_EVENT.getHolderOrThrow(WIND_JOURNEY_MUSIC_KEY),
+                MUSIC_MIN_DELAY, MUSIC_MAX_DELAY, true);
     }
 
     public static void bootstrap(BootstrapContext<Biome> context) {
@@ -140,6 +162,9 @@ public class ModBiomes {
         context.register(SHADOW_RUINS, shadowRuins(placedFeatures, carvers));
         context.register(SHADOW_OCEAN, shadowOcean(placedFeatures, carvers));
         context.register(AARONCOS_ARENA, aaroncosArenaBiome(placedFeatures, carvers));
+
+        context.register(WIND_MOOR_ARCHIPELAGO, windMoorArchipelago(placedFeatures, carvers));
+        context.register(MISTY_DREAM_CLOUD_LAYER, mistyDreamCloudLayer(placedFeatures, carvers));
     }
 
     // ==================== 共享辅助方法 ====================
@@ -721,6 +746,91 @@ public class ModBiomes {
                 .downfall(0.5f)
                 .temperatureAdjustment(Biome.TemperatureModifier.NONE)
                 .specialEffects(shadowEffects().build())
+                .mobSpawnSettings(MobSpawnSettings.EMPTY)
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    // ==================== 风之旅途 ====================
+
+    /** 风之旅途群系共享的环境音（微风） */
+    private static AmbientAdditionsSettings windBreeze() {
+        return new AmbientAdditionsSettings(
+                BuiltInRegistries.SOUND_EVENT.getHolderOrThrow(BREEZE_WIND_KEY), 0.0111);
+    }
+
+    private static Biome windMoorArchipelago(HolderGetter<PlacedFeature> placedFeatures,
+                                            HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = new BiomeSpecialEffects.Builder()
+                .skyColor(-1376258)
+                .fogColor(-1376258)
+                .waterColor(-11475496)
+                .waterFogColor(-9705764)
+                .foliageColorOverride(-11149912)
+                .grassColorOverride(-14107774)
+                .ambientParticle(new AmbientParticleSettings(ModParticleTypes.FIREFLY_PARTICLE.get(), 0.003f))
+                .ambientAdditionsSound(windBreeze())
+                .backgroundMusic(windJourneyMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.CONGEAL_WIND_ORE)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.WIND_RUNNER_CRYSTAL_ORE)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.WIND_JOURNEY_CLOUD_PATCH)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.WIND_JOURNEY_WATER_POOL)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.WIND_JOURNEY_PEBBLE_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WIND_JOURNEY_FIREFLY_NEST)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.WIND_JOURNEY_CYAN_MOSS_STONE_BLOB)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.WIND_JOURNEY_SMALL_STONE_SPIRIT)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BAMBOO_LIGHT)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WIND_JOURNEY_HAIRY_MOSS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WIND_JOURNEY_CLEAVING_GRASS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WIND_JOURNEY_FEATHER_GRASS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WIND_JOURNEY_REED_PATCH);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(1.0f)
+                .downfall(0.5f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder()
+                        // 原作 monster: 骨翼 weight6(1~2)、灰骨翼 weight1(1~1)、萤火虫 weight10(3~4)、雷云 weight5(1~2)、高压雷云 weight1(1~1)；密度减半
+                        // 骨翼/灰骨翼/雷云/高压雷云尚未迁入，暂不登记对应生成项。
+                        .addSpawn(MobCategory.MONSTER,
+                                new MobSpawnSettings.SpawnerData(ModEntities.FIREFLY.get(), 5, 2, 3))
+                        // 原作 creature: 水母 weight10(1~2)；小石精原作 creature weight12(1~2)，但实体为 Monster（暗处生成），按 monster 接入否则永不在群系生成；小石精密度减半
+                        // 水母尚未迁入，暂不登记对应生成项。
+                        .addSpawn(MobCategory.MONSTER,
+                                new MobSpawnSettings.SpawnerData(ModEntities.SMALL_STONE_SPIRIT.get(), 6, 1, 2))
+                        // addMobCharge 生成预算：每次生成尝试需 charge × Σ(已聚集charge/距离) ≤ energyBudget，直接限制这些怪在玩家周围的同时存在数量
+                        .addMobCharge(ModEntities.FIREFLY.get(), 2.0, 2.0)
+                        .addMobCharge(ModEntities.SMALL_STONE_SPIRIT.get(), 2.0, 3)
+                        .build())
+                .generationSettings(gen.build())
+                .build();
+    }
+
+    private static Biome mistyDreamCloudLayer(HolderGetter<PlacedFeature> placedFeatures,
+                                            HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        BiomeSpecialEffects.Builder effects = new BiomeSpecialEffects.Builder()
+                .skyColor(-1114369)
+                .fogColor(-1114369)
+                .waterColor(-11475496)
+                .waterFogColor(-5639444)
+                .foliageColorOverride(-11149912)
+                .grassColorOverride(-14107774)
+                .ambientAdditionsSound(windBreeze())
+                .backgroundMusic(windJourneyMusic());
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        gen.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.WIND_JOURNEY_CLOUD_PATCH_LOW);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.4f)
+                .downfall(0.5f)
+                .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                .specialEffects(effects.build())
                 .mobSpawnSettings(MobSpawnSettings.EMPTY)
                 .generationSettings(gen.build())
                 .build();

@@ -124,6 +124,7 @@ public final class ClientModEvents {
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
         AaroncosArenaDimensionEffects.registerDimensionSpecialEffects(event);
+        WindJourneyDimensionEffects.registerDimensionSpecialEffects(event);
     }
 
     /** 实体模型层定义。 */

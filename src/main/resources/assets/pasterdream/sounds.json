@@ -3,6 +3,9 @@
     "subtitle": "subtitles.pasterdream.wind_chime",
     "sounds": [{ "name": "pasterdream:wind_chime", "stream": false }]
   },
+  "breeze_wind": {
+    "sounds": [{ "name": "pasterdream:breeze_wind", "stream": false }]
+  },
   "melt_dream_crystal_chest_open_rare": {
     "subtitle": "subtitles.pasterdream.melt_dream_crystal_chest_open_rare",
     "sounds": [{ "name": "pasterdream:melt_dream_crystal_chest_open_rare", "stream": false }]

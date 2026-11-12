@@ -5,6 +5,23 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 117：风之旅途维度、风向机制与地物生成（2026-11-12，T19 部分）
+
+- 迁入 `wind_journey_world` 维度类型、末地浮空岛噪声设置、`wind_moor_archipelago` / `misty_dream_cloud_layer` 双群系与 LevelStem，并登记 `wind_journey_world_biome` 标签。
+- 迁入 `WindDirectionHandler` 与 `pasterdreamWindDirection` 游戏规则：每昼夜随机换向、播报、风向钟声/羽毛粒子、微风延迟、顺逆风判定、云雾标记、虚空回主世界与高空迷梦进入，以及顺/逆风累计飞行距离的 `wind_flight` 进度触发；事件改为 NeoForge `LevelTickEvent.Post`/`PlayerTickEvent.Post` 显式注册。
+- 迁入顺风/逆风/云雾效果（移速、瞬身距离与冷却属性、互斥与不可治愈语义）及 `breeze_wind` 音效；顺逆风属性按 1.21 `AttributeMap` 与 `ResourceLocation` 修饰符适配。
+- 迁入凝风矿、破风骑士水晶矿与 11 种风之旅途地物（云团高低位、水池、小石子、萤火虫巢、苍青苔石团块、小石堆、茸毛苔、斩风风羽草、风岛芦苇）及群系注入；按用户确认不涉及结构生成。
+- 同批注册风骑士旗帜 Curio 作为风向机制依赖；其生存获取随结构/奖励批次接通。骨翼、灰骨翼、雷云、高压雷云、水母尚未迁入，群系生成项暂不登记。
+- `runData`、`build` 通过，`runGameTestServer` 201/201 通过；新增 `WindJourneyDimensionGameTests` 覆盖维度/群系/地物注册与注入、风向规则及效果注册。维度实际生成、客户端天空/雾效、风向玩法与多人同步待游戏内验收。
+- **建议提交信息：** `feat(worldgen): 搬运风之旅途维度、风向机制与地物生成`
+
+### 批次 116：暗影果冻核验与食物物品栏顺序对齐（2026-11-12，T20 修复）
+
+- 核验 `shadow_jelly` 已在批次 106 随灯影之下战利品表迁入：`ShadowJellyItem`（SAN -10、食用后暗影难度随机 ±1 并提示）、物品注册、研钵配方、模型/来源贴图、双语词条与创造栏条目均与来源一致，本批无需重复搬运。
+- 按来源重排饮食物品栏：`MOLTEN_GOLD_APPLE`、`ENCHANTED_MOLTEN_GOLD_APPLE` 前移至 `DYEDREAM_FRUIT` 之后，`FIG`、`GLASS_JAR_OF_DREAM_JUICE` 随后；来源中未迁入的眠椰/马天尼系列条目继续跳过。
+- `build` 通过。创造栏顺序属客户端展示，待游戏内确认。
+- **建议提交信息：** `feat(item): 核验暗影果冻并按源重排食物物品栏`
+
 ### 批次 115：修复暗影符文塔与暗影魔法球死亡动画（2026-11-12，T20 修复）
 
 - 补回 `ShadowTuneTotemRenderer` 与 `ShadowMagicballRenderer` 遗漏的来源覆写 `getDeathMaxRotation(...) -> 0.0F`，避免 GeckoLib 默认 90° 死亡旋转干扰自定义 `death` 动画；同时恢复来源 `preRender` 的 `scaleWidth/scaleHeight = 1` 设置。

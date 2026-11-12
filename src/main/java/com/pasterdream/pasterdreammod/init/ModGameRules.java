@@ -22,6 +22,14 @@ public final class ModGameRules {
             GameRules.register("playerShadowDifficulty", GameRules.Category.MISC,
                     GameRules.IntegerValue.create(1));
 
+    /**
+     * 风之旅途维度当前风向，0~7 依次为 东/东北/北/西北/西/西南/南/东南 风向；
+     * 每昼夜（24000 tick）由 WindDirectionHandler 随机刷新一次。
+     */
+    public static final GameRules.Key<GameRules.IntegerValue> WIND_DIRECTION =
+            GameRules.register("pasterdreamWindDirection", GameRules.Category.MISC,
+                    GameRules.IntegerValue.create(0));
+
     public static void init() {
         // 通过类初始化注册。
     }

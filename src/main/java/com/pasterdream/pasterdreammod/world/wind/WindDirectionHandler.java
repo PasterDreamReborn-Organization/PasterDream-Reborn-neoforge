@@ -1,0 +1,223 @@
+package com.pasterdream.pasterdreammod.world.wind;
+
+import com.pasterdream.pasterdreammod.advancement.critereon.WindFlightTrigger;
+import com.pasterdream.pasterdreammod.helper.TeleportHelper;
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
+import com.pasterdream.pasterdreammod.init.ModEffects;
+import com.pasterdream.pasterdreammod.init.ModGameRules;
+import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.init.ModParticleTypes;
+import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.dimension.WindJourneyDimension;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import top.theillusivec4.curios.api.CuriosApi;
+
+/**
+ * 风之旅途维度风向机制：
+ * 每昼夜随机换向（gamerule pasterdreamWindDirection，0~7），并按玩家朝向判定顺风/逆风。
+ */
+public final class WindDirectionHandler {
+
+    /** 玩家风向判定节流间隔（tick），对应原作 config player total tick update 默认值 5 */
+    private static final int TICK_INTERVAL = 5;
+
+    /** 换向后微风音效延迟计数，>0 时每 tick 递减 */
+    private static int breezeSoundDelay = 0;
+
+    private WindDirectionHandler() {}
+
+    public static void onLevelTick(LevelTickEvent.Post event) {
+        if (!(event.getLevel() instanceof ServerLevel level)) return;
+        if (!level.dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)) return;
+        if (breezeSoundDelay > 0 && --breezeSoundDelay == 0) {
+            for (ServerPlayer p : level.players()) {
+                level.playSound(null, BlockPos.containing(p.getX(), p.getY(), p.getZ()),
+                        ModSounds.BREEZE_WIND.get(), SoundSource.WEATHER, 1, 1);
+            }
+        }
+        tickWindChange(level);
+    }
+
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        if (player.level().isClientSide()) return;
+
+        // 进入保底：主世界高空 Y > 310 且有迷梦效果时立即传送进风之旅途
+        if (player.level().dimension().equals(Level.OVERWORLD)) {
+            if (player.getY() > 310 && player.hasEffect(ModEffects.MISTY_DREAM) && player instanceof ServerPlayer sp) {
+                teleportToWindJourney(sp);
+            }
+            return;
+        }
+
+        if (!player.level().dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)) return;
+
+        // 在风之旅途持续给予云雾效果（HUD 进度显示）；ambient+不可见，避免产生粒子
+        player.addEffect(new MobEffectInstance(ModEffects.CLOUD_MIST, 200, 0, true, false));
+
+        // 退出保底：坠入虚空 Y < 0 立即传送回主世界
+        if (player.getY() < 0 && player instanceof ServerPlayer sp) {
+            teleportBackToOverworld(sp);
+            return;
+        }
+
+        // 带顺风/逆风效果累计飞行距离（逐 tick 结算）
+        if (player instanceof ServerPlayer sp) {
+            trackWindFlight(sp);
+        }
+
+        if (player.tickCount % TICK_INTERVAL != 0) return;
+        if (player.hasEffect(ModEffects.WINDPROOF)) return;
+        applyWind(player);
+    }
+
+    private static void teleportToWindJourney(ServerPlayer player) {
+        if (player.level().dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)) return;
+        ServerLevel next = player.server.getLevel(WindJourneyDimension.WIND_JOURNEY_WORLD);
+        if (next != null) {
+            player.teleportTo(next, player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot());
+            TeleportHelper.resendActiveEffects(player);
+        }
+    }
+
+    private static void teleportBackToOverworld(ServerPlayer player) {
+        ServerLevel overworld = player.server.getLevel(Level.OVERWORLD);
+        if (overworld == null) return;
+        player.teleportTo(overworld, player.getX(), 304, player.getZ(), player.getYRot(), player.getXRot());
+        TeleportHelper.resendActiveEffects(player);
+    }
+
+    private static void tickWindChange(ServerLevel level) {
+        long dayTime = level.getDayTime();
+
+        if (dayTime % 24000 == 0) {
+            GameRules.IntegerValue rule = level.getGameRules().getRule(ModGameRules.WIND_DIRECTION);
+            int direction = level.getRandom().nextInt(8);
+            rule.set(direction, level.getServer());
+
+            // 换向播报
+            for (ServerPlayer p : level.players()) {
+                p.displayClientMessage(
+                        Component.translatable("message.pasterdream.wind_direction.announce." + direction), false);
+            }
+
+            // 换向音效 + 羽毛粒子
+            for (ServerPlayer p : level.players()) {
+                level.playSound(null, BlockPos.containing(p.getX(), p.getY(), p.getZ()),
+                        ModSounds.WIND_CHIME.get(), SoundSource.WEATHER, 1, 1);
+                level.sendParticles(ModParticleTypes.FEATHER_WHITE_PARTICLE.get(),
+                        p.getX(), p.getY() + 2, p.getZ(), 48, 3, 3, 3, 0.05);
+            }
+
+            // 微风音效（延迟 79 tick）
+            breezeSoundDelay = 79;
+        }
+
+        if (dayTime == 1 || dayTime == 5) {
+            for (ServerPlayer p : level.players()) {
+                level.sendParticles(ModParticleTypes.FEATHER_WHITE_PARTICLE.get(),
+                        p.getX(), p.getY() + 2, p.getZ(), 48, 3, 3, 3, 0.05);
+            }
+        }
+    }
+
+    private static void applyWind(Player player) {
+        int direction = player.level().getGameRules().getInt(ModGameRules.WIND_DIRECTION);
+
+        // 顺风：面向风的下游
+        if (isTailwind(direction, player.getYRot())) {
+            applyTailwind(player);
+        }
+
+        // 逆风：面向风的上游（相反方向的顺风区间）
+        if (isTailwind((direction + 4) & 7, player.getYRot())) {
+            if (hasWindKnightFlag(player)) {
+                applyTailwind(player);
+            } else {
+                applyDeadwind(player);
+            }
+        }
+    }
+
+    private static void applyTailwind(Player player) {
+        int amplifier = (int) player.getPersistentData().getDouble("player_tailwind_force");
+        player.addEffect(new MobEffectInstance(ModEffects.TAILWIND, 20, amplifier, false, false));
+    }
+
+    private static void applyDeadwind(Player player) {
+        int amplifier = (int) player.getPersistentData().getDouble("player_deadwind_force");
+        player.addEffect(new MobEffectInstance(ModEffects.DEADWIND, 20, amplifier, false, false));
+    }
+
+    /**
+     * 累计带顺风/逆风效果时的鞘翅飞行距离（水平方向），并驱动风之旅途飞行挑战进度。
+     * 距离存入玩家持久数据，跨维度/跨存档保留。
+     */
+    private static void trackWindFlight(ServerPlayer player) {
+        boolean flying = player.isFallFlying() && !player.isPassenger();
+        boolean tailwind = player.hasEffect(ModEffects.TAILWIND);
+        boolean deadwind = player.hasEffect(ModEffects.DEADWIND);
+
+        CompoundTag data = player.getPersistentData();
+        if (!flying || (!tailwind && !deadwind)) {
+            // 不在计数状态：清空上一位置，避免传送/复位产生距离尖峰
+            data.remove("wind_flight_prev_x");
+            data.remove("wind_flight_prev_z");
+            return;
+        }
+
+        double x = player.getX();
+        double z = player.getZ();
+        if (data.contains("wind_flight_prev_x")) {
+            double dx = x - data.getDouble("wind_flight_prev_x");
+            double dz = z - data.getDouble("wind_flight_prev_z");
+            double dist = Math.sqrt(dx * dx + dz * dz);
+            // 单 tick 移动上限 10 格，屏蔽传送等瞬移
+            if (dist < 10) {
+                if (tailwind) {
+                    double total = data.getDouble("wind_flight_tailwind") + dist;
+                    data.putDouble("wind_flight_tailwind", total);
+                    ModCriteriaTriggers.WIND_FLIGHT.get().trigger(player, WindFlightTrigger.FlightType.TAILWIND, total);
+                }
+                if (deadwind) {
+                    double total = data.getDouble("wind_flight_deadwind") + dist;
+                    data.putDouble("wind_flight_deadwind", total);
+                    ModCriteriaTriggers.WIND_FLIGHT.get().trigger(player, WindFlightTrigger.FlightType.DEADWIND, total);
+                }
+            }
+        }
+        data.putDouble("wind_flight_prev_x", x);
+        data.putDouble("wind_flight_prev_z", z);
+    }
+
+    private static boolean hasWindKnightFlag(Player player) {
+        return CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.WIND_KNIGHT_FLAG.get()).isPresent())
+                .orElse(false);
+    }
+
+    private static boolean isTailwind(int direction, float yaw) {
+        switch (direction & 7) {
+            case 0: return yaw <= 35 && yaw >= -35;
+            case 1: return yaw <= 70 && yaw >= 10;
+            case 2: return yaw <= 125 && yaw >= 55;
+            case 3: return yaw <= 170 && yaw >= 100;
+            case 4: return (yaw <= 180 && yaw >= 145) || (yaw <= -145 && yaw >= -180);
+            case 5: return yaw <= -100 && yaw >= -170;
+            case 6: return yaw <= -55 && yaw >= -125;
+            case 7: return yaw <= -10 && yaw >= -80;
+            default: return false;
+        }
+    }
+}

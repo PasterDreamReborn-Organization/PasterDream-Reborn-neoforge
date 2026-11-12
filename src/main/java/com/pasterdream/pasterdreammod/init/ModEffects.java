@@ -14,6 +14,9 @@ import com.pasterdream.pasterdreammod.world.effect.WindThunderBoonEffect;
 import com.pasterdream.pasterdreammod.world.effect.DyedreamPerfumeEffect;
 import com.pasterdream.pasterdreammod.world.effect.GoldenrodTeaEffect;
 import com.pasterdream.pasterdreammod.world.effect.MistyDreamEffect;
+import com.pasterdream.pasterdreammod.world.effect.CloudMistEffect;
+import com.pasterdream.pasterdreammod.world.effect.DeadwindEffect;
+import com.pasterdream.pasterdreammod.world.effect.TailwindEffect;
 import com.pasterdream.pasterdreammod.world.effect.WindproofEffect;
 import com.pasterdream.pasterdreammod.world.effect.WindRunnerEffect;
 import com.pasterdream.pasterdreammod.world.effect.BlinkCooldownEffect;
@@ -149,11 +152,20 @@ public class ModEffects {
     public static final DeferredHolder<MobEffect, MobEffect> GOLDENROD_TEA =
             MOB_EFFECTS.register("goldenrod_tea", GoldenrodTeaEffect::new);
 
+    public static final DeferredHolder<MobEffect, MobEffect> TAILWIND =
+            MOB_EFFECTS.register("tailwind", TailwindEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> DEADWIND =
+            MOB_EFFECTS.register("deadwind", DeadwindEffect::new);
+
     public static final DeferredHolder<MobEffect, MobEffect> WINDPROOF =
             MOB_EFFECTS.register("windproof", WindproofEffect::new);
 
     public static final DeferredHolder<MobEffect, MobEffect> MISTY_DREAM =
             MOB_EFFECTS.register("misty_dream", MistyDreamEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> CLOUD_MIST =
+            MOB_EFFECTS.register("cloud_mist", CloudMistEffect::new);
 
     public static final DeferredHolder<MobEffect, MobEffect> WIND_RUNNER =
             MOB_EFFECTS.register("wind_runner", WindRunnerEffect::new);

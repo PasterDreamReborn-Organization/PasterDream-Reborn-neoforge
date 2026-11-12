@@ -120,6 +120,21 @@ public final class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> JUNGLE_SPORANGIUM_PATCH = key("jungle_sporangium_patch");
     public static final ResourceKey<PlacedFeature> REED_PATCH = key("reed_patch");
     public static final ResourceKey<PlacedFeature> PEBBLE_PATCH = key("pebble_patch");
+
+    // ===== 风之旅途 =====
+    public static final ResourceKey<PlacedFeature> CONGEAL_WIND_ORE = key("congeal_wind_ore");
+    public static final ResourceKey<PlacedFeature> WIND_RUNNER_CRYSTAL_ORE = key("wind_runner_crystal_ore");
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_CLOUD_PATCH = key("wind_journey_cloud_patch");
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_CLOUD_PATCH_LOW = key("wind_journey_cloud_patch_low");
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_WATER_POOL = key("wind_journey_water_pool");
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_PEBBLE_PATCH = key("wind_journey_pebble_patch");
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_FIREFLY_NEST = key("wind_journey_firefly_nest");
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_CYAN_MOSS_STONE_BLOB = key("wind_journey_cyan_moss_stone_blob");
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_SMALL_STONE_SPIRIT = key("wind_journey_small_stone_spirit");
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_HAIRY_MOSS_PATCH = key("wind_journey_hairy_moss_patch");
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_CLEAVING_GRASS_PATCH = key("wind_journey_cleaving_grass_patch");
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_FEATHER_GRASS_PATCH = key("wind_journey_feather_grass_patch");
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_REED_PATCH = key("wind_journey_reed_patch");
     public static final ResourceKey<PlacedFeature> CALCITE_STALICRIPE = key("calcite_stalicripe");
     public static final ResourceKey<PlacedFeature> SMALL_CALCITE_STALICRIPE = key("small_calcite_stalicripe");
     public static final ResourceKey<PlacedFeature> DYEDREAM_MOSS_PATCH = key("dyedream_moss_patch");
@@ -848,6 +863,87 @@ public final class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.DEEPSLATE_TITANIUM_ORE_PATCH),
                 List.of(CountPlacement.of(8), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(0)))));
+
+        // ===== 风之旅途 =====
+        // 凝风矿 — 原作 count=13, y=15~80
+        context.register(CONGEAL_WIND_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CONGEAL_WIND_ORE),
+                List.of(CountPlacement.of(13), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(15), VerticalAnchor.absolute(80)),
+                        BiomeFilter.biome())));
+        // 破风骑士水晶矿 — 原作 count=7, trapezoid y=40~80
+        context.register(WIND_RUNNER_CRYSTAL_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_RUNNER_CRYSTAL_ORE),
+                List.of(CountPlacement.of(7), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(40), VerticalAnchor.absolute(80)),
+                        BiomeFilter.biome())));
+        // 云团（高位）— 原作 rarity=4, y=100~220
+        context.register(WIND_JOURNEY_CLOUD_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_CLOUD_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(100), VerticalAnchor.absolute(220)),
+                        BiomeFilter.biome())));
+        // 云团（低位）— 原作 rarity=4, y=40~65
+        context.register(WIND_JOURNEY_CLOUD_PATCH_LOW, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_CLOUD_PATCH_LOW),
+                List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(40), VerticalAnchor.absolute(65)),
+                        BiomeFilter.biome())));
+        // 水池 — 原作 rarity=1（每区块 1 个）, WORLD_SURFACE_WG
+        context.register(WIND_JOURNEY_WATER_POOL, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_WATER_POOL),
+                List.of(InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BiomeFilter.biome())));
+        // 小石子 — 原作 in_square + OCEAN_FLOOR + count=4
+        context.register(WIND_JOURNEY_PEBBLE_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_PEBBLE_PATCH),
+                List.of(CountPlacement.of(4), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                        BiomeFilter.biome())));
+        // 萤火虫巢 — 原作 in_square + OCEAN_FLOOR + count=2
+        context.register(WIND_JOURNEY_FIREFLY_NEST, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_FIREFLY_NEST),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                        BiomeFilter.biome())));
+        // 苍青苔石团块 — 原作 count=7, rarity=5, 全高度, biome
+        context.register(WIND_JOURNEY_CYAN_MOSS_STONE_BLOB, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_CYAN_MOSS_STONE_BLOB),
+                List.of(CountPlacement.of(7), RarityFilter.onAverageOnceEvery(5), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.belowTop(0)),
+                        BiomeFilter.biome())));
+        // 小石堆 — 原作 in_square + OCEAN_FLOOR + count=2
+        context.register(WIND_JOURNEY_SMALL_STONE_SPIRIT, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_SMALL_STONE_SPIRIT),
+                List.of(InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                        CountPlacement.of(2),
+                        BiomeFilter.biome())));
+        // 茸毛苔 — 原作 grass_13: count=3 + MOTION_BLOCKING
+        context.register(WIND_JOURNEY_HAIRY_MOSS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_HAIRY_MOSS_PATCH),
+                List.of(CountPlacement.of(3), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        BiomeFilter.biome())));
+        // 斩风草 — 原作 grass_14: count=2 + MOTION_BLOCKING
+        context.register(WIND_JOURNEY_CLEAVING_GRASS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_CLEAVING_GRASS_PATCH),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        BiomeFilter.biome())));
+        // 风羽草 — 原作 grass_15: count=2 + MOTION_BLOCKING
+        context.register(WIND_JOURNEY_FEATHER_GRASS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_FEATHER_GRASS_PATCH),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        BiomeFilter.biome())));
+        // 风岛芦苇 — 原作 flower_18: count=6 + rarity=32 + WORLD_SURFACE_WG
+        context.register(WIND_JOURNEY_REED_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_REED_PATCH),
+                List.of(CountPlacement.of(6), RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BiomeFilter.biome())));
     }
 
     /** 洞穴地面放置：从随机锚点向下扫描找洞底（空气→实心），再上移 1 格落在洞底空气格（镜像原版 LUSH_CAVES_VEGETATION） */
