@@ -41,6 +41,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.FEATHER_PEN.get());
         handheldItem(ModItems.PLIERS.get());
         basicItem(ModItems.SAND_OF_TIME.get());
+        handheldItem(ModItems.DREAM_HARP_OF_WANDERER.get());
         basicItem(ModItems.SORBENT.get());
         withExistingParent(ModItems.FOURLEAF_CLOVER_CURIO.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/fourleaf_clover"));
@@ -263,6 +264,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("item/shadow_alloy_crossbow_arrow"));
         ItemModelBuilder shadowAlloyCrossbowFirework = withExistingParent("shadow_alloy_crossbow_firework", mcLoc("item/crossbow"))
                 .texture("layer0", modLoc("item/shadow_alloy_crossbow_firework"));
+        basicItem(ModItems.SHADOW_ALLOY_HELMET.get());
+        basicItem(ModItems.SHADOW_ALLOY_CHESTPLATE.get());
+        basicItem(ModItems.SHADOW_ALLOY_LEGGINGS.get());
+        basicItem(ModItems.SHADOW_ALLOY_BOOTS.get());
         shadowAlloyCrossbow.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
                 .model(shadowAlloyCrossbowPulling0).end()
                 .override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1.0F)
@@ -408,6 +413,14 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.LIGHT_BUTTERFLY_CURIO.get());
         basicItem(ModItems.BRIGHT_BUTTERFLY_CURIO.get());
         basicItem(ModItems.QYM_BUTTERFLY_STAR_HAIRPIN.get());
+        basicItem(ModItems.QYM_CAT_EARS.get());
+        basicItem(ModItems.QYM_WIND_SHIRT.get());
+        basicItem(ModItems.QYM_SWAYING_SKIRT.get());
+        basicItem(ModItems.QYM_CLOUD_BOOTS.get());
+        basicItem(ModItems.MOSS_PHANTOM_MEMBRANE.get());
+        basicItem(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get());
+        basicItem(ModItems.PAPER_PLANE.get());
+        basicItem(ModItems.WIND_VANE.get());
         basicItem(ModItems.RABBIT_FOOT_NECKLACE.get());
         basicItem(ModItems.FEATHER_NECKLACE.get());
         basicItem(ModItems.HEALTH_NECKLACE.get());

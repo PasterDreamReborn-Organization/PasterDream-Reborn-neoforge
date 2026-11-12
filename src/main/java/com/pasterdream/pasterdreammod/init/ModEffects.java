@@ -23,6 +23,8 @@ import com.pasterdream.pasterdreammod.world.effect.BlinkCooldownEffect;
 import com.pasterdream.pasterdreammod.world.effect.EvasionEffect;
 import com.pasterdream.pasterdreammod.world.effect.ConfusionEffect;
 import com.pasterdream.pasterdreammod.world.effect.CeciliaBlessingEffect;
+import com.pasterdream.pasterdreammod.world.effect.DarkWatchEffect;
+import com.pasterdream.pasterdreammod.world.effect.DreamHarpOfWandererEffect;
 import com.pasterdream.pasterdreammod.world.effect.TurnbackCloakBuffEffect;
 import com.pasterdream.pasterdreammod.world.effect.EvasionCloakBuffEffect;
 import com.pasterdream.pasterdreammod.world.effect.ConflictMarkEffect;
@@ -172,6 +174,12 @@ public class ModEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> CECILIA_BLESSING =
             MOB_EFFECTS.register("cecilia_blessing", CeciliaBlessingEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> DARK_WATCH =
+            MOB_EFFECTS.register("dark_watch", DarkWatchEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> DREAM_HARP_OF_WANDERER =
+            MOB_EFFECTS.register("dream_harp_of_wanderer", DreamHarpOfWandererEffect::new);
 
     public static final DeferredHolder<MobEffect, MobEffect> TURNBACK_CLOAK =
             MOB_EFFECTS.register("turnback_cloak", TurnbackCloakBuffEffect::new);

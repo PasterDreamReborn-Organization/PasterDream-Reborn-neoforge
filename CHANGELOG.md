@@ -5,6 +5,16 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 118：暗影合金/琴雨梦护甲与漂泊旅者等装备（2026-11-12，T13/T15/T19 部分）
+
+- 迁入暗影合金四件套与 `ShadowAlloyArmorHandler`：单件 +4 最大生命 / +1 攻击力，满套挂「黑暗守望」，灯影武器 +30%、受击反击 10s（30s 冷却）、暗影生物攻击 50% 最终减伤；GeckoLib GEO 模型、动画、护甲纹理与效果图标按来源复制。
+- 迁入琴雨梦四件套与 `QymArmorEvents`：猫耳冻结 SAN 上限、衬衫飞行、裙摆维持融梦能量上限、靴子清除瞬身/战技冷却；满套 80% 减伤、攻击附目标当前生命 5% 魔法伤害、梦境中免疫伤害，套装效果接入 `CurioPassiveHandler`。
+- 迁入 `dream_harp_of_wanderer`（漂泊旅者的染梦竖琴）及效果/音效：3 融梦能量、30 秒冷却、附近玩家最大生命 +4、移速 +10%、+4.8 理智光环并回复 5 SAN；`paper_plane`、`wind_vane`、`moss_phantom_membrane`、`light_moss_phantom_membrane` 及其 Curio 标签与交互。
+- 配方按来源补齐：暗影合金四件套走武器工坊（钛金底 + 暗影合金锭×4 + 噩梦燃料×8 + 阴影×4 + 黑曜石×4），风向标与两张幻翼膜走工作台；琴雨梦套装来源无配方，保持无配方。
+- 1.21.1 适配：护甲属性改 `ItemAttributeModifiers` + `EquipmentSlotGroup`，属性修饰符 ID 改 `ResourceLocation`；事件改 `PlayerTickEvent.Post`/`LivingIncomingDamageEvent`/`LivingDamageEvent.Pre`/`LivingEquipmentChangeEvent`；效果属性改 `AttributeMap`，`MobEffectInstance` 直接使用 `Holder`；`appendHoverText` 使用 `Item.TooltipContext`。
+- `compileJava`、`runData`、`build` 通过，`runGameTestServer` 204/204 通过；新增 `DreamGearGameTests` 覆盖护甲数值/标签/套装、Curio 标签、效果注册与七条配方。待办：纸飞机/风向标的风之旅途结构宝箱获取、染梦竖琴的列车漂泊旅者获取与对应进度仍随结构/NPC 批次保留；客户端 GEO 护甲、竖琴音效与多人同步待游戏内验收。
+- **建议提交信息：** `feat(item): 搬运暗影合金与琴雨梦护甲及漂泊旅者等装备`
+
 ### 批次 117：风之旅途维度、风向机制与地物生成（2026-11-12，T19 部分）
 
 - 迁入 `wind_journey_world` 维度类型、末地浮空岛噪声设置、`wind_moor_archipelago` / `misty_dream_cloud_layer` 双群系与 LevelStem，并登记 `wind_journey_world_biome` 标签。

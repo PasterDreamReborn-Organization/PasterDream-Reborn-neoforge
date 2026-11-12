@@ -5,6 +5,8 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.helper.DreamDimensionHelper;
 import com.pasterdream.pasterdreammod.helper.GameModeHelper;
+import com.pasterdream.pasterdreammod.helper.MagicDamageHelper;
+import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import com.pasterdream.pasterdreammod.helper.TeleportHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
@@ -57,6 +59,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
@@ -169,6 +172,21 @@ public class CurioPassiveHandler {
             event.setAmount(event.getAmount() * 0.8F);
         }
 
+        // QYM套装：攻击附带目标当前生命值5%的魔法伤害（20tick冷却）
+        if (event.getSource().getEntity() instanceof Player attacker
+                && event.getSource().getEntity() != event.getEntity()
+                && QymCatEarsItem.hasFullSet(attacker)) {
+            long gameTime = attacker.level().getGameTime();
+            long lastProc = attacker.getPersistentData().getLong("pasterdream.qym_magic_last");
+            if (gameTime - lastProc >= 20) {
+                attacker.getPersistentData().putLong("pasterdream.qym_magic_last", gameTime);
+                LivingEntity target = event.getEntity();
+                float magicDamage = target.getHealth() * 0.05F * MagicDamageHelper.getMagicDamageMultiplier(attacker);
+                target.invulnerableTime = 0;
+                target.hurt(target.level().damageSources().indirectMagic(attacker, attacker), magicDamage);
+            }
+        }
+
         // 致死于伤害判定（event.getAmount() 已计算抗性）
         if (player.getHealth() + player.getAbsorptionAmount() - event.getAmount() > 0.0F) return;
 
@@ -253,6 +271,16 @@ public class CurioPassiveHandler {
                 // 记录传送延迟（1秒 = 20 tick）
                 player.getPersistentData().putInt("pasterdream_talisman_teleport_delay", 20);
             }
+        }
+    }
+
+    /** QYM套装：常驻强烈 80% 减伤（护甲/附魔结算之后）。 */
+    @SubscribeEvent
+    public static void onLivingDamagePre(LivingDamageEvent.Pre event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if (player.level().isClientSide()) return;
+        if (QymCatEarsItem.hasFullSet(player)) {
+            event.setNewDamage(event.getNewDamage() * 0.2F);
         }
     }
 
@@ -728,10 +756,11 @@ public class CurioPassiveHandler {
         var instance = event.getEffectInstance();
         if (instance == null || instance.getEffect() != ModEffects.CECILIA_BLESSING) return;
         if (event.getEntity() instanceof Player player
-                && CuriosApi.getCuriosInventory(player).map(h ->
+                && (CuriosApi.getCuriosInventory(player).map(h ->
                     h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent()
                     || h.findFirstCurio(ModItems.FADED_BLESSING_OF_CECILIA.get()).isPresent()
-                ).orElse(false)) {
+                ).orElse(false)
+                || QymCatEarsItem.hasFullSet(player))) {
             event.setCanceled(true);
         }
     }

@@ -38,8 +38,10 @@ import com.pasterdream.pasterdreammod.world.item.RedDewItem;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
 import com.pasterdream.pasterdreammod.world.item.PinkEggItem;
 import com.pasterdream.pasterdreammod.world.item.PliersItem;
+import com.pasterdream.pasterdreammod.world.item.DreamHarpOfWandererItem;
 import com.pasterdream.pasterdreammod.world.item.SandofTimeItem;
 import com.pasterdream.pasterdreammod.world.item.ShadowJellyItem;
+import com.pasterdream.pasterdreammod.world.item.WindVaneItem;
 import com.pasterdream.pasterdreammod.world.item.dreamtrainticket.DreamTrainTicketItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.EmptyProphecyCardItem;
@@ -53,6 +55,11 @@ import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmor
 import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.ShadowAlloyArmorItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCloudBootsItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymSwayingSkirtItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymWindShirtItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.WindRunnerCloakItem;
 import com.pasterdream.pasterdreammod.world.item.curio.FracturedAngelStatueItem;
 import com.pasterdream.pasterdreammod.world.item.curio.WindKnightFlagItem;
@@ -101,6 +108,9 @@ import com.pasterdream.pasterdreammod.world.item.StrawberryHeartItem;
 import com.pasterdream.pasterdreammod.world.item.curio.CounterRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.MeltDreamEnergyRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.BobojiCurioItem;
+import com.pasterdream.pasterdreammod.world.item.curio.LightMossPhantomMembraneItem;
+import com.pasterdream.pasterdreammod.world.item.curio.MossPhantomMembraneItem;
+import com.pasterdream.pasterdreammod.world.item.curio.PaperPlaneItem;
 import com.pasterdream.pasterdreammod.world.item.curio.ShadowBreathItem;
 import com.pasterdream.pasterdreammod.world.item.curio.WarFlagItem;
 import com.pasterdream.pasterdreammod.world.item.curio.CalaisSpiceBottleItem;
@@ -272,6 +282,12 @@ public class ModItems {
     public static final DeferredItem<Item> CROSS_NECKLACE = ITEMS.register("cross_necklace", CrossNecklaceItem::new);
     public static final DeferredItem<Item> BOBOJI_CURIO = ITEMS.register("boboji_curio", BobojiCurioItem::new);
     public static final DeferredItem<Item> SHADOW_BREATH = ITEMS.register("shadow_breath", ShadowBreathItem::new);
+    public static final DeferredItem<Item> MOSS_PHANTOM_MEMBRANE = ITEMS.register("moss_phantom_membrane",
+            MossPhantomMembraneItem::new);
+    public static final DeferredItem<Item> LIGHT_MOSS_PHANTOM_MEMBRANE = ITEMS.register("light_moss_phantom_membrane",
+            LightMossPhantomMembraneItem::new);
+    public static final DeferredItem<Item> PAPER_PLANE = ITEMS.register("paper_plane", PaperPlaneItem::new);
+    public static final DeferredItem<Item> WIND_VANE = ITEMS.register("wind_vane", WindVaneItem::new);
     public static final DeferredItem<Item> WAR_FLAG = ITEMS.register("war_flag", WarFlagItem::new);
     public static final DeferredItem<Item> ICE_SHADOW_CURIO = ITEMS.register("ice_shadow_curio", IceShadowCurioItem::new);
     public static final DeferredItem<Item> CALAIS_SPICE_BOTTLE = ITEMS.register("calais_spice_bottle",
@@ -1416,6 +1432,8 @@ public class ModItems {
     public static final DeferredItem<Item> FEATHER_PEN = ITEMS.register("feather_pen", () -> new Item(new Item.Properties().durability(8)));
     public static final DeferredItem<Item> RESEARCH_TABLE = ITEMS.register("research_table", () -> new ResearchTableItem(ModBlocks.RESEARCH_TABLE.get(), new Item.Properties()));
     public static final DeferredItem<Item> SAND_OF_TIME = ITEMS.register("sand_of_time", SandofTimeItem::new);
+    public static final DeferredItem<Item> DREAM_HARP_OF_WANDERER = ITEMS.register("dream_harp_of_wanderer",
+            DreamHarpOfWandererItem::new);
     public static final DeferredItem<BlockItem> CLAYPAN = ITEMS.registerSimpleBlockItem(ModBlocks.CLAYPAN);
     public static final DeferredItem<Item> DREAM_CAULDRON = ITEMS.register("dream_cauldron", () -> new com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem(ModBlocks.DREAM_CAULDRON.get(), new Item.Properties()));
     public static final DeferredItem<Item> DREAM_ACCUMULATOR = ITEMS.register("dream_accumulator", () -> new com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorItem(ModBlocks.DREAM_ACCUMULATOR.get(), new Item.Properties()));
@@ -1476,6 +1494,33 @@ public class ModItems {
             () -> new ShadowAlloyHoeItem(ModToolTiers.SHADOW_ALLOY, -2, 0.0f, new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_ALLOY_CROSSBOW = ITEMS.register("shadow_alloy_crossbow",
             () -> new ShadowAlloyCrossbowItem(new Item.Properties().stacksTo(1).durability(842)));
+    // 暗影合金装备（GEO 模型盔甲，灯影之下毕业套）
+    public static final DeferredItem<Item> SHADOW_ALLOY_HELMET = ITEMS.register("shadow_alloy_helmet",
+            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.HELMET,
+                    new Item.Properties().rarity(Rarity.EPIC).durability(ArmorItem.Type.HELMET.getDurability(47))));
+    public static final DeferredItem<Item> SHADOW_ALLOY_CHESTPLATE = ITEMS.register("shadow_alloy_chestplate",
+            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().rarity(Rarity.EPIC).durability(ArmorItem.Type.CHESTPLATE.getDurability(47))));
+    public static final DeferredItem<Item> SHADOW_ALLOY_LEGGINGS = ITEMS.register("shadow_alloy_leggings",
+            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().rarity(Rarity.EPIC).durability(ArmorItem.Type.LEGGINGS.getDurability(47))));
+    public static final DeferredItem<Item> SHADOW_ALLOY_BOOTS = ITEMS.register("shadow_alloy_boots",
+            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.BOOTS,
+                    new Item.Properties().rarity(Rarity.EPIC).durability(ArmorItem.Type.BOOTS.getDurability(47))));
+
+    // ===== 琴雨梦装备（不可损坏，梦境毕业套） =====
+    public static final DeferredItem<Item> QYM_CAT_EARS = ITEMS.register("qym_cat_ears",
+            () -> new QymCatEarsItem(ModArmorMaterials.QYM, ArmorItem.Type.HELMET,
+                    new Item.Properties().fireResistant().durability(ArmorItem.Type.HELMET.getDurability(0)).rarity(ModRarities.miracle())));
+    public static final DeferredItem<Item> QYM_WIND_SHIRT = ITEMS.register("qym_wind_shirt",
+            () -> new QymWindShirtItem(ModArmorMaterials.QYM, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(0)).rarity(ModRarities.miracle())));
+    public static final DeferredItem<Item> QYM_SWAYING_SKIRT = ITEMS.register("qym_swaying_skirt",
+            () -> new QymSwayingSkirtItem(ModArmorMaterials.QYM, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(0)).rarity(ModRarities.miracle())));
+    public static final DeferredItem<Item> QYM_CLOUD_BOOTS = ITEMS.register("qym_cloud_boots",
+            () -> new QymCloudBootsItem(ModArmorMaterials.QYM, ArmorItem.Type.BOOTS,
+                    new Item.Properties().fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(0)).rarity(ModRarities.miracle())));
 
     // ===== 特殊箭矢 =====
     public static final DeferredItem<Item> TOXIC_SPORE_ARROW = ITEMS.register("toxic_spore_arrow",

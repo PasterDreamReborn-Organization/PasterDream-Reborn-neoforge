@@ -223,10 +223,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ModItemTags.CHANNELING_ENCHANTABLE)
                 .addTag(ItemTags.TRIDENT_ENCHANTABLE)
                 .add(ModItems.FLUFFY_WIND_BOW.get());
-        tag(ItemTags.HEAD_ARMOR).add(ModItems.COPPER_HELMET.get()).add(ModItems.MELT_DREAM_HELMET.get()).add(ModItems.TITANIUM_HELMET.get()).add(ModItems.SCULK_HELMET.get()).add(ModItems.DYEDREAM_HELMET.get()).add(ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
-        tag(ItemTags.CHEST_ARMOR).add(ModItems.COPPER_CHESTPLATE.get()).add(ModItems.MELT_DREAM_CHESTPLATE.get()).add(ModItems.TITANIUM_CHESTPLATE.get()).add(ModItems.SCULK_CHESTPLATE.get()).add(ModItems.DYEDREAM_CHESTPLATE.get()).add(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get()).add(ModItems.WIND_RUNNER_CLOAK.get());
-        tag(ItemTags.LEG_ARMOR).add(ModItems.COPPER_LEGGINGS.get()).add(ModItems.MELT_DREAM_LEGGINGS.get()).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.SCULK_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get()).add(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
-        tag(ItemTags.FOOT_ARMOR).add(ModItems.COPPER_BOOTS.get()).add(ModItems.MELT_DREAM_BOOTS.get()).add(ModItems.TITANIUM_BOOTS.get()).add(ModItems.SCULK_BOOTS.get()).add(ModItems.DYEDREAM_BOOTS.get()).add(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
+        tag(ItemTags.HEAD_ARMOR).add(ModItems.COPPER_HELMET.get()).add(ModItems.MELT_DREAM_HELMET.get()).add(ModItems.TITANIUM_HELMET.get()).add(ModItems.SCULK_HELMET.get()).add(ModItems.DYEDREAM_HELMET.get()).add(ModItems.FLUFFY_WIND_ALLOY_HELMET.get()).add(ModItems.SHADOW_ALLOY_HELMET.get()).add(ModItems.QYM_CAT_EARS.get());
+        tag(ItemTags.CHEST_ARMOR).add(ModItems.COPPER_CHESTPLATE.get()).add(ModItems.MELT_DREAM_CHESTPLATE.get()).add(ModItems.TITANIUM_CHESTPLATE.get()).add(ModItems.SCULK_CHESTPLATE.get()).add(ModItems.DYEDREAM_CHESTPLATE.get()).add(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get()).add(ModItems.WIND_RUNNER_CLOAK.get()).add(ModItems.SHADOW_ALLOY_CHESTPLATE.get()).add(ModItems.QYM_WIND_SHIRT.get());
+        tag(ItemTags.LEG_ARMOR).add(ModItems.COPPER_LEGGINGS.get()).add(ModItems.MELT_DREAM_LEGGINGS.get()).add(ModItems.TITANIUM_LEGGINGS.get()).add(ModItems.SCULK_LEGGINGS.get()).add(ModItems.DYEDREAM_LEGGINGS.get()).add(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get()).add(ModItems.SHADOW_ALLOY_LEGGINGS.get()).add(ModItems.QYM_SWAYING_SKIRT.get());
+        tag(ItemTags.FOOT_ARMOR).add(ModItems.COPPER_BOOTS.get()).add(ModItems.MELT_DREAM_BOOTS.get()).add(ModItems.TITANIUM_BOOTS.get()).add(ModItems.SCULK_BOOTS.get()).add(ModItems.DYEDREAM_BOOTS.get()).add(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get()).add(ModItems.SHADOW_ALLOY_BOOTS.get()).add(ModItems.QYM_CLOUD_BOOTS.get());
 
         tag(ModItemTags.PURE_HORROR_SOURCES)
                 .add(ModItems.WHITE_CRYSTAL.get())
