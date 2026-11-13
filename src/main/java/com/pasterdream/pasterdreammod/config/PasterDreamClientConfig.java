@@ -83,6 +83,15 @@ public class PasterDreamClientConfig {
             .comment("精神值条预设2：创造模式下是否仅在下蹲时显示，默认 true")
             .define("sanBarPreset2SneakShowInCreative", true);
 
+    // === 玩家血条 HUD ===
+    public static final ModConfigSpec.BooleanValue PASTER_HEALTH_HUD = BUILDER
+            .comment("启用帕斯特之梦主题玩家血条（替换原版生命值行），默认 false（需手动开启）")
+            .define("pasterHealthHud", false);
+
+    public static final ModConfigSpec.IntValue PASTER_HEALTH_HUD_DECIMAL_PLACES = BUILDER
+            .comment("玩家血条数值小数位数（0~2），默认 0；设为 0 时只显示整数，避免过长小数")
+            .defineInRange("pasterHealthHudDecimalPlaces", 0, 0, 2);
+
     // === 疯狂状态效果的屏幕效果设置 ===
     public static final ModConfigSpec.BooleanValue LOW_SAN_OVERLAY = BUILDER
             .comment("疯狂状态效果的全屏画面叠加效果，默认 true。"

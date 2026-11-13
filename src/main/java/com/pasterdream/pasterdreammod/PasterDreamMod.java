@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod;
 import com.pasterdream.pasterdreammod.event.PlayerEvents;
 import com.pasterdream.pasterdreammod.init.ModLootTables;
 import com.pasterdream.pasterdreammod.event.ModMobSpawnEvents;
+import com.pasterdream.pasterdreammod.event.ModResourcePacks;
 import com.pasterdream.pasterdreammod.event.CookOverflowHandler;
 import com.pasterdream.pasterdreammod.event.VanillaFoodSanHandler;
 import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
@@ -116,6 +117,7 @@ public class PasterDreamMod {
         // ---- 启动阶段监听 ----
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(ModEntities::registerAttributes);
+        modEventBus.addListener(ModResourcePacks::onAddPackFinders); // 注册内置资源包
 
         // ---- 游戏总线监听（本类自己订阅的事件）----
         NeoForge.EVENT_BUS.register(this);

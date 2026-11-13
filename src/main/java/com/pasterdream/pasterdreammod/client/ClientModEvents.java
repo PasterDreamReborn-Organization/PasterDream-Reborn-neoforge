@@ -27,6 +27,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
 /**
  * 客户端注册入口（MOD 总线）。
@@ -145,5 +146,7 @@ public final class ClientModEvents {
         event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_knight_boss_bar"), WindKnightBossBar::render);
         event.registerBelowAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lose_mind"), LoseMind::render);
         event.registerBelowAll(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cloud_mist_hud"), CloudMistHud::render);
+        event.registerAbove(VanillaGuiLayers.PLAYER_HEALTH,
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "player_health"), PlayerHealthHud::render);
     }
 }

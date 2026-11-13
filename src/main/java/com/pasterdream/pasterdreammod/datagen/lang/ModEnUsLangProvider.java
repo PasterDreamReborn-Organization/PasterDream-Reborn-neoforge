@@ -378,6 +378,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.beihai_ruo_tide_sword.12", "§7▪ §9Can be enchanted with trident-exclusive enchantments");
         add("itemGroup.pasterdream.pasterdream_gear_tab", "Paster Dream | Gear");
         add("itemGroup.pasterdream.pasterdream_food_tab", "Paster Dream | Food & Drinks");
+        add("pack.pasterdream.legacy_textures", "PasterDream · Legacy Textures");
+        add("pack.pasterdream.legacy_textures.desc", "PasterDream · Legacy Textures: restores redrawn block and item textures to the original mod's look.");
+        add("pack.pasterdream.vanilla_ui", "PasterDream · Vanilla UI");
+        add("pack.pasterdream.vanilla_ui.desc", "PasterDream · Vanilla UI: replaces vanilla inventory, buttons and other interface textures with the original mod's style.");
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "Dyedream Quartz Ore");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "Dyedream Dust Ore");
         add(ModBlocks.CALCITE_COAL_ORE.get(), "Calcite Coal Ore");
