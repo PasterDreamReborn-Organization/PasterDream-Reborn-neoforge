@@ -20,6 +20,7 @@ import com.pasterdream.pasterdreammod.world.entity.AshBoneWingEntity;
 import com.pasterdream.pasterdreammod.world.entity.BoneWingFireBallProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThundercloudEntity;
 import com.pasterdream.pasterdreammod.world.entity.HighvoltageThundercloudEntity;
+import com.pasterdream.pasterdreammod.world.entity.WindKnightEntity;
 import com.pasterdream.pasterdreammod.world.entity.JellyfishEntity;
 import com.pasterdream.pasterdreammod.world.entity.LightningProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
@@ -442,6 +443,15 @@ public class ModEntities {
                             .setUpdateInterval(3)
                             .sized(0.7f, 1.4f));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<WindKnightEntity>> WIND_KNIGHT =
+            register("wind_knight",
+                    EntityType.Builder.<WindKnightEntity>of(WindKnightEntity::new, MobCategory.MONSTER)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64)
+                            .setUpdateInterval(3)
+                            .fireImmune()
+                            .sized(1f, 2f));
+
     public static final DeferredHolder<EntityType<?>, EntityType<ThundercloudEntity>> THUNDERCLOUD =
             register("thundercloud",
                     EntityType.Builder.<ThundercloudEntity>of(ThundercloudEntity::new, MobCategory.MONSTER)
@@ -585,6 +595,7 @@ public class ModEntities {
         event.put(JELLYFISH.get(), JellyfishEntity.createAttributes().build());
         event.put(THUNDERCLOUD.get(), ThundercloudEntity.createAttributes().build());
         event.put(HIGHVOLTAGE_THUNDERCLOUD.get(), HighvoltageThundercloudEntity.createAttributes().build());
+        event.put(WIND_KNIGHT.get(), WindKnightEntity.createAttributes().build());
     }
 
     private ModEntities() {

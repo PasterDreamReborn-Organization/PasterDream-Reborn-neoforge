@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.helper.MagicDamageHelper;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
+import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarProcedure;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -107,8 +108,7 @@ public class PotionBottleEffectEntity extends Entity {
             case 2, 7, 12, 17, 22, 27, 32, 37, 42, 47 -> sl.sendParticles(ParticleTypes.ELECTRIC_SPARK,
                     getX(), getY(), getZ(), (ticks == 2 || ticks == 7) ? 4 : 3, 2.0, 0.5, 2.0, 0.0);
             case 55, 65, 75, 85 -> spawnLightningBolt(sl);
-            // t=86 风骑士祭坛召唤依赖尚未迁入的 WindKnightAltarProcedure，待祭坛批次接入。
-            default -> {}
+            case 86 -> WindKnightAltarProcedure.trySummon(sl, position());
         }
         ticks++;
         if (ticks > 86) this.discard();

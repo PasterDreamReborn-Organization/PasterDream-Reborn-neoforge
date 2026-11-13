@@ -557,5 +557,243 @@ public class ModWindJourneyStructureLootTablesProvider implements LootTableSubPr
                                         .setWeight(2))
                         )
         );
+
+        // 圣诞树岛战利品（原 loots_relic_8）
+        consumer.accept(
+                ModLootTables.CHRISTMAS_TREE_CHEST_LOOT,
+                LootTable.lootTable()
+                        // 甜食&食物，抽取 3~5 次，无幸运修正
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(UniformGenerator.between(3.0F, 5.0F))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_JAR_OF_MILK.get())
+                                        .setWeight(7)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CREAM_BUN_CAKE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.BERRY_BUN_CAKE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.TUBER_BUN_CAKE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WATERMELON_BUN_CAKE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.PUMPKIN_BUN_CAKE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLOW_BERRY_BUN_CAKE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_CUP_OF_APPLE_JUICE.get())
+                                        .setWeight(10)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 4.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GARLAND.get())
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.LUCK_ENHANCE_STONE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CHOCOLATE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WAFER_BISCUIT.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.STUFFED_WAFER_COOKIES.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SWISS_ROLL.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.HEART_CHOCOLATE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WHITE_HEART_CHOCOLATE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.PINK_HEART_CHOCOLATE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_JAR_OF_DYEDREAM_PERFUME.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CANDY_CANE.get())
+                                        .setWeight(20)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 5.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GINGERBREAD_MAN.get())
+                                        .setWeight(20)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 5.0F))))
+                                .add(LootItem.lootTableItem(Items.APPLE)
+                                        .setWeight(20)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 5.0F))))
+                                .add(LootItem.lootTableItem(Items.GOLDEN_APPLE)
+                                        .setWeight(5)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(Items.CAKE)
+                                        .setWeight(5)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(Items.COOKED_CHICKEN)
+                                        .setWeight(5)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(Items.SWEET_BERRIES)
+                                        .setWeight(4)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 7.0F))))
+                                .add(LootItem.lootTableItem(Items.HONEY_BOTTLE)
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.JELLYFISH_MUD.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.JELLYFISH_JELLO.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.FIG.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_RUNNER_JELLY.get())
+                                        .setWeight(5)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 5.0F)))))
+                        // 装饰&彩灯，抽取 2~3 次，无幸运修正
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(UniformGenerator.between(2.0F, 3.0F))
+                                .add(LootItem.lootTableItem(Items.SPRUCE_LEAVES)
+                                        .setWeight(8)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(16.0F, 32.0F))))
+                                .add(LootItem.lootTableItem(Items.YELLOW_STAINED_GLASS)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 8.0F))))
+                                .add(LootItem.lootTableItem(Items.RED_STAINED_GLASS)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 8.0F))))
+                                .add(LootItem.lootTableItem(Items.BLUE_STAINED_GLASS)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 8.0F))))
+                                .add(LootItem.lootTableItem(Items.WHITE_STAINED_GLASS)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 8.0F))))
+                                .add(LootItem.lootTableItem(Items.PINK_STAINED_GLASS)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 8.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CHRISTMAS_LIGHTS.get())
+                                        .setWeight(5)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(5.0F, 9.0F)))))
+                        // 稀有掉落，抽取 1 次（原作 tabitem_1 占位权重 100 的空条目），无幸运修正
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.SNOW_VOW_HEAD.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(100)))
+                        // 雪景物品，抽取 1~2 次，无幸运修正
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(UniformGenerator.between(1.0F, 2.0F))
+                                .add(LootItem.lootTableItem(Items.SNOWBALL)
+                                        .setWeight(5)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(Items.POWDER_SNOW_BUCKET)
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(Items.SNOW_BLOCK)
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(Items.ICE)
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.EDELWEISS.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(Items.BOOK)
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F)))
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                registries, UniformGenerator.between(1.0F, 30.0F)))))
+                        // 宝石，抽取 1 次，无幸运修正
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(Items.DIAMOND)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(Items.GOLD_INGOT)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(Items.EMERALD)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(Items.AMETHYST_SHARD)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(Items.SPRUCE_LEAVES)
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(8.0F, 16.0F)))))
+        );
     }
 }

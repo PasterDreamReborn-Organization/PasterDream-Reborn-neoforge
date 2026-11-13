@@ -645,6 +645,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.PICNIC_BASKET.get(), "Picnic Basket");
         add(ModBlocks.SHADOW_CHEST.get(), "Shadow Chest");
         add(ModBlocks.WIND_MOOR_CRATE.get(), "Wind Moor Crate");
+        add(ModBlocks.BREAK_WIND_KNIGHT_ALTAR.get(), "Wind Knight Altar");
+        add("block.pasterdream.break_wind_knight_altar.need_crystal", "Embed a [Windrunner Crystal]");
+        add("block.pasterdream.break_wind_knight_altar.need_torso", "Need [Congeal Wind Iron Ingot] to assemble the torso");
+        add("block.pasterdream.break_wind_knight_altar.need_arms", "Need [Congeal Wind Iron Ingot] to assemble the arms");
+        add("block.pasterdream.break_wind_knight_altar.need_head", "Need [Congeal Wind Iron Ingot] to assemble the head");
+        add("block.pasterdream.break_wind_knight_altar.throw_lightning", "Requires a Lightning Potion Bottle: right-click the altar, or throw the bottle near the altar to awaken it");
         add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), "The Endless Book Of Dream Seekers");
         add("button.pasterdream.锻造", "Forge");
         add("tooltip.pasterdreammod.magic_stone", "§7§oWhat kind of mage doesn't carry a few magic stones?");
@@ -1587,6 +1593,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "Small Stone Spirit Spawn Egg");
         add(ModEntities.THUNDERCLOUD.get(), "Thundercloud");
         add(ModItems.THUNDERCLOUD_SPAWN_EGG.get(), "Thundercloud Spawn Egg");
+        add(ModEntities.WIND_KNIGHT.get(), "Wind Knight");
+        add(ModItems.WIND_KNIGHT_SPAWN_EGG.get(), "Wind Knight Spawn Egg");
         add(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), "Highvoltage Thundercloud");
         add(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get(), "Highvoltage Thundercloud Spawn Egg");
         add(ModEntities.BONE_WING.get(), "Bone Wing");
@@ -1890,8 +1898,15 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.dew_arrow.tooltip2", "§9Restore 1 oxygen when hitting a target.");
 
         add(ModBlocks.TWILIGHT_LANTERN.get(), "Twilight Lantern");
+        add(ModItems.SHADOW_HAND_LANTERN.get(), "Shadow Hand Lantern");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.1", "§7▪ §9When holding a lantern: 1.2 Sanity aura/min");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.2", "§7Use with right-click");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.3", "§7▪ §9Shadow creatures within a 15-square diameter take 20% increased damage for 15 seconds.");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.4", "§7▪ §9Cooldown: 8 seconds");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.5", "§7▪ §4San cost: 1");
         add(ModBlocks.SHADOW_BED.get(), "Shadow Bed");
         add("structure.pasterdream.twilight_lantern", "Twilight Lantern");
+        add("structure.pasterdream.break_wind_knight_altar", "Break Wind Knight Altar");
         add("advancements.pasterdream.story.broken_note.title", "Dipped in Shadow Memory");
         add("advancements.pasterdream.story.broken_note.description", "Obtain a fragment of the notes from the dream beneath the lamp shadow");
         add("advancements.pasterdream.story.research_table.title", "Reading in the Shadow");
@@ -2032,6 +2047,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.congeal_wind_iron.description", "Obtain a Congeal Wind Iron Ingot");
         add("advancements.pasterdream.story.lightning_in_bottle.title", "Lightning in a Bottle");
         add("advancements.pasterdream.story.lightning_in_bottle.description", "Craft a Lightning Potion Bottle");
+        add("advancements.pasterdream.story.summon_wind_knight.title", "The Wind-Breaking Knight");
+        add("advancements.pasterdream.story.summon_wind_knight.description", "Summon the Wind-Breaking Knight");
+        add("advancements.pasterdream.story.pulse_wind_runner_crystal.title", "Pulse of the Wind Core");
+        add("advancements.pasterdream.story.pulse_wind_runner_crystal.description", "Obtain a Pulse Wind Runner Crystal");
         add("advancements.pasterdream.story.wingless_bird.title", "The Wingless Bird Takes Flight");
         add("advancements.pasterdream.story.wingless_bird.description", "Eat a Wind Runner Jelly");
         add("advancements.pasterdream.story.break_wind_curtain.title", "Ride the Wind, Break the Curtain");

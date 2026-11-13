@@ -653,6 +653,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
         spawnEggItem(ModItems.NAMELESS_SPAWN_EGG.get());
         spawnEggItem(ModItems.THUNDERCLOUD_SPAWN_EGG.get());
+        spawnEggItem(ModItems.WIND_KNIGHT_SPAWN_EGG.get());
         spawnEggItem(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get());
         spawnEggItem(ModItems.BONE_WING_SPAWN_EGG.get());
         spawnEggItem(ModItems.ASH_BONE_WING_SPAWN_EGG.get());

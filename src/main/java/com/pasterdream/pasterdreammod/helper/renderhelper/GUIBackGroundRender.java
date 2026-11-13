@@ -368,6 +368,9 @@ public class GUIBackGroundRender
     public static ResourceLocation AARONCOS_HAND_BOSS_BAR_RIGHT_BACKGROUND = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_right_background.png");
     public static ResourceLocation AARONCOS_HAND_BOSS_BAR_RIGHT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_right.png");
 
+    public static ResourceLocation WIND_KNIGHT_BOSS_BAR_EMPTY = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/wind_knight_boss_bar/wind_knight_boss_bar_empty.png");
+    public static ResourceLocation WIND_KNIGHT_BOSS_BAR_FULL = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/wind_knight_boss_bar/wind_knight_boss_bar_full.png");
+
     public static void rendAaroncosHandBossBarLeftBackground(GuiGraphics guiGraphics, int x, int y)
     {
         guiGraphics.blit(AARONCOS_HAND_BOSS_BAR_LEFT_BACKGROUND, x, y, 0, 0, 116, 21, 116, 21);
@@ -386,6 +389,18 @@ public class GUIBackGroundRender
     public static void rendAaroncosHandBossBarRight(GuiGraphics guiGraphics, int x, int y, double percent)
     {
         guiGraphics.blit(AARONCOS_HAND_BOSS_BAR_RIGHT, x, y, 0, 0, (int)(106 * percent), 5, 106, 5);
+    }
+
+    public static void rendWindKnightBossBarEmpty(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(WIND_KNIGHT_BOSS_BAR_EMPTY, x, y, 22, 1, 196, 23, 256, 32);
+    }
+
+    public static void rendWindKnightBossBarFull(GuiGraphics guiGraphics, int x, int y, double percent)
+    {
+        int w = (int) Math.round(196 * percent);
+        if (w > 0)
+            guiGraphics.blit(WIND_KNIGHT_BOSS_BAR_FULL, x, y, 22, 1, w, 23, 256, 32);
     }
 
 }

@@ -15,6 +15,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithEnchantedBonusCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -231,6 +232,18 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                                 .add(LootItem.lootTableItem(ModItems.DARK_CLOUD.get())
                                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                                         .apply(new ApplyEntityLootingFunction.Builder(looting, 1))))
+        );
+        consumer.accept(
+                ModEntities.WIND_KNIGHT.get().getDefaultLootTable(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get())
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.FRACTURED_ANGEL_STATUE.get())
+                                        .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(lookup, 0.1F, 0.1F))))
         );
     }
 

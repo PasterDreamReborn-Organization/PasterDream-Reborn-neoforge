@@ -863,6 +863,19 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
                 .save(pWriter);
 
+        // 暗影提灯（锁链 + 染梦玻璃板 + 粉色蜡烛 + 黑金属粒/锭，沿用原模组配方）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SHADOW_HAND_LANTERN.get(), 1)
+                .pattern(" a ")
+                .pattern("bcb")
+                .pattern("ded")
+                .define('a', Items.CHAIN)
+                .define('b', Ingredient.of(Tags.Items.GLASS_PANES))
+                .define('c', Items.PINK_CANDLE)
+                .define('d', ModItems.BLACK_METAL_NUGGET.get())
+                .define('e', ModItems.BLACK_METAL_INGOT.get())
+                .unlockedBy(getHasName(ModItems.BLACK_METAL_INGOT.get()), has(ModItems.BLACK_METAL_INGOT.get()))
+                .save(pWriter);
+
         // ===== 染梦水晶建材 =====
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_BRICKS.get(), 4)
                 .pattern("ab")

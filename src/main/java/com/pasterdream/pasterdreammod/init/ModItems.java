@@ -50,6 +50,7 @@ import com.pasterdream.pasterdreammod.world.item.SnowballPebbleItem;
 import com.pasterdream.pasterdreammod.world.item.FireproofBlockItem;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.WindwreathedThunderSpearItem;
+import com.pasterdream.pasterdreammod.world.item.ShadowHandLanternItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
@@ -63,6 +64,7 @@ import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymWindShirtItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.WindRunnerCloakItem;
 import com.pasterdream.pasterdreammod.world.item.curio.FracturedAngelStatueItem;
 import com.pasterdream.pasterdreammod.world.item.curio.WindKnightFlagItem;
+import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarItem;
 import com.pasterdream.pasterdreammod.world.item.curio.FourleafCloverCurioItem;
 import com.pasterdream.pasterdreammod.world.item.curio.EmbryoBeltItem;
 import com.pasterdream.pasterdreammod.world.item.curio.EmbryoCharmItem;
@@ -265,6 +267,8 @@ public class ModItems {
             FracturedAngelStatueItem::new);
     public static final DeferredItem<Item> WIND_KNIGHT_FLAG = ITEMS.register("wind_knight_flag",
             WindKnightFlagItem::new);
+    public static final DeferredItem<Item> BREAK_WIND_KNIGHT_ALTAR = ITEMS.register("break_wind_knight_altar",
+            () -> new WindKnightAltarItem(ModBlocks.BREAK_WIND_KNIGHT_ALTAR.get(), new Item.Properties()));
     public static final DeferredItem<Item> GOLD_CHARM = ITEMS.register("gold_charm", GoldCharmItem::new);
     public static final DeferredItem<Item> ENDEYE_CHARM = ITEMS.register("endeye_charm", EndeyeCharmItem::new);
     public static final DeferredItem<Item> SEA_CHARM = ITEMS.register("sea_charm", SeaCharmItem::new);
@@ -1469,6 +1473,7 @@ public class ModItems {
     public static final DeferredItem<BlockItem> CHRISTMAS_LIGHTS = ITEMS.registerSimpleBlockItem(ModBlocks.CHRISTMAS_LIGHTS);
     public static final DeferredItem<BlockItem> SMALL_STONE_SPIRIT_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.SMALL_STONE_SPIRIT_BLOCK);
     public static final DeferredItem<Item> TWILIGHT_LANTERN = ITEMS.register("twilight_lantern", () -> new TwilightLanternDisplayItem(ModBlocks.TWILIGHT_LANTERN.get(), new Item.Properties().rarity(Rarity.EPIC)));
+    public static final DeferredItem<Item> SHADOW_HAND_LANTERN = ITEMS.register("shadow_hand_lantern", ShadowHandLanternItem::new);
     public static final DeferredItem<BlockItem> SHADOW_BED = ITEMS.register("shadow_bed", () -> new BlockItem(ModBlocks.SHADOW_BED.get(), new Item.Properties().rarity(Rarity.EPIC)));
 
     // ===== 影蚀系列 =====
@@ -1868,6 +1873,8 @@ public class ModItems {
             () -> new SpawnEggItem(ModEntities.NAMELESS.get(), -15592942, -11776948, new Item.Properties()));
     public static final DeferredItem<Item> THUNDERCLOUD_SPAWN_EGG = ITEMS.register("thundercloud_spawn_egg",
             () -> new SpawnEggItem(ModEntities.THUNDERCLOUD.get(), -8155750, -14399334, new Item.Properties()));
+    public static final DeferredItem<Item> WIND_KNIGHT_SPAWN_EGG = ITEMS.register("wind_knight_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.WIND_KNIGHT.get(), -1907228, -9642058, new Item.Properties()));
     public static final DeferredItem<Item> HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG = ITEMS.register("highvoltage_thundercloud_spawn_egg",
             () -> new SpawnEggItem(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), -8155750, -14339416, new Item.Properties()));
     public static final DeferredItem<Item> BONE_WING_SPAWN_EGG = ITEMS.register("bone_wing_spawn_egg",

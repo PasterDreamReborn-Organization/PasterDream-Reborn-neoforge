@@ -11,6 +11,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigg
 import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDrawingTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenDreamAccumulatorTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.SummonWindKnightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.WindFlightTrigger;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
@@ -854,8 +855,8 @@ public class ModAdvancementProvider extends AdvancementProvider {
             DataComponentPredicate lightningBottlePredicate = DataComponentPredicate.builder()
                     .expect(DataComponents.CUSTOM_DATA, CustomData.of(lightningBottleTag))
                     .build();
-            // 破风的骑士及其子进度依赖尚未迁入的破风骑士祭坛/召唤触发器，留待 T19-C/T20。
-            Advancement.Builder.advancement()
+            // 破风的骑士及其子进度
+            AdvancementHolder lightningInBottle = Advancement.Builder.advancement()
                     .parent(congealWindIron)
                     .display(
                             PotionBottleItem.createWithType(ModItems.POTION_BOTTLE.get(),
@@ -871,6 +872,40 @@ public class ModAdvancementProvider extends AdvancementProvider {
                                     .hasComponents(lightningBottlePredicate).build()))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/lightning_in_bottle"), existingFileHelper);
+
+            // ========== 瓶中闪电子进度：破风骑士 ==========
+            // 在破风骑士祭坛召唤破风骑士（初始在祭坛结构中，也会被雷电药剂瓶唤醒）
+            AdvancementHolder windKnightSummon = Advancement.Builder.advancement()
+                    .parent(lightningInBottle)
+                    .display(
+                            ModItems.BREAK_WIND_KNIGHT_ALTAR.get(),
+                            Component.translatable("advancements.pasterdream.story.summon_wind_knight.title"),
+                            Component.translatable("advancements.pasterdream.story.summon_wind_knight.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("summon_wind_knight",
+                            SummonWindKnightTrigger.TriggerInstance.summoned())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/summon_wind_knight"), existingFileHelper);
+
+            // ========== 破风骑士子进度：脉冲风行者水晶 ==========
+            // 获得脉冲风行者水晶
+            Advancement.Builder.advancement()
+                    .parent(windKnightSummon)
+                    .display(
+                            ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(),
+                            Component.translatable("advancements.pasterdream.story.pulse_wind_runner_crystal.title"),
+                            Component.translatable("advancements.pasterdream.story.pulse_wind_runner_crystal.description"),
+                            null,
+                            AdvancementType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("get_pulse_wind_runner_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/pulse_wind_runner_crystal"), existingFileHelper);
 
             // ========== 风之旅途子进度：展翅的无翼鸟 ==========
             // 食用风行者果冻（获得风行者效果）

@@ -71,7 +71,11 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get())
                 .add(ModEntities.TERRASWORD_WAVE.get())
                 .add(ModEntities.SHAKING_CRYSTAL.get())
-                .add(ModEntities.FOX_FIRE.get())
-                .add(ModEntities.SHADOW_TUNE_TOTEM.get());
+                  .add(ModEntities.FOX_FIRE.get())
+                  .add(ModEntities.SHADOW_TUNE_TOTEM.get());
+
+        tag(ModEntityTypeTags.WIND_KNIGHT_MINION)
+                .add(ModEntities.THUNDERCLOUD.get())
+                .add(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get());
     }
 }

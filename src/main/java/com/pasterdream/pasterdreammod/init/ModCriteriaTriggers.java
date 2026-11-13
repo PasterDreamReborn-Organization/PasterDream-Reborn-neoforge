@@ -11,6 +11,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigg
 import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDrawingTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenDreamAccumulatorTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.SummonWindKnightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.WindFlightTrigger;
 import net.minecraft.advancements.CriterionTrigger;
@@ -78,6 +79,10 @@ public final class ModCriteriaTriggers {
     /** 风之旅途顺风/逆风累计飞行距离 */
     public static final DeferredHolder<CriterionTrigger<?>, WindFlightTrigger> WIND_FLIGHT =
             TRIGGERS.register("wind_flight", WindFlightTrigger::new);
+
+    /** 破风骑士祭坛召唤破风骑士 */
+    public static final DeferredHolder<CriterionTrigger<?>, SummonWindKnightTrigger> SUMMON_WIND_KNIGHT =
+            TRIGGERS.register("summon_wind_knight", SummonWindKnightTrigger::new);
 
     public static void register(IEventBus eventBus) {
         TRIGGERS.register(eventBus);

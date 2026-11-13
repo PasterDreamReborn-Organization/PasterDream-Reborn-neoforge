@@ -645,6 +645,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.PICNIC_BASKET.get(), "野餐篮");
         add(ModBlocks.SHADOW_CHEST.get(), "浸影宝盒");
         add(ModBlocks.WIND_MOOR_CRATE.get(), "风泊板条筐");
+        add(ModBlocks.BREAK_WIND_KNIGHT_ALTAR.get(), "破风骑士祭坛");
+        add("block.pasterdream.break_wind_knight_altar.need_crystal", "需要嵌入 [风行者水晶]");
+        add("block.pasterdream.break_wind_knight_altar.need_torso", "需要 [凝风铁锭] 组装躯干");
+        add("block.pasterdream.break_wind_knight_altar.need_arms", "需要 [凝风铁锭] 组装手臂");
+        add("block.pasterdream.break_wind_knight_altar.need_head", "需要 [凝风铁锭] 组装头颅");
+        add("block.pasterdream.break_wind_knight_altar.throw_lightning", "需要 [雷电药剂瓶]：右键祭坛，或将药剂瓶投掷到祭坛附近以唤醒傀儡");
         add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), "寻梦者的永恒书卷");
         add("button.pasterdream.锻造", "锻造");
         add("tooltip.pasterdreammod.magic_stone", "§7§o哪个魔法使的兜里不会揣几块魔法石呢？");
@@ -1587,6 +1593,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "小石精刷怪蛋");
         add(ModEntities.THUNDERCLOUD.get(), "雷云");
         add(ModItems.THUNDERCLOUD_SPAWN_EGG.get(), "雷云刷怪蛋");
+        add(ModEntities.WIND_KNIGHT.get(), "破风骑士");
+        add(ModItems.WIND_KNIGHT_SPAWN_EGG.get(), "破风骑士刷怪蛋");
         add(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), "高压雷云");
         add(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get(), "高压雷云刷怪蛋");
         add(ModEntities.BONE_WING.get(), "骨翼");
@@ -1891,8 +1899,15 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.dew_arrow.tooltip2", "§9击中目标时恢复1氧气");
 
         add(ModBlocks.TWILIGHT_LANTERN.get(), "暮影之笼");
+        add(ModItems.SHADOW_HAND_LANTERN.get(), "暗影提灯");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.1", "§7▪ §9手持提灯时理智光环+1.2san/分钟");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.2", "§7右键使用");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.3", "§7▪ §9直径15格范围内的暗影生物受到20%的易伤效果持续15秒");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.4", "§7▪ §9冷却时间：8秒");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.5", "§7▪ §4精神值消耗：1");
         add(ModBlocks.SHADOW_BED.get(), "暮影长床");
         add("structure.pasterdream.twilight_lantern", "暮影之笼");
+        add("structure.pasterdream.break_wind_knight_altar", "破风骑士祭坛");
         add("advancements.pasterdream.story.broken_note.title", "浸影回忆");
         add("advancements.pasterdream.story.broken_note.description", "获得一张灯影之下梦境的笔记残片");
         add("advancements.pasterdream.story.research_table.title", "于影研读");
@@ -2033,6 +2048,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.congeal_wind_iron.description", "获得凝风铁锭");
         add("advancements.pasterdream.story.lightning_in_bottle.title", "瓶中闪电");
         add("advancements.pasterdream.story.lightning_in_bottle.description", "合成雷电药剂瓶");
+        add("advancements.pasterdream.story.summon_wind_knight.title", "破风的骑士");
+        add("advancements.pasterdream.story.summon_wind_knight.description", "召唤破风骑士");
+        add("advancements.pasterdream.story.pulse_wind_runner_crystal.title", "风核脉动");
+        add("advancements.pasterdream.story.pulse_wind_runner_crystal.description", "获得脉冲风行者水晶");
         add("advancements.pasterdream.story.wingless_bird.title", "展翅的无翼鸟");
         add("advancements.pasterdream.story.wingless_bird.description", "食用风行者果冻");
         add("advancements.pasterdream.story.break_wind_curtain.title", "乘风破幕");

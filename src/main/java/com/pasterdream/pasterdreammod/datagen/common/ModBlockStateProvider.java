@@ -49,6 +49,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ConfiguredModel.builder()
                         .modelFile(models().getExistingFile(modLoc("custom/dream_accumulator_particle")))
                         .build());
+        getVariantBuilder(ModBlocks.BREAK_WIND_KNIGHT_ALTAR.get()).forAllStates(state ->
+                ConfiguredModel.builder()
+                        .modelFile(models().getExistingFile(modLoc("custom/break_wind_knight_altar_particle")))
+                        .build());
         // 圣诞彩灯：水平朝向，手动模型
         var christmasLightsModel = models().getExistingFile(modLoc("block/christmas_lights"));
         horizontalBlock(ModBlocks.CHRISTMAS_LIGHTS.get(), christmasLightsModel);

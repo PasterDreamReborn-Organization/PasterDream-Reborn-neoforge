@@ -42,6 +42,7 @@ import com.pasterdream.pasterdreammod.client.renderer.AshBoneWingRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.BoneWingFireBallProjectileRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.ThundercloudRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.HighvoltageThundercloudRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.WindKnightRenderer;
 import com.pasterdream.pasterdreammod.client.renderer.JellyfishRenderer;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -114,5 +115,6 @@ public final class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), HighvoltageThundercloudRenderer::new);
         event.registerEntityRenderer(ModEntities.LIGHTNING_PROJECTILE.get(), NoopRenderer::new);
         event.registerEntityRenderer(ModEntities.JELLYFISH.get(), JellyfishRenderer::new);
+        event.registerEntityRenderer(ModEntities.WIND_KNIGHT.get(), WindKnightRenderer::new);
     }
 }

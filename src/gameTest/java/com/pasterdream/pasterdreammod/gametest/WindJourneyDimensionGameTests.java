@@ -110,6 +110,7 @@ public class WindJourneyDimensionGameTests {
         List<ResourceKey<LootTable>> keys = List.of(
                 ModLootTables.WIND_JOURNEY_CHEST_LOOT,
                 ModLootTables.WIND_JOURNEY_CHEST_RARE_LOOT,
+                ModLootTables.CHRISTMAS_TREE_CHEST_LOOT,
                 ModLootTables.MELT_DREAM_CRYSTAL_CHEST_WIND_JOURNEY_NORMAL_LOOT,
                 ModLootTables.MELT_DREAM_CRYSTAL_CHEST_WIND_JOURNEY_RARE_LOOT,
                 ModLootTables.MELT_DREAM_CRYSTAL_CHEST_WIND_JOURNEY_LEGEND_LOOT);
