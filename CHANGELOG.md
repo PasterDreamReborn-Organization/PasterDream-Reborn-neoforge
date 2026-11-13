@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 120：风之旅途宝箱与水晶箱战利品及调试栏整理（2026-11-13，T16-B/T17/T19-B 部分）
+
+- 迁入 `chests/wind_journey_chest`、`chests/wind_journey_chest_rare` 两张风之旅途结构宝箱表，补齐 `fluffy_wind_church` 等结构此前引用但为空的战利品。
+- 迁入 `chests/melt_dream_crystal_chest_wind_journey_world_normal/rare/legend` 三张水晶箱表，传奇池恢复来源 5% 逐梦列车车票奖池；新增 `ModLootTables` 常量与 `ModWindJourneyStructureLootTablesProvider`。
+- 1.21.1 适配：饰品等级 NBT 改 `SetComponentsFunction` + `CustomData`；附魔改为 `enchantWithLevels(registries, ...)` 的 `#minecraft:on_random_loot`；烟花 NBT 改 `DataComponents.FIREWORKS` + `FireworkExplosion`。
+- 整理调试创造栏：补齐已迁入战利品表的 `LOOT_GENERATOR` NBT 变体，并补风之旅途水晶箱 NBT 与重置工具变体。
+- `compileJava`、`runData`、`build` 通过，`runData` 写入 5 张战利品表 JSON；`runGameTestServer` 208/208 通过，`WindJourneyDimensionGameTests` 新增战利品表加载与三表 NBT 断言。实际结构投放、水晶箱抽取与烟花客户端表现待游戏内验收。
+- **建议提交信息：** `feat(loot): 搬运风之旅途宝箱与水晶箱战利品`
+
 ### 批次 119：风之旅途生物与 story 进度链（2026-11-12，T19-A/T19-B/T05 部分）
 
 - 迁入骨翼、余烬骨翼、雷云、高压雷云、水母五种风之旅途生物，以及骨翼火球与雷云落雷射弹；保留来源属性、AI、飞行盘旋、落雷概率、水母繁殖、死亡时长、战利品与群系生成权重/生成预算。骨翼与余烬骨翼改由 `#minecraft:undead` 实体标签承接亡灵语义，高压雷云死亡闪电复用雷电药剂瓶效果。
