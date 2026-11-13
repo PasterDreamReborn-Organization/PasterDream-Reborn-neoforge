@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 129：光影兼容模块（2026-11-13，T22 部分）
+
+- 迁入 Forge 来源的 `ShaderCompat`、`ShaderPackConfig`、`ShaderBlockInjector` 与 `ShaderCompatEvents`：可选检测 Iris/Oculus，读取当前光影包 `block.properties`，并按原版草、树叶和藤蔓的 shader ID 注入本模组植物方块状态；加入默认开启的 `shaderBlockInjection` 客户端配置。
+- 1.21.1 适配：客户端事件与方块注册对象改用 NeoForge 类型，草参考 ID 改为 `minecraft:short_grass`；对照用户提供的 Iris NeoForge 1.8.0 JAR 确认反射类及方法存在，不增加 Iris 编译或运行硬依赖。
+- `compileJava`、`runData`、`build` 通过，`runData` 写入 2 个文件且无受跟踪资源变更；隔离服务端 `runGameTestServer` 217/217 通过。带 Iris 与实际光影包的客户端注入日志、植物动效及换包重载仍待实机验收。
+- **建议提交信息：** `feat(client): 搬运光影兼容与植物动效注入`
+
 ### 批次 128：自定义画与加载界面 Tips（2026-11-13，T22 部分）
 
 - 迁入 8 幅来源画作及原始贴图；按 1.21.1 数据驱动注册表生成画作 JSON 与 `minecraft:placeable` 标签，并补齐中英文标题、作者文本。
