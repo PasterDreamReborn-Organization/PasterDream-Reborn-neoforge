@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.init.ModPaintings;
 import com.pasterdream.pasterdreammod.worldgen.ModConfiguredFeatures;
 import com.pasterdream.pasterdreammod.worldgen.ModPlacedFeatures;
 import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomeModifiers;
@@ -20,6 +21,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModWorldGenProvider extends DatapackBuiltinEntriesProvider {
     private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
+            .add(Registries.PAINTING_VARIANT, ModPaintings::bootstrap)
             .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
             .add(Registries.BIOME, ModBiomes::bootstrap)

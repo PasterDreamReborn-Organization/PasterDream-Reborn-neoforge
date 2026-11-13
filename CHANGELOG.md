@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 128：自定义画与加载界面 Tips（2026-11-13，T22 部分）
+
+- 迁入 8 幅来源画作及原始贴图；按 1.21.1 数据驱动注册表生成画作 JSON 与 `minecraft:placeable` 标签，并补齐中英文标题、作者文本。
+- 迁入来源 Tips 列表、增删/重置接口、加载界面渲染和默认开启的 `loading_gui_tips` 客户端配置；恢复 KubeJS `PasterDreamTips` 绑定。
+- `compileJava`、`runData`、`build` 通过，`runGameTestServer` 217/217 通过。画作与 Tips 客户端视觉、KubeJS 实机调用待验收。
+- **建议提交信息：** `feat(client): 搬运自定义画与加载界面 Tips`
+
 ### 批次 127：生命值 HUD 与两个内置资源包（2026-11-13，T22 部分）
 
 - 迁入 `PlayerHealthHud`：可选的帕斯特之梦主题血条替换原版生命值行，保留受击闪烁、中毒/凋零条颜色、伤害吸收文本变黄与 85×10 边框/83 像素填充布局；当前/最大生命值按配置小数位格式化并去除末尾零。
