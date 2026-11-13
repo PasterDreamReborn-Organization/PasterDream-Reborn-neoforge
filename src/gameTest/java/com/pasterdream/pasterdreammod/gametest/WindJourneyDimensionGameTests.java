@@ -22,6 +22,7 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.biome.Biome;
@@ -123,6 +124,44 @@ public class WindJourneyDimensionGameTests {
         CompoundTag data = configured.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         helper.assertTrue(data.getList("LootTables", Tag.TAG_COMPOUND).size() == 3,
                 "风之旅途水晶箱应配置普通、稀有、传奇三张战利品表");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void windJourneyStructuresLoad(GameTestHelper helper) {
+        var access = helper.getLevel().registryAccess();
+        var structures = access.lookupOrThrow(Registries.STRUCTURE);
+        var pools = access.lookupOrThrow(Registries.TEMPLATE_POOL);
+        var sets = access.lookupOrThrow(Registries.STRUCTURE_SET);
+        List<String> names = List.of(
+                "wind_island", "windmill_lodge", "break_wind_knight_altar", "windmoor_tree",
+                "wind_infested_stone_0", "wind_infested_stone_1", "wind_pond",
+                "big_bubbles_6", "big_bubbles_7", "bocchi_0", "bocchi_1", "break_wind_curtain",
+                "hakurei_reimu", "hot_air_balloon_0", "hot_air_balloon_1", "hot_air_balloon_2",
+                "hot_air_balloon_3", "hot_air_balloon_4", "hot_air_balloon_5", "hot_air_balloon_6",
+                "hot_air_balloon_7", "small_ballon_0", "small_ballon_1", "small_ballon_2",
+                "small_ballon_3", "small_ballon_4", "small_ballon_5", "small_ballon_6",
+                "small_ballon_7", "small_ballon_8", "small_ballon_9", "small_ballon_10",
+                "christmas_tree_island", "windbell_cage");
+        for (String name : names) {
+            ResourceLocation id = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name);
+            helper.assertTrue(structures.get(ResourceKey.create(Registries.STRUCTURE, id)).isPresent(),
+                    "风之旅途结构应已注册: " + id);
+            helper.assertTrue(pools.get(ResourceKey.create(Registries.TEMPLATE_POOL, id)).isPresent(),
+                    "风之旅途模板池应已注册: " + id);
+        }
+
+        List<String> templates = names.stream().filter(name -> !name.startsWith("big_bubbles_")).toList();
+        for (String name : templates) {
+            helper.assertTrue(helper.getLevel().getStructureManager()
+                            .get(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name)).isPresent(),
+                    "风之旅途结构模板应可加载: " + name);
+        }
+
+        var windJourneySet = sets.getOrThrow(ResourceKey.create(Registries.STRUCTURE_SET,
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_structures"))).value();
+        helper.assertTrue(windJourneySet.structures().size() == 2,
+                "风之旅途稀有结构集应包含圣诞树岛与风铃笼");
         helper.succeed();
     }
 }

@@ -5,6 +5,17 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 124：风之旅途结构生成（2026-11-13，T16-B/T19-A/T19-B 部分）
+
+- 迁入风之旅途全部 34 个结构：风泊群岛 `wind_island`、`windmill_lodge`、`break_wind_knight_altar`、`windmoor_tree`、`wind_infested_stone_0/1`、`wind_pond`；迷梦云层 `big_bubbles_6/7`、`bocchi_0/1`、`break_wind_curtain`、`hakurei_reimu`、`hot_air_balloon_0~7`、`small_ballon_0~10`、`christmas_tree_island`、`windbell_cage`，补齐静态 structure/template_pool JSON 与 32 个 NBT；`big_bubbles_6/7` 按来源复用 `big_bubbles_2/1` 模板。
+- 保持来源 spacing/separation/salt、生成阶段、高度范围、地形适应、群系限制与结构集权重；`christmas_tree_island` 与 `windbell_cage` 继续使用 `wind_journey_structures` 共享集（spacing 52 / separation 26，权重 1:2），其余为独立随机分布。
+- 使用 `scripts/convert_structure_item_nbt.py` 转换风之旅途 NBT 中 25 个 1.20.1 物品堆叠；脚本补充 `written_book` 到 `minecraft:written_book_content` 的转换，并顺带修正破风骑士祭坛内旧笔记的 `Count`/`tag` 格式。
+- 结构 JSON 的 `biomes` 按 1.21 要求改为列表；静态模板池保留来源 `block_ignore` 处理器与模板引用。
+- 补齐 82 个已注册结构的双语 `structure.pasterdream.*` 翻译键，包含此前缺失的阴影结构、风之旅途结构与气泡/云层装饰结构。
+- `compileJava`、`runData`、`compileGameTestJava`、`build` 通过；`runData` 写入风之旅途独立结构集与共享集；`runGameTestServer` 215/215 通过，新增 `windJourneyStructuresLoad` 覆盖 34 个结构注册、模板池、NBT 加载与共享集条目。
+- 待验收：真实风之旅途世界中的浮空岛/云层结构分布、结构间重叠与高度贴合、箱内实体/物品/告示牌/横幅表现，以及多人环境下的结构生成。
+- **建议提交信息：** `feat(worldgen): 搬运风之旅途结构生成`
+
 ### 批次 123：调试栏顺序、圣诞树岛战利品与设备栏熔梦水晶箱（2026-11-13，T16-B/T19/T20 部分）
 
 - 调试创造栏按来源 `pasterdream_dream_debug_tab` 重排：移除来源调试栏没有的暗影高炉、暗影地牢仓库与沙漠结构战利品生成器；恢复熔梦水晶箱重置工具本体及普通/稀有/传奇三种 NBT 变体，并校正暗影涡旋、暗影火盆与刷怪蛋顺序。

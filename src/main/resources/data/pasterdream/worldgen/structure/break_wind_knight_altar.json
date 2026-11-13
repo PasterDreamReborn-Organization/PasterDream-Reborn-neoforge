@@ -16,6 +16,8 @@
     }
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "biomes": ["pasterdream:wind_moor_archipelago"],
+  "biomes": [
+    "pasterdream:wind_moor_archipelago"
+  ],
   "use_expansion_hack": false
 }

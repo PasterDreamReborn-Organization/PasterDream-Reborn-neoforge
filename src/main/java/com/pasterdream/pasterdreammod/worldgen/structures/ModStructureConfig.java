@@ -25,8 +25,8 @@ public class ModStructureConfig
     // 其余结构权重 = round(258 / 原spacing)
     // structureSetWeight 为真实生成权重，直接写入结构集 JSON
     //
-    // 本仓库当前只登记已移植的主世界、染梦世界与灯影之下结构；风之旅途等结构
-    // 待对应 NBT、模板与功能方块迁入后，按来源 ModStructureConfig 补回。
+    // 本仓库当前登记已移植的主世界、染梦世界、灯影之下与风之旅途结构；
+    // 风之旅途使用来源静态 structure/template_pool JSON 与 NBT，权重与间距保持来源。
 
     public static List<StructureGenerationConfig> getStructureConfig()
     {
@@ -99,8 +99,55 @@ public class ModStructureConfig
         // === 亚伦柯斯竞技场传送门（灯影之下菌索荒原，独立结构集） ===
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:aaroncos_arena_portal", "pasterdream:shadow_nylium_wastes_spawn_biome", "surface_structures", "beard_thin", -4, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 31, 16, 1674438385, 1));
 
-        // === 风之旅途·破风骑士祭坛（静态 structure/template_pool JSON，手动维护 NBT） ===
+        // === 风之旅途（静态 structure/template_pool JSON 与 NBT，手动维护） ===
+        // biomeTag/heightmap 等字段为占位，实际群系与高度以静态 JSON 为准。
+
+        // --- 风泊群岛（biome_0） ---
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:wind_island", "pasterdream:wind_moor_archipelago", "top_layer_modification", "none", "very_biased_to_bottom", 62, 75, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 7, 4, 610650667, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:windmill_lodge", "pasterdream:wind_moor_archipelago", "surface_structures", "none", "very_biased_to_bottom", 100, 120, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 73, 36, 270611341, 1, null, false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:break_wind_knight_altar", "pasterdream:wind_moor_archipelago", "surface_structures", "none", "very_biased_to_bottom", 120, 140, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 42, 25, 1344649511, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:windmoor_tree", "pasterdream:wind_moor_archipelago", "top_layer_modification", "none", "very_biased_to_bottom", 54, 64, "", 64, 1, false, "rigid", "minecraft:empty", 1, 3, 2, 707951846, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:wind_infested_stone_0", "pasterdream:wind_moor_archipelago", "vegetal_decoration", "none", "very_biased_to_bottom", 59, 63, "", 64, 1, false, "rigid", "minecraft:empty", 1, 2, 1, 114139522, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:wind_infested_stone_1", "pasterdream:wind_moor_archipelago", "vegetal_decoration", "none", "very_biased_to_bottom", 59, 63, "", 64, 1, false, "rigid", "minecraft:empty", 1, 2, 1, 113947148, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:wind_pond", "pasterdream:wind_moor_archipelago", "top_layer_modification", "none", "very_biased_to_bottom", 59, 63, "", 64, 1, false, "rigid", "minecraft:empty", 1, 3, 2, 737290576, 1, null, false));
+
+        // --- 迷梦云层（biome_1） ---
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:big_bubbles_6", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 42, 64, "", 64, 1, false, "rigid", "minecraft:empty", 1, 4, 2, 5355694, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:big_bubbles_7", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 43, 63, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 5, 3, 2145721488, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:bocchi_0", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 78, 140, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 19, 2125868828, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:bocchi_1", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 78, 140, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 120, 34, 2118750973, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:break_wind_curtain", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 74, 116, "", 64, 1, false, "rigid", "minecraft:empty", 1, 8, 4, 133099465, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:hakurei_reimu", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 78, 140, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 33, 20, 611019746, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:hot_air_balloon_0", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 75, 124, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 24, 10, 652828939, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:hot_air_balloon_1", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 75, 124, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 24, 10, 653406063, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:hot_air_balloon_2", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 75, 124, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 24, 10, 653213688, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:hot_air_balloon_3", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 76, 126, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 23, 11, 652251816, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:hot_air_balloon_4", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 77, 125, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 23, 13, 652059442, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:hot_air_balloon_5", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 77, 125, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 43, 25, 652636565, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:hot_air_balloon_6", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 79, 127, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 37, 21, 652444191, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:hot_air_balloon_7", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 82, 129, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 49, 31, 694574195, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_0", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 303245205, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_1", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 302283333, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_2", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 302090959, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_3", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 302668082, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_4", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 302475708, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_5", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 301513835, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_6", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 301321461, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_7", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 301898584, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_8", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 301706210, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_9", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 306900320, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_10", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 1855702116, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:christmas_tree_island", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 55, 80, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 157, 78, 885566331, 1, "wind_journey_structures", false));
+
+        // --- 风之旅途稀有结构（共享结构集 wind_journey_structures，与圣诞树岛同集竞争） ---
+        // windbell_cage 参照染梦世界浮空结构注册（绝对高度），权重为圣诞树岛的 2 倍（2 : 1）。
+        // 绝对高度 150 高于云海所有结构的最高生成高度（bocchi/hakurei_reimu 78~140）；
+        // 结构高 72 格，顶部 222 < 维度可建造高度 256。因高位结构不能做地形投影
+        // （150 + 地表 54~75 会超出建造高度），使用静态 structure/template_pool JSON（无 heightmap），
+        // 生成高度为真实绝对高度。spacing 129 使权重公式 round(258/129)=2 与权重一致，
+        // 实际间距由 ModStructureSetProvider 的 GROUP_CONFIG wind_journey_structures 控制（52/26）。
+        // 即 157/78 ÷ 3：权重 2:1 分摊后圣诞树岛保持原频率 1/157，风铃笼为圣诞树岛的 2 倍（1/78）。
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:windbell_cage", "pasterdream:wind_journey_world_biome", "surface_structures", "none", 150, "", 64, 1, false, "rigid", "minecraft:empty", 1, 129, 64, 873019642, 2, "wind_journey_structures", false));
 
         return STRUCTURES;
     }
