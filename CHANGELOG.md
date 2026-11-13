@@ -5,6 +5,25 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 127：生命值 HUD 与两个内置资源包（2026-11-13，T22 部分）
+
+- 迁入 `PlayerHealthHud`：可选的帕斯特之梦主题血条替换原版生命值行，保留受击闪烁、中毒/凋零条颜色、伤害吸收文本变黄与 85×10 边框/83 像素填充布局；当前/最大生命值按配置小数位格式化并去除末尾零。
+- 迁入 `ModResourcePacks` 与 `resourcepacks/` 下 `pasterdream_legacy_textures`、`paster_vanilla_ui` 两个内置资源包（共 230 个文件），保留包 ID `pasterdream:legacy_textures` / `pasterdream:vanilla_ui` 与标题/描述语言键。
+- 1.21.1 适配：GUI 由 Forge `IGuiOverlay`/`ForgeGui` 改为 `RegisterGuiLayersEvent` 的 `LayeredDraw.Layer`，通过 `RenderGuiLayerEvent.Pre` 隐藏原版 `minecraft:player_health`；资源包注册改用 NeoForge `AddPackFindersEvent`、`PackLocationInfo` 与 `BuiltInPackSource`；包格式由 15 升至 34。
+- UI 包按 1.21.1 精灵图布局重建：从来源 `icons.png`、`widgets.png`、`bars.png`、`tabs.png`、`container/inventory.png` 裁出 138 张 HUD/按钮/热键栏/BOSS 条/创造栏标签/状态效果框等精灵，并复制 3 个按钮九宫格 `mcmeta`；原 1.20.1 整图保留但不再被 1.21.1 使用。
+- 修复资源包背包透明通道：创造栏图标渲染后、主体底图绘制前重新启用标准 Alpha 混合；状态效果框独立绘制时也开启混合，并补齐 `container/inventory/effect_background_large` / `small` 精灵。快捷栏沿用原版已有的混合处理。
+- 补入血条纹理 `assets/pasterdream/textures/screens/paster_widgets.png`；新增客户端配置 `pasterHealthHud`（默认 false）与 `pasterHealthHudDecimalPlaces`（0~2，默认 0）。血条绘制按来源补回混合、默认 Alpha 混合函数、关闭深度测试与渲染后恢复。
+- `compileJava`、`runData`、`build` 通过，首次 `runData` 写入 2 个语言文件，复核写入 0 个文件；未运行 GameTest。独立开发客户端实际加载资源包后，创造背包半透明底图、状态效果粉色边框与快捷栏透明背景目视通过；生存背包及血条实机渲染待客户端验收。
+- **建议提交信息：** `feat(client): 搬运生命值 HUD 与两个内置资源包`
+
+### 批次 126：JEI 流体容器关系页（2026-11-13，T22 部分）
+
+- 迁入 `compat/jei/fluidcontainerrelation/FluidContainerRecipeCategory`：JEI 中新增「流体容器绑定关系」分类，显示空容器 → 流体 → 装满容器；通用流体储罐只显示空容器与代表流体。
+- 迁入 `helper/fluidcontainercapability/FluidContainerRelation` 与 `GetAllFluidContainerCapability`：扫描注册物品的 `Capabilities.FluidHandler.ITEM`，模拟填充生成专用映射，全部流体均可满容量填充时归为通用储罐。
+- 1.21.1 适配：Forge `LazyOptional`/`ForgeCapabilities` 改为 NeoForge 直接能力查询，JEI 流体槽使用 `FluidStack.getComponentsPatch()`；补齐分类纹理与中英文标题。
+- `compileJava`、`runData`、`build` 通过；JEI 分类的实际显示与客户端交互待实机验收。
+- **建议提交信息：** `feat(jei): 搬运流体容器关系页`
+
 ### 批次 125：原版食物注入补齐与进度就绪检查（2026-11-13，T11-A/T11-B/T05 部分）
 
 - 将 `jungle_spore` 与 `rice_cake` 恢复为来源的 `PasterDreamFoodItem`，不再降级为普通 `FoodProperties`；饱食度、饱和度与 SAN/融梦能量仍按来源数值。

@@ -23,6 +23,9 @@
     "LocateCommandMixin"
   ],
   "client": ["CapeLayerMixin",
+    "CreativeInventoryAlphaMixin",
+    "InventoryEffectsAlphaMixin",
+    "InventoryScreenAlphaMixin",
     "LightTextureGammaMixin",
     "BlockElementMixin",
     "MusicManagerMixin",

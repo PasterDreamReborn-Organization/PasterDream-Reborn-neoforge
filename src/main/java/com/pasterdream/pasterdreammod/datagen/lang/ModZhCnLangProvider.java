@@ -378,6 +378,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.beihai_ruo_tide_sword.12", "§7▪ §9可附魔三叉戟专属附魔");
         add("itemGroup.pasterdream.pasterdream_gear_tab", "帕斯特之梦 | 装备");
         add("itemGroup.pasterdream.pasterdream_food_tab", "帕斯特之梦 | 饮食");
+        add("pack.pasterdream.legacy_textures", "帕斯特之梦 · 旧版材质包");
+        add("pack.pasterdream.legacy_textures.desc", "帕斯特之梦 · 旧版材质包：将重绘的方块与物品纹理还原为原模组旧材质");
+        add("pack.pasterdream.vanilla_ui", "帕斯特之梦 · 原版 UI 材质包");
+        add("pack.pasterdream.vanilla_ui.desc", "帕斯特之梦 · 原版 UI 材质包：将原版物品栏、按钮等界面纹理替换为原模组风格");
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "染梦石英矿石");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "染梦粉尘矿石");
         add(ModBlocks.CALCITE_COAL_ORE.get(), "方解石煤矿石");
@@ -499,6 +503,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_crack", "染梦裂隙");
         add("structure.pasterdream.aaroncos_arena_portal", "亚伦柯斯竞技场传送门");
         add("jei.pasterdream.dyedream_contamination", "染梦侵染");
+        add("jei.pasterdream.流体容器绑定关系", "流体容器绑定关系");
+        add("jei.pasterdream.通用流体储罐", "通用流体储罐");
         add("structure.pasterdream.oak_fisherman_hut", "橡木渔夫小屋");
         add("structure.pasterdream.spruce_fisherman_hut", "云杉渔夫小屋");
         add("structure.pasterdream.campsite_overworld", "主世界营地");
