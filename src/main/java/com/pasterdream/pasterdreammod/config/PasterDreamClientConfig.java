@@ -96,6 +96,12 @@ public class PasterDreamClientConfig {
             .comment("玩家血条数值小数位数（0~2），默认 0；设为 0 时只显示整数，避免过长小数")
             .defineInRange("pasterHealthHudDecimalPlaces", 0, 0, 2);
 
+    // === 光影兼容 ===
+    public static final ModConfigSpec.BooleanValue SHADER_BLOCK_INJECTION = BUILDER
+            .comment("检测到光影生效时，把本模组的植物/树叶注入到光影的方块 ID 映射中，让它们跟随光影飘动。"
+                    + "\n此操作直接修改 Oculus/Iris 内部状态（非官方 API），默认 true。")
+            .define("shaderBlockInjection", true);
+
     // === 疯狂状态效果的屏幕效果设置 ===
     public static final ModConfigSpec.BooleanValue LOW_SAN_OVERLAY = BUILDER
             .comment("疯狂状态效果的全屏画面叠加效果，默认 true。"
