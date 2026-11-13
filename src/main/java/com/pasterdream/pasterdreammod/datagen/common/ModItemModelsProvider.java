@@ -629,6 +629,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.SLIVER_BELL.get());
 
         basicItem(ModItems.MEMORY_GEM.get());
+        basicItem(ModItems.ORIGIN_DREAM_DICTIONARY.get());
+        basicItem(ModItems.EMPTY_VESSEL.get());
+        handheldItem(ModItems.MAGNIFYING_GLASS_OF_SHERRY.get());
+        basicItem(ModItems.IRIDESCENT_FAIRY_JADE.get());
         basicItem(ModItems.WIND_TAILWIND_ICON.get());
         basicItem(ModItems.WIND_DEADWIND_ICON.get());
         basicItem(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get());

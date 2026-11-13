@@ -296,6 +296,28 @@ public class Config {
             .comment("鬼魂之面复制弹幕的冷却时间（秒），默认 3 秒，设为 0 可关闭冷却")
             .defineInRange("ghostFaceCloneCooldownSeconds", 3, 0, Integer.MAX_VALUE);
 
+    // === 虹彩仙玉 ===
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> IRIDESCENT_FAIRY_JADE_PROJECTILE_WHITELIST = BUILDER
+            .comment("虹彩仙玉：弓/弩发射主弹幕时额外发射的弹幕（投射物实体类型）白名单（格式：modid:entity_id），"
+                    + "\n例：minecraft:arrow 为箭，pasterdream:golden_fox_fireball 为黄金狐火球"
+                    + "\n支持模组投射物。每次发射主弹幕时，随机取其中一种发射 1 发")
+            .defineListAllowEmpty("iridescentFairyJadeProjectileWhitelist",
+                    List.of("pasterdream:golden_fox_fireball", "pasterdream:lightning_projectile",
+                            "pasterdream:squeal_wave_projectile", "pasterdream:pebble_projectile",
+                            "pasterdream:thrown_pink_egg",
+                            "minecraft:arrow", "minecraft:spectral_arrow",
+                            "minecraft:snowball", "minecraft:egg", "minecraft:trident",
+                            "minecraft:llama_spit"),
+                    obj -> obj instanceof String);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> IRIDESCENT_FAIRY_JADE_PROJECTILE_BLACKLIST = BUILDER
+            .comment("虹彩仙玉不触发额外弹幕的投射物实体类型 ID 黑名单（格式：modid:entity_id），"
+                    + "\n用于屏蔽无法作为弓/弩主弹幕处理的投射物")
+            .defineListAllowEmpty("iridescentFairyJadeProjectileBlacklist",
+                    List.of("minecraft:trident", "pasterdream:wind_thunder_spear",
+                            "pasterdream:tide_sword_projectile"),
+                    obj -> obj instanceof String);
+
     // === 预言卡 · 平衡 ===
     public static final ModConfigSpec.IntValue MIN_TAKE_EFFECT_DURATION = BUILDER
             .comment("平衡预言卡：药水等级翻倍、时间减半时，低于此时长的效果不会被处理，默认 30 tick")
@@ -575,6 +597,21 @@ public class Config {
     /** 查询指定投掷物类型是否被鬼魂之面忽略 */
     public static boolean isGhostFaceProjectileBlacklisted(EntityType<?> type) {
         return isEntityTypeListed(GHOST_FACE_PROJECTILE_BLACKLIST.get(), type);
+    }
+
+    public static boolean isIridescentFairyJadeProjectileBlacklisted(EntityType<?> type) {
+        return isEntityTypeListed(IRIDESCENT_FAIRY_JADE_PROJECTILE_BLACKLIST.get(), type);
+    }
+
+    public static List<EntityType<?>> getIridescentFairyJadeProjectileTypes() {
+        List<EntityType<?>> list = new ArrayList<>();
+        for (String idStr : IRIDESCENT_FAIRY_JADE_PROJECTILE_WHITELIST.get()) {
+            ResourceLocation id = ResourceLocation.tryParse(idStr);
+            if (id != null) {
+                BuiltInRegistries.ENTITY_TYPE.getOptional(id).ifPresent(list::add);
+            }
+        }
+        return list;
     }
 
     private static boolean isEntityTypeListed(List<? extends String> ids, EntityType<?> type) {

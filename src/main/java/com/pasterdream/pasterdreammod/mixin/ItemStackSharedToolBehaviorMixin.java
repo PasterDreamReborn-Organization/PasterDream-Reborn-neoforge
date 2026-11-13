@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.mixin;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyTool;
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyToolHelper;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.MeltDreamTool;
@@ -25,8 +26,8 @@ import java.util.List;
 /**
  * 工具系列「公共 tooltip」的唯一注入点。
  * <p>
- * 注入 {@link ItemStack#getTooltipLines} 的 {@code RETURN}（位于全部 {@code appendHoverText} 与原版
- * {@code ItemTooltipEvent} 之后），保证系列公共词条固定显示在各工具自身词条**之后**。
+ * 在 {@link ItemStack#getTooltipLines} 处理 NeoForge 属性词条前注入：此时工具自身词条及组件描述已加入列表，
+ * 属性、物品 ID 与模组名尚未加入，因此公共词条位于它们之间。
  * <p>
  * 用「独立 instanceof 分支」而不是接口 default：default 既压不过父类具体方法（JLS「class wins」），
  * 也无法叠加——附属模组想让一件工具同时拥有多个系列的公共词条时，多个同签名 default 会冲突。
@@ -37,12 +38,13 @@ import java.util.List;
 @Mixin(ItemStack.class)
 public class ItemStackSharedToolBehaviorMixin {
 
-    @Inject(method = "getTooltipLines", at = @At("RETURN"))
+    @Inject(method = "getTooltipLines", at = @At(value = "INVOKE",
+            target = "Lnet/neoforged/neoforge/common/util/AttributeUtil;addAttributeTooltips(Lnet/minecraft/world/item/ItemStack;Ljava/util/function/Consumer;Lnet/neoforged/neoforge/common/util/AttributeTooltipContext;)V"))
     private void pasterdream$sharedToolTooltip(Item.TooltipContext context, Player player, TooltipFlag flag,
-                                               CallbackInfoReturnable<List<Component>> cir) {
+                                               CallbackInfoReturnable<List<Component>> cir,
+                                               @Local(ordinal = 0) List<Component> tooltip) {
         ItemStack stack = (ItemStack) (Object) this;
         Item item = stack.getItem();
-        List<Component> tooltip = cir.getReturnValue();
 
         if (item instanceof MeltDreamTool) {
             MeltDreamToolHelper.appendHoverText(stack, context, tooltip, flag);

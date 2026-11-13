@@ -2,12 +2,14 @@ package com.pasterdream.pasterdreammod.gametest;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.event.PlayerEvents;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.MagnifyingGlassOfSherryHandler;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.core.registries.Registries;
@@ -24,6 +26,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.GameType;
@@ -44,6 +48,51 @@ import java.util.UUID;
 @GameTestHolder(PasterDreamMod.MOD_ID)
 @PrefixGameTestTemplate(false)
 public class CurioGameTests {
+    @GameTest(template = "empty")
+    public static void mementoConsumablesAndWearableSlots(GameTestHelper helper) {
+        ServerPlayer player = new FakePlayer(helper.getLevel(), new GameProfile(UUID.randomUUID(), "memento-test"));
+        SanHelper.setPlayerMaxSanAndSync(player, 100);
+        SanHelper.setPlayerSanAndSync(player, 20);
+        MeltDreamEnergyHelper.setPlayerMaxMeltDreamEnergyAndSync(player, 100);
+        MeltDreamEnergyHelper.setPlayerMeltDreamEnergyAndSync(player, 20);
+        player.setItemInHand(InteractionHand.MAIN_HAND, ModItems.ORIGIN_DREAM_DICTIONARY.toStack());
+        ModItems.ORIGIN_DREAM_DICTIONARY.get().use(player.level(), player, InteractionHand.MAIN_HAND);
+        helper.assertTrue(SanHelper.getPlayerSan(player) == 30
+                        && MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(player) == 30,
+                "起源之梦辞典应各恢复 10 点 SAN 与融梦能量");
+        helper.assertTrue(player.hasEffect(ModEffects.MEMENTO)
+                        && player.getAttributeValue(Attributes.LUCK) >= 10,
+                "辞典应赋予 3 分钟的幸运 +10 效果");
+        helper.assertTrue(player.getMainHandItem().isEmpty(), "生存模式使用辞典应消耗一件");
+
+        player.setItemInHand(InteractionHand.MAIN_HAND, ModItems.EMPTY_VESSEL.toStack());
+        ModItems.EMPTY_VESSEL.get().use(player.level(), player, InteractionHand.MAIN_HAND);
+        double san = SanHelper.getPlayerSan(player);
+        helper.assertTrue(san == 0 || san == 50, "空容器应按来源概率清空 SAN 或恢复上限的 20%");
+        helper.assertTrue(player.getMainHandItem().isEmpty(), "生存模式使用空容器应消耗一件");
+
+        helper.assertTrue(ModItems.MAGNIFYING_GLASS_OF_SHERRY.toStack().is(curiosTag("charm")),
+                "大侦探的放大镜应能装入 charm 槽");
+        helper.assertTrue(ModItems.IRIDESCENT_FAIRY_JADE.toStack().is(curiosTag("curio")),
+                "虹彩仙玉应能装入 curio 槽");
+
+        var inventory = CuriosApi.getCuriosInventory(player).orElseThrow();
+        inventory.setEquippedCurio("charm", 0, ModItems.MAGNIFYING_GLASS_OF_SHERRY.toStack());
+        var victim = helper.makeMockPlayer(GameType.SURVIVAL);
+        var source = helper.getLevel().damageSources().playerAttack(player);
+        var incoming = new LivingIncomingDamageEvent(victim, new DamageContainer(source, 4.0F));
+        MagnifyingGlassOfSherryHandler.onMeleeDamage(incoming);
+        helper.assertTrue(incoming.getAmount() == 12.0F, "佩戴放大镜空手攻击应造成 3 倍伤害");
+
+        var jadeSlot = new SlotContext("curio", player, 0, false, true);
+        var jadeModifiers = CuriosApi.getAttributeModifiers(jadeSlot, CuriosApi.getSlotId(jadeSlot),
+                ModItems.IRIDESCENT_FAIRY_JADE.toStack());
+        helper.assertTrue(jadeModifiers.get(ModAttributes.ARROW_VELOCITY).stream()
+                        .anyMatch(modifier -> modifier.amount() == 0.5),
+                "虹彩仙玉应提供 0.5 点箭矢速度属性");
+        helper.succeed();
+    }
+
     @GameTest(template = "empty")
     public static void curioSlotsAndRecipes(GameTestHelper helper) {
         for (Item item : List.of(ModItems.GOLD_CHARM.get(), ModItems.ENDEYE_CHARM.get(),
