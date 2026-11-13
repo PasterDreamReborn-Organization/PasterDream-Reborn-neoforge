@@ -11,6 +11,10 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class PasterDreamClientConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+    public static final ModConfigSpec.BooleanValue LOADING_GUI_TIPS = BUILDER
+            .comment("在加载界面时会弹出帕斯特之梦的tips 默认：true")
+            .define("loading_gui_tips", true);
+
     // === 融梦能量条 HUD 位置（预设1：左下角） ===
     public static final ModConfigSpec.IntValue MELT_DREAM_ENERGY_BAR_X = BUILDER
             .comment("融梦能量条距屏幕左侧的距离（像素），预设1：9")
@@ -95,17 +99,17 @@ public class PasterDreamClientConfig {
     // === 疯狂状态效果的屏幕效果设置 ===
     public static final ModConfigSpec.BooleanValue LOW_SAN_OVERLAY = BUILDER
             .comment("疯狂状态效果的全屏画面叠加效果，默认 true。"
-                    + "\n指令 /pasterdreamdebug san lowsan overlay 可运行时临时切换，重进存档后按此配置恢复")
+                    + "\r\n指令 /pasterdreamdebug san lowsan overlay 可运行时临时切换，重进存档后按此配置恢复")
             .define("lowSanOverlay", true);
 
     public static final ModConfigSpec.BooleanValue LOW_SAN_JITTER = BUILDER
             .comment("疯狂状态效果的视角抖动，默认 true。"
-                    + "\n指令 /pasterdreamdebug san lowsan jitter 可运行时临时切换，重进存档后按此配置恢复")
+                    + "\r\n指令 /pasterdreamdebug san lowsan jitter 可运行时临时切换，重进存档后按此配置恢复")
             .define("lowSanJitter", true);
 
     public static final ModConfigSpec.BooleanValue LOW_SAN_SOUND = BUILDER
             .comment("疯狂状态效果的循环音效，默认 true。"
-                    + "\n指令 /pasterdreamdebug san lowsan sound 可运行时临时切换，重进存档后按此配置恢复")
+                    + "\r\n指令 /pasterdreamdebug san lowsan sound 可运行时临时切换，重进存档后按此配置恢复")
             .define("lowSanSound", true);
 
     public static final ModConfigSpec SPEC = BUILDER.build();

@@ -31,6 +31,7 @@ public final class ModDataGenerator {
         var worldgen = generator.addProvider(event.includeServer(),
                 new ModWorldGenProvider(output, event.getLookupProvider()));
         var lookup = worldgen.getRegistryProvider();
+        generator.addProvider(event.includeServer(), new ModPaintingVariantTagsProvider(output, lookup, existing));
 
         var structures = ModStructureConfig.getStructureConfig();
         generator.addProvider(event.includeServer(), new ModStructureProvider(output, structures));
