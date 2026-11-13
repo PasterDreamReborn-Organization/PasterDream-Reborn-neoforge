@@ -11,6 +11,9 @@ import com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe.DreamAcc
 import com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe.DreamAccumulatorJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.dyedreamcontamination.DyedreamContaminationJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.dyedreamcontamination.DyedreamContaminationRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.fluidcontainerrelation.FluidContainerRecipeCategory;
+import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.FluidContainerRelation;
+import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.GetAllFluidContainerCapability;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorRecipe;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorScreen;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipe;
@@ -74,6 +77,7 @@ public class ModJEIPlugin implements IModPlugin
         registration.addRecipeCategories(new DreamAccumulatorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new ShadowBlastFurnaceRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new DyedreamContaminationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new FluidContainerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -166,6 +170,8 @@ public class ModJEIPlugin implements IModPlugin
                     .getAllRecipesFor(ModRecipes.DYEDREAM_CONTAMINATION.get()).stream().map(RecipeHolder::value).toList();
             registration.addRecipes(DyedreamContaminationRecipeCategory.RECIPE_TYPE,
                     dyedreamContaminationRecipes.stream().map(DyedreamContaminationJEIRecipe::new).toList());
+            List<FluidContainerRelation> fluidContainerRelations = GetAllFluidContainerCapability.getAllContainer();
+            registration.addRecipes(FluidContainerRecipeCategory.FLUID_CONTAINER_RELATION, fluidContainerRelations);
         }
     }
 

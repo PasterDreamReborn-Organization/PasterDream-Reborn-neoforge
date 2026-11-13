@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 126：JEI 流体容器关系页（2026-11-13，T22 部分）
+
+- 迁入 `compat/jei/fluidcontainerrelation/FluidContainerRecipeCategory`：JEI 中新增「流体容器绑定关系」分类，显示空容器 → 流体 → 装满容器；通用流体储罐只显示空容器与代表流体。
+- 迁入 `helper/fluidcontainercapability/FluidContainerRelation` 与 `GetAllFluidContainerCapability`：扫描注册物品的 `Capabilities.FluidHandler.ITEM`，模拟填充生成专用映射，全部流体均可满容量填充时归为通用储罐。
+- 1.21.1 适配：Forge `LazyOptional`/`ForgeCapabilities` 改为 NeoForge 直接能力查询，JEI 流体槽使用 `FluidStack.getComponentsPatch()`；补齐分类纹理与中英文标题。
+- `compileJava`、`runData`、`build` 通过；JEI 分类的实际显示与客户端交互待实机验收。
+- **建议提交信息：** `feat(jei): 搬运流体容器关系页`
+
 ### 批次 125：原版食物注入补齐与进度就绪检查（2026-11-13，T11-A/T11-B/T05 部分）
 
 - 将 `jungle_spore` 与 `rice_cake` 恢复为来源的 `PasterDreamFoodItem`，不再降级为普通 `FoodProperties`；饱食度、饱和度与 SAN/融梦能量仍按来源数值。

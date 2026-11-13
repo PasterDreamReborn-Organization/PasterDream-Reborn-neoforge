@@ -499,6 +499,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_crack", "染梦裂隙");
         add("structure.pasterdream.aaroncos_arena_portal", "亚伦柯斯竞技场传送门");
         add("jei.pasterdream.dyedream_contamination", "染梦侵染");
+        add("jei.pasterdream.流体容器绑定关系", "流体容器绑定关系");
+        add("jei.pasterdream.通用流体储罐", "通用流体储罐");
         add("structure.pasterdream.oak_fisherman_hut", "橡木渔夫小屋");
         add("structure.pasterdream.spruce_fisherman_hut", "云杉渔夫小屋");
         add("structure.pasterdream.campsite_overworld", "主世界营地");

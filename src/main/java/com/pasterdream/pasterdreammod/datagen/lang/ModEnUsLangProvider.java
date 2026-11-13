@@ -499,6 +499,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_crack", "Dyedream Crack");
         add("structure.pasterdream.aaroncos_arena_portal", "Aaroncos Arena Portal");
         add("jei.pasterdream.dyedream_contamination", "Dyedream Contamination");
+        add("jei.pasterdream.流体容器绑定关系", "Fluid Container Relation");
+        add("jei.pasterdream.通用流体储罐", "Generic Fluid Contianer");
         add("structure.pasterdream.oak_fisherman_hut", "Oak Fisherman Hut");
         add("structure.pasterdream.spruce_fisherman_hut", "Spruce Fisherman Hut");
         add("structure.pasterdream.campsite_overworld", "Campsite");
