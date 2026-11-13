@@ -45,6 +45,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.Bro
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalTileEntity;
 import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeTileEntity;
 import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestTileEntity;
+import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -240,6 +241,10 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AaroncosHandChestTileEntity>> AARONCOS_HAND_CHEST =
             BLOCK_ENTITIES.register("aaroncos_hand_chest",
                     () -> BlockEntityType.Builder.of(AaroncosHandChestTileEntity::new, ModBlocks.AARONCOS_HAND_CHEST.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WindKnightAltarBlockEntity>> BREAK_WIND_KNIGHT_ALTAR =
+            BLOCK_ENTITIES.register("break_wind_knight_altar",
+                    () -> BlockEntityType.Builder.of(WindKnightAltarBlockEntity::new, ModBlocks.BREAK_WIND_KNIGHT_ALTAR.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

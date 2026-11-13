@@ -5,6 +5,34 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 123：调试栏顺序、圣诞树岛战利品与设备栏熔梦水晶箱（2026-11-13，T16-B/T19/T20 部分）
+
+- 调试创造栏按来源 `pasterdream_dream_debug_tab` 重排：移除来源调试栏没有的暗影高炉、暗影地牢仓库与沙漠结构战利品生成器；恢复熔梦水晶箱重置工具本体及普通/稀有/传奇三种 NBT 变体，并校正暗影涡旋、暗影火盆与刷怪蛋顺序。
+- 迁入 `chests/christmas_tree_chest`（原 `loots_relic_8`）到风之旅途结构战利品 Provider，保留 5 个奖池的权重、数量区间与空条目；调试栏补对应战利品生成器条目。
+- 设备创造栏的熔梦水晶箱改回无 NBT 的普通物品，与来源一致；带战利品列表的水晶箱仅保留在调试栏。
+- 1.21.1 适配：附魔书池改用 `EnchantWithLevelsFunction.enchantWithLevels(registries, ...)`，不再调用 1.20.1 的 `allowTreasure()`。
+- `compileJava`、`runData`、`compileGameTestJava`、`build` 通过，`runData` 写入 1 张战利品表；`runGameTestServer` 214/214 通过，`WindJourneyDimensionGameTests` 增加圣诞树岛战利品表可加载断言。圣诞树岛结构本身尚未迁入，实际箱子投放待结构批次。
+- **建议提交信息：** `feat(worldgen): 搬运圣诞树岛战利品并整理调试栏`
+
+### 批次 122：暗影提灯（2026-11-13，T20 部分）
+
+- 迁入 `shadow_hand_lantern` 暗影提灯：手持时提供 1.2 SAN/分钟光环；右键消耗 1 SAN，播放音效与末地烛/灰烬粒子，使直径 15 格内 `#pasterdream:shadow_mob` 获得 15 秒易伤 II（20%），冷却 8 秒。
+- 迁入 GeckoLib 物品模型、待机/使用动画与第一人称手臂覆盖渲染；物品不可堆叠，配方保持链 + 玻璃板 + 粉色蜡烛 + 黑金属粒/锭。
+- 设备创造栏按来源 `paster_tab_5` 顺序将暗影提灯置于「暮影之笼」与「暮影长床」之间。
+- 1.21.1 适配：`createGeoRenderer`/`GeoRenderProvider`、GeckoLib 4.9.2 包路径与 `int renderColor`、`RenderUtil`、`AbstractClientPlayer#getSkin().texture()`、`ModelPart#render` 颜色整数（新增 `util/AnimUtils`）、`AttributeModifier` 改 `ResourceLocation` + `EquipmentSlotGroup.HAND`、`geckoAnim` 改 `CustomData`、`appendHoverText` 使用 `Item.TooltipContext`；玻璃板标签由 `forge:glass_panes` 改为 `c:glass_panes`。第一人称手臂覆盖改为逐次获取皮肤/物品缓冲并在绘制后恢复，避免 1.21 `BufferSource` 切换 RenderType 触发 `BufferBuilder: Not building!`。
+- `compileJava`、`runData`、`build`、`compileGameTestJava` 通过；`runGameTestServer` 214/214 通过，新增 `ShadowHandLanternGameTests` 覆盖注册、属性、配方、冷却与 SAN 消耗、暗影生物易伤。客户端模型/动画/手臂渲染、粒子与音效待游戏内验收。
+- **建议提交信息：** `feat(item): 搬运暗影提灯`
+
+### 批次 121：破风骑士与破风骑士祭坛召唤（2026-11-13，T19-C/T20 部分）
+
+- 迁入破风骑士实体：250 生命/20 护甲/20 攻击、突刺普攻与回旋斩战技、半血狂暴召唤四朵高压雷云、落雷概率、受击无敌与 BOSS 限伤；补齐刷怪蛋、实体战利品、`wind_knight_minion` 标签与自定义 BOSS 条。
+- 迁入破风骑士祭坛方块/方块实体/物品/GeckoLib 渲染与五阶段组装流程，接入雷电药剂瓶投掷唤醒、召唤触发器与 `story/summon_wind_knight` → `story/pulse_wind_runner_crystal` 进度。
+- 迁入祭坛结构 JSON/模板池/NBT 与结构集；`biomes` 改为 1.21 可解析的列表写法，生成群系与范围保持风泊群岛。
+- 1.21.1 适配：GeckoLib 4.9.2 包路径与 `int renderColor`、`SynchedEntityData.Builder`、`getDefaultDimensions`、实体覆写 `isWithinMeleeAttackRange`、`BaseEntityBlock#codec`、`useItemOn`/`useWithoutItem`、NeoForge `IClientItemExtensions`；移除 `setKnockback`/`setPierceLevel` 与 `getMobType`。
+- 整理设备创造栏：按来源 `paster_tab_5` 顺序排列，破风骑士祭坛归入来源位置，移除风之旅途栏中重复的风骑士旗帜/祭坛条目。
+- `compileJava`、`runData`、`build`、`compileGameTestJava` 通过；`runGameTestServer` 213/213 通过，新增 `WindKnightGameTests` 覆盖注册、祭坛结构与群系、战利品/标签/进度及实际召唤。客户端模型/动画/BOSS 条、祭坛组装与投掷唤醒、真实世界结构生成与多人战斗待游戏内验收。
+- **建议提交信息：** `feat(entity): 搬运破风骑士与破风骑士祭坛召唤`
+
 ### 批次 120：风之旅途宝箱与水晶箱战利品及调试栏整理（2026-11-13，T16-B/T17/T19-B 部分）
 
 - 迁入 `chests/wind_journey_chest`、`chests/wind_journey_chest_rare` 两张风之旅途结构宝箱表，补齐 `fluffy_wind_church` 等结构此前引用但为空的战利品。

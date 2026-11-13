@@ -20,7 +20,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -67,8 +66,8 @@ public abstract class AbstractThundercloudEntity extends Monster implements GeoE
     private static final int IDLE_REPICK = 200;              // 飘动目标未到达时的重新选取间隔（tick）
     private static final int LIGHTNING_AGGRO_RANGE = 32;     // 仇恨目标落雷最大距离（格）
 
-    // 破风骑士尚未迁入，召唤者改为通用 Mob 引用；后续 WindKnight 迁入后可直接传入。
-    private Mob summoningKnight;
+    // 破风骑士召唤时记录召唤者，落雷/盘旋目标跟随骑士的仇恨目标
+    private WindKnightEntity summoningKnight;
     private double orbitAngle;
     private Vec3 driftTarget;
     private int driftRepick;
@@ -281,7 +280,7 @@ public abstract class AbstractThundercloudEntity extends Monster implements GeoE
     }
 
     /** 被破风骑士召唤时记录召唤者，落雷/盘旋目标跟随骑士的仇恨目标 */
-    public void setSummoningKnight(Mob knight) {
+    public void setSummoningKnight(WindKnightEntity knight) {
         this.summoningKnight = knight;
     }
 

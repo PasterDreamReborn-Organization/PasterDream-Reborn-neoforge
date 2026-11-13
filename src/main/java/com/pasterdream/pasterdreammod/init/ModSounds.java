@@ -27,6 +27,9 @@ public class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> THUNDERCLOUD_ATTACK =
             SOUND_EVENTS.register("thundercloud_attack", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "thundercloud_attack")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> WIND_KNIGHT_SKILL =
+            SOUND_EVENTS.register("wind_knight_skill", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_knight_skill")));
     public static final DeferredHolder<SoundEvent, SoundEvent> BONE_WING_FIRE_BALL =
             SOUND_EVENTS.register("bone_wing_fire_ball", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "bone_wing_fire_ball")));
@@ -64,6 +67,9 @@ public class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> INFERNO_IMPACT =
             SOUND_EVENTS.register("inferno_impact", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "inferno_impact")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHADOW_HAND_LANTERN =
+            SOUND_EVENTS.register("shadow_hand_lantern", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_hand_lantern")));
     public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_AWAKEN =
             SOUND_EVENTS.register("sword_awaken", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sword_awaken")));

@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.client;
 
 import com.pasterdream.pasterdreammod.world.entity.AaroncosLeftHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosRightHandEntity;
+import com.pasterdream.pasterdreammod.world.entity.WindKnightEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 
@@ -40,10 +41,12 @@ public class ModBossBarLayout {
     /** 当前活跃的自定义 BOSS 条列表（按优先级排序）。 */
     public static List<BossBarSlot> activeSlots(ClientLevel level) {
         boolean aaroncos = false;
+        boolean windKnight = false;
         for (var entity : level.entitiesForRendering()) {
             if ((entity instanceof AaroncosLeftHandEntity || entity instanceof AaroncosRightHandEntity) && entity.isAlive()) {
                 aaroncos = true;
-                break;
+            } else if (entity instanceof WindKnightEntity knight && knight.isAlive()) {
+                windKnight = true;
             }
         }
 
@@ -51,8 +54,7 @@ public class ModBossBarLayout {
         for (BossBarSlot slot : PRIORITY) {
             boolean active = switch (slot) {
                 case AARONCOS_HANDS -> aaroncos;
-                // 破风骑士尚未迁移，暂不激活该槽位
-                case WIND_KNIGHT -> false;
+                case WIND_KNIGHT -> windKnight;
             };
             if (active)
                 result.add(slot);

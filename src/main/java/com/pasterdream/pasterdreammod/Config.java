@@ -465,6 +465,57 @@ public class Config {
             .comment("亚伦柯斯之触是否免疫负面状态效果（有害类效果），默认 true")
             .define("aaroncosTouchImmuneToNegativeEffects", true);
 
+    // === BOSS 限伤系统 · 破风骑士独立配置 ===
+    public static final ModConfigSpec.BooleanValue WIND_KNIGHT_DAMAGE_CAP_INDEPENDENT = BUILDER
+            .comment("破风骑士是否使用独立限伤配置（否则沿用上方全局 BOSS 限伤配置），默认 false")
+            .define("windKnightDamageCapIndependent", false);
+
+    public static final ModConfigSpec.BooleanValue WIND_KNIGHT_DAMAGE_CAP_ENABLED = BUILDER
+            .comment("破风骑士：是否启用单次伤害限制（单次受击伤害上限），默认 true。"
+                    + "\n设为 false 时，单发上限与 DPS 限制均不生效")
+            .define("windKnightDamageCapEnabled", true);
+
+    public static final ModConfigSpec.BooleanValue WIND_KNIGHT_DPS_CAP_ENABLED = BUILDER
+            .comment("破风骑士：是否启用 DPS 限制（每秒总伤害上限），默认 true。"
+                    + "\n仅在启用单次伤害限制（windKnightDamageCapEnabled=true）时生效")
+            .define("windKnightDpsCapEnabled", true);
+
+    public static final ModConfigSpec.BooleanValue WIND_KNIGHT_RANGE_CAP_ENABLED = BUILDER
+            .comment("破风骑士：是否启用远距离减伤（超出限伤距离后伤害线性衰减），默认 true")
+            .define("windKnightRangeCapEnabled", true);
+
+    public static final ModConfigSpec.DoubleValue WIND_KNIGHT_DAMAGE_CAP = BUILDER
+            .comment("破风骑士：单次受击伤害上限（同时也是 DPS 桶容量），默认 20")
+            .defineInRange("windKnightDamageCap", 20.0, 1.0, 1_000_000.0);
+
+    public static final ModConfigSpec.DoubleValue WIND_KNIGHT_DPS_CAP = BUILDER
+            .comment("破风骑士：DPS 桶每秒恢复量，默认 200")
+            .defineInRange("windKnightDpsCap", 200.0, 1.0, 1_000_000.0);
+
+    public static final ModConfigSpec.DoubleValue WIND_KNIGHT_RANGE_CAP = BUILDER
+            .comment("破风骑士：限伤距离衰减起始距离（格），默认 8")
+            .defineInRange("windKnightRangeCap", 8.0, 1.0, 256.0);
+
+    public static final ModConfigSpec.DoubleValue WIND_KNIGHT_LIGHTNING_CHANCE = BUILDER
+            .comment("破风骑士普攻命中后向目标头顶召唤落雷（与雷云实体使用的落雷投射物）的概率，默认 0.5（50%），取值范围最小值为0，最大值为1")
+            .defineInRange("windKnightLightningChance", 0.5, 0.0, 1.0);
+
+    public static final ModConfigSpec.BooleanValue WIND_KNIGHT_PASSIVE_INVULNERABLE_ENABLED = BUILDER
+            .comment("破风骑士：是否启用受击后概率获得短暂无敌的被动，默认 true")
+            .define("windKnightPassiveInvulnerableEnabled", true);
+
+    public static final ModConfigSpec.DoubleValue WIND_KNIGHT_PASSIVE_INVULNERABLE_CHANCE = BUILDER
+            .comment("破风骑士：受击后短暂无敌的触发概率（受击后获得无敌的概率），默认 0.2（20%），取值范围最小值为0，最大值为1")
+            .defineInRange("windKnightPassiveInvulnerableChance", 0.2, 0.0, 1.0);
+
+    public static final ModConfigSpec.IntValue WIND_KNIGHT_PASSIVE_INVULNERABLE_TICKS = BUILDER
+            .comment("破风骑士：受击后短暂无敌持续时间（tick，20 tick = 1 秒），默认 20")
+            .defineInRange("windKnightPassiveInvulnerableTicks", 20, 1, Integer.MAX_VALUE);
+
+    public static final ModConfigSpec.BooleanValue WIND_KNIGHT_IMMUNE_TO_NEGATIVE_EFFECTS = BUILDER
+            .comment("破风骑士是否免疫负面状态效果（有害类效果），默认 true")
+            .define("windKnightImmuneToNegativeEffects", true);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     public static boolean isAaroncosTouchImmuneToNegativeEffects() {
@@ -481,7 +532,19 @@ public class Config {
                             AARONCOS_DAMAGE_CAP.get().floatValue(), AARONCOS_DPS_CAP.get().floatValue(),
                             AARONCOS_RANGE_CAP.get())
                     : getBossLimitValues(BossLimitProfile.GLOBAL);
-            case WIND_KNIGHT -> getBossLimitValues(BossLimitProfile.GLOBAL);
+            case WIND_KNIGHT -> {
+                BossLimitValues base = WIND_KNIGHT_DAMAGE_CAP_INDEPENDENT.get()
+                        ? new BossLimitValues(
+                                false,
+                                WIND_KNIGHT_DAMAGE_CAP_ENABLED.get(), WIND_KNIGHT_DPS_CAP_ENABLED.get(),
+                                WIND_KNIGHT_RANGE_CAP_ENABLED.get(),
+                                WIND_KNIGHT_DAMAGE_CAP.get().floatValue(), WIND_KNIGHT_DPS_CAP.get().floatValue(),
+                                WIND_KNIGHT_RANGE_CAP.get())
+                        : getBossLimitValues(BossLimitProfile.GLOBAL);
+                // 破风骑士前置风泊群岛，不受暗影难度影响，强制关闭难度缩放
+                yield new BossLimitValues(false, base.damageCapEnabled(), base.dpsCapEnabled(),
+                        base.rangeCapEnabled(), base.damageCap(), base.dpsCap(), base.rangeCap());
+            }
             case GLOBAL -> new BossLimitValues(
                     BOSS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP.get(),
                     BOSS_DAMAGE_CAP_ENABLED.get(), BOSS_DPS_CAP_ENABLED.get(), BOSS_RANGE_CAP_ENABLED.get(),

@@ -611,7 +611,7 @@ public class ModCreativeModeTabs {
                     }).build());
 
     // ===== 设备 =====
-    // 来源: 旧 paster_tab_5 (功能方块), 按原顺序
+    // 来源: 旧 paster_tab_5 (功能方块), 按原顺序；未迁入的来源项跳过
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_EQUIPMENT_TAB = CREATIVE_MODE_TABS.register("pasterdream_equipment_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_equipment_tab"))
@@ -639,8 +639,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SAND_OF_TIME.get());
                         output.accept(ModItems.LIFE_CRYSTAL.get());
                         output.accept(ModItems.GOLDEN_FOX_SCULPTURE.get());
+                        output.accept(ModItems.BREAK_WIND_KNIGHT_ALTAR.get());
                         output.accept(ModItems.DESERT_HERO_TOMB.get());
-                        output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestDyedreamWorldNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
+                        output.accept(ModItems.MELT_DREAM_CRYSTAL_CHEST.get());
                         output.accept(ModItems.OPENED_MELT_DREAM_CRYSTAL_CHEST.get());
                         output.accept(ModItems.DREAM_ACCUMULATOR.get());
                         output.accept(ModItems.DREAM_TRAIN_STRUCTURE.get());
@@ -652,13 +653,14 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WEAPON_WORKSHOP_GRIND_STONE.get());
                         output.accept(ModItems.WEAPON_WORKSHOP_BLAST_FURNACE.get());
                         output.accept(ModItems.TWILIGHT_LANTERN.get());
+                        output.accept(ModItems.SHADOW_HAND_LANTERN.get());
                         output.accept(ModItems.SHADOW_BED.get());
-                        output.accept(ModItems.SHADOW_DUNGEON_WALL_KEY.get());
-                        output.accept(ModItems.SHADOW_DUNGEON_FLOOR_KEY.get());
                         output.accept(ModItems.SHADOW_DUNGEON_PORTAL.get());
                         output.accept(ModItems.BROKEN_SHADOW_DUNGEON_PORTAL.get());
                         output.accept(ModItems.SHADOW_DUNGEON_GATE.get());
                         output.accept(ModItems.SHADOW_DUNGEON_BARRIER.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_WALL_KEY.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_FLOOR_KEY.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE_CORE.get());
                         output.accept(ModItems.SHADOW_HAND_TRAP.get());
@@ -812,32 +814,25 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CONGEAL_WIND_IRON_PRESSURE_PLATE.get());
                         output.accept(ModItems.EJECTION_PRESSURE_PLATE.get());
                         output.accept(ModItems.EJECTION_PRESSURE_BLOCK.get());
-                        output.accept(ModItems.WIND_KNIGHT_FLAG.get());
                     })
                     .build());
 
     // ===== 调试 =====
-    // 来源: 旧 pasterdream_dream_debug_tab（当前仅迁入调试剑、战利品生成器、粒子方块与已存在实体的刷怪蛋）
+    // 来源: 旧 pasterdream_dream_debug_tab，按原顺序
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_DREAM_DEBUG_TAB =
             CREATIVE_MODE_TABS.register("pasterdream_dream_debug_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_dream_debug_tab"))
                     .icon(() -> new ItemStack(ModItems.DEBUG_SWORD.get()))
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.DEBUG_SWORD.get());
-                        output.accept(ModItems.SHADOW_BLAST_FURNACE.get());
                         output.accept(ModItems.LOOT_GENERATOR.get());
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/picnic_basket_overworld"));
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/picnic_basket_dyedream_world"));
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/dyedream_relic_chest_loot_common"));
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/dyedream_relic_chest_loot_rare"));
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/shadow_relic_chest_loot_common"));
-                        output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/shadow_dungeon_repository_common"));
-                        output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/shadow_dungeon_repository_core"));
-                        output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/shadow_dungeon_repository_supply"));
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/fisherman_hut_chest"));
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/ecosystem_bubble_chest"));
-                        output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/desert_cottage_chest"));
-                        output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/desert_fortress_chest"));
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_dyedream_world_normal"));
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_dyedream_world_rare"));
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_dyedream_world_legend"));
@@ -846,49 +841,55 @@ public class ModCreativeModeTabs {
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_wind_journey_world_legend"));
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/wind_journey_chest"));
                         output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/wind_journey_chest_rare"));
+                        output.accept(com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/christmas_tree_chest"));
+                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get());
+                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());
+                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get());
+                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get());
                         output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestDyedreamWorldNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
                         output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestWorldTreeNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
                         output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestWindJourneyWorldNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
                         output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.onlyNormal(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
                         output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.onlyRare(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
                         output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.onlyLegend(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
+                        output.accept(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get());
                         output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestDyedreamWorldNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
                         output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestWorldTreeNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
                         output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestWindJourneyWorldNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
-                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get());
-                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());
-                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get());
-                        output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get());
+                        output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.onlyNormal(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
+                        output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.onlyRare(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
+                        output.accept(com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT.onlyLegend(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
                         output.accept(ModItems.DREAM_SPAWNER.get());
                         output.accept(ModItems.FADED_DREAM_SPAWNER.get());
+                        output.accept(ModItems.SHADOW_VORTEX.get());
                         output.accept(ModItems.SHADOW_BRAZIER.get());
                         output.accept(ModItems.PINK_CHICKEN_SPAWN_EGG.get());
                         output.accept(ModItems.PINK_SLIME_SPAWN_EGG.get());
+                        output.accept(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
+                        output.accept(ModItems.NAMELESS_SPAWN_EGG.get());
+                        output.accept(ModItems.FIREFLY_SPAWN_EGG.get());
+                        output.accept(ModItems.WIND_KNIGHT_SPAWN_EGG.get());
+                        output.accept(ModItems.THUNDERCLOUD_SPAWN_EGG.get());
+                        output.accept(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get());
+                        output.accept(ModItems.BONE_WING_SPAWN_EGG.get());
+                        output.accept(ModItems.ASH_BONE_WING_SPAWN_EGG.get());
+                        output.accept(ModItems.JELLYFISH_SPAWN_EGG.get());
+                        output.accept(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
+                        output.accept(ModItems.SHADOW_GOLEM_SPAWN_EGG.get());
                         output.accept(ModItems.TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_HAND_SPAWN_EGG.get());
-                        output.accept(ModItems.SHADOW_MAGICBALL_SPAWN_EGG.get());
-                        output.accept(ModItems.SHADOW_TUNE_TOTEM_SPAWN_EGG.get());
-                        output.accept(ModItems.AARONCOS_LEFT_HAND_SPAWN_EGG.get());
-                        output.accept(ModItems.AARONCOS_RIGHT_HAND_SPAWN_EGG.get());
-                        output.accept(ModItems.SHADOW_VORTEX.get());
-                        output.accept(ModItems.SHADOW_GOLEM_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_GHOST_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_SQUEAL_GHOST_SPAWN_EGG.get());
                         output.accept(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG.get());
                         output.accept(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG.get());
                         output.accept(ModItems.BLACK_BEETLE_SPAWN_EGG.get());
                         output.accept(ModItems.BLACK_BEETLE_MOTHER_SPAWN_EGG.get());
-                        output.accept(ModItems.FIREFLY_SPAWN_EGG.get());
-                        output.accept(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
-                        output.accept(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
-                        output.accept(ModItems.NAMELESS_SPAWN_EGG.get());
-                        output.accept(ModItems.THUNDERCLOUD_SPAWN_EGG.get());
-                        output.accept(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get());
-                        output.accept(ModItems.BONE_WING_SPAWN_EGG.get());
-                        output.accept(ModItems.ASH_BONE_WING_SPAWN_EGG.get());
-                        output.accept(ModItems.JELLYFISH_SPAWN_EGG.get());
+                        output.accept(ModItems.SHADOW_MAGICBALL_SPAWN_EGG.get());
+                        output.accept(ModItems.SHADOW_TUNE_TOTEM_SPAWN_EGG.get());
+                        output.accept(ModItems.AARONCOS_LEFT_HAND_SPAWN_EGG.get());
+                        output.accept(ModItems.AARONCOS_RIGHT_HAND_SPAWN_EGG.get());
                     })
                     .build());
 

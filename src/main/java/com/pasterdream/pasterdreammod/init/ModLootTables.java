@@ -36,6 +36,7 @@ public final class ModLootTables {
     public static final ResourceKey<LootTable> DESERT_COTTAGE_CHEST_LOOT = create("chests/desert_cottage_chest");
     public static final ResourceKey<LootTable> WIND_JOURNEY_CHEST_LOOT = create("chests/wind_journey_chest");
     public static final ResourceKey<LootTable> WIND_JOURNEY_CHEST_RARE_LOOT = create("chests/wind_journey_chest_rare");
+    public static final ResourceKey<LootTable> CHRISTMAS_TREE_CHEST_LOOT = create("chests/christmas_tree_chest");
     public static final ResourceKey<LootTable> MELT_DREAM_CRYSTAL_CHEST_WIND_JOURNEY_NORMAL_LOOT =
             create("chests/melt_dream_crystal_chest_wind_journey_world_normal");
     public static final ResourceKey<LootTable> MELT_DREAM_CRYSTAL_CHEST_WIND_JOURNEY_RARE_LOOT =

@@ -99,6 +99,9 @@ public class ModStructureConfig
         // === 亚伦柯斯竞技场传送门（灯影之下菌索荒原，独立结构集） ===
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:aaroncos_arena_portal", "pasterdream:shadow_nylium_wastes_spawn_biome", "surface_structures", "beard_thin", -4, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 31, 16, 1674438385, 1));
 
+        // === 风之旅途·破风骑士祭坛（静态 structure/template_pool JSON，手动维护 NBT） ===
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:break_wind_knight_altar", "pasterdream:wind_moor_archipelago", "surface_structures", "none", "very_biased_to_bottom", 120, 140, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 42, 25, 1344649511, 1, null, false));
+
         return STRUCTURES;
     }
 }

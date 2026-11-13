@@ -13,4 +13,9 @@ public class ModEntityTypeTags {
 
     public static final TagKey<EntityType<?>> SPECIAL_ENTITY = TagKey.create(Registries.ENTITY_TYPE,
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "special_entity_tag"));
+
+    /** 破风骑士召唤物分类标签，用于骑士 AOE 不伤害召唤物 */
+    public static final TagKey<EntityType<?>> WIND_KNIGHT_MINION = TagKey.create(Registries.ENTITY_TYPE,
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_knight_minion"));
+
 }
