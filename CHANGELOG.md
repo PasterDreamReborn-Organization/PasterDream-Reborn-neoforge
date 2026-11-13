@@ -5,6 +5,20 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 131：同步上游 #1307 工具公共词条顺序（2026-11-13）
+
+- 将工具系列公共词条注入点移至 NeoForge 自动属性生成前，修复公共词条显示在属性、物品 ID 和模组名之后的问题；保留五个系列的独立派发。
+- 更新程序规范，新增顺序 GameTest；`runData`、`build` 通过，`runGameTestServer` 219/219 通过。客户端 tooltip 排版待实机验收。
+- **建议提交信息：** `fix(mixin): 同步工具公共词条显示顺序修复`
+
+### 批次 130：追忆物品栏开发者遗物（第一批，2026-11-13，T21 部分）
+
+- 迁入起源之梦辞典、空容器、大侦探的放大镜、虹彩仙玉及其原始纹理、模型、语言与 Curios 槽位标签；补入「寻梦者的祈愿」幸运 +10 效果。
+- 辞典恢复 SAN 与融梦能量各 10，空容器按来源概率恢复 20% SAN 或清空 SAN；放大镜提供挖掘与近战加成、防火及战技锁定；虹彩仙玉提供弹幕速度、易伤、无敌帧忽略与随机额外弹幕。保留来源配置默认弹幕池及黑名单。
+- `runData`、`build` 通过；`runGameTestServer` 218/218 通过，覆盖消耗品、效果、槽位、放大镜空手倍率与仙玉属性。客户端视觉、额外弹幕和多人行为仍待实机验收。
+- 重生之梦水晶的任务进度与界面链、调试工具的编辑器链尚未迁入，追忆栏仍未完整；保留后续批次待办。
+- **建议提交信息：** `feat(memento): 搬运四件追忆开发者遗物`
+
 ### 批次 129：光影兼容模块（2026-11-13，T22 部分）
 
 - 迁入 Forge 来源的 `ShaderCompat`、`ShaderPackConfig`、`ShaderBlockInjector` 与 `ShaderCompatEvents`：可选检测 Iris/Oculus，读取当前光影包 `block.properties`，并按原版草、树叶和藤蔓的 shader ID 注入本模组植物方块状态；加入默认开启的 `shaderBlockInjection` 客户端配置。

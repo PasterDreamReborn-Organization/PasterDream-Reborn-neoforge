@@ -3,6 +3,10 @@ package com.pasterdream.pasterdreammod.init;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemNameBlockItem;
 import com.pasterdream.pasterdreammod.world.item.debugsword.DebugSwordItem;
+import com.pasterdream.pasterdreammod.world.item.EmptyVesselItem;
+import com.pasterdream.pasterdreammod.world.item.OriginDreamDictionaryItem;
+import com.pasterdream.pasterdreammod.world.item.curio.MagnifyingGlassOfSherryItem;
+import com.pasterdream.pasterdreammod.world.item.curio.IridescentFairyJadeItem;
 import com.pasterdream.pasterdreammod.world.item.blueprints.BluePrintItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.DreamNotesItem;
@@ -1899,6 +1903,14 @@ public class ModItems {
     // ===== 追忆 =====
     public static final DeferredItem<Item> MEMORY_GEM = ITEMS.register("memory_gem",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ORIGIN_DREAM_DICTIONARY = ITEMS.register("origin_dream_dictionary",
+            OriginDreamDictionaryItem::new);
+    public static final DeferredItem<Item> EMPTY_VESSEL = ITEMS.register("empty_vessel",
+            EmptyVesselItem::new);
+    public static final DeferredItem<Item> MAGNIFYING_GLASS_OF_SHERRY = ITEMS.register("magnifying_glass_of_sherry",
+            MagnifyingGlassOfSherryItem::new);
+    public static final DeferredItem<Item> IRIDESCENT_FAIRY_JADE = ITEMS.register("iridescent_fairy_jade",
+            IridescentFairyJadeItem::new);
 
     // ===== 拓展栏物品 =====
     public static final DeferredItem<Item> MELT_DREAM_AURORIAN_STEEL_INGOT = ITEMS.register("melt_dream_aurorian_steel_ingot",

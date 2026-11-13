@@ -42,6 +42,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.projectile.FishingHook;
+import net.minecraft.world.entity.projectile.FireworkRocketEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownEnderpearl;
 import net.minecraft.world.entity.projectile.ThrownPotion;
@@ -411,7 +412,7 @@ public class CurioPassiveHandler {
         player.getPersistentData().remove("pasterdream.calais_depleted");
     }
 
-    /** 鬼魂之面：远程射弹无视无敌帧。 */
+    /** 鬼魂之面 / 虹彩仙玉：投射物命中效果。 */
     @SubscribeEvent
     public static void onProjectileHit(LivingIncomingDamageEvent event) {
         if (!(event.getSource().getDirectEntity() instanceof Projectile projectile)) return;
@@ -420,9 +421,64 @@ public class CurioPassiveHandler {
         boolean hasGhostFace = CuriosApi.getCuriosInventory(player)
                 .map(h -> h.findFirstCurio(ModItems.GHOST_FACE.get()).isPresent())
                 .orElse(false);
-        if (!hasGhostFace) return;
+        boolean hasJade = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.IRIDESCENT_FAIRY_JADE.get()).isPresent())
+                .orElse(false);
+        if (!hasGhostFace && !hasJade) return;
 
         event.getEntity().invulnerableTime = 0;
+        if (hasJade) {
+            event.getEntity().addEffect(new MobEffectInstance(ModEffects.VULNERABILITY, 120, 1, false, true));
+        }
+    }
+
+    /** 虹彩仙玉：弓/弩每次发射主弹幕时随机附带一发配置池中的射弹。 */
+    @SubscribeEvent
+    public static void onIridescentFairyJadeProjectileJoin(EntityJoinLevelEvent event) {
+        if (event.getLevel().isClientSide()) return;
+        if (!(event.getEntity() instanceof Projectile projectile)) return;
+        if (!(projectile.getOwner() instanceof Player player)) return;
+        if (projectile.getPersistentData().getBoolean("pasterdream_iridescent_fairy_jade_spawned")) return;
+        if (projectile.getPersistentData().getBoolean("pasterdream_ghost_face_spawned")) return;
+
+        boolean hasJade = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.IRIDESCENT_FAIRY_JADE.get()).isPresent())
+                .orElse(false);
+        if (!hasJade) return;
+
+        boolean bowOrCrossbow = projectile instanceof AbstractArrow || projectile instanceof FireworkRocketEntity;
+        if (!bowOrCrossbow) return;
+        if (Config.isIridescentFairyJadeProjectileBlacklisted(projectile.getType())) return;
+
+        long gameTime = player.level().getGameTime();
+        if (player.getPersistentData().getLong("pasterdream_iridescent_fairy_jade_last_shot") == gameTime) return;
+        player.getPersistentData().putLong("pasterdream_iridescent_fairy_jade_last_shot", gameTime);
+
+        List<EntityType<?>> pool = Config.getIridescentFairyJadeProjectileTypes();
+        if (pool.isEmpty()) return;
+        EntityType<?> type = pool.get(player.getRandom().nextInt(pool.size()));
+
+        spawnIridescentFairyJadeProjectile(player, type, 3.0F, 2.0);
+    }
+
+    private static void spawnIridescentFairyJadeProjectile(Player player, EntityType<?> type,
+                                                            float velocity, double damage) {
+        Entity entity = type.create(player.level());
+        if (!(entity instanceof Projectile projectile)) return;
+
+        projectile.setOwner(player);
+        projectile.moveTo(player.getX(), player.getEyeY() - 0.1, player.getZ(), player.getYRot(), player.getXRot());
+        projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 1.0F);
+        if (projectile instanceof AbstractArrow arrow) {
+            arrow.setBaseDamage(damage);
+            arrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+        }
+        projectile.getPersistentData().putBoolean("pasterdream_iridescent_fairy_jade_spawned", true);
+        try {
+            player.level().addFreshEntity(projectile);
+        } catch (RuntimeException e) {
+            projectile.discard();
+        }
     }
 
     /** 鬼魂之面：远程射弹发射时记录复制状态。 */
@@ -432,6 +488,7 @@ public class CurioPassiveHandler {
         if (!(event.getEntity() instanceof Projectile projectile)) return;
         if (!(projectile.getOwner() instanceof Player player)) return;
         if (projectile.getPersistentData().getBoolean("pasterdream_ghost_face_spawned")) return;
+        if (projectile.getPersistentData().getBoolean("pasterdream_iridescent_fairy_jade_spawned")) return;
 
         boolean hasGhostFace = CuriosApi.getCuriosInventory(player)
                 .map(h -> h.findFirstCurio(ModItems.GHOST_FACE.get()).isPresent())

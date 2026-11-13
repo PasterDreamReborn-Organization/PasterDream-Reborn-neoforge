@@ -14,6 +14,7 @@ import com.pasterdream.pasterdreammod.world.effect.WindThunderBoonEffect;
 import com.pasterdream.pasterdreammod.world.effect.DyedreamPerfumeEffect;
 import com.pasterdream.pasterdreammod.world.effect.GoldenrodTeaEffect;
 import com.pasterdream.pasterdreammod.world.effect.MistyDreamEffect;
+import com.pasterdream.pasterdreammod.world.effect.MementoEffect;
 import com.pasterdream.pasterdreammod.world.effect.CloudMistEffect;
 import com.pasterdream.pasterdreammod.world.effect.DeadwindEffect;
 import com.pasterdream.pasterdreammod.world.effect.TailwindEffect;
@@ -68,6 +69,8 @@ public class ModEffects {
             MOB_EFFECTS.register("titanium_armor", TitaniumArmorEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> EVASION =
             MOB_EFFECTS.register("evasion", EvasionEffect::new);
+    public static final DeferredHolder<MobEffect, MobEffect> MEMENTO =
+            MOB_EFFECTS.register("memento", MementoEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> BLINK_COOLDOWN =
             MOB_EFFECTS.register("blink_cooldown", BlinkCooldownEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> WIND_THUNDER_BOON =

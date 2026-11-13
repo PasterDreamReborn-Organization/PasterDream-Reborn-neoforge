@@ -9,6 +9,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
@@ -17,6 +18,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SmithingRecipeInput;
 import net.minecraft.world.level.GameType;
@@ -33,6 +36,30 @@ public class MeltDreamToolGameTests {
             ModItems.MELT_DREAM_SHOVEL.get(), ModItems.MELT_DREAM_HOE.get(), ModItems.SHARP_MELT_DREAM_SWORD.get());
     private static final List<Item> BASES = List.of(ModItems.DYEDREAM_PICKAXE.get(), ModItems.DYEDREAM_AXE.get(),
             ModItems.DYEDREAM_SHOVEL.get(), ModItems.DYEDREAM_HOE.get(), ModItems.DYEDREAM_SWORD.get());
+
+    @GameTest(template = "empty")
+    public static void sharedTooltipBeforeAttributes(GameTestHelper helper) {
+        var player = helper.makeMockPlayer(GameType.SURVIVAL);
+        var stack = ModItems.MELT_DREAM_PICKAXE.toStack();
+        stack.set(DataComponents.LORE, new ItemLore(List.of(Component.literal("own lore"))));
+        var lines = stack.getTooltipLines(Item.TooltipContext.of(helper.getLevel()), player, TooltipFlag.ADVANCED);
+        int lore = -1;
+        int shared = -1;
+        int attributes = -1;
+        int id = -1;
+        for (int i = 0; i < lines.size(); i++) {
+            var line = lines.get(i);
+            if (line.getString().equals("own lore")) lore = i;
+            if (line.getContents() instanceof TranslatableContents text) {
+                if (text.getKey().equals("tooltip.pasterdreammod.melt_dream_tool.1")) shared = i;
+                if (text.getKey().equals("item.modifiers.mainhand")) attributes = i;
+            }
+            if (line.getString().equals("pasterdream:melt_dream_pickaxe")) id = i;
+        }
+        helper.assertTrue(lore >= 0 && lore < shared && shared < attributes && attributes < id,
+                "工具自身说明、公共词条、属性与高级物品 ID 顺序错误: " + lines);
+        helper.succeed();
+    }
 
     @GameTest(template = "empty")
     public static void toolPropertiesAndSmithing(GameTestHelper helper) {

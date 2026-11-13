@@ -925,14 +925,18 @@ public class ModCreativeModeTabs {
                     .build());
 
     // ===== 追忆 =====
-    // 来源: 旧 paster_tab_7（当前迁入追忆宝石与魔法使的灵魂石；其余遗物尚未迁入）
+    // 来源: 旧 paster_tab_7（重生之梦水晶、调试工具仍待迁入）
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_MEMENTO_TAB =
             CREATIVE_MODE_TABS.register("pasterdream_memento_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_memento_tab"))
                     .icon(() -> new ItemStack(ModItems.MEMORY_GEM.get()))
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.MEMORY_GEM.get());
+                        output.accept(ModItems.ORIGIN_DREAM_DICTIONARY.get());
                         output.accept(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get());
+                        output.accept(ModItems.MAGNIFYING_GLASS_OF_SHERRY.get());
+                        output.accept(ModItems.IRIDESCENT_FAIRY_JADE.get());
+                        output.accept(ModItems.EMPTY_VESSEL.get());
                     })
                     .build());
 
