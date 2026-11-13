@@ -2146,6 +2146,38 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
                 .save(pWriter);
 
+        // 玻璃杯与马天尼杯 1:2 互相转换
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MARTINI_GLASS.get(), 2)
+                .requires(ModItems.GLASS_CUP.get(), 1)
+                .unlockedBy(getHasName(ModItems.GLASS_CUP.get()), has(ModItems.GLASS_CUP.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":martini_glass_from_glass_cup");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_CUP.get(), 1)
+                .requires(ModItems.MARTINI_GLASS.get(), 2)
+                .unlockedBy(getHasName(ModItems.MARTINI_GLASS.get()), has(ModItems.MARTINI_GLASS.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":glass_cup_from_martini_glass");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MARTINI_GLASS.get(), 8)
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern(" a ")
+                .define('a', Ingredient.of(Tags.Items.GLASS_PANES))
+                .unlockedBy(getHasName(ModItems.MARTINI_GLASS.get()), has(Tags.Items.GLASS_PANES))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":martini_glass_from_glass_panes");
+
+        // 眠椰饮品
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA.get(), 1)
+                .requires(ModItems.WIND_FEATHER_GRASS.get(), 1)
+                .requires(ModItems.SLUMBER_PALM.get(), 1)
+                .requires(ModItems.GLASS_CUP.get(), 1)
+                .unlockedBy(getHasName(ModItems.SLUMBER_PALM.get()), has(ModItems.SLUMBER_PALM.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get(), 2)
+                .requires(ModItems.MARTINI_GLASS.get(), 2)
+                .requires(ModItems.SLUMBER_PALM.get(), 1)
+                .requires(Ingredient.of(TagKey.create(Registries.ITEM,
+                        ResourceLocation.fromNamespaceAndPath("c", "salt"))), 1)
+                .unlockedBy(getHasName(ModItems.SLUMBER_PALM.get()), has(ModItems.SLUMBER_PALM.get()))
+                .save(pWriter);
+
         // 饮料（玻璃杯类）合成配方
         RecipeHelpers.glass_cup_drink(pWriter, Items.APPLE, ModItems.GLASS_CUP_OF_APPLE_JUICE.get());
         RecipeHelpers.glass_cup_drink(pWriter, Items.HONEYCOMB, ModItems.GLASS_CUP_OF_HONEY_JUICE.get());

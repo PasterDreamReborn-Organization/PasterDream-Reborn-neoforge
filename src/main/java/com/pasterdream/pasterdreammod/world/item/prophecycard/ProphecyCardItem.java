@@ -1,9 +1,11 @@
 package com.pasterdream.pasterdreammod.world.item.prophecycard;
 
 import com.pasterdream.pasterdreammod.Config;
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.entity.ghost.WailingShadowGhostEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
@@ -14,6 +16,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.InteractionHand;
@@ -470,6 +473,11 @@ public class ProphecyCardItem extends Item {
                     // 施加纷争标记效果，持续 120 秒
                     target.addEffect(new MobEffectInstance(
                             ModEffects.CONFLICT_MARK, 120 * 20, 0));
+                    // 标记悲泣尖啸怨魂时推进挑战进度
+                    if (player instanceof ServerPlayer serverPlayer
+                            && target instanceof WailingShadowGhostEntity) {
+                        ModCriteriaTriggers.MARK_WAILING_SHADOW_GHOST.get().trigger(serverPlayer);
+                    }
                     // 音效
                     level.playSound(null, player.getX(), player.getY(), player.getZ(),
                             ModSounds.EVASION.get(), SoundSource.PLAYERS, 1.0F, 1.0F);

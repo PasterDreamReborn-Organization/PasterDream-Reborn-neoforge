@@ -343,6 +343,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.GLASS_CUP_OF_HONEY_JUICE.get());
         basicItem(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get());
         basicItem(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
+        basicItem(ModItems.MARTINI_GLASS.get());
+        basicItem(ModItems.SLUMBER_PALM.get());
+        basicItem(ModItems.GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA.get());
+        basicItem(ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get());
         basicItem(ModItems.RED_DEW.get());
         basicItem(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get());
         basicItem(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get());

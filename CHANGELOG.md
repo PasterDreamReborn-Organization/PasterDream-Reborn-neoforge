@@ -5,6 +5,17 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 125：原版食物注入补齐与进度就绪检查（2026-11-13，T11-A/T11-B/T05 部分）
+
+- 将 `jungle_spore` 与 `rice_cake` 恢复为来源的 `PasterDreamFoodItem`，不再降级为普通 `FoodProperties`；饱食度、饱和度与 SAN/融梦能量仍按来源数值。
+- 补入眠椰系列：`slumber_palm`、`glass_cup_of_slumber_palm_club_soda`、`martini_glass_of_sea_salt_slumber_palm_beverage` 与容器 `martini_glass`；苏打水给予 60 秒速度 I，海盐眠椰饮给予 30 秒料理 I，均保留来源 `alwaysEdible`、营养与饱和度。
+- 补齐 4 张物品纹理、5 条配方（马天尼杯互转/玻璃板合成、眠椰苏打水、海盐眠椰饮）、物品模型、双语名称与饮食物品栏顺序。
+- 补齐来源缺失的 22 个进度：`story/tame_friendly_ghost`、`mark_wailing_shadow_ghost`、`sleep_with_shadow`、`shadow_blast_furnace_core`、`chocolate_000`、`wind_journey_treasure`、`christmas_tree_island`，以及染梦珍藏根与 14 个珍藏子进度；`get_star_wish_rod` 恢复挂在 `get_snow_vow_head` 下。
+- 新增 `MarkWailingShadowGhostTrigger` 与 `OpenWindJourneyCrystalChestTrigger` 并注册；纷争预言卡标记悲泣尖啸怨魂、风之旅途融梦水晶箱开启时实际触发。`PlayerEvents` 补齐暗影高炉核心/黑金属粒的前置进度兜底检查。
+- 补齐全部新增进度的中英文标题/描述，复制染梦珍藏根进度背景 `guiblock_dyedream_treasure.png`；逐项核对 654 个进度 JSON 的父节点、图标与语言键均存在。
+- `compileJava`、`runData`、`build` 通过；`runData` 写入 40 个文件；`runGameTestServer` 215/215 通过，`GlassCupGameTests` 改为校验眠椰/马天尼杯配方存在。
+- 暂缓：眠椰树方块、树木生成、果实首份获取与眠椰流体尚未迁入，眠椰系列在生存中仍不可获得；新增进度的实际游戏内触发与客户端视觉未实测。
+
 ### 批次 124：风之旅途结构生成（2026-11-13，T16-B/T19-A/T19-B 部分）
 
 - 迁入风之旅途全部 34 个结构：风泊群岛 `wind_island`、`windmill_lodge`、`break_wind_knight_altar`、`windmoor_tree`、`wind_infested_stone_0/1`、`wind_pond`；迷梦云层 `big_bubbles_6/7`、`bocchi_0/1`、`break_wind_curtain`、`hakurei_reimu`、`hot_air_balloon_0~7`、`small_ballon_0~10`、`christmas_tree_island`、`windbell_cage`，补齐静态 structure/template_pool JSON 与 32 个 NBT；`big_bubbles_6/7` 按来源复用 `big_bubbles_2/1` 模板。

@@ -71,8 +71,18 @@ public class GlassCupGameTests
                     "缺少玻璃杯配方: " + id);
         }
         helper.assertTrue(helper.getLevel().getRecipeManager().byKey(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "glass_cup_of_slumber_palm_club_soda")).isEmpty(),
-                "本批不应生成眠椰苏打水配方");
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "glass_cup_of_slumber_palm_club_soda")).isPresent(),
+                "缺少眠椰苏打水配方");
+        String[] slumberIds = {
+                "martini_glass_from_glass_cup", "glass_cup_from_martini_glass",
+                "martini_glass_from_glass_panes", "martini_glass_of_sea_salt_slumber_palm_beverage"
+        };
+        for (String id : slumberIds)
+        {
+            helper.assertTrue(helper.getLevel().getRecipeManager().byKey(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, id)).isPresent(),
+                    "缺少眠椰/马天尼杯配方: " + id);
+        }
         helper.succeed();
     }
 

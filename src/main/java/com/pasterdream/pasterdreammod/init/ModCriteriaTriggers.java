@@ -8,8 +8,10 @@ import com.pasterdream.pasterdreammod.advancement.critereon.FoundDesertFortressT
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundTombTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.HasAdvancementTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.MarkWailingShadowGhostTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDrawingTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenDreamAccumulatorTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.OpenWindJourneyCrystalChestTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.SummonWindKnightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
@@ -75,6 +77,14 @@ public final class ModCriteriaTriggers {
     /** 首次打开蓄梦池 */
     public static final DeferredHolder<CriterionTrigger<?>, OpenDreamAccumulatorTrigger> OPEN_DREAM_ACCUMULATOR =
             TRIGGERS.register("open_dream_accumulator", OpenDreamAccumulatorTrigger::new);
+
+    /** 用纷争预言卡标记悲泣尖啸怨魂 */
+    public static final DeferredHolder<CriterionTrigger<?>, MarkWailingShadowGhostTrigger> MARK_WAILING_SHADOW_GHOST =
+            TRIGGERS.register("mark_wailing_shadow_ghost", MarkWailingShadowGhostTrigger::new);
+
+    /** 在风之旅途世界打开融梦水晶箱 */
+    public static final DeferredHolder<CriterionTrigger<?>, OpenWindJourneyCrystalChestTrigger> OPEN_WIND_JOURNEY_CRYSTAL_CHEST =
+            TRIGGERS.register("open_wind_journey_crystal_chest", OpenWindJourneyCrystalChestTrigger::new);
 
     /** 风之旅途顺风/逆风累计飞行距离 */
     public static final DeferredHolder<CriterionTrigger<?>, WindFlightTrigger> WIND_FLIGHT =

@@ -56,6 +56,10 @@ public class PlayerEvents {
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/broken_note");
     private static final ResourceLocation RESEARCH_TABLE_ADV =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/research_table");
+    private static final ResourceLocation SHADOW_BLAST_FURNACE_CORE_ADV =
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_blast_furnace_core");
+    private static final ResourceLocation CHOCOLATE_000_ADV =
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/chocolate_000");
     private static final String NOTE_DELAY_TAG = "pasterdream:dream_note_delay";
     /** 风之旅途尚未迁入的维度键；睡觉传送分支在维度缺失时自然跳过。 */
     private static final ResourceKey<Level> WIND_JOURNEY_WORLD =
@@ -113,6 +117,14 @@ public class PlayerEvents {
             }
             if (!isAdvancementDone(serverPlayer, RESEARCH_TABLE_ADV)
                     && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.RESEARCH_TABLE.get()))) {
+                ModCriteriaTriggers.HAS_ADVANCEMENT.get().trigger(serverPlayer);
+            }
+            if (!isAdvancementDone(serverPlayer, SHADOW_BLAST_FURNACE_CORE_ADV)
+                    && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.SHADOW_BLAST_FURNACE_CORE.get()))) {
+                ModCriteriaTriggers.HAS_ADVANCEMENT.get().trigger(serverPlayer);
+            }
+            if (!isAdvancementDone(serverPlayer, CHOCOLATE_000_ADV)
+                    && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.BLACK_METAL_NUGGET.get()))) {
                 ModCriteriaTriggers.HAS_ADVANCEMENT.get().trigger(serverPlayer);
             }
         }

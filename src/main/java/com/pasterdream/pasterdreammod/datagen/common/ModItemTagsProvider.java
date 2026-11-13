@@ -128,7 +128,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.DYEDREAM_FRUIT.get());
 
         tag(Tags.Items.FOODS_FRUIT)
-                .add(ModItems.DYEDREAM_FRUIT.get());
+                .add(ModItems.DYEDREAM_FRUIT.get())
+                .add(ModItems.SLUMBER_PALM.get())
+                .add(ModItems.FIG.get());
 
         // 工具标签
         tag(ItemTags.SWORDS)
