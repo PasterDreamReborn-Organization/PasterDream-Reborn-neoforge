@@ -521,15 +521,15 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> JUNGLE_SPORE = ITEMS.register("jungle_spore",
-            () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
-                    .nutrition(1).saturationModifier(0f).build())));
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0f).build())));
     public static final DeferredItem<Item> DYEDREAM_FRUIT = ITEMS.register("dyedream_fruit",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 100, 0), 1.0f)
                             .nutrition(3).saturationModifier(0.5f).build())));
     public static final DeferredItem<Item> RICE_CAKE = ITEMS.register("rice_cake",
-            () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
-                    .nutrition(6).saturationModifier(0.415f).build())));
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.415f).build())));
 
     // ===== 玻璃杯系列 =====
     public static final DeferredItem<Item> GLASS_CUP = ITEMS.register("glass_cup", () -> new Item(new Item.Properties()));
@@ -556,6 +556,12 @@ public class ModItems {
         }
     });
     public static final DeferredItem<Item> GLASS_CUP_OF_WATERMELON_JUICE = ITEMS.register("glass_cup_of_watermelon_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.5f).alwaysEdible().build()).craftRemainder(ModItems.GLASS_CUP.get())));
+
+    // ===== 眠椰系列 =====
+    public static final DeferredItem<Item> MARTINI_GLASS = ITEMS.register("martini_glass", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SLUMBER_PALM = ITEMS.register("slumber_palm", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.5f).alwaysEdible().build())));
+    public static final DeferredItem<Item> GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA = ITEMS.register("glass_cup_of_slumber_palm_club_soda", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 0), 1.0f).nutrition(3).saturationModifier(0.5f).alwaysEdible().build())));
+    public static final DeferredItem<Item> MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE = ITEMS.register("martini_glass_of_sea_salt_slumber_palm_beverage", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK, 600, 0), 1.0f).nutrition(3).saturationModifier(0.5f).alwaysEdible().build())));
 
     // ===== 玻璃罐系列 =====
     public static final DeferredItem<Item> GLASS_JAR = ITEMS.register("glass_jar", () -> new Item(new Item.Properties()));

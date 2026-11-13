@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergy
 import com.pasterdream.pasterdreammod.init.*;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
 import com.pasterdream.pasterdreammod.world.block.geckolibblock.AnimatableSync;
+import com.pasterdream.pasterdreammod.world.dimension.WindJourneyDimension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
@@ -168,6 +169,12 @@ public class MeltDreamCrystalChestBlockEntity extends BlockEntity implements Geo
 
         // 开启融梦水晶箱获得2点融梦能量
         MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(player, 2.0);
+
+        // 在风之旅途世界打开融梦水晶箱时推进进度
+        if (level.dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD))
+        {
+            ModCriteriaTriggers.OPEN_WIND_JOURNEY_CRYSTAL_CHEST.get().trigger(player);
+        }
     }
 
     public static void tick(Level level, BlockPos blockPosition, BlockState blockState, MeltDreamCrystalChestBlockEntity blockEntity)
