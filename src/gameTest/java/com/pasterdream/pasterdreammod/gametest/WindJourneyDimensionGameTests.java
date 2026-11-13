@@ -6,18 +6,26 @@ import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModFeatures;
 import com.pasterdream.pasterdreammod.init.ModGameRules;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.init.ModLootTables;
 import com.pasterdream.pasterdreammod.tag.ModBiomeTags;
+import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT;
 import com.pasterdream.pasterdreammod.worldgen.ModConfiguredFeatures;
 import com.pasterdream.pasterdreammod.worldgen.ModPlacedFeatures;
 import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomes;
 import com.pasterdream.pasterdreammod.worldgen.dimension.ModDimensionTypes;
 import com.pasterdream.pasterdreammod.worldgen.dimension.ModNoiseSettings;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.neoforge.gametest.GameTestHolder;
@@ -93,6 +101,27 @@ public class WindJourneyDimensionGameTests {
         helper.assertTrue(ModEffects.DEADWIND.isBound(), "逆风效果应已注册");
         helper.assertTrue(ModEffects.CLOUD_MIST.isBound(), "云雾效果应已注册");
         helper.assertTrue(ModItems.WIND_KNIGHT_FLAG.isBound(), "风骑士旗帜应已注册");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void windJourneyLootTablesLoad(GameTestHelper helper) {
+        var server = helper.getLevel().getServer();
+        List<ResourceKey<LootTable>> keys = List.of(
+                ModLootTables.WIND_JOURNEY_CHEST_LOOT,
+                ModLootTables.WIND_JOURNEY_CHEST_RARE_LOOT,
+                ModLootTables.MELT_DREAM_CRYSTAL_CHEST_WIND_JOURNEY_NORMAL_LOOT,
+                ModLootTables.MELT_DREAM_CRYSTAL_CHEST_WIND_JOURNEY_RARE_LOOT,
+                ModLootTables.MELT_DREAM_CRYSTAL_CHEST_WIND_JOURNEY_LEGEND_LOOT);
+        for (ResourceKey<LootTable> key : keys) {
+            helper.assertTrue(server.reloadableRegistries().getLootTable(key) != LootTable.EMPTY,
+                    "风之旅途战利品表应可加载: " + key.location());
+        }
+        ItemStack configured = MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestWindJourneyWorldNBT(
+                ModItems.MELT_DREAM_CRYSTAL_CHEST.get());
+        CompoundTag data = configured.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        helper.assertTrue(data.getList("LootTables", Tag.TAG_COMPOUND).size() == 3,
+                "风之旅途水晶箱应配置普通、稀有、传奇三张战利品表");
         helper.succeed();
     }
 }

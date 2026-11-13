@@ -59,6 +59,8 @@ public final class ModDataGenerator {
                         new LootTableProvider.SubProviderEntry(
                                 ModDyedreamStructureLootTablesProvider::new, LootContextParamSets.CHEST),
                         new LootTableProvider.SubProviderEntry(
+                                ModWindJourneyStructureLootTablesProvider::new, LootContextParamSets.CHEST),
+                        new LootTableProvider.SubProviderEntry(
                                 ModMeltDreamCrystalChestLootTablesProvider::new, LootContextParamSets.CHEST),
                         new LootTableProvider.SubProviderEntry(
                                 ModLampShadowChestLootTablesProvider::new, LootContextParamSets.CHEST),

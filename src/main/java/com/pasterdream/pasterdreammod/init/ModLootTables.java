@@ -34,6 +34,14 @@ public final class ModLootTables {
     public static final ResourceKey<LootTable> FISHERMAN_HUT_CHEST_LOOT = create("chests/fisherman_hut_chest");
     public static final ResourceKey<LootTable> DESERT_FORTRESS_CHEST_LOOT = create("chests/desert_fortress_chest");
     public static final ResourceKey<LootTable> DESERT_COTTAGE_CHEST_LOOT = create("chests/desert_cottage_chest");
+    public static final ResourceKey<LootTable> WIND_JOURNEY_CHEST_LOOT = create("chests/wind_journey_chest");
+    public static final ResourceKey<LootTable> WIND_JOURNEY_CHEST_RARE_LOOT = create("chests/wind_journey_chest_rare");
+    public static final ResourceKey<LootTable> MELT_DREAM_CRYSTAL_CHEST_WIND_JOURNEY_NORMAL_LOOT =
+            create("chests/melt_dream_crystal_chest_wind_journey_world_normal");
+    public static final ResourceKey<LootTable> MELT_DREAM_CRYSTAL_CHEST_WIND_JOURNEY_RARE_LOOT =
+            create("chests/melt_dream_crystal_chest_wind_journey_world_rare");
+    public static final ResourceKey<LootTable> MELT_DREAM_CRYSTAL_CHEST_WIND_JOURNEY_LEGEND_LOOT =
+            create("chests/melt_dream_crystal_chest_wind_journey_world_legend");
 
     public static final DeferredRegister<LootItemFunctionType<?>> LOOT_FUNCTION_TYPES =
             DeferredRegister.create(Registries.LOOT_FUNCTION_TYPE, PasterDreamMod.MOD_ID);
