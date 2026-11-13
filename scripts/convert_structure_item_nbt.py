@@ -10,7 +10,7 @@ import argparse
 from pathlib import Path
 
 import nbtlib
-from nbtlib import Compound, Int, List, String
+from nbtlib import Byte, Compound, Int, List, String
 
 
 ROOT = Path(__file__).resolve().parents[1] / "src/main/resources/data/pasterdream/structure"
@@ -18,10 +18,34 @@ NOTE_ID = "pasterdream:dream_notes_book"
 NOTE_COMPONENT = "pasterdream:dream_note_content"
 BLUEPRINT_ID = "pasterdream:blue_print"
 BLUEPRINT_COMPONENT = "pasterdream:blueprint_content"
+WRITTEN_BOOK_ID = "minecraft:written_book"
+WRITTEN_BOOK_COMPONENT = "minecraft:written_book_content"
 LEGACY_COMPONENTS = {
     "Damage": "minecraft:damage",
     "RepairCost": "minecraft:repair_cost",
 }
+
+
+def convert_written_book(tag: Compound, where: str) -> Compound:
+    """Convert 1.20.1 written_book tag to the 1.21 written_book_content component."""
+    if "title" not in tag or "author" not in tag:
+        raise ValueError(f"{where}: written book is missing title or author")
+
+    title = Compound({"raw": String(str(tag["title"]))})
+    if "filtered_title" in tag:
+        title["filtered"] = String(str(tag["filtered_title"]))
+
+    pages = List[String]()
+    for page in tag.get("pages", []):
+        pages.append(String(str(page)))
+
+    return Compound({
+        "title": title,
+        "author": String(str(tag["author"])),
+        "generation": Int(int(tag.get("generation", 0))),
+        "pages": pages,
+        "resolved": Byte(1 if int(tag.get("resolved", 0)) else 0),
+    })
 
 
 def convert_stack(stack: Compound, where: str) -> tuple[bool, bool]:
@@ -41,25 +65,30 @@ def convert_stack(stack: Compound, where: str) -> tuple[bool, bool]:
     legacy_tag = stack.get("tag")
     if legacy_tag:
         components = stack.setdefault("components", Compound())
-        for key, value in legacy_tag.items():
-            if key == "content" and item_id == NOTE_ID:
-                if NOTE_COMPONENT in components:
-                    raise ValueError(f"{where}: duplicate note component")
-                components[NOTE_COMPONENT] = String(str(value))
-            elif key == "content" and item_id == BLUEPRINT_ID:
-                if BLUEPRINT_COMPONENT in components:
-                    raise ValueError(f"{where}: duplicate blueprint component")
-                components[BLUEPRINT_COMPONENT] = String(str(value))
-            elif key in LEGACY_COMPONENTS:
-                if LEGACY_COMPONENTS[key] in components:
-                    raise ValueError(f"{where}: duplicate {LEGACY_COMPONENTS[key]} component")
-                components[LEGACY_COMPONENTS[key]] = value
-            elif key == "display" and set(value) == {"Name"}:
-                if "minecraft:custom_name" in components:
-                    raise ValueError(f"{where}: duplicate custom name component")
-                components["minecraft:custom_name"] = String(str(value["Name"]))
-            else:
-                raise ValueError(f"{where}: unmapped legacy item tag: {item_id}, {key}")
+        if item_id == WRITTEN_BOOK_ID:
+            if WRITTEN_BOOK_COMPONENT in components:
+                raise ValueError(f"{where}: duplicate written book component")
+            components[WRITTEN_BOOK_COMPONENT] = convert_written_book(legacy_tag, where)
+        else:
+            for key, value in legacy_tag.items():
+                if key == "content" and item_id == NOTE_ID:
+                    if NOTE_COMPONENT in components:
+                        raise ValueError(f"{where}: duplicate note component")
+                    components[NOTE_COMPONENT] = String(str(value))
+                elif key == "content" and item_id == BLUEPRINT_ID:
+                    if BLUEPRINT_COMPONENT in components:
+                        raise ValueError(f"{where}: duplicate blueprint component")
+                    components[BLUEPRINT_COMPONENT] = String(str(value))
+                elif key in LEGACY_COMPONENTS:
+                    if LEGACY_COMPONENTS[key] in components:
+                        raise ValueError(f"{where}: duplicate {LEGACY_COMPONENTS[key]} component")
+                    components[LEGACY_COMPONENTS[key]] = value
+                elif key == "display" and set(value) == {"Name"}:
+                    if "minecraft:custom_name" in components:
+                        raise ValueError(f"{where}: duplicate custom name component")
+                    components["minecraft:custom_name"] = String(str(value["Name"]))
+                else:
+                    raise ValueError(f"{where}: unmapped legacy item tag: {item_id}, {key}")
 
     stack["count"] = Int(int(stack.pop("Count")))
     stack.pop("tag", None)
