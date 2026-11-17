@@ -201,7 +201,7 @@ public final class RecipeHelpers {
     }
 
     /**
-     * 蛋糕类合成配方
+     * 饮料类合成配方
      * @param material 合成材料，决定合成出来的玻璃饮品
      *@param drink 出来的饮料
      */
@@ -211,6 +211,20 @@ public final class RecipeHelpers {
                 .requires(material)
                 .unlockedBy(path(ModItems.GLASS_CUP.get()), InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GLASS_CUP.get()))
                 .save(output);
+    }
+
+    /**
+     * 花 → 染料合成配方。
+     *
+     * @param flower 合成材料，决定合成出来的染料
+     * @param dye    出来的染料
+     * 保存 ID 格式：{@code <dye>_from_<flower>}
+     */
+    public static void dye(RecipeOutput output, ItemLike flower, ItemLike dye, String modId) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, dye)
+                .requires(flower)
+                .unlockedBy(path(flower), InventoryChangeTrigger.TriggerInstance.hasItems(flower))
+                .save(output, id(modId, flower, dye));
     }
 
     private static String path(ItemLike item) {

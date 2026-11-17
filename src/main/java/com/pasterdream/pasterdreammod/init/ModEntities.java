@@ -580,8 +580,6 @@ public class ModEntities {
         event.put(BLACK_BEETLE.get(), BlackBeetleEntity.createAttributes().build());
         event.put(BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherEntity.createAttributes().build());
         event.put(TERRASWORD_WAVE.get(), TerraswordWaveEntity.createAttributes().build());
-        event.put(FOX_FIRE.get(), FoxFireEntity.createAttributes().build());
-        event.put(SHAKING_CRYSTAL.get(), ShakingCrystalEntity.createAttributes().build());
         event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());
         event.put(GOLDEN_FOX_PET.get(), GoldenFoxPetEntity.createAttributes().build());
         event.put(MELT_DREAM_CRYSTAL_ENTITY.get(), MeltDreamCrystalEntityEntity.createAttributes().build());
