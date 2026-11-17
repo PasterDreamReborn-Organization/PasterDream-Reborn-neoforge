@@ -1,22 +1,29 @@
 package com.pasterdream.pasterdreammod.gametest;
 
 import com.mojang.authlib.GameProfile;
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.world.block.cropblock.PasterDreamCropBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.util.FakePlayer;
 import net.neoforged.neoforge.gametest.GameTestHolder;
 import net.neoforged.neoforge.gametest.PrefixGameTestTemplate;
@@ -92,9 +99,101 @@ public class PlantGameTests {
         helper.succeed();
     }
 
+    @GameTest(template = "empty")
+    public static void cropHarvestRequiresPliersOrShears(GameTestHelper helper) {
+        var level = helper.getLevel();
+        var pos = helper.absolutePos(new BlockPos(1, 1, 1));
+        var block = ModBlocks.COTTON_CROP.get();
+        var mature = block.defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1);
+        var hit = new BlockHitResult(Vec3.atCenterOf(pos), Direction.UP, pos, false);
+        var player = helper.makeMockPlayer(GameType.SURVIVAL);
+
+        helper.assertTrue(Config.IS_NEED_USE_PLIERS_OR_SHEARS.get(), "默认配置应要求园艺钳或剪刀");
+
+        level.setBlock(pos, mature, 3);
+        var plainResult = mature.useItemOn(new ItemStack(Items.STICK), level, player, InteractionHand.MAIN_HAND, hit);
+        helper.assertTrue(plainResult == ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION, "普通物品不应收割成熟作物");
+        helper.assertTrue(level.getBlockState(pos).getValue(PasterDreamCropBlock.AGE) == 1, "普通物品不应改变成熟作物状态");
+
+        var shears = new ItemStack(Items.SHEARS);
+        var shearsResult = mature.useItemOn(shears, level, player, InteractionHand.MAIN_HAND, hit);
+        helper.assertTrue(shearsResult.consumesAction(), "剪刀应可收割成熟作物");
+        helper.assertTrue(level.getBlockState(pos).getValue(PasterDreamCropBlock.AGE) == 0, "剪刀收割后作物应回到未成熟状态");
+
+        level.setBlock(pos, mature, 3);
+        var pliers = new ItemStack(ModItems.PLIERS.get());
+        var pliersResult = mature.useItemOn(pliers, level, player, InteractionHand.MAIN_HAND, hit);
+        helper.assertTrue(pliersResult.consumesAction(), "园艺钳应可收割成熟作物");
+        helper.assertTrue(level.getBlockState(pos).getValue(PasterDreamCropBlock.AGE) == 0, "园艺钳收割后作物应回到未成熟状态");
+
+        level.setBlock(pos, mature, 3);
+        Config.IS_NEED_USE_PLIERS_OR_SHEARS.set(false);
+        try {
+            var relaxedResult = mature.useItemOn(new ItemStack(Items.STICK), level, player, InteractionHand.MAIN_HAND, hit);
+            helper.assertTrue(relaxedResult.consumesAction(), "关闭配置后普通物品应可收割成熟作物");
+            helper.assertTrue(level.getBlockState(pos).getValue(PasterDreamCropBlock.AGE) == 0, "关闭配置后普通物品收割应改变作物状态");
+        } finally {
+            Config.IS_NEED_USE_PLIERS_OR_SHEARS.set(true);
+        }
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void cropRipensWithDreamFertilizer(GameTestHelper helper) {
+        var level = helper.getLevel();
+        var pos = helper.absolutePos(new BlockPos(1, 1, 1));
+        var block = ModBlocks.COTTON_CROP.get();
+        var immature = block.defaultBlockState().setValue(PasterDreamCropBlock.AGE, 0);
+        var hit = new BlockHitResult(Vec3.atCenterOf(pos), Direction.UP, pos, false);
+        var player = helper.makeMockPlayer(GameType.SURVIVAL);
+
+        level.setBlock(pos, immature, 3);
+        var fertilizer = new ItemStack(ModItems.DREAM_FERTILIZER.get(), 2);
+        var ripened = immature.useItemOn(fertilizer, level, player, InteractionHand.MAIN_HAND, hit);
+        helper.assertTrue(ripened.consumesAction(), "衍梦肥泥应可催熟未成熟作物");
+        helper.assertTrue(level.getBlockState(pos).getValue(PasterDreamCropBlock.AGE) == 1, "衍梦肥泥应把作物推进到成熟状态");
+        helper.assertTrue(fertilizer.getCount() == 1, "生存模式使用衍梦肥泥应消耗 1 个");
+
+        var mature = level.getBlockState(pos);
+        var surplus = new ItemStack(ModItems.DREAM_FERTILIZER.get(), 2);
+        var surplusResult = mature.useItemOn(surplus, level, player, InteractionHand.MAIN_HAND, hit);
+        helper.assertTrue(surplusResult == ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION, "已成熟作物不应响应衍梦肥泥");
+        helper.assertTrue(surplus.getCount() == 2, "已成熟作物不应消耗衍梦肥泥");
+
+        var creativePlayer = helper.makeMockPlayer(GameType.CREATIVE);
+        var creativeFertilizer = new ItemStack(ModItems.DREAM_FERTILIZER.get(), 2);
+        level.setBlock(pos, immature, 3);
+        var creativeResult = immature.useItemOn(creativeFertilizer, level, creativePlayer, InteractionHand.MAIN_HAND, hit);
+        helper.assertTrue(creativeResult.consumesAction(), "创造模式玩家也应可催熟作物");
+        helper.assertTrue(level.getBlockState(pos).getValue(PasterDreamCropBlock.AGE) == 1, "创造模式玩家催熟后作物应成熟");
+        helper.assertTrue(creativeFertilizer.getCount() == 2, "创造模式使用衍梦肥泥不应消耗物品");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void flowerDyeRecipes(GameTestHelper helper) {
+        var cases = List.of(
+                new FlowerDye(ModItems.FERRARIA_CRISPA.get(), Items.BLACK_DYE, "black_dye_from_ferraria_crispa"),
+                new FlowerDye(ModItems.EUSTOMA.get(), Items.GREEN_DYE, "green_dye_from_eustoma"),
+                new FlowerDye(ModItems.MALVA_SINENSIS_CAVAN.get(), Items.PINK_DYE, "pink_dye_from_malva_sinensis_cavan"));
+        for (var dyeCase : cases) {
+            var input = CraftingInput.of(1, 1, List.of(new ItemStack(dyeCase.flower())));
+            var recipe = helper.getLevel().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, input,
+                    helper.getLevel()).orElseThrow();
+            helper.assertTrue(recipe.id().equals(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, dyeCase.id())),
+                    "花合成染料配方 ID 不符: " + dyeCase.flower());
+            var result = recipe.value().assemble(input, helper.getLevel().registryAccess());
+            helper.assertTrue(result.is(dyeCase.dye()) && result.getCount() == 1, "花合成染料配方产物不符: " + dyeCase.flower());
+        }
+        helper.succeed();
+    }
+
     private record CropCase(Block block, Item seedling, Item product, int count) {
     }
 
     private record CropConversion(Item crop, Item product, int count) {
+    }
+
+    private record FlowerDye(Item flower, Item dye, String id) {
     }
 }

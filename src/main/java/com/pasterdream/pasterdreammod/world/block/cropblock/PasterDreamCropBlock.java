@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.cropblock;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.ModCropRelation;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -12,6 +13,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -31,6 +33,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.util.FakePlayer;
 
 public class PasterDreamCropBlock extends PlantBushBlock
 {
@@ -99,7 +103,21 @@ public class PasterDreamCropBlock extends PlantBushBlock
     @Override
     public ItemInteractionResult useItemOn(ItemStack held, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
     {
-        if (state.getValue(AGE) == 1 && held.is(Items.SHEARS))
+        if (held.is(ModItems.DREAM_FERTILIZER.get()) && state.getValue(AGE) < 1)
+        {
+            if (!level.isClientSide)
+            {
+                level.setBlock(pos, state.setValue(AGE, 1), 2);
+                if (!player.isCreative())
+                {
+                    held.shrink(1);
+                }
+                level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        if (state.getValue(AGE) == 1 && (player instanceof FakePlayer || !Config.IS_NEED_USE_PLIERS_OR_SHEARS.get() || held.is(Tags.Items.TOOLS_SHEAR) || held.is(ModItems.PLIERS.get())))
         {
             if (!level.isClientSide)
             {
@@ -108,9 +126,9 @@ public class PasterDreamCropBlock extends PlantBushBlock
                 {
                     popResource(level, pos, new ItemStack(binding.productItem(), binding.productCount()));
                     level.setBlock(pos, state.setValue(AGE, 0), 2);
-                    if (!held.isEmpty())
+                    if (held.is(Tags.Items.TOOLS_SHEAR) || held.is(ModItems.PLIERS.get()))
                     {
-                        held.hurtAndBreak(1, player, net.minecraft.world.entity.EquipmentSlot.MAINHAND);
+                        held.hurtAndBreak(1, player, hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
                     }
                     level.playSound(null, pos, SoundEvents.SHEEP_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
                     if (level instanceof ServerLevel serverLevel)

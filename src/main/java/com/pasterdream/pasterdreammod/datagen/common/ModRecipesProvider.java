@@ -1881,7 +1881,7 @@ public class ModRecipesProvider extends RecipeProvider {
                 .pattern("   ")
                 .define('a', ModItems.REED_ROD.get())
                 .unlockedBy(getHasName(ModItems.REED_ROD.get()), has(ModItems.REED_ROD.get()))
-                .save(pWriter);
+                .save(pWriter, PasterDreamMod.MOD_ID + ":paper_from_reed_rod");
     }
 
     // ===== 便携储物袋配方 =====
@@ -2949,7 +2949,7 @@ public class ModRecipesProvider extends RecipeProvider {
                 .define('a', ModItems.DYEDREAM_DYE.get())
                 .define('b', Items.LECTERN)
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
-                .save(pWriter, "dyedream_desk_from_lectern");
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_desk_from_lectern");
     }
 
     private void equipmentDeviceRecipes(RecipeOutput pWriter) {
@@ -2970,6 +2970,11 @@ public class ModRecipesProvider extends RecipeProvider {
                 .requires(ModItems.PLIERS.get())
                 .unlockedBy(getHasName(ModItems.PLIERS.get()), has(ModItems.PLIERS.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "string_from_wool_and_pliers"));
+
+        // 三种染料合成配方
+        RecipeHelpers.dye(pWriter, ModItems.FERRARIA_CRISPA.get(), Items.BLACK_DYE, PasterDreamMod.MOD_ID);
+        RecipeHelpers.dye(pWriter, ModItems.EUSTOMA.get(), Items.GREEN_DYE, PasterDreamMod.MOD_ID);
+        RecipeHelpers.dye(pWriter, ModItems.MALVA_SINENSIS_CAVAN.get(), Items.PINK_DYE, PasterDreamMod.MOD_ID);
 
         // 野餐篮
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PICNIC_BASKET.get(), 1)

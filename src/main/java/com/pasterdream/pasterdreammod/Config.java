@@ -43,14 +43,14 @@ public class Config {
             .comment("时之沙切换昼夜的冷却时间（秒），默认 300 秒（5 分钟）")
             .defineInRange("timeOfSandCooldownSeconds", 300, 0, Integer.MAX_VALUE);
     public static final ModConfigSpec.DoubleValue MELT_DREAM_CRYSTAL_CHEST_NORMAL_Y_SPEED = BUILDER
-            .comment("融梦水晶箱普通品质物品抛出速度，默认 0.375")
-            .defineInRange("meltDreamCrystalChestNormalYSpeed", 0.375, 0.0, 5.0);
+            .comment("融梦水晶箱普通品质物品抛出速度（单位：m/tick），默认 0.375")
+            .defineInRange("meltDreamCrystalChestNormalYSpeed", 0.375, 0.0, 2147483647);
     public static final ModConfigSpec.DoubleValue MELT_DREAM_CRYSTAL_CHEST_RARE_Y_SPEED = BUILDER
-            .comment("融梦水晶箱稀有品质物品抛出速度，默认 0.375")
-            .defineInRange("meltDreamCrystalChestRareYSpeed", 0.375, 0.0, 5.0);
+            .comment("融梦水晶箱稀有品质物品抛出速度（单位：m/tick），默认 0.375")
+            .defineInRange("meltDreamCrystalChestRareYSpeed", 0.375, 0.0, 2147483647);
     public static final ModConfigSpec.DoubleValue MELT_DREAM_CRYSTAL_CHEST_LEGEND_Y_SPEED = BUILDER
-            .comment("融梦水晶箱传奇品质物品抛出速度，默认 0.375")
-            .defineInRange("meltDreamCrystalChestLegendYSpeed", 0.375, 0.0, 5.0);
+            .comment("融梦水晶箱传奇品质物品抛出速度（单位：m/tick），默认 0.375")
+            .defineInRange("meltDreamCrystalChestLegendYSpeed", 0.375, 0.0, 2147483647);
     public static final ModConfigSpec.IntValue MELT_DREAM_CRYSTAL_CHEST_RESET_COOLDOWN_SECONDS = BUILDER
             .comment("融梦水晶箱重置工具的冷却时间（秒），默认 1200 秒（20 分钟）")
             .defineInRange("meltDreamCrystalChestResetCooldownSeconds", 1200, 0, Integer.MAX_VALUE);
@@ -537,6 +537,11 @@ public class Config {
     public static final ModConfigSpec.BooleanValue WIND_KNIGHT_IMMUNE_TO_NEGATIVE_EFFECTS = BUILDER
             .comment("破风骑士是否免疫负面状态效果（有害类效果），默认 true")
             .define("windKnightImmuneToNegativeEffects", true);
+
+    // 采摘是否需要园艺钳或剪刀
+    public static final ModConfigSpec.BooleanValue IS_NEED_USE_PLIERS_OR_SHEARS = BUILDER
+            .comment("采摘是否需要园艺钳或剪刀")
+            .define("isNeedUsePliersOrShears", true);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 

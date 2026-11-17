@@ -57,7 +57,8 @@ public class DyedreamDeskPlantGameTests {
         helper.assertTrue(moved.is(Items.BOOK) && moved.getCount() == 3
                 && desk.getItemHandler().getStackInSlot(0).isEmpty(), "Shift 点击应将书本移入玩家背包");
         helper.assertTrue(helper.getLevel().getRecipeManager().byKey(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_desk")).isPresent(), "应存在木材配方");
-        helper.assertTrue(helper.getLevel().getRecipeManager().byKey(ResourceLocation.withDefaultNamespace("dyedream_desk_from_lectern")).isPresent(), "应存在来源 minecraft 命名空间的讲台配方");
+        helper.assertTrue(helper.getLevel().getRecipeManager().byKey(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_desk_from_lectern")).isPresent(), "讲台配方应落在 pasterdream 命名空间");
+        helper.assertFalse(helper.getLevel().getRecipeManager().byKey(ResourceLocation.withDefaultNamespace("dyedream_desk_from_lectern")).isPresent(), "讲台配方不应覆盖到 minecraft 命名空间");
         var drops = Block.getDrops(helper.getBlockState(pos), helper.getLevel(), helper.absolutePos(pos), desk, player, ItemStack.EMPTY);
         helper.assertTrue(drops.size() == 1 && drops.getFirst().is(ModItems.DYEDREAM_DESK.get()), "书桌应掉落自身");
         helper.succeed();

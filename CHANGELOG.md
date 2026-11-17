@@ -5,6 +5,20 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 133：补衍梦肥泥催熟与三种花染料配方（2026-11-17）
+
+- 补做批次 132 的两条待办：作物交互补入衍梦肥泥催熟——未成熟时置为成熟、非创造模式消耗 1 个并播放骨粉音效；成熟作物不再响应肥料，仍按园艺钳/剪刀规则收割。
+- 按上游 #1311 新增 `RecipeHelpers.dye` 与「三种染料合成配方」：魔星兰 → 黑色染料、洋桔梗 → 绿色染料、锦葵 → 粉色染料，配方 ID 为 `pasterdream:black_dye_from_ferraria_crispa` 等，均落在 `pasterdream` 命名空间；同时把 `glass_cup_drink` 的 Javadoc 更正为「饮料类合成配方」。
+- `compileJava`、`compileGameTestJava`、`runData`、`build` 通过，`runData` 生成 3 条配方与 3 条进度、二次运行写入 0；`runGameTestServer` 224/224 通过，新增催熟与花染料配方用例。客户端手感与花田生成待实机验收。
+- **建议提交信息：** `feat(crop): 补衍梦肥泥催熟与三种花染料配方`
+
+### 批次 132：同步上游 #1308–#1313 修复性更改（2026-11-17）
+
+- 作物收割承认 `FakePlayer`、剪刀标签与园艺钳，并新增默认开启的「采摘是否需要园艺钳或剪刀」配置，只有剪刀/园艺钳参与收割时才扣耐久；月亮小屋换用上游新结构（2 个战利品木桶、4 个融梦水晶箱），三条水晶箱抛出速度配置上界放宽并补单位。
+- 芦苇杆造纸与染梦书桌的讲台配方改用 `pasterdream` 命名空间 ID，`runData` 清除了原先误落到 `minecraft` 的配方与进度，不再覆盖原版甘蔗造纸。狐火与撼地水晶改为普通实体：不再有血量、属性、经验与 AI，撼地水晶关闭推动、拾取与流体移动，到期爆炸伤害保留。
+- `compileJava`、`runData`、`build` 通过；`runGameTestServer` 222/222 通过，新增实体状态、水晶到期伤害与作物收割用例，书桌 Gametest 的命名空间断言已翻转。#1311 的染料配方在本仓库无对应调用，已登记迁入约定与 `DREAM_FERTILIZER` 催熟缺失待办；客户端表现待实机验收。
+- **建议提交信息：** `fix: 同步上游 #1308–#1313 修复性更改`
+
 ### 批次 131：同步上游 #1307 工具公共词条顺序（2026-11-13）
 
 - 将工具系列公共词条注入点移至 NeoForge 自动属性生成前，修复公共词条显示在属性、物品 ID 和模组名之后的问题；保留五个系列的独立派发。
