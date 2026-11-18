@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 134：修复帕斯特UI资源包下饰品栏背包底图透明通道丢失（2026-11-18）
+
+- 启用内置资源包 `pasterdream:vanilla_ui` 后，从背包点开饰品栏时，被替换的 `textures/gui/container/inventory.png` 半透明面板渲染为不透明亮块。原因是饰品栏界面为 Curios 的 `CuriosScreen`，它复用同一张背包底图却不是 `InventoryScreen`，而 `InventoryScreenAlphaMixin` 的放行白名单只含原版生存/创造背包。
+- `InventoryScreenAlphaMixin` 抽出私有判定 `pasterdream$drawsInventoryBackground()`，把 `top.theillusivec4.curios.api.client.ICuriosScreen` 一并放行，两个注入器共用；Curios 为本仓库 required 依赖，直接引用 API 标记接口而不反射，也不扩大到所有 `AbstractContainerScreen`。
+- `compileJava`、`runData`、`build` 通过，`runData` 写入 0 个文件。实机对照（临时把客户端运行目录指向 `build/run-client-ui-check`，验收后已还原）：同一视角下 `CuriosScreen` 背包面板区均值 RGB 未修复为 (171, 204, 231)，等于该贴图 alpha=157 像素的原始色 (171, 201, 227)，即 alpha 被忽略；修复后为 (126, 152, 168)，与创造模式背包的 (131, 149, 162) 一致。
+- **建议提交信息：** `fix(mixin): 修复饰品栏背包底图透明通道丢失`
+
 ### 批次 133：补衍梦肥泥催熟与三种花染料配方（2026-11-17）
 
 - 补做批次 132 的两条待办：作物交互补入衍梦肥泥催熟——未成熟时置为成熟、非创造模式消耗 1 个并播放骨粉音效；成熟作物不再响应肥料，仍按园艺钳/剪刀规则收割。
