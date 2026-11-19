@@ -782,6 +782,14 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WIND_MOOR_TRAPDOOR.get());
                         output.accept(ModItems.WIND_MOOR_PRESSURE_PLATE.get());
                         output.accept(ModItems.WIND_MOOR_BUTTON.get());
+                        output.accept(ModItems.SLUMBER_PALM_LOG.get());
+                        output.accept(ModItems.SLUMBER_PALM_WOOD.get());
+                        output.accept(ModItems.STRIPPED_SLUMBER_PALM_LOG.get());
+                        output.accept(ModItems.STRIPPED_SLUMBER_PALM_WOOD.get());
+                        output.accept(ModItems.SLUMBER_PALM_LEAVES.get());
+                        output.accept(ModItems.SLUMBER_PALM_PLANKS.get());
+                        output.accept(ModItems.SLUMBER_PALM_SAPLING.get());
+                        output.accept(ModItems.SLUMBER_PALM_BLOCK.get());
                         output.accept(ModItems.CYAN_STONE_BRICKS.get());
                         output.accept(ModItems.CYAN_STONE_BRICK_STAIRS.get());
                         output.accept(ModItems.CYAN_STONE_BRICK_SLAB.get());

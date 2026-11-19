@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.world.block.CalciteConeBlock;
 import com.pasterdream.pasterdreammod.world.block.FigVineBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlock;
+import com.pasterdream.pasterdreammod.world.block.SlumberPalmWallBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
@@ -509,6 +510,31 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var clayPotModel = models().getExistingFile(modLoc("block/clay_pot"));
         horizontalBlock(ModBlocks.CLAY_POT.get(), clayPotModel);
         horizontalBlock(ModBlocks.SHADOW_CLAY_POT.get(), clayPotModel);
+
+        // ===== 眠椰树系列 =====
+        logBlock((RotatedPillarBlock) ModBlocks.SLUMBER_PALM_LOG.get());
+        blockItem(ModBlocks.SLUMBER_PALM_LOG);
+        var slumberPalmLogSide = blockTexture(ModBlocks.SLUMBER_PALM_LOG.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.SLUMBER_PALM_WOOD.get(), slumberPalmLogSide, slumberPalmLogSide);
+        blockItem(ModBlocks.SLUMBER_PALM_WOOD);
+        logBlock((RotatedPillarBlock) ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get());
+        blockItem(ModBlocks.STRIPPED_SLUMBER_PALM_LOG);
+        var strippedSlumberPalmLogSide = blockTexture(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get(), strippedSlumberPalmLogSide, strippedSlumberPalmLogSide);
+        blockItem(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD);
+        simpleBlockWithItem(ModBlocks.SLUMBER_PALM_LEAVES.get(), cubeAll(ModBlocks.SLUMBER_PALM_LEAVES.get()));
+        simpleBlockWithItem(ModBlocks.SLUMBER_PALM_PLANKS.get(), cubeAll(ModBlocks.SLUMBER_PALM_PLANKS.get()));
+        simpleBlock(ModBlocks.SLUMBER_PALM_SAPLING.get(),
+                models().cross(ModBlocks.SLUMBER_PALM_SAPLING.getId().getPath(),
+                        blockTexture(ModBlocks.SLUMBER_PALM_SAPLING.get())).renderType("cutout"));
+
+        var slumberPalmBlockModel = models().getExistingFile(modLoc("block/slumber_palm_block"));
+        simpleBlock(ModBlocks.SLUMBER_PALM_BLOCK.get(), slumberPalmBlockModel);
+        getVariantBuilder(ModBlocks.SLUMBER_PALM_WALL_BLOCK.get()).forAllStates(state -> {
+            Direction facing = state.getValue(SlumberPalmWallBlock.FACING);
+            ModelFile wallModel = models().getExistingFile(modLoc("block/slumber_palm_wall_block_" + facing.getName()));
+            return ConfiguredModel.builder().modelFile(wallModel).build();
+        });
 
         simpleBlock(ModBlocks.DYEDREAM_SAPLING.get(),
                 models().cross(ModBlocks.DYEDREAM_SAPLING.getId().getPath(),

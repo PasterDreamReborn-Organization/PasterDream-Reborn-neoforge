@@ -435,6 +435,18 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> DYEDREAM_SAPLING = BLOCKS.register("dyedream_sapling", () -> new SaplingBlock(ModTreeGrowers.DYEDREAM, BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).noCollission().instabreak().randomTicks().sound(SoundType.GRASS)));
 
+    // ===== 眠椰树系列 =====
+    public static final DeferredBlock<Block> STRIPPED_SLUMBER_PALM_LOG = BLOCKS.register("stripped_slumber_palm_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).ignitedByLava().sound(SoundType.WOOD).strength(2.0F, 2.0F)));
+    public static final DeferredBlock<Block> STRIPPED_SLUMBER_PALM_WOOD = BLOCKS.register("stripped_slumber_palm_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).ignitedByLava().sound(SoundType.WOOD).strength(2.0F, 2.0F)));
+    public static final DeferredBlock<Block> SLUMBER_PALM_LOG = BLOCKS.register("slumber_palm_log", () -> new StrippableRotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).ignitedByLava().sound(SoundType.WOOD).strength(2.0F, 2.0F), () -> STRIPPED_SLUMBER_PALM_LOG.get()));
+    public static final DeferredBlock<Block> SLUMBER_PALM_WOOD = BLOCKS.register("slumber_palm_wood", () -> new StrippableRotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).ignitedByLava().sound(SoundType.WOOD).strength(2.0F, 2.0F), () -> STRIPPED_SLUMBER_PALM_WOOD.get()));
+    public static final DeferredBlock<Block> SLUMBER_PALM_LEAVES = BLOCKS.register("slumber_palm_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).sound(SoundType.GRASS).strength(0.2F, 0.2F).noOcclusion().ignitedByLava().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false)));
+    public static final DeferredBlock<Block> SLUMBER_PALM_PLANKS = BLOCKS.register("slumber_palm_planks", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f)));
+    public static final DeferredBlock<Block> SLUMBER_PALM_SAPLING = BLOCKS.register("slumber_palm_sapling", () -> new SlumberPalmSaplingBlock(ModTreeGrowers.SLUMBER_PALM, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().randomTicks().sound(SoundType.GRASS)));
+    public static final DeferredBlock<Block> SLUMBER_PALM_BLOCK = BLOCKS.register("slumber_palm_block", () -> new SlumberPalmBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(0.3F).noOcclusion().pushReaction(PushReaction.DESTROY)));
+    public static final DeferredBlock<Block> SLUMBER_PALM_WALL_BLOCK = BLOCKS.register("slumber_palm_wall_block", () -> new SlumberPalmWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(0.3F).noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+
     public static final DeferredBlock<Block> DYEDREAM_COROLLA_CROP = BLOCKS.register("dyedream_corolla_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).noCollission().randomTicks().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)));
 
     public static final DeferredBlock<Block> LIGHT_BALL_CROP = BLOCKS.register("light_ball_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).lightLevel(blockState -> 12).noCollission().randomTicks().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)));
@@ -1125,7 +1137,7 @@ public class ModBlocks {
     public record CropPottedItems(Supplier<? extends Item> seedling, Supplier<? extends Item> mature) {}
 
     private static final BlockBehaviour.Properties POT_PROPERTIES = BlockBehaviour.Properties.of()
-            .instabreak().noOcclusion().pushReaction(PushReaction.DESTROY);
+            .mapColor(MapColor.NONE).instabreak().noOcclusion().pushReaction(PushReaction.DESTROY);
 
     public static final DeferredBlock<Block> POTTED_STEM_GRASS = registerPotted(STEM_GRASS, "potted_stem_grass");
     public static final DeferredBlock<Block> POTTED_PINK_MUSHROOM = registerPotted(PINK_MUSHROOM, "potted_pink_mushroom");
@@ -1149,6 +1161,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> POTTED_EDELWEISS = registerPotted(EDELWEISS, "potted_edelweiss");
     public static final DeferredBlock<Block> POTTED_NIPPY_EDELWEISS = registerPotted(NIPPY_EDELWEISS, "potted_nippy_edelweiss", 5);
     public static final DeferredBlock<Block> POTTED_DYEDREAM_SAPLING = registerPotted(DYEDREAM_SAPLING, "potted_dyedream_sapling");
+    public static final DeferredBlock<Block> POTTED_SLUMBER_PALM_SAPLING = registerPotted(SLUMBER_PALM_SAPLING, "potted_slumber_palm_sapling");
     public static final DeferredBlock<Block> POTTED_WIND_MOOR_SAPLING = registerPotted(WIND_MOOR_SAPLING, "potted_wind_moor_sapling");
     public static final DeferredBlock<Block> POTTED_REED = registerPotted(REED, "potted_reed");
     public static final DeferredBlock<Block> POTTED_RYE = registerPotted(RYE, "potted_rye");

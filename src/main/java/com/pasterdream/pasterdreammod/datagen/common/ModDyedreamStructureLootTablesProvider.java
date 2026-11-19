@@ -61,11 +61,11 @@ public class ModDyedreamStructureLootTablesProvider implements LootTableSubProvi
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
-                                .add(LootItem.lootTableItem(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get())//TODO:加入眠椰树生成后替换为海盐眠椰饮
+                                .add(LootItem.lootTableItem(ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
-                                .add(LootItem.lootTableItem(Items.APPLE)//TODO:加入眠椰树生成后替换为眠椰
+                                .add(LootItem.lootTableItem(ModItems.SLUMBER_PALM.get())
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 4.0F))))

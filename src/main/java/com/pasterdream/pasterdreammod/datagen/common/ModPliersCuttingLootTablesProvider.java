@@ -349,5 +349,32 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
                                         .setWeight(9))
                         )
         );
+
+        // 眠椰树叶
+        consumer.accept(
+                pliersKey(ModBlocks.SLUMBER_PALM_LEAVES.get()),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(Items.STICK)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SLUMBER_PALM_SAPLING.get())
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(6))
+                        )
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.SLUMBER_PALM.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F,3.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(9))
+                        )
+        );
     }
 }

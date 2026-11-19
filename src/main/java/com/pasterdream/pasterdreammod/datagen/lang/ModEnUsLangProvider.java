@@ -59,6 +59,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("fluid.pasterdream.wind_plant_extract", "Wind Plant Extract(fluid)");
         add("fluid.pasterdream.yeast", "Yeast(fluid)");
         add("fluid.pasterdream.ink", "Ink(fluid)");
+        add("fluid.pasterdream.sea_salt_slumber_palm_beverage","Sea Salt Slumber Palm Beverage(fluid)");
+        add("fluid.pasterdream.slumber_palm_juice","Slumber Palm Juice(fluid)");
+        add("fluid.pasterdream.slumber_palm_club_soda","Slumber Palm Club Soda(fluid)");
         add("fluid.pasterdream.apple_juice", "Apple Juice(fluid)");
         add("fluid.pasterdream.dyedream_flower_tea", "Dyedream Flower Tea(fluid)");
         add("fluid.pasterdream.dyedream_juice", "Dyedream Juice(fluid)");
@@ -1179,6 +1182,15 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.black_beetle_vocalcord", "§7You can still faintly feel its vibration");
         add(ModItems.LIGHT_BALL.get(), "Light Ball");
         add(ModBlocks.DYEDREAM_SAPLING.get(), "Dyedream Sapling");
+        add(ModBlocks.SLUMBER_PALM_LOG.get(), "Slumber Palm Log");
+        add(ModBlocks.SLUMBER_PALM_WOOD.get(), "Slumber Palm Wood");
+        add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get(), "Stripped Slumber Palm Log");
+        add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get(), "Stripped Slumber Palm Wood");
+        add(ModBlocks.SLUMBER_PALM_LEAVES.get(), "Slumber Palm Leaves");
+        add(ModBlocks.SLUMBER_PALM_PLANKS.get(), "Slumber Palm Planks");
+        add(ModBlocks.SLUMBER_PALM_SAPLING.get(), "Slumber Palm Sapling");
+        add(ModBlocks.POTTED_SLUMBER_PALM_SAPLING.get(), "Potted Slumber Palm Sapling");
+        add(ModBlocks.SLUMBER_PALM_BLOCK.get(), "Slumber Palm Block");
         add(ModBlocks.PINK_MUSHROOM.get(), "Pink Mushroom");
         add(ModBlocks.TALL_PINK_MUSHROOM.get(), "Tall Pink Mushroom");
         add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "Dyedream Corolla");

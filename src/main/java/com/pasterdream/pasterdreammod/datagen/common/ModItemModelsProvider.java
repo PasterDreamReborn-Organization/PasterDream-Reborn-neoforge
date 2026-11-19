@@ -550,6 +550,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.TALL_PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/pink_mushroom"));
 
+        withExistingParent(ModItems.SLUMBER_PALM_SAPLING.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/slumber_palm_sapling"));
+        withExistingParent(ModItems.SLUMBER_PALM_BLOCK.getId().getPath(), modLoc("block/slumber_palm_block"));
+
         withExistingParent(ModItems.DYEDREAM_SAPLING.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/dyedream_sapling"));
 

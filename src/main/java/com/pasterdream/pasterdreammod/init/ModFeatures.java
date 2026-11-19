@@ -15,6 +15,10 @@ import com.pasterdream.pasterdreammod.worldgen.feature.ShadowRuinWallFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowTombFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.SmallPinkMushroomFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.StonePillarFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.SlumberPalmTreeConfiguration;
+import com.pasterdream.pasterdreammod.worldgen.feature.SlumberPalmTreeFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.WindJourneyWaterPoolConfiguration;
+import com.pasterdream.pasterdreammod.worldgen.feature.WindJourneyWaterPoolFeature;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.LakeFeature;
@@ -75,6 +79,14 @@ public class ModFeatures {
 
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> SHADOW_TOMB =
             FEATURES.register("shadow_tomb", () -> new ShadowTombFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<SlumberPalmTreeConfiguration>> SLUMBER_PALM_TREE =
+            FEATURES.register("slumber_palm_tree",
+                    () -> new SlumberPalmTreeFeature(SlumberPalmTreeConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<WindJourneyWaterPoolConfiguration>> WIND_JOURNEY_WATER_POOL =
+            FEATURES.register("wind_journey_water_pool",
+                    () -> new WindJourneyWaterPoolFeature(WindJourneyWaterPoolConfiguration.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);

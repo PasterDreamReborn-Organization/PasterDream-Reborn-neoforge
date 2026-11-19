@@ -3,8 +3,10 @@ package com.pasterdream.pasterdreammod.datagen.common;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.datagen.util.RecipeHelpers;
 import com.pasterdream.pasterdreammod.helper.ContainerBalanceHelper;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
+import com.pasterdream.pasterdreammod.init.ModFluids;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapedRecipe;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapelessRecipe;
@@ -1181,6 +1183,46 @@ public class ModRecipesProvider extends RecipeProvider {
     }
 
     private void windJourneyBlockRecipes(RecipeOutput pWriter) {
+        // 眠椰原木 → 眠椰木
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.SLUMBER_PALM_WOOD.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.SLUMBER_PALM_LOG.get())
+                .unlockedBy(getHasName(ModItems.SLUMBER_PALM_LOG.get()), has(ModItems.SLUMBER_PALM_LOG.get()))
+                .save(pWriter);
+
+        // 去皮眠椰原木 → 去皮眠椰木
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.STRIPPED_SLUMBER_PALM_WOOD.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.STRIPPED_SLUMBER_PALM_LOG.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_SLUMBER_PALM_LOG.get()), has(ModItems.STRIPPED_SLUMBER_PALM_LOG.get()))
+                .save(pWriter);
+
+        // 眠椰原木 → 眠椰木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SLUMBER_PALM_PLANKS.get(), 4)
+                .requires(ModItems.SLUMBER_PALM_LOG.get())
+                .unlockedBy(getHasName(ModItems.SLUMBER_PALM_LOG.get()), has(ModItems.SLUMBER_PALM_LOG.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "slumber_palm_planks_from_log"));
+
+        // 眠椰木 → 眠椰木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SLUMBER_PALM_PLANKS.get(), 4)
+                .requires(ModItems.SLUMBER_PALM_WOOD.get())
+                .unlockedBy(getHasName(ModItems.SLUMBER_PALM_WOOD.get()), has(ModItems.SLUMBER_PALM_WOOD.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "slumber_palm_planks_from_wood"));
+
+        // 去皮眠椰原木 → 眠椰木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SLUMBER_PALM_PLANKS.get(), 4)
+                .requires(ModItems.STRIPPED_SLUMBER_PALM_LOG.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_SLUMBER_PALM_LOG.get()), has(ModItems.STRIPPED_SLUMBER_PALM_LOG.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "slumber_palm_planks_from_stripped_log"));
+
+        // 去皮眠椰木 → 眠椰木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SLUMBER_PALM_PLANKS.get(), 4)
+                .requires(ModItems.STRIPPED_SLUMBER_PALM_WOOD.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_SLUMBER_PALM_WOOD.get()), has(ModItems.STRIPPED_SLUMBER_PALM_WOOD.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "slumber_palm_planks_from_stripped_wood"));
+
         // 风泊原木 → 风泊木
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.WIND_MOOR_WOOD.get(), 3)
                 .pattern("aa")
@@ -2097,6 +2139,11 @@ public class ModRecipesProvider extends RecipeProvider {
         saveMortarRecipe(pWriter, "dyedream_dye_from_dyedream_dust_piece_and_bone_meal",
                 List.of(ItemIngredient.of(ModItems.DYEDREAM_DUST_PIECE.get(), 1), ItemIngredient.of(Items.BONE_MEAL, 1)),
                 List.of(ItemIngredient.of(ModItems.DYEDREAM_DYE.get(), 9)));
+        pWriter.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "mortar/sea_salt_slumber_palm_beverage"),
+                new MortarRecipe(List.of(FluidIngredient.of(ModFluids.SLUMBER_PALM_JUICE.get(), 250)),
+                        List.of(ItemIngredient.of(ModItems.SALT.get(), 1)),
+                        List.of(FluidIngredient.of(ModFluids.SEA_SALT_SLUMBER_PALM_BEVERAGE.get(), 250)),
+                        List.of(), 0), null);
         saveMortarRecipe(pWriter, "shadow_jelly",
                 List.of(ItemIngredient.of(ModItems.NIGHTMARE_FUEL.get(), 2),
                         ItemIngredient.of(Items.SLIME_BALL, 1),

@@ -11,6 +11,8 @@ import com.pasterdream.pasterdreammod.worldgen.feature.foliageplacers.DreamFolia
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
+import com.pasterdream.pasterdreammod.worldgen.feature.SlumberPalmTreeConfiguration;
+import com.pasterdream.pasterdreammod.worldgen.feature.WindJourneyWaterPoolConfiguration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -72,6 +74,7 @@ public final class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PINK_MUSHROOM_TREE = key("pink_mushroom_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PINK_HUGE_MUSHROOM = key("pink_huge_mushroom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_TREE = key("dyedream_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SLUMBER_PALM_TREE = key("slumber_palm_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_TREE_COLD_SPRUCE = key("dyedream_tree_cold_spruce");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_FUNGUS_TREE = key("shadow_fungus_tree");
     // 影芽 — 分散地表植被
@@ -270,6 +273,19 @@ public final class ModConfiguredFeatures {
                         .decorators(List.of(LightBallTreeDecorator.INSTANCE))
                         .ignoreVines()
                         .build()));
+
+        // 眠椰树 — GT 椰子树风格（参数可经 JSON 调整）
+        context.register(SLUMBER_PALM_TREE, new ConfiguredFeature<>(ModFeatures.SLUMBER_PALM_TREE.get(),
+                new SlumberPalmTreeConfiguration(
+                        UniformInt.of(8, 12),  // trunk_height：主干 8~12 格（GT 同款）
+                        2,                     // branch_count：叉开时为 2 根枝
+                        0.4,                   // fork_chance：40% 概率叉开，否则单干
+                        UniformInt.of(3, 4),   // branch_length：分叉时每条枝 3~4 格
+                        0.5,                   // branch_spread：分叉时每格向外倾斜 0.5 格
+                        UniformInt.of(3, 4),   // arm_length：每条分支上树冠星臂 3~4 格
+                        8,                     // arm_count：每条树冠 8 条星臂（GT 同款）
+                        2,                     // max_droop：臂末最多下垂 2 格
+                        false)));              // center_fill：不填充中心（GT 同款）
 
         context.register(DYEDREAM_TREE_COLD_SPRUCE, new ConfiguredFeature<>(Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
@@ -759,12 +775,14 @@ public final class ModConfiguredFeatures {
         context.register(WIND_JOURNEY_CLOUD_PATCH_LOW, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(4, 11, 4, windCloudSelector())));
         // 水池 — 原作 ground_feature_wind_journey_1: lake, 水 + cyan_stone 围边
-        // 1.21 原版 LakeFeature 的结冰查询会访问生成区域外的区块并导致风之旅途区块生成崩溃；
-        // 使用既有的 DyedreamWaterPoolFeature 封装（保留水体/围边算法，移除结冰查询）。
-        context.register(WIND_JOURNEY_WATER_POOL, new ConfiguredFeature<>(ModFeatures.DYEDREAM_WATER_POOL.get(),
-                new LakeFeature.Configuration(
-                        BlockStateProvider.simple(Blocks.WATER),
-                        BlockStateProvider.simple(ModBlocks.CYAN_STONE.get()))));
+        // 每池 20% 概率在岸边生成 1~2 棵眠椰树（见 WindJourneyWaterPoolFeature）
+        context.register(WIND_JOURNEY_WATER_POOL, new ConfiguredFeature<>(ModFeatures.WIND_JOURNEY_WATER_POOL.get(),
+                new WindJourneyWaterPoolConfiguration(
+                        new LakeFeature.Configuration(
+                                BlockStateProvider.simple(Blocks.WATER),
+                                BlockStateProvider.simple(ModBlocks.CYAN_STONE.get())),
+                        0.2f,
+                        UniformInt.of(1, 2))));
         // 小石子 — 原作 ground_feature_wind_journey_3: tries=5（xz/y 默认 7/3）
         context.register(WIND_JOURNEY_PEBBLE_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(5, 7, 3,

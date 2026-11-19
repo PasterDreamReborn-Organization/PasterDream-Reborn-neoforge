@@ -59,6 +59,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("fluid.pasterdream.wind_plant_extract", "风植萃取液（流体）");
         add("fluid.pasterdream.yeast", "酵母（流体）");
         add("fluid.pasterdream.ink", "墨水（流体）");
+        add("fluid.pasterdream.sea_salt_slumber_palm_beverage","海盐眠椰饮（流体）");
+        add("fluid.pasterdream.slumber_palm_juice","眠椰汁（流体）");
+        add("fluid.pasterdream.slumber_palm_club_soda","眠椰苏打水（流体）");
         add("fluid.pasterdream.apple_juice", "苹果汁（流体）");
         add("fluid.pasterdream.dyedream_flower_tea", "染梦花茶（流体）");
         add("fluid.pasterdream.dyedream_juice", "染梦果汁（流体）");
@@ -1179,6 +1182,15 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.black_beetle_vocalcord", "§7仍能隐约感受到它的振动");
         add(ModItems.LIGHT_BALL.get(), "流明光球");
         add(ModBlocks.DYEDREAM_SAPLING.get(), "染梦树苗");
+        add(ModBlocks.SLUMBER_PALM_LOG.get(), "眠椰原木");
+        add(ModBlocks.SLUMBER_PALM_WOOD.get(), "眠椰木");
+        add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get(), "去皮眠椰原木");
+        add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get(), "去皮眠椰木");
+        add(ModBlocks.SLUMBER_PALM_LEAVES.get(), "眠椰树叶");
+        add(ModBlocks.SLUMBER_PALM_PLANKS.get(), "眠椰木板");
+        add(ModBlocks.SLUMBER_PALM_SAPLING.get(), "眠椰树苗");
+        add(ModBlocks.SLUMBER_PALM_BLOCK.get(), "眠椰块");
+        add(ModBlocks.POTTED_SLUMBER_PALM_SAPLING.get(), "盆栽眠椰树苗");
         add(ModBlocks.PINK_MUSHROOM.get(), "粉顶菇");
         add(ModBlocks.TALL_PINK_MUSHROOM.get(), "高粉顶菇");
         add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "梦染茶花植株");

@@ -182,6 +182,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.core.Direction;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
@@ -1559,6 +1560,24 @@ public class ModItems {
 
     public static final DeferredItem<Item> DYEDREAM_SAPLING = ITEMS.register("dyedream_sapling",
             () -> new BlockItem(ModBlocks.DYEDREAM_SAPLING.get(), new Item.Properties()));
+
+    // ===== 眠椰树系列 =====
+    public static final DeferredItem<Item> SLUMBER_PALM_LOG = ITEMS.register("slumber_palm_log",
+            () -> new BlockItem(ModBlocks.SLUMBER_PALM_LOG.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SLUMBER_PALM_WOOD = ITEMS.register("slumber_palm_wood",
+            () -> new BlockItem(ModBlocks.SLUMBER_PALM_WOOD.get(), new Item.Properties()));
+    public static final DeferredItem<Item> STRIPPED_SLUMBER_PALM_LOG = ITEMS.register("stripped_slumber_palm_log",
+            () -> new BlockItem(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get(), new Item.Properties()));
+    public static final DeferredItem<Item> STRIPPED_SLUMBER_PALM_WOOD = ITEMS.register("stripped_slumber_palm_wood",
+            () -> new BlockItem(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SLUMBER_PALM_LEAVES = ITEMS.register("slumber_palm_leaves",
+            () -> new BlockItem(ModBlocks.SLUMBER_PALM_LEAVES.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SLUMBER_PALM_PLANKS = ITEMS.register("slumber_palm_planks",
+            () -> new BlockItem(ModBlocks.SLUMBER_PALM_PLANKS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SLUMBER_PALM_SAPLING = ITEMS.register("slumber_palm_sapling",
+            () -> new BlockItem(ModBlocks.SLUMBER_PALM_SAPLING.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SLUMBER_PALM_BLOCK = ITEMS.register("slumber_palm_block",
+            () -> new StandingAndWallBlockItem(ModBlocks.SLUMBER_PALM_BLOCK.get(), ModBlocks.SLUMBER_PALM_WALL_BLOCK.get(), new Item.Properties(), Direction.DOWN));
 
     public static final DeferredItem<Item> DYEDREAM_COROLLA_CROP_AGE_0 = ITEMS.register("dyedream_corolla_crop_age_0", () -> new BlockItem(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new Item.Properties()));
 

@@ -115,6 +115,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.LOGS, ItemTags.LOGS);
         copy(BlockTags.LEAVES, ItemTags.LEAVES);
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
+        tag(ItemTags.SAPLINGS).add(ModItems.SLUMBER_PALM_SAPLING.get());
+        copy(Tags.Blocks.STRIPPED_LOGS, Tags.Items.STRIPPED_LOGS);
+        copy(Tags.Blocks.STRIPPED_WOODS, Tags.Items.STRIPPED_WOODS);
         copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
         copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
         copy(BlockTags.WOODEN_FENCES, ItemTags.WOODEN_FENCES);
