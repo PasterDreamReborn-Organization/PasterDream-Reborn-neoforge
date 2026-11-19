@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.gametest;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.init.ModFluids;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
@@ -118,6 +119,43 @@ public class MortarGameTests
         seedMenu.getSlot(0).set(new ItemStack(Items.WHEAT_SEEDS, 4));
         seedMenu.craft();
         helper.assertTrue(seedMenu.getSlot(8).getItem().is(ModItems.FLOUR.get()), "种子标签研磨应产出面粉");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void mortarCulturesYeast(GameTestHelper helper)
+    {
+        var player = helper.makeMockPlayer(GameType.SURVIVAL);
+        ItemStack mortar = ModItems.MORTAR.toStack();
+        player.setItemInHand(InteractionHand.MAIN_HAND, mortar);
+        MortarMenu menu = new MortarMenu(1, player.getInventory(), mortar, InteractionHand.MAIN_HAND);
+        menu.setCarried(ModItems.GLASS_JAR_OF_WATER.toStack());
+        menu.interactFluid(player, 0, true);
+        menu.getSlot(0).set(new ItemStack(Items.SUGAR));
+        menu.getSlot(1).set(ModItems.FLOUR.toStack());
+
+        menu.craft();
+        helper.assertTrue(menu.getFluid(0).getAmount() == 125 && menu.getFluid(4).isEmpty()
+                && !menu.getSlot(0).getItem().isEmpty() && !menu.getSlot(1).getItem().isEmpty(),
+                "缺少酵母原液时应保留水和物品原料");
+
+        menu.setCarried(ModItems.GLASS_JAR_OF_YEAST.toStack());
+        menu.interactFluid(player, 1, true);
+        menu.craft();
+        helper.assertTrue(menu.getFluid(0).isEmpty() && menu.getFluid(1).isEmpty()
+                && menu.getSlot(0).getItem().isEmpty() && menu.getSlot(1).getItem().isEmpty(),
+                "研磨酵母应消耗水、酵母原液、糖与面粉");
+        helper.assertTrue(menu.getFluid(4).is(ModFluids.YEAST.get()) && menu.getFluid(4).getAmount() == 500,
+                "研磨应产出 500 mB 酵母");
+
+        for (int i = 0; i < 4; i++)
+        {
+            menu.setCarried(ModItems.GLASS_JAR.toStack());
+            menu.interactFluid(player, 4, false);
+            helper.assertTrue(menu.getCarried().is(ModItems.GLASS_JAR_OF_YEAST.get()),
+                    "每 125 mB 酵母应装满一个玻璃罐");
+        }
+        helper.assertTrue(menu.getFluid(4).isEmpty(), "酵母装满四罐后输出槽应清空");
         helper.succeed();
     }
 

@@ -39,6 +39,7 @@ import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
@@ -2139,11 +2140,45 @@ public class ModRecipesProvider extends RecipeProvider {
         saveMortarRecipe(pWriter, "dyedream_dye_from_dyedream_dust_piece_and_bone_meal",
                 List.of(ItemIngredient.of(ModItems.DYEDREAM_DUST_PIECE.get(), 1), ItemIngredient.of(Items.BONE_MEAL, 1)),
                 List.of(ItemIngredient.of(ModItems.DYEDREAM_DYE.get(), 9)));
-        pWriter.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "mortar/sea_salt_slumber_palm_beverage"),
-                new MortarRecipe(List.of(FluidIngredient.of(ModFluids.SLUMBER_PALM_JUICE.get(), 250)),
-                        List.of(ItemIngredient.of(ModItems.SALT.get(), 1)),
-                        List.of(FluidIngredient.of(ModFluids.SEA_SALT_SLUMBER_PALM_BEVERAGE.get(), 250)),
-                        List.of(), 0), null);
+
+        saveMortarRecipe(pWriter, "apple_juice", List.of(),
+                List.of(ItemIngredient.of(Items.APPLE, 1)),
+                List.of(FluidIngredient.of(ModFluids.APPLE_JUICE.get(), 375)), List.of());
+        saveMortarRecipe(pWriter, "dream_fertilizer_from_pink_slimeball_and_bone_block",
+                List.of(ItemIngredient.of(ModItems.PINK_SLIMEBALL.get(), 1), ItemIngredient.of(Items.BONE_BLOCK, 1)),
+                List.of(ItemIngredient.of(ModItems.DREAM_FERTILIZER.get(), 9)));
+        saveMortarRecipe(pWriter, "dyedream_juice", List.of(),
+                List.of(ItemIngredient.of(ModItems.DYEDREAM_FRUIT.get(), 1),
+                        ItemIngredient.of(ModItems.DYEDREAM_DUST_PIECE.get(), 1),
+                        ItemIngredient.of(ModItems.AMBER_CANDY.get(), 1)),
+                List.of(FluidIngredient.of(ModFluids.DYEDREAM_JUICE.get(), 375)), List.of());
+        saveMortarRecipe(pWriter, "glass_jar_of_guiding_drug", List.of(FluidIngredient.of(Fluids.WATER, 250)),
+                List.of(ItemIngredient.of(Items.NETHER_WART, 1),
+                        ItemIngredient.of(ModItems.LINHT_FLOWER.get(), 1),
+                        ItemIngredient.of(ModItems.SOUL_DUST.get(), 1)),
+                List.of(FluidIngredient.of(ModFluids.GUIDING_DRUG.get(), 250)), List.of());
+        saveMortarRecipe(pWriter, "glass_jar_of_wind_plant_extract", List.of(),
+                List.of(ItemIngredient.of(ModItems.WIND_CLEAVING_GRASS.get(), 1),
+                        ItemIngredient.of(ModItems.WIND_ISLAND_REED.get(), 1),
+                        ItemIngredient.of(ModItems.WIND_FEATHER_GRASS.get(), 1),
+                        ItemIngredient.of(ModItems.HAIRY_MOSS.get(), 1)),
+                List.of(FluidIngredient.of(ModFluids.WIND_PLANT_EXTRACT.get(), 250)), List.of());
+        saveMortarRecipe(pWriter, "honey_juice", List.of(),
+                List.of(ItemIngredient.of(Items.HONEYCOMB, 1)),
+                List.of(FluidIngredient.of(ModFluids.HONEY_JUICE.get(), 375)), List.of());
+        saveMortarRecipe(pWriter, "ink_from_black_dye", List.of(FluidIngredient.of(Fluids.WATER, 125)),
+                List.of(ItemIngredient.of(Items.BLACK_DYE, 1)),
+                List.of(FluidIngredient.of(ModFluids.INK.get(), 250)), List.of());
+        saveMortarRecipe(pWriter, "ink_from_ink_sac", List.of(),
+                List.of(ItemIngredient.of(Items.INK_SAC, 1)),
+                List.of(FluidIngredient.of(ModFluids.INK.get(), 250)), List.of());
+        saveMortarRecipe(pWriter, "rice_cake",
+                List.of(ItemIngredient.of(ModItemTags.DOUGH_WHEAT, 1), ItemIngredient.of(Items.SUGAR, 1)),
+                List.of(ItemIngredient.of(ModItems.RICE_CAKE.get(), 1)));
+        saveMortarRecipe(pWriter, "sea_salt_slumber_palm_beverage",
+                List.of(FluidIngredient.of(ModFluids.SLUMBER_PALM_JUICE.get(), 250)),
+                List.of(ItemIngredient.of(ModItems.SALT.get(), 1)),
+                List.of(FluidIngredient.of(ModFluids.SEA_SALT_SLUMBER_PALM_BEVERAGE.get(), 250)), List.of());
         saveMortarRecipe(pWriter, "shadow_jelly",
                 List.of(ItemIngredient.of(ModItems.NIGHTMARE_FUEL.get(), 2),
                         ItemIngredient.of(Items.SLIME_BALL, 1),
@@ -2151,6 +2186,20 @@ public class ModRecipesProvider extends RecipeProvider {
                         ItemIngredient.of(ModItems.SHADOW_FUNGUS.get(), 1),
                         ItemIngredient.of(ModItems.WHITE_ORCHID_FLOWER.get(), 1)),
                 List.of(ItemIngredient.of(ModItems.SHADOW_JELLY.get(), 1)));
+        saveMortarRecipe(pWriter, "watermelon_juice", List.of(),
+                List.of(ItemIngredient.of(Items.MELON_SLICE, 1)),
+                List.of(FluidIngredient.of(ModFluids.WATERMELON_JUICE.get(), 375)), List.of());
+        saveMortarRecipe(pWriter, "wind_runner_jelly",
+                List.of(FluidIngredient.of(ModFluids.WIND_PLANT_EXTRACT.get(), 125)),
+                List.of(ItemIngredient.of(ModItems.JELLYFISH_JELLO.get(), 1),
+                        ItemIngredient.of(ModItems.WIND_RUNNER_CRYSTAL.get(), 1),
+                        ItemIngredient.of(ModItems.CONGEAL_WIND.get(), 2),
+                        ItemIngredient.of(Items.SUGAR, 2)),
+                List.of(), List.of(ItemIngredient.of(ModItems.WIND_RUNNER_JELLY.get(), 1)));
+        saveMortarRecipe(pWriter, "yeast",
+                List.of(FluidIngredient.of(Fluids.WATER, 125), FluidIngredient.of(ModFluids.YEAST.get(), 125)),
+                List.of(ItemIngredient.of(Items.SUGAR, 1), ItemIngredient.of(ModItemTags.FLOUR, 1)),
+                List.of(FluidIngredient.of(ModFluids.YEAST.get(), 500)), List.of());
     }
 
     private void pebbleRecipes(RecipeOutput pWriter) {
@@ -2692,8 +2741,14 @@ public class ModRecipesProvider extends RecipeProvider {
     }
 
     private void saveMortarRecipe(RecipeOutput output, String name, List<ItemIngredient> inputs, List<ItemIngredient> outputs) {
+        saveMortarRecipe(output, name, List.of(), inputs, List.of(), outputs);
+    }
+
+    private void saveMortarRecipe(RecipeOutput output, String name,
+                                  List<FluidIngredient> fluidInputs, List<ItemIngredient> itemInputs,
+                                  List<FluidIngredient> fluidOutputs, List<ItemIngredient> itemOutputs) {
         output.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "mortar/" + name),
-                new MortarRecipe(List.of(), inputs, List.of(), outputs, 0), null);
+                new MortarRecipe(fluidInputs, itemInputs, fluidOutputs, itemOutputs, 0), null);
     }
 
     private void saveMortarCrafting(ShapelessRecipeBuilder builder, RecipeOutput output, String name) {

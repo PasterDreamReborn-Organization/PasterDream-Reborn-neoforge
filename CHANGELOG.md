@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 136：补齐研钵 GUI 配方并校准 JEI 流体槽（2026-11-19，T09）
+
+- 补入衍梦肥泥、4 种果汁、药引、风植萃取液、2 条墨水配方、米糕、风行者果冻和酵母。研钵 GUI 的 19 条配方已逐条核对 Forge 来源。
+- JEI 研钵配方页的 4 个流体输入槽和 2 个流体输出槽均向右、向下各移动 1 像素。
+- `runData`、`build`、`runGameTestServer` 通过，227 项必需测试全部通过。六个槽位经底图像素核对，客户端实机与多人交互待验收。
+
 ### 批次 135：搬运眠椰系列与风泊群岛水池生成（2026-11-19，T11/T19 部分）
 
 - 迁入眠椰原木、木头、两种去皮木材、木板、树叶、树苗、盆栽和眠椰块的落地/贴墙形态。补齐斧头去皮、木材配方、园艺钳剪取、挂果掉落和精准采集。
