@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.FluidContainerRegistry;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.NeoForgeMod;
 
@@ -25,6 +26,9 @@ public final class ModFluidContainerRelation {
         FluidContainerRegistry.register(ModItems.GLASS_CUP.get(), ModFluids.DYEDREAM_JUICE.get(), 250, ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get());
         FluidContainerRegistry.register(ModItems.GLASS_CUP.get(), ModFluids.HONEY_JUICE.get(), 250, ModItems.GLASS_CUP_OF_HONEY_JUICE.get());
         FluidContainerRegistry.register(ModItems.GLASS_CUP.get(), ModFluids.WATERMELON_JUICE.get(), 250, ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
+        FluidContainerRegistry.register(Items.BOWL, ModFluids.SLUMBER_PALM_JUICE.get(), 250, ModItems.SLUMBER_PALM.get());
+        FluidContainerRegistry.register(ModItems.GLASS_CUP.get(), ModFluids.SLUMBER_PALM_CLUB_SODA.get(), 250, ModItems.GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA.get());
+        FluidContainerRegistry.register(ModItems.MARTINI_GLASS.get(), ModFluids.SEA_SALT_SLUMBER_PALM_BEVERAGE.get(), 125, ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get());
     }
 
     private ModFluidContainerRelation() {

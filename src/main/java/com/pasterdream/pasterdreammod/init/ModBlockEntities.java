@@ -47,6 +47,7 @@ import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeTileEnt
 import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestTileEntity;
 import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
+import com.pasterdream.pasterdreammod.world.block.SlumberPalmBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -245,6 +246,8 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WindKnightAltarBlockEntity>> BREAK_WIND_KNIGHT_ALTAR =
             BLOCK_ENTITIES.register("break_wind_knight_altar",
                     () -> BlockEntityType.Builder.of(WindKnightAltarBlockEntity::new, ModBlocks.BREAK_WIND_KNIGHT_ALTAR.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SlumberPalmBlockEntity>> SLUMBER_PALM = BLOCK_ENTITIES.register("slumber_palm_block", () -> BlockEntityType.Builder.of(SlumberPalmBlockEntity::new, ModBlocks.SLUMBER_PALM_BLOCK.get(), ModBlocks.SLUMBER_PALM_WALL_BLOCK.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

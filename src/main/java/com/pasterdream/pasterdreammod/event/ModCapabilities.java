@@ -14,6 +14,7 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.We
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarDataHandler;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarInventory;
 import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.GenericContainerFluidHandler;
+import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -154,6 +155,11 @@ public final class ModCapabilities
                 ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(),
                 ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get(),
                 ModItems.GLASS_CUP_OF_HONEY_JUICE.get(),
-                ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
+                ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get(),
+                Items.BOWL,
+                ModItems.SLUMBER_PALM.get(),
+                ModItems.GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA.get(),
+                ModItems.MARTINI_GLASS.get(),
+                ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get());
     }
 }

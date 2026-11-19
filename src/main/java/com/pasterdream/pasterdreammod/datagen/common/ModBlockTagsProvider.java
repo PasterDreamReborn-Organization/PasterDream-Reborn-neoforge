@@ -666,6 +666,38 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_DESK.get())
                 .add(ModBlocks.SHADOW_CHEST.get());
 
+
+        // ===== 眠椰树系列 =====
+        tag(BlockTags.MINEABLE_WITH_HOE).add(ModBlocks.SLUMBER_PALM_LEAVES.get());
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.SLUMBER_PALM_WOOD.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get())
+                .add(ModBlocks.SLUMBER_PALM_PLANKS.get())
+                .add(ModBlocks.SLUMBER_PALM_BLOCK.get())
+                .add(ModBlocks.SLUMBER_PALM_WALL_BLOCK.get());
+        tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
+                .add(ModBlocks.SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.SLUMBER_PALM_WOOD.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get());
+        tag(BlockTags.LOGS_THAT_BURN)
+                .add(ModBlocks.SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.SLUMBER_PALM_WOOD.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get());
+        tag(BlockTags.LOGS)
+                .add(ModBlocks.SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.SLUMBER_PALM_WOOD.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get());
+        tag(Tags.Blocks.STRIPPED_LOGS).add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get());
+        tag(Tags.Blocks.STRIPPED_WOODS).add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get());
+        tag(BlockTags.LEAVES).add(ModBlocks.SLUMBER_PALM_LEAVES.get());
+        tag(BlockTags.SAPLINGS).add(ModBlocks.SLUMBER_PALM_SAPLING.get());
+        tag(BlockTags.PLANKS).add(ModBlocks.SLUMBER_PALM_PLANKS.get());
+
         // ===== 风之旅途 =====
         tag(BlockTags.DIRT).add(ModBlocks.CYAN_MOSS_STONE.get());
         tag(BlockTags.SAND).add(ModBlocks.WHITE_SAND.get());

@@ -5,7 +5,7 @@ description: 新增/修改世界生成（群系、维度类型、噪声设置、
 
 # 世界生成（Worldgen）
 
-世界生成对象**不走 DeferredRegister**，而是通过数据生成器的 `RegistrySetBuilder` + `DatapackBuiltinEntriesProvider` 模式产出 JSON。核心规范见 `document/rule/program/架构规范.md`「世界生成」段。
+配置地物、放置地物和维度等动态注册表通过 `RegistrySetBuilder` + `DatapackBuiltinEntriesProvider` 产出 JSON。自定义 Feature 类型由 `init/ModFeatures.java` 使用 `DeferredRegister` 注册。核心规范见 `document/rule/program/架构规范.md`「世界生成」段。
 
 ---
 
@@ -67,7 +67,7 @@ python scripts/convert_structure_item_nbt.py --check src/main/resources/data/pas
 | 用途 | 路径 |
 |------|------|
 | 地物 bootstrap | `worldgen/ModConfiguredFeatures.java` / `ModPlacedFeatures.java` |
-| 自定义 Feature | `worldgen/feature/` |
+| 自定义 Feature | `init/ModFeatures.java` + `worldgen/feature/` |
 | 群系 | `worldgen/biome/ModBiomes.java` |
 | 群系修改器 | `worldgen/biome/ModBiomeModifiers.java` + `ModBiomeModifierProvider.java` |
 | 维度 | `worldgen/dimension/` |
@@ -87,6 +87,8 @@ python scripts/convert_structure_item_nbt.py --check src/main/resources/data/pas
 ## 当前已实现
 
 `ModConfiguredFeatures` / `ModPlacedFeatures` / `biome/ModBiomes` / `dimension/ModDimensionTypes` / `dimension/ModNoiseSettings` / `dimension/ModLevelStems` / `biome/ModBiomeModifiers` 由 `ModWorldGenProvider` 统一 bootstrap。群系修改器通过 NeoForge registry codec 输出到 `data/pasterdream/neoforge/biome_modifier/`，不复制来源 `forge/` 目录。普通钛矿定义已生成；批次 069 已迁入染梦维度类型、噪声设置、LevelStem 与 16 个群系骨架；批次 070 已补全染梦维度树木/矿脉/植被/洞穴/海洋等 configured 与 placed 地物、25 个 `dyedream_world_*` 群系标签及逐条 `neoforge:add_features` 注入，并迁入 8 个自定义 Feature 与方解石尖锥结构模板。萤火虫巢因子系统未迁暂缓，结构、模组生物生成仍待后续任务。批次 099 已迁入灯影之下维度类型、噪声设置、LevelStem、4 个群系、植被/地物与自然刷怪（生物生成通过 `add_spawns` biome modifier），阴影地牢等结构生成与客户端维度特效留待后续。完整状态见 `document/reference/迁移批次记录.md`。
+
+批次 135 接通 `WindJourneyWaterPoolFeature` 与 `SlumberPalmTreeFeature`。风泊群岛沿用 `SURFACE_STRUCTURES` 阶段的 `wind_journey_water_pool` 放置项。水池复用 `DyedreamWaterPoolFeature`，岸边扫描与树木放置按 1.21.1 地物阶段的可用区块限制访问。`slumber_palm_tree` configured feature 同时供树苗生长使用。
 
 批次 031 增加灵魂沙峡谷的 soul_ore_patch：仅替换灵魂土，矿脉大小 16、每区块 8 次、Y=0～128，群系标签由 ModBiomeTagsProvider 生成，ModBiomeModifiers 在 vegetal_decoration 阶段挂载。GameTest 覆盖目标群系和放置规则；真实自然分布待游戏内验证。
 

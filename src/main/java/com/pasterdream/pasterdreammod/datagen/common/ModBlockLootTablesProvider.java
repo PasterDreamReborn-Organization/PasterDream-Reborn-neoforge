@@ -31,7 +31,7 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import java.util.Set;
 
 public class ModBlockLootTablesProvider extends BlockLootSubProvider {
-    private static final float[] DYEDREAM_LEAVES_FRUIT_CHANCES = {0.05F, 0.0625F, 0.083333336F, 0.1F};
+    private static final float[] LEAVES_FRUIT_CHANCES = {0.05F, 0.0625F, 0.083333336F, 0.1F};
     private static final float[] DYEDREAM_LEAVES_STICK_CHANCES = {0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 
     public ModBlockLootTablesProvider(HolderLookup.Provider registries) {
@@ -41,6 +41,26 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         var enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+
+        // ===== 眠椰树系列 =====
+        dropSelf(ModBlocks.SLUMBER_PALM_LOG.get());
+        dropSelf(ModBlocks.SLUMBER_PALM_WOOD.get());
+        dropSelf(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get());
+        dropSelf(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get());
+        add(ModBlocks.SLUMBER_PALM_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.SLUMBER_PALM_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES)
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                        .when(HAS_SHEARS.or(this.hasSilkTouch()).invert())
+                        .add(applyExplosionDecay(block, LootItem.lootTableItem(ModItems.SLUMBER_PALM.get()))
+                                .when(BonusLevelTableCondition.bonusLevelFlatChance(
+                                        enchantments.getOrThrow(Enchantments.FORTUNE), LEAVES_FRUIT_CHANCES)))));
+        dropSelf(ModBlocks.SLUMBER_PALM_PLANKS.get());
+        dropSelf(ModBlocks.SLUMBER_PALM_SAPLING.get());
+        add(ModBlocks.SLUMBER_PALM_BLOCK.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModItems.SLUMBER_PALM.get())
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2))))));
+        add(ModBlocks.SLUMBER_PALM_WALL_BLOCK.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModItems.SLUMBER_PALM.get())
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2))))));
 
         dropSelf(ModBlocks.DYEDREAM_SAPLING.get());
         dropSelf(ModBlocks.PINK_MUSHROOM.get());
@@ -577,7 +597,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         return createSilkTouchOrShearsDispatchTable(leaves,
                 applyExplosionDecay(leaves, LootItem.lootTableItem(fruit))
                         .when(BonusLevelTableCondition.bonusLevelFlatChance(
-                                enchantments.getOrThrow(Enchantments.FORTUNE), DYEDREAM_LEAVES_FRUIT_CHANCES)))
+                                enchantments.getOrThrow(Enchantments.FORTUNE), LEAVES_FRUIT_CHANCES)))
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                         .when(hasShearsOrSilkTouch.invert())
                         .add(applyExplosionDecay(leaves, LootItem.lootTableItem(Items.STICK)

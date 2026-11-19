@@ -14,6 +14,7 @@ import com.pasterdream.pasterdreammod.worldgen.ModPlacedFeatures;
 import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomes;
 import com.pasterdream.pasterdreammod.worldgen.dimension.ModDimensionTypes;
 import com.pasterdream.pasterdreammod.worldgen.dimension.ModNoiseSettings;
+import com.pasterdream.pasterdreammod.worldgen.feature.WindJourneyWaterPoolConfiguration;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -66,13 +67,22 @@ public class WindJourneyDimensionGameTests {
         helper.assertTrue(configured.get(ModConfiguredFeatures.CONGEAL_WIND_ORE).isPresent(), "凝风矿 configured feature 应已注册");
         helper.assertTrue(configured.get(ModConfiguredFeatures.WIND_JOURNEY_CLOUD_PATCH).isPresent(), "风之旅途云团 configured feature 应已注册");
         helper.assertTrue(configured.get(ModConfiguredFeatures.WIND_JOURNEY_FIREFLY_NEST).isPresent(), "风之旅途萤火虫巢 configured feature 应已注册");
-        helper.assertTrue(configured.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_WATER_POOL).value().feature()
-                        == ModFeatures.DYEDREAM_WATER_POOL.get(),
-                "风之旅途水池应使用避免跨区块结冰查询的 DyedreamWaterPoolFeature");
+        var waterPool = configured.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_WATER_POOL).value();
+        helper.assertTrue(waterPool.feature() == ModFeatures.WIND_JOURNEY_WATER_POOL.get()
+                        && waterPool.config() instanceof WindJourneyWaterPoolConfiguration pool
+                        && pool.treeChance() == 0.2F && pool.treeCount().getMinValue() == 1 && pool.treeCount().getMaxValue() == 2,
+                "风之旅途水池应保留 20% 概率与 1–2 棵岸边眠椰树的参数");
+        helper.assertTrue(placed.getOrThrow(ModPlacedFeatures.SLUMBER_PALM_TREE).value().feature()
+                        .is(ModConfiguredFeatures.SLUMBER_PALM_TREE),
+                "眠椰树的 placed feature 应引用眠椰 configured feature");
         helper.assertTrue(placed.get(ModPlacedFeatures.WIND_RUNNER_CRYSTAL_ORE).isPresent(), "破风骑士水晶矿 placed feature 应已注册");
         helper.assertTrue(placed.get(ModPlacedFeatures.WIND_JOURNEY_REED_PATCH).isPresent(), "风岛芦苇 placed feature 应已注册");
 
         var moor = access.lookupOrThrow(Registries.BIOME).getOrThrow(ModBiomes.WIND_MOOR_ARCHIPELAGO).value();
+        var moorSurfaceStructures = moor.getGenerationSettings().features()
+                .get(GenerationStep.Decoration.SURFACE_STRUCTURES.ordinal());
+        helper.assertTrue(moorSurfaceStructures.contains(placed.getOrThrow(ModPlacedFeatures.WIND_JOURNEY_WATER_POOL)),
+                "风泊群岛应在地表结构阶段生成带有眠椰树的水池");
         var moorOres = moor.getGenerationSettings().features()
                 .get(GenerationStep.Decoration.UNDERGROUND_ORES.ordinal());
         helper.assertTrue(moorOres.contains(placed.getOrThrow(ModPlacedFeatures.CONGEAL_WIND_ORE)),

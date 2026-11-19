@@ -26,6 +26,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.S
 import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.SlumberPalmBlockEntityRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 /**
@@ -62,6 +63,7 @@ public final class ModBlockEntityRenderer {
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_DUNGEON_PORTAL.get(), ShadowDungeonPortalTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.AARONCOS_EYE.get(), AaroncosEyeTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.AARONCOS_HAND_CHEST.get(), AaroncosHandChestTileRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.SLUMBER_PALM.get(), SlumberPalmBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.BREAK_WIND_KNIGHT_ALTAR.get(), WindKnightAltarBlockEntityRenderer::new);
     }
 }

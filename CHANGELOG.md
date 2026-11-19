@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 135：搬运眠椰系列与风泊群岛水池生成（2026-11-19，T11/T19 部分）
+
+- 迁入眠椰原木、木头、两种去皮木材、木板、树叶、树苗、盆栽和眠椰块的落地/贴墙形态。补齐斧头去皮、木材配方、园艺钳剪取、挂果掉落和精准采集。
+- 风泊群岛的成功生成水池按上游配置以 20% 概率尝试在岸边生成 1–2 棵眠椰树。沙地树苗可用骨粉催生同一地物。接通眠椰、眠椰苏打水和海盐眠椰饮的流体容器关系，补入海盐眠椰饮研钵配方，恢复染梦野餐篮计划使用的眠椰和海盐眠椰饮奖池。
+- `runData`、`build` 和 `runGameTestServer` 226/226 通过。种子 `0` 的隔离服务端新生成区块中核到眠椰原木、树叶和 6 个贴墙果实及方块实体。客户端渲染、多人交互和跨种子的自然分布待验收。
+- **建议提交信息：** `feat(slumber-palm): 搬运眠椰方块、世界生成与饮品`
+
 ### 批次 134：修复帕斯特UI资源包下饰品栏背包底图透明通道丢失（2026-11-18）
 
 - 启用内置资源包 `pasterdream:vanilla_ui` 后，从背包点开饰品栏时，被替换的 `textures/gui/container/inventory.png` 半透明面板渲染为不透明亮块。原因是饰品栏界面为 Curios 的 `CuriosScreen`，它复用同一张背包底图却不是 `InventoryScreen`，而 `InventoryScreenAlphaMixin` 的放行白名单只含原版生存/创造背包。

@@ -43,7 +43,7 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 | 梦之釜 | `world/block/dreamcauldron/` | GeckoLib 渲染 |
 | 梦蓄器 | `world/block/dreamaccumulator/` | 按群系条件产出 |
 | 研究台 | `world/block/researchtable/` | Copy + Research 双模式 |
-| 研钵（物品容器） | `world/item/mortar/` | 物品/流体槽已用组件存储并接通共享框架；未迁流体内容待 T07/T09 |
+| 研钵（物品容器） | `world/item/mortar/` | 物品/流体槽已用组件存储并接通共享框架。批次 135 接通眠椰汁与盐研磨、海盐眠椰饮装杯；其余流体按内容依赖迁移 |
 | 金狐交易 | `recipe/GoldenFoxTradeRecipe.java` | 交易配方 |
 | 精铸工坊工作台 | `world/block/weaponworkshop/craftingtable/` | 数据驱动配方，强化石追加主手属性与附魔 |
 
@@ -70,7 +70,7 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 | 配方序列化器注册 | `init/ModRecipes.java` |
 | 容器平衡核心 | `helper/ContainerBalanceHelper.java` |
 | NBT 保留配方 | `recipe/NbtPreservingShapelessRecipe.java` / `NbtPreservingShapedRecipe.java` |
-| 研钵配方 | `world/item/mortar/MortarCraftingRecipe.java` |
+| 研钵配方 | `world/item/mortar/MortarRecipe.java`（研磨）/ `MortarCraftingRecipe.java`（工作台） |
 | 自定义原料 | `helper/pasterdreamingredient/` |
 | 带流体槽容器基类 | `helper/abstractcontainermenuwithfluidslot/` |
 | 流体容器能力 | `helper/fluidcontainercapability/` |
