@@ -78,14 +78,14 @@ public class MortarRecipeCategory implements IRecipeCategory<MortarRecipe>
         int fluidIndex = 0;
         for (FluidIngredient ingredient : recipe.getInputFluidIngredients())
         {
-            addFluid(builder.addSlot(RecipeIngredientRole.INPUT, 5 + (fluidIndex % 2) * 18,
-                    5 + (fluidIndex / 2) * 18), ingredient);
+            addFluid(builder.addSlot(RecipeIngredientRole.INPUT, 6 + (fluidIndex % 2) * 18,
+                    6 + (fluidIndex / 2) * 18), ingredient);
             fluidIndex++;
         }
         fluidIndex = 0;
         for (FluidIngredient ingredient : recipe.getOutputFluidIngredients())
         {
-            addFluid(builder.addSlot(RecipeIngredientRole.OUTPUT, 5 + fluidIndex * 18, 67), ingredient);
+            addFluid(builder.addSlot(RecipeIngredientRole.OUTPUT, 6 + fluidIndex * 18, 68), ingredient);
             fluidIndex++;
         }
         int index = 0;
