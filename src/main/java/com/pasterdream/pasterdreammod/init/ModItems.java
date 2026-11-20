@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemNameBlockItem;
 import com.pasterdream.pasterdreammod.world.item.debugsword.DebugSwordItem;
+import com.pasterdream.pasterdreammod.world.item.debugtool.DebugToolItem;
 import com.pasterdream.pasterdreammod.world.item.EmptyVesselItem;
 import com.pasterdream.pasterdreammod.world.item.OriginDreamDictionaryItem;
 import com.pasterdream.pasterdreammod.world.item.curio.MagnifyingGlassOfSherryItem;
@@ -1928,6 +1929,7 @@ public class ModItems {
             EmptyVesselItem::new);
     public static final DeferredItem<Item> MAGNIFYING_GLASS_OF_SHERRY = ITEMS.register("magnifying_glass_of_sherry",
             MagnifyingGlassOfSherryItem::new);
+    public static final DeferredItem<Item> DEBUG_TOOL = ITEMS.register("debug_tool", DebugToolItem::new);
     public static final DeferredItem<Item> IRIDESCENT_FAIRY_JADE = ITEMS.register("iridescent_fairy_jade",
             IridescentFairyJadeItem::new);
 

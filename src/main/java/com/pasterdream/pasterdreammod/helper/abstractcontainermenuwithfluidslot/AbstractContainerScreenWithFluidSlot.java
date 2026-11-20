@@ -55,7 +55,7 @@ public abstract class AbstractContainerScreenWithFluidSlot<T extends AbstractCon
 
         for (FluidSlot slot : menu.getFluidSlots())
         {
-            if (isHovering(slot.x, slot.y, 18, 18, mouseX, mouseY))
+            if (slot.isActive() && isHovering(slot.x, slot.y, 18, 18, mouseX, mouseY))
             {
                 guiGraphics.fill(leftPos + slot.x + 1,  topPos + slot.y + 1, leftPos + slot.x + 17, topPos + slot.y + 17, 0x7FFFFFFF);
                 break;
@@ -72,7 +72,7 @@ public abstract class AbstractContainerScreenWithFluidSlot<T extends AbstractCon
 
         for (FluidSlot slot : menu.getFluidSlots())
         {
-            if (isHovering(slot.x, slot.y, 18, 18, mouseX, mouseY))
+            if (slot.isActive() && isHovering(slot.x, slot.y, 18, 18, mouseX, mouseY))
             {
                 List<Component> tooltip = new ArrayList<>();
                 if(!slot.getFluid().isEmpty())

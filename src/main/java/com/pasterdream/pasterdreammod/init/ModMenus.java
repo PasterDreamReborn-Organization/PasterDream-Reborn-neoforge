@@ -1,6 +1,11 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolItemEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolBlockEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolEntityEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.ItemHandlerMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.FluidHandlerMenu;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableMenu;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlockEntity;
@@ -189,6 +194,21 @@ public class ModMenus {
     public static final DeferredHolder<MenuType<?>, MenuType<ShadowSelectEndMenu>> SHADOW_SELECT_END =
             MENUS.register("shadow_select_end", () -> IMenuTypeExtension.create(
                     (windowId, inv, data) -> new ShadowSelectEndMenu(windowId, inv)));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<DebugToolItemEditorMenu>> DEBUG_TOOL_ITEM_EDITOR =
+            MENUS.register("debug_tool_item_editor", () -> IMenuTypeExtension.create((windowId, playerInventory, data) -> new DebugToolItemEditorMenu(windowId, playerInventory)));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<DebugToolBlockEditorMenu>> DEBUG_TOOL_BLOCK_EDITOR =
+            MENUS.register("debug_tool_block_editor", () -> IMenuTypeExtension.create(DebugToolBlockEditorMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<DebugToolEntityEditorMenu>> DEBUG_TOOL_ENTITY_EDITOR =
+            MENUS.register("debug_tool_entity_editor", () -> IMenuTypeExtension.create(DebugToolEntityEditorMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<ItemHandlerMenu>> ITEM_HANDLER =
+            MENUS.register("item_handler", () -> IMenuTypeExtension.create(ItemHandlerMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<FluidHandlerMenu>> FLUID_HANDLER =
+            MENUS.register("fluid_handler", () -> IMenuTypeExtension.create(FluidHandlerMenu::new));
 
     public static void register(IEventBus eventBus) {
         MENUS.register(eventBus);

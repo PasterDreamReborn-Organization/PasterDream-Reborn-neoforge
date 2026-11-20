@@ -1,6 +1,20 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.network.debugsword.DebugBlockActionPacket;
+import com.pasterdream.pasterdreammod.network.menu.SetSlotNbtPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.OpenItemHandlerPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.OpenFluidHandlerPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.EnergyTransferPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.SetBlockEntityNbtPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.SyncBlockNbtPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.SetBlockStatePacket;
+import com.pasterdream.pasterdreammod.network.debugtool.SyncBlockStatePacket;
+import com.pasterdream.pasterdreammod.network.debugtool.StoreBlockToInventoryPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.FluidTransferPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.SetEntityNbtPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.SyncEntityNbtPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.StoreEntityToInventoryPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.EntityDiscardPacket;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
 import com.pasterdream.pasterdreammod.network.meltdreamcrystalchest.MeltDreamCrystalChestResetCooldownSyncPacket;
 import com.pasterdream.pasterdreammod.network.blueprint.BlueprintPlacePacket;
@@ -98,6 +112,20 @@ public final class ModNetwork {
                 BlueprintPlacePacket::handle);
         registrar.playToServer(UpdateBlueprintPlacingPacket.TYPE, UpdateBlueprintPlacingPacket.STREAM_CODEC,
                 UpdateBlueprintPlacingPacket::handle);
+        registrar.playToServer(SetSlotNbtPacket.TYPE, SetSlotNbtPacket.STREAM_CODEC, SetSlotNbtPacket::handle);
+        registrar.playToServer(OpenItemHandlerPacket.TYPE, OpenItemHandlerPacket.STREAM_CODEC, OpenItemHandlerPacket::handle);
+        registrar.playToServer(OpenFluidHandlerPacket.TYPE, OpenFluidHandlerPacket.STREAM_CODEC, OpenFluidHandlerPacket::handle);
+        registrar.playToServer(EnergyTransferPacket.TYPE, EnergyTransferPacket.STREAM_CODEC, EnergyTransferPacket::handle);
+        registrar.playToServer(SetBlockEntityNbtPacket.TYPE, SetBlockEntityNbtPacket.STREAM_CODEC, SetBlockEntityNbtPacket::handle);
+        registrar.playToClient(SyncBlockNbtPacket.TYPE, SyncBlockNbtPacket.STREAM_CODEC, SyncBlockNbtPacket::handle);
+        registrar.playToServer(SetBlockStatePacket.TYPE, SetBlockStatePacket.STREAM_CODEC, SetBlockStatePacket::handle);
+        registrar.playToClient(SyncBlockStatePacket.TYPE, SyncBlockStatePacket.STREAM_CODEC, SyncBlockStatePacket::handle);
+        registrar.playToServer(StoreBlockToInventoryPacket.TYPE, StoreBlockToInventoryPacket.STREAM_CODEC, StoreBlockToInventoryPacket::handle);
+        registrar.playToServer(FluidTransferPacket.TYPE, FluidTransferPacket.STREAM_CODEC, FluidTransferPacket::handle);
+        registrar.playToServer(SetEntityNbtPacket.TYPE, SetEntityNbtPacket.STREAM_CODEC, SetEntityNbtPacket::handle);
+        registrar.playToClient(SyncEntityNbtPacket.TYPE, SyncEntityNbtPacket.STREAM_CODEC, SyncEntityNbtPacket::handle);
+        registrar.playToServer(StoreEntityToInventoryPacket.TYPE, StoreEntityToInventoryPacket.STREAM_CODEC, StoreEntityToInventoryPacket::handle);
+        registrar.playToServer(EntityDiscardPacket.TYPE, EntityDiscardPacket.STREAM_CODEC, EntityDiscardPacket::handle);
     }
 
     /** 客户端 → 服务端。 */

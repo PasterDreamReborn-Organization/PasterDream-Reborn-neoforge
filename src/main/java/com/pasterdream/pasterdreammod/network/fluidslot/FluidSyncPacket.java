@@ -27,7 +27,7 @@ public record FluidSyncPacket(int containerId, List<FluidStack> fluids) implemen
             {
                 int containerId = buffer.readVarInt();
                 int count = buffer.readVarInt();
-                if (count < 0 || count > 64) throw new IllegalArgumentException("Invalid fluid slot count: " + count);
+                if (count < 0 || count > 4096) throw new IllegalArgumentException("Invalid fluid slot count: " + count);
                 List<FluidStack> fluids = new ArrayList<>(count);
                 for (int i = 0; i < count; i++) fluids.add(FluidStack.OPTIONAL_STREAM_CODEC.decode(buffer));
                 return new FluidSyncPacket(containerId, fluids);

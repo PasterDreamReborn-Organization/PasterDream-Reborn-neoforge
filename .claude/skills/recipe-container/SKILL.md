@@ -73,6 +73,7 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 | 研钵配方 | `world/item/mortar/MortarRecipe.java`（研磨）/ `MortarCraftingRecipe.java`（工作台） |
 | 自定义原料 | `helper/pasterdreamingredient/` |
 | 带流体槽容器基类 | `helper/abstractcontainermenuwithfluidslot/` |
+| 调试工具的物品和流体子菜单 | `world/item/debugtool/menu/`，复用共享流体槽同步 |
 | 流体容器能力 | `helper/fluidcontainercapability/` |
 | 配方 datagen | `datagen/common/ModRecipesProvider.java` |
 | 配方工具 | `datagen/util/RecipeHelpers.java` |
