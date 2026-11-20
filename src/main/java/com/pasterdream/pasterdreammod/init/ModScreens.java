@@ -1,6 +1,11 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.item.debugtool.screen.DebugToolItemEditorScreen;
+import com.pasterdream.pasterdreammod.world.item.debugtool.screen.DebugToolBlockEditorScreen;
+import com.pasterdream.pasterdreammod.world.item.debugtool.screen.DebugToolEntityEditorScreen;
+import com.pasterdream.pasterdreammod.world.item.debugtool.screen.ItemHandlerScreen;
+import com.pasterdream.pasterdreammod.world.item.debugtool.screen.FluidHandlerScreen;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableScreen;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilScreen;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotScreen;
@@ -40,6 +45,11 @@ public final class ModScreens {
 
     @SubscribeEvent
     public static void register(RegisterMenuScreensEvent event) {
+        event.register(ModMenus.DEBUG_TOOL_ITEM_EDITOR.get(), DebugToolItemEditorScreen::new);
+        event.register(ModMenus.DEBUG_TOOL_BLOCK_EDITOR.get(), DebugToolBlockEditorScreen::new);
+        event.register(ModMenus.DEBUG_TOOL_ENTITY_EDITOR.get(), DebugToolEntityEditorScreen::new);
+        event.register(ModMenus.ITEM_HANDLER.get(), ItemHandlerScreen::new);
+        event.register(ModMenus.FLUID_HANDLER.get(), FluidHandlerScreen::new);
         event.register(ModMenus.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), WeaponWorkshopCraftingTableScreen::new);
         event.register(ModMenus.WEAPON_WORKSHOP_ANVIL.get(), WeaponWorkshopAnvilScreen::new);
         event.register(ModMenus.WEAPON_WORKSHOP_COOLER_POT.get(), WeaponWorkshopCoolerPotScreen::new);

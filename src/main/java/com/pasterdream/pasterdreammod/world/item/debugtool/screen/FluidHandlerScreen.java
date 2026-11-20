@@ -1,0 +1,142 @@
+package com.pasterdream.pasterdreammod.world.item.debugtool.screen;
+
+import com.pasterdream.pasterdreammod.component.arrowbutton.DownArrowButton;
+import com.pasterdream.pasterdreammod.component.arrowbutton.UpArrowButton;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerScreenWithFluidSlot;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowString;
+import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.network.debugtool.FluidTransferPacket;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.FluidHandlerMenu;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+
+import java.util.List;
+
+public class FluidHandlerScreen extends AbstractContainerScreenWithFluidSlot<FluidHandlerMenu>
+{
+    private UpArrowButton upArrowButton;
+    private DownArrowButton downArrowButton;
+    private List<FluidSlot> fluidSlots;
+    private int page = 0;
+
+    public FluidHandlerScreen(FluidHandlerMenu menu, Inventory playerInventory, Component title)
+    {
+        super(menu, playerInventory, title);
+
+        fluidSlots = menu.getFluidSlots();
+        for(int i = 32; i < fluidSlots.size(); i++)
+        {
+            fluidSlots.get(i).setActive(false);
+        }
+    }
+
+    @Override
+    protected void init()
+    {
+        imageWidth = 176;
+        imageHeight = 176;
+        super.init();
+
+        upArrowButton = new UpArrowButton(leftPos + 154, topPos + 7, button -> prevPage());
+        downArrowButton = new DownArrowButton(leftPos + 154, topPos + 57, button -> nextPage());
+        addRenderableWidget(upArrowButton);
+        addRenderableWidget(downArrowButton);
+
+        Button drainButton = Button.builder(Component.translatable("button.pasterdream.取出流体"), button ->
+        {
+            ModNetwork.sendToServer(new FluidTransferPacket(menu.containerId, true));
+        }).pos(leftPos - 72, topPos + 45).size(48, 16).build();
+        addRenderableWidget(drainButton);
+
+        Button fillButton = Button.builder(Component.translatable("button.pasterdream.存入流体"), button ->
+        {
+            ModNetwork.sendToServer(new FluidTransferPacket(menu.containerId, false));
+        }).pos( leftPos - 72, topPos + 109).size(48, 16).build();
+        addRenderableWidget(fillButton);
+    }
+
+    @Override
+    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY)
+    {
+        GUIBackGroundRender.rendItemHandlerAndFluidHandlerScreen(guiGraphics, leftPos, topPos);
+        GUIBackGroundRender.rendPasterDreamInventoryGUI(guiGraphics, leftPos + 3, topPos + 86);
+        GUIBackGroundRender.rendMinecraftSingleSlot(guiGraphics, leftPos - 57, topPos + 76);
+        super.renderBg(guiGraphics, partialTick, mouseX, mouseY);
+    }
+
+    @Override
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick)
+    {
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 162, topPos + 43, String.valueOf(page + 1), 0xFF000000);
+    }
+
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double delta)
+    {
+        if (delta > 0)
+        {
+            prevPage();
+        }
+        else
+            if (delta < 0)
+            {
+                nextPage();
+            }
+        return true;
+    }
+
+    private void prevPage()
+    {
+        setPageSlotsNotActive(page);
+        if(page > 0)
+        {
+            page--;
+        }
+            else
+            {
+                page = Math.max(0, (fluidSlots.size() - 1) / 32);
+            }
+        setPageSlotsActive(page);
+    }
+
+    private void nextPage()
+    {
+        setPageSlotsNotActive(page);
+        if(page < Math.max(0, (fluidSlots.size() - 1) / 32))
+        {
+            page++;
+        }
+            else
+            {
+                page = 0;
+            }
+        setPageSlotsActive(page);
+    }
+
+    private void setPageSlotsActive(int page)
+    {
+        for(int i = 32 * page + 36; i < Math.min(fluidSlots.size(), 32 * page + 32); i++)
+        {
+            fluidSlots.get(i).setActive(true);
+        }
+    }
+
+    private void setPageSlotsNotActive(int page)
+    {
+        for(int i = 32 * page + 36; i < Math.min(fluidSlots.size(), 32 * page + 32); i++)
+        {
+            fluidSlots.get(i).setActive(false);
+        }
+    }
+
+    @Override
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY)
+    {
+
+    }
+}

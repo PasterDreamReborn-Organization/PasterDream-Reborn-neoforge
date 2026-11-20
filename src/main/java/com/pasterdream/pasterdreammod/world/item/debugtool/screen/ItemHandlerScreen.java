@@ -1,0 +1,119 @@
+package com.pasterdream.pasterdreammod.world.item.debugtool.screen;
+
+import com.pasterdream.pasterdreammod.component.arrowbutton.DownArrowButton;
+import com.pasterdream.pasterdreammod.component.arrowbutton.UpArrowButton;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowString;
+import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.ItemHandlerMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.slot.ActiveStatusChangeableSlot;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.Slot;
+
+import java.util.List;
+
+public class ItemHandlerScreen extends AbstractContainerScreen<ItemHandlerMenu>
+{
+    private UpArrowButton upArrowButton;
+    private DownArrowButton downArrowButton;
+    private List<Slot> itemSlots;
+    private int page = 0;
+
+    public ItemHandlerScreen(ItemHandlerMenu menu, Inventory playerInventory, Component title)
+    {
+        super(menu, playerInventory, title);
+
+        itemSlots = menu.slots;
+        for(int i = 68; i < itemSlots.size(); i++)
+        {
+            ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(false);
+        }
+    }
+
+    @Override
+    protected void init()
+    {
+        imageWidth = 176;
+        imageHeight = 176;
+        super.init();
+
+        upArrowButton = new UpArrowButton(leftPos + 154, topPos + 7, button -> prevPage());
+        downArrowButton = new DownArrowButton(leftPos + 154, topPos + 57, button -> nextPage());
+        addRenderableWidget(upArrowButton);
+        addRenderableWidget(downArrowButton);
+    }
+
+    @Override
+    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY)
+    {
+        GUIBackGroundRender.rendItemHandlerAndFluidHandlerScreen(guiGraphics, leftPos, topPos);
+        GUIBackGroundRender.rendPasterDreamInventoryGUI(guiGraphics, leftPos + 3, topPos + 86);
+    }
+
+    @Override
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick)
+    {
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        renderTooltip(guiGraphics, mouseX, mouseY);
+        NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 162, topPos + 43, String.valueOf(page + 1), 0xFF000000);
+    }
+
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double delta)
+    {
+        if (delta > 0)
+        {
+            prevPage();
+        }
+        else
+            if (delta < 0)
+            {
+                nextPage();
+            }
+        return true;
+    }
+
+    private void prevPage()
+    {
+        setPageSlotsActive(page, false);
+        if(page > 0)
+        {
+            page--;
+        }
+            else
+            {
+                page = Math.max(0, (itemSlots.size() - 37) / 32);
+            }
+        setPageSlotsActive(page, true);
+    }
+
+    private void nextPage()
+    {
+        setPageSlotsActive(page, false);
+        if(page < Math.max(0, (itemSlots.size() - 37) / 32))
+        {
+            page++;
+        }
+            else
+            {
+                page = 0;
+            }
+        setPageSlotsActive(page, true);
+    }
+
+    private void setPageSlotsActive(int page, boolean isActive)
+    {
+        for(int i = 32 * page + 36; i < Math.min(itemSlots.size(), 32 * page + 68); i++)
+        {
+            ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(isActive);
+        }
+    }
+
+    @Override
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY)
+    {
+
+    }
+}

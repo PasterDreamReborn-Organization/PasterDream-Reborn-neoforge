@@ -1,0 +1,246 @@
+package com.pasterdream.pasterdreammod.world.item.debugtool.menu;
+
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.IFluidContainer;
+import com.pasterdream.pasterdreammod.init.ModMenus;
+import com.pasterdream.pasterdreammod.world.item.debugtool.DebugToolItem;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.*;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.items.IItemHandler;
+
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Consumer;
+
+public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot implements IDebugItemHandlerAndFluidHandlerAndEnergyStorageEditorMenu
+{
+    private final SimpleContainer editorContainer;
+    private final Player player;
+    private final IFluidContainer fluidContainer;
+
+    public DebugToolItemEditorMenu(int id, Inventory playerInventory)
+    {
+        super(ModMenus.DEBUG_TOOL_ITEM_EDITOR.get(), id);
+
+        for (int col = 0; col < 9; col++)
+        {
+            addSlot(new Slot(playerInventory, col, 5 + col * 18, 217));
+        }
+
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 9; col++)
+            {
+                addSlot(new Slot(playerInventory, col + row * 9 + 9, 5 + col * 18, 159 + row * 18));
+            }
+        }
+
+        player = playerInventory.player;
+        this.editorContainer = new SimpleContainer(2)
+        {
+            @Override
+            public void setChanged()
+            {
+                super.setChanged();
+                if (!player.level().isClientSide)
+                {
+                    PlayerEditorSlotData.set(player, getItem(0), 0);
+                    PlayerEditorSlotData.set(player, getItem(1), 1);
+                }
+            }
+        };
+        if (!player.level().isClientSide)
+        {
+            for(int i = 0; i <= 1; i++)
+            {
+                ItemStack stored = PlayerEditorSlotData.get(player, i);
+                if (!stored.isEmpty())
+                {
+                    editorContainer.getItems().set(i, stored.copy());
+                }
+            }
+        }
+
+        addSlot(new Slot(editorContainer, 0, 152, 12)
+        {
+            @Override
+            public void set(ItemStack itemStack)
+            {
+                super.set(itemStack);
+                for (Consumer<ItemStack> consumer : editorSlotListeners)
+                {
+                    consumer.accept(itemStack);
+                }
+            }
+        });
+
+        this.fluidContainer = new PlayerFluidSlotContainer(player);
+        for (int i = 0; i < fluidContainer.getFluidContainerSize(); i++)
+        {
+            addFluidSlot(new FluidSlot(fluidContainer, i, 88 - 72 + 18 * i, 88));
+        }
+
+        addSlot(new Slot(editorContainer, 1, 152, 128));
+
+        bindFluidViewer(player);
+    }
+
+    private final List<Consumer<ItemStack>> editorSlotListeners = new CopyOnWriteArrayList<>();
+
+    public void addEditorSlotListener(Consumer<ItemStack> listener)
+    {
+        editorSlotListeners.add(listener);
+    }
+
+    public void clearEditorSlotListeners()
+    {
+        editorSlotListeners.clear();
+    }
+
+    @Override
+    public ItemStack quickMoveStack(Player player, int index)
+    {
+        Slot slot = slots.get(index);
+        if (!slot.hasItem())
+        {
+            return ItemStack.EMPTY;
+        }
+
+        ItemStack stack = slot.getItem();
+        ItemStack copy = stack.copy();
+
+        if ((index == 36 || index == 45))
+        {   //从机器移出到背包
+            if (!this.moveItemStackTo(stack, 0, 36, false))
+            {
+                return ItemStack.EMPTY;
+            }
+        }
+        else
+            if((index >= 0 && index <= 35))
+            {   //从背包移入输入槽
+                if (!(this.moveItemStackTo(stack, 36, 37, false) || this.moveItemStackTo(stack, 45, 46, false)))
+                {
+                    return ItemStack.EMPTY;
+                }
+            }
+
+        if (stack.isEmpty())
+        {
+            slot.set(ItemStack.EMPTY);
+        }
+            else
+            {
+                slot.setChanged();
+            }
+        return copy;
+    }
+
+    @Override
+    public boolean stillValid(Player player)
+    {
+        return player.level().isClientSide || DebugToolItem.canEdit(player);
+    }
+
+    @Override
+    public MenuProvider asMenuProvider()
+    {
+        return new MenuProvider()
+        {
+            @Override
+            public Component getDisplayName()
+            {
+                return Component.translatable("gui.pasterdream.debug_tool_item_editor");
+            }
+
+            @Override
+            public AbstractContainerMenu createMenu(int id, Inventory playerInventory, Player player)
+            {
+                return new DebugToolItemEditorMenu(id, playerInventory);
+            }
+        };
+    }
+
+    @Override
+    public ItemHandlerLaunchData provideItemHandlerLaunch()
+    {
+        ItemStack itemStack = this.editorContainer.getItem(0);
+        IItemHandler handler = itemStack.getCapability(Capabilities.ItemHandler.ITEM);
+        if(handler != null)
+        {
+            Runnable onChanged = () -> PlayerEditorSlotData.set(player, itemStack, 0);
+            return new ItemHandlerLaunchData(handler, onChanged);
+        }
+            else
+            {
+                return null;
+            }
+    }
+
+    @Override
+    public FluidHandlerLaunchData provideFluidHandlerLaunch()
+    {
+        ItemStack itemStack = this.editorContainer.getItem(0);
+        IFluidHandler handler = itemStack.getCapability(Capabilities.FluidHandler.ITEM);
+        if(handler != null)
+        {
+            Runnable onChanged = () -> PlayerEditorSlotData.set(player, itemStack, 0);
+            return new FluidHandlerLaunchData(handler, onChanged);
+        }
+            else
+            {
+                return null;
+            }
+    }
+
+    @Override
+    public EnergyStorageLaunchData provideEnergyStorageTarget()
+    {
+        ItemStack stack = getSlot(36).getItem();
+        IEnergyStorage storage = stack.getCapability(Capabilities.EnergyStorage.ITEM);
+        if (storage != null)
+        {
+            Runnable onChanged = () ->
+            {
+                Slot slot = getSlot(36);
+                slot.set(slot.getItem());
+            };
+            return new EnergyStorageLaunchData(storage, onChanged);
+        }
+            else
+            {
+                return null;
+            }
+    }
+
+    @Override
+    public EnergyStorageLaunchData provideEnergyStorageExternal()
+    {
+        ItemStack stack = getSlot(45).getItem();
+        IEnergyStorage storage = stack.getCapability(Capabilities.EnergyStorage.ITEM);
+        if (storage != null)
+        {
+            Runnable onChanged = () ->
+            {
+                Slot slot = getSlot(45);
+                slot.set(slot.getItem());
+            };
+            return new EnergyStorageLaunchData(storage, onChanged);
+        }
+            else
+            {
+                return null;
+            }
+    }
+}

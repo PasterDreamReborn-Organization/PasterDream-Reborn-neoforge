@@ -105,6 +105,10 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
                 return;
             }
 
+            // 已读过“染梦裂隙”笔记的玩家不再重复首次接触叙事，直接进入传送流程
+            AdvancementHolder crackAdv = player.server.getAdvancements().get(DYEDREAM_CRACK_ADV);
+            boolean knowsCrack = crackAdv != null && player.getAdvancements().getOrStartProgress(crackAdv).isDone();
+
             // 首次接触 → 显示提示并授予标记进度
             AdvancementHolder firstContactAdv = player.server.getAdvancements().get(FIRST_CONTACT_ADV);
             if (firstContactAdv != null)
@@ -112,15 +116,24 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
                 AdvancementProgress progress = player.getAdvancements().getOrStartProgress(firstContactAdv);
                 if (!progress.isDone())
                 {
-                    player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.1"), false);
-                    player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.2"), false);
-                    player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.3"), false);
-                    player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.4"), false);
+                    if (!knowsCrack)
+                    {
+                        player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.1"), false);
+                        player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.2"), false);
+                        player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.3"), false);
+                        player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.4"), false);
+                        for (String criteria : progress.getRemainingCriteria())
+                        {
+                            player.getAdvancements().award(firstContactAdv, criteria);
+                        }
+                        return;
+                    }
+
+                    // 已知晓裂隙：不打断本次传送，仅静默补记首次接触标记
                     for (String criteria : progress.getRemainingCriteria())
                     {
                         player.getAdvancements().award(firstContactAdv, criteria);
                     }
-                    return;
                 }
             }
 
@@ -130,14 +143,10 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
             {
                 targetLevel = player.serverLevel().getServer().getLevel(Level.OVERWORLD);
             }
-                else
-                {
-                    AdvancementHolder crackAdv = player.server.getAdvancements().get(DYEDREAM_CRACK_ADV);
-                    if (crackAdv != null && player.getAdvancements().getOrStartProgress(crackAdv).isDone())
-                    {
-                        targetLevel = player.serverLevel().getServer().getLevel(DYEDREAM_WORLD);
-                    }
-                }
+            else if (knowsCrack)
+            {
+                targetLevel = player.serverLevel().getServer().getLevel(DYEDREAM_WORLD);
+            }
 
             player.setPortalCooldown();
 

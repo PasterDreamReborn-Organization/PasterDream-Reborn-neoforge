@@ -933,7 +933,7 @@ public class ModCreativeModeTabs {
                     .build());
 
     // ===== 追忆 =====
-    // 来源: 旧 paster_tab_7（重生之梦水晶、调试工具仍待迁入）
+    // 来源: 旧 paster_tab_7（重生之梦水晶仍待迁入）
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_MEMENTO_TAB =
             CREATIVE_MODE_TABS.register("pasterdream_memento_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_memento_tab"))
@@ -945,6 +945,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MAGNIFYING_GLASS_OF_SHERRY.get());
                         output.accept(ModItems.IRIDESCENT_FAIRY_JADE.get());
                         output.accept(ModItems.EMPTY_VESSEL.get());
+                        output.accept(ModItems.DEBUG_TOOL.get());
                     })
                     .build());
 

@@ -93,6 +93,7 @@ public class GUIBackGroundRender
     public static final ResourceLocation MINECRAFT_GUI_LEFT_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/left_bottom.png");
     public static final ResourceLocation MINECRAFT_GUI_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_bottom.png");
     public static final ResourceLocation MINECRAFT_GUI_RIGHT_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/right_bottom.png");
+    public static final ResourceLocation ITEM_HANDLER_AND_FLUID_HANDLER_SCREEN = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/item_handler_and_fluid_handler_view_screen.png");
     public static final ResourceLocation MINECRAFT_SINGLE_SLOT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/single_slot.png");
 
     public static void rendSanBar(GuiGraphics guiGraphics, int x, int y)
@@ -304,6 +305,16 @@ public class GUIBackGroundRender
         RenderSystem.defaultBlendFunc();
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         guiGraphics.blit(WIND_MOOR_CRATE_GUI, x, y, 0, 0, 114, 96, 114, 96);
+    }
+
+    public static void rendMinecraftSingleSlot(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(MINECRAFT_SINGLE_SLOT, x, y, 0, 0, 18, 18, 18, 18);
+    }
+
+    public static void rendItemHandlerAndFluidHandlerScreen(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(ITEM_HANDLER_AND_FLUID_HANDLER_SCREEN, x, y, 0, 0, 176, 86, 176, 86);
     }
 
     public static void rendMinecraftGUIBackground(GuiGraphics guiGraphics, int x, int y, int width, int height)
