@@ -1,0 +1,12 @@
+{
+  "sortnum": 5,
+  "name": "pasterdream.seniors_dream.entry.cook",
+  "icon": "pasterdream:cook_icon",
+  "category": "pasterdream:foretold_dream/buffs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.cook.page0"
+    }
+  ]
+}

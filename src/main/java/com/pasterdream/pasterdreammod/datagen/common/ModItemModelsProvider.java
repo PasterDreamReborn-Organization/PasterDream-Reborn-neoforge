@@ -62,6 +62,17 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("item/dream_notes_lamp_shadow_world"));
         withExistingParent(ModItems.DYEDREAM_STORY_GUIDE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/dream_notes_dyedream_world"));
+        basicItem(ModItems.SENIORS_DREAM_BOOK.get());
+        basicItem(ModItems.REST_ICON.get());
+        basicItem(ModItems.CHEER_UP_ICON.get());
+        basicItem(ModItems.LETHARGY_ICON.get());
+        basicItem(ModItems.TRANCE_ICON.get());
+        basicItem(ModItems.INSANE_ICON.get());
+        basicItem(ModItems.CHAOS_ICON.get());
+        basicItem(ModItems.DREAM_WISH_ICON.get());
+        basicItem(ModItems.COOK_ICON.get());
+        basicItem(ModItems.SHADOW_SILENCE_ICON.get());
+        basicItem(ModItems.BIND_ICON.get());
         basicItem(ModItems.BLUE_PRINT.get());
         basicItem(ModItems.TITANIUM_UPGRADE.get());
         basicItem(ModItems.SCULK_UPGRADE.get());

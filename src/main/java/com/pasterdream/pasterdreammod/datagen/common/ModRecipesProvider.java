@@ -3095,6 +3095,13 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.FEATHER), has(Items.FEATHER))
                 .save(pWriter);
 
+        // 旧梦归引（帕秋莉宝典）= 书 + 染梦果
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SENIORS_DREAM_BOOK.get(), 1)
+                .requires(Items.BOOK)
+                .requires(ModItems.DYEDREAM_FRUIT.get())
+                .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "seniors_dream_book"));
+
         // 4x 灯影之下笔记残页 -> 未解读的笔记（灯影之下）
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get(), 1)
                 .requires(ModItems.LAMP_SHADOW_BROKEN_NOTE.get(), 4)

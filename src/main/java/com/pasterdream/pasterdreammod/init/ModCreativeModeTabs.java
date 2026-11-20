@@ -950,7 +950,7 @@ public class ModCreativeModeTabs {
                     .build());
 
     // ===== 笔记 =====
-    // 来源: pasterdream_dream_notes_tab（当前迁入寻梦者笔记书与蓝图；剧情引导物品尚未迁入）
+    // 来源: pasterdream_dream_notes_tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PASTERDREAM_DREAM_NOTES_TAB =
             CREATIVE_MODE_TABS.register("pasterdream_dream_notes_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_dream_notes_tab"))
@@ -964,6 +964,7 @@ public class ModCreativeModeTabs {
                         for (String content : DreamNotesBookRegistry.getAllContentNames()) {
                             output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT(content));
                         }
+                        output.accept(ModItems.SENIORS_DREAM_BOOK.get());
                     })
                     .build());
 
