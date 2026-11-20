@@ -10,7 +10,7 @@
   "pen":
   [
     {
-      "tag": "forge:pen",
+      "tag": "c:pen",
       "count": 1,
       "nbt":"{Damage:4}"
     }

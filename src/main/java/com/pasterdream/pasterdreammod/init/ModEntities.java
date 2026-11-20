@@ -60,9 +60,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -561,6 +565,20 @@ public class ModEntities {
         eventBus.addListener(JellyfishEntity::init);
         eventBus.addListener(ThundercloudEntity::init);
         eventBus.addListener(HighvoltageThundercloudEntity::init);
+        eventBus.addListener(ModEntities::registerVanillaSpawnPlacements);
+    }
+
+    /**
+     * 原版悦灵不会自然生成，原版也未给它注册生成位置。群系生成表把悦灵列入 CREATURE
+     * （{@code ModBiomes} 的 13 处染梦群系），NeoForge 会因此报“未注册生成位置”错误；
+     * 这里按飞行友好生物补上无位置限制 + 地表高度图，使群系表按原设计生效。
+     */
+    public static void registerVanillaSpawnPlacements(RegisterSpawnPlacementsEvent event) {
+        event.register(EntityType.ALLAY,
+                SpawnPlacementTypes.NO_RESTRICTIONS,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules,
+                RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     public static void registerAttributes(EntityAttributeCreationEvent event) {

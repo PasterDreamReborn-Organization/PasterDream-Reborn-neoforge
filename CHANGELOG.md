@@ -5,6 +5,13 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 146：修复萤火虫生成类别、悦灵生成位置与 forge 标签告警（2026-11-20，缺陷修复）
+
+- 萤火虫生成条目从 `wind_moor_archipelago` 的 `monster` 列表移入 `creature` 列表，与实体的 `MobCategory.CREATURE` 一致，消除 NeoForge 启动告警与怪物上限错配；生成谓词与 `spawn_costs` 数值不变。
+- 新增 `ModEntities.registerVanillaSpawnPlacements`，为 `minecraft:allay` 注册 `NO_RESTRICTIONS` + `MOTION_BLOCKING_NO_LEAVES` 生成位置，使 13 处既有悦灵生成条目真正生效。
+- `forge:pen`、`forge:ingots/melt_dream_aurorian_steel` 迁到 `c:` 命名空间，配方内 `forge:pen`/`forge:glass` 同步改为 `c:pen`/`c:glass_blocks`；`runData` 删除 2 个 `data/forge/` 旧标签文件。
+- `runData`、`build` 通过，`runGameTestServer` 244/244 通过，专用服务器启动日志中三条告警消失；客户端实机生成表现待验收。
+- **建议提交信息：** `fix(worldgen): 修正萤火虫生成类别、悦灵生成位置与 forge 标签告警`
 ### 批次 145：补迁 JEED、旅人标题与 JEI 物品信息页（2026-11-20，T22 部分）
 
 - 新增 16 个 JEED 效果兼容 JSON（`src/main/resources/data/jeed/recipes/`），与上游逐字节一致；`effect` 指向 `pasterdream:` 效果，`providers` 为物品或 `minecraft:beds` 标签。描述复用既有的 `effect.pasterdream.cook.description`，无代码与依赖改动。
