@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 139：规范调整——客户端验证交由用户（2026-11-20，流程）
+
+- `runClient` 实机验证（画面、交互、配方与音效）改由用户执行，代理不启动客户端，只交付待验收项、复现步骤与自动检查结果。`AGENTS.md`「实现与验证」、[移植总纲](document/reference/移植总纲.md)、[迁移任务线](document/reference/迁移任务线.md) 与 [程序规范文档](document/rule/program/程序规范文档.md) 的审核流程同步此约定。
+- 纯文档批次，未改动代码与资源，未重复运行构建与 GameTest，批次 138 的验证结果继续有效。
+- **建议提交信息：** `docs(rule): 客户端 runClient 验证交由用户执行`
+
 ### 批次 138：搬运帕秋莉宝典《旧梦归引》（2026-11-20，T20 部分）
 
 - 追忆栏新增 `pasterdream:seniors_dream_book`（旧梦归引，单件堆叠），排在「帕斯特之梦｜笔记」栏最末。书内 19 个分类、98 条中英条目与 36 张书页截图随 `data/pasterdream/patchouli_books/seniors_dream/`、`assets/pasterdream/patchouli_books/seniors_dream/`、`assets/pasterdream/textures/patchouli_books/` 一并搬入，书页贴图与来源相同。

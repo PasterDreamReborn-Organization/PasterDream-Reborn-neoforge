@@ -25,7 +25,7 @@
 - `src/generated/resources/` 只能通过 Provider + `runData` 更新；不要手改生成 JSON。缓存不入库、不入发布 Jar。
 - Java 与手写文档使用 UTF-8 无 BOM、CRLF；生成文件遵循 `.gitattributes` 的 LF。
 - 直接复制的纹理保留来源与授权记录，不作为新绘制资产登记；新增或重绘纹理时同步 `src/main/resources/ASSETS_MANIFEST.md`。
-- 最小检查：`./gradlew runData`、`./gradlew build`；涉及运行时行为的批次运行适用的 GameTest。客户端视觉、真实世界生成和多人行为分别记录验证状态，不能用编译通过代替。
+- 最小检查：`./gradlew runData`、`./gradlew build`；涉及运行时行为的批次运行适用的 GameTest。客户端实机验证（`./gradlew runClient` 的画面、交互、配方与音效）由用户执行，代理不启动客户端，只交付待验收项、复现步骤与自动检查结果；真实世界生成和多人行为同样分别记录验证状态，不能用编译通过代替。
 - GameTest 位于 `src/gameTest/`，通过 `./gradlew runGameTestServer` 运行，不打入发布 Jar。测试/数据生成使用 `build/` 下独立运行目录，不触碰用户存档。
 
 ## 提交规则与收尾
