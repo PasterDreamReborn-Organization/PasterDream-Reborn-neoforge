@@ -131,10 +131,10 @@ public class SanGameTests {
         NeoForge.EVENT_BUS.post(new LivingEntityUseItemEvent.Finish(player, bread, 0, ItemStack.EMPTY));
         player.removeEffect(ModEffects.COOK);
         helper.assertTrue(player.getAbsorptionAmount() == 5, "移除料理后应保留 5 点溢出黄心");
-        for (var type : java.util.List.of(ModEntities.TERRORBEAK, ModEntities.CRAZY_TERRORBEAK, ModEntities.WEAKENESS_TERRORBEAK, ModEntities.SHADOW_HAND)) {
+        for (var type : java.util.List.of(ModEntities.TERRORBEAK, ModEntities.CRAZY_TERRORBEAK, ModEntities.WEAKNESS_TERRORBEAK, ModEntities.SHADOW_HAND)) {
             helper.assertTrue(type.get().is(ModEntityTypeTags.SHADOW_MOB), "默认低 SAN 实体应在暗影标签内");
         }
-        var beak = ModEntities.WEAKENESS_TERRORBEAK.get().create(helper.getLevel());
+        var beak = ModEntities.WEAKNESS_TERRORBEAK.get().create(helper.getLevel());
         beak.playerTouch(player);
         helper.assertTrue(Math.abs(SanHelper.getPlayerSan(player) - 11.98) < 0.00001, "接触虚弱尖喙应扣 0.02 SAN");
         beak.die(player.damageSources().playerAttack(player));

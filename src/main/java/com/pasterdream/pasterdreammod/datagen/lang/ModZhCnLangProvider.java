@@ -88,7 +88,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.NAMELESS_SPAWN_EGG.get(), "无名刷怪蛋");
         add(ModEntities.TERRORBEAK.get(), "恐怖尖喙");
         add(ModEntities.CRAZY_TERRORBEAK.get(), "疯狂恐怖尖喙");
-        add(ModEntities.WEAKENESS_TERRORBEAK.get(), "虚弱恐怖尖喙");
+        add(ModEntities.WEAKNESS_TERRORBEAK.get(), "虚弱恐怖尖喙");
         add(ModEntities.SHADOW_HAND.get(), "暗影之手");
         add(ModEntities.SHADOW_GOLEM.get(), "阴影傀儡");
         add(ModEntities.SHADOW_GHOST.get(), "怨魂");
@@ -1713,7 +1713,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), "破碎粒子提供方块3");
         add(ModItems.TERRORBEAK_SPAWN_EGG.get(), "恐怖尖喙刷怪蛋");
         add(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get(), "疯狂恐怖尖喙刷怪蛋");
-        add(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get(), "虚弱恐怖尖喙刷怪蛋");
+        add(ModItems.WEAKNESS_TERRORBEAK_SPAWN_EGG.get(), "虚弱恐怖尖喙刷怪蛋");
         add(ModItems.SHADOW_HAND_SPAWN_EGG.get(), "暗影之手刷怪蛋");
         add(ModItems.SHADOW_GOLEM_SPAWN_EGG.get(), "阴影傀儡刷怪蛋");
         add(ModItems.SHADOW_GHOST_SPAWN_EGG.get(), "怨魂刷怪蛋");

@@ -5,6 +5,12 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 141：实体 ID 纠错与旧 ID 配置兼容层（2026-11-20，T19/T20 部分）
+
+- `weakeness_terrorbeak` 修正为 `weakness_terrorbeak`，`projectile_bone_wing_fire_ball_projectile` 精简为 `bone_wing_fire_ball_projectile`，刷怪蛋同步为 `weakness_terrorbeak_spawn_egg`；注册、渲染器、创造栏、实体标签、掉落表、模型、中英语言与测试一并更新。
+- 新增 `compat/LegacyIdRemapper`，`Config` 实体列表解析与 `ShadowDifficultyHelper.spawnFromEntry` 自动把旧配置 ID 映射为新 ID，旧存档内实体不迁移。
+- `compileJava`、`runData`、`build`、`runGameTestServer` 通过；客户端实机待验收。
+
 ### 批次 140：同步上游 #1314–#1330 可移植改动（2026-11-20，T19/T20 部分）
 
 - 补齐 24 条实体本地化（此前只有物品名），雷电箭与引潮剑按上游改名；融梦水晶箱重置工具改为按住 Shift 查看战利品列表；秋月绫音灵魂石激活播放附魔台音效。

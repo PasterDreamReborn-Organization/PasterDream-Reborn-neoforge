@@ -296,7 +296,7 @@ public class ModEntities {
                     .fireImmune()
                     .sized(1.8f, 4f));
 
-    public static final DeferredHolder<EntityType<?>, EntityType<TerrorbeakEntity>> WEAKENESS_TERRORBEAK = register("weakeness_terrorbeak",
+    public static final DeferredHolder<EntityType<?>, EntityType<TerrorbeakEntity>> WEAKNESS_TERRORBEAK = register("weakness_terrorbeak",
             EntityType.Builder.<TerrorbeakEntity>of(TerrorbeakEntity::new, MobCategory.MONSTER)
                     .setShouldReceiveVelocityUpdates(true)
                     .setTrackingRange(64)
@@ -428,7 +428,7 @@ public class ModEntities {
                             .sized(1.7f, 0.8f));
 
     public static final DeferredHolder<EntityType<?>, EntityType<BoneWingFireBallProjectileEntity>> BONE_WING_FIRE_BALL_PROJECTILE =
-            register("projectile_bone_wing_fire_ball_projectile",
+            register("bone_wing_fire_ball_projectile",
                     EntityType.Builder.<BoneWingFireBallProjectileEntity>of(BoneWingFireBallProjectileEntity::new, MobCategory.MISC)
                             .setShouldReceiveVelocityUpdates(true)
                             .setTrackingRange(64)
@@ -566,7 +566,7 @@ public class ModEntities {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(TERRORBEAK.get(), TerrorbeakEntity.createTerrorbeakAttributes().build());
         event.put(CRAZY_TERRORBEAK.get(), TerrorbeakEntity.createCrazyTerrorbeakAttributes().build());
-        event.put(WEAKENESS_TERRORBEAK.get(), TerrorbeakEntity.createWeakenessTerrorbeakAttributes().build());
+        event.put(WEAKNESS_TERRORBEAK.get(), TerrorbeakEntity.createWeaknessTerrorbeakAttributes().build());
         event.put(SHADOW_HAND.get(), ShadowHandEntity.createAttributes().build());
         event.put(SHADOW_MAGICBALL.get(), ShadowMagicballEntity.createAttributes().build());
         event.put(SHADOW_TUNE_TOTEM.get(), ShadowTuneTotemEntity.createAttributes().build());

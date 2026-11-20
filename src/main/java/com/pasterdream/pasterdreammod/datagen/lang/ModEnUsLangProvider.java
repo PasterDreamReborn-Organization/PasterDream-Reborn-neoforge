@@ -88,7 +88,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.NAMELESS_SPAWN_EGG.get(), "Nameless Spawn Egg");
         add(ModEntities.TERRORBEAK.get(), "Terrorbeak");
         add(ModEntities.CRAZY_TERRORBEAK.get(), "Crazy Terrorbeak");
-        add(ModEntities.WEAKENESS_TERRORBEAK.get(), "Weakness Terrorbeak");
+        add(ModEntities.WEAKNESS_TERRORBEAK.get(), "Weakness Terrorbeak");
         add(ModEntities.SHADOW_HAND.get(), "Shadow Hand");
         add(ModEntities.SHADOW_GOLEM.get(), "Shadow Golem");
         add(ModEntities.SHADOW_GHOST.get(), "Shadow Ghost");
@@ -1713,7 +1713,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), "Model Break Particle Provider Block 3");
         add(ModItems.TERRORBEAK_SPAWN_EGG.get(), "Terrorbeak Spawn Egg");
         add(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get(), "Crazy Terrorbeak Spawn Egg");
-        add(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get(), "Weakness Terrorbeak Spawn Egg");
+        add(ModItems.WEAKNESS_TERRORBEAK_SPAWN_EGG.get(), "Weakness Terrorbeak Spawn Egg");
         add(ModItems.SHADOW_HAND_SPAWN_EGG.get(), "Shadow Hand Spawn Egg");
         add(ModItems.SHADOW_GOLEM_SPAWN_EGG.get(), "Shadow Golem Spawn Egg");
         add(ModItems.SHADOW_GHOST_SPAWN_EGG.get(), "Shadow Ghost Spawn Egg");

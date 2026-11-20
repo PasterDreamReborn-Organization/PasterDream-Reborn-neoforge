@@ -1867,8 +1867,8 @@ public class ModItems {
             () -> new SpawnEggItem(ModEntities.TERRORBEAK.get(), 0x1c1c1c, 0x3d3d3d, new Item.Properties()));
     public static final DeferredItem<Item> CRAZY_TERRORBEAK_SPAWN_EGG = ITEMS.register("crazy_terrorbeak_spawn_egg",
             () -> new SpawnEggItem(ModEntities.CRAZY_TERRORBEAK.get(), -16777216, -11271421, new Item.Properties()));
-    public static final DeferredItem<Item> WEAKENESS_TERRORBEAK_SPAWN_EGG = ITEMS.register("weakeness_terrorbeak_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.WEAKENESS_TERRORBEAK.get(), -16777216, -13421773, new Item.Properties()));
+    public static final DeferredItem<Item> WEAKNESS_TERRORBEAK_SPAWN_EGG = ITEMS.register("weakness_terrorbeak_spawn_egg",
+            () -> new SpawnEggItem(ModEntities.WEAKNESS_TERRORBEAK.get(), -16777216, -13421773, new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_HAND_SPAWN_EGG = ITEMS.register("shadow_hand_spawn_egg",
             () -> new SpawnEggItem(ModEntities.SHADOW_HAND.get(), -12763843, -16316665, new Item.Properties()));
     public static final DeferredItem<Item> SHADOW_MAGICBALL_SPAWN_EGG = ITEMS.register("shadow_magicball_spawn_egg",
