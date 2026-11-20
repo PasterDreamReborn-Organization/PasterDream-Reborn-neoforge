@@ -11,6 +11,8 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -135,6 +137,7 @@ public class SoulGemOfAkizukiAyaneItem extends Item implements ICurioItem {
             applyActivationBuff(sp);
             sp.getPersistentData().putInt("pasterdream.soul_gem_no_consume_ticks", NO_CONSUME_TICKS);
             player.getCooldowns().addCooldown(this, ACTIVATION_COOLDOWN_TICKS);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
         }
 
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());

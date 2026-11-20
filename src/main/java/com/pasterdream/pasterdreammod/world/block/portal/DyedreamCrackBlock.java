@@ -105,9 +105,9 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
                 return;
             }
 
-            // 已读过“染梦裂隙”笔记的玩家不再重复首次接触叙事，直接进入传送流程
+            // 创造模式玩家可直接穿越；已读过“染梦裂隙”笔记的玩家不再重复首次接触叙事，直接进入传送流程
             AdvancementHolder crackAdv = player.server.getAdvancements().get(DYEDREAM_CRACK_ADV);
-            boolean knowsCrack = crackAdv != null && player.getAdvancements().getOrStartProgress(crackAdv).isDone();
+            boolean knowsCrack = player.isCreative() || (crackAdv != null && player.getAdvancements().getOrStartProgress(crackAdv).isDone());
 
             // 首次接触 → 显示提示并授予标记进度
             AdvancementHolder firstContactAdv = player.server.getAdvancements().get(FIRST_CONTACT_ADV);

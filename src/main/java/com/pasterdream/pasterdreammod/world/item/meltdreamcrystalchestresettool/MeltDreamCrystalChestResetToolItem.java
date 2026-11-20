@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlock;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlockEntity;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -46,24 +47,31 @@ public class MeltDreamCrystalChestResetToolItem extends Item
         CompoundTag tag = itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         if(tag != null && tag.contains("LootTables"))
         {
-            ListTag listTag = tag.getList("LootTables", Tag.TAG_COMPOUND);
-            CompoundTag normalLootTable = !listTag.isEmpty() ? listTag.getCompound(0) : null;
-            CompoundTag rareLootTable = listTag.size() > 1 ? listTag.getCompound(1) : null;
-            CompoundTag legendLootTable = listTag.size() > 2 ? listTag.getCompound(2) : null;
-
-            if(normalLootTable != null)
+            if(Screen.hasShiftDown())
             {
-                tooltip.add(Component.translatable("tooltip.pasterdream.normal_loot_table", normalLootTable.getString("LootTable"), normalLootTable.getInt("weight"), normalLootTable.getDouble("luck_multiplier_increase")));
-                if(rareLootTable != null)
+                ListTag listTag = tag.getList("LootTables", Tag.TAG_COMPOUND);
+                CompoundTag normalLootTable = !listTag.isEmpty() ? listTag.getCompound(0) : null;
+                CompoundTag rareLootTable = listTag.size() > 1 ? listTag.getCompound(1) : null;
+                CompoundTag legendLootTable = listTag.size() > 2 ? listTag.getCompound(2) : null;
+
+                if(normalLootTable != null)
                 {
-                    tooltip.add(Component.translatable("tooltip.pasterdream.rare_loot_table", rareLootTable.getString("LootTable"), rareLootTable.getInt("weight"), rareLootTable.getDouble("luck_multiplier_increase")));
-                    if(legendLootTable != null)
+                    tooltip.add(Component.translatable("tooltip.pasterdream.normal_loot_table", normalLootTable.getString("LootTable"), normalLootTable.getInt("weight"), normalLootTable.getDouble("luck_multiplier_increase")));
+                    if(rareLootTable != null)
                     {
-                        tooltip.add(Component.translatable("tooltip.pasterdream.legend_loot_table", legendLootTable.getString("LootTable"), legendLootTable.getInt("weight"), legendLootTable.getDouble("luck_multiplier_increase")));
+                        tooltip.add(Component.translatable("tooltip.pasterdream.rare_loot_table", rareLootTable.getString("LootTable"), rareLootTable.getInt("weight"), rareLootTable.getDouble("luck_multiplier_increase")));
+                        if(legendLootTable != null)
+                        {
+                            tooltip.add(Component.translatable("tooltip.pasterdream.legend_loot_table", legendLootTable.getString("LootTable"), legendLootTable.getInt("weight"), legendLootTable.getDouble("luck_multiplier_increase")));
+                        }
                     }
+                    tooltip.add(Component.translatable("tooltip.pasterdream.reset_cost_melt_dream_energy", MeltDreamEnergyCostCalculator.calculate(itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getList("LootTables", Tag.TAG_COMPOUND))));
                 }
-                tooltip.add(Component.translatable("tooltip.pasterdream.reset_cost_melt_dream_energy", MeltDreamEnergyCostCalculator.calculate(itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getList("LootTables", Tag.TAG_COMPOUND))));
             }
+                else
+                {
+                    tooltip.add(Component.translatable("tooltip.pasterdream.按住[Shift]查看战利品列表"));
+                }
         }
             else
             {
