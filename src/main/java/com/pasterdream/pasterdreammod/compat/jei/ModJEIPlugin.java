@@ -12,6 +12,7 @@ import com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe.DreamAcc
 import com.pasterdream.pasterdreammod.compat.jei.dyedreamcontamination.DyedreamContaminationJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.dyedreamcontamination.DyedreamContaminationRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.fluidcontainerrelation.FluidContainerRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.info.ModJEIInfoRegistry;
 import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.FluidContainerRelation;
 import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.GetAllFluidContainerCapability;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorRecipe;
@@ -173,6 +174,9 @@ public class ModJEIPlugin implements IModPlugin
             List<FluidContainerRelation> fluidContainerRelations = GetAllFluidContainerCapability.getAllContainer();
             registration.addRecipes(FluidContainerRecipeCategory.FLUID_CONTAINER_RELATION, fluidContainerRelations);
         }
+
+        // ===== 物品信息页（JEI 中按 R/U 查看）=====
+        ModJEIInfoRegistry.register(registration);
     }
 
     @Override
