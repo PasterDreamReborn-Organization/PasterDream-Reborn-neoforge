@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 142：修复琴雨梦套装魔法伤害附伤不生效（2026-11-20，缺陷修复）
+
+- 琴雨梦套装「攻击附带目标当前生命值 5% 的魔法伤害」此前只在 PvP 生效：附伤块写在只处理玩家受击的 `LivingIncomingDamageEvent` 里，攻击僵尸等普通生物时不触发。现移入 `QymArmorEvents.onLivingDamage(LivingDamageEvent.Pre)`，对任意受击者生效。
+- 同一处修复附带解决两个结算问题：附伤改写受击者无敌帧与 `lastHurt`，导致外层主攻击只结算 `主攻击 - 附伤`（主攻击被吃掉）；`indirectMagic` 的倍率已由 `MagicDamageHandler` 应用，原实现又手动乘一次，加成被平方。现追加前后保存并还原 `invulnerableTime`/`lastHurt`，且不再手动乘倍率。
+- 5% 数值与 20 tick 冷却（`pasterdream.qym_magic_last`）不变；`CurioPassiveHandler` 只删除失效的附伤块与不再使用的导入，其余被动未动。
+- 新增 `DreamGearGameTests` 三项用例；`compileJava`、`runData`（0 个文件）、`build`、`runGameTestServer`（240/240）通过；客户端实机待验收。
+- **建议提交信息：** `fix(qym): 修复琴雨梦套装魔法伤害附伤不生效`
+
 ### 批次 141：实体 ID 纠错与旧 ID 配置兼容层（2026-11-20，T19/T20 部分）
 
 - `weakeness_terrorbeak` 修正为 `weakness_terrorbeak`，`projectile_bone_wing_fire_ball_projectile` 精简为 `bone_wing_fire_ball_projectile`，刷怪蛋同步为 `weakness_terrorbeak_spawn_egg`；注册、渲染器、创造栏、实体标签、掉落表、模型、中英语言与测试一并更新。
