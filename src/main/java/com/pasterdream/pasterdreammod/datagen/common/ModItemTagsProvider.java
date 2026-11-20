@@ -32,7 +32,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(CauldronPotionTags.BASE).add(ModItems.DYEDREAM_FRUIT.get());
         tag(CauldronPotionTags.ENHANCE_REDSTONE).add(Items.REDSTONE);
         tag(CauldronPotionTags.ENHANCE_GLOWSTONE).add(Items.GLOWSTONE_DUST);
-        tag(TagKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath("forge", "pen")))
+        tag(ModItemTags.PEN)
                 .add(ModItems.FEATHER_PEN.get());
         tag(CauldronPotionTags.ENHANCE)
                 .addTag(CauldronPotionTags.ENHANCE_REDSTONE)
@@ -272,8 +272,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .addTag(ModItemTags.INGOTS_BLACK_METAL)
                 .addTag(ModItemTags.INGOTS_SHADOW_ALLOY)
                 .add(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get());
-        tag(TagKey.create(BuiltInRegistries.ITEM.key(),
-                ResourceLocation.fromNamespaceAndPath("forge", "ingots/melt_dream_aurorian_steel")))
+        tag(ModItemTags.INGOTS_MELT_DREAM_AURORIAN_STEEL)
                 .add(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get());
         tag(ModItemTags.INGOTS_MOLTEN_GOLD)
                 .add(ModItems.MOLTEN_GOLD_INGOT.get());

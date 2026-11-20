@@ -1634,6 +1634,21 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("key.pasterdream.kaichu_omamori", "激活怀中御守");
         add("key.pasterdream.cloak_activate", "激活衣装");
         add("jei.pasterdream.kaichu_omamori.info", "与金狐狸交易获得。");
+        add("jei.pasterdream.murakumo_kusanagi.info", "使用草薙击杀 %d 个生物即可进化获得。");
+        add("jei.pasterdream.fractured_angel_statue.info", "由破风骑士概率掉落。");
+        add("jei.pasterdream.sword_embryo.info", "携带力量II的玩家从失落剑冢中拔出可获得。\n也许还有其它获取方式......");
+        add("jei.pasterdream.lost_sword_tomb.info", "可在丛林中发现。");
+        add("jei.pasterdream.desert_sword.info", "接取荒漠英雄的三个任务即可获得。");
+        add("jei.pasterdream.chenjingmen_desert_sword.info", "完成荒漠英雄的三个任务，由朔漠大剑升级而来。");
+        add("jei.pasterdream.broken_hero_sword.info", "开启融梦水晶箱有概率获得。");
+        add("jei.pasterdream.shadow_breath.info", "能够在暗影地牢宝库获取。");
+        add("jei.pasterdream.dyedream_corolla.info", "可由剪刀或园艺钳右键收获成熟的梦染茶花植株获得。");
+        add("jei.pasterdream.white_corolla.info", "可由剪刀或园艺钳右键收获成熟的苍白雪莲植株获得。");
+        add("jei.pasterdream.light_ball.info", "可由剪刀或园艺钳右键收获成熟的流明堇植株获得。");
+        add("jei.pasterdream.cloud.info", "可由剪刀或园艺钳右键收获成熟的玲云花植株获得。");
+        add("jei.pasterdream.cotton.info", "可由剪刀或园艺钳右键收获成熟的棉花植株获得。");
+        add("jei.pasterdream.misty_dreaming_lotus.info", "完成花园解密获得。");
+        add("jei.pasterdream.fourleaf_clover_curio.info", "破坏四叶草时低概率掉落。");
         add(ModBlocks.GOLDEN_FOX_SCULPTURE.get(), "金狐狸雕像");
         add(ModBlocks.FOX_SCULPTURE.get(), "狐狸雕像");
         add("block.pasterdream.golden_fox_sculpture.no_reaction", "雕像没有反应......");
@@ -2841,6 +2856,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.angel_beats", "Angel Beats！");
         add("pasterdream.seniors_dream.entry.angel_beats.page0", "在到达风旅后，你可以尝试一下长途飞行探索风旅。比如分别在顺风和逆风的情况下飞行一万格，穿越一百次破风幕帐，感受一下风的触感和心脏的跳动。或许这样能获得如同“天使”般的飞行能力。");
         add("pasterdream.seniors_dream.entry.angel_beats.page1", "也许，自由翱翔也是某人的心愿，也是某人的遗憾。$(br2)——音无结弦之时，悦动天使之心，独立浮华之世，奏响天籁之音。愿你有一天能与重要之人重逢。");
+
+        // 旅人标题兼容
+        add("travelerstitles.pasterdream.dyedream_world", "染梦世界");
+        add("travelerstitles.pasterdream.dyedream_world.color", "ff9ec4");
+        add("travelerstitles.pasterdream.lamp_shadow_world", "灯影之下");
+        add("travelerstitles.pasterdream.lamp_shadow_world.color", "bdbdbd");
+        add("travelerstitles.pasterdream.wind_journey_world", "风之旅途");
+        add("travelerstitles.pasterdream.wind_journey_world.color", "7ce8ab");
+        add("travelerstitles.pasterdream.aaroncos_arena_world", "亚伦柯斯竞技场");
+        add("travelerstitles.pasterdream.aaroncos_arena_world.color", "900a0a");
 
     }
 }

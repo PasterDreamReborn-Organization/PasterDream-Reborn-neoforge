@@ -5,6 +5,22 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 146：修复萤火虫生成类别、悦灵生成位置与 forge 标签告警（2026-11-20，缺陷修复）
+
+- 萤火虫生成条目从 `wind_moor_archipelago` 的 `monster` 列表移入 `creature` 列表，与实体的 `MobCategory.CREATURE` 一致，消除 NeoForge 启动告警与怪物上限错配；生成谓词与 `spawn_costs` 数值不变。
+- 新增 `ModEntities.registerVanillaSpawnPlacements`，为 `minecraft:allay` 注册 `NO_RESTRICTIONS` + `MOTION_BLOCKING_NO_LEAVES` 生成位置，使 13 处既有悦灵生成条目真正生效。
+- `forge:pen`、`forge:ingots/melt_dream_aurorian_steel` 迁到 `c:` 命名空间，配方内 `forge:pen`/`forge:glass` 同步改为 `c:pen`/`c:glass_blocks`；`runData` 删除 2 个 `data/forge/` 旧标签文件。
+- `runData`、`build` 通过，`runGameTestServer` 244/244 通过，专用服务器启动日志中三条告警消失；客户端实机生成表现待验收。
+- **建议提交信息：** `fix(worldgen): 修正萤火虫生成类别、悦灵生成位置与 forge 标签告警`
+### 批次 145：补迁 JEED、旅人标题与 JEI 物品信息页（2026-11-20，T22 部分）
+
+- 新增 16 个 JEED 效果兼容 JSON（`src/main/resources/data/jeed/recipes/`），与上游逐字节一致；`effect` 指向 `pasterdream:` 效果，`providers` 为物品或 `minecraft:beds` 标签。描述复用既有的 `effect.pasterdream.cook.description`，无代码与依赖改动。
+- 中英语言 Provider 各补 8 条 Traveler's Titles 维度标题与颜色键（染梦世界 / 灯影之下 / 风之旅途 / 亚伦柯斯竞技场）。
+- 新增 `compat/jei/info/ModJEIInfoRegistry`，在 `ModJEIPlugin.registerRecipes` 末尾登记 18 个物品的 JEI 信息页；草薙击杀数改用本仓库的 `Config.NEED_KILL_ENEMY.get()`，并补 15 个 `jei.pasterdream.*.info` 中英词条。
+- 目录结构、架构规范与迁移任务线同步 JEI 信息页入口与 JEED 实际路径/数量。
+- `runData`、`build` 通过；JEED、Traveler's Titles 与 JEI 的客户端显示待实机验收。
+- **建议提交信息：** `feat(compat): 补迁 JEED 效果兼容、旅人标题与 JEI 物品信息页`
+
 ### 批次 144：移植结构放置不保留液体 mixin（2026-11-20，T16-B / T18-B 部分）
 
 - 移植上游 `StructureTemplateMixin`：`StructureTemplate#placeInWorld` 期间强制「不给可含水方块灌水」，水下放置的结构（梦境实验室、暗影地牢等）不再被水填满，即「删除结构内部的水和含水方块中的水」。

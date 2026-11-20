@@ -1634,6 +1634,21 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("key.pasterdream.kaichu_omamori", "Activate Kaichu Omamori");
         add("key.pasterdream.cloak_activate", "Activate Cloak");
         add("jei.pasterdream.kaichu_omamori.info", "Obtained by trading with the Golden Fox.");
+        add("jei.pasterdream.murakumo_kusanagi.info", "Kill %d mobs with Kusanagi to evolve it into Murakumo Kusanagi.");
+        add("jei.pasterdream.fractured_angel_statue.info", "Dropped rarely by the Wind Knight.");
+        add("jei.pasterdream.sword_embryo.info", "Obtained by pulling it out of the Lost Sword Tomb as a player with Strength II.\nPerhaps there are other ways...");
+        add("jei.pasterdream.lost_sword_tomb.info", "Can be found in jungles.");
+        add("jei.pasterdream.desert_sword.info", "Obtained by accepting the Desert Hero's three quests.");
+        add("jei.pasterdream.chenjingmen_desert_sword.info", "Upgraded from the Desert Greatsword after completing the Desert Hero's three quests.");
+        add("jei.pasterdream.broken_hero_sword.info", "Has a chance to be obtained by opening Melt Dream Crystal Chests.");
+        add("jei.pasterdream.shadow_breath.info", "Can be obtained from the Shadow Dungeon's repository layer.");
+        add("jei.pasterdream.dyedream_corolla.info", "Obtained by right-clicking a mature Dyedream Corolla plant with Shears or Pliers.");
+        add("jei.pasterdream.white_corolla.info", "Obtained by right-clicking a mature White Corolla Crop with Shears or Pliers.");
+        add("jei.pasterdream.light_ball.info", "Obtained by right-clicking a mature Light Ball Crop with Shears or Pliers.");
+        add("jei.pasterdream.cloud.info", "Obtained by right-clicking a mature Cloud Crop with Shears or Pliers.");
+        add("jei.pasterdream.cotton.info", "Obtained by right-clicking a mature Cotton Crop with Shears or Pliers.");
+        add("jei.pasterdream.misty_dreaming_lotus.info", "Obtained by completing the Garden Decryption.");
+        add("jei.pasterdream.fourleaf_clover_curio.info", "Rarely dropped when breaking Fourleaf Clover.");
         add(ModBlocks.GOLDEN_FOX_SCULPTURE.get(), "Golden Fox Sculpture");
         add(ModBlocks.FOX_SCULPTURE.get(), "Fox Sculpture");
         add("block.pasterdream.golden_fox_sculpture.no_reaction", "The sculpture does not respond......");
@@ -2686,6 +2701,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.angel_beats", "Angel Beats!");
         add("pasterdream.seniors_dream.entry.angel_beats.page0", "After reaching the Wind Journey, you may want to try long-distance flight to explore it. For example, fly ten thousand blocks both with the wind and against it, pass through a hundred Break Wind Curtains, and feel the touch of the wind and the beating of your heart. Perhaps in this way you can gain a flying ability like that of an \"angel\".");
         add("pasterdream.seniors_dream.entry.angel_beats.page1", "Perhaps free soaring is someone's wish, and also someone's regret.$(br2)--When Yuzuru Otonashi strums the strings, the angel's heart dances; standing alone above this fleeting world, heavenly music resounds. May you one day be reunited with the one who matters most.");
+
+        // Traveler's Titles compatibility
+        add("travelerstitles.pasterdream.dyedream_world", "The Dyedream World");
+        add("travelerstitles.pasterdream.dyedream_world.color", "ff9ec4");
+        add("travelerstitles.pasterdream.lamp_shadow_world", "Under the Lamp Shadow");
+        add("travelerstitles.pasterdream.lamp_shadow_world.color", "bdbdbd");
+        add("travelerstitles.pasterdream.wind_journey_world", "Wind Journey World");
+        add("travelerstitles.pasterdream.wind_journey_world.color", "7ce8ab");
+        add("travelerstitles.pasterdream.aaroncos_arena_world", "Aaroncos Arena");
+        add("travelerstitles.pasterdream.aaroncos_arena_world.color", "900a0a");
 
     }
 }

@@ -795,12 +795,12 @@ public class ModBiomes {
                 .specialEffects(effects.build())
                 .mobSpawnSettings(new MobSpawnSettings.Builder()
                         // 原作 monster: 骨翼 weight6(1~2)、灰骨翼 weight1(1~1)、萤火虫 weight10(3~4)、雷云 weight5(1~2)、高压雷云 weight1(1~1)；密度减半
+                        // 萤火虫实体注册为 CREATURE，NeoForge 要求生成项与实体群系类别一致（否则会按错误类别占用 mob cap），故归入 creature 列表；
+                        // 其生成谓词仍要求黑暗与非和平难度，实际生成条件不变
                         .addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(ModEntities.BONE_WING.get(), 3, 1, 2))
                         .addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(ModEntities.ASH_BONE_WING.get(), 1, 1, 1))
-                        .addSpawn(MobCategory.MONSTER,
-                                new MobSpawnSettings.SpawnerData(ModEntities.FIREFLY.get(), 5, 2, 3))
                         .addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(ModEntities.THUNDERCLOUD.get(), 2, 1, 1))
                         .addSpawn(MobCategory.MONSTER,
@@ -808,6 +808,8 @@ public class ModBiomes {
                         // 原作 creature: 水母 weight10(1~2)；小石精原作 creature weight12(1~2)，但实体为 Monster（暗处生成），按 monster 接入否则永不在群系生成；小石精密度减半
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(ModEntities.JELLYFISH.get(), 10, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.FIREFLY.get(), 5, 2, 3))
                         .addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(ModEntities.SMALL_STONE_SPIRIT.get(), 6, 1, 2))
                         // addMobCharge 生成预算：每次生成尝试需 charge × Σ(已聚集charge/距离) ≤ energyBudget，直接限制这些怪在玩家周围的同时存在数量
