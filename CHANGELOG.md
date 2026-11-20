@@ -5,6 +5,14 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 138：搬运帕秋莉宝典《旧梦归引》（2026-11-20，T20 部分）
+
+- 追忆栏新增 `pasterdream:seniors_dream_book`（旧梦归引，单件堆叠），排在「帕斯特之梦｜笔记」栏最末。书内 19 个分类、98 条中英条目与 36 张书页截图随 `data/pasterdream/patchouli_books/seniors_dream/`、`assets/pasterdream/patchouli_books/seniors_dream/`、`assets/pasterdream/textures/patchouli_books/` 一并搬入，书页贴图与来源相同。
+- 保留 `pasterdream:seniors_dream` 书 ID、`pasterdream:seniors_dream_book` 配方 ID 与「书 + 染梦果」无序合成；配方类型按 Patchouli 1.21.1 移除 `patchouli:shapeless_book_recipe` 的实际情况改用原版 `minecraft:crafting_shapeless`。物品改用自定义 `SeniorsDreamBookItem` 右键开书，`book.json` 开 `dont_generate_book` 并保留 `custom_book_item`、`creative_tab`；`dyedream_world_leapstone` 条目因方块未迁暂缓。
+- 新增 `dream_wish_icon` 等 10 个 buff 图标物品（纯 `Item`、来源纹理与 `basicItem` 模型）。中文 350 键与英文 350 键（`pasterdream.seniors_dream.*`、`item.pasterdream.seniors_dream_book`）由语言 Provider 生成；条目 `name`/`text`/`landing_text` 与 `patchouli:image` 引用经脚本核对无缺键、无缺图、无错分类。
+- `runData` 写入 15 个文件，`build` 通过，`runGameTestServer` 231/231 通过。客户端实机右键开书，落地页、类别页、spotlight 页与截图页渲染正常。
+- **建议提交信息：** `feat(patchouli): 搬运帕秋莉宝典《旧梦归引》`
+
 ### 批次 137：搬运调试工具（2026-11-19，T21/T22 部分）
 
 - 追忆创造栏新增 `pasterdream:debug_tool`。对空气、方块和实体右键分别打开对应编辑器。物品编辑支持数据组件 SNBT，方块和实体编辑保留 SNBT，另含容器槽、流体槽和 FE 能力操作。

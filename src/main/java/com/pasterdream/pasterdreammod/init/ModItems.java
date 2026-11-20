@@ -2,8 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemNameBlockItem;
-import com.pasterdream.pasterdreammod.world.item.debugsword.DebugSwordItem;
-import com.pasterdream.pasterdreammod.world.item.debugtool.DebugToolItem;
+import com.pasterdream.pasterdreammod.world.item.debugsword.DebugSwordItem;import com.pasterdream.pasterdreammod.world.item.debugtool.DebugToolItem;
 import com.pasterdream.pasterdreammod.world.item.EmptyVesselItem;
 import com.pasterdream.pasterdreammod.world.item.OriginDreamDictionaryItem;
 import com.pasterdream.pasterdreammod.world.item.curio.MagnifyingGlassOfSherryItem;
@@ -24,6 +23,7 @@ import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.item.NightmareFuelItem;
 import com.pasterdream.pasterdreammod.world.item.PaleBoneneedleItem;
 import com.pasterdream.pasterdreammod.world.item.RootsPaleBoneneedleItem;
+import com.pasterdream.pasterdreammod.world.item.SeniorsDreamBookItem;
 import com.pasterdream.pasterdreammod.world.item.curio.PaleBoneNeedleTalismanItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
@@ -1997,6 +1997,32 @@ public class ModItems {
             () -> new StoryProgressItem(new Item.Properties().stacksTo(64), StoryProgressItem.DYEDREAM));
     public static final DeferredItem<Item> DREAM_NOTES_BOOK = ITEMS.register("dream_notes_book",
             () -> new DreamNotesBookItem(new Item.Properties()));
+
+    // 帕秋莉宝典 - buff图标物品
+    public static final DeferredItem<Item> REST_ICON = ITEMS.register("rest_icon",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CHEER_UP_ICON = ITEMS.register("cheer_up_icon",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LETHARGY_ICON = ITEMS.register("lethargy_icon",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> TRANCE_ICON = ITEMS.register("trance_icon",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> INSANE_ICON = ITEMS.register("insane_icon",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CHAOS_ICON = ITEMS.register("chaos_icon",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DREAM_WISH_ICON = ITEMS.register("dream_wish_icon",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> COOK_ICON = ITEMS.register("cook_icon",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_SILENCE_ICON = ITEMS.register("shadow_silence_icon",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BIND_ICON = ITEMS.register("bind_icon",
+            () -> new Item(new Item.Properties()));
+
+    // 帕秋莉宝典
+    public static final DeferredItem<Item> SENIORS_DREAM_BOOK = ITEMS.register("seniors_dream_book",
+            () -> new SeniorsDreamBookItem(new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
