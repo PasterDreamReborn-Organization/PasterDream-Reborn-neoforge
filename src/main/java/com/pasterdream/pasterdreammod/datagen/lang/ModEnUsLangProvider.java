@@ -38,6 +38,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.rare_loot_table", "§aRare Loot Table：%s，Weight: %d，Luck Multiplier Increase: %f");
         add("tooltip.pasterdream.legend_loot_table", "§dLegend Loot Table：%s，Weight: %d，Luck Multiplier Increase: %f");
         add("tooltip.pasterdream.not_have_loot_table", "§cNot Have Loot Table");
+        add("tooltip.pasterdream.按住[Shift]查看战利品列表", "Press [Shift] to view Loottable List");
         add("tooltip.pasterdream.按住Shift+右键点击打开的融梦水晶箱可复位（写入此物品NBT中包含的战利品列表）", "§7Press Shift And Right Mouse Button Click Opened Melt Dream Crystal Chest Can Reset(Write LootTable From NBT Which In This Item)");
         add("tooltip.pasterdream.reset_cost_melt_dream_energy", "Reset Cost %f Melt Dream Energy");
         add("tooltip.pasterdream.melt_dream_crystal_chest.reset_cooldown", "Reset cooldown remaining: %s");
@@ -87,7 +88,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.NAMELESS_SPAWN_EGG.get(), "Nameless Spawn Egg");
         add(ModEntities.TERRORBEAK.get(), "Terrorbeak");
         add(ModEntities.CRAZY_TERRORBEAK.get(), "Crazy Terrorbeak");
-        add(ModEntities.WEAKENESS_TERRORBEAK.get(), "Weakness Terrorbeak");
+        add(ModEntities.WEAKNESS_TERRORBEAK.get(), "Weakness Terrorbeak");
         add(ModEntities.SHADOW_HAND.get(), "Shadow Hand");
         add(ModEntities.SHADOW_GOLEM.get(), "Shadow Golem");
         add(ModEntities.SHADOW_GHOST.get(), "Shadow Ghost");
@@ -1712,7 +1713,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), "Model Break Particle Provider Block 3");
         add(ModItems.TERRORBEAK_SPAWN_EGG.get(), "Terrorbeak Spawn Egg");
         add(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get(), "Crazy Terrorbeak Spawn Egg");
-        add(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get(), "Weakness Terrorbeak Spawn Egg");
+        add(ModItems.WEAKNESS_TERRORBEAK_SPAWN_EGG.get(), "Weakness Terrorbeak Spawn Egg");
         add(ModItems.SHADOW_HAND_SPAWN_EGG.get(), "Shadow Hand Spawn Egg");
         add(ModItems.SHADOW_GOLEM_SPAWN_EGG.get(), "Shadow Golem Spawn Egg");
         add(ModItems.SHADOW_GHOST_SPAWN_EGG.get(), "Shadow Ghost Spawn Egg");
@@ -1768,7 +1769,31 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.ASH_BONE_WING_SPAWN_EGG.get(), "Ash Bone Wing Spawn Egg");
         add(ModEntities.JELLYFISH.get(), "Jellyfish");
         add(ModItems.JELLYFISH_SPAWN_EGG.get(), "Jellyfish Spawn Egg");
-        add(ModEntities.LIGHTNING_PROJECTILE.get(), "Thundercloud");
+        add(ModEntities.LIGHTNING_PROJECTILE.get(), "Lightning Bolt");
+        add(ModEntities.THROWN_PINK_EGG.get(), "Thrown Pink Egg");
+        add(ModEntities.THROWN_POTION_BOTTLE.get(), "Thrown Potion Bottle");
+        add(ModEntities.REJUVENATION_BOTTLE_ENTITY.get(), "Rejuvenation Bottle");
+        add(ModEntities.POTION_BOTTLE_EFFECT_ENTITY.get(), "Potion Bottle Effect");
+        add(ModEntities.PEBBLE_PROJECTILE.get(), "Pebble");
+        add(ModEntities.GOLDEN_FOX_FIREBALL.get(), "Golden Fox Fireball");
+        add(ModEntities.BONE_WING_FIRE_BALL_PROJECTILE.get(), "Bone Wing Fireball");
+        add(ModEntities.SQUEAL_WAVE_PROJECTILE.get(), "Squeal Wave");
+        add(ModEntities.WIND_ALLOY_LIGHTNING.get(), "Wind Alloy Lightning");
+        add(ModEntities.WIND_THUNDER_SPEAR.get(), "Windwreathed Thunder Spear");
+        add(ModEntities.TIDE_SWORD_PROJECTILE.get(), "Tide Sword");
+        add(ModEntities.KUSANAGI_VENOM_STINGER.get(), "Kusanagi Venom Stinger");
+        add(ModEntities.MELT_DREAM_ARROW.get(), "Melt Dream Arrow");
+        add(ModEntities.SHADOW_ALLOY_ARROW.get(), "Shadow Alloy Arrow");
+        add(ModEntities.FLUFFY_WIND_ARROW.get(), "Fluffy Wind Arrow");
+        add(ModEntities.TOXIC_SPORE_ARROW.get(), "Toxic Spore Arrow");
+        add(ModEntities.FRAGDREAM_ARROW.get(), "Fragdream Arrow");
+        add(ModEntities.MAGICAL_ARROW.get(), "Magical Arrow");
+        add(ModEntities.CHARGED_ARROW.get(), "Charged Arrow");
+        add(ModEntities.BLACKSTONE_ARROW.get(), "Blackstone Arrow");
+        add(ModEntities.CHAOTIC_ARROW.get(), "Chaotic Arrow");
+        add(ModEntities.BLAST_ARROW.get(), "Blast Arrow");
+        add(ModEntities.CONGEAL_WIND_ARROW.get(), "Congeal Wind Arrow");
+        add(ModEntities.DEW_ARROW.get(), "Dew Arrow");
         add(ModItems.WIND_TAILWIND_ICON.get(), "Tailwind Emblem");
         add(ModItems.WIND_DEADWIND_ICON.get(), "Headwind Emblem");
 
@@ -1863,6 +1888,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.dyedream_dust.description", "Seek its traces from this world");
         add("advancements.pasterdream.story.melt_dream_crystal_fragment.title", "Melted in Dream");
         add("advancements.pasterdream.story.melt_dream_crystal_fragment.description", "Collect a Melt Dream Crystal Fragment");
+        add("advancements.pasterdream.story.melt_dream_full_set.title", "Woven of Dream");
+        add("advancements.pasterdream.story.melt_dream_full_set.description", "Wear the full Melt Dream Crystal set to invoke Melt Dream Protection");
         add("advancements.pasterdream.story.glass_jar_of_dream_juice.title", "Where Lies the Sweet Dream");
         add("advancements.pasterdream.story.glass_jar_of_dream_juice.description", "Craft and drink Dream Juice, then journey to the Dyedream World in your sleep");
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.title", "Mixed Emotions");
@@ -1975,8 +2002,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.content.来往于梦", "To those who come later:\r\nThis writing records what I have seen and heard here, along with some speculations. I don't know what kind of world this truly is.\r\nBut (crossed-out text) \"miracle\" — that's the only word I can use to describe the world before my eyes.\r\nPink everywhere, an eternally bright sky, and darkness that breeds no loathsome evil — like a dream. No, perhaps it IS a dream.\r\nThough raised on materialist education, facing a scene completely inexplicable by existing knowledge, I can't help but ask:\r\nCould there really be some kind of deity in this world? (And would such a deity be the idealist \"god\", or a higher \"existence\"?)\r\nStill, there are no small number of doubts here; everything is relative.\r\nSince such a beautiful world exists, is there a place completely opposite to it? Moreover, this world has a strange sense of unreality everywhere — everything is so real, yet every place feels alienating. (Somewhat like a lucid dream?)\r\nWho created this miracle, and who sustains it? (Oversees it?)\r\n§m-Large tracts of crossed-out text-\r\nPerhaps someone once stayed here (settled?), given the presence of smokers, flower pots, and bookshelves — objects full of the flavor of life.\r\nBut the owner has likely been gone a long time (strangely, most items look brand new, and the flowers on the windowsill are still alive).\r\nAs for this world, for now let me call it a \"dream\".\r\nMore conclusions await further exploration to verify; perhaps I need a more stable way to travel between reality and this \"dream\".\r\nBy Liuhua");
         add("book.pasterdream.title.染梦世界树", "The Dyedream Worldtree");
         add("book.pasterdream.content.染梦世界树", "While gazing at the scenery from afar, I spotted this towering giant tree at the edge of my vision. Standing at its base and looking up, the trunk soared into the clouds, its canopy barely visible.\r\nDigging the soil around the roots, I found its roots don't extend very far — hard to explain its extraordinary height.\r\nThe winding trunk formed a natural staircase that made climbing fairly easy, though some parts still required free-climbing. When I reached the top of the branches, I could see a small hollow inside.\r\nA glowing white spring flowed from the trunk's side, anomalous in every way — but compared to the wonder of this world itself, this sight was hardly enough to astonish me.\r\nBack under the tree, I began to ponder what enabled this tree to form and grow normally. On this, I made a conjecture:\r\nThis world belongs to some kind of dream, and the dream energy in its atmosphere is unevenly distributed.\r\nJust as atmospheric phenomena cause weather changes, this energy dissolved in the dream's air — Melt Dream Energy — should also be unevenly distributed.\r\nIn regions where Melt Dream Energy settles more, the energy condenses into physical forms, creating continents, sky islands, trees, and everything else in this world. And where Melt Dream Energy gathers in large amounts within a small area, the result is a Melt Dream Crystal Chest — which also explains why energy escapes when you open one.\r\nExtrapolating from this theory, at the center of this dream world — where Melt Dream Energy is most abundant — a colossal structure should form; and the rich energy would manifest as countless Melt Dream Crystal Chests accumulated within it.\r\nAt that thought, I turned to look back toward the giant tree. It may well be the Worldtree of this dream world — a place of concentrated Melt Dream Energy, a dreamland holding countless Melt Dream Crystal Chests.\r\nI ought to climb that tree again and explore its inner structure. My earlier fruitless search must mean I missed something...\r\nBy Jixing");
-        add("book.pasterdream.title.代达罗斯之翼与浮空岛", "Daedalus' Wings and the Floating Island");
-        add("book.pasterdream.content.代达罗斯之翼与浮空岛", "Daedalus' Wings and the Floating Island\r\nShortly after I left that giant tree in disappointment, Qianye caught up with me and interrupted my plan to explore anew.\r\n\"See those islands floating in midair? I want to go up and see if there's any treasure there.\" I suggested to Qianye.\r\nUnexpectedly, Qianye doused me with cold water: \"I think you've lost your mind. We can't fly — how would we get up there?\"\r\n\"About that... I have a bold idea...\"\r\nUnder Qianye's incredulous gaze, I took out the feathers dropped by those pink chickens I'd picked up along the way. Then I melted down the candles I'd found into wax and stuck the feathers together with it, working hard to craft two pairs of wings.\r\n\"So you want to be Icarus.\"\r\n\"No, I think I'll be Daedalus. After all, the sun here won't melt this wax. And how would we know without trying? After all...\"\r\nThings went surprisingly smoothly — though by all logic, humans can't fly with such wings; yet somehow, the wind here seemed to carry the wings, letting us fly with no effort. We easily reached the floating island I'd previously only been able to gaze up at.\r\nAfter landing on the island, Qianye dashed straight into that little house. I followed right behind, found a spot to sit down, and chatted with her.\r\n\r\n\"Come to think of it, this world is way beyond common sense.\" Qianye took off the wings and started checking whether they'd fallen apart.\r\n\r\n\"That's why I said this world must be some kind of dream or illusion.\r\nAfter all, I can't understand at all how these islands float in the air unharmed, and stay perfectly still when we step on them.\"\r\n\r\n\"This house too — though it obviously looks man-made, there are no signs of human habitation at all. Also, I still can't understand how this thing works.\" Qianye shook the wings in her hand and said.\r\n\"Don't be so serious — anything can happen in a dream.\"\r\nBy Jixing");
         add("book.pasterdream.title.星河果冻和浮空岛", "Galaxy Jelly and the Floating Island");
         add("book.pasterdream.content.星河果冻和浮空岛", "Galaxy Jelly and the Floating Island\r\nShortly after I left that giant tree in disappointment, Qianye caught up with me and interrupted my exploration plans. I think it's best to explain my plan to her now......\r\n\"See those islands floating in midair? I want to go up and see if there's any treasure there.\" I suggested to Qianye.\r\nUnexpectedly, Qianye doused me with cold water: \"I think you've lost your mind. We can't fly — how would we get up there?\"\r\n\"About that...... I have a bold idea......\"\r\nUnder Qianye's incredulous gaze, I took out the jelly-like items I'd found searching through some buildings in this world.\r\n\"What's this?\"\r\n\"It's something I found in those buildings. Eating it seems to make you shoot 'whoosh' into the sky, so......\"\r\nShe caught on quickly: \"So you want to be Armstrong?\"\r\n\"No, I'm at most Wan Hu — this is just about reaching a floating island. Come on, let's try.\"\r\nThings went surprisingly smoothly — though in reality no such jelly exists that launches you into the sky when eaten, thank goodness for it; we easily flew to the floating island I'd previously only been able to gaze up at.\r\n-After landing on the island, Qianye dashed straight into that little house. I followed right behind, found a spot to sit down, and chatted with her.\r\n\"Come to think of it, this world is way beyond common sense.\" Qianye sat down too and began tidying her windblown hair.\r\n\"That's why I said this world must be some kind of dream or illusion. After all, I can't understand at all how these islands float in the air unharmed, and stay perfectly still when we step on them.\"\r\n\"This house too — though it obviously looks man-made, there are no signs of human habitation at all. Also, I still can't understand how this jelly lets us fly when we eat it.\"\r\n\"Don't be so serious — anything can happen in a dream.\"\r\nBy Jixing");
         add("book.pasterdream.title.融梦釜与融梦炼金术", "The Dream Cauldron and Melt Dream Alchemy");
@@ -2110,6 +2135,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.shadow_prisoner.description", "Repair the Shadow Dungeon Portal and enter the Shadow Dungeon");
         add("advancements.pasterdream.story.defeat_aaroncos.title", "Shadow and Dust");
         add("advancements.pasterdream.story.defeat_aaroncos.description", "Defeat Aaroncos's Touch");
+        add("advancements.pasterdream.story.shadow_alloy_full_set.title", "Cloaked in Shadow");
+        add("advancements.pasterdream.story.shadow_alloy_full_set.description", "Wear the full Shadow Alloy set to invoke the Dark Watch");
         add("advancements.pasterdream.story.shadow_intrude_complete.title", "Shadow Intrusion");
         add("advancements.pasterdream.story.shadow_intrude_complete.description", "Complete the shadow intrusion event");
         add("message.pasterdream.broken_portal.too_low", "Shadow Dungeon Portal's Y-axis height is too low, Shadow Dungeon Structure Can't Spawn.");
@@ -2254,6 +2281,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.lightning_in_bottle.description", "Craft a Lightning Potion Bottle");
         add("advancements.pasterdream.story.summon_wind_knight.title", "The Wind-Breaking Knight");
         add("advancements.pasterdream.story.summon_wind_knight.description", "Summon the Wind-Breaking Knight");
+        add("advancements.pasterdream.story.fluffy_wind_alloy_full_set.title", "Gale-Borne");
+        add("advancements.pasterdream.story.fluffy_wind_alloy_full_set.description", "Wear the full Fluffy Wind Alloy set to invoke the Boon of Wind and Thunder");
         add("advancements.pasterdream.story.pulse_wind_runner_crystal.title", "Pulse of the Wind Core");
         add("advancements.pasterdream.story.pulse_wind_runner_crystal.description", "Obtain a Pulse Wind Runner Crystal");
         add("advancements.pasterdream.story.wingless_bird.title", "The Wingless Bird Takes Flight");

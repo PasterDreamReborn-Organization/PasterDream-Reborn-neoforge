@@ -15,6 +15,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.OpenWindJourneyCryst
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.SummonWindKnightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.WearingArmorSetTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.WindFlightTrigger;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModDataComponents;
@@ -352,7 +353,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
                             "story/dyedream_dust"), existingFileHelper);
 
             // ========== 把梦捧在手心里子进度：熔融于梦 ==========
-            Advancement.Builder.advancement()
+            AdvancementHolder meltDreamFragment = Advancement.Builder.advancement()
                     .parent(dyedreamDust)
                     .display(
                             ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(),
@@ -367,6 +368,23 @@ public class ModAdvancementProvider extends AdvancementProvider {
                     .rewards(AdvancementRewards.Builder.experience(50))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/melt_dream_crystal_fragment"), existingFileHelper);
+
+            // ========== 熔融于梦子进度：织梦为铠（穿戴全套融梦水晶装备）==========
+            Advancement.Builder.advancement()
+                    .parent(meltDreamFragment)
+                    .display(
+                            ModItems.MELT_DREAM_CHESTPLATE.get(),
+                            Component.translatable("advancements.pasterdream.story.melt_dream_full_set.title"),
+                            Component.translatable("advancements.pasterdream.story.melt_dream_full_set.description"),
+                            null,
+                            AdvancementType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("wearing_full_set", WearingArmorSetTrigger.TriggerInstance.wearing(
+                            WearingArmorSetTrigger.ArmorSet.MELT_DREAM))
+                    .rewards(AdvancementRewards.Builder.experience(50))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/melt_dream_full_set"), existingFileHelper);
 
             // ========== 染梦世界子进度：百味杂陈 ==========
             Advancement.Builder.advancement()
@@ -780,6 +798,23 @@ public class ModAdvancementProvider extends AdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/defeat_aaroncos"), existingFileHelper);
 
+            // ========== 吹影镂尘子进度：与影同袍（穿戴全套暗影合金装备）==========
+            Advancement.Builder.advancement()
+                    .parent(defeatAaroncos)
+                    .display(
+                            ModItems.SHADOW_ALLOY_CHESTPLATE.get(),
+                            Component.translatable("advancements.pasterdream.story.shadow_alloy_full_set.title"),
+                            Component.translatable("advancements.pasterdream.story.shadow_alloy_full_set.description"),
+                            null,
+                            AdvancementType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("wearing_full_set", WearingArmorSetTrigger.TriggerInstance.wearing(
+                            WearingArmorSetTrigger.ArmorSet.SHADOW_ALLOY))
+                    .rewards(AdvancementRewards.Builder.experience(100))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_alloy_full_set"), existingFileHelper);
+
             // ========== 灯影世界剧情线（纯逻辑进度，不在进度界面显示）==========
             AdvancementHolder depositionShadow = Advancement.Builder.advancement()
                     .parent(enterLampShadowWorld)
@@ -985,6 +1020,23 @@ public class ModAdvancementProvider extends AdvancementProvider {
                             SummonWindKnightTrigger.TriggerInstance.summoned())
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/summon_wind_knight"), existingFileHelper);
+
+            // ========== 破风的骑士子进度：御风成甲（穿戴全套萦风合金装备）==========
+            Advancement.Builder.advancement()
+                    .parent(windKnightSummon)
+                    .display(
+                            ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get(),
+                            Component.translatable("advancements.pasterdream.story.fluffy_wind_alloy_full_set.title"),
+                            Component.translatable("advancements.pasterdream.story.fluffy_wind_alloy_full_set.description"),
+                            null,
+                            AdvancementType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("wearing_full_set", WearingArmorSetTrigger.TriggerInstance.wearing(
+                            WearingArmorSetTrigger.ArmorSet.FLUFFY_WIND_ALLOY))
+                    .rewards(AdvancementRewards.Builder.experience(75))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/fluffy_wind_alloy_full_set"), existingFileHelper);
 
             // ========== 破风骑士子进度：脉冲风行者水晶 ==========
             // 获得脉冲风行者水晶

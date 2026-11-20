@@ -91,7 +91,7 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
         );
 
         consumer.accept(
-                ModEntities.WEAKENESS_TERRORBEAK.get().getDefaultLootTable(),
+                ModEntities.WEAKNESS_TERRORBEAK.get().getDefaultLootTable(),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))

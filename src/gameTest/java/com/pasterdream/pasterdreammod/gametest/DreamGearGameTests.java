@@ -1,11 +1,13 @@
 package com.pasterdream.pasterdreammod.gametest;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableRecipe;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTest;
@@ -13,7 +15,11 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -138,6 +144,80 @@ public class DreamGearGameTests {
         helper.assertTrue(lightMembrane.value().assemble(lightInput, helper.getLevel().registryAccess())
                         .is(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get()),
                 "萤火光合幻翼膜配方错误");
+        helper.succeed();
+    }
+
+    private static void equipQymSet(Player player) {
+        player.setItemSlot(EquipmentSlot.HEAD, ModItems.QYM_CAT_EARS.toStack());
+        player.setItemSlot(EquipmentSlot.CHEST, ModItems.QYM_WIND_SHIRT.toStack());
+        player.setItemSlot(EquipmentSlot.LEGS, ModItems.QYM_SWAYING_SKIRT.toStack());
+        player.setItemSlot(EquipmentSlot.FEET, ModItems.QYM_CLOUD_BOOTS.toStack());
+    }
+
+    private static Player qymAttacker(GameTestHelper helper) {
+        var attacker = helper.makeMockPlayer(GameType.SURVIVAL);
+        equipQymSet(attacker);
+        // 让 20tick 冷却处于就绪状态，避免测试开始时世界时间小于冷却值。
+        attacker.getPersistentData().putLong("pasterdream.qym_magic_last",
+                helper.getLevel().getGameTime() - 20);
+        return attacker;
+    }
+
+    private static Mob spawnArmorlessZombie(GameTestHelper helper) {
+        var zombie = helper.spawnWithNoFreeWill(EntityType.ZOMBIE, new BlockPos(1, 2, 1));
+        // 僵尸自带 2 点护甲，会按护甲公式减免主攻击；清零以便断言精确数值。
+        zombie.getAttribute(Attributes.ARMOR).setBaseValue(0.0);
+        zombie.setHealth(zombie.getMaxHealth());
+        return zombie;
+    }
+
+    @GameTest(template = "empty")
+    public static void qymMagicBonusDamage(GameTestHelper helper) {
+        var attacker = qymAttacker(helper);
+        var zombie = spawnArmorlessZombie(helper);
+
+        helper.assertTrue(zombie.hurt(helper.getLevel().damageSources().playerAttack(attacker), 4.0F),
+                "主攻击应命中僵尸");
+        // 20 - 4（主攻击）- 1（20 点生命值的 5%）= 15；主攻击的结算不应被附伤吃掉。
+        helper.assertTrue(Math.abs(zombie.getHealth() - 15.0F) < 1.0E-4F,
+                "附伤应额外造成目标当前生命值5%的魔法伤害，实际生命值: " + zombie.getHealth());
+
+        zombie.invulnerableTime = 0;
+        zombie.lastHurt = 0.0F;
+        helper.assertTrue(zombie.hurt(helper.getLevel().damageSources().playerAttack(attacker), 4.0F),
+                "冷却内的第二击应命中");
+        helper.assertTrue(Math.abs(zombie.getHealth() - 11.0F) < 1.0E-4F,
+                "20tick 冷却内不应再次附加魔法伤害，实际生命值: " + zombie.getHealth());
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void qymMagicBonusAppliesMultiplierOnce(GameTestHelper helper) {
+        var attacker = qymAttacker(helper);
+        var magicRate = attacker.getAttribute(ModAttributes.MAGIC_DAMAGE_RATE);
+        helper.assertTrue(magicRate != null, "玩家应带有魔法伤害倍率属性");
+        magicRate.setBaseValue(2.0);
+
+        var zombie = spawnArmorlessZombie(helper);
+        helper.assertTrue(zombie.hurt(helper.getLevel().damageSources().playerAttack(attacker), 4.0F),
+                "主攻击应命中僵尸");
+        // 20 - 4 - 1×2（倍率只应生效一次）= 14；若被平方则为 12。
+        helper.assertTrue(Math.abs(zombie.getHealth() - 14.0F) < 1.0E-4F,
+                "魔法伤害倍率应只应用一次，实际生命值: " + zombie.getHealth());
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void qymMagicBonusRequiresFullSet(GameTestHelper helper) {
+        var attacker = helper.makeMockPlayer(GameType.SURVIVAL);
+        attacker.getPersistentData().putLong("pasterdream.qym_magic_last",
+                helper.getLevel().getGameTime() - 20);
+
+        var zombie = spawnArmorlessZombie(helper);
+        helper.assertTrue(zombie.hurt(helper.getLevel().damageSources().playerAttack(attacker), 4.0F),
+                "主攻击应命中僵尸");
+        helper.assertTrue(Math.abs(zombie.getHealth() - 16.0F) < 1.0E-4F,
+                "未穿满琴雨梦套装时不应附加魔法伤害，实际生命值: " + zombie.getHealth());
         helper.succeed();
     }
 }

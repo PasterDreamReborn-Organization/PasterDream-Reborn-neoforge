@@ -5,6 +5,46 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 144：移植结构放置不保留液体 mixin（2026-11-20，T16-B / T18-B 部分）
+
+- 移植上游 `StructureTemplateMixin`：`StructureTemplate#placeInWorld` 期间强制「不给可含水方块灌水」，水下放置的结构（梦境实验室、暗影地牢等）不再被水填满，即「删除结构内部的水和含水方块中的水」。
+- 1.20.1 的 `StructurePlaceSettings#shouldKeepLiquids()` 在 1.21.1 拆成 `LiquidSettings`，语义相反的 `shouldApplyWaterlogging()` 默认 `APPLY_WATERLOGGING`；mixin 目标随之改为 `shouldApplyWaterlogging()Z`，取值反转由返回 false 承担，`ThreadLocal` 守卫与上游一致。
+- 未改用结构 JSON 的 `liquid_settings`：它只覆盖 jigsaw 结构且需逐文件改数据，mixin 覆盖结构方块、`/place template`、蓝图等所有 `placeInWorld` 调用点。
+- 新增 `StructureWaterlogGameTests`：水中放置 1×1 橡木楼梯模板，断言楼梯未含水、无流体状态、调用方 settings 未被改写。
+- `compileJava`、`compileGameTestJava`、`runData`（0 个文件）、`build`、`runGameTestServer`（244/244）通过；客户端实机待验收。
+- **建议提交信息：** `feat(sync): 移植结构放置不保留液体 mixin`
+
+### 批次 143：同步上游 #1331 穿戴全套护甲触发器与进度（2026-11-20，T19/T20 部分）
+
+- 新增自定义触发器 `pasterdream:wearing_armor_set`（`advancement/critereon/WearingArmorSetTrigger.java`）：进度 JSON 用 `conditions.set` 选 `melt_dream`/`shadow_alloy`/`fluffy_wind_alloy`，判定直接复用三套护甲既有的 `hasFullSet`；`advancement/ArmorSetAdvancementHandler.java` 在换装（`LivingEquipmentChangeEvent` 且 `getSlot().isArmor()`）、登录、重生时触发，覆盖「上线即穿齐」。触发器登记在 `ModCriteriaTriggers.WEARING_ARMOR_SET`。
+- 1.21.1 的 `SimpleCriterionTrigger` 只认 `codec()`：上游 `createInstance(JsonObject…)`/`serializeToJson` 改为 `TriggerInstance.CODEC`（`player` + `set`），套装以字符串 id 经 `Codec.STRING.comapFlatMap` 编解码，未知 id 报 `Unknown armor set`。
+- 三条挑战进度落到 `melt_dream_crystal_fragment`/`defeat_aaroncos`/`summon_wind_knight` 之下，criterion 均为 `wearing_full_set`，经验 50/100/75：`story/melt_dream_full_set`（织梦为铠）、`story/shadow_alloy_full_set`（与影同袍）、`story/fluffy_wind_alloy_full_set`（御风成甲），中英各 6 条词条随 Provider 生成。熔融于梦块原匿名 Builder 提升为 `AdvancementHolder meltDreamFragment`（1.21 `save()` 返回 `AdvancementHolder`）。
+- 文档同步上游两条说明：`advancement-notes` skill 记「别用 `inventory_changed` + `requirements(AND)` 判穿齐」与触发器事件入口索引；`程序规范文档` 记 `write`/`edit` 工具的行尾风险。上游 `document/design/新内容列表.md` 在本仓库不存在，未新建。
+- 新增 `WearingArmorSetGameTests` 三项用例；`compileJava`、`runData`、`compileGameTestJava`、`build`、`runGameTestServer`（243/243）通过；客户端实机待验收。
+- **建议提交信息：** `feat(sync): 同步上游 #1331 穿戴全套护甲触发器与进度`
+
+### 批次 142：修复琴雨梦套装魔法伤害附伤不生效（2026-11-20，缺陷修复）
+
+- 琴雨梦套装「攻击附带目标当前生命值 5% 的魔法伤害」此前只在 PvP 生效：附伤块写在只处理玩家受击的 `LivingIncomingDamageEvent` 里，攻击僵尸等普通生物时不触发。现移入 `QymArmorEvents.onLivingDamage(LivingDamageEvent.Pre)`，对任意受击者生效。
+- 同一处修复附带解决两个结算问题：附伤改写受击者无敌帧与 `lastHurt`，导致外层主攻击只结算 `主攻击 - 附伤`（主攻击被吃掉）；`indirectMagic` 的倍率已由 `MagicDamageHandler` 应用，原实现又手动乘一次，加成被平方。现追加前后保存并还原 `invulnerableTime`/`lastHurt`，且不再手动乘倍率。
+- 5% 数值与 20 tick 冷却（`pasterdream.qym_magic_last`）不变；`CurioPassiveHandler` 只删除失效的附伤块与不再使用的导入，其余被动未动。
+- 新增 `DreamGearGameTests` 三项用例；`compileJava`、`runData`（0 个文件）、`build`、`runGameTestServer`（240/240）通过；客户端实机待验收。
+- **建议提交信息：** `fix(qym): 修复琴雨梦套装魔法伤害附伤不生效`
+
+### 批次 141：实体 ID 纠错与旧 ID 配置兼容层（2026-11-20，T19/T20 部分）
+
+- `weakeness_terrorbeak` 修正为 `weakness_terrorbeak`，`projectile_bone_wing_fire_ball_projectile` 精简为 `bone_wing_fire_ball_projectile`，刷怪蛋同步为 `weakness_terrorbeak_spawn_egg`；注册、渲染器、创造栏、实体标签、掉落表、模型、中英语言与测试一并更新。
+- 新增 `compat/LegacyIdRemapper`，`Config` 实体列表解析与 `ShadowDifficultyHelper.spawnFromEntry` 自动把旧配置 ID 映射为新 ID，旧存档内实体不迁移。
+- `compileJava`、`runData`、`build`、`runGameTestServer` 通过；客户端实机待验收。
+
+### 批次 140：同步上游 #1314–#1330 可移植改动（2026-11-20，T19/T20 部分）
+
+- 补齐 24 条实体本地化（此前只有物品名），雷电箭与引潮剑按上游改名；融梦水晶箱重置工具改为按住 Shift 查看战利品列表；秋月绫音灵魂石激活播放附魔台音效。
+- 染梦世界拦截主世界雷暴镜像刷出的陷阱骷髅马；三种染梦晶芽掉落受时运影响；破风幕帐按「上一刻是否在内」计数、加 20 刻冷却并仅鞘翅滑翔计数；创造模式可直接穿越染梦裂隙；移除「代达罗斯之翼与浮空岛」笔记。
+- 未整包回退 #1322（保留本地裂隙叙事改进）；#1329 因物品未迁入暂缓；#1319 实体 ID 纠错单开批次；#1325/#1327 不适用（本仓库无授权名单文件）。
+- `runData`、`build`、`runGameTestServer`（234/234，新增 3 项幕帐用例）通过；客户端实机待验收。
+- **建议提交信息：** `feat(sync): 同步上游 #1314–#1330 可移植改动`
+
 ### 批次 139：规范调整——客户端验证交由用户（2026-11-20，流程）
 
 - `runClient` 实机验证（画面、交互、配方与音效）改由用户执行，代理不启动客户端，只交付待验收项、复现步骤与自动检查结果。`AGENTS.md`「实现与验证」、[移植总纲](document/reference/移植总纲.md)、[迁移任务线](document/reference/迁移任务线.md) 与 [程序规范文档](document/rule/program/程序规范文档.md) 的审核流程同步此约定。

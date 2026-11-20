@@ -191,18 +191,22 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(Items.AIR)));
         dropSelf(ModBlocks.PINK_SHROOMLIGHT.get());
         add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), block -> createSilkTouchOnlyTable(block));
+        // 晶芽掉落受时运影响（与原版紫水晶簇一致，ore_drops 倍率）
         add(ModBlocks.SMALL_DYEDREAM_BUD.get(),
                 block -> createSilkTouchDispatchTable(block,
                         applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_BUD_NUGGET.get())
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
         add(ModBlocks.MEDIUM_DYEDREAM_BUD.get(),
                 block -> createSilkTouchDispatchTable(block,
                         applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_BUD_NUGGET.get())
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))));
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
         add(ModBlocks.LARGE_DYEDREAM_BUD.get(),
                 block -> createSilkTouchDispatchTable(block,
                         applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_BUD_NUGGET.get())
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))))));
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
         dropSelf(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
         dropSelf(ModBlocks.DYEDREAM_BUD_BLOCK.get());
         dropSelf(ModBlocks.DYEDREAM_BUD_BRICKS.get());

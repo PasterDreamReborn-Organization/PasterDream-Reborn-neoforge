@@ -70,6 +70,19 @@ public class DyedreamBudGameTests {
             helper.assertTrue(silkDrops.size() == 1 && silkDrops.getFirst().is(block.asItem()),
                     "晶芽精准采集应掉落自身");
         }
+
+        // 晶芽掉落受时运影响：时运 III 应能超过基础上限（大型晶芽基础 2~4）
+        var fortune = iron.copy();
+        fortune.enchant(enchantments.getOrThrow(Enchantments.FORTUNE), 3);
+        helper.getLevel().setBlock(pos, ModBlocks.LARGE_DYEDREAM_BUD.get().defaultBlockState(), 3);
+        var sawBonus = false;
+        for (int i = 0; i < 300 && !sawBonus; i++) {
+            var drops = Block.getDrops(ModBlocks.LARGE_DYEDREAM_BUD.get().defaultBlockState(), helper.getLevel(), pos,
+                    null, null, fortune);
+            sawBonus = !drops.isEmpty() && drops.getFirst().is(ModItems.DYEDREAM_BUD_NUGGET.get())
+                    && drops.getFirst().getCount() > 4;
+        }
+        helper.assertTrue(sawBonus, "时运应提高大型晶芽的掉落数量");
         helper.succeed();
     }
 

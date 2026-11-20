@@ -5,7 +5,6 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.helper.DreamDimensionHelper;
 import com.pasterdream.pasterdreammod.helper.GameModeHelper;
-import com.pasterdream.pasterdreammod.helper.MagicDamageHelper;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import com.pasterdream.pasterdreammod.helper.TeleportHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
@@ -171,21 +170,6 @@ public class CurioPassiveHandler {
                 .orElse(false);
         if (hasCharm) {
             event.setAmount(event.getAmount() * 0.8F);
-        }
-
-        // QYM套装：攻击附带目标当前生命值5%的魔法伤害（20tick冷却）
-        if (event.getSource().getEntity() instanceof Player attacker
-                && event.getSource().getEntity() != event.getEntity()
-                && QymCatEarsItem.hasFullSet(attacker)) {
-            long gameTime = attacker.level().getGameTime();
-            long lastProc = attacker.getPersistentData().getLong("pasterdream.qym_magic_last");
-            if (gameTime - lastProc >= 20) {
-                attacker.getPersistentData().putLong("pasterdream.qym_magic_last", gameTime);
-                LivingEntity target = event.getEntity();
-                float magicDamage = target.getHealth() * 0.05F * MagicDamageHelper.getMagicDamageMultiplier(attacker);
-                target.invulnerableTime = 0;
-                target.hurt(target.level().damageSources().indirectMagic(attacker, attacker), magicDamage);
-            }
         }
 
         // 致死于伤害判定（event.getAmount() 已计算抗性）

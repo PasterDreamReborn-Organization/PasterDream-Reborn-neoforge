@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.pasterdream.pasterdreammod.compat.LegacyIdRemapper;
 import com.pasterdream.pasterdreammod.helper.BossLimitProfile;
 import com.pasterdream.pasterdreammod.helper.BossLimitValues;
 import net.minecraft.core.Holder;
@@ -111,7 +112,7 @@ public class Config {
     public static final ModConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_MEDIUM_ENTITIES = BUILDER
             .comment("不振区间可生成的实体及权重，默认虚弱恐怖尖喙:0.15, 暗影之手:0.3")
             .defineListAllowEmpty("lowSanSpawnMediumEntities",
-                    List.of("pasterdream:weakeness_terrorbeak:0.15", "pasterdream:shadow_hand:0.3"),
+                    List.of("pasterdream:weakness_terrorbeak:0.15", "pasterdream:shadow_hand:0.3"),
                     obj -> obj instanceof String);
 
     // 低理智区间 (sanTranceLowerThreshold <= ratio < sanLethargyLowerThreshold)
@@ -122,7 +123,7 @@ public class Config {
     public static final ModConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_LOW_ENTITIES = BUILDER
             .comment("恍惚区间可生成的实体及权重，默认虚弱恐怖尖喙:0.4, 暗影之手:0.2")
             .defineListAllowEmpty("lowSanSpawnLowEntities",
-                    List.of("pasterdream:weakeness_terrorbeak:0.4", "pasterdream:shadow_hand:0.2",
+                    List.of("pasterdream:weakness_terrorbeak:0.4", "pasterdream:shadow_hand:0.2",
                             "pasterdream:terrorbeak:0.1"),
                     obj -> obj instanceof String);
 
@@ -135,7 +136,7 @@ public class Config {
             .comment("极低理智区间可生成的实体及权重，默认疯狂恐怖尖喙:0.25, 恐怖尖喙:0.2, 虚弱恐怖尖喙:0.15, 暗影之手:0.15")
             .defineListAllowEmpty("lowSanSpawnCriticalEntities",
                     List.of("pasterdream:crazy_terrorbeak:0.25", "pasterdream:terrorbeak:0.2",
-                            "pasterdream:weakeness_terrorbeak:0.15", "pasterdream:shadow_hand:0.15"),
+                            "pasterdream:weakness_terrorbeak:0.15", "pasterdream:shadow_hand:0.15"),
                     obj -> obj instanceof String);
 
     public static final ModConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_HIGH_THRESHOLDS = BUILDER
@@ -613,6 +614,7 @@ public class Config {
         for (String idStr : IRIDESCENT_FAIRY_JADE_PROJECTILE_WHITELIST.get()) {
             ResourceLocation id = ResourceLocation.tryParse(idStr);
             if (id != null) {
+                id = LegacyIdRemapper.entityType(id);
                 BuiltInRegistries.ENTITY_TYPE.getOptional(id).ifPresent(list::add);
             }
         }
@@ -625,6 +627,7 @@ public class Config {
             if (id == null) {
                 continue;
             }
+            id = LegacyIdRemapper.entityType(id);
             if (BuiltInRegistries.ENTITY_TYPE.getOptional(id).map(entityType -> entityType == type).orElse(false)) {
                 return true;
             }
@@ -673,6 +676,7 @@ public class Config {
             if (id == null) {
                 continue;
             }
+            id = LegacyIdRemapper.entityType(id);
             if (BuiltInRegistries.ENTITY_TYPE.getOptional(id).map(entityType -> entityType == type).orElse(false)) {
                 return true;
             }
