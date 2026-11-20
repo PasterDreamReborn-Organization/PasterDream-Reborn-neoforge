@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 143：同步上游 #1331 穿戴全套护甲触发器与进度（2026-11-20，T19/T20 部分）
+
+- 新增自定义触发器 `pasterdream:wearing_armor_set`（`advancement/critereon/WearingArmorSetTrigger.java`）：进度 JSON 用 `conditions.set` 选 `melt_dream`/`shadow_alloy`/`fluffy_wind_alloy`，判定直接复用三套护甲既有的 `hasFullSet`；`advancement/ArmorSetAdvancementHandler.java` 在换装（`LivingEquipmentChangeEvent` 且 `getSlot().isArmor()`）、登录、重生时触发，覆盖「上线即穿齐」。触发器登记在 `ModCriteriaTriggers.WEARING_ARMOR_SET`。
+- 1.21.1 的 `SimpleCriterionTrigger` 只认 `codec()`：上游 `createInstance(JsonObject…)`/`serializeToJson` 改为 `TriggerInstance.CODEC`（`player` + `set`），套装以字符串 id 经 `Codec.STRING.comapFlatMap` 编解码，未知 id 报 `Unknown armor set`。
+- 三条挑战进度落到 `melt_dream_crystal_fragment`/`defeat_aaroncos`/`summon_wind_knight` 之下，criterion 均为 `wearing_full_set`，经验 50/100/75：`story/melt_dream_full_set`（织梦为铠）、`story/shadow_alloy_full_set`（与影同袍）、`story/fluffy_wind_alloy_full_set`（御风成甲），中英各 6 条词条随 Provider 生成。熔融于梦块原匿名 Builder 提升为 `AdvancementHolder meltDreamFragment`（1.21 `save()` 返回 `AdvancementHolder`）。
+- 文档同步上游两条说明：`advancement-notes` skill 记「别用 `inventory_changed` + `requirements(AND)` 判穿齐」与触发器事件入口索引；`程序规范文档` 记 `write`/`edit` 工具的行尾风险。上游 `document/design/新内容列表.md` 在本仓库不存在，未新建。
+- 新增 `WearingArmorSetGameTests` 三项用例；`compileJava`、`runData`、`compileGameTestJava`、`build`、`runGameTestServer`（243/243）通过；客户端实机待验收。
+- **建议提交信息：** `feat(sync): 同步上游 #1331 穿戴全套护甲触发器与进度`
+
 ### 批次 142：修复琴雨梦套装魔法伤害附伤不生效（2026-11-20，缺陷修复）
 
 - 琴雨梦套装「攻击附带目标当前生命值 5% 的魔法伤害」此前只在 PvP 生效：附伤块写在只处理玩家受击的 `LivingIncomingDamageEvent` 里，攻击僵尸等普通生物时不触发。现移入 `QymArmorEvents.onLivingDamage(LivingDamageEvent.Pre)`，对任意受击者生效。

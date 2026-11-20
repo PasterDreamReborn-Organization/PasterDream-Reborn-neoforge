@@ -28,6 +28,7 @@ description: 新增/修改进度与梦笔记分发。覆盖进度定义、四种
 - 睡眠笔记（`dyedream_crack`）有门禁：玩家须先身体接触染梦裂隙方块（`entityInside()` → `first_contact_dyedream_crack`），首次睡觉不可直接触发
 - Frame 对照：task→`TASK`、goal→`GOAL`、challenge→`CHALLENGE`
 - 自定义触发器放 `advancement/critereon/`，注册在 `init/ModCriteriaTriggers.java`
+- **别用 `inventory_changed` + `.requirements(AND)` 判「集齐/穿齐一套」**：该判据逐条 latch 并持久化，AND 只表示「各件在任意时刻各拿到过」，不要求同时持有。要「此刻正穿着」语义就得自定义触发器，参考 `WearingArmorSetTrigger`（`pasterdream:wearing_armor_set`，JSON 用 `set` 字段选套装）+ `ArmorSetAdvancementHandler` 在换装/登录/重生时触发（登录/重生覆盖「上线即穿齐」）
 
 ---
 
@@ -40,6 +41,7 @@ description: 新增/修改进度与梦笔记分发。覆盖进度定义、四种
 | 笔记分发事件 | `event/PlayerEvents.java` → `onAdvancementEarned()` |
 | 自定义触发器 | `advancement/critereon/` |
 | 触发器注册 | `init/ModCriteriaTriggers.java` |
+| 触发器事件入口 | `advancement/ArmorSetAdvancementHandler.java` |
 | 语言文件 | `datagen/lang/ModZhCnLangProvider.java` / `ModEnUsLangProvider.java` |
 | 梦笔记物品 | `world/item/dreamnotes/` |
 

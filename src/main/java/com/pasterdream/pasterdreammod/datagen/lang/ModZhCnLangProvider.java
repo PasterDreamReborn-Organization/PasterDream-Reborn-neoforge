@@ -1888,6 +1888,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.dyedream_dust.description", "从这个世界探寻它的踪迹");
         add("advancements.pasterdream.story.melt_dream_crystal_fragment.title", "熔融于梦");
         add("advancements.pasterdream.story.melt_dream_crystal_fragment.description", "收集到一颗融梦水晶碎片");
+        add("advancements.pasterdream.story.melt_dream_full_set.title", "织梦为铠");
+        add("advancements.pasterdream.story.melt_dream_full_set.description", "穿戴全套融梦水晶装备，触发「融梦守护」");
         add("advancements.pasterdream.story.glass_jar_of_dream_juice.title", "好梦在何方");
         add("advancements.pasterdream.story.glass_jar_of_dream_juice.description", "制作并饮用梦境果汁，在睡梦中前往染梦之境");
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.title", "百味杂陈");
@@ -2134,6 +2136,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.shadow_prisoner.description", "修复暗影地牢传送门并进入暗影地牢");
         add("advancements.pasterdream.story.defeat_aaroncos.title", "吹影镂尘");
         add("advancements.pasterdream.story.defeat_aaroncos.description", "击败亚伦柯斯之触");
+        add("advancements.pasterdream.story.shadow_alloy_full_set.title", "与影同袍");
+        add("advancements.pasterdream.story.shadow_alloy_full_set.description", "穿戴全套暗影合金装备，触发「黑暗守望」");
         add("advancements.pasterdream.story.shadow_intrude_complete.title", "暗影入侵");
         add("advancements.pasterdream.story.shadow_intrude_complete.description", "完成暗影入侵事件");
         add("message.pasterdream.broken_portal.too_low", "暗影地牢传送门核心Y轴过低，地牢结构无法生成");
@@ -2278,6 +2282,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.lightning_in_bottle.description", "合成雷电药剂瓶");
         add("advancements.pasterdream.story.summon_wind_knight.title", "破风的骑士");
         add("advancements.pasterdream.story.summon_wind_knight.description", "召唤破风骑士");
+        add("advancements.pasterdream.story.fluffy_wind_alloy_full_set.title", "御风成甲");
+        add("advancements.pasterdream.story.fluffy_wind_alloy_full_set.description", "穿戴全套萦风合金装备，触发「风雷之佑」");
         add("advancements.pasterdream.story.pulse_wind_runner_crystal.title", "风核脉动");
         add("advancements.pasterdream.story.pulse_wind_runner_crystal.description", "获得脉冲风行者水晶");
         add("advancements.pasterdream.story.wingless_bird.title", "展翅的无翼鸟");
