@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 144：移植结构放置不保留液体 mixin（2026-11-20，T16-B / T18-B 部分）
+
+- 移植上游 `StructureTemplateMixin`：`StructureTemplate#placeInWorld` 期间强制「不给可含水方块灌水」，水下放置的结构（梦境实验室、暗影地牢等）不再被水填满，即「删除结构内部的水和含水方块中的水」。
+- 1.20.1 的 `StructurePlaceSettings#shouldKeepLiquids()` 在 1.21.1 拆成 `LiquidSettings`，语义相反的 `shouldApplyWaterlogging()` 默认 `APPLY_WATERLOGGING`；mixin 目标随之改为 `shouldApplyWaterlogging()Z`，取值反转由返回 false 承担，`ThreadLocal` 守卫与上游一致。
+- 未改用结构 JSON 的 `liquid_settings`：它只覆盖 jigsaw 结构且需逐文件改数据，mixin 覆盖结构方块、`/place template`、蓝图等所有 `placeInWorld` 调用点。
+- 新增 `StructureWaterlogGameTests`：水中放置 1×1 橡木楼梯模板，断言楼梯未含水、无流体状态、调用方 settings 未被改写。
+- `compileJava`、`compileGameTestJava`、`runData`（0 个文件）、`build`、`runGameTestServer`（244/244）通过；客户端实机待验收。
+- **建议提交信息：** `feat(sync): 移植结构放置不保留液体 mixin`
+
 ### 批次 143：同步上游 #1331 穿戴全套护甲触发器与进度（2026-11-20，T19/T20 部分）
 
 - 新增自定义触发器 `pasterdream:wearing_armor_set`（`advancement/critereon/WearingArmorSetTrigger.java`）：进度 JSON 用 `conditions.set` 选 `melt_dream`/`shadow_alloy`/`fluffy_wind_alloy`，判定直接复用三套护甲既有的 `hasFullSet`；`advancement/ArmorSetAdvancementHandler.java` 在换装（`LivingEquipmentChangeEvent` 且 `getSlot().isArmor()`）、登录、重生时触发，覆盖「上线即穿齐」。触发器登记在 `ModCriteriaTriggers.WEARING_ARMOR_SET`。

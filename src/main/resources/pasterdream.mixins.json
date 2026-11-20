@@ -20,7 +20,8 @@
     "BrokenWingFallDamageMixin",
     "FoxTargetMixin",
     "WorldGenRegionMixin",
-    "LocateCommandMixin"
+    "LocateCommandMixin",
+    "StructureTemplateMixin"
   ],
   "client": ["CapeLayerMixin",
     "CreativeInventoryAlphaMixin",
