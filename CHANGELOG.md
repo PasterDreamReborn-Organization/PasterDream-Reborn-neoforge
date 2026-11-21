@@ -5,6 +5,15 @@
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
 
+### 批次 147：同步上游 #1334 流体容器接口方法改名（2026-11-21，上游同步）
+
+- `IFluidContainer.setChanged()` 改名 `setFluidChanged()`，删除无人调用的 `stillValid/startOpen/stopOpen`；`FluidSlot` 两处调用与 `GenericFluidContainer`、`FluidHandlerContainerWrapper`、`PlayerFluidSlotContainer`、`MortarInventory` 四个实现类同步改名。
+- 上游修复的是 Forge reobf 下「自研接口方法与原版 `Container` 重名」导致的正式环境 `AbstractMethodError`：`setChanged` 被重混淆为 `m_6596_`，开发环境同名故无征兆。NeoForge 1.21.1 不做 reobf，本仓库不会触发该崩溃，改名用于与上游接口保持一致。
+- 本仓库 `MortarInventory` 已改为 `ItemStackHandler` + `IFluidHandlerItem`、不实现 `Container`，其 `stillValid` 原先只为满足接口且无调用点，随接口声明删除；研钵菜单级 `stillValid` 仍由 `MortarMenu` 实现，行为不变。
+- `程序规范文档.md` 新增「自研接口方法禁止与原版方法重名」条目，记录上游崩溃成因与 `javap -p` 排查方法。
+- `compileJava`、`compileGameTestJava`、`runData`、`build` 通过，`runGameTestServer` 244/244 通过；客户端研钵流体槽交互待实机验收。
+- **建议提交信息：** `fix(sync): 同步上游 #1334 流体容器接口方法改名`
+
 ### 批次 146：修复萤火虫生成类别、悦灵生成位置与 forge 标签告警（2026-11-20，缺陷修复）
 
 - 萤火虫生成条目从 `wind_moor_archipelago` 的 `monster` 列表移入 `creature` 列表，与实体的 `MobCategory.CREATURE` 一致，消除 NeoForge 启动告警与怪物上限错配；生成谓词与 `spawn_costs` 数值不变。

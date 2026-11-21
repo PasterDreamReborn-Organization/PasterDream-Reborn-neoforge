@@ -1,7 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item.mortar;
 
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.IFluidContainer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -109,17 +108,12 @@ public class MortarInventory extends ItemStackHandler implements IFluidHandlerIt
         return getTankCapacity(index);
     }
 
+    //流体槽变更：必须使用与原版 Container 不同的方法名，否则上游 Forge 正式环境会因重混淆而 AbstractMethodError
     @Override
-    public void setChanged()
+    public void setFluidChanged()
     {
         save();
         saveFluids();
-    }
-
-    @Override
-    public boolean stillValid(Player player)
-    {
-        return player.getMainHandItem() == getContainer() || player.getOffhandItem() == getContainer();
     }
 
     @Override

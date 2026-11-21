@@ -59,18 +59,12 @@ public class FluidHandlerContainerWrapper implements IFluidContainer
     }
 
     @Override
-    public void setChanged()
+    public void setFluidChanged()
     {
         if (onChanged != null)
         {
             onChanged.run();
         }
-    }
-
-    @Override
-    public boolean stillValid(Player player)
-    {
-        return true;
     }
 
     @Override
