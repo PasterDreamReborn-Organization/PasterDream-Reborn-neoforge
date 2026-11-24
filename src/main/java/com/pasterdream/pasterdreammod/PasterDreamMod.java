@@ -14,6 +14,7 @@ import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.event.ModVillagerTrades;
 import com.pasterdream.pasterdreammod.event.ModWandererTrades;
 import com.pasterdream.pasterdreammod.event.DyedreamWanderingTraderSpawner;
+import com.pasterdream.pasterdreammod.event.ModRaidRewardsProvider;
 import com.pasterdream.pasterdreammod.event.NetherChestLootInjection;
 import com.pasterdream.pasterdreammod.event.ModMobDrops;
 import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
@@ -138,6 +139,7 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(ModVillagerTrades::onVillagerTrades);
         NeoForge.EVENT_BUS.addListener(ModWandererTrades::onWandererTrades);
         NeoForge.EVENT_BUS.addListener(NetherChestLootInjection::onLootTableLoad);
+        NeoForge.EVENT_BUS.addListener(ModRaidRewardsProvider::onLootTableLoad);
         NeoForge.EVENT_BUS.addListener(DyedreamWanderingTraderSpawner::onLevelTick);
         NeoForge.EVENT_BUS.addListener(DyedreamWanderingTraderSpawner::onLevelUnload);
         NeoForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
