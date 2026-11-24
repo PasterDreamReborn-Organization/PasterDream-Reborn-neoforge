@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehavior;
 import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviors;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -11,6 +12,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -76,6 +78,19 @@ public abstract class TrailArrowEntity extends Arrow {
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(DATA_AMMO_ITEM, ItemStack.EMPTY);
+    }
+
+    /**
+     * 原版 {@link net.minecraft.world.entity.projectile.AbstractArrow} 在弹药未被真正消耗时
+     * （创造模式、无限附魔等）会保留 {@code intangible_projectile} 标记，并把箭矢设为不可拾取。
+     * 自定义强化箭默认改为可拾取，这里恢复原版语义：带标记的箭矢不进入玩家背包。
+     */
+    @Override
+    protected boolean tryPickup(Player player) {
+        if (this.getAmmoItem().has(DataComponents.INTANGIBLE_PROJECTILE)) {
+            return player.hasInfiniteMaterials();
+        }
+        return super.tryPickup(player);
     }
 
     /** 记录本次发射所用的弹药，供客户端渲染与服务端行为复现 */

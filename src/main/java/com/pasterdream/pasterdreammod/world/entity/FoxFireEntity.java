@@ -34,6 +34,9 @@ import java.util.UUID;
 
 public class FoxFireEntity extends Entity implements GeoEntity, OwnableEntity {
 
+    /** 狐火力场给予玩家的生命恢复持续时间：15 秒。 */
+    private static final int REGENERATION_DURATION_TICKS = 15 * 20;
+
     private int lifeTicks = 0;
     @Nullable
     private Player owner;
@@ -136,7 +139,7 @@ public class FoxFireEntity extends Entity implements GeoEntity, OwnableEntity {
 
         for (LivingEntity living : targets) {
             if (living instanceof Player) {
-                living.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 300, 1, false, false, true));
+                living.addEffect(new MobEffectInstance(MobEffects.REGENERATION, REGENERATION_DURATION_TICKS, 1, false, false, true));
             } else if (!this.isOwnerOrOwnedPet(living)) {
                 living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 4, false, false, true));
                 living.getPersistentData().putBoolean("pasterdream:fox_fire_vulnerable", true);
