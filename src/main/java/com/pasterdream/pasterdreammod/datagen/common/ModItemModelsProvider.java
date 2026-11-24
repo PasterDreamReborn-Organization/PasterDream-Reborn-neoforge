@@ -645,6 +645,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
         basicItem(ModItems.MEMORY_GEM.get());
         basicItem(ModItems.ORIGIN_DREAM_DICTIONARY.get());
+        basicItem(ModItems.REBIRTH_DREAM_CRYSTAL.get());
         basicItem(ModItems.EMPTY_VESSEL.get());
         handheldItem(ModItems.MAGNIFYING_GLASS_OF_SHERRY.get());
         basicItem(ModItems.IRIDESCENT_FAIRY_JADE.get());

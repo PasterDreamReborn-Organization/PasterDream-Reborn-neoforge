@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.world.item.EmptyVesselItem;
 import com.pasterdream.pasterdreammod.world.item.OriginDreamDictionaryItem;
 import com.pasterdream.pasterdreammod.world.item.curio.MagnifyingGlassOfSherryItem;
 import com.pasterdream.pasterdreammod.world.item.curio.IridescentFairyJadeItem;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.RebirthDreamCrystalItem;
 import com.pasterdream.pasterdreammod.world.item.blueprints.BluePrintItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.DreamNotesItem;
@@ -1929,6 +1930,8 @@ public class ModItems {
             OriginDreamDictionaryItem::new);
     public static final DeferredItem<Item> EMPTY_VESSEL = ITEMS.register("empty_vessel",
             EmptyVesselItem::new);
+    public static final DeferredItem<Item> REBIRTH_DREAM_CRYSTAL = ITEMS.register("rebirth_dream_crystal",
+            RebirthDreamCrystalItem::new);
     public static final DeferredItem<Item> MAGNIFYING_GLASS_OF_SHERRY = ITEMS.register("magnifying_glass_of_sherry",
             MagnifyingGlassOfSherryItem::new);
     public static final DeferredItem<Item> DEBUG_TOOL = ITEMS.register("debug_tool", DebugToolItem::new);

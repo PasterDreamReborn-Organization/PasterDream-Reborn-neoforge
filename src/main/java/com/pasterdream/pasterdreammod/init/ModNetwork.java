@@ -40,6 +40,9 @@ import com.pasterdream.pasterdreammod.network.skill.TerraBladeSwingPacket;
 import com.pasterdream.pasterdreammod.network.curio.CloakActivationPacket;
 import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
 import com.pasterdream.pasterdreammod.network.curio.KaichuOmamoriActivationPacket;
+import com.pasterdream.pasterdreammod.network.rebirthdreamcrystal.RequestNotesProgressPacket;
+import com.pasterdream.pasterdreammod.network.rebirthdreamcrystal.UploadItemPacket;
+import com.pasterdream.pasterdreammod.network.rebirthdreamcrystal.NotesProgressResponsePacket;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -126,6 +129,11 @@ public final class ModNetwork {
         registrar.playToClient(SyncEntityNbtPacket.TYPE, SyncEntityNbtPacket.STREAM_CODEC, SyncEntityNbtPacket::handle);
         registrar.playToServer(StoreEntityToInventoryPacket.TYPE, StoreEntityToInventoryPacket.STREAM_CODEC, StoreEntityToInventoryPacket::handle);
         registrar.playToServer(EntityDiscardPacket.TYPE, EntityDiscardPacket.STREAM_CODEC, EntityDiscardPacket::handle);
+        registrar.playToServer(RequestNotesProgressPacket.TYPE, RequestNotesProgressPacket.STREAM_CODEC,
+                RequestNotesProgressPacket::handle);
+        registrar.playToClient(NotesProgressResponsePacket.TYPE, NotesProgressResponsePacket.STREAM_CODEC,
+                NotesProgressResponsePacket::handle);
+        registrar.playToServer(UploadItemPacket.TYPE, UploadItemPacket.STREAM_CODEC, UploadItemPacket::handle);
     }
 
     /** 客户端 → 服务端。 */
