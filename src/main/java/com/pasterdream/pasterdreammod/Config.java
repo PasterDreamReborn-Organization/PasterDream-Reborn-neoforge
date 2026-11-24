@@ -394,6 +394,44 @@ public class Config {
             .comment("工具匠（5级）出售蓝图的概率，默认 1.0（100%）")
             .defineInRange("toolsmithBlueprintTradeChance", 1.0, 0.0, 1.0);
 
+    // === 游商交易注入 ===
+    public static final ModConfigSpec.BooleanValue WANDERING_TRADER_TRADES_ENABLED = BUILDER
+            .comment("是否向原版流浪商人（wandering_trader）投放本模组的 13 条交易，默认 true。"
+                    + "\n只影响主世界等非染梦维度的游商；染梦世界独立交易表另有自己的一份同款 13 条，改这里不影响它"
+                    + "\n关闭后不修改原版池、也不追加模组交易，原版交易不受影响"
+                    + "\n注入模式下只在服务器启动阶段执行一次，改动此项需重启服务器/存档；追加模式在生成交易时读取")
+            .define("wanderingTraderTradesEnabled", true);
+
+    public static final ModConfigSpec.BooleanValue WANDERING_TRADER_TRADES_INJECT_TO_VANILLA_POOL = BUILDER
+            .comment("本模组游商交易的投放方式，默认 false（末尾追加）。"
+                    + "\ntrue：注入原版 generic / rare 池，与原版条目一起随机抽取，单条不保证出现"
+                    + "\nfalse：不修改原版池，每只新游商在原版交易之后固定追加 n 条本模组交易"
+                    + "\n本项在服务器启动时确定，运行中改动需重启服务器/存档才生效"
+                    + "\n染梦世界独立交易表按同一模式处理；n 见 wanderingTraderTradesAppendCount")
+            .define("wanderingTraderTradesInjectToVanillaPool", false);
+
+    public static final ModConfigSpec.IntValue WANDERING_TRADER_TRADES_APPEND_COUNT = BUILDER
+            .comment("末尾追加模式下每只游商固定追加的模组交易条数，默认 2。"
+                    + "\n从模组交易中随机抽取不重复的条目，按抽取顺序追加在原版交易之后"
+                    + "\n超过可选条目数时按可选条目数封顶；0 表示不追加；注入模式下此值无效")
+            .defineInRange("wanderingTraderTradesAppendCount", 2, 0, 64);
+
+    // === 游商自然生成 ===
+    public static final ModConfigSpec.BooleanValue DYEDREAM_WANDERING_TRADER_ENABLED = BUILDER
+            .comment("是否让染梦世界（pasterdream:dyedream_world）像主世界一样自然生成原版流浪商人，默认 true。"
+                    + "\n生成完全复用原版逻辑（20 分钟一轮、25%~75% 概率、附带 2 只羊驼）"
+                    + "\n计时状态不写入存档，维度重载或服务器重启后重新等待一轮"
+                    + "\n原版规则 doTraderSpawning / doMobSpawning 仍然生效")
+            .define("dyedreamWanderingTraderEnabled", true);
+
+    // === 游商交易（染梦独立表） ===
+    public static final ModConfigSpec.BooleanValue DYEDREAM_WANDERER_TRADES_ENABLED = BUILDER
+            .comment("是否让染梦世界生成的流浪商人使用独立交易表（原版基础池 + 染梦表自己的条目），默认 true。"
+                    + "\n独立表拥有自己的一份 13 条同款交易与染梦专属条目，与主世界注入表互不引用、互不影响"
+                    + "\n不受 wanderingTraderTradesEnabled 开关影响，而是本表独立维护"
+                    + "\n关闭后染梦游商回退到全局交易池（原版池 + 按当前投放模式处理的模组交易）")
+            .define("dyedreamWandererTradesEnabled", true);
+
     // === 染梦裂隙污染 ===
     public static final ModConfigSpec.BooleanValue DYEDREAM_CRACK_CONTAMINATION_ENABLED = BUILDER
             .comment("染梦裂隙是否向外污染地形，默认 true")

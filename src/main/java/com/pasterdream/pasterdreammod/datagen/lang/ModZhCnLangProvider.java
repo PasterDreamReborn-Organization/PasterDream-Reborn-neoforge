@@ -76,13 +76,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("key.categories.pasterdream", "帕斯特之梦");
         add("effect.pasterdream.evasion", "回避");
         add("effect.pasterdream.dream_wish", "美梦祈愿");
+        add("effect.pasterdream.dream_wish.description", "饮用梦境果汁获得，拥有该效果在晚上睡觉以进入染梦世界。");
         add("effect.pasterdream.blink_cooldown", "瞬身术冷却");
         add("attribute.pasterdream.blink_consume", "瞬身术消耗");
         add("attribute.pasterdream.blink_range", "瞬身术距离");
         add("subtitles.pasterdream.evasion", "瞬身术: 回避");
         add("effect.pasterdream.confusion", "混乱");
+        add("effect.pasterdream.confusion.description", "施加给玩家后，玩家的视角将会抖动，施加给其它生物后，会使该生物失去行动能力。");
         add("effect.pasterdream.cook.description", "拥有该效果时，满饱食度也能进食任意食物；进食时溢出的饱食度或饱和度会转化为生命值，生命值已满时转化为黄心（吸收）。每级提高黄心上限 10 点（I=20 / II=30 / III=40）。");
         add("effect.pasterdream.shadow_silence", "暗影沉默");
+        add("effect.pasterdream.shadow_silence.description", "暗影生物获得该buff后，会失去释放技能的能力。");
         add("effect.pasterdream.shadow_spyon", "暗影窥视");
         add(ModEntities.NAMELESS.get(), "无名");
         add(ModItems.NAMELESS_SPAWN_EGG.get(), "无名刷怪蛋");
@@ -197,11 +200,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.san_value", "SAN值: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: ");
         add("effect.pasterdream.cheer_up", "振奋");
+        add("effect.pasterdream.cheer_up.description", "san高于90%的时候获得，获得一些正面效果。");
         add("effect.pasterdream.lethargy", "不振");
+        add("effect.pasterdream.lethargy.description", "san在40%和60%之间的时候获得，获得一些负面效果。");
         add("effect.pasterdream.trance", "恍惚");
+        add("effect.pasterdream.trance.description", "san在20%和40%之间的时候获得，获得更严重的负面效果。");
         add("effect.pasterdream.insane", "疯狂");
+        add("effect.pasterdream.insane.description", "san低于20%的时候获得，获得极为严重的负面效果，视线会被特殊的视觉效果覆盖，san在1%~10%时会获得疯狂II，循环播放音效并视角抖动，san低于1%时获得疯狂III，前面所述负面会得到加强。（视觉效果，抖动和音效可以指令或配置关闭）");
         add("effect.pasterdream.cook", "料理");
         add("effect.pasterdream.rest", "休憩");
+        add("effect.pasterdream.rest.description", "触摸琴雨梦玩偶或睡觉后获得，效果持续期间获得理智光环。");
         add("attribute.pasterdream.blink_cooldown_reduction", "瞬身术冷却缩减");
         add("attribute.pasterdream.san_variability", "理智光环");
         add("attribute.pasterdream.max_san_extra", "理智上限加成");
@@ -259,6 +267,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_LEGGINGS.get(), "钛金护腿");
         add(ModItems.TITANIUM_BOOTS.get(), "钛金靴子");
         add("effect.pasterdream.titanium_armor", "钛金守护");
+        add("effect.pasterdream.titanium_armor.description", "穿戴全套钛金套装时获得，每30秒获得伤害吸收I。");
         add("tooltip.pasterdreammod.titanium_armor.1", "§7套装效果：§e钛金守护");
         add("tooltip.pasterdreammod.titanium_armor.2", "§7▪ §9每 30 秒获得 2 颗吸收之♡");
         add(ModItems.SCULK_HEART.get(), "回响之心");
@@ -268,6 +277,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SCULK_LEGGINGS.get(), "回响护腿");
         add(ModItems.SCULK_BOOTS.get(), "回响靴子");
         add("effect.pasterdream.sculk_armor", "幽匿回响");
+        add("effect.pasterdream.sculk_armor.description", "穿戴全套回响套装时获得，增加最大生命值，身处深层时获得抗性提升，受到黑暗效果时移除黑暗并给予速度和抗性效果。");
         add("tooltip.pasterdreammod.sculk_armor.1", "§7套装效果：§2幽匿回响");
         add("tooltip.pasterdreammod.sculk_armor.2", "§7▪ §9最大生命值+4");
         add("tooltip.pasterdreammod.sculk_armor.3", "§7▪ §9身处深层时效果增强");
@@ -280,7 +290,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_LEGGINGS.get(), "染梦护腿");
         add(ModItems.DYEDREAM_BOOTS.get(), "染梦靴子");
         add("effect.pasterdream.dyedream_armor", "染梦守护");
+        add("effect.pasterdream.dyedream_armor.description", "穿戴全套染梦合金套装时获得，增加最大生命值并每30秒获得伤害吸收II。");
         add("effect.pasterdream.dyedream_up", "染梦工具增强");
+        add("effect.pasterdream.dyedream_up.description", "穿戴全套染梦合金套装时获得，持有染梦(染梦合金与融梦水晶)工具时伤害+50%");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7套装效果：§d染梦守护");
         add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9最大生命值+4");
         add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9每 30 秒获得 4 颗吸收之♡");
@@ -503,6 +515,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.highly_toxic", "剧毒");
         add("effect.pasterdream.vulnerability", "易伤");
         add("effect.pasterdream.bind", "束缚");
+        add("effect.pasterdream.bind.description", "被白厄剑的剑雨攻击后获得，获得该buff后，会无法移动。");
         add("structure.pasterdream.the_lost_sword_tomb", "失落剑冢");
         add("structure.pasterdream.dyedream_crack", "染梦裂隙");
         add("structure.pasterdream.aaroncos_arena_portal", "亚伦柯斯竞技场传送门");
@@ -611,6 +624,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.MELT_DREAM_LEGGINGS.get(), "融梦水晶护腿");
         add(ModItems.MELT_DREAM_BOOTS.get(), "融梦水晶靴子");
         add("effect.pasterdream.melt_dream_crystal_armor", "融梦守护");
+        add("effect.pasterdream.melt_dream_crystal_armor.description", "穿戴全套融梦水晶套装时获得，融梦修补费用-50%，获得生命恢复II与染梦工具增强，融梦能量>50%时理智光环+1.2，否则+0.6。");
         add("tooltip.pasterdreammod.melt_dream_armor.1", "§7▪ §9最大生命值+2");
         add("tooltip.pasterdreammod.melt_dream_armor.2", "§7▪ §9融梦能量 +1/min，能量上限+5");
         add("tooltip.pasterdreammod.melt_dream_armor.3", "§7▪ §b融梦修补：0.01E/1耐久");
@@ -784,6 +798,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.GARLAND.get(), "花环");
         add(ModItems.SNOW_VOW_HEAD.get(), "雪下的誓言");
         add("effect.pasterdream.snow_vow", "雪下的誓言");
+        add("effect.pasterdream.snow_vow.description", "效果期间+3幸运，免疫燃烧和冻结效果，由雪下的誓言饰品在范围内给予。");
         add("tooltip.pasterdream.gold_charm.piglin", "§7▪ §9使猪灵保持中立");
         add("tooltip.pasterdream.endeye_charm.enderman", "§7▪ §9使末影人保持中立");
         add("tooltip.pasterdream.snow_vow_head.effect.area", "§7▪ §9使附近直径7格内的玩家获得效果");
@@ -878,6 +893,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9该效果可以共享给周围玩家");
         add("tooltip.pasterdream.war_flag.description", "§7§o--这面旗帜上流淌的暗影似乎在述说遥远的过往......");
         add("effect.pasterdream.war_flag", "战意");
+        add("effect.pasterdream.war_flag.description", "装备战争旗帜后击杀敌人后获得，期间增加攻击力，并每击杀一个敌人增加1级。");
         add(ModItems.ICE_SHADOW_CURIO.get(), "冰影水晶");
         add("tooltip.pasterdream.ice_shadow_curio.0", "§7▪ §9冰影战锤的战技将额外释放2个撼地水晶");
         add("tooltip.pasterdream.ice_shadow_curio.1", "§7▪ §9释放的撼地水晶间隔受释放距离影响");
@@ -886,6 +902,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.calais_spice_bottle.effect2", "§7▪ §9装备时获得卡莱料理X增益，攻击命中消耗层数，层数耗尽后需要进食补充，进食积累层数（每3饥饿度+1，上限X级）");
         add("tooltip.pasterdream.calais_spice_bottle.effect3", "§7▪ §9每消耗1层会获得随机效果");
         add("effect.pasterdream.calais_spice_bottle", "卡莱料理");
+        add("effect.pasterdream.calais_spice_bottle.description", "装备卡莱调料瓶后获得，每次击中敌人后减少1层等级并获得随机效果，食用符合要求食物会恢复层数。");
         add(ModItems.GHOST_FACE.get(), "鬼魂之面");
         add("tooltip.pasterdream.ghost_face.effect.1", "§7▪ §9使用远程武器时，额外发射一发射弹，20%再发射一发");
         add("tooltip.pasterdream.ghost_face.effect.2", "§7▪ §9远程武器射弹无视无敌帧");
@@ -921,6 +938,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.counter_ring.effect2", "§7▪ §9下一次攻击：攻击力+3 伤害+50%，命中后效果解除");
         add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9融梦能量+1/min");
         add("effect.pasterdream.counter_attack", "反击");
+        add("effect.pasterdream.counter_attack.description", "增加战技伤害，下一次攻击后消失。");
         add("tooltip.pasterdream.lv", "§7§b等级：Lv.%s");
         add("tooltip.pasterdream.only_one.tooltip", "§7该饰品在饰品栏只能装备一个");
 
@@ -1123,8 +1141,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_vane.direction.6", "当前风向：§a东方");
         add("message.pasterdream.wind_vane.direction.7", "当前风向：§a东南方");
         add("effect.pasterdream.wind_runner", "风行者");
+        add("effect.pasterdream.wind_runner.description", "食用风行者果冻获得，效果持续期间无需鞘翅即可进行鞘翅飞行。");
         add("effect.pasterdream.goldenrod_tea", "秋麒麟茶");
+        add("effect.pasterdream.goldenrod_tea.description", "效果持续期间免疫饥饿和反胃效果。");
         add("effect.pasterdream.dyedream_perfume", "染梦香水");
+        add("effect.pasterdream.dyedream_perfume.description", "饮用染梦香水获得，效果持续期间幻翼不会攻击你。");
         add(ModBlocks.DYEDREAM_DIRT.get(), "染梦泥土");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "染梦草方块");
         add(ModBlocks.DYEDREAM_FARMLAND.get(), "染梦耕地");
@@ -1273,10 +1294,15 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.frozen", "急冻");
         add("effect.pasterdream.broken_wing", "折翼");
         add("effect.pasterdream.guard", "守护");
+        add("effect.pasterdream.guard.description", "使用守护预言卡获得，拥有该buff时，超过一定生命百分比的部分伤害将会受到减伤（可在配置里修改）");
         add("effect.pasterdream.rapid_reaction", "高速反射");
+        add("effect.pasterdream.rapid_reaction.description", "使用疾行预言卡获得，拥有该buff时，增加上坡高度，降低瞬身术冷却并免疫摔落伤害。");
         add("effect.pasterdream.holy_grail", "圣杯");
+        add("effect.pasterdream.holy_grail.description", "使用圣杯预言卡获得，拥有该buff时，效果持续期间+15最大生命值，并免疫一部分负面状态，获得自然生命恢复且血量越低，回血速度越快。");
         add("effect.pasterdream.flare_up", "怒气爆发");
+        add("effect.pasterdream.flare_up.description", "使用执剑预言卡获得，拥有该buff时，增加攻击力和攻击速度，增加战技伤害倍率并降低技能冷却时间。");
         add("effect.pasterdream.conflict_mark", "纷争标记");
+        add("effect.pasterdream.conflict_mark.description", "使用纷争预言卡标记其它实体后该实体获得，拥有该buff时，将会成为其它实体攻击目标。");
 
         // ===== 预言卡 =====
         add(ModItems.EMPTY_PROPHECY_CARD.get(), "空白预言卡");
@@ -1716,8 +1742,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.turnback_cloak", "转身衣装");
         add("effect.pasterdream.evasion_cloak", "回避衣装");
         add("effect.pasterdream.cecilia_blessing", "塞西莉亚的加护");
+        add("effect.pasterdream.cecilia_blessing.description", "戴着塞西莉娅受到致命伤害后获得，效果期间获得伤害免疫。");
         add("effect.pasterdream.dark_watch", "黑暗守望");
         add("effect.pasterdream.dream_harp_of_wanderer", "漂泊旅者的染梦竖琴");
+        add("effect.pasterdream.dream_harp_of_wanderer.description", "使用漂泊旅者的染梦竖琴后获得，漂泊旅者的染梦竖琴可以从染梦列车中得到。");
 
         add("itemGroup.pasterdream.pasterdream_dream_debug_tab", "帕斯特之梦 | 调试");
         add(ModItems.DEBUG_SWORD.get(), "调试之剑");
@@ -2274,6 +2302,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.AARONCOS_RIGHT_HAND_SPAWN_EGG.get(), "亚伦柯斯之触-右手刷怪蛋");
         add(ModBlocks.SHADOW_VORTEX.get(), "暗影漩涡");
         add("effect.pasterdream.restrainmove_block", "行动抑制");
+        add("effect.pasterdream.restrainmove_block.description", "效果持续期间移除跳跃提升并强制禁用飞行。");
         add("effect.pasterdream.oppression", "压抑");
         add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在积蓄能量");
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "暗影符文塔即将爆炸");

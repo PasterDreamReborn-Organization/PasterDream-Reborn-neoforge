@@ -117,7 +117,7 @@ public class ModDyedreamStructureLootTablesProvider implements LootTableSubProvi
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 2.0F))))
+                                                UniformGenerator.between(2.0F, 4.0F))))
                                 .add(LootItem.lootTableItem(ModItems.GALAXY_JELLY.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -515,7 +515,7 @@ public class ModDyedreamStructureLootTablesProvider implements LootTableSubProvi
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 3.0F))))
+                                                UniformGenerator.between(2.0F, 6.0F))))
                                 .add(LootItem.lootTableItem(ModItems.GALAXY_JELLY.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(

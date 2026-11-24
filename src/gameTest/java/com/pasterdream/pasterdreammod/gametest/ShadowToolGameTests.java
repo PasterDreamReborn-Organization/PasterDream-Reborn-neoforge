@@ -22,7 +22,6 @@ import net.neoforged.neoforge.common.util.FakePlayer;
 import net.neoforged.neoforge.gametest.GameTestHolder;
 import net.neoforged.neoforge.gametest.PrefixGameTestTemplate;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,13 +56,14 @@ public class ShadowToolGameTests {
 
     @GameTest(template = "empty")
     public static void blackMetalConversionAndAlloyUpgrade(GameTestHelper helper) {
-        var nuggetInput = CraftingInput.of(2, 2, Arrays.asList(
-                ModItems.BLACK_METAL_NUGGET.toStack(), ModItems.BLACK_METAL_NUGGET.toStack(),
-                ModItems.BLACK_METAL_NUGGET.toStack(), ModItems.BLACK_METAL_NUGGET.toStack()));
+        var nuggetInput = CraftingInput.of(3, 3, List.of(
+                ModItems.BLACK_METAL_NUGGET.toStack(), ModItems.BLACK_METAL_NUGGET.toStack(), ModItems.BLACK_METAL_NUGGET.toStack(),
+                ModItems.BLACK_METAL_NUGGET.toStack(), ModItems.BLACK_METAL_NUGGET.toStack(), ModItems.BLACK_METAL_NUGGET.toStack(),
+                ModItems.BLACK_METAL_NUGGET.toStack(), ModItems.BLACK_METAL_NUGGET.toStack(), ModItems.BLACK_METAL_NUGGET.toStack()));
         var nuggetRecipe = helper.getLevel().getRecipeManager()
                 .getRecipeFor(RecipeType.CRAFTING, nuggetInput, helper.getLevel()).orElseThrow();
         helper.assertTrue(nuggetRecipe.id().equals(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
-                        "black_metal_ingot_from_grain"))
+                        "black_metal_ingot_from_black_metal_nugget"))
                         && nuggetRecipe.value().assemble(nuggetInput, helper.getLevel().registryAccess())
                         .is(ModItems.BLACK_METAL_INGOT.get()), "黑金属粒合锭配方错误");
 

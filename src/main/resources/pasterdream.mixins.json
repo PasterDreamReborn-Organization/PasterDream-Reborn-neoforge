@@ -21,6 +21,8 @@
     "FoxTargetMixin",
     "WorldGenRegionMixin",
     "LocateCommandMixin",
+    "PiglinBarterMixin",
+    "WanderingTraderTradesMixin",
     "StructureTemplateMixin"
   ],
   "client": ["CapeLayerMixin",

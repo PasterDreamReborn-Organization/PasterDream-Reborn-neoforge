@@ -18,9 +18,12 @@ public final class DreamDimensionHelper {
 
     public static final Set<ResourceKey<Level>> DREAM_DIMENSIONS = new HashSet<>();
 
+    /** 染梦世界维度键：游商分表、染梦游商自然生成等按维度判定的逻辑共用 */
+    public static final ResourceKey<Level> DYEDREAM_WORLD = ResourceKey.create(Registries.DIMENSION,
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world"));
+
     static {
-        DREAM_DIMENSIONS.add(ResourceKey.create(Registries.DIMENSION,
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world")));
+        DREAM_DIMENSIONS.add(DYEDREAM_WORLD);
         DREAM_DIMENSIONS.add(ResourceKey.create(Registries.DIMENSION,
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world")));
         DREAM_DIMENSIONS.add(ResourceKey.create(Registries.DIMENSION,

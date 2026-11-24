@@ -139,6 +139,18 @@ public class ModRecipesProvider extends RecipeProvider {
         RecipeHelpers.storageDecompress(output, ModItems.RAW_TITANIUM_BLOCK.get(), ModItems.RAW_TITANIUM.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageCompress(output, ModItems.TITANIUM_INGOT.get(), ModItems.TITANIUM_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(output, ModItems.TITANIUM_BLOCK.get(), ModItems.TITANIUM_INGOT.get(), PasterDreamMod.MOD_ID);
+
+        // ===== 炙焰金系列 =====
+        // 烈焰粉 ×4 + 金锭 → 炙焰金锭（工作台）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1)
+                .pattern(" a ")
+                .pattern("aba")
+                .pattern(" a ")
+                .define('a', Items.BLAZE_POWDER)
+                .define('b', Items.GOLD_INGOT)
+                .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(output, PasterDreamMod.MOD_ID + ":molten_gold_ingot_from_blaze_powder");
+        // 炙焰金矿石 → 炙焰金锭（熔炉 + 高炉）
         moltenGoldCooking(output, ModItems.MOLTEN_GOLD_ORE.get(), "molten_gold_ingot_from_molten_gold_ore_");
         // 来源粗炙焰金的配方 ID 使用历史拼写 moltengold，迁移时不更名。
         moltenGoldCooking(output, ModItems.RAW_MOLTEN_GOLD.get(), "moltengold_ingot_from_");
@@ -3381,17 +3393,9 @@ public class ModRecipesProvider extends RecipeProvider {
     }
 
     private void blackMetalRecipes(RecipeOutput pWriter) {
-        // 黑金属粒 → 黑金属锭；首份粒仍待暗影高炉。
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLACK_METAL_INGOT.get(), 1)
-                .pattern("aa")
-                .pattern("aa")
-                .define('a', ModItems.BLACK_METAL_NUGGET.get())
-                .unlockedBy(getHasName(ModItems.BLACK_METAL_NUGGET.get()), has(ModItems.BLACK_METAL_NUGGET.get()))
-                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_ingot_from_grain"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLACK_METAL_NUGGET.get(), 4)
-                .requires(ModItems.BLACK_METAL_INGOT.get())
-                .unlockedBy(getHasName(ModItems.BLACK_METAL_INGOT.get()), has(ModItems.BLACK_METAL_INGOT.get()))
-                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_grain_from_ingot"));
+        // 黑金属：粒 ↔ 锭 ↔ 块 统一按 1:9 压缩/分解；首份粒仍待暗影高炉。
+        RecipeHelpers.storageCompress(pWriter, ModItems.BLACK_METAL_NUGGET.get(), ModItems.BLACK_METAL_INGOT.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.BLACK_METAL_INGOT.get(), ModItems.BLACK_METAL_NUGGET.get(), PasterDreamMod.MOD_ID);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PURE_HORROR.get(), 2)
                 .pattern("aba")
@@ -3403,19 +3407,9 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy("has_pure_horror_source", has(ModItemTags.PURE_HORROR_SOURCES))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pure_horror_from_source"));
 
-        // 黑金属锭 → 黑金属块
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.BLACK_METAL_BLOCK.get(), 1)
-                .pattern("aa")
-                .pattern("aa")
-                .define('a', ModItems.BLACK_METAL_INGOT.get())
-                .unlockedBy(getHasName(ModItems.BLACK_METAL_INGOT.get()), has(ModItems.BLACK_METAL_INGOT.get()))
-                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_block_from_ingot"));
-
-        // 黑金属块 → 黑金属锭（分解）
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLACK_METAL_INGOT.get(), 4)
-                .requires(ModItems.BLACK_METAL_BLOCK.get())
-                .unlockedBy(getHasName(ModItems.BLACK_METAL_BLOCK.get()), has(ModItems.BLACK_METAL_BLOCK.get()))
-                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_ingot_from_block"));
+        // 黑金属锭 ↔ 黑金属块
+        RecipeHelpers.storageCompress(pWriter, ModItems.BLACK_METAL_INGOT.get(), ModItems.BLACK_METAL_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.BLACK_METAL_BLOCK.get(), ModItems.BLACK_METAL_INGOT.get(), PasterDreamMod.MOD_ID);
 
         // 锈蚀金属块
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.RUST_BLACK_METAL_BLOCK.get(), 4)

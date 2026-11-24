@@ -66,7 +66,9 @@ public final class ModDataGenerator {
                         new LootTableProvider.SubProviderEntry(
                                 ModLampShadowChestLootTablesProvider::new, LootContextParamSets.CHEST),
                         new LootTableProvider.SubProviderEntry(
-                                ModFishingLootTablesProvider::new, LootContextParamSets.FISHING)), lookup));
+                                ModFishingLootTablesProvider::new, LootContextParamSets.FISHING),
+                        new LootTableProvider.SubProviderEntry(
+                                ModPiglinBarterLootTablesProvider::new, LootContextParamSets.PIGLIN_BARTER)), lookup));
 
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existing));
         generator.addProvider(event.includeClient(), new ModItemModelsProvider(output, existing));

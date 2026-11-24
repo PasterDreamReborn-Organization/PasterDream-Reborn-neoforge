@@ -31,6 +31,12 @@ public final class ModItemTags {
             ResourceLocation.fromNamespaceAndPath("pasterdream", "lamp_shadow_weapon"));
     public static final TagKey<Item> PURE_HORROR_SOURCES = TagKey.create(Registries.ITEM,
             ResourceLocation.fromNamespaceAndPath("pasterdream", "pure_horror_sources"));
+    /**
+     * 猪灵交易货币标签 —— 持有此标签的物品都能与猪灵交易，每种货币对应一张战利品表。
+     * 该标签同时嵌套进 {@code minecraft:piglin_loved}，掉落在地上的货币也会被猪灵捡起检视。
+     */
+    public static final TagKey<Item> PIGLIN_BARTERING_CURRENCY = TagKey.create(Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "piglin_bartering_currency"));
     public static final TagKey<Item> INGOTS_TITANIUM = common("ingots/titanium");
     public static final TagKey<Item> NUGGETS_TITANIUM = common("nuggets/titanium");
     public static final TagKey<Item> RAW_MATERIALS_TITANIUM = common("raw_materials/titanium");
