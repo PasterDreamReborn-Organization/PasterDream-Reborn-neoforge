@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.worldgen.ModPlacedFeatures;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
@@ -124,6 +125,15 @@ public class MoltenGoldGameTests {
             helper.assertTrue(smelting.value().getCookingTime() == 200 && blasting.value().getCookingTime() == 100,
                     "熔炉/高炉应保留 200/100 tick 耗时");
         }
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void moltenGoldIngotIsFuel(GameTestHelper helper) {
+        var stack = new ItemStack(ModItems.MOLTEN_GOLD_INGOT.get());
+        helper.assertTrue(stack.getBurnTime(RecipeType.SMELTING) == 6400, "炙焰金锭在熔炉中应作为燃料燃烧 6400 tick");
+        helper.assertTrue(stack.getBurnTime(null) == 6400, "炙焰金锭在熔炉与高炉中燃烧时间一致");
+        helper.assertTrue(stack.has(DataComponents.FIRE_RESISTANT), "炙焰金锭应保留防火属性");
         helper.succeed();
     }
 

@@ -392,7 +392,12 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> MOLTEN_GOLD_INGOT = ITEMS.register("molten_gold_ingot",
-            () -> new Item(new Item.Properties().fireResistant()));
+            () -> new Item(new Item.Properties().fireResistant()) {
+                @Override
+                public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
+                    return 6400; // 4 × 煤炭（1600 tick）
+                }
+            });
     public static final DeferredItem<Item> MOLTEN_GOLD_NUGGET = ITEMS.register("molten_gold_nugget",
             () -> new Item(new Item.Properties().fireResistant()));
     public static final DeferredItem<Item> RAW_MOLTEN_GOLD = ITEMS.register("raw_molten_gold",
