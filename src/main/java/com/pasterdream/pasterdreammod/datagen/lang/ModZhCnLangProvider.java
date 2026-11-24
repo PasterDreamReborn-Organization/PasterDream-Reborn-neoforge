@@ -413,6 +413,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SMALL_DYEDREAM_BUD.get(), "小型染梦晶芽");
         add(ModBlocks.MEDIUM_DYEDREAM_BUD.get(), "中型染梦晶芽");
         add(ModBlocks.LARGE_DYEDREAM_BUD.get(), "大型染梦晶芽");
+        // ===== 染梦世界跃迁石 / 传送门 =====
+        add(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get(), "染梦世界跃迁石");
+        add(ModBlocks.DYEDREAM_WORLD_PORTAL.get(), "染梦世界传送门");
+        add("tooltip.pasterdream.dyedream_world_leapstone", "§7可搭建传送门框架；用染梦粉尘右键框架内部即可开启通往染梦世界的传送门");
+        add("tooltip.pasterdream.dyedream_world_leapstone_0_2_0_test", "§c0.2.0版本独有测试");
         add(ModBlocks.DYEDREAM_BUD_BLOCK.get(), "染梦水晶块");
         add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), "染梦合金块");
         add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get(), "染梦石英块");

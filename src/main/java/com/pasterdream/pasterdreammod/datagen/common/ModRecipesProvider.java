@@ -15,6 +15,7 @@ import com.pasterdream.pasterdreammod.world.item.DeepTreasureItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarCraftingRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipe;
+import com.pasterdream.pasterdreammod.world.conditions.DyedreamWorldLeapstoneEnabledCondition;
 import net.minecraft.core.registries.Registries;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
 import com.pasterdream.pasterdreammod.tag.ModBlockTags;
@@ -544,6 +545,18 @@ public class ModRecipesProvider extends RecipeProvider {
                 .requires(ModItems.DYEDREAM_DUST_PIECE.get(), 9)
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DUST_PIECE.get()), has(ModItems.DYEDREAM_DUST_PIECE.get()))
                 .save(pWriter);
+
+        // 8× 染梦水晶块 + 1× 染梦粉尘 → 8× 染梦世界跃迁石（0.2.0 测试性内容，受配置开关控制）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DYEDREAM_WORLD_LEAPSTONE.get(), 8)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', ModItems.DYEDREAM_BUD_BLOCK.get())
+                .define('b', ModItems.DYEDREAM_DUST.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_BUD_BLOCK.get()), has(ModItems.DYEDREAM_BUD_BLOCK.get()))
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DUST.get()), has(ModItems.DYEDREAM_DUST.get()))
+                .save(pWriter.withConditions(DyedreamWorldLeapstoneEnabledCondition.INSTANCE),
+                        ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world_leapstone"));
     }
 
     private void quartzRecipes(RecipeOutput pWriter) {

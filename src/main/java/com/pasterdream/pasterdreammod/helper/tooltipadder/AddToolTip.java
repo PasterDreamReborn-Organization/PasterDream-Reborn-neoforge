@@ -89,6 +89,11 @@ public class AddToolTip
             tooltip.add(Component.translatable("tooltip.pasterdream.shadow_hilt"));
         }
 
+        if(stack.is(ModItems.DYEDREAM_WORLD_LEAPSTONE.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.dyedream_world_leapstone"));
+            tooltip.add(Component.translatable("tooltip.pasterdream.dyedream_world_leapstone_0_2_0_test"));
+        }
+
         if(stack.is(ModItems.PURE_HORROR.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.pure_horror"));
         }

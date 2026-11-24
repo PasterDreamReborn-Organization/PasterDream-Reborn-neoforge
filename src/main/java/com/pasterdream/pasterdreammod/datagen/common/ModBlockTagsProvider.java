@@ -215,6 +215,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get())
                 .add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get())
                 .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
                 .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
                 .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
@@ -281,6 +282,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // 需要钻石工具挖掘
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get())
                 .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
                 .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
                 .add(ModBlocks.RAW_TITANIUM_BLOCK.get())
@@ -909,7 +911,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(ModBlockTags.DYEDREAM_CONTAMINATION_BLACKLIST)
                 .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get())
-                .add(ModBlocks.DYEDREAM_CRACK.get());
+                .add(ModBlocks.DYEDREAM_CRACK.get())
+                .add(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get())
+                .add(ModBlocks.DYEDREAM_WORLD_PORTAL.get());
 
         // 矿石/深层方块不在对属性敏感的地表替代链中，未加入 ANIMALS_SPAWNABLE_ON。
     }

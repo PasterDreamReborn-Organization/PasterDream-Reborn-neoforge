@@ -4,6 +4,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemNameBlockItem;
 import com.pasterdream.pasterdreammod.world.item.debugsword.DebugSwordItem;import com.pasterdream.pasterdreammod.world.item.debugtool.DebugToolItem;
 import com.pasterdream.pasterdreammod.world.item.EmptyVesselItem;
+import com.pasterdream.pasterdreammod.world.item.DyedreamDustItem;
 import com.pasterdream.pasterdreammod.world.item.OriginDreamDictionaryItem;
 import com.pasterdream.pasterdreammod.world.item.curio.MagnifyingGlassOfSherryItem;
 import com.pasterdream.pasterdreammod.world.item.curio.IridescentFairyJadeItem;
@@ -402,7 +403,8 @@ public class ModItems {
     public static final DeferredItem<BlockItem> CHARGED_AMETHYST_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.CHARGED_AMETHYST_BLOCK);
 
     public static final DeferredItem<Item> DYEDREAM_QUARTZ = ITEMS.registerSimpleItem("dyedream_quartz");
-    public static final DeferredItem<Item> DYEDREAM_DUST = ITEMS.registerSimpleItem("dyedream_dust");
+    public static final DeferredItem<Item> DYEDREAM_DUST = ITEMS.register("dyedream_dust",
+            () -> new DyedreamDustItem(new Item.Properties()));
     public static final DeferredItem<Item> DYEDREAM_DUST_PIECE = ITEMS.registerSimpleItem("dyedream_dust_piece");
     public static final DeferredItem<Item> PINK_SLIMEBALL = ITEMS.registerSimpleItem("pink_slimeball");
     public static final DeferredItem<Item> PINK_EGG = ITEMS.register("pink_egg",
@@ -1321,6 +1323,7 @@ public class ModItems {
     public static final DeferredItem<Item> QYM_DOLL = ITEMS.register("qym_doll", () -> new QYMDollItem(ModBlocks.QYM_DOLL.get(), new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredItem<Item> UUZ_DOLL = ITEMS.register("uuz_doll", () -> new UUZDollItem(ModBlocks.UUZ_DOLL.get(), new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredItem<BlockItem> DYEDREAM_CRACK = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_CRACK);
+    public static final DeferredItem<BlockItem> DYEDREAM_WORLD_LEAPSTONE = ITEMS.registerSimpleBlockItem(ModBlocks.DYEDREAM_WORLD_LEAPSTONE);
 
     public static final DeferredItem<Item> NIGHTMARE_FUEL = ITEMS.register("nightmare_fuel", NightmareFuelItem::new);
 
