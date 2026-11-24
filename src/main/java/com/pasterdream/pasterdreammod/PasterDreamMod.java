@@ -116,6 +116,7 @@ public class PasterDreamMod {
         ModDataComponents.register(modEventBus);   // DataComponents
         ModAttachments.register(modEventBus);      // AttachmentType（取代 Forge Capability）
         ModCriteriaTriggers.register(modEventBus); // 自定义进度触发器
+        com.pasterdream.pasterdreammod.world.conditions.DyedreamWorldLeapstoneEnabledCondition.register(modEventBus); // 配方条件
 
         // ---- 启动阶段监听 ----
         modEventBus.addListener(this::commonSetup);

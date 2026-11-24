@@ -34,7 +34,8 @@
     "MusicManagerMixin",
     "SituationalMusicMixin",
     "LevelRendererMixin",
-    "FogRendererMixin"
+    "FogRendererMixin",
+    "GuiPortalOverlayMixin"
   ],
   "injectors": {
     "defaultRequire": 1

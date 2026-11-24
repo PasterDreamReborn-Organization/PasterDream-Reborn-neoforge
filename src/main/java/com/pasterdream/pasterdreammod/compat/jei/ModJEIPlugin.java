@@ -192,6 +192,8 @@ public class ModJEIPlugin implements IModPlugin
                 DreamAccumulatorRecipeCategory.DREAM_ACCUMULATOR_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.SHADOW_BLAST_FURNACE.get()),
                 ShadowBlastFurnaceRecipeCategory.SHADOW_BLAST_FURNACE_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get()),
+                DyedreamContaminationRecipeCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.DYEDREAM_CRACK.get()),
                 DyedreamContaminationRecipeCategory.RECIPE_TYPE);
     }

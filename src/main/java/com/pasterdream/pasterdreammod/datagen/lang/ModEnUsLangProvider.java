@@ -413,6 +413,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.SMALL_DYEDREAM_BUD.get(), "Small Dyedream Bud");
         add(ModBlocks.MEDIUM_DYEDREAM_BUD.get(), "Medium Dyedream Bud");
         add(ModBlocks.LARGE_DYEDREAM_BUD.get(), "Large Dyedream Bud");
+        // ===== Dyedream World Leapstone / Portal =====
+        add(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get(), "Dyedream World Leapstone");
+        add(ModBlocks.DYEDREAM_WORLD_PORTAL.get(), "Dyedream World Portal");
+        add("tooltip.pasterdream.dyedream_world_leapstone", "§7Used to build a portal frame; right-click the inside with Dyedream Dust to open a portal to the Dyedream World");
+        add("tooltip.pasterdream.dyedream_world_leapstone_0_2_0_test", "§cExclusive test for version 0.2.0");
         add(ModBlocks.DYEDREAM_BUD_BLOCK.get(), "Dyedream Bud Block");
         add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), "Dyedream Alloy Block");
         add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get(), "Dyedream Quartz Block");

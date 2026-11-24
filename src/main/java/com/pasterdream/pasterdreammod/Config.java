@@ -442,6 +442,19 @@ public class Config {
             .comment("染梦裂隙的污染半径（格），默认 5")
             .defineInRange("dyedreamCrackContaminationRadius", 5, 1, 32);
 
+    // === 染梦世界跃迁石 / 传送门 ===
+    public static final ModConfigSpec.BooleanValue DYEDREAM_PORTAL_CONTAMINATION_ENABLED = BUILDER
+            .comment("染梦世界传送门是否向外侵染地形，默认 true")
+            .define("dyedreamPortalContaminationEnabled", true);
+
+    public static final ModConfigSpec.IntValue DYEDREAM_PORTAL_CONTAMINATION_RADIUS = BUILDER
+            .comment("染梦世界传送门的污染半径（格），默认 5")
+            .defineInRange("dyedreamPortalContaminationRadius", 5, 1, 32);
+
+    public static final ModConfigSpec.BooleanValue DYEDREAM_WORLD_LEAPSTONE_ENABLED = BUILDER
+            .comment("是否启用染梦世界跃迁石与传送门（0.2.0 测试性内容），默认 false")
+            .define("dyedreamWorldLeapstoneEnabled", false);
+
     // === 逐梦列车车票 ===
     public static final ModConfigSpec.BooleanValue TRAIN_TICKET_ONE_PER_DIMENSION = BUILDER
             .comment("逐梦列车车票每个维度只能一人使用（全服共享），默认 false")

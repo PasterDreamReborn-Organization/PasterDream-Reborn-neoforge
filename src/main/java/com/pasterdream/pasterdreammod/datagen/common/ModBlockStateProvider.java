@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.world.block.CalciteConeBlock;
 import com.pasterdream.pasterdreammod.world.block.FigVineBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlock;
 import com.pasterdream.pasterdreammod.world.block.SlumberPalmWallBlock;
+import com.pasterdream.pasterdreammod.world.block.portal.DyedreamWorldPortalBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
@@ -402,6 +403,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("0", modLoc("block/dyedream_crack"))
                 .renderType("translucent");
         horizontalBlock(ModBlocks.DYEDREAM_CRACK.get(), dyedreamCrackModel);
+
+        // ===== 染梦世界跃迁石 / 传送门 =====
+        simpleBlockWithItem(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get(), cubeAll(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get()));
+        getVariantBuilder(ModBlocks.DYEDREAM_WORLD_PORTAL.get())
+                .partialState().with(DyedreamWorldPortalBlock.AXIS, Direction.Axis.X)
+                .modelForState().modelFile(models().getExistingFile(modLoc("block/dyedream_world_portal_ns"))).addModel()
+                .partialState().with(DyedreamWorldPortalBlock.AXIS, Direction.Axis.Z)
+                .modelForState().modelFile(models().getExistingFile(modLoc("block/dyedream_world_portal_ew"))).addModel();
 
         var shadowModel = models().cubeAll(ModBlocks.SHADOW.getId().getPath(), blockTexture(ModBlocks.SHADOW.get())).renderType("translucent");
         simpleBlockWithItem(ModBlocks.SHADOW.get(), shadowModel);

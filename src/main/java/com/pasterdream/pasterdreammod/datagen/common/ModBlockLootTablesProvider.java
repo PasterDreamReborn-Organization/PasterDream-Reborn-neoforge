@@ -263,6 +263,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                         .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
         dropSelf(ModBlocks.LOST_SWORD_TOMB.get());
         dropSelf(ModBlocks.DYEDREAM_CRACK.get());
+        dropSelf(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get());
+        add(ModBlocks.DYEDREAM_WORLD_PORTAL.get(), noDrop());
         dropSelf(ModBlocks.LIFE_CRYSTAL.get());
         dropSelf(ModBlocks.BREAK_WIND_KNIGHT_ALTAR.get());
         dropSelf(ModBlocks.GOLDEN_FOX_SCULPTURE.get());
