@@ -121,6 +121,16 @@ public class CurioGameTests {
     }
 
     @GameTest(template = "empty")
+    public static void kaichuOmamoriWearsBodySlot(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        ItemStack omamori = ModItems.KAICHU_OMAMORI.toStack();
+        helper.assertTrue(omamori.is(curiosTag("body")), "怀中御守应能装入 body（胸饰）槽");
+        helper.assertTrue(CuriosApi.getItemStackSlots(omamori, player).containsKey("body"),
+                "怀中御守应识别为 body 槽饰品");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
     public static void snowVowClearsFireAndFreezing(GameTestHelper helper) {
         Player player = helper.makeMockPlayer(GameType.SURVIVAL);
         double initialLuck = player.getAttributeValue(Attributes.LUCK);
