@@ -4,7 +4,7 @@
   "energy":102400,
   "input":
   {
-    "tag":"forge:ores/molten_gold"
+    "tag":"c:ores/molten_gold"
   },
   "results":
   [
@@ -18,7 +18,7 @@
   ],
   "slag":
   {
-    "tag":"forge:slag"
+    "tag":"c:slag"
   },
   "time":200
 }

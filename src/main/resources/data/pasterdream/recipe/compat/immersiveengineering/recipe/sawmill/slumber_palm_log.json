@@ -15,14 +15,14 @@
     {
       "output":
       {
-        "tag":"forge:dusts/wood"
+        "tag":"c:dusts/wood"
       },
       "stripping":true
     },
     {
       "output":
       {
-        "tag":"forge:dusts/wood"
+        "tag":"c:dusts/wood"
       },
       "stripping":false
     }

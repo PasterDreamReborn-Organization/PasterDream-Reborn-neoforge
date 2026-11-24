@@ -3,7 +3,7 @@
   "energy":6000,
   "input":
   {
-    "tag":"forge:ores/titanium"
+    "tag":"c:ores/titanium"
   },
   "result":
   {

@@ -3,7 +3,7 @@
   "energy":6000,
   "input":
   {
-    "tag":"forge:ores/molten_gold"
+    "tag":"c:ores/molten_gold"
   },
   "result":
   {

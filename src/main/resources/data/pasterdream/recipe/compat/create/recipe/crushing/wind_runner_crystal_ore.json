@@ -2,7 +2,7 @@
   "type": "create:crushing",
   "ingredients": [
     {
-      "tag":"forge:ores/wind_runner_crystal"
+      "tag":"c:ores/wind_runner_crystal"
     }
   ],
   "processingTime": 250,
