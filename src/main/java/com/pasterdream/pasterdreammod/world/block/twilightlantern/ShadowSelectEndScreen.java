@@ -41,7 +41,7 @@ public class ShadowSelectEndScreen extends AbstractContainerScreen<ShadowSelectE
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
+        //renderBackground(guiGraphics, mouseX, mouseY, partialTick); 1.21.1不再需要，super.render(guiGraphics, mouseX, mouseY, partialTick);已经做了
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
     }

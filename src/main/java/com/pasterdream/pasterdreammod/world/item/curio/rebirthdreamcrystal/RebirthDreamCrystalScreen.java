@@ -94,7 +94,7 @@ public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDr
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick)
     {
         // 1.21 的 renderBackground 需要鼠标坐标与部分刻
-        renderBackground(guiGraphics, mouseX, mouseY, partialTick);
+        //renderBackground(guiGraphics, mouseX, mouseY, partialTick); 1.21.1不再需要，super.render(guiGraphics, mouseX, mouseY, partialTick);已经做了
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
         int color = DreamNotesBookProgressRegistry.getColorByDimension(allDimensions.get(dimensionPage));

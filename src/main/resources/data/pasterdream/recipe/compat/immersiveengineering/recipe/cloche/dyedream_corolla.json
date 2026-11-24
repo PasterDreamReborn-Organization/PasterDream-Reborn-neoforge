@@ -1,0 +1,23 @@
+{
+  "type":"immersiveengineering:cloche",
+  "input":
+  {
+    "item":"pasterdream:dyedream_corolla_crop_age_0"
+  },
+  "render":
+  {
+    "type":"crop",
+    "block":"pasterdream:dyedream_corolla_crop"
+  },
+  "results":
+  [
+    {
+      "item":"pasterdream:dyedream_corolla"
+    }
+  ],
+  "soil":
+  {
+    "tag":"pasterdream:dyedream_dirt"
+  },
+  "time":600
+}

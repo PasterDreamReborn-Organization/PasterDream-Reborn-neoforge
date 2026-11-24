@@ -1,13 +1,16 @@
 package com.pasterdream.pasterdreammod.helper.multiblockproperties;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition._2x4x2_CalculatePartPosition;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition._3x3x3_CalculatePartPosition;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -23,13 +26,28 @@ public class MultiBlockBreakHandler
         BlockPos pos = event.getPos();
         BlockState state = event.getState();
 
-        if (!(state.getBlock() instanceof ShadowBlastFurnaceBlock))
+        if (!(state.getBlock() instanceof ShadowBlastFurnaceBlock) && !(state.getBlock() instanceof WeaponWorkshopBlastFurnaceBlock))
+        {
+            return;
+        }
+
+        EnumProperty<?> partProperty = null;
+        if (state.getBlock() instanceof ShadowBlastFurnaceBlock)
+        {
+            partProperty = ShadowBlastFurnaceBlock.PART;
+        }
+        else
+        if (state.getBlock() instanceof WeaponWorkshopBlastFurnaceBlock)
+        {
+            partProperty = WeaponWorkshopBlastFurnaceBlock.PART;
+        }
+        if (partProperty == null)
         {
             return;
         }
 
         Direction facing = state.getValue(ShadowBlastFurnaceBlock.FACING);
-        String partName = state.getValue(ShadowBlastFurnaceBlock.PART).getSerializedName();
+        String partName = state.getValue(partProperty).getSerializedName();
         boolean isMain = partName.equals("main");
 
         if (isMain)
@@ -39,7 +57,22 @@ public class MultiBlockBreakHandler
 
         event.setCanceled(true);
 
-        BlockPos mainPos = _3x3x3_CalculatePartPosition.getMainPosFromAddon(pos, facing, state.getValue(ShadowBlastFurnaceBlock.PART));
+        BlockPos mainPos = null;
+        if (state.getBlock() instanceof ShadowBlastFurnaceBlock)
+        {
+            mainPos = _3x3x3_CalculatePartPosition.getMainPosFromAddon(pos, facing, (_3x3x3Part) state.getValue(partProperty));
+        }
+        else
+            if (state.getBlock() instanceof WeaponWorkshopBlastFurnaceBlock)
+            {
+                mainPos = _2x4x2_CalculatePartPosition.getMainPosFromAddon(pos, facing, (_2x4x2Part) state.getValue(partProperty));
+            }
+
+        if (mainPos == null)
+        {
+            return;
+        }
+
         BlockState mainState = level.getBlockState(mainPos);
         if (mainState.getBlock() == state.getBlock())
         {
