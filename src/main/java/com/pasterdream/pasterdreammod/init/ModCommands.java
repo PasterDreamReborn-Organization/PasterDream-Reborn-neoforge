@@ -11,6 +11,7 @@ import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.pasterdream.pasterdreammod.command.meltdreamenergy.IsNotNeed;
 import com.pasterdream.pasterdreammod.command.meltdreamenergy.MaxMeltDreamEnergy;
 import com.pasterdream.pasterdreammod.command.meltdreamenergy.MeltDreamEnergy;
+import com.pasterdream.pasterdreammod.command.music.MusicDebug;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -92,6 +93,9 @@ public final class ModCommands {
                                                         .executes(LowSanEffect::setSound)))
                                         .then(Commands.literal("get")
                                                 .executes(LowSanEffect::getSound)))))
+                .then(Commands.literal("music")
+                        .then(Commands.literal("check")
+                                .executes(MusicDebug::checkMusic)))
                 .then(Commands.literal("shadowDifficulty")
                         .then(Commands.literal("default")
                                 .then(Commands.literal("very_easy")

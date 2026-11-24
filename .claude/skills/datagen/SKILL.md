@@ -24,7 +24,8 @@ description: 数据生成器（runData）。覆盖所有 Provider（方块状态
 | `ModFluidTagsProvider` | 流体标签 |
 | `ModRecipesProvider` | 配方 |
 | `ModAdvancementProvider` | 进度 |
-| `ModWorldGenProvider` | 世界生成（`DatapackBuiltinEntriesProvider`） |
+| `ModWorldGenProvider` | 世界生成、画作与自定义附魔定义（`DatapackBuiltinEntriesProvider`） |
+| `ModEnchantmentTagsProvider` | 自定义附魔的交易、战利品、附魔台与诅咒标签 |
 | `GenerateBucketItem` | 流体桶物品模型 |
 
 语言文件：`datagen/lang/ModEnUsLangProvider.java` / `ModZhCnLangProvider.java`。

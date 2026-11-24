@@ -13,6 +13,10 @@ public final class ModItemTags {
             ResourceLocation.fromNamespaceAndPath("pasterdream", "enhance_stone"));
     public static final TagKey<Item> CHANNELING_ENCHANTABLE = TagKey.create(Registries.ITEM,
             ResourceLocation.fromNamespaceAndPath("pasterdream", "channeling_enchantable"));
+    public static final TagKey<Item> SWIFT_STRIKE_ENCHANTABLE = TagKey.create(Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "enchantable/swift_strike"));
+    public static final TagKey<Item> REPAIR_ENCHANTABLE = TagKey.create(Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "enchantable/repair"));
     public static final TagKey<Item> STAR_FISHING_RODS = TagKey.create(Registries.ITEM,
             ResourceLocation.fromNamespaceAndPath("pasterdream", "star_fishing_rods"));
     public static final TagKey<Item> ORES_DYEDREAM_QUARTZ = common("ores/dyedream_quartz");

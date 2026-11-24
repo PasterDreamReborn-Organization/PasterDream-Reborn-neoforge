@@ -7,6 +7,9 @@ import com.pasterdream.pasterdreammod.world.block.BreakWindCurtainBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.world.entity.projectile.FireworkRocketEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.util.FakePlayer;
 import net.neoforged.neoforge.gametest.GameTestHolder;
 import net.neoforged.neoforge.gametest.PrefixGameTestTemplate;
@@ -72,6 +75,24 @@ public class BreakWindCurtainGameTests {
                     helper.assertTrue(passes(player) == 2, "冷却结束后再次进入应计数，实际 " + passes(player));
                 })
                 .thenSucceed();
+    }
+
+    @GameTest(template = "empty", batch = "fireworkMomentum")
+    public static void fireworkPreservesSpeedAboveCruiseLimit(GameTestHelper helper) {
+        var player = glidingPlayer(helper, helper.absolutePos(new BlockPos(1, 2, 1)));
+        var look = player.getLookAngle();
+        var rocket = new FireworkRocketEntity(helper.getLevel(), new ItemStack(Items.FIREWORK_ROCKET), player);
+
+        player.setDeltaMovement(look.scale(5.0));
+        rocket.tick();
+        helper.assertTrue(Math.abs(player.getDeltaMovement().dot(look) - 5.0) < 1e-5,
+                "烟花应保留超过巡航速度的前向动量");
+
+        player.setDeltaMovement(look);
+        rocket.tick();
+        helper.assertTrue(Math.abs(player.getDeltaMovement().dot(look) - 1.35) < 1e-5,
+                "普通速度下烟花应按原版加速");
+        helper.succeed();
     }
 
     private static FakePlayer glidingPlayer(GameTestHelper helper, BlockPos pos) {

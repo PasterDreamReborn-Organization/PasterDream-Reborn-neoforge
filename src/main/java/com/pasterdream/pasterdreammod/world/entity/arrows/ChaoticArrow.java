@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.entity.arrows;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviors;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -39,7 +40,11 @@ public class ChaoticArrow extends Arrow {
         this(ModEntities.CHAOTIC_ARROW.get(), level);
         this.setPos(shooter.getX(), shooter.getEyeY() - 0.1, shooter.getZ());
         this.setOwner(shooter);
-        this.setPickupItemStack(ammo.copyWithCount(1));
+        ItemStack pickup = ammo.copyWithCount(1);
+        if (pickup.remove(DataComponents.INTANGIBLE_PROJECTILE) != null) {
+            this.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+        }
+        this.setPickupItemStack(pickup);
         ArrowBehaviors.applyFiredFromWeapon(this, weapon);
     }
 

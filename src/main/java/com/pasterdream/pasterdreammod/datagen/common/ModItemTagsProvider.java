@@ -29,6 +29,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        tag(ModItemTags.SWIFT_STRIKE_ENCHANTABLE).addTag(ItemTags.SWORD_ENCHANTABLE).addTag(ItemTags.AXES);
+        var repairable = tag(ModItemTags.REPAIR_ENCHANTABLE).addTag(ItemTags.DURABILITY_ENCHANTABLE).add(Items.WOLF_ARMOR);
+        BuiltInRegistries.ITEM.holders()
+                .filter(item -> item.key().location().getNamespace().equals(PasterDreamMod.MOD_ID))
+                .filter(item -> item.value().getDefaultInstance().isDamageableItem())
+                .forEach(item -> repairable.add(item.key()));
         tag(CauldronPotionTags.BASE).add(ModItems.DYEDREAM_FRUIT.get());
         tag(CauldronPotionTags.ENHANCE_REDSTONE).add(Items.REDSTONE);
         tag(CauldronPotionTags.ENHANCE_GLOWSTONE).add(Items.GLOWSTONE_DUST);

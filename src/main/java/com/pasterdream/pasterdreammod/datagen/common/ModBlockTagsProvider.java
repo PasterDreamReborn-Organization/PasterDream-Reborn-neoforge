@@ -915,6 +915,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get())
                 .add(ModBlocks.DYEDREAM_WORLD_PORTAL.get());
 
+        // 不可被流体破坏的无碰撞箱方块。
+        tag(ModBlockTags.FLUID_CAN_NOT_BRUSH_NOCOLLISSION_BLOCK)
+                .add(ModBlocks.DYEDREAM_CRACK.get())
+                .add(ModBlocks.DYEDREAM_WORLD_PORTAL.get())
+                .add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get())
+                .add(ModBlocks.BIG_BUBBLE.get())
+                .add(ModBlocks.SHADOW_VORTEX.get());
+
         // 矿石/深层方块不在对属性敏感的地表替代链中，未加入 ANIMALS_SPAWNABLE_ON。
     }
 }
