@@ -118,6 +118,19 @@ public class PasterDreamClientConfig {
                     + "\r\n指令 /pasterdreamdebug san lowsan sound 可运行时临时切换，重进存档后按此配置恢复")
             .define("lowSanSound", true);
 
+    // === JEI 兼容 ===
+    public static final ModConfigSpec.BooleanValue SHOW_FLUIDS_IN_JEI = BUILDER
+            .comment("是否在 JEI 的原料列表（右侧物品/流体栏）中显示本模组的流体。"
+                    + "\n默认 false：流体不出现在原料列表中，但仍会正常显示在配方里。"
+                    + "\n修改后需重启游戏生效。")
+            .define("showFluidsInJei", false);
+
+    public static final ModConfigSpec.BooleanValue SHOW_POTION_ELIXIR_BOTTLES_IN_JEI = BUILDER
+            .comment("是否在 JEI 的原料列表（右侧物品栏）中显示装满药水的灵药瓶（按药水效果展开的条目）。"
+                    + "\n默认 false：药水灵药瓶不出现在原料列表中，但仍会正常显示在配方里，空灵药瓶不受影响。"
+                    + "\n修改后需重启游戏生效。")
+            .define("showPotionElixirBottlesInJei", false);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     private PasterDreamClientConfig() {
