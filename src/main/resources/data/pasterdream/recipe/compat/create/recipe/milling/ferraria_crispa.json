@@ -1,20 +1,24 @@
 {
   "type": "create:milling",
-  "ingredients":
-  [
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
     {
       "item": "pasterdream:ferraria_crispa"
     }
   ],
-  "processingTime": 50,
-  "results":
-  [
+  "processing_time": 50,
+  "results": [
     {
       "count": 2,
-      "item": "minecraft:black_dye"
+      "id": "minecraft:black_dye"
     },
     {
-      "item": "minecraft:green_dye"
+      "id": "minecraft:green_dye"
     }
   ]
 }

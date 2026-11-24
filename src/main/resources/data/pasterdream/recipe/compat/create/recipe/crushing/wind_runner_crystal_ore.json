@@ -1,27 +1,33 @@
 {
   "type": "create:crushing",
-  "ingredients": [
+  "neoforge:conditions": [
     {
-      "tag":"c:ores/wind_runner_crystal"
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
     }
   ],
-  "processingTime": 250,
+  "ingredients": [
+    {
+      "tag": "c:ores/wind_runner_crystal"
+    }
+  ],
+  "processing_time": 250,
   "results": [
     {
       "count": 4,
-      "item": "pasterdream:wind_runner_crystal"
+      "id": "pasterdream:wind_runner_crystal"
     },
     {
       "chance": 0.5,
-      "item": "pasterdream:wind_runner_crystal"
+      "id": "pasterdream:wind_runner_crystal"
     },
     {
       "chance": 0.75,
-      "item": "create:experience_nugget"
+      "id": "create:experience_nugget"
     },
     {
       "chance": 0.125,
-      "item": "pasterdream:cyan_stone"
+      "id": "pasterdream:cyan_stone"
     }
   ]
 }

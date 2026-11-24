@@ -1,20 +1,24 @@
 {
   "type": "create:milling",
-  "ingredients":
-  [
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
     {
       "item": "pasterdream:pink_mushroom"
     }
   ],
-  "processingTime": 50,
-  "results":
-  [
+  "processing_time": 50,
+  "results": [
     {
       "count": 2,
-      "item": "minecraft:pink_dye"
+      "id": "minecraft:pink_dye"
     },
     {
-      "item": "minecraft:white_dye"
+      "id": "minecraft:white_dye"
     }
   ]
 }

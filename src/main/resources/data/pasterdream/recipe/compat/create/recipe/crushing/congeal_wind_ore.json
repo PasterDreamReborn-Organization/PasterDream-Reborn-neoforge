@@ -1,27 +1,33 @@
 {
   "type": "create:crushing",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
   "ingredients": [
     {
       "item": "pasterdream:congeal_wind_ore"
     }
   ],
-  "processingTime": 50,
+  "processing_time": 50,
   "results": [
     {
       "count": 4,
-      "item": "pasterdream:congeal_wind"
+      "id": "pasterdream:congeal_wind"
     },
     {
       "chance": 0.5,
-      "item": "pasterdream:congeal_wind"
+      "id": "pasterdream:congeal_wind"
     },
     {
       "chance": 0.75,
-      "item": "create:experience_nugget"
+      "id": "create:experience_nugget"
     },
     {
       "chance": 0.125,
-      "item": "pasterdream:thick_cloud"
+      "id": "pasterdream:thick_cloud"
     }
   ]
 }

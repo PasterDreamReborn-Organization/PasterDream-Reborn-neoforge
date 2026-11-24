@@ -1,17 +1,23 @@
 {
   "type": "create:crushing",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
   "ingredients": [
     {
       "item": "pasterdream:shadow_pane"
     }
   ],
-  "processingTime": 100,
+  "processing_time": 100,
   "results": [
     {
-      "item": "pasterdream:shadow_planks"
+      "id": "pasterdream:shadow_planks"
     },
     {
-      "item": "minecraft:glass_pane"
+      "id": "minecraft:glass_pane"
     }
   ]
 }

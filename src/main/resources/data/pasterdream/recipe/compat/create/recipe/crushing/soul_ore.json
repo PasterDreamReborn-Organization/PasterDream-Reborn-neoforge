@@ -1,27 +1,33 @@
 {
   "type": "create:crushing",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
   "ingredients": [
     {
       "item": "pasterdream:soul_ore"
     }
   ],
-  "processingTime": 150,
+  "processing_time": 150,
   "results": [
     {
       "count": 4,
-      "item": "pasterdream:soul_dust"
+      "id": "pasterdream:soul_dust"
     },
     {
       "chance": 0.5,
-      "item": "pasterdream:raw_molten_gold"
+      "id": "pasterdream:raw_molten_gold"
     },
     {
       "chance": 0.75,
-      "item": "create:experience_nugget"
+      "id": "create:experience_nugget"
     },
     {
       "chance": 0.125,
-      "item": "minecraft:soul_soil"
+      "id": "minecraft:soul_soil"
     }
   ]
 }

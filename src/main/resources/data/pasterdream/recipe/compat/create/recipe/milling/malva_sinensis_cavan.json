@@ -1,20 +1,24 @@
 {
   "type": "create:milling",
-  "ingredients":
-  [
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
     {
       "item": "pasterdream:malva_sinensis_cavan"
     }
   ],
-  "processingTime": 50,
-  "results":
-  [
+  "processing_time": 50,
+  "results": [
     {
       "count": 2,
-      "item": "minecraft:pink_dye"
+      "id": "minecraft:pink_dye"
     },
     {
-      "item": "minecraft:lime_dye"
+      "id": "minecraft:lime_dye"
     }
   ]
 }
