@@ -6,7 +6,6 @@ import com.pasterdream.pasterdreammod.helper.GameModeHelper;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
-import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.world.effect.ShadowSpyonEffect;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosLeftHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosRightHandEntity;
@@ -18,7 +17,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -76,9 +74,9 @@ public final class AaroncosArenaWorldDimension {
 
     private static final Map<ServerLevel, BattleSession> BATTLES = new HashMap<>();
     private static final int BATTLE_TICK_INTERVAL = 20;
-    private static final int MUSIC_LOOP_ELAPSED = 150 * BATTLE_TICK_INTERVAL;
+    private static final int BATTLE_CYCLE_TICKS = 150 * BATTLE_TICK_INTERVAL;
     private static final int[] TERRORBEAK_ELAPSED =
-            {50 * BATTLE_TICK_INTERVAL, 100 * BATTLE_TICK_INTERVAL, 150 * BATTLE_TICK_INTERVAL};
+            {50 * BATTLE_TICK_INTERVAL, 100 * BATTLE_TICK_INTERVAL, BATTLE_CYCLE_TICKS};
 
     /** 眼方块被激活（召唤 BOSS）时启动战斗会话，随后眼销毁自身 */
     public static void startBattle(ServerLevel arena, BlockPos eyePos) {
@@ -157,8 +155,7 @@ public final class AaroncosArenaWorldDimension {
                     spawnTerrorbeak(arena, battle.eyePos().offset(0, 0, -12));
                 }
             }
-            if (elapsed >= MUSIC_LOOP_ELAPSED) {
-                arena.playSound(null, battle.eyePos(), ModSounds.AARONCOS_MUSIC.get(), SoundSource.WEATHER, 1, 1);
+            if (elapsed >= BATTLE_CYCLE_TICKS) {
                 elapsed = 0;
             }
             // 双手死亡（9 格范围内空）→ 放奖励箱 + 授予进度 + 移除暗影窥视（传送逻辑移至开箱后）
