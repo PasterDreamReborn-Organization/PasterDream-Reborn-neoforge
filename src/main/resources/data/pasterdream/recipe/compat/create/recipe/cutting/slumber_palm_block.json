@@ -1,15 +1,21 @@
 {
   "type": "create:cutting",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
   "ingredients": [
     {
       "item": "pasterdream:slumber_palm_block"
     }
   ],
-  "processingTime": 50,
+  "processing_time": 50,
   "results": [
     {
       "count": 2,
-      "item": "pasterdream:slumber_palm"
+      "id": "pasterdream:slumber_palm"
     }
   ]
 }

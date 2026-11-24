@@ -1,8 +1,15 @@
 {
   "type": "create:mixing",
-  "heatRequirement": "heated",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "heat_requirement": "heated",
   "ingredients": [
     {
+      "type": "neoforge:single",
       "amount": 250,
       "fluid": "pasterdream:uncooked_dyedream_flower_tea"
     }
@@ -10,7 +17,7 @@
   "results": [
     {
       "amount": 250,
-      "fluid": "pasterdream:dyedream_flower_tea"
+      "id": "pasterdream:dyedream_flower_tea"
     }
   ]
 }
