@@ -1700,6 +1700,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.allkinds_ring.skill_cd", "§7▪ §9+5% Skill Cooldown Reduction");
         add("tooltip.pasterdream.allkinds_ring.skill_dmg", "§7▪ §9+5% Skill Damage");
         add("tooltip.pasterdream.allkinds_ring.blink_cd", "§7▪ §9+5% Blink Cooldown Reduction");
+        add(ModEntities.FOX_FIRE.get(), "Foxfire Field");
         add("tooltip.pasterdream.kaichu_omamori.effect.foxfire", "§7▪ §9Generates a Foxfire field in a 12×12 area");
         add("tooltip.pasterdream.kaichu_omamori.effect.vulnerable", "§7▪ §9Non-player creatures take 20% more damage and get Slowness V effect");
         add("tooltip.pasterdream.kaichu_omamori.effect.regen", "§7▪ §9Grants the player Regeneration");
@@ -1878,6 +1879,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModEntities.WIND_ALLOY_LIGHTNING.get(), "Wind Alloy Lightning");
         add(ModEntities.WIND_THUNDER_SPEAR.get(), "Windwreathed Thunder Spear");
         add(ModEntities.TIDE_SWORD_PROJECTILE.get(), "Tide Sword");
+        add(ModEntities.TERRASWORD_WAVE.get(), "Terra Sword Wave");
         add(ModEntities.KUSANAGI_VENOM_STINGER.get(), "Kusanagi Venom Stinger");
         add(ModEntities.MELT_DREAM_ARROW.get(), "Melt Dream Arrow");
         add(ModEntities.SHADOW_ALLOY_ARROW.get(), "Shadow Alloy Arrow");

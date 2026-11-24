@@ -1700,6 +1700,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.allkinds_ring.skill_cd", "§7▪ §9+5% 战技冷却缩减");
         add("tooltip.pasterdream.allkinds_ring.skill_dmg", "§7▪ §9战技伤害+5%");
         add("tooltip.pasterdream.allkinds_ring.blink_cd", "§7▪ §9+5% 瞬身术冷却缩减");
+        add(ModEntities.FOX_FIRE.get(), "狐火力场");
         add("tooltip.pasterdream.kaichu_omamori.effect.foxfire", "§7▪ §9对12*12区域范围内生成狐火力场");
         add("tooltip.pasterdream.kaichu_omamori.effect.vulnerable", "§7▪ §9使除玩家外的生物受到20%的易伤和缓慢V效果");
         add("tooltip.pasterdream.kaichu_omamori.effect.regen", "§7▪ §9给予玩家生命恢复");
@@ -1878,6 +1879,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModEntities.WIND_ALLOY_LIGHTNING.get(), "萦风合金闪电");
         add(ModEntities.WIND_THUNDER_SPEAR.get(), "萦风雷矛");
         add(ModEntities.TIDE_SWORD_PROJECTILE.get(), "引潮剑");
+        add(ModEntities.TERRASWORD_WAVE.get(), "泰拉剑气");
         add(ModEntities.KUSANAGI_VENOM_STINGER.get(), "草薙毒刺");
         add(ModEntities.MELT_DREAM_ARROW.get(), "融梦箭");
         add(ModEntities.SHADOW_ALLOY_ARROW.get(), "暗影合金箭");
