@@ -6,6 +6,8 @@
     "FlowerPotBlockMixin",
     "PlayerCanEatMixin",
     "AbstractArrowAccessor",
+    "EnchantmentDamageMixin",
+    "EnchantBookForEmeraldsMixin",
     "LootPoolAccessor",
     "FishingHookMixin",
     "ProtectedEffectApplicableMixin",

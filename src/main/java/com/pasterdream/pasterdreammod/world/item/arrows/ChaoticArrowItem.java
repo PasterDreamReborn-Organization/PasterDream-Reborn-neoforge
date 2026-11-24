@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item.arrows;
 
+import com.pasterdream.pasterdreammod.init.ModEnchantment;
 import com.pasterdream.pasterdreammod.world.entity.arrows.ChaoticArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehavior;
 import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviorProvider;
@@ -43,7 +44,10 @@ public class ChaoticArrowItem extends ArrowItem implements ArrowBehaviorProvider
         return ArrowBehaviors.CHAOTIC;
     }
 
-    // 来源「心之贪食修补」附魔随 T15-B 数据驱动附魔批次迁入前，暂不声明无限弹药。
+    @Override
+    public boolean isInfinite(ItemStack stack, ItemStack bow, LivingEntity shooter) {
+        return ModEnchantment.getLevel(bow, ModEnchantment.HEART_DEVOUR_REPAIR_ENCHANTMENT) > 0;
+    }
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
