@@ -119,7 +119,7 @@ public class ModLampShadowChestLootTablesProvider implements LootTableSubProvide
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                ConstantValue.exactly(3.0F))))
                                 .add(LootItem.lootTableItem(ModItems.LAMP_SHADOW_BROKEN_NOTE.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(

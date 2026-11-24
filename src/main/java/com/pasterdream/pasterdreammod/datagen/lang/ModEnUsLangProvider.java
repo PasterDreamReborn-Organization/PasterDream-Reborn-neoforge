@@ -76,13 +76,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("key.categories.pasterdream", "PasterDream");
         add("effect.pasterdream.evasion", "Evasion");
         add("effect.pasterdream.dream_wish", "Dream Wish");
+        add("effect.pasterdream.dream_wish.description", "Drink the dream fruit juice to get it, and having this effect lets you enter the Dyedream World when you sleep at night.");
         add("effect.pasterdream.blink_cooldown", "Blink Cooldown");
         add("attribute.pasterdream.blink_consume", "Blink Hunger Cost");
         add("attribute.pasterdream.blink_range", "Blink Distance");
         add("subtitles.pasterdream.evasion", "Evasion");
         add("effect.pasterdream.confusion", "Confusion");
+        add("effect.pasterdream.confusion.description", "When applied to a player, their view will shake; when applied to other creatures, it will make them unable to move.");
         add("effect.pasterdream.cook.description", "While active, you can eat any food even with a full hunger bar. Overflowed hunger or saturation is converted into health, and if health is full, into yellow absorption hearts. Each level raises the yellow-heart cap by 10 (I=20 / II=30 / III=40).");
         add("effect.pasterdream.shadow_silence", "Shadow Silence");
+        add("effect.pasterdream.shadow_silence.description", "After getting this buff, shadow creatures will lose the ability to use their skills.");
         add("effect.pasterdream.shadow_spyon", "Shadow Gaze");
         add(ModEntities.NAMELESS.get(), "Nameless");
         add(ModItems.NAMELESS_SPAWN_EGG.get(), "Nameless Spawn Egg");
@@ -197,11 +200,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.san_value", "SAN: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
         add("effect.pasterdream.cheer_up", "Cheer Up");
+        add("effect.pasterdream.cheer_up.description", "Get it when san is above 90% to gain some positive effects.");
         add("effect.pasterdream.lethargy", "Lethargy");
+        add("effect.pasterdream.lethargy.description", "You gain some negative effects when san is between 40% and 60%.");
         add("effect.pasterdream.trance", "Trance");
+        add("effect.pasterdream.trance.description", "You gain worse negative effects when san is between 20% and 40%.");
         add("effect.pasterdream.insane", "Insanity");
+        add("effect.pasterdream.insane.description", "When sanity falls below 20%, you get it and experience extremely severe negative effects. Your vision will be covered with special visual effects. When san is between 1% and 10%, you get Insane II, with looping sound effects and camera shakes. When sanity drops below 1%, you get Insane III, and the aforementioned negative effects are intensified. (Visual effects, shaking, and sound effects can be turned off with commands or config)");
         add("effect.pasterdream.cook", "Cook");
         add("effect.pasterdream.rest", "Rest");
+        add("effect.pasterdream.rest.description", "Touch the QYM doll or get it after sleeping, and you'll get a san aura while the effect lasts.");
         add("attribute.pasterdream.blink_cooldown_reduction", "Blink Cooldown Reduction");
         add("attribute.pasterdream.san_variability", "Sanity Variability");
         add("attribute.pasterdream.max_san_extra", "Max Sanity Bonus");
@@ -259,6 +267,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_LEGGINGS.get(), "Titanium Leggings");
         add(ModItems.TITANIUM_BOOTS.get(), "Titanium Boots");
         add("effect.pasterdream.titanium_armor", "Titanium Protection");
+        add("effect.pasterdream.titanium_armor.description", "Obtained when wearing the full Titanium set, grants Absorption I every 30 seconds.");
         add("tooltip.pasterdreammod.titanium_armor.1", "§7Set Bonus: §eTitanium Protection");
         add("tooltip.pasterdreammod.titanium_armor.2", "§7▪ §9Gain 2 Absorption hearts every 30s");
         add(ModItems.SCULK_HEART.get(), "Sculk Heart");
@@ -268,6 +277,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SCULK_LEGGINGS.get(), "Sculk Leggings");
         add(ModItems.SCULK_BOOTS.get(), "Sculk Boots");
         add("effect.pasterdream.sculk_armor", "Sculk Echo");
+        add("effect.pasterdream.sculk_armor.description", "Obtained when wearing the full Sculk set, increases maximum health, grants resistance buff when in the depths and removes darkness debuff while giving speed and resistance effects when affected by darkness debuff.");
         add("tooltip.pasterdreammod.sculk_armor.1", "§7Set Bonus: §2Sculk Echo");
         add("tooltip.pasterdreammod.sculk_armor.2", "§7▪ §9Max Health +4");
         add("tooltip.pasterdreammod.sculk_armor.3", "§7▪ §9Enhanced when below Y=0");
@@ -280,7 +290,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_LEGGINGS.get(), "Dyedream Leggings");
         add(ModItems.DYEDREAM_BOOTS.get(), "Dyedream Boots");
         add("effect.pasterdream.dyedream_armor", "Dyedream Protection");
+        add("effect.pasterdream.dyedream_armor.description", "Obtained when wearing the full Dyedream Alloy set, increases maximum health and grants Absorption II every 30 seconds.");
         add("effect.pasterdream.dyedream_up", "Dyedream Tool Boost");
+        add("effect.pasterdream.dyedream_up.description", "Obtained when wearing the full Dyedream Alloy set, deals 50% more damage when holding Dyedream (Dyedream Alloy and Melt Dream Crystal) tools.");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7Set Bonus: §dDyedream Protection");
         add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9Max Health +4");
         add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9Gain 4 Absorption hearts every 30s");
@@ -503,6 +515,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.highly_toxic", "Highly Toxic");
         add("effect.pasterdream.vulnerability", "Vulnerability");
         add("effect.pasterdream.bind", "Bind");
+        add("effect.pasterdream.bind.description", "Obtained after being hit by the White Sword's sword rain. After getting this buff, you won't be able to move.");
         add("structure.pasterdream.the_lost_sword_tomb", "The Lost Sword Tomb");
         add("structure.pasterdream.dyedream_crack", "Dyedream Crack");
         add("structure.pasterdream.aaroncos_arena_portal", "Aaroncos Arena Portal");
@@ -611,6 +624,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MELT_DREAM_LEGGINGS.get(), "Melt Dream Crystal Leggings");
         add(ModItems.MELT_DREAM_BOOTS.get(), "Melt Dream Crystal Boots");
         add("effect.pasterdream.melt_dream_crystal_armor", "Melt Dream Protection");
+        add("effect.pasterdream.melt_dream_crystal_armor.description", "Obtained when wearing the full Melt Dream Crystal set, reduces Melt-Repair cost by 50%, grants Regeneration II and Dyedream tool enhancement, grants a San Aura of +1.2 when Melt Dream Energy is above 50%, otherwise +0.6.");
         add("tooltip.pasterdreammod.melt_dream_armor.1", "§7▪ §9Max Health +2");
         add("tooltip.pasterdreammod.melt_dream_armor.2", "§7▪ §9Melt Dream Energy +1/min, Max +5");
         add("tooltip.pasterdreammod.melt_dream_armor.3", "§7▪ §bMelt-Repair: 0.01E/1 Durability");
@@ -784,6 +798,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.GARLAND.get(), "Garland");
         add(ModItems.SNOW_VOW_HEAD.get(), "Snow Vow");
         add("effect.pasterdream.snow_vow", "Snow Vow");
+        add("effect.pasterdream.snow_vow.description", "During the effect period, grants 3 Luck, immunity to burn and freeze effects, provided by Snow Vow Head curios within range.");
         add("tooltip.pasterdream.gold_charm.piglin", "§7▪ §9Makes piglins neutral");
         add("tooltip.pasterdream.endeye_charm.enderman", "§7▪ §9Makes endermen neutral");
         add("tooltip.pasterdream.snow_vow_head.effect.area", "§7▪ §9Grants nearby players within 7 blocks an effect");
@@ -878,6 +893,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9This effect can be shared with nearby players.");
         add("tooltip.pasterdream.war_flag.description", "§7§o--The shadows flowing on this flag seem to be telling stories of a distant past......");
         add("effect.pasterdream.war_flag", "Battle Intention");
+        add("effect.pasterdream.war_flag.description", "After equipping the war flag, you gain it by killing enemies, which increases your attack power, and leveling up by 1 for each enemy you kill.");
         add(ModItems.ICE_SHADOW_CURIO.get(), "Ice Shadow Curio");
         add("tooltip.pasterdream.ice_shadow_curio.0", "§7▪ §9Ice Shadow Hammer's skill spawns 2 extra Shaking Crystals");
         add("tooltip.pasterdream.ice_shadow_curio.1", "§7▪ §9Crystal spacing is affected by cast distance");
@@ -886,6 +902,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.calais_spice_bottle.effect2", "§7▪ §9Gain Calais Spice X buff when equipped. Each attack consumes a stack, and after chopping until it disappears, you need to eat to restore it. Eating accumulates stacks (1 stack per 3 hunger, up to level X).");
         add("tooltip.pasterdream.calais_spice_bottle.effect3", "§7▪ §9Each stack consumed grants a random effect");
         add("effect.pasterdream.calais_spice_bottle", "Calais Spice");
+        add("effect.pasterdream.calais_spice_bottle.description", "After equipping the Calais Spice Bottle, you gain it. Each time you hit an enemy, it loses 1 level and grants a random effect. Eating the required food will restore the levels.");
         add(ModItems.GHOST_FACE.get(), "Ghost Face");
         add("tooltip.pasterdream.ghost_face.effect.1", "§7▪ §9When using ranged weapons, fire an extra shot, with a 20% chance to fire another one.");
         add("tooltip.pasterdream.ghost_face.effect.2", "§7▪ §9Ranged weapon projectiles ignore invincibility frames.");
@@ -921,6 +938,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.counter_ring.effect2", "§7▪ §9Next attack: Attack +3, DMG +50%, then buff ends");
         add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9Melt Dream Energy +1/min");
         add("effect.pasterdream.counter_attack", "Counterattack");
+        add("effect.pasterdream.counter_attack.description", "Increase skill damage and disappear after the next attack.");
         add("tooltip.pasterdream.lv", "§7Level: §bLv.%s");
         add("tooltip.pasterdream.only_one.tooltip", "§7Only one of this curios can be equipped in the curios slot.");
 
@@ -1123,8 +1141,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_vane.direction.6", "Current wind: §aWest Wind");
         add("message.pasterdream.wind_vane.direction.7", "Current wind: §aNorthwest Wind");
         add("effect.pasterdream.wind_runner", "Wind Runner");
+        add("effect.pasterdream.wind_runner.description", "Obtained by eating the Wind Runner Jelly, allows elytra flight without an elytra while the effect lasts.");
         add("effect.pasterdream.goldenrod_tea", "Goldenrod Tea");
+        add("effect.pasterdream.goldenrod_tea.description", "During the duration of the effect, it provides immunity to hunger and nausea.");
         add("effect.pasterdream.dyedream_perfume", "Dyedream Perfume");
+        add("effect.pasterdream.dyedream_perfume.description", "Obtained by drinking the Dyedream Perfume, Phantom don't attack you for the duration of its effect.");
         add(ModBlocks.DYEDREAM_DIRT.get(), "Dyedream Dirt");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "Dyedream Grass Block");
         add(ModBlocks.DYEDREAM_FARMLAND.get(), "Dyedream Farmland");
@@ -1273,10 +1294,15 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.frozen", "Flash Freeze");
         add("effect.pasterdream.broken_wing", "Broken Wing");
         add("effect.pasterdream.guard", "Guard");
+        add("effect.pasterdream.guard.description", "Obtained by using the Guardian Prophecy Card, while you have this buff, damage above a certain percentage of your health will be reduced (can be changed in the Config).");
         add("effect.pasterdream.rapid_reaction", "Rapid Reaction");
+        add("effect.pasterdream.rapid_reaction.description", "Obtained by using the Sprint Prophecy Card, while you have this buff, your step height is increased, Blink cooldown is reduced, and you are immune to fall damage.");
         add("effect.pasterdream.holy_grail", "Holy Grail");
+        add("effect.pasterdream.holy_grail.description", "Obtained by using the Holy Grail Prophecy Card, while you have this buff, you get 15 maximum HP, are immune to some negative statuses, and naturally regenerate health—the lower your HP, the faster the regeneration.");
         add("effect.pasterdream.flare_up", "Flare up");
+        add("effect.pasterdream.flare_up.description", "Obtained using the Wielding-Sword Prophecy card. While you have this buff, it increases attack power and attack speed, boosts skill damage multiplier, and reduces skill cooldowns.");
         add("effect.pasterdream.conflict_mark", "Conflict Mark");
+        add("effect.pasterdream.conflict_mark.description", "After marking another entity with the Conflict Prophecy card, that entity gains the buff. While it has this buff, it will become the target of attacks from other entities.");
 
         // ===== Prophecy Cards =====
         add(ModItems.EMPTY_PROPHECY_CARD.get(), "Empty Prophecy Card");
@@ -1716,8 +1742,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.turnback_cloak", "Turnback Cloak");
         add("effect.pasterdream.evasion_cloak", "Evasion Cloak");
         add("effect.pasterdream.cecilia_blessing", "Blessing of Cecilia");
+        add("effect.pasterdream.cecilia_blessing.description", "Obtained after takes a fatal hit when equips Blessing of Cecilia, making you immune to damage while the effect lasts.");
         add("effect.pasterdream.dark_watch", "Dark Watch");
         add("effect.pasterdream.dream_harp_of_wanderer", "DreamHarp of Wanderer");
+        add("effect.pasterdream.dream_harp_of_wanderer.description", "Obtained after using the Dream Harp of Wanderer, the Dream Harp of Wanderer can be acquired from the Dyedream Train.");
 
         add("itemGroup.pasterdream.pasterdream_dream_debug_tab", "Paster Dream | Debug");
         add(ModItems.DEBUG_SWORD.get(), "Debug Sword");
@@ -2273,6 +2301,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.AARONCOS_RIGHT_HAND_SPAWN_EGG.get(), "Aaroncos's Right Hand Spawn Egg");
         add(ModBlocks.SHADOW_VORTEX.get(), "Shadow Vortex");
         add("effect.pasterdream.restrainmove_block", "Movement Restraint");
+        add("effect.pasterdream.restrainmove_block.description", "Remove jump boosts and force-disable flying while the effect lasts.");
         add("effect.pasterdream.oppression", "Oppression");
         add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "The Shadow Tune Totem is about to explode");

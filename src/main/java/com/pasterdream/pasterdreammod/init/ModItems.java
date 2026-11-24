@@ -252,7 +252,7 @@ public class ModItems {
     public static final DeferredItem<Item> CONGEAL_WIND_IRON_NUGGET = ITEMS.register("congeal_wind_iron_nugget",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_INGOT = ITEMS.register("fluffy_wind_alloy_ingot",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> PULSE_WIND_RUNNER_CRYSTAL = ITEMS.register("pulse_wind_runner_crystal",
             () -> new PulseWindRunnerCrystalItem());
     public static final DeferredItem<Item> EMBRYO_CHARM = ITEMS.register("embryo_charm", EmbryoCharmItem::new);
@@ -390,13 +390,13 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> MOLTEN_GOLD_INGOT = ITEMS.register("molten_gold_ingot",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().fireResistant()));
     public static final DeferredItem<Item> MOLTEN_GOLD_NUGGET = ITEMS.register("molten_gold_nugget",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().fireResistant()));
     public static final DeferredItem<Item> RAW_MOLTEN_GOLD = ITEMS.register("raw_molten_gold",
-            () -> new Item(new Item.Properties()));
-    public static final DeferredItem<BlockItem> MOLTEN_GOLD_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.MOLTEN_GOLD_ORE);
-    public static final DeferredItem<BlockItem> MOLTEN_GOLD_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.MOLTEN_GOLD_BLOCK);
+            () -> new Item(new Item.Properties().fireResistant()));
+    public static final DeferredItem<BlockItem> MOLTEN_GOLD_ORE = ITEMS.registerSimpleBlockItem(ModBlocks.MOLTEN_GOLD_ORE, new Item.Properties().fireResistant());
+    public static final DeferredItem<BlockItem> MOLTEN_GOLD_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.MOLTEN_GOLD_BLOCK, new Item.Properties().fireResistant());
     public static final DeferredItem<BlockItem> SALT_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.SALT_BLOCK);
     public static final DeferredItem<BlockItem> CHARGED_AMETHYST_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.CHARGED_AMETHYST_BLOCK);
 
@@ -998,7 +998,8 @@ public class ModItems {
                     .food(new FoodProperties.Builder().nutrition(4).saturationModifier(1.2f).alwaysEdible()//金苹果数值
                             .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2400, 0), 1.0f)//2分钟抗火
                             .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 2400, 1), 1.0f)//2分钟急迫II
-                            .build())));
+                            .build())
+                    .fireResistant()));
 
     public static final DeferredItem<Item> ENCHANTED_MOLTEN_GOLD_APPLE = ITEMS.register("enchanted_molten_gold_apple",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().rarity(Rarity.EPIC)
@@ -1007,7 +1008,8 @@ public class ModItems {
                             .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 6000, 3), 1.0f)//5分钟急迫IV
                             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 6000, 2), 1.0f)//5分钟迅捷III
                             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400, 1), 1.0f)//20秒生命恢复II
-                            .build())) {
+                            .build())
+                    .fireResistant()) {
                 @Override
                 public boolean isFoil(ItemStack stack) {
                     return true;
@@ -1059,7 +1061,7 @@ public class ModItems {
     public static final DeferredItem<Item> TITANIUM_UPGRADE = ITEMS.registerSimpleItem("titanium_upgrade", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> SCULK_UPGRADE = ITEMS.registerSimpleItem("sculk_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
     public static final DeferredItem<Item> DYEDREAM_UPGRADE = ITEMS.registerSimpleItem("dyedream_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
-    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_UPGRADE = ITEMS.registerSimpleItem("fluffy_wind_alloy_upgrade", new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_UPGRADE = ITEMS.registerSimpleItem("fluffy_wind_alloy_upgrade", new Item.Properties().fireResistant().stacksTo(16).rarity(Rarity.UNCOMMON));
     public static final DeferredItem<SwordItem> TITANIUM_SWORD = ITEMS.register("titanium_sword",
             () -> new SwordItem(ModToolTiers.TITANIUM, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.TITANIUM, 3, -2.4f))));
@@ -1174,15 +1176,15 @@ public class ModItems {
             () -> new WindwreathedThunderSpearItem(ModToolTiers.WINDWREATHED_THUNDER_SPEAR, 2, -1.6f,
                     new Item.Properties().fireResistant().rarity(ModRarities.legendary())));
     public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_SWORD = ITEMS.register("fluffy_wind_alloy_sword",
-            () -> new FluffyWindAlloySwordItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloySwordItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_PICKAXE = ITEMS.register("fluffy_wind_alloy_pickaxe",
-            () -> new FluffyWindAlloyPickaxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyPickaxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_AXE = ITEMS.register("fluffy_wind_alloy_axe",
-            () -> new FluffyWindAlloyAxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyAxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_SHOVEL = ITEMS.register("fluffy_wind_alloy_shovel",
-            () -> new FluffyWindAlloyShovelItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyShovelItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> FLUFFY_WIND_ALLOY_HOE = ITEMS.register("fluffy_wind_alloy_hoe",
-            () -> new FluffyWindAlloyHoeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyHoeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> FLUFFY_WIND_BOW = ITEMS.register("fluffy_wind_bow",
             () -> new FluffyWindBowItem(new Item.Properties().fireResistant().durability(842).rarity(Rarity.UNCOMMON)));
 
@@ -1798,7 +1800,7 @@ public class ModItems {
     public static final DeferredItem<BlockItem> CONGEAL_WIND_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.CONGEAL_WIND_BLOCK);
     public static final DeferredItem<BlockItem> WIND_RUNNER_CRYSTAL_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK);
     public static final DeferredItem<BlockItem> CONGEAL_WIND_IRON_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.CONGEAL_WIND_IRON_BLOCK);
-    public static final DeferredItem<BlockItem> FLUFFY_WIND_ALLOY_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK);
+    public static final DeferredItem<BlockItem> FLUFFY_WIND_ALLOY_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK, new Item.Properties().fireResistant());
     public static final DeferredItem<BlockItem> EJECTION_PRESSURE_PLATE = ITEMS.registerSimpleBlockItem(ModBlocks.EJECTION_PRESSURE_PLATE);
     public static final DeferredItem<BlockItem> EJECTION_PRESSURE_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.EJECTION_PRESSURE_BLOCK);
     public static final DeferredItem<BlockItem> CONGEAL_WIND_IRON_BARS = ITEMS.registerSimpleBlockItem(ModBlocks.CONGEAL_WIND_IRON_BARS);

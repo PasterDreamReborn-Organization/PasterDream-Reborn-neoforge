@@ -50,6 +50,12 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.BONE_WING.get())
                 .add(ModEntities.ASH_BONE_WING.get());
 
+        tag(ModEntityTypeTags.LAMP_SHADOW_BROKEN_NOTE_DROP_EXCLUDED)
+                .add(ModEntities.AARONCOS_LEFT_HAND.get())
+                .add(ModEntities.AARONCOS_RIGHT_HAND.get())
+                .add(ModEntities.SHADOW_TUNE_TOTEM.get())
+                .add(ModEntities.SHADOW_MAGICBALL.get());
+
         tag(EntityTypeTags.ARROWS)
                 .add(ModEntities.MELT_DREAM_ARROW.get())
                 .add(ModEntities.FLUFFY_WIND_ARROW.get())
