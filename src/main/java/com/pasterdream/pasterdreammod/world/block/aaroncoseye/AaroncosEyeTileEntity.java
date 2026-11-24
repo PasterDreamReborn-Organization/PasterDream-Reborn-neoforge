@@ -2,7 +2,6 @@ package com.pasterdream.pasterdreammod.world.block.aaroncoseye;
 
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModEntities;
-import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.world.dimension.AaroncosArenaWorldDimension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -12,7 +11,6 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
@@ -37,7 +35,7 @@ public class AaroncosEyeTileEntity extends BlockEntity implements GeoBlockEntity
         super(ModBlockEntities.AARONCOS_EYE.get(), pos, state);
     }
 
-    /** 激活（右键）：生成左右手 + 播放音乐 + 玩家改冒险模式，随后移交战斗会话并销毁自身（眼在= 未开战） */
+    /** 激活（右键）：生成左右手 + 玩家改冒险模式，随后移交战斗会话并销毁自身（眼在= 未开战） */
     public void onUse(Player player) {
         if (level == null || level.isClientSide() || !(level instanceof ServerLevel sw))
             return;
@@ -54,7 +52,6 @@ public class AaroncosEyeTileEntity extends BlockEntity implements GeoBlockEntity
         Entity right = ModEntities.AARONCOS_RIGHT_HAND.get().spawn(sw, pos.offset(-12, 0, 0), MobSpawnType.MOB_SUMMONED);
         if (right != null)
             right.setYRot(sw.random.nextFloat() * 360F);
-        level.playSound(null, pos, ModSounds.AARONCOS_MUSIC.get(), SoundSource.WEATHER, 1, 1);
         for (Player p : level.players()) {
             if (p instanceof ServerPlayer sp)
                 sp.setGameMode(GameType.ADVENTURE);
