@@ -5,6 +5,8 @@ import com.pasterdream.pasterdreammod.init.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.GameType;
@@ -32,6 +34,29 @@ public class EntityStateGameTests {
         helper.assertFalse(crystal.isPickable(), "撼地水晶不应被准星选中");
         helper.assertFalse(crystal.isPushedByFluid(), "撼地水晶不应被流体推动");
         helper.assertFalse(crystal.causeFallDamage(3.0F, 1.0F, level.damageSources().fall()), "撼地水晶不应受到摔落伤害");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
+    public static void foxFireRegeneratesPlayersForFifteenSeconds(GameTestHelper helper) {
+        var level = helper.getLevel();
+        var center = Vec3.atCenterOf(helper.absolutePos(new BlockPos(2, 2, 2)));
+
+        var owner = helper.makeMockPlayer(GameType.SURVIVAL);
+        owner.moveTo(center.x, center.y, center.z);
+        level.addFreshEntity(owner);
+
+        var foxFire = ModEntities.FOX_FIRE.get().create(level);
+        helper.assertTrue(foxFire != null, "应能创建狐火实体");
+        foxFire.moveTo(center.x, center.y, center.z);
+        foxFire.setOwner(owner);
+        level.addFreshEntity(foxFire);
+
+        foxFire.tick();
+        MobEffectInstance regeneration = owner.getEffect(MobEffects.REGENERATION);
+        helper.assertTrue(regeneration != null && regeneration.getDuration() == 15 * 20
+                        && regeneration.getAmplifier() == 1,
+                "狐火力场应为玩家提供 15 秒生命恢复 II");
         helper.succeed();
     }
 
