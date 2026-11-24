@@ -4,7 +4,7 @@
   "energy":25600,
   "input":
   {
-    "tag":"forge:raw_materials/molten_gold"
+    "tag":"c:raw_materials/molten_gold"
   },
   "results":
   [
