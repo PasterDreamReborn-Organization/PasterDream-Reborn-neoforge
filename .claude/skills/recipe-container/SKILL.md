@@ -68,6 +68,7 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 | 精铸工坊配方/匹配/处理 | `recipe/weaponworkshopcraftingtable/` |
 | 强化石属性关系 | `helper/enhancestoneattributerelation/` |
 | 配方序列化器注册 | `init/ModRecipes.java` |
+| 酿造台药水与混合配方 | `init/ModPotions.java`（`RegisterBrewingRecipesEvent`） |
 | 容器平衡核心 | `helper/ContainerBalanceHelper.java` |
 | NBT 保留配方 | `recipe/NbtPreservingShapelessRecipe.java` / `NbtPreservingShapedRecipe.java` |
 | 研钵配方 | `world/item/mortar/MortarRecipe.java`（研磨）/ `MortarCraftingRecipe.java`（工作台） |

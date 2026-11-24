@@ -17,8 +17,7 @@ import java.util.List;
  * 酿造配方适配器（对应《需求/法术工厂.md》第二节配方继承规则）。
  * 染梦果 ≈ 原版地狱疣槽位（Awkward 基底转化），槽B催化剂 = 原版效果物，
  * 槽C增强剂 = 红石延长 / 荧石强化。
- * 经 Forge {@link BrewingRecipeRegistry} 统一查询，天然继承原版酿造配方
- * 及任何通过 addRecipe 注册到酿造台 API 的模组配方（不再受 PotionBrewing 原版白名单限制）。
+ * 通过关卡的 {@code PotionBrewing} 查询原版和模组注册的酿造配方。
  */
 public final class VanillaBrewingAdapter
 {
