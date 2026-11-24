@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item.dreamnotesbook;
 
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.IPasterDreamDimensionTask;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.*;
@@ -29,13 +30,13 @@ public class DreamNotesBookProgressRegistry
         ALL_DIMENSIONS.add(dimension);
     }
 
-    public static void dimensionInfoRegister(String dimension, ResourceLocation GUI, int color)
+    public static void dimensionInfoRegister(String dimension, ResourceLocation GUI, int color, IPasterDreamDimensionTask dimensionTasks)
     {
         if(DIMENSION_INFO.containsKey(dimension))
         {
             throw new IllegalArgumentException("重复的维度GUI绑定：" + dimension);
         }
-        DIMENSION_INFO.put(dimension, new DreamNotesDimensionInfo(GUI, color));
+        DIMENSION_INFO.put(dimension, new DreamNotesDimensionInfo(GUI, color, dimensionTasks));
     }
 
     public static List<String> getAllDimensions()
@@ -61,5 +62,10 @@ public class DreamNotesBookProgressRegistry
     public static int getColorByDimension(String dimension)
     {
         return DIMENSION_INFO.get(dimension).color();
+    }
+
+    public static IPasterDreamDimensionTask getTaskByDimension(String dimension)
+    {
+        return DIMENSION_INFO.get(dimension).dimensionTasks();
     }
 }

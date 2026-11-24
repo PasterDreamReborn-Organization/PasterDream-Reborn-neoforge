@@ -10,6 +10,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 /**
@@ -582,6 +583,14 @@ public class Config {
             .comment("采摘是否需要园艺钳或剪刀")
             .define("isNeedUsePliersOrShears", true);
 
+    // === 重生之梦水晶 ===
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> REBIRTH_DREAM_CRYSTAL_LOOT = BUILDER
+            .comment("重生之梦水晶 shift 右键销毁自身时释放的遗物（格式：modid:item_id），从列表中随机取一件")
+            .defineListAllowEmpty("rebirthDreamCrystalLoot",
+                    List.of("pasterdream:soul_gem_of_akizuki_ayane", "pasterdream:magnifying_glass_of_sherry",
+                            "pasterdream:empty_vessel"),
+                    obj -> obj instanceof String);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     public static boolean isAaroncosTouchImmuneToNegativeEffects() {
@@ -720,6 +729,20 @@ public class Config {
             }
         }
         return false;
+    }
+
+    /** 重生之梦水晶释放的遗物缓存（按配置即时解析） */
+    public static List<Item> getRebirthDreamCrystalLoot() {
+        List<Item> list = new ArrayList<>();
+        for (String idStr : REBIRTH_DREAM_CRYSTAL_LOOT.get()) {
+            ResourceLocation id = ResourceLocation.tryParse(idStr);
+            if (id == null) {
+                continue;
+            }
+            id = LegacyIdRemapper.item(id);
+            BuiltInRegistries.ITEM.getOptional(id).ifPresent(list::add);
+        }
+        return list;
     }
 
     private Config() {
