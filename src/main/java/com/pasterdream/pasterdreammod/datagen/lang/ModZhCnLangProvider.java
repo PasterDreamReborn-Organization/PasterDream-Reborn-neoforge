@@ -87,6 +87,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.shadow_silence", "暗影沉默");
         add("effect.pasterdream.shadow_silence.description", "暗影生物获得该buff后，会失去释放技能的能力。");
         add("effect.pasterdream.shadow_spyon", "暗影窥视");
+        add("effect.pasterdream.shadow_spyon.description", "效果期间在主世界夜晚低亮度时概率触发暗影入侵事件。");
         add(ModEntities.NAMELESS.get(), "无名");
         add(ModItems.NAMELESS_SPAWN_EGG.get(), "无名刷怪蛋");
         add(ModEntities.TERRORBEAK.get(), "恐怖尖喙");
@@ -323,6 +324,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.fluffy_wind_bow.6", "§7▪ §9可附魔引雷，会使融梦能量消耗+0.1");
         add(ModItems.WIND_RUNNER_CLOAK.get(), "风行者披风");
         add("effect.pasterdream.wind_thunder_boon", "风雷之佑");
+        add("effect.pasterdream.wind_thunder_boon.description", "穿戴全套萦风合金套装时获得，提高拉弓和弩装填的速度，免疫雷电伤害，在雨天降低10%所受伤害并在雷雨天降低20%所受伤害，概率免疫弹射物伤害，坠落时按住空格消耗饥饿值提供缓降，在雨天时还会提供额外属性加成。");
         add("attribute.pasterdream.ranged_charge_time_reduction", "拉弓与装填时间缩减");
         add("tooltip.pasterdream.wind_runner_cloak.flight", "§7▪ §9可进行鞘翅飞行");
         add("tooltip.pasterdream.wind_runner_cloak.boost", "§7▪ §9飞行时按住[空格]进行助力");
@@ -518,7 +520,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.lost_sword_tomb", "§7既然拔不出来，那就带着石头用吧！");
         add("message.pasterdream.lost_sword_tomb.lack_strength", "你的力气不足以拔出这柄剑");
         add("effect.pasterdream.highly_toxic", "剧毒");
+        add("effect.pasterdream.highly_toxic.description", "一种特殊的毒，可以作用于亡灵生物，并无视无敌帧造成伤害。");
         add("effect.pasterdream.vulnerability", "易伤");
+        add("effect.pasterdream.vulnerability.description", "每级增加10%所受伤害。");
         add("effect.pasterdream.bind", "束缚");
         add("effect.pasterdream.bind.description", "被白厄剑的剑雨攻击后获得，获得该buff后，会无法移动。");
         add("structure.pasterdream.the_lost_sword_tomb", "失落剑冢");
@@ -1119,10 +1123,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.wind_runner_jelly", "§9启用鞘翅飞行");
         add("tooltip.pasterdreammod.wind_runner_jelly.flavor", "§7§o--无翼鸟终有一日也能展翅飞翔");
         add("effect.pasterdream.tailwind", "顺风");
+        add("effect.pasterdream.tailwind.description", "在风之旅途顺风时获得，增加瞬身术移动距离和移动速度，并减少瞬身术冷却时间。");
         add("effect.pasterdream.deadwind", "逆风");
+        add("effect.pasterdream.deadwind.description", "在风之旅途逆风时获得，降低瞬身术移动距离和移动速度，并增加瞬身术冷却时间。");
         add("effect.pasterdream.misty_dream", "迷梦");
+        add("effect.pasterdream.misty_dream.description", "食用迷梦炖菜获得，携带该效果在主世界Y>310时可以将玩家传送至风之旅途世界。");
         add("effect.pasterdream.cloud_mist", "云雾");
         add("effect.pasterdream.windproof", "防风");
+        add("effect.pasterdream.windproof.description", "效果期间免疫顺风和逆风效果。");
         add("message.pasterdream.wind_direction.announce.0", "§7§o朝阳升起...... 呼啸的风正吹往 §a南方");
         add("message.pasterdream.wind_direction.announce.1", "§7§o朝阳升起...... 呼啸的风正吹往 §a西南方");
         add("message.pasterdream.wind_direction.announce.2", "§7§o朝阳升起...... 呼啸的风正吹往 §a西方");
@@ -1146,7 +1154,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_vane.direction.6", "当前风向：§a东方");
         add("message.pasterdream.wind_vane.direction.7", "当前风向：§a东南方");
         add("effect.pasterdream.wind_runner", "风行者");
-        add("effect.pasterdream.wind_runner.description", "食用风行者果冻获得，效果持续期间无需鞘翅即可进行鞘翅飞行。");
+        add("effect.pasterdream.wind_runner.description", "食用风行者果冻获得，效果持续期间无需鞘翅即可进行鞘翅飞行，携带该效果入睡即可进入风之旅途世界。");
         add("effect.pasterdream.goldenrod_tea", "秋麒麟茶");
         add("effect.pasterdream.goldenrod_tea.description", "效果持续期间免疫饥饿和反胃效果。");
         add("effect.pasterdream.dyedream_perfume", "染梦香水");
@@ -1296,8 +1304,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.potion_bottle.cyclone.description.2","§9波及的实体每拥有20最大生命值，增加1级折翼buff，最高5级，拥有该buff将增加实体的摔落伤害");
         add("tooltip.pasterdream.potion_bottle.cyclone.description.3","§7§o--粉骨砕身カジノゥ");
         add("effect.pasterdream.berserk", "狂暴");
+        add("effect.pasterdream.berserk.description", "增加攻击伤害，移动速度，攻击速度，战技伤害倍率并降低战技和瞬身术冷却时间。");
         add("effect.pasterdream.frozen", "急冻");
+        add("effect.pasterdream.frozen.description", "使目标完全无法移动或攻击。");
         add("effect.pasterdream.broken_wing", "折翼");
+        add("effect.pasterdream.broken_wing.description", "每级增加50%所受摔落伤害。");
         add("effect.pasterdream.guard", "守护");
         add("effect.pasterdream.guard.description", "使用守护预言卡获得，拥有该buff时，超过一定生命百分比的部分伤害将会受到减伤（可在配置里修改）");
         add("effect.pasterdream.rapid_reaction", "高速反射");
@@ -1772,6 +1783,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.cecilia_blessing", "塞西莉亚的加护");
         add("effect.pasterdream.cecilia_blessing.description", "戴着塞西莉娅受到致命伤害后获得，效果期间获得伤害免疫。");
         add("effect.pasterdream.dark_watch", "黑暗守望");
+        add("effect.pasterdream.dark_watch.description", "穿戴全套暗影合金套装时获得，提高灯影武器的伤害，受到攻击时给予反击buff，并提供对暗影生物的减伤。");
         add("effect.pasterdream.dream_harp_of_wanderer", "漂泊旅者的染梦竖琴");
         add("effect.pasterdream.dream_harp_of_wanderer.description", "使用漂泊旅者的染梦竖琴后获得，漂泊旅者的染梦竖琴可以从染梦列车中得到。");
 
@@ -2332,6 +2344,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.restrainmove_block", "行动抑制");
         add("effect.pasterdream.restrainmove_block.description", "效果持续期间移除跳跃提升并强制禁用飞行。");
         add("effect.pasterdream.oppression", "压抑");
+        add("effect.pasterdream.oppression.description", "效果期间降低理智光环。");
         add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在积蓄能量");
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "暗影符文塔即将爆炸");
 

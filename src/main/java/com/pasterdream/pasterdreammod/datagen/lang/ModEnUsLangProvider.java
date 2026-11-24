@@ -87,6 +87,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.shadow_silence", "Shadow Silence");
         add("effect.pasterdream.shadow_silence.description", "After getting this buff, shadow creatures will lose the ability to use their skills.");
         add("effect.pasterdream.shadow_spyon", "Shadow Gaze");
+        add("effect.pasterdream.shadow_spyon.description", "While active, has a chance to trigger shadow intrusion events at night in low-light areas of the Overworld.");
         add(ModEntities.NAMELESS.get(), "Nameless");
         add(ModItems.NAMELESS_SPAWN_EGG.get(), "Nameless Spawn Egg");
         add(ModEntities.TERRORBEAK.get(), "Terrorbeak");
@@ -323,6 +324,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.fluffy_wind_bow.6", "§7▪ §9Can be enchanted with Channeling, increasing Melt Dream Energy cost by 0.1");
         add(ModItems.WIND_RUNNER_CLOAK.get(), "Wind Runner Cloak");
         add("effect.pasterdream.wind_thunder_boon", "Boon of Wind and Thunder");
+        add("effect.pasterdream.wind_thunder_boon.description", "Obtained when wearing the full Fluffy Wind Alloy set, increases bow draw and crossbow reload speed, grants lightning immunity, reduces damage taken by 10% in rain and 20% in thunderstorms, has a chance to deflect projectiles, provides slow falling while holding space at the cost of hunger, and grants additional attribute bonuses in rainy weather.");
         add("attribute.pasterdream.ranged_charge_time_reduction", "Bow Draw & Crossbow Load Time Reduction");
         add("tooltip.pasterdream.wind_runner_cloak.flight", "§7▪ §9Enables Elytra flight");
         add("tooltip.pasterdream.wind_runner_cloak.boost", "§7▪ §9Hold [Space] while gliding to boost");
@@ -518,7 +520,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.lost_sword_tomb", "§7If you can't pull it out, just use it with the stone!");
         add("message.pasterdream.lost_sword_tomb.lack_strength", "Your strength is not enough to pull out this sword");
         add("effect.pasterdream.highly_toxic", "Highly Toxic");
+        add("effect.pasterdream.highly_toxic.description", "A special poison that also affects undead mobs and deals damage while ignoring invulnerability frames.");
         add("effect.pasterdream.vulnerability", "Vulnerability");
+        add("effect.pasterdream.vulnerability.description", "Increases damage taken by 10% per level.");
         add("effect.pasterdream.bind", "Bind");
         add("effect.pasterdream.bind.description", "Obtained after being hit by the White Sword's sword rain. After getting this buff, you won't be able to move.");
         add("structure.pasterdream.the_lost_sword_tomb", "The Lost Sword Tomb");
@@ -1119,10 +1123,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.wind_runner_jelly", "§9Enables Elytra flight");
         add("tooltip.pasterdreammod.wind_runner_jelly.flavor", "§7§o--One day, the wingless bird too will spread its wings and fly");
         add("effect.pasterdream.tailwind", "Tailwind");
+        add("effect.pasterdream.tailwind.description", "Obtained when moving with the wind in the Wind Journey. Increases Blink range and movement speed, and reduces Blink cooldown.");
         add("effect.pasterdream.deadwind", "Deadwind");
+        add("effect.pasterdream.deadwind.description", "Obtained when moving against the wind in the Wind Journey. Decreases Blink range and movement speed, and increases Blink cooldown.");
         add("effect.pasterdream.misty_dream", "Misty Dream");
+        add("effect.pasterdream.misty_dream.description", "Obtained by eating the Queer Soup. While active in the Overworld above Y=310, the player is teleported to the Wind Journey world.");
         add("effect.pasterdream.cloud_mist", "Cloud Mist");
         add("effect.pasterdream.windproof", "Windproof");
+        add("effect.pasterdream.windproof.description", "Grants immunity to tailwind and deadwind effects for the duration.");
         add("message.pasterdream.wind_direction.announce.0", "§7§oThe sun rises...... The howling wind blows toward §aSouth");
         add("message.pasterdream.wind_direction.announce.1", "§7§oThe sun rises...... The howling wind blows toward §aSouthwest");
         add("message.pasterdream.wind_direction.announce.2", "§7§oThe sun rises...... The howling wind blows toward §aWest");
@@ -1146,7 +1154,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_vane.direction.6", "Current wind: §aWest Wind");
         add("message.pasterdream.wind_vane.direction.7", "Current wind: §aNorthwest Wind");
         add("effect.pasterdream.wind_runner", "Wind Runner");
-        add("effect.pasterdream.wind_runner.description", "Obtained by eating the Wind Runner Jelly, allows elytra flight without an elytra while the effect lasts.");
+        add("effect.pasterdream.wind_runner.description", "Obtained by eating the Wind Runner Jelly, allows elytra flight without an elytra while the effect lasts, and sleeping while the effect is active sends you to the Wind Journey world.");
         add("effect.pasterdream.goldenrod_tea", "Goldenrod Tea");
         add("effect.pasterdream.goldenrod_tea.description", "During the duration of the effect, it provides immunity to hunger and nausea.");
         add("effect.pasterdream.dyedream_perfume", "Dyedream Perfume");
@@ -1296,8 +1304,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.potion_bottle.cyclone.description.2","§9For every 20 max health, the entity gains 1 level of Broken Wing (up to 5), which increases fall damage by 50% per level.");
         add("tooltip.pasterdream.potion_bottle.cyclone.description.3","§7§o--粉骨砕身カジノゥ");
         add("effect.pasterdream.berserk", "Frenzy");
+        add("effect.pasterdream.berserk.description", "Increases attack damage, movement speed, attack speed, and skill damage, and reduces skill and Blink cooldowns.");
         add("effect.pasterdream.frozen", "Flash Freeze");
+        add("effect.pasterdream.frozen.description", "Completely prevents the target from moving or attacking.");
         add("effect.pasterdream.broken_wing", "Broken Wing");
+        add("effect.pasterdream.broken_wing.description", "Increases fall damage by 50% per level.");
         add("effect.pasterdream.guard", "Guard");
         add("effect.pasterdream.guard.description", "Obtained by using the Guardian Prophecy Card, while you have this buff, damage above a certain percentage of your health will be reduced (can be changed in the Config).");
         add("effect.pasterdream.rapid_reaction", "Rapid Reaction");
@@ -1772,6 +1783,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.cecilia_blessing", "Blessing of Cecilia");
         add("effect.pasterdream.cecilia_blessing.description", "Obtained after takes a fatal hit when equips Blessing of Cecilia, making you immune to damage while the effect lasts.");
         add("effect.pasterdream.dark_watch", "Dark Watch");
+        add("effect.pasterdream.dark_watch.description", "Obtained when wearing the full Shadow Alloy set, increases the damage of Lamp Shadow weapons, grants a counterattack buff when hit, and reduces damage taken from shadow mobs.");
         add("effect.pasterdream.dream_harp_of_wanderer", "DreamHarp of Wanderer");
         add("effect.pasterdream.dream_harp_of_wanderer.description", "Obtained after using the Dream Harp of Wanderer, the Dream Harp of Wanderer can be acquired from the Dyedream Train.");
 
@@ -2331,6 +2343,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.restrainmove_block", "Movement Restraint");
         add("effect.pasterdream.restrainmove_block.description", "Remove jump boosts and force-disable flying while the effect lasts.");
         add("effect.pasterdream.oppression", "Oppression");
+        add("effect.pasterdream.oppression.description", "Reduces San Aura for the duration.");
         add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "The Shadow Tune Totem is about to explode");
 
