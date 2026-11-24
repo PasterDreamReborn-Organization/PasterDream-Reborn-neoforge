@@ -176,6 +176,12 @@ public class PotionHelper
         return potionItem;
     }
 
+    public static ItemStack getEffectPotion(List<GenericMobEffect> effectList)
+    {
+        Potion potion = getPotionFromListGenericMobEffect(effectList);
+        return potion != null ? PotionContents.createItemStack(Items.POTION, BuiltInRegistries.POTION.wrapAsHolder(potion)) : getCustomEffectPotion(effectList);
+    }
+
     public static ItemStack getWaterBottle()
     {
         return PotionContents.createItemStack(Items.POTION, Potions.WATER);

@@ -1,11 +1,18 @@
 package com.pasterdream.pasterdreammod.helper.fluidcontainercapability;
 
+import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
+import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
+import com.pasterdream.pasterdreammod.init.ModFluids;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -25,20 +32,36 @@ public class FluidContainerRegistry
     }
 
     @Nullable
-    public static ContainerEntry getEntryForEmptyToFill(ItemStack itemStack)
-    {
-        return EMPTY_TO_FILL.get(itemStack.getItem());
-    }
-
-    @Nullable
     public static ContainerEntry getEntryForFillToEmpty(ItemStack itemStack)
     {
-        return FILL_TO_EMPTY.get(itemStack.getItem());
+        if(itemStack.getItem() == Items.POTION)
+        {
+            return new ContainerEntry(new ItemStack(Items.GLASS_BOTTLE), PotionHelper.createNBTPotion(PotionHelper.getListGenericMobEffectFromPotion(itemStack), 250), itemStack);
+        }
+            else
+            {
+                return FILL_TO_EMPTY.get(itemStack.getItem());
+            }
     }
 
     @Nullable
     public static ContainerEntry getEntryForEmptyAndFluid(ItemStack emptyContainerItemStack, FluidStack fluidStack)
     {
+        if(emptyContainerItemStack.getItem() == Items.GLASS_BOTTLE)
+        {
+            if (fluidStack.getFluid() == ModFluids.POTION.get())
+            {
+                List<GenericMobEffect> effectList = PotionHelper.getEffectType(fluidStack);
+                ItemStack potionItem = PotionHelper.getEffectPotion(effectList);
+                return new ContainerEntry(new ItemStack(Items.GLASS_BOTTLE), fluidStack.copyWithAmount(250), potionItem);
+            }
+            else
+                if (fluidStack.getFluid() == Fluids.WATER)
+                {
+                    return new ContainerEntry(new ItemStack(Items.GLASS_BOTTLE), new FluidStack(Fluids.WATER, 250), PotionHelper.getWaterBottle());
+                }
+        }
+
         Map<Fluid, ContainerEntry> map = EMPTY_FLUID_TO_ENTRY.get(emptyContainerItemStack.getItem());
         return map != null ? map.get(fluidStack.getFluid()) : null;
     }
