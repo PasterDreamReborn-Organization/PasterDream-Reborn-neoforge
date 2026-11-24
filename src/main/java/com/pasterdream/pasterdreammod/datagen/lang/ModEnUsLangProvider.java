@@ -14,6 +14,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("death.pasterdream.lamp_shadow_world", "%s melted into the whispers of the shadows");
         add("enchantment.pasterdream.swift_strike", "Swift Strike");
         add("enchantment.pasterdream.shelter", "Shelter");
         add("enchantment.pasterdream.gather_dream", "Gather Dream");

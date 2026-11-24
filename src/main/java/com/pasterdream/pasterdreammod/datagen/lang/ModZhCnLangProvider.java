@@ -14,6 +14,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("death.pasterdream.lamp_shadow_world", "%s融化在了影子的呢喃里");
         add("enchantment.pasterdream.swift_strike", "疾风连击");
         add("enchantment.pasterdream.shelter", "庇护");
         add("enchantment.pasterdream.gather_dream", "聚梦");

@@ -59,6 +59,7 @@ public final class ModBlockTags {
     public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_PACKED_ICE = create("dyedream_contamination_to_packed_ice");
     /** 染梦污染：匹配此标签的方块永远不会被转换。 */
     public static final TagKey<Block> DYEDREAM_CONTAMINATION_BLACKLIST = create("dyedream_contamination_blacklist");
+    public static final TagKey<Block> FLUID_CAN_NOT_BRUSH_NOCOLLISSION_BLOCK = create("fluid_can_not_brush_nocollission_block");
 
     private static TagKey<Block> create(String pName) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, pName));

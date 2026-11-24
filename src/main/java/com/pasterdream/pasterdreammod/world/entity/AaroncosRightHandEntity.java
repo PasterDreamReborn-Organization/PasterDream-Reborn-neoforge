@@ -671,6 +671,8 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
     protected void customServerAiStep() {
         super.customServerAiStep();
         this.bossInfo.setProgress(this.getHealth() / this.getMaxHealth());
+        LivingEntity target = this.getTarget();
+        this.setAggressive(target != null && target.isAlive());
     }
 
     @Override

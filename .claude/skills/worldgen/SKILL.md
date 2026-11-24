@@ -71,6 +71,7 @@ python scripts/convert_structure_item_nbt.py --check src/main/resources/data/pas
 | 群系 | `worldgen/biome/ModBiomes.java` |
 | 群系修改器 | `worldgen/biome/ModBiomeModifiers.java` + `ModBiomeModifierProvider.java` |
 | 维度 | `worldgen/dimension/` |
+| 睡眠跳时与跨维度天气 | `mixin/ServerLevelSleepTimeMixin.java`、`mixin/ServerLevelWeatherMixin.java` |
 | 结构 Provider | `worldgen/structures/` |
 | 世界生成 datagen | `datagen/common/ModWorldGenProvider.java` |
 | 结构生成辅助 | `helper/structuregenerate/` |
