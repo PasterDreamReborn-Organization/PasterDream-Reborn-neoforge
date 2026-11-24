@@ -26,7 +26,7 @@ public class DreamAccumulatorScreen extends AbstractContainerScreen<DreamAccumul
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick)
     {
-        renderBackground(guiGraphics, mouseX, mouseY, partialTick);
+        //renderBackground(guiGraphics, mouseX, mouseY, partialTick); 1.21.1不再需要，super.render(guiGraphics, mouseX, mouseY, partialTick);已经做了
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
         int time = menu.getMaxProgress() - menu .getProgress();
