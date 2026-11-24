@@ -61,8 +61,9 @@
 
 项目文档见 [`document/`](document/) 目录：
 
-- [`document/reference/迁移批次记录.md`](document/reference/迁移批次记录.md) — 已迁内容、验证结果与上游同步状态
-- [`document/reference/迁移现状盘点.md`](document/reference/迁移现状盘点.md) — 当前实现、来源基线与迁移待办
+- [`document/reference/上游同步记录.md`](document/reference/上游同步记录.md) — 上游同步游标：最新已同步 PR、合并提交与验证结论
+- [`document/reference/archive/迁移批次记录.md`](document/reference/archive/迁移批次记录.md) — 迁移期批次记录（已归档，仅作历史查证）
+- [`document/reference/迁移现状盘点.md`](document/reference/迁移现状盘点.md) — 初始盘点、来源基线与工期判断（历史参考）
 - [`document/reference/移植总纲.md`](document/reference/移植总纲.md) — Forge 1.20.1 → NeoForge 1.21.1 搬运总纲与骨架方案
 - [`document/design/`](document/design/) — 策划文档、命名规范与系统设计
 - [`document/rule/program/`](document/rule/program/) — 代码架构规范、程序规范、目录结构组织、容器配方平衡系统、暗影难度系统、料理状态效果
