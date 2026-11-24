@@ -4,6 +4,8 @@
 
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 移植版，从空 MDK 搭建骨架。
 > 搬运总纲见 [`document/reference/移植总纲.md`](document/reference/移植总纲.md)。
+>
+> 下方「批次 001–147」为迁移期历史条目，保留不再更新。2026-11-24 起上游同步只推进 [`document/reference/上游同步记录.md`](document/reference/上游同步记录.md) 中的 PR 游标，不写同步内容；本文件改为发布时整理玩家可见改动。
 
 ### 批次 147：同步上游 #1334 流体容器接口方法改名（2026-11-21，上游同步）
 
@@ -1183,4 +1185,4 @@
 
 ### 进行中
 
-- 扩展已建立的数据层与基础内容，按系统继续迁移；以 `document/reference/迁移批次记录.md` 为当前状态入口。
+- 扩展已建立的数据层与基础内容，按系统继续迁移；迁移期状态入口为 `document/reference/archive/迁移批次记录.md`（已归档）。
