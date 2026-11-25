@@ -6,11 +6,10 @@
   },
   "display":
   {
-    "block":"pasterdream:dyedream_grass_block"
-  },
-  "categories":
-  [
-    "dyedream_dirt"
-  ],
-  "growthModifier":1
+    "type":"botanypots:simple",
+    "block_state":
+    {
+      "block":"pasterdream:dyedream_grass_block"
+    }
+  }
 }

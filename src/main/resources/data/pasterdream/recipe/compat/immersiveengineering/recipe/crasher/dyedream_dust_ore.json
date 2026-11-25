@@ -8,7 +8,7 @@
   "result":
   {
     "count":4,
-    "item":"pasterdream:dyedream_dust_piece"
+    "id":"pasterdream:dyedream_dust_piece"
   },
   "secondaries":
   [
@@ -16,7 +16,7 @@
       "chance":0.5,
       "output":
       {
-        "item":"pasterdream:dyedream_dust_piece"
+        "id":"pasterdream:dyedream_dust_piece"
       }
     }
   ]

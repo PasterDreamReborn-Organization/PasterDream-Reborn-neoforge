@@ -1,0 +1,15 @@
+{
+  "type":"botanypots:soil",
+  "input":
+  {
+    "tag":"minecraft:leaves"
+  },
+  "display":
+  {
+    "type":"botanypots:simple",
+    "block_state":
+    {
+      "block":"pasterdream:dyedream_leaves"
+    }
+  }
+}

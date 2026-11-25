@@ -7,32 +7,20 @@
   },
   "result":
   {
-    "count": 4,
-    "item":"pasterdream:shadow_planks"
+    "count":4,
+    "id":"pasterdream:shadow_planks"
   },
-  "secondaries":
+  "secondaryOutputs":
   [
     {
-      "output":
-      {
-        "tag":"c:dusts/wood"
-      },
-      "stripping":false
+      "tag":"c:dusts/wood"
     },
     {
-      "output":
-      {
-        "count": 2,
-        "item":"minecraft:book"
-      },
-      "stripping":false
+      "count":2,
+      "id":"minecraft:book"
     },
     {
-      "output":
-      {
-        "item":"pasterdream:shadow_dungeon_key"
-      },
-      "stripping":false
+      "id":"pasterdream:shadow_dungeon_key"
     }
   ]
 }

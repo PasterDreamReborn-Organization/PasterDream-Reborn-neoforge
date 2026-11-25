@@ -6,11 +6,10 @@
   },
   "display":
   {
-    "block":"minecraft:snow_block"
-  },
-  "categories":
-  [
-    "snow_block"
-  ],
-  "growthModifier":1
+    "type":"botanypots:simple",
+    "block_state":
+    {
+      "block":"minecraft:snow_block"
+    }
+  }
 }

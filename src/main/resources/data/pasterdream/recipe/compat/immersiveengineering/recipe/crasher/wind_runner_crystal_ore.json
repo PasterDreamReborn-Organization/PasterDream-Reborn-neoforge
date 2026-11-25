@@ -8,7 +8,7 @@
   "result":
   {
     "count":4,
-    "item":"pasterdream:wind_runner_crystal"
+    "id":"pasterdream:wind_runner_crystal"
   },
   "secondaries":
   [
@@ -16,7 +16,7 @@
       "chance":0.5,
       "output":
       {
-        "item":"pasterdream:wind_runner_crystal"
+        "id":"pasterdream:wind_runner_crystal"
       }
     }
   ]

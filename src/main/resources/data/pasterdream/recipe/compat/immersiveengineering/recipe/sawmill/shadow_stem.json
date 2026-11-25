@@ -8,27 +8,22 @@
   "result":
   {
     "count":6,
-    "item":"pasterdream:shadow_planks"
+    "id":"pasterdream:shadow_planks"
   },
-  "secondaries":
+  "secondaryOutputs":
   [
     {
-      "output":
-      {
-        "tag":"c:dusts/wood"
-      },
-      "stripping":true
-    },
-    {
-      "output":
-      {
-        "tag":"c:dusts/wood"
-      },
-      "stripping":false
+      "tag":"c:dusts/wood"
     }
   ],
   "stripped":
   {
-    "item":"pasterdream:stripped_shadow_stem"
-  }
+    "id":"pasterdream:stripped_shadow_stem"
+  },
+  "strippingSecondaries":
+  [
+    {
+      "tag":"c:dusts/wood"
+    }
+  ]
 }

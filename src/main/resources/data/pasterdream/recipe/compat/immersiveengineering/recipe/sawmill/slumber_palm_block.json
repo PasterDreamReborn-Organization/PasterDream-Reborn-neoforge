@@ -8,8 +8,6 @@
   "result":
   {
     "count":2,
-    "item":"pasterdream:slumber_palm"
-  },
-  "secondaries":
-  []
+    "id":"pasterdream:slumber_palm"
+  }
 }

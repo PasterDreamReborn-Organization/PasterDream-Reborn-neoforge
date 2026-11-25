@@ -1,28 +1,18 @@
 {
-  "type":"botanypots:crop",
-  "seed":
+  "type":"botanypots:block_derived_crop",
+  "block":"pasterdream:cotton_crop",
+  "input":
   {
     "item":"pasterdream:cotton_crop_age_0"
   },
-  "categories":
-  [
-    "dirt"
-  ],
-  "growthTicks":1200,
-  "display":
+  "soil":
   {
-    "block":"pasterdream:cotton_crop"
+    "tag":"botanypots:soil/dirt"
   },
+  "grow_time":1200,
   "drops":
-  [
-    {
-      "chance":1.00,
-      "output":
-      {
-        "item":"pasterdream:cotton"
-      },
-      "minRolls":1,
-      "maxRolls":2
-    }
-  ]
+  {
+    "type":"botanypots:loot_table",
+    "table_id":"pasterdream:compat/botanypots/crop/cotton"
+  }
 }

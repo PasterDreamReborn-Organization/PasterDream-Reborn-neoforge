@@ -8,16 +8,12 @@
   "result":
   {
     "count":6,
-    "item":"pasterdream:wind_moor_planks"
+    "id":"pasterdream:wind_moor_planks"
   },
-  "secondaries":
+  "secondaryOutputs":
   [
     {
-      "output":
-      {
-        "tag":"c:dusts/wood"
-      },
-      "stripping":false
+      "tag":"c:dusts/wood"
     }
   ]
 }

@@ -6,14 +6,14 @@
   },
   "render":
   {
-    "type":"generic",
+    "type":"immersiveengineering:generic",
     "block":"pasterdream:fig_vine"
   },
   "results":
   [
     {
-      "count": 2,
-      "item":"pasterdream:fig"
+      "count":2,
+      "id":"pasterdream:fig"
     }
   ],
   "soil":

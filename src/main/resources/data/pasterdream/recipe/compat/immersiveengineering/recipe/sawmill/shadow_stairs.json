@@ -7,16 +7,12 @@
   },
   "result":
   {
-    "item":"pasterdream:shadow_planks"
+    "id":"pasterdream:shadow_planks"
   },
-  "secondaries":
+  "secondaryOutputs":
   [
     {
-      "output":
-      {
-        "tag":"c:dusts/wood"
-      },
-      "stripping":false
+      "tag":"c:dusts/wood"
     }
   ]
 }

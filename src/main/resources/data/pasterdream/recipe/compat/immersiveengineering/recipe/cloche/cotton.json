@@ -6,13 +6,13 @@
   },
   "render":
   {
-    "type":"crop",
+    "type":"immersiveengineering:crop",
     "block":"pasterdream:cotton_crop"
   },
   "results":
   [
     {
-      "item":"pasterdream:cotton"
+      "id":"pasterdream:cotton"
     }
   ],
   "soil":

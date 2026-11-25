@@ -6,14 +6,14 @@
   },
   "render":
   {
-    "type":"crop",
+    "type":"immersiveengineering:crop",
     "block":"pasterdream:cloud_crop"
   },
   "results":
   [
     {
-      "count": 5,
-      "item":"pasterdream:cloud"
+      "count":5,
+      "id":"pasterdream:cloud"
     }
   ],
   "soil":

@@ -8,7 +8,6 @@
   "result":
   {
     "count":2,
-    "item":"pasterdream:raw_molten_gold"
-  },
-  "secondaries": []
+    "id":"pasterdream:raw_molten_gold"
+  }
 }

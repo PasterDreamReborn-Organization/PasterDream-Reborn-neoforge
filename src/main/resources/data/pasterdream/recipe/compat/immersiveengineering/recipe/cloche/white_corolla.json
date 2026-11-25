@@ -6,13 +6,13 @@
   },
   "render":
   {
-    "type":"crop",
+    "type":"immersiveengineering:crop",
     "block":"pasterdream:white_corolla_crop"
   },
   "results":
   [
     {
-      "item":"pasterdream:white_corolla"
+      "id":"pasterdream:white_corolla"
     }
   ],
   "soil":
