@@ -9,11 +9,8 @@
   "results":
   [
     {
-      "base_ingredient":
-      {
-        "item":"pasterdream:titanium_ingot"
-      },
-      "count":2
+      "count":2,
+      "id":"pasterdream:titanium_ingot"
     }
   ],
   "slag":

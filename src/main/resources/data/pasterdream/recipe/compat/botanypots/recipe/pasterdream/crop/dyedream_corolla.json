@@ -1,28 +1,18 @@
 {
-  "type":"botanypots:crop",
-  "seed":
+  "type":"botanypots:block_derived_crop",
+  "block":"pasterdream:dyedream_corolla_crop",
+  "input":
   {
     "item":"pasterdream:dyedream_corolla_crop_age_0"
   },
-  "categories":
-  [
-    "dyedream_dirt"
-  ],
-  "growthTicks":1200,
-  "display":
+  "soil":
   {
-    "block":"pasterdream:dyedream_corolla_crop"
+    "tag":"pasterdream:dyedream_dirt"
   },
+  "grow_time":1200,
   "drops":
-  [
-    {
-      "chance":1.00,
-      "output":
-      {
-        "item":"pasterdream:dyedream_corolla"
-      },
-      "minRolls":1,
-      "maxRolls":2
-    }
-  ]
+  {
+    "type":"botanypots:loot_table",
+    "table_id":"pasterdream:compat/botanypots/crop/dyedream_corolla"
+  }
 }

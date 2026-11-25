@@ -8,16 +8,12 @@
   "result":
   {
     "count":6,
-    "item":"pasterdream:dyedream_planks"
+    "id":"pasterdream:dyedream_planks"
   },
-  "secondaries":
+  "secondaryOutputs":
   [
     {
-      "output":
-      {
-        "tag":"c:dusts/wood"
-      },
-      "stripping":false
+      "tag":"c:dusts/wood"
     }
   ]
 }

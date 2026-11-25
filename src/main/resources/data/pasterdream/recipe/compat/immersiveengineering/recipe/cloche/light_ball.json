@@ -6,13 +6,13 @@
   },
   "render":
   {
-    "type":"crop",
+    "type":"immersiveengineering:crop",
     "block":"pasterdream:light_ball_crop"
   },
   "results":
   [
     {
-      "item":"pasterdream:light_ball"
+      "id":"pasterdream:light_ball"
     }
   ],
   "soil":

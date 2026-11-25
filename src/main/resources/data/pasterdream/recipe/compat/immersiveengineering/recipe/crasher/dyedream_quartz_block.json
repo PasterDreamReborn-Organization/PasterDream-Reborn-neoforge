@@ -8,7 +8,6 @@
   "result":
   {
     "count":4,
-    "item":"pasterdream:dyedream_quartz"
-  },
-  "secondaries": []
+    "id":"pasterdream:dyedream_quartz"
+  }
 }

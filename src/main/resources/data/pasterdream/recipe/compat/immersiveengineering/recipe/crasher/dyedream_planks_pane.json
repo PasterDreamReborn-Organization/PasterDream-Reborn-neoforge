@@ -7,14 +7,14 @@
   },
   "result":
   {
-    "item":"pasterdream:dyedream_planks"
+    "id":"pasterdream:dyedream_planks"
   },
   "secondaries":
   [
     {
       "output":
       {
-        "item":"minecraft:glass_pane"
+        "id":"minecraft:glass_pane"
       }
     }
   ]

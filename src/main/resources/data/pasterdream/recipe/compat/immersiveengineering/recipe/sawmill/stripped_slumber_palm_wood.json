@@ -8,16 +8,12 @@
   "result":
   {
     "count":6,
-    "item":"pasterdream:slumber_palm_planks"
+    "id":"pasterdream:slumber_palm_planks"
   },
-  "secondaries":
+  "secondaryOutputs":
   [
     {
-      "output":
-      {
-        "tag":"c:dusts/wood"
-      },
-      "stripping":false
+      "tag":"c:dusts/wood"
     }
   ]
 }

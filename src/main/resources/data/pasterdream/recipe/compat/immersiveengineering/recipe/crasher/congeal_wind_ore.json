@@ -8,7 +8,7 @@
   "result":
   {
     "count":4,
-    "item":"pasterdream:congeal_wind"
+    "id":"pasterdream:congeal_wind"
   },
   "secondaries":
   [
@@ -16,7 +16,7 @@
       "chance":0.5,
       "output":
       {
-        "item":"pasterdream:congeal_wind"
+        "id":"pasterdream:congeal_wind"
       }
     }
   ]

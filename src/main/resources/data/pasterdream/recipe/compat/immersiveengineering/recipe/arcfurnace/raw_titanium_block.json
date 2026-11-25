@@ -9,11 +9,8 @@
   "results":
   [
     {
-      "base_ingredient":
-      {
-        "item":"pasterdream:titanium_ingot"
-      },
-      "count":13
+      "count":13,
+      "id":"pasterdream:titanium_ingot"
     }
   ],
   "secondaries":
@@ -22,7 +19,7 @@
       "chance":0.5,
       "output":
       {
-        "item":"pasterdream:titanium_ingot"
+        "id":"pasterdream:titanium_ingot"
       }
     }
   ],

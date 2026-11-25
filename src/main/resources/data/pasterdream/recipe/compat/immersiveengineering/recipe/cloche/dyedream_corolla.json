@@ -6,13 +6,13 @@
   },
   "render":
   {
-    "type":"crop",
+    "type":"immersiveengineering:crop",
     "block":"pasterdream:dyedream_corolla_crop"
   },
   "results":
   [
     {
-      "item":"pasterdream:dyedream_corolla"
+      "id":"pasterdream:dyedream_corolla"
     }
   ],
   "soil":

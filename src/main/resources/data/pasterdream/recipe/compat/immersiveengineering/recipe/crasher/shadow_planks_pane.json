@@ -7,14 +7,14 @@
   },
   "result":
   {
-    "item":"pasterdream:shadow_planks"
+    "id":"pasterdream:shadow_planks"
   },
   "secondaries":
   [
     {
       "output":
       {
-        "item":"minecraft:glass_pane"
+        "id":"minecraft:glass_pane"
       }
     }
   ]

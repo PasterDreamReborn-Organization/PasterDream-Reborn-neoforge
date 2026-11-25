@@ -1,28 +1,25 @@
 {
   "type":"botanypots:crop",
-  "seed":
+  "input":
   {
     "item":"pasterdream:fig"
   },
-  "categories":
-  [
-    "leave"
-  ],
-  "growthTicks":1200,
+  "soil":
+  {
+    "tag":"minecraft:leaves"
+  },
+  "grow_time":1200,
   "display":
   {
-    "block":"pasterdream:fig_vine"
+    "type":"botanypots:simple",
+    "block_state":
+    {
+      "block":"pasterdream:fig_vine"
+    }
   },
   "drops":
-  [
-    {
-      "chance":1.00,
-      "output":
-      {
-        "item":"pasterdream:fig"
-      },
-      "minRolls":2,
-      "maxRolls":4
-    }
-  ]
+  {
+    "type":"botanypots:loot_table",
+    "table_id":"pasterdream:compat/botanypots/crop/fig"
+  }
 }

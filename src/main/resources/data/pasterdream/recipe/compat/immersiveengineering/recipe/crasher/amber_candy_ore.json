@@ -8,7 +8,7 @@
   "result":
   {
     "count":4,
-    "item":"pasterdream:amber_candy"
+    "id":"pasterdream:amber_candy"
   },
   "secondaries":
   [
@@ -16,7 +16,7 @@
       "chance":0.5,
       "output":
       {
-        "item":"pasterdream:amber_candy"
+        "id":"pasterdream:amber_candy"
       }
     }
   ]
