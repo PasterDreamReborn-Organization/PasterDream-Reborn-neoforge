@@ -36,6 +36,7 @@
 
 ## 未发布 (基于 v1.0.0-neoforge-1.21.1-alpha)
 
+> 需要从 #161 开始记录；需要手动翻阅 git 历史确认后续变更范围，并核对合并与回退
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 1.21.1 移植版。上游同步只推进 [上游同步记录](document/reference/上游同步记录.md) 中的 PR 游标，不在此记录同步内容。
 > 本段只记发布时玩家可见的改动。迁移期批次 001–147、基础骨架与收尾状态已归档至 [changelog/1.0.0-beta1.md](changelog/1.0.0-beta1.md)，仅作历史查证。
 
