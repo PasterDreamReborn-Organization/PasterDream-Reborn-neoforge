@@ -36,13 +36,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("subtitles.pasterdream.melt_dream_crystal_chest_open_rare", "Melt Dream Crystal Chest opens with rare treasure");
         add("subtitles.pasterdream.melt_dream_crystal_chest_open_legend", "Melt Dream Crystal Chest opens with legendary treasure");
         add("tooltip.pasterdream.sand_of_time.6", "§7If Melt Dream Crystal Chest reset is cooling down, use to skip the cooldown");
-        add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past......");
-        add("message.pasterdream.dream_train.location_info", "The train revealed a location...... §aX：%s §aZ：%s");
+        add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past...");
+        add("message.pasterdream.dream_train.location_info", "The train revealed a location... §aX：%s §aZ：%s");
         add(ModItems.DREAM_TRAIN_TICKET.get(), "Dream Train Ticket");
         add("tooltip.pasterdream.dream_train_ticket", "§7A voucher stamped with a train number and dreams");
         add("tooltip.pasterdream.dream_train_ticket.usage", "§7Summons a Dream Train above your head, once per dimension (including the Dyedream World)");
-        add("message.pasterdream.dream_train_ticket.already_used", "The Dream Train has already rumbled past in this dimension......");
-        add("message.pasterdream.dream_train_ticket.dimension_used", "A Dream Train has already been summoned in this dimension......");
+        add("message.pasterdream.dream_train_ticket.already_used", "The Dream Train has already rumbled past in this dimension...");
+        add("message.pasterdream.dream_train_ticket.dimension_used", "A Dream Train has already been summoned in this dimension...");
         add("message.pasterdream.dream_train_ticket.no_station", "The Dream Train has set up no station here, so it cannot stop.");
         add("message.pasterdream.sand_of_time.reset_cooldown_skipped", "The Sand of Time skipped the Melt Dream Crystal Chest reset cooldown");
         add(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), "Melt Dream Crystal Chest");
@@ -169,7 +169,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.white_sword.no_talent", "You haven't chosen <Light> to use this sword");
         add(ModEntities.WHITE_SWORD_RAIN_PROJECTILE.get(), "White Sword Rain");
         add(ModItems.PURE_HORROR.get(), "Pure Horror");
-        add("tooltip.pasterdream.pure_horror", "§7It sends a terrible shiver down my spine......");
+        add("tooltip.pasterdream.pure_horror", "§7It sends a terrible shiver down my spine...");
         add(ModItems.SHADOW_EROSION_DAGGER.get(), "Shadow Erosion Dagger");
         add(ModItems.SHADOW_EROSION_PICKAXE.get(), "Shadow Erosion Pickaxe");
         add(ModItems.SHADOW_EROSION_AXE.get(), "Shadow Erosion Axe");
@@ -262,7 +262,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get(), "Lamp Shadow Unknown Note");
         add(ModItems.DYEDREAM_BROKEN_NOTE.get(), "Dyedream World Broken Note");
         add(ModItems.DYEDREAM_UNKNOWN_NOTE.get(), "Dyedream World Unknown Note");
-        add("tooltip.pasterdream.broken_note", "§7We still need to learn more......");
+        add("tooltip.pasterdream.broken_note", "§7We still need to learn more...");
         add(ModItems.TITANIUM_UPGRADE.get(), "Titanium Upgrade");
         add(ModItems.DYEDREAM_UPGRADE.get(), "Dyedream Upgrade");
         add(ModItems.TITANIUM_SWORD.get(), "Titanium Sword");
@@ -498,9 +498,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.PALE_BONENEEDLE.get(), "Pale Boneneedle");
         add(ModItems.ROOTS_PALE_BONENEEDLE.get(), "Roots Pale Boneneedle");
         add(ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), "Pale Bone Needle Talisman");
-        add("tooltip.pasterdream.pale_boneneedle", "§7Awakens you from dreams......");
+        add("tooltip.pasterdream.pale_boneneedle", "§7Awakens you from dreams...");
         add("tooltip.pasterdream.pale_boneneedle.use", "§7Left-click on other players | Right-click on yourself");
-        add("tooltip.pasterdream.roots_pale_boneneedle.1", "§7Awakens you from dreams...... and returns to the marked location");
+        add("tooltip.pasterdream.roots_pale_boneneedle.1", "§7Awakens you from dreams... and returns to the marked location");
         add("tooltip.pasterdream.roots_pale_boneneedle.2", "§7Sneak + right-click to set a waypoint");
         add("tooltip.pasterdream.roots_pale_boneneedle.3", "§7If no waypoint is set, returns to spawn by default");
         add("tooltip.pasterdream.roots_pale_boneneedle.4", "§7Left-click on other players | Right-click on yourself");
@@ -769,7 +769,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("attribute.pasterdream.max_melt_dream_energy_extra", "Max Melt Dream Energy Bonus");
         add("attribute.pasterdream.melt_dream_variability", "Melt Dream Aura");
         add(ModItems.RICE_CAKE.get(), "Rice Cake");
-        add("item.pasterdream.rice_cake.describe", "A lingering spirit of desert might be interested in this......");
+        add("item.pasterdream.rice_cake.describe", "A lingering spirit of desert might be interested in this...");
         add(ModItems.DESERT_SWORD.get(), "Desert Greatsword");
         add(ModItems.CHENJINGMEN_DESERT_SWORD.get(), "Chenjingmen Desert");
         add(ModItems.BROKEN_HERO_SWORD.get(), "Broken Hero Sword");
@@ -783,7 +783,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.chenjingmen_desert_sword.5", "§7▪ §9Cooldown: 10s");
         add("tooltip.pasterdreammod.chenjingmen_desert_sword.6", "Passive:");
         add("tooltip.pasterdreammod.chenjingmen_desert_sword.7", "§7▪ §9Move Speed -15%, Resistance +20% while held");
-        add("message.pasterdream.desert_hero_tomb.line1", "I never expected to meet a true hero willing to hear my words......");
+        add("message.pasterdream.desert_hero_tomb.line1", "I never expected to meet a true hero willing to hear my words...");
         add("message.pasterdream.desert_hero_tomb.line2", "I mean no harm, yet I have a small matter I must trouble you with.");
         add("message.pasterdream.desert_hero_tomb.line3", "These bandits and demons around here have robbed me of my rest.");
         add("message.pasterdream.desert_hero_tomb.line4", "Take this sword, friend, and rid me of all the villains and demons around here. How about it?");
@@ -916,7 +916,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect1", "§7▪ §9Give a battle intention effect when killing enemies. Each kill increases it by 1 level, up to a maximum of 3 levels.");
         add("tooltip.pasterdream.war_flag.effect2", "§7▪ §9Increase attack damage and increase healing speed while the effect lasts.");
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9This effect can be shared with nearby players.");
-        add("tooltip.pasterdream.war_flag.description", "§7§o--The shadows flowing on this flag seem to be telling stories of a distant past......");
+        add("tooltip.pasterdream.war_flag.description", "§7§o--The shadows flowing on this flag seem to be telling stories of a distant past...");
         add("effect.pasterdream.war_flag", "Battle Intention");
         add("effect.pasterdream.war_flag.description", "After equipping the war flag, you gain it by killing enemies, which increases your attack power, and leveling up by 1 for each enemy you kill.");
         add(ModItems.ICE_SHADOW_CURIO.get(), "Ice Shadow Curio");
@@ -1083,7 +1083,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "Elixir Bottle of Rage Elixir");
         add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.1", "§7Effects after drinking:");
         add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.2", "§7▪ §9-15% Skill cooldown, +20% Attack damage (until death)");
-        add("item.pasterdream.elixir_bottle_of_rage_elixir.client.success", "§5You feel a surge of power coursing through your body......");
+        add("item.pasterdream.elixir_bottle_of_rage_elixir.client.success", "§5You feel a surge of power coursing through your body...");
         add("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail", "§7You have already drunk this potion.");
         add("tooltip.pasterdream.空", "Empty");
         add("tooltip.pasterdream.总容量:", "Total Capacity:");
@@ -1120,7 +1120,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.AARONCOS_ARENA_CREATE.get(), "Aaroncos Arena Create");
         add("tooltip.pasterdream.aaroncos_arena_create", "§4Creative Mode Item");
         add("tooltip.pasterdreammod.glass_cup_of_honey_juice", "§dClears all negative effects upon drinking");
-        add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§eThe taste feels familiar, as if it came from Snow Tears Cold...... wait, what?");
+        add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§eThe taste feels familiar, as if it came from Snow Tears Cold... wait, what?");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7You have already tasted this ice cream flavor");
         add("tooltip.pasterdreammod.goldenrod_tea", "§dContinuously removes Hunger and Nausea");
         add("tooltip.pasterdreammod.dyedream_perfume", "§dClears insomnia and prevents phantom attacks");
@@ -1147,14 +1147,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.cloud_mist", "Cloud Mist");
         add("effect.pasterdream.windproof", "Windproof");
         add("effect.pasterdream.windproof.description", "Grants immunity to tailwind and deadwind effects for the duration.");
-        add("message.pasterdream.wind_direction.announce.0", "§7§oThe sun rises...... The howling wind blows toward §aSouth");
-        add("message.pasterdream.wind_direction.announce.1", "§7§oThe sun rises...... The howling wind blows toward §aSouthwest");
-        add("message.pasterdream.wind_direction.announce.2", "§7§oThe sun rises...... The howling wind blows toward §aWest");
-        add("message.pasterdream.wind_direction.announce.3", "§7§oThe sun rises...... The howling wind blows toward §aNorthwest");
-        add("message.pasterdream.wind_direction.announce.4", "§7§oThe sun rises...... The howling wind blows toward §aNorth");
-        add("message.pasterdream.wind_direction.announce.5", "§7§oThe sun rises...... The howling wind blows toward §aNortheast");
-        add("message.pasterdream.wind_direction.announce.6", "§7§oThe sun rises...... The howling wind blows toward §aEast");
-        add("message.pasterdream.wind_direction.announce.7", "§7§oThe sun rises...... The howling wind blows toward §aSoutheast");
+        add("message.pasterdream.wind_direction.announce.0", "§7§oThe sun rises...The howling wind blows toward §aSouth");
+        add("message.pasterdream.wind_direction.announce.1", "§7§oThe sun rises...The howling wind blows toward §aSouthwest");
+        add("message.pasterdream.wind_direction.announce.2", "§7§oThe sun rises...The howling wind blows toward §aWest");
+        add("message.pasterdream.wind_direction.announce.3", "§7§oThe sun rises...The howling wind blows toward §aNorthwest");
+        add("message.pasterdream.wind_direction.announce.4", "§7§oThe sun rises...The howling wind blows toward §aNorth");
+        add("message.pasterdream.wind_direction.announce.5", "§7§oThe sun rises...The howling wind blows toward §aNortheast");
+        add("message.pasterdream.wind_direction.announce.6", "§7§oThe sun rises...The howling wind blows toward §aEast");
+        add("message.pasterdream.wind_direction.announce.7", "§7§oThe sun rises...The howling wind blows toward §aSoutheast");
         add(ModItems.WIND_VANE.get(), "Wind Vane");
         add(ModItems.PAPER_PLANE.get(), "Paper Plane");
         add("tooltip.pasterdream.wind_vane.desc", "§7Detects the current wind direction and the player's angle");
@@ -1733,13 +1733,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("jei.pasterdream.fourleaf_clover_curio.info", "Rarely dropped when breaking Fourleaf Clover.");
         add(ModBlocks.GOLDEN_FOX_SCULPTURE.get(), "Golden Fox Sculpture");
         add(ModBlocks.FOX_SCULPTURE.get(), "Fox Sculpture");
-        add("block.pasterdream.golden_fox_sculpture.no_reaction", "The sculpture does not respond......");
-        add("block.pasterdream.golden_fox_sculpture.cooldown", "The sculpture is still slumbering...... %s seconds remaining");
+        add("block.pasterdream.golden_fox_sculpture.no_reaction", "The sculpture does not respond...");
+        add("block.pasterdream.golden_fox_sculpture.cooldown", "The sculpture is still slumbering... %s seconds remaining");
         add(ModEntities.GOLDEN_FOX.get(), "Golden Fox");
         add(ModEntities.GOLDEN_FOX_PET.get(), "Golden Fox");
         add(ModItems.GOLDEN_FOX_SPAWN_EGG.get(), "Golden Fox Spawn Egg");
         add("entity.pasterdream.golden_fox.tamed", "The golden fox became your companion!");
-        add("entity.pasterdream.golden_fox.vanish", "After fulfilling the wish you made, the golden fox turned back into a statue......");
+        add("entity.pasterdream.golden_fox.vanish", "After fulfilling the wish you made, the golden fox turned back into a statue...");
         add("message.pasterdream.golden_fox_pet.sit", "Golden Fox is now staying");
         add("message.pasterdream.golden_fox_pet.follow", "Golden Fox is now following you");
         add("advancements.pasterdream.get_kaichu_omamori.title", "The Golden Fox's Wish");
@@ -1769,7 +1769,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.blessing_of_cecilia.effect1", "§7 Upon receiving fatal damage:");
         add("tooltip.pasterdream.blessing_of_cecilia.effect2", "§7▪ §9Grants 5s of damage immunity");
         add("tooltip.pasterdream.blessing_of_cecilia.effect3", "§7▪ §9And grants 10s of Resistance V, Regeneration X, Absorption V and Speed II");
-        add("tooltip.pasterdream.blessing_of_cecilia.lore", "§7§o--I will protect you, forever and ever......");
+        add("tooltip.pasterdream.blessing_of_cecilia.lore", "§7§o--I will protect you, forever and ever...");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.effect0", "§7▪ §9Passive: Resistance I");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.hint", "§7Perhaps we should submerge it in Melt Dream Spring");
         add("tooltip.pasterdream.strawberry_heart.desc1", "§7▪ §9Right-click to perform §4Costs 1 Melt Dream Energy");
@@ -1909,12 +1909,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.star_wish_rod.desc", "§7▪ §9Grants an extra Super deep-sea treasure when fishing");
         add("advancements.pasterdream.get_deep_sea_treasure.title", "Gift from the Sea");
         add("advancements.pasterdream.get_deep_sea_treasure.description", "Get a treasure of the ocean, coming from the deep sea and the dyedream frozen ocean.");
-        add("advancements.pasterdream.get_super_deep_sea_treasure.title", "To wish upon a satellite......");
-        add("advancements.pasterdream.get_super_deep_sea_treasure.description", "To get higher-level marine treasures, you should find a more powerful fishing rod for it......");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.title", "To wish upon a satellite...");
+        add("advancements.pasterdream.get_super_deep_sea_treasure.description", "To get higher-level marine treasures, you should find a more powerful fishing rod for it...");
         add("advancements.pasterdream.root_dyedream_treasure.title", "Dyedream Collection");
         add("advancements.pasterdream.root_dyedream_treasure.description", "What kind of treasures could there be in a pink world? ");
         add("advancements.pasterdream.get_sand_of_time.title", "Your Time is really Valuable");
-        add("advancements.pasterdream.get_sand_of_time.description", "Get the Sand of Time, a sandglass that can switch day and night, but it takes a break after working......");
+        add("advancements.pasterdream.get_sand_of_time.description", "Get the Sand of Time, a sandglass that can switch day and night, but it takes a break after working...");
         add("advancements.pasterdream.get_broken_hero_sword.title", "Solar Eclipse Relic");
         add("advancements.pasterdream.get_broken_hero_sword.description", "Got the Broken Hero Sword. Wait a minute? Isn't this thing drop from a big flappy moth?");
         add("advancements.pasterdream.get_terra_sword.title", "Racing with a Turtle");
@@ -1946,9 +1946,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_blue_dew.title", "Tears of the Ocean");
         add("advancements.pasterdream.get_blue_dew.description", "Get the blue dew, it comes from that enchanting ocean treasure glowing with magic light.");
         add("advancements.pasterdream.get_blue_heart_of_the_sea.title", "Heart of Deep Blue");
-        add("advancements.pasterdream.get_blue_heart_of_the_sea.description", "Once you get the Blue Heart of the Sea, you'll know which weapon needs it......");
+        add("advancements.pasterdream.get_blue_heart_of_the_sea.description", "Once you get the Blue Heart of the Sea, you'll know which weapon needs it...");
         add("advancements.pasterdream.get_beihairuo_tide_sword.title", "God of Tides");
-        add("advancements.pasterdream.get_beihairuo_tide_sword.description", "Get the BeiHairuo Tide Sword; it holds the power of surging waves and riptide......");
+        add("advancements.pasterdream.get_beihairuo_tide_sword.description", "Get the BeiHairuo Tide Sword; it holds the power of surging waves and riptide...");
 
         // Advancements - Story (main world / dyedream)
         add("advancements.pasterdream.story.root.title", "PasterDream");
@@ -1975,7 +1975,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.dyedream_crack.first_contact.4", "§5Maybe you should flip through the Seniors Dream... there might be records about this kind of crack.");
         add("message.pasterdream.sleep.dream_of_crack.1", "§5You wake up startled from your sleep, with cold sweat on your back. You recall dreaming of the strange crack you encountered during your past explorations, slowly approaching and staring at you.");
         add("message.pasterdream.sleep.dream_of_crack.2", "§5That crack is likely suspicious. Perhaps you should return there to investigate.");
-        add("message.pasterdream.sleep.dream_of_crack.3", "§5I must find out what happened......");
+        add("message.pasterdream.sleep.dream_of_crack.3", "§5I must find out what happened...");
         add("message.pasterdream.sleep.dream_of_crack.4", "A Dream Seeker's note appeared in your pocket");
         add("advancements.pasterdream.story.dyedream_biomes.title", "Homelands in a Dream");
         add("advancements.pasterdream.story.dyedream_biomes.description", "Discover every biome in the Dyedream World.");
@@ -1998,7 +1998,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.galaxy_jelly.title", "Star Gel");
         add("advancements.pasterdream.story.galaxy_jelly.description", "Get the Galaxy Jelly, a jelly that can be found in the deep-sea treasures and chests in the dream, and it can make you soar to the clouds.");
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "Space Professional Voice Actor");
-        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "Eat the Galaxy Jelly at the building height limit...... Kaz finally has company now......");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "Eat the Galaxy Jelly at the building height limit... Kaz finally has company now...");
         add("advancements.pasterdream.story.look_at_pink_sheep.title", "Do Block People Dream of Pink Sheep?");
         add("advancements.pasterdream.story.look_at_pink_sheep.description", "Block people only dream of block sheep, of course.");
 
@@ -2006,9 +2006,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.title", "The Forgotten Sword Tomb");
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.description", "Discovered the lost sword tomb, a sword tomb hidden deep in the jungle.");
         add("advancements.pasterdream.story.get_the_lost_sword.title", "Sword of Oblivion");
-        add("advancements.pasterdream.story.get_the_lost_sword.description", "Got the Sword Embryo, it seems to resonate with the power of the jungle......");
+        add("advancements.pasterdream.story.get_the_lost_sword.description", "Got the Sword Embryo, it seems to resonate with the power of the jungle...");
         add("advancements.pasterdream.story.dig_up_a_tomb.title", "Sweet Sixteen, with the Strength of a Titan");
-        add("advancements.pasterdream.story.dig_up_a_tomb.description", "You...... what exactly did you dig up???");
+        add("advancements.pasterdream.story.dig_up_a_tomb.description", "You... what exactly did you dig up???");
         add("advancements.pasterdream.new_standard_sword_drawing.title", "New Standard Sword Drawing");
         add("advancements.pasterdream.new_standard_sword_drawing.description", "Because you couldn't pull out the sword, you ended up using your enemy as a tool to break stones!");
         add("advancements.pasterdream.return_to_owner.title", "Returned to Its Rightful Owner...?");
@@ -2018,11 +2018,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_murakumo_kusanagi.title", "Lost Souls Under the Sword");
         add("advancements.pasterdream.get_murakumo_kusanagi.description", "Let Kusanagi further evolve by killing enemies.");
         add("advancements.pasterdream.adventure.find_desert_fortress.title", "Desert Heroic Spirit");
-        add("advancements.pasterdream.adventure.find_desert_fortress.description", "Discover a desert fortress, where a heroic spirit who hasn't completed his aspiration. Maybe you should think about killing the nearby enemies first......");
+        add("advancements.pasterdream.adventure.find_desert_fortress.description", "Discover a desert fortress, where a heroic spirit who hasn't completed his aspiration. Maybe you should think about killing the nearby enemies first...");
         add("advancements.pasterdream.adventure.get_desert_sword.title", "Sword of the Heroic Spirit");
         add("advancements.pasterdream.adventure.get_desert_sword.description", "Get the Desert Sword from the hero and fulfill his last wish to let this weapon evolve.");
         add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.title", "The wish has come true");
-        add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.description", "Fulfilling the heroic spirit's last wish allowed Desert Sword to evolve into ChenJingmen Desert Sword. The former hero can finally rest in peace......");
+        add("advancements.pasterdream.adventure.get_chenjingmen_desert_sword.description", "Fulfilling the heroic spirit's last wish allowed Desert Sword to evolve into ChenJingmen Desert Sword. The former hero can finally rest in peace...");
 
         // Advancements - Nether expansion
         add("advancements.pasterdream.get_molten_gold_ingot.title", "Real Gold Does Not Fear Fire");
@@ -2104,17 +2104,17 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.染梦世界树", "The Dyedream Worldtree");
         add("book.pasterdream.content.染梦世界树", "While gazing at the scenery from afar, I spotted this towering giant tree at the edge of my vision. Standing at its base and looking up, the trunk soared into the clouds, its canopy barely visible.\r\nDigging the soil around the roots, I found its roots don't extend very far — hard to explain its extraordinary height.\r\nThe winding trunk formed a natural staircase that made climbing fairly easy, though some parts still required free-climbing. When I reached the top of the branches, I could see a small hollow inside.\r\nA glowing white spring flowed from the trunk's side, anomalous in every way — but compared to the wonder of this world itself, this sight was hardly enough to astonish me.\r\nBack under the tree, I began to ponder what enabled this tree to form and grow normally. On this, I made a conjecture:\r\nThis world belongs to some kind of dream, and the dream energy in its atmosphere is unevenly distributed.\r\nJust as atmospheric phenomena cause weather changes, this energy dissolved in the dream's air — Melt Dream Energy — should also be unevenly distributed.\r\nIn regions where Melt Dream Energy settles more, the energy condenses into physical forms, creating continents, sky islands, trees, and everything else in this world. And where Melt Dream Energy gathers in large amounts within a small area, the result is a Melt Dream Crystal Chest — which also explains why energy escapes when you open one.\r\nExtrapolating from this theory, at the center of this dream world — where Melt Dream Energy is most abundant — a colossal structure should form; and the rich energy would manifest as countless Melt Dream Crystal Chests accumulated within it.\r\nAt that thought, I turned to look back toward the giant tree. It may well be the Worldtree of this dream world — a place of concentrated Melt Dream Energy, a dreamland holding countless Melt Dream Crystal Chests.\r\nI ought to climb that tree again and explore its inner structure. My earlier fruitless search must mean I missed something...\r\nBy Jixing");
         add("book.pasterdream.title.星河果冻和浮空岛", "Galaxy Jelly and the Floating Island");
-        add("book.pasterdream.content.星河果冻和浮空岛", "Galaxy Jelly and the Floating Island\r\nShortly after I left that giant tree in disappointment, Qianye caught up with me and interrupted my exploration plans. I think it's best to explain my plan to her now......\r\n\"See those islands floating in midair? I want to go up and see if there's any treasure there.\" I suggested to Qianye.\r\nUnexpectedly, Qianye doused me with cold water: \"I think you've lost your mind. We can't fly — how would we get up there?\"\r\n\"About that...... I have a bold idea......\"\r\nUnder Qianye's incredulous gaze, I took out the jelly-like items I'd found searching through some buildings in this world.\r\n\"What's this?\"\r\n\"It's something I found in those buildings. Eating it seems to make you shoot 'whoosh' into the sky, so......\"\r\nShe caught on quickly: \"So you want to be Armstrong?\"\r\n\"No, I'm at most Wan Hu — this is just about reaching a floating island. Come on, let's try.\"\r\nThings went surprisingly smoothly — though in reality no such jelly exists that launches you into the sky when eaten, thank goodness for it; we easily flew to the floating island I'd previously only been able to gaze up at.\r\n-After landing on the island, Qianye dashed straight into that little house. I followed right behind, found a spot to sit down, and chatted with her.\r\n\"Come to think of it, this world is way beyond common sense.\" Qianye sat down too and began tidying her windblown hair.\r\n\"That's why I said this world must be some kind of dream or illusion. After all, I can't understand at all how these islands float in the air unharmed, and stay perfectly still when we step on them.\"\r\n\"This house too — though it obviously looks man-made, there are no signs of human habitation at all. Also, I still can't understand how this jelly lets us fly when we eat it.\"\r\n\"Don't be so serious — anything can happen in a dream.\"\r\nBy Jixing");
+        add("book.pasterdream.content.星河果冻和浮空岛", "Galaxy Jelly and the Floating Island\r\nShortly after I left that giant tree in disappointment, Qianye caught up with me and interrupted my exploration plans. I think it's best to explain my plan to her now...\r\n\"See those islands floating in midair? I want to go up and see if there's any treasure there.\" I suggested to Qianye.\r\nUnexpectedly, Qianye doused me with cold water: \"I think you've lost your mind. We can't fly — how would we get up there?\"\r\n\"About that... I have a bold idea...\"\r\nUnder Qianye's incredulous gaze, I took out the jelly-like items I'd found searching through some buildings in this world.\r\n\"What's this?\"\r\n\"It's something I found in those buildings. Eating it seems to make you shoot 'whoosh' into the sky, so...\"\r\nShe caught on quickly: \"So you want to be Armstrong?\"\r\n\"No, I'm at most Wan Hu — this is just about reaching a floating island. Come on, let's try.\"\r\nThings went surprisingly smoothly — though in reality no such jelly exists that launches you into the sky when eaten, thank goodness for it; we easily flew to the floating island I'd previously only been able to gaze up at.\r\n-After landing on the island, Qianye dashed straight into that little house. I followed right behind, found a spot to sit down, and chatted with her.\r\n\"Come to think of it, this world is way beyond common sense.\" Qianye sat down too and began tidying her windblown hair.\r\n\"That's why I said this world must be some kind of dream or illusion. After all, I can't understand at all how these islands float in the air unharmed, and stay perfectly still when we step on them.\"\r\n\"This house too — though it obviously looks man-made, there are no signs of human habitation at all. Also, I still can't understand how this jelly lets us fly when we eat it.\"\r\n\"Don't be so serious — anything can happen in a dream.\"\r\nBy Jixing");
         add("book.pasterdream.title.融梦釜与融梦炼金术", "The Dream Cauldron and Melt Dream Alchemy");
         add("book.pasterdream.content.融梦釜与融梦炼金术", "I wandered through that pink world for a long time, until I found that machine beneath the giant tree — my alchemy research made a breakthrough.\r\nBy deconstructing and analyzing the machine within the dream, I finally understood its operating principle: essentially, the machine uses the dream's special energy to perform alchemical synthesis — and that energy is most abundant in a certain shining spring in the dream: the Melt Dream Liquid Well.\r\nThe next and most crucial step: what could the Melt Dream spring water bring to the currently near-rigid alchemy? Researching this was the hardest and most tedious part. First, I needed a container that could hold this potion. Through constant experimentation, I settled on Titanium — extremely corrosion-resistant — and materials with better compatibility with the Melt Dream spring; I named it: the Elixir Bottle.\r\nFinding compatible materials also cost me some time. During experiments, I realized I'd underestimated the potential of the Melt Dream spring and this machine: when used with the machine, the Melt Dream spring water can extend the duration of potions that originally last a short time, and can even strengthen the potency of certain potions. The rigid alchemy of ancient tomes is nothing before this machine. But such a marvelous thing deserves a name, so I'll call it: the Dream Cauldron, and this alchemy I call Melt Dream Alchemy.\r\nBy Qinglan");
         add("book.pasterdream.title.魔法使的记录 其一", "Records of the Mage I");
-        add("book.pasterdream.content.魔法使的记录 其一", "Pink, drifting petals, clouds, and all manner of buildings that exist only in fantasy — everything in this world is like the embodiment of a maiden's every dream.\r\nThat being so, this world truly is a dream — peaceful, cozy, simply the finest sweet dream...\r\nHowever, even if this is a dream, my habits still led me to ask myself a few questions: Where did such a beautiful world come from? Who built those mysterious buildings? And...... where does the wondrous feeling I sense come from?\r\nIf I figure these out, perhaps I can grasp more secrets and learn more magic.\r\nWhat a marvelous world — so alluring. Every riddle of this world tempts me to seek the truth.\r\nBy Lingran");
+        add("book.pasterdream.content.魔法使的记录 其一", "Pink, drifting petals, clouds, and all manner of buildings that exist only in fantasy — everything in this world is like the embodiment of a maiden's every dream.\r\nThat being so, this world truly is a dream — peaceful, cozy, simply the finest sweet dream...\r\nHowever, even if this is a dream, my habits still led me to ask myself a few questions: Where did such a beautiful world come from? Who built those mysterious buildings? And... where does the wondrous feeling I sense come from?\r\nIf I figure these out, perhaps I can grasp more secrets and learn more magic.\r\nWhat a marvelous world — so alluring. Every riddle of this world tempts me to seek the truth.\r\nBy Lingran");
         add("book.pasterdream.title.关于美梦世界的研究", "Research on the Sweet Dream World");
         add("book.pasterdream.content.关于美梦世界的研究", "According to Qianye's account, when she entered this place by drinking Dyedream Juice and sleeping, she saw my body vanish outright — just as when passing through the rift.\r\nIn other words, rather than a dream, this is better described as another world. Unlike ordinary dreams, where only the spirit — or rather the mind — can arrive, when one comes to this world, body and spirit \"cross over\" together.\r\nBut that doesn't explain why the pain and wakefulness brought by the Boneneedle let me wake up in bed again.\r\n\"Unless that flower...\" Qianye speculated, \"itself also condensed the power of the dream.\"\r\n\"Or else, we have already been influenced by the dream...\"\r\nBy Jixing");
         add("book.pasterdream.title.染梦世界跃迁石", "The Dyedream World Leapstone");
-        add("book.pasterdream.content.染梦世界跃迁石", "Annoying, so annoying, extremely annoying!\r\nBecause of my research, I need to travel back and forth between the Dyedream World and the Overworld for long periods. But honestly, climbing up to the Dyedream sky islands every time is exhausting, and using Dream Juice requires gathering materials and brewing it each time — such a hassle. And leaving the dream requires stabbing myself with the Pale Boneneedle — it hurts so much!\r\nAaargh, this is maddening! I have to find a way to make a stable passage!\r\nDrawing on the corruption of the Dyedream Rift, I hit upon the idea of using the Dyedream World's energy to create artificial corruption, thereby establishing a stable passage. Surrounding Dyedream Dust with eight blocks of Dyedream Crystal triggers a wondrous reaction; the new crystal block produced has the function of creating an artificial rift. Hmm, let's call it the Dyedream World Leapstone — sounds rather nice. This will put an end to that maddening daily stair-climbing to the sky islands.\r\nBut it still has an insurmountable problem: though it creates an artificial rift, it is still, after all, corruption. In the Overworld, it will gradually corrupt its surroundings into something like the Dyedream World.\r\nIn other words, where there is a passage, a connection, an intersection, there is bound to be corruption — it's unavoidable. Only the degree differs.\r\nMm-mm...... I can't do anything about this point, really nothing. If anyone uses this technology later, do take note.\r\nEr, if it could corrupt infinitely, I might try to turn it into a weapon? But clearly it can't......\r\nNo wait, why should I let others use my technology? No, no!\r\nBy Lingran");
+        add("book.pasterdream.content.染梦世界跃迁石", "Annoying, so annoying, extremely annoying!\r\nBecause of my research, I need to travel back and forth between the Dyedream World and the Overworld for long periods. But honestly, climbing up to the Dyedream sky islands every time is exhausting, and using Dream Juice requires gathering materials and brewing it each time — such a hassle. And leaving the dream requires stabbing myself with the Pale Boneneedle — it hurts so much!\r\nAaargh, this is maddening! I have to find a way to make a stable passage!\r\nDrawing on the corruption of the Dyedream Rift, I hit upon the idea of using the Dyedream World's energy to create artificial corruption, thereby establishing a stable passage. Surrounding Dyedream Dust with eight blocks of Dyedream Crystal triggers a wondrous reaction; the new crystal block produced has the function of creating an artificial rift. Hmm, let's call it the Dyedream World Leapstone — sounds rather nice. This will put an end to that maddening daily stair-climbing to the sky islands.\r\nBut it still has an insurmountable problem: though it creates an artificial rift, it is still, after all, corruption. In the Overworld, it will gradually corrupt its surroundings into something like the Dyedream World.\r\nIn other words, where there is a passage, a connection, an intersection, there is bound to be corruption — it's unavoidable. Only the degree differs.\r\nMm-mm... I can't do anything about this point, really nothing. If anyone uses this technology later, do take note.\r\nEr, if it could corrupt infinitely, I might try to turn it into a weapon? But clearly it can't...\r\nNo wait, why should I let others use my technology? No, no!\r\nBy Lingran");
         add("book.pasterdream.title.梦境世界的本质", "The Essence of the Dream World");
-        add("book.pasterdream.content.梦境世界的本质", "While reviewing my earlier research on the Dyedream World Leapstone, I noticed a very strange problem: judging from the notes left by various predecessors, this place should be a dream. But if it is a dream, why can it establish a passage with the Overworld — reality itself — and even corrupt the Overworld?\r\nUnless you claim the master of this dream has the power to make wishes come true in the Overworld...... nonsense? Such power, even in magic, would be close to the Root, akin to a god — whoever proposes that theory is the one truly dreaming, surely?\r\nThinking this way, many problems emerge: spoils obtained exploring the dream world can be brought back to the Overworld; wounds or even near-death in the dream are reflected on one's body in the Overworld; and when I earlier returned from the Lamp Shadow on the verge of madness, shadow monsters actually appeared in the Overworld.\r\nI contacted Qinglan via message magic and discussed the matter with him, and in the end we reached a conclusion:\r\nThe common essence of all dream worlds is that they are otherworlds bearing the nature of dreams — like the Nether and the End, otherworlds independent of the Overworld. This easily explains why dream worlds have passages to the Overworld, and why things from the dream can be taken out: because it merely has the nature of a dream, but is essentially an otherworld. The Dyedream Rift and my Leapstone thus serve a role similar to Nether portals — they construct passages between the two worlds.\r\nThen why can we still enter the dream world by sleeping in a special way? Whoever asks this question is a bit foolish — because it has the nature of a dream, and having the nature of a dream means one can enter it through sleep.\r\nBut seen this way, it's entirely normal that falling, being wounded, or even nearing death in the dream world won't let us leave it. So what is the principle by which the Pale Boneneedle lets us swiftly return to the Overworld? On this question the two of us had no clue for the moment, but I suspect the Pale Snow Lotus is involved. So I asked Qinglan to research the Pale Snow Lotus; I'm too occupied for now.\r\nWith this, we're one step closer to finding the truth of the dream — how thrilling.\r\nBy Lingran");
+        add("book.pasterdream.content.梦境世界的本质", "While reviewing my earlier research on the Dyedream World Leapstone, I noticed a very strange problem: judging from the notes left by various predecessors, this place should be a dream. But if it is a dream, why can it establish a passage with the Overworld — reality itself — and even corrupt the Overworld?\r\nUnless you claim the master of this dream has the power to make wishes come true in the Overworld... nonsense? Such power, even in magic, would be close to the Root, akin to a god — whoever proposes that theory is the one truly dreaming, surely?\r\nThinking this way, many problems emerge: spoils obtained exploring the dream world can be brought back to the Overworld; wounds or even near-death in the dream are reflected on one's body in the Overworld; and when I earlier returned from the Lamp Shadow on the verge of madness, shadow monsters actually appeared in the Overworld.\r\nI contacted Qinglan via message magic and discussed the matter with him, and in the end we reached a conclusion:\r\nThe common essence of all dream worlds is that they are otherworlds bearing the nature of dreams — like the Nether and the End, otherworlds independent of the Overworld. This easily explains why dream worlds have passages to the Overworld, and why things from the dream can be taken out: because it merely has the nature of a dream, but is essentially an otherworld. The Dyedream Rift and my Leapstone thus serve a role similar to Nether portals — they construct passages between the two worlds.\r\nThen why can we still enter the dream world by sleeping in a special way? Whoever asks this question is a bit foolish — because it has the nature of a dream, and having the nature of a dream means one can enter it through sleep.\r\nBut seen this way, it's entirely normal that falling, being wounded, or even nearing death in the dream world won't let us leave it. So what is the principle by which the Pale Boneneedle lets us swiftly return to the Overworld? On this question the two of us had no clue for the moment, but I suspect the Pale Snow Lotus is involved. So I asked Qinglan to research the Pale Snow Lotus; I'm too occupied for now.\r\nWith this, we're one step closer to finding the truth of the dream — how thrilling.\r\nBy Lingran");
         add("book.pasterdream.title.苍白雪莲与苍白骨针", "The Pale Snow Lotus and the Pale Boneneedle");
         add("book.pasterdream.content.苍白雪莲与苍白骨针", "Usually I'm unwilling to take on others' requests, but it just so happened that this little cat pointed me toward something I was already investigating, so I had no choice but to do it. What she asked this time was for me to go to the snowy mountains to study a peculiar white lotus — the raw material of the Pale Boneneedle: the Pale Snow Lotus.\r\nThe snowy mountain is very tall, and collecting samples is an arduous task. Fortunately, with a snow fox's constitution, the cold environment didn't affect me much.\r\nResearch on the snow lotus made progress quite quickly. From it I discovered a peculiar energy, extremely similar to the energy of the pink world I had visited — broadly speaking, this energy exists across many worlds. This is why the Boneneedle can forcibly pull the user's consciousness back to our reality. Unfortunately, after use, the energy it contains is nearly spent, so it cannot be used again.\r\nAs an alchemist, I naturally couldn't be satisfied with just that. I conducted countless experimental studies on the Boneneedle as well, and finally discovered that this needle can also connect the powers of Ender and Sculk (that is, Echo Shards), allowing the needle to record a specific location in reality and, when used, send the player to the recorded location.\r\np.s.: I found a very strange stone on the table. Whatever it is, I saved it — my intuition tells me it will come in handy one day.\r\n\r\n(At the end of the note, there is a tiny line of text)\r\nAlso, don't go doing dangerous things alone again.\r\nBy Qinglan");
         add("book.pasterdream.title.逐梦列车", "Dream Train");
@@ -2124,7 +2124,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.灵魂石的现世（假）", "Soul Gem In Current World");
         add("book.pasterdream.content.灵魂石的现世（假）", "If you're reading this note, it means you're a dummy~\r\nWait, hold on — what are you thinking? You didn't actually believe I'd hide my precious treasure in a place like this, did you?\r\nLooks like whoever's reading this note really is a big dummy, hehe.\r\nAs for where the real treasure is hidden... why on earth would I tell you, you big dummy? Nyeh nyeh nyeh.\r\nEhehe, keep looking.\r\nBy Lingran");
         add("book.pasterdream.title.魔法使建家记", "The Mage Builds a Home");
-        add("book.pasterdream.content.魔法使建家记", "To be honest, living in the Overworld really isn't all that comfortable. Monsters are everywhere once night falls, and sometimes I have to stay up late — stay up long enough and those annoying big blue moths show up in the sky.\r\nSo! This lady has made an important decision: I'm moving to the dream world! For one, it's more comfortable to live there; for two, it makes studying dreams much easier. As for where to live — the Dyedream World, of course!\r\nOn my earlier travels, I saw a kind of magic cottage on the moon. With the dream world's peculiarities and my magic, it should be relatively easy to build one.\r\nOf course, building it on the ground would make clearing the ground a real pain, and a moon sitting on the ground would just be weird. So, genius that I am, I decided to build it in the sky! We can always get around with a few unconventional means, anyway.\r\nPhew~ After all that work, it's finally done. It's quite comfortable to live in, and very convenient for observing and studying the dream world. Now I just need a magic circle for easy access.\r\nHmm...... Of course, I might leave here for good someday, and the magic circle will stop working once it's no longer maintained...... There will be other dream-seekers like me coming here, I suppose. When I leave, I should leave them something.\r\n......Hmph, not that it'll be anything good.\r\nBy Lingran");
+        add("book.pasterdream.content.魔法使建家记", "To be honest, living in the Overworld really isn't all that comfortable. Monsters are everywhere once night falls, and sometimes I have to stay up late — stay up long enough and those annoying big blue moths show up in the sky.\r\nSo! This lady has made an important decision: I'm moving to the dream world! For one, it's more comfortable to live there; for two, it makes studying dreams much easier. As for where to live — the Dyedream World, of course!\r\nOn my earlier travels, I saw a kind of magic cottage on the moon. With the dream world's peculiarities and my magic, it should be relatively easy to build one.\r\nOf course, building it on the ground would make clearing the ground a real pain, and a moon sitting on the ground would just be weird. So, genius that I am, I decided to build it in the sky! We can always get around with a few unconventional means, anyway.\r\nPhew~ After all that work, it's finally done. It's quite comfortable to live in, and very convenient for observing and studying the dream world. Now I just need a magic circle for easy access.\r\nHmm... Of course, I might leave here for good someday, and the magic circle will stop working once it's no longer maintained... There will be other dream-seekers like me coming here, I suppose. When I leave, I should leave them something.\r\n...Hmph, not that it'll be anything good.\r\nBy Lingran");
         add("book.pasterdream.title.世界树调查记录", "Search Record About Dyedream Tree");
         add("book.pasterdream.content.世界树调查记录", "A few days ago, I was slacking off and wandering around the Dyedream World... ahem, no, no — while surveying the Dyedream World, I discovered a giant tree that pierced the sky. And I could feel a very rich energy unique to the dream world.\r\nRecently I finally had the motivation (crossed out) time to go see this tree. So, let me check my gear and set out~ From my temporary camp, it takes eighty-one trials to reach that big tree— (Well, actually it's not that dangerous; except for nearly falling to my death once.)\r\nUp close, this tree is truly massive... as if it supports the entire dream. I can sense a peculiar feeling starting here and drifting in all directions.\r\nThanks to some inexplicable staircase structure on it, I could begin my investigation with ease. Hmm... I found some notes left by predecessors. It seems this tree is the Worldtree, and the energy unique to the dream I felt earlier is called \"Melt Dream Energy\"... Just standing near the Worldtree makes me feel the void in my soul being filled, so perhaps I could make an item that repairs the soul from this — and such an item should be able to draw large amounts of Melt Dream Energy for people to use...\r\nWith such a theoretical conjecture, there's no reason I couldn't create enchantments that draw surrounding Melt Dream Energy into the body, and enchantments that use Melt Dream Energy to repair equipment... well, I'll deal with that later.\r\nBy the way, one thing bothers me: isn't that Wishing Tree I found earlier somewhat like a miniature Worldtree? Even its leaves are special. Whether the Wishing Tree is a fully grown small Worldtree or a sapling that will one day become one... I can't say. In any case, the Wishing Tree must have some connection to the Worldtree.\r\nWell, that's the end of this investigation. Ah, I'm so tired, I want to sleep, I want to slack off — time to pack up and head back~\r\nWait, why did I write all this down?! Aaaah, why won't it erase! Whoever reads this note, forget this part!\r\nBy Lingran");
         add("book.pasterdream.title.探求秘辛", "In Pursuit of Secrets");
@@ -2252,7 +2252,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.需要在本层寻找暗影地牢钥匙以打开大门", "Need to find Shadow Dungeon Key in this floor to open the gate");
         add("message.pasterdream.大门紧闭不开", "The gate is tightly closed");
         add("message.pasterdream.shadow_brazier.need_candle", "You need a Shadow Candle to light the brazier");
-        add("message.pasterdream.shadow_brazier.lit", "The brazier ignites, but brings no light......");
+        add("message.pasterdream.shadow_brazier.lit", "The brazier ignites, but brings no light...");
         add("message.pasterdream.shadow_brazier.shadow_spread", "Shadow spreads from all around");
         add("message.pasterdream.shadow_brazier.extinguished", "The brazier burns out and shatters on the ground");
         add("message.pasterdream.shadow_brazier.key_dropped", "A key drops from the crevice of the brazier");
@@ -2283,7 +2283,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.twilight_lantern.event_end", "§8Shadows no longer surge outward, the Twilight Lantern gradually returns to calm, a rift slowly appears in the sky above.");
         add("message.pasterdream.twilight_lantern.event_end_3", "§5\"Do not resist, surrender to your heart, together in eternal life\"");
         add("message.pasterdream.twilight_lantern.event_end_4", "§5\"Submit! Submit!! Submit!!!\"");
-        add("message.pasterdream.twilight_lantern.event_end_5", "§5\"Come, come~ Come! ......Embrace us, sleep with us, merge with us, here is your only home\"");
+        add("message.pasterdream.twilight_lantern.event_end_5", "§5\"Come, come~ Come! ...Embrace us, sleep with us, merge with us, here is your only home\"");
         add("message.pasterdream.twilight_lantern.event_end_2", "§8The voices grow clearer, the repetitive words begin to irritate you.");
         add("message.pasterdream.twilight_lantern.event_ready", "§5You can now resonate with the Twilight Lantern, interact with the True Shadow Bed");
         add("message.pasterdream.twilight_lantern.data_reset", "Block data reset");
@@ -2292,9 +2292,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // Shadow intrusion event
         add("message.pasterdream.shadow_intrude.start_1", "§5You feel a chill, your vision veiled by a layer of black fog");
         add("message.pasterdream.shadow_intrude.start_2", "§5The nearby shadows begin to stir");
-        add("message.pasterdream.shadow_intrude.end", "§5The shadows fall silent......");
+        add("message.pasterdream.shadow_intrude.end", "§5The shadows fall silent...");
         add("message.pasterdream.shadow_intrude.end_1", "§7You feel puzzled that these shadow creatures have come here");
-        add("message.pasterdream.shadow_intrude.end_2", "§7Perhaps we should go find Nameless again......");
+        add("message.pasterdream.shadow_intrude.end_2", "§7Perhaps we should go find Nameless again...");
 
         // Shadow choice screen
         add("gui.pasterdream.shadow_select_end.label_choose", "Follow your first instinct to make your choice");
@@ -2304,12 +2304,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("dialogue.pasterdream.nameless.first_1", "???: Hmm...?");
         add("dialogue.pasterdream.nameless.first_2", "???: ...How did you get here?");
         add("dialogue.pasterdream.nameless.first_3", "???: It has been a long time since anyone came here...");
-        add("dialogue.pasterdream.nameless.first_4", "???: You may be curious about my past, but...... I have been through too much, and I would rather not recall it.");
+        add("dialogue.pasterdream.nameless.first_4", "???: You may be curious about my past, but... I have been through too much, and I would rather not recall it.");
         add("dialogue.pasterdream.nameless.first_5", "???: As for my name... too much time has passed, and I have lost my former \"self.\" Just call me \"Nameless.\"");
-        add("dialogue.pasterdream.nameless.first_6", "Nameless: It is dangerous here. Every time you enter this shadow dungeon, it changes — more threats or more treasure...... I cannot tell.");
+        add("dialogue.pasterdream.nameless.first_6", "Nameless: It is dangerous here. Every time you enter this shadow dungeon, it changes — more threats or more treasure... I cannot tell.");
         add("dialogue.pasterdream.nameless.first_7", "Nameless: Please do not risk your life exploring here. Leave as soon as you can.");
         add("dialogue.pasterdream.nameless.first_8", "Nameless: Why am I still here? Because I cannot escape, and I no longer want to try. Go back while you still can.");
-        add("dialogue.pasterdream.nameless.first_9", "Nameless: ......");
+        add("dialogue.pasterdream.nameless.first_9", "Nameless: ...");
         add("dialogue.pasterdream.nameless.first_10", "Nameless: Why are you still here...");
         add("dialogue.pasterdream.nameless.first_11", "Nameless: Staying here will only erode your mind... I cannot let you go deeper. This thirst for the unknown will only make it easier for the shadows to control you... It is for your own good.");
         add("dialogue.pasterdream.nameless.first_12", "Nameless: I cannot let you stay here any longer... Please leave.");
@@ -2339,8 +2339,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("dialogue.pasterdream.nameless.shadow_4", "Nameless: May fortune favor you, and may you keep your human clarity even after this battle.");
 
         // Nameless dialogue: waiting state
-        add("dialogue.pasterdream.nameless.wait", "Nameless: ......");
-        add("dialogue.pasterdream.nameless.busy", "Nameless: ...... (He is focused on a conversation with someone else)");
+        add("dialogue.pasterdream.nameless.wait", "Nameless: ...");
+        add("dialogue.pasterdream.nameless.busy", "Nameless: ... (He is focused on a conversation with someone else)");
         add("advancements.pasterdream.story.shadow_choice.title", "Light and Shadow");
         add("advancements.pasterdream.story.shadow_choice.description", "Make your choice between light and shadow");
         add("advancements.pasterdream.story.talent_light.title", "Faith in Light");
