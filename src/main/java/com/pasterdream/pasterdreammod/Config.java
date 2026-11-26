@@ -382,6 +382,11 @@ public class Config {
                     List.of("dummmmmmy:target_dummy"),
                     obj -> obj instanceof String);
 
+    // === 帕秋莉宝典 ===
+    public static final ModConfigSpec.BooleanValue GIVE_PATCHOULI_BOOK_ON_FIRST_JOIN = BUILDER
+            .comment("玩家首次加入世界时是否发放帕秋莉宝典（需要安装帕秋莉模组才生效），默认 true")
+            .define("givePatchouliBookOnFirstJoin", true);
+
     // === 怀中御守 / 狐火 ===
     public static final ModConfigSpec.IntValue KAICHU_OMAMORI_COOLDOWN = BUILDER
             .comment("怀中御守的冷却时间（秒），默认 24 秒")

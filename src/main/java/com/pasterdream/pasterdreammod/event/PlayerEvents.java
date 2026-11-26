@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.event;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -34,6 +35,7 @@ import net.neoforged.neoforge.event.entity.player.CanPlayerSleepEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
+import vazkii.patchouli.api.PatchouliAPI;
 
 public class PlayerEvents {
 
@@ -63,6 +65,8 @@ public class PlayerEvents {
     private static final ResourceLocation CHOCOLATE_000_ADV =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/chocolate_000");
     private static final String NOTE_DELAY_TAG = "pasterdream:dream_note_delay";
+    /** 已领取过《旧梦归引》的玩家标签，与 1.20.1 来源一致，不带命名空间。 */
+    private static final String PATCHOULI_BOOK_TAG = "pasterdream_received_book";
     /** 风之旅途尚未迁入的维度键；睡觉传送分支在维度缺失时自然跳过。 */
     private static final ResourceKey<Level> WIND_JOURNEY_WORLD =
             ResourceKey.create(Registries.DIMENSION,
@@ -359,5 +363,24 @@ public class PlayerEvents {
         // 进入染梦维度 → 授予"染梦珍藏"进度（仅弹窗，不显示在聊天栏）
         grantAdvancement(serverPlayer, ROOT_DYEDREAM_TREASURE_ADV);
         grantAdvancement(serverPlayer, DYEDREAM_WORLD_ADV);
+    }
+
+    /** 玩家登录时按配置发放《旧梦归引》，已领取过的玩家跳过。 */
+    public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+        givePatchouliBookOnFirstJoin(event.getEntity());
+    }
+
+    private static void givePatchouliBookOnFirstJoin(Player player) {
+        if (!Config.GIVE_PATCHOULI_BOOK_ON_FIRST_JOIN.get()) return;
+        if (player.level().isClientSide()) return;
+        if (player.getTags().contains(PATCHOULI_BOOK_TAG)) return;
+
+        ItemStack book = PatchouliAPI.get().getBookStack(
+                ResourceLocation.fromNamespaceAndPath("pasterdream", "seniors_dream"));
+        if (!player.getInventory().add(book)) {
+            player.drop(book, false);
+        }
+
+        player.addTag(PATCHOULI_BOOK_TAG);
     }
 }
