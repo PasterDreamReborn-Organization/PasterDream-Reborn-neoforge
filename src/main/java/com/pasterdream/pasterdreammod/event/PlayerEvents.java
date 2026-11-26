@@ -48,6 +48,8 @@ public class PlayerEvents {
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_crack");
     private static final ResourceLocation DYEDREAM_WORLD_ADV =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_world");
+    private static final ResourceLocation ROOT_DYEDREAM_TREASURE_ADV =
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "treasure/root_dyedream_treasure");
     private static final ResourceLocation DYEDREAM_BROKEN_NOTE_ADV =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_broken_note");
     private static final ResourceLocation ENTER_LAMP_SHADOW_WORLD_ADV =
@@ -354,6 +356,8 @@ public class PlayerEvents {
             return;
         }
 
+        // 进入染梦维度 → 授予"染梦珍藏"进度（仅弹窗，不显示在聊天栏）
+        grantAdvancement(serverPlayer, ROOT_DYEDREAM_TREASURE_ADV);
         grantAdvancement(serverPlayer, DYEDREAM_WORLD_ADV);
     }
 }
