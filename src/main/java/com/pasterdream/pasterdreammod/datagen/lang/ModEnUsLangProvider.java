@@ -86,6 +86,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("fluid.pasterdream.watermelon_juice", "Watermelon Juice(fluid)");
         add("fluid.pasterdream.rage_elixir", "Rage Elixir(fluid)");
         add("fluid.pasterdream.potion", "Potion(fluid)");
+        add("fluid.pasterdream.goldenrod_tea", "Goldenrod Tea(fluid)");
+        add("fluid.pasterdream.dyedream_perfume", "Dyedream Perfume(fluid)");
+
         add("key.pasterdream.blink", "Blink");
         add("key.categories.pasterdream", "PasterDream");
         add("effect.pasterdream.evasion", "Evasion");
