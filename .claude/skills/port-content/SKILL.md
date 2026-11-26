@@ -109,7 +109,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 | `curioTick()` | 每 tick 持续效果（药水、放置方块等） | 检查 `!level.isClientSide()` |
 | `onEquip()` / `onUnequip()` | 装备/卸下时的一次性属性变更 | 配合 `AttributeInstance.addPermanentModifier/removeModifier` |
 | `makesPiglinsNeutral()` | 猪灵中立 | 仅需覆写此方法，无需额外 tooltip |
-| `canEquip()` | 禁止重复装备同类饰品 | 用 `CuriosApi.getCuriosInventory().findFirstCurio()` 检测 |
+| `canEquip()` | 禁止重复装备同类饰品 | 直接 `return CurioEquipHelper.allowsSingleCopy(slotContext, stack);`，**不要**自己写 `findFirstCurio(...).isEmpty()`（读档会被判成自身重复，详见 `curio` skill 的 canEquip 陷阱） |
 | 事件驱动（外部 handler） | 饰品效果依赖特定游戏事件触发（闪避、受击、攻击等） | 在 `PlayerEvents` 或 `CurioPassiveHandler` 中订阅对应 NeoForge 事件，用 `CuriosApi.getCuriosInventory()` 检测饰品，见下方说明 |
 
 **饰品标签（Curio 槽位）：**
