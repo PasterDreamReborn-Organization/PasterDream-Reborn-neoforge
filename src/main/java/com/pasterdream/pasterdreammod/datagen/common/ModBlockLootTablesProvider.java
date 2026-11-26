@@ -32,7 +32,6 @@ import java.util.Set;
 
 public class ModBlockLootTablesProvider extends BlockLootSubProvider {
     private static final float[] LEAVES_FRUIT_CHANCES = {0.05F, 0.0625F, 0.083333336F, 0.1F};
-    private static final float[] DYEDREAM_LEAVES_STICK_CHANCES = {0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 
     public ModBlockLootTablesProvider(HolderLookup.Provider registries) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
@@ -128,8 +127,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropOther(ModBlocks.DYEDREAM_FARMLAND.get(), ModItems.DYEDREAM_DIRT.get());
         dropSelf(ModBlocks.DYEDREAM_LOG.get());
         dropSelf(ModBlocks.DYEDREAM_WOOD.get());
-        add(ModBlocks.DYEDREAM_LEAVES.get(), block -> createDyedreamLeavesDrops(block, ModItems.DYEDREAM_FRUIT.get()));
-        add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), block -> createDyedreamLeavesDrops(block, ModItems.DYEDREAM_FRUIT.get()));
+        add(ModBlocks.DYEDREAM_LEAVES.get(), block -> createDyedreamLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), ModItems.DYEDREAM_FRUIT.get()));
+        add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), block -> createDyedreamLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), ModItems.DYEDREAM_FRUIT.get()));
         dropSelf(ModBlocks.DYEDREAM_SAND.get());
 
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), block -> createSilkTouchDispatchTable(block,
@@ -597,19 +596,14 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                         .add(LootItem.lootTableItem(immatureItem))));
     }
 
-    private LootTable.Builder createDyedreamLeavesDrops(Block leaves, ItemLike fruit) {
+    private LootTable.Builder createDyedreamLeavesDrops(Block leaves, Block sapling, ItemLike fruit) {
         var enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        var hasShearsOrSilkTouch = HAS_SHEARS.or(this.hasSilkTouch());
-        return createSilkTouchOrShearsDispatchTable(leaves,
-                applyExplosionDecay(leaves, LootItem.lootTableItem(fruit))
-                        .when(BonusLevelTableCondition.bonusLevelFlatChance(
-                                enchantments.getOrThrow(Enchantments.FORTUNE), LEAVES_FRUIT_CHANCES)))
+        return createLeavesDrops(leaves, sapling, NORMAL_LEAVES_SAPLING_CHANCES)
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-                        .when(hasShearsOrSilkTouch.invert())
-                        .add(applyExplosionDecay(leaves, LootItem.lootTableItem(Items.STICK)
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                        .when(HAS_SHEARS.or(this.hasSilkTouch()).invert())
+                        .add(applyExplosionDecay(leaves, LootItem.lootTableItem(fruit))
                                 .when(BonusLevelTableCondition.bonusLevelFlatChance(
-                                        enchantments.getOrThrow(Enchantments.FORTUNE), DYEDREAM_LEAVES_STICK_CHANCES))));
+                                        enchantments.getOrThrow(Enchantments.FORTUNE), LEAVES_FRUIT_CHANCES))));
     }
 
     @Override
