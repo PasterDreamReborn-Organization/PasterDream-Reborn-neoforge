@@ -150,6 +150,7 @@ public class PasterDreamMod {
         NeoForge.EVENT_BUS.addListener(ModWorldGenEvents::onServerTick);
         NeoForge.EVENT_BUS.addListener(ModWorldGenEvents::onCheckSpawn);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
+        NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerLogin);
         NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerChangedDimension);
         NeoForge.EVENT_BUS.addListener(AaroncosArenaWorldDimension::onArenaLevelTick);
         NeoForge.EVENT_BUS.addListener(WindDirectionHandler::onLevelTick);
