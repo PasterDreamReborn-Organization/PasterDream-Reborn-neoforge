@@ -58,6 +58,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_SPROUTS.get())
                 .add(ModBlocks.SHADOW_FERN.get())
                 .add(ModBlocks.SHADOW_FUNGUS.get());
+        // 可攀爬方块（藤蔓、梯子等）
+        tag(BlockTags.CLIMBABLE)
+                .add(ModBlocks.DYEDREAM_VINE.get());
         tag(ModBlockTags.WHITE_COROLLA_CAN_PLACE_ON).add(Blocks.SNOW_BLOCK).addTag(BlockTags.DIRT);
         tag(ModBlockTags.CRIMSON_THORNS_CAN_PLACE_ON).add(Blocks.CRIMSON_NYLIUM, Blocks.NETHERRACK, Blocks.MAGMA_BLOCK);
         tag(ModBlockTags.BLAZE_FLOWER_CAN_PLACE_ON).add(Blocks.CRIMSON_NYLIUM, Blocks.NETHERRACK, Blocks.MAGMA_BLOCK);

@@ -78,6 +78,13 @@ public class PlantGameTests {
     }
 
     @GameTest(template = "empty")
+    public static void dyedreamVineIsClimbable(GameTestHelper helper) {
+        helper.assertTrue(ModBlocks.DYEDREAM_VINE.get().defaultBlockState().is(net.minecraft.tags.BlockTags.CLIMBABLE),
+                "染梦藤蔓应注册到可攀爬方块标签");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty")
     public static void matureCropConversionRecipes(GameTestHelper helper) {
         var conversions = List.of(
                 new CropConversion(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), ModItems.DYEDREAM_COROLLA.get(), 1),
