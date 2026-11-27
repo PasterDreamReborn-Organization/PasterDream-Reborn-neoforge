@@ -30,24 +30,13 @@
 #### 五、维护流程
 - 「未发布」段的记录起点以引用行标明的 PR 或发布提交为准；需要手动翻阅 git 历史核对实际变更、合并与回退，不可仅按 PR 编号推断范围。
 - 发布新版本时：添加新版本标题，旧的未发布内容原地改为该版本号，未发布段基线更新为新版本。
-- 已发布日志移入 `changelog/<版本号>.md`，本文件只保留书写规则与未发布段；本版日志见 [中文](changelog/1.0.0-neoforge-1.21.1-alpha.md) 与 [英文](changelog/1.0.0-neoforge-1.21.1-alpha-en.md)，迁移期批次日志见 [changelog/1.0.0-beta1.md](changelog/1.0.0-beta1.md)。
+- 已发布日志移入 `changelog/<版本号>.md`，本文件只保留书写规则与未发布段；`1.0.0-neoforge-1.21.1-beta` 日志见 [中文](changelog/1.0.0-neoforge-1.21.1-beta.md) 与 [英文](changelog/1.0.0-neoforge-1.21.1-beta-en.md)，上一版日志见 [中文](changelog/1.0.0-neoforge-1.21.1-alpha.md) 与 [英文](changelog/1.0.0-neoforge-1.21.1-alpha-en.md)，迁移期批次日志见 [changelog/1.0.0-beta1.md](changelog/1.0.0-beta1.md)。
 
 </details>
 
-## 未发布 (基于 v1.0.0-neoforge-1.21.1-alpha)
+## 未发布 (基于 v1.0.0-neoforge-1.21.1-beta)
 
-> 需要从 #161 开始记录；需要手动翻阅 git 历史确认后续变更范围，并核对合并与回退
+> 需要从 #174 开始记录；需要手动翻阅 git 历史确认后续变更范围，并核对合并与回退
 > 本仓库为 [`PasterDream-Reborn-forge1.20.1`](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1) 的 NeoForge 1.21.1 移植版。上游同步只推进 [上游同步记录](document/reference/上游同步记录.md) 中的 PR 游标，不在此记录同步内容。
 > 本段只记发布时玩家可见的改动。迁移期批次 001–147、基础骨架与收尾状态已归档至 [changelog/1.0.0-beta1.md](changelog/1.0.0-beta1.md)，仅作历史查证。
-
-### 新增
-
-- 添加「首次加入世界时发放《旧梦归引》」配置项，默认开启
-
-### 修复
-
-- 修复风之旅途的风泊群岛与迷梦云层群系名称未翻译的问题
-- 修复染梦树叶与世界树树叶破坏时不掉落染梦树苗的问题
-- 修复进入染梦维度后「染梦珍藏」进度无法获取的问题
-- 修复首次进入世界时未发放《旧梦归引》指南书的问题
 
