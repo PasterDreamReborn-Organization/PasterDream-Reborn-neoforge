@@ -30,6 +30,11 @@ public class AddToolTip
             tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_crystal_fragment"));
         }
 
+        if(stack.is(ModItems.TITANIUM_UPGRADE.get()) || stack.is(ModItems.SCULK_UPGRADE.get()) || stack.is(ModItems.DYEDREAM_UPGRADE.get())
+                || stack.is(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.upgrade_kit"));
+        }
+
         if(stack.is(ModItems.TITANIUM_HELMET.get()) || stack.is(ModItems.TITANIUM_CHESTPLATE.get())
                 || stack.is(ModItems.TITANIUM_LEGGINGS.get()) || stack.is(ModItems.TITANIUM_BOOTS.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.titanium_armor.1"));
@@ -108,6 +113,11 @@ public class AddToolTip
 
         if(stack.is(ModItems.LAMP_SHADOW_BROKEN_NOTE.get()) || stack.is(ModItems.DYEDREAM_BROKEN_NOTE.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.broken_note"));
+        }
+
+        if(stack.is(ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get()) || stack.is(ModItems.DYEDREAM_UNKNOWN_NOTE.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.unknown_note.1"));
+            tooltip.add(Component.translatable("tooltip.pasterdream.unknown_note.2"));
         }
     }
 }
