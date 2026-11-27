@@ -50,7 +50,8 @@
     "DynamicFluidContainerModelMixin",
     "LevelRendererMixin",
     "FogRendererMixin",
-    "GuiPortalOverlayMixin"
+    "GuiPortalOverlayMixin",
+    "PatchouliBookEntryMixin"
   ],
   "injectors": {
     "defaultRequire": 1
