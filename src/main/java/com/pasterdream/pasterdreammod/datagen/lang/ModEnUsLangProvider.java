@@ -68,8 +68,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.右键打开GUI", "§7Press right mouse button to open GUI");
         add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "Meltdream Liquid Bucket");
         add(ModItems.SHADOW_LIQUID_BUCKET.get(), "Shadow Liquid Bucket");
-        add("fluid.pasterdream.melt_dream_liquid", "Meltdream Liquid");
+        add("fluid.pasterdream.melt_dream_liquid", "Melt Dream Liquid");
         add("fluid.pasterdream.shadow_liquid", "Shadow Liquid");
+        add(ModBlocks.MELTDREAM_LIQUID.get(), "Melt Dream Liquid");
+        add(ModBlocks.SHADOW_LIQUID.get(), "Shadow Liquid");
         add("fluid.pasterdream.guiding_drug", "Guiding Drug(fluid)");
         add("fluid.pasterdream.wind_plant_extract", "Wind Plant Extract(fluid)");
         add("fluid.pasterdream.yeast", "Yeast(fluid)");
@@ -86,6 +88,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("fluid.pasterdream.watermelon_juice", "Watermelon Juice(fluid)");
         add("fluid.pasterdream.rage_elixir", "Rage Elixir(fluid)");
         add("fluid.pasterdream.potion", "Potion(fluid)");
+        add("fluid.pasterdream.potion.with_effect", "Potion (%s)");
         add("fluid.pasterdream.goldenrod_tea", "Goldenrod Tea(fluid)");
         add("fluid.pasterdream.dyedream_perfume", "Dyedream Perfume(fluid)");
 

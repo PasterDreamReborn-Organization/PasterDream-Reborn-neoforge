@@ -70,6 +70,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_LIQUID_BUCKET.get(), "熔融阴影桶");
         add("fluid.pasterdream.melt_dream_liquid", "融梦涌泉");
         add("fluid.pasterdream.shadow_liquid", "熔融阴影");
+        add(ModBlocks.MELTDREAM_LIQUID.get(), "融梦涌泉");
+        add(ModBlocks.SHADOW_LIQUID.get(), "熔融阴影");
         add("fluid.pasterdream.guiding_drug", "药引（流体）");
         add("fluid.pasterdream.wind_plant_extract", "风植萃取液（流体）");
         add("fluid.pasterdream.yeast", "酵母（流体）");
@@ -86,6 +88,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("fluid.pasterdream.watermelon_juice", "西瓜汁（流体）");
         add("fluid.pasterdream.rage_elixir", "狂暴战意灵药（流体）");
         add("fluid.pasterdream.potion", "药水（流体）");
+        add("fluid.pasterdream.potion.with_effect", "药水（%s）");
         add("fluid.pasterdream.goldenrod_tea", "秋麒麟茶（流体）");
         add("fluid.pasterdream.dyedream_perfume", "染梦香水（流体）");
 
