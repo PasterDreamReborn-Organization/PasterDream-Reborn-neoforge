@@ -1,5 +1,11 @@
 {
   "type":"immersiveengineering:arc_furnace",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
   "additives":[],
   "energy":230400,
   "input":
