@@ -1,5 +1,11 @@
 {
   "type":"botanypots:block_derived_crop",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
   "block":"pasterdream:cloud_crop",
   "input":
   {

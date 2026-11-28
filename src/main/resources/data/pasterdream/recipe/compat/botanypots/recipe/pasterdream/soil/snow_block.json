@@ -1,5 +1,11 @@
 {
   "type":"botanypots:soil",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
   "input":
   {
     "item":"minecraft:snow_block"
